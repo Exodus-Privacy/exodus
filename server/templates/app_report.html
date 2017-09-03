@@ -1,13 +1,5 @@
-<!doctype html>
-<head>
-    <link rel="stylesheet" href="/static/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="/static/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
-    <script src="/static/bootstrap.min.js" ></script>
-</head>
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Exodus</a>
-</nav>
+{% extends "layout.html"%}
+{% block content %}
 <div class="container-fluid">
     {% if report.report.partial%}
         <h1>{{report.application.handle}} - <i class="small">partial report (no network analysis)</i></h1>
@@ -102,3 +94,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

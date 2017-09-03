@@ -97,7 +97,7 @@ def all_reports(partial=0):
                 r.append(res[0])
     return render_template('all_reports.html', reports=r, trackers=trackers)
 
-@app.route('/allreports', methods=['GET'])
+@app.route('/', methods=['GET'])
 def non_partial():
     return all_reports("0")
 
