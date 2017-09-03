@@ -21,12 +21,13 @@
   * `pip install Flask`
   * `pip install pymongo`
   * `pip install Flask-Script`
+  * `pip install commonmark`
 
 # Run `tcpdump` as simple user
 ```bash
 sudo visudo
 ```
-and append
+and append the following line before the `include ...` one at the bottom of the file
 ```
 <usename>  ALL=(ALL) NOPASSWD: /usr/sbin/tcpdump
 ```

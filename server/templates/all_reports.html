@@ -1,0 +1,40 @@
+<!doctype html>
+<head>
+    <link rel="stylesheet" href="/static/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="/static/bootstrap.min.js" ></script>
+</head>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Exodus</a>
+</nav>
+<div class="container-fluid">
+    <h1>Reports board</h1>
+    <div class="jumbotron">
+        These reports are automatically generated and this summary could miss few trackers. For a complete report, click on an application handle.
+    </div>
+    <div class="row">
+        <table class="table table-bordered  table-hover">
+            <thead class="thead-inverse">
+                <tr>
+                    <th class="text-center">Handle</th>
+                    {% for t in trackers %}
+                        <th class="text-center">{{t}}</th>
+                    {% endfor %}
+                </tr> 
+            </thead>  
+            {% for r in reports %}
+                <tr>
+                    <td class=""><a href="/appid/{{r._id}}"><code>{{r.application.handle}}</code></a></td>
+                    {% for t in trackers %}
+                        {% if t in r.report.trackers %}
+                            <td class="text-center"><h4><span class="badge badge-danger">☢️</span></h4></td>
+                        {% else %}
+                            <td class="text-center"></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
