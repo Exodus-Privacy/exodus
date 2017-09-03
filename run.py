@@ -41,13 +41,13 @@ def os_run(cmd):
 
     
 # Clear all
-# os.system("rm -rf %s/*" % apk_folder)
+os.system("rm -rf %s/*" % apk_folder)
 os.system("rm -rf %s/*" % extracted_folder)
 os.system("rm -rf %s/*" % decoded_folder)
 os.system("rm -rf %s/*" % net_folder)
 
 # Download APK
-# os.system("/usr/local/bin/gplaycli -F %s -f %s" % (apk_list_file, apk_folder))
+os.system("/usr/local/bin/gplaycli -F %s -f %s" % (apk_list_file, apk_folder))
 
 # For each applications
 apk_names = [fn for fn in os.listdir(apk_folder)
