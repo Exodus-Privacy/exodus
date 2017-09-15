@@ -20,7 +20,7 @@
                     <td class=""><a href="/appid/{{r._id}}"><code>{{r.application.handle}}</code></a></td>
                     {% for t in trackers %}
                         {% if t in r.report.trackers %}
-                            <td class="text-center"><h4><span class="badge badge-danger">☢️</span></h4></td>
+                            <td class="text-center"><h4><span class="badge badge-danger" data-toggle="tooltip" title="{{t}}">☢️</span></h4></td>
                         {% else %}
                             <td class="text-center"></td>
                         {% endif %}

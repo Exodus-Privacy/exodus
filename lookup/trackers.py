@@ -20,6 +20,7 @@ trackers = [{'name':'Teemo', 'patterns':['databerries']},
             {'name':'Ligatus', 'patterns':['ligatus\.com']},
             {'name':'Widespace', 'patterns':['widespace\.com']},
             {'name':'AppNexus', 'patterns':['adnxs\.com']},
+            {'name':'Localytics', 'patterns':['localytics']},
             ] 
 
 

@@ -1,9 +1,8 @@
 # Ad4Screen
 ## La société
-Ce tracker est édité par **Ad4Screen** - **Mobile First Alliance** présidée par *Jérôme Stioui* -> https://frama.link/yQ8zsQpT
+Ce tracker est édité par **Ad4Screen** - **Mobile First Alliance** présidée par [*Jérôme Stioui*](https://frama.link/yQ8zsQpT)
 
-Réseau de Ad4Screen : http://french-leader.com/report.php?siret=53851303700019
-Réseau notamment composé de sociétés aux noms très étranges.
+[Réseau de Ad4Screen](http://french-leader.com/report.php?siret=53851303700019)
 
 ### Notes éthiques
   * Retargeting
@@ -22,7 +21,7 @@ Réseau notamment composé de sociétés aux noms très étranges.
   * BackInApp
 
 ## Données potentiellement collectées
-Pour obtenir cette liste, se rendre sur `https://api.accengage.com/routes`.
+Pour obtenir cette liste, se rendre sur [`https://api.accengage.com/routes`](https://api.accengage.com/routes).
 ```
 BMA4SAuthentication : https://api.accengage.com/v1/sdk_access_token"
 BMA4SBulk : https://apiproxy.accengage.com/v1/_bulk"
@@ -73,14 +72,14 @@ BMA4SWebviewScriptUrl : https://apptrk.a4.tl/api/event/?partnerId=|partnerId|"}]
 ```
 
 ### Preuve
-![1](/static/img/oGBKDSPAJRyX.png)
+![1](/static/content/img/oGBKDSPAJRyX.png)
 
 ## Destination des données
-`89.185.56.27` ip localisée à Nateuil-les-Meaux (77))
+`89.185.56.27` IP localisée à Nateuil-les-Meaux (77))
 Les données de géolocalisation passent par la filliale Accengage pour arriver dans un serveur en [Californie appartenant à Google](http://whois.domaintools.com/accengage.com). 
 
 ### Preuve
-![1](/static/img/mbOnQ0jf58gk.png)
+![1](/static/content/img/mbOnQ0jf58gk.png)
 
 
 ## Règle de détection
@@ -88,6 +87,103 @@ Les données de géolocalisation passent par la filliale Accengage pour arriver 
   * `apptrk\\.a4\\.tl`
   * `app4free\\.com`
 
-## Vulnérabilités potentielles
-  ![1](/static/img/kMhldAfXk79j.png)
-  ![1](/static/img/W5PaVzJjf3Ck.png)
+# Filiales et clients
+## Ad4Screen
+  * PriceMinister (Rakuten Group)
+  * OTC Agregator
+  * Nestlé Bébé
+  * National Citer
+  * LILIGO
+  * La Redoute
+  * Buffalo Grill
+  * Europcar <-- CONFIRMÉ
+  * AirFrance
+  * Vente-Privée
+  * Pages Jaunes
+  * Casino
+  * Voyages-SNCF.com
+  * The Walt Disney Company
+  * Club Med
+  * Century 21
+  * Betclic
+  * Bouygues Telecom
+  * SFR
+  * Numericable
+  * ebooekers
+  * La Tribune
+  * Le Figaro
+  * Universal Music
+  * AXA
+  * Danone
+  * Saxo Banque
+  * Capcom
+  * Cadremploi.fr
+  * Nexity
+  * Pôle EmploiL
+  * RocketInternet
+  * Condé Nast
+  * TF1
+## Relatia (filiale de Ad4Screen)
+  * 3 Suisses
+  * Peugeot
+  * Transilien
+  * Celio
+  * Carrefour Drive
+  * Sephora
+  * Toyota
+  * AFMThéléthon
+  * Orange
+  * Oney
+  * Nina Ricci
+  * Malakoff Médéric
+  * Les Petits Bilingues
+  * Groupama
+  * FranceTélévisions
+  * EDF
+  * Engie
+  * Compagnie de Phalsbourg
+  * Clarins
+  * Camaieu
+  * BNP PAribas
+  * Auchan Drive
+  * American Express
+## LinkDispatcher (service de Relatia)
+  * Pages Jaunes
+  * FDJ
+  * 3 Suisses
+  * La Redoute
+  * TrendCorner
+  * Celio
+  * PagesJaunes
+  * FFF
+## Accengage (filiale de Ad4Screen)
+  * Backelite
+  * Niji
+  * Buisness lab
+  * itelios
+  * accenture
+  * Buisness And Descision
+  * Keyrus
+  * GenerationUP
+  * InBox
+  * Groupe Estia
+  * Tealium
+  * Insign
+  * Capgemini
+  * pictime
+  * Wazapp
+  * WEmanity
+  * Adneom
+  * airweb
+  * Bolero
+  * soft.computing
+  * aigily
+  * DigitasLBi
+  * PhoneValley
+  * Snapp'
+  * Aid
+  * Velvet
+  * Flixbus
+  * otto group
+  * Alibaba Group
+  * Orange

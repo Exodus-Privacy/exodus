@@ -15,8 +15,8 @@ adb = "/home/lambda/Android/Sdk/platform-tools/adb"
 # Virtual Box
 vboxmanage = "/usr/bin/vboxmanage"
 vm_name = "Android"
-vm_ip = "192.168.1.110"
-vm_snapshot = "Android-setup-geoloc"
+vm_ip = "192.168.1.111"
+vm_snapshot = "Android-gmail-account3"
 
 # Tcpdump
 tcpdump_duration = 80
@@ -41,13 +41,13 @@ def os_run(cmd):
 
     
 # Clear all
-os.system("rm -rf %s/*" % apk_folder)
+# os.system("rm -rf %s/*" % apk_folder)
 os.system("rm -rf %s/*" % extracted_folder)
 os.system("rm -rf %s/*" % decoded_folder)
 os.system("rm -rf %s/*" % net_folder)
 
 # Download APK
-os.system("/usr/local/bin/gplaycli -F %s -f %s" % (apk_list_file, apk_folder))
+# os.system("torify /usr/local/bin/gplaycli -F %s -f %s" % (apk_list_file, apk_folder))
 
 # For each applications
 apk_names = [fn for fn in os.listdir(apk_folder)
@@ -108,10 +108,12 @@ for apk_name in apk_names:
         time.sleep(5)
         print("Installing %s" % apk_name)
         cmd = '%s install %s' % (adb, apk_path)
-        
         if os_run(cmd) != 0:
             print("** Aborting analysis of %s - Unable to install app" % apk_name)  
             continue  
+        cmd = '%s shell pm grant %s android.permission.ACCESS_COARSE_LOCATION' % (adb, handle)
+        if os_run(cmd) != 0:
+            print("** Ooooops Unable to set permission") 
         
         print("Starting network sniffing")
         cmd = "/usr/bin/sudo /usr/sbin/tcpdump -G %s -W 1 -w %s -i %s %s" % (tcpdump_duration, pcap_output, iface, tcpdump_filter)
@@ -123,13 +125,8 @@ for apk_name in apk_names:
         cmd = '%s shell monkey -p %s 25' % (adb, handle)
         if os_run(cmd) != 0:
             print("** Aborting analysis of %s - Unable to start application" % apk_name)  
-            continue  
-        cmd = '%s shell pm grant %s android.permission.ACCESS_COARSE_LOCATION' % (adb, handle)
-        
-        if os_run(cmd) != 0:
-            print("** Ooooops Unable to set permission")  
+            continue   
         cmd = '%s disconnect %s' % (adb, vm_ip)
-        
         if os_run(cmd) != 0:
             continue 
 

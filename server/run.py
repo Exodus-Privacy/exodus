@@ -57,13 +57,34 @@ def app_id(idt='0'):
     report = reports.find({"_id": ObjectId(idt)}).limit(1)[0]
     return render_template('app_report.html', report=report)
 
+@app.route('/trackers', methods=['GET'])
+def trackers():
+    client = MongoClient('localhost', 27017)
+    db = client[exodus]
+    reports = db[exodus_reports]
+    apps = reports.distinct("application.handle")
+    apps.sort()
+    trackers = reports.distinct("report.trackers")
+    trackers.sort()
+    aggr = []
+    for t in trackers:
+        tdic = {"tracker": t, "apps": []}
+        for a in apps: 
+            res = reports.find({"$and": [{'application.handle':a}, {'report.partial':{ "$exists": True}}]}).sort('report.date',pymongo.DESCENDING).limit(1)
+            if res.count() > 0:
+                r = res[0]
+                if t in r['report']['trackers']:
+                    tdic["apps"].append(a)
+                    # aggr['t'].append(r["application"]["handle"])
+        aggr.append(tdic)
+    # return json.dumps(aggr)
+    return render_template('trackers.html', reports=aggr)
+
 @app.route('/page/<name>', methods=['GET'])
 def page(name='teemo'):
     exodus_dir = os.path.dirname(os.path.realpath(__file__))
     page = 'pages/%s.md' % name
     path = os.path.join(exodus_dir, page)
-    print(page)
-    print(path)
     if path.startswith(exodus_dir) and os.path.exists(path):
         with open(str(path)) as p: 
             c = p.read()

@@ -4,9 +4,9 @@ Ce tracker est édité par la société française Teemo.
 
 Autres infos sur Teemo :
 
-  * http://www.numerama.com/politique/282934-enquete-comment-les-apps-figaro-lequipe-ou-closer-participent-au-pistage-de-10-millions-de-francais.html
-  * http://www.numerama.com/politique/283693-les-inconnues-du-dossier-teemo-quelques-pistes-pour-poursuivre-la-reflexion.html
-  * autres infos sur teemo : http://www.digitalcmo.fr/databerries-revolutione-le-drive-to-store-avec-son-real-life-targeting/
+  * [http://www.numerama.com/politique/282934-enquete-comment-les-apps-figaro-lequipe-ou-closer-participent-au-pistage-de-10-millions-de-francais.html](http://www.numerama.com/politique/282934-enquete-comment-les-apps-figaro-lequipe-ou-closer-participent-au-pistage-de-10-millions-de-francais.html)
+  * [http://www.numerama.com/politique/283693-les-inconnues-du-dossier-teemo-quelques-pistes-pour-poursuivre-la-reflexion.html](http://www.numerama.com/politique/283693-les-inconnues-du-dossier-teemo-quelques-pistes-pour-poursuivre-la-reflexion.html)
+  * autres infos sur teemo : [http://www.digitalcmo.fr/databerries-revolutione-le-drive-to-store-avec-son-real-life-targeting/](http://www.digitalcmo.fr/databerries-revolutione-le-drive-to-store-avec-son-real-life-targeting/)
 
 ### Notes éthiques
   * Drive-to-store
@@ -22,17 +22,17 @@ Les datas collectées partent sur `https://v1.blueberry.cloud.databerries.com/mo
   * uuid
 
 ### Preuves
-![1](/static/img/1wSeqlBCOpuM.png)
-![1](/static/img/ThfrVKssXv7b.png)
+![1](/static/content/img/1wSeqlBCOpuM.png)
+![1](/static/content/img/ThfrVKssXv7b.png)
 
 ## Destination des données
-Pour déterminer la destination des données, le SDK de Teemo utilise l'URL `v1.blueberry.cloud.databerries.com` localisée en Californie.
+Le SDK de Teemo utilise l'URL `v1.blueberry.cloud.databerries.com` localisée en Californie.
 
   * Google Cloud Platform
   * Serveurs en Californie
 
 ### Preuve 
-![1](/static/img/dPl6FcB3ELgp.png)
+![1](/static/content/img/dPl6FcB3ELgp.png)
 
 ## Règle de détection
   * `databerries`
