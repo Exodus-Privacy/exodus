@@ -5,10 +5,10 @@ import os, sys
 import re
 import subprocess as sp
 
-trackers = [{'name':'Teemo', 'patterns':['databerries']},
+trackers = [{'name':'Teemo', 'patterns':['databerries\.com']},
             {'name':'FidZup', 'patterns':['fidzup']},
             {'name':'Krux', 'patterns':['krxd\.net']},
-            {'name':'Ad4Screen', 'patterns':['ad4screen', 'a4\.tl', 'app4free']},
+            {'name':'Ad4Screen', 'patterns':['ad4screen', 'a4\.tl', 'app4free', 'accengage\.com']},
             {'name':'DoubleClick', 'patterns':['mng-ads\.com', 'doubleclick\.net']},
             {'name':'Weborama', 'patterns':['weborama\.net']},
             {'name':'SmartAd', 'patterns':['smartadserver\.com','saspreview\.com']},
