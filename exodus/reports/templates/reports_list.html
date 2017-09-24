@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col">
+    {% if reports %}
+        <ul>
+        {% for report in reports %}
+            <li><a href="{% url 'reports:detail' report.id %}">{{ report.creation_date }} -  {{ report.application.handle }} -  {{ report.application.version }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
