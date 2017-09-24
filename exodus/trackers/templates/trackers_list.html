@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{% block content %}
+    <div class="row">
+        <div class="col">
+        {% if trackers %}
+            <ul>
+            {% for tracker in trackers %}
+                <li><a href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No trackers are available.</p>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

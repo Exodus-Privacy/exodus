@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+{% block content %}
+    <div class="row">
+        <div class="col">
+          <form method='post' enctype='multipart/form-data' action="{% url 'analysis:submit' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type='submit'>Upload</button>
+          </form>
+        </div>
+    </div>
+{% endblock %}
