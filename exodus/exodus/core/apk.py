@@ -11,7 +11,7 @@ import subprocess as sp
 import yaml
 import datetime
 
-from reports.models import Report, Application, Apk, Permission
+from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
 from trackers.models import Tracker
 
 def grep(folder, pattern):
@@ -83,7 +83,22 @@ def decode(self, analysis):
     exitCode = process.returncode
     return exitCode == 0
 
+@app.task(bind=True)
+def download_apk(self, analysis):
+    cmd = 'mkdir -p %s' % analysis.query.storage_path
+    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    output = process.communicate()[0]
+
+    cmd = 'gplaycli -y -d %s -f %s/' % (analysis.query.handle, analysis.query.storage_path)
+    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    output = process.communicate()[0]
+    exitCode = process.returncode
+    return exitCode == 0
+
 def start_static_analysis(analysis):
+    dl_r = download_apk.delay(analysis)
+    if not dl_r.get():
+        return -1
     g = group(decode.s(analysis), sha256sum.s(analysis), extract_apk.s(analysis))()
     g_r = g.get()
     
@@ -102,6 +117,9 @@ def start_static_analysis(analysis):
 
         report = Report(apk_file=analysis.query.apk, storage_path=analysis.query.storage_path)
         report.save()
+        net_analysis = NetworkAnalysis(report=report)
+        net_analysis.save()
+        report.save()
         app = Application(report=report)
         app.handle = handle
         app.version = version
@@ -119,8 +137,8 @@ def start_static_analysis(analysis):
 
         report.found_trackers = trackers
         report.save()
-        return True
-    return False
+        return report.id
+    return -1
 
 class StaticAnalysis:
     
@@ -131,9 +149,7 @@ class StaticAnalysis:
         self.tmpdir = tempfile.mkdtemp()
         self.decoded_dir = os.path.join(self.tmpdir, 'decoded')
         self.extracted_dir = os.path.join(self.tmpdir, 'extracted')
-        self.apk_path = str(analysis_query.apk)
-        # self.report = Report(apk_file=analysis_query.apk)
-        # self.report.save(force_insert=True)
+        self.apk_path = os.path.join(self.query.storage_path, '%s.apk'%self.query.handle)
 
     def start(self):
-        start_static_analysis(self)
+        return start_static_analysis(self)

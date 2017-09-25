@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from .models import Report
+from exodus.core.dns import *
+from exodus.core.http import *
 
 def index(request):
     try:
@@ -18,3 +20,8 @@ def detail(request, report_id):
     except Report.DoesNotExist:
         raise Http404("report does not exist")
     return render(request, 'report_details.html', {'report': report})
+
+def refreshdns(request):
+    if request.method == 'GET':
+        refresh_dns.delay()
+        return HttpResponse(status=200)

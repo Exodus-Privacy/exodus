@@ -5,4 +5,4 @@ from .models import AnalysisRequest
 class AnalysisRequestForm(forms.ModelForm):
     class Meta:
         model = AnalysisRequest
-        fields = ('apk','description')
+        fields = ('handle',)

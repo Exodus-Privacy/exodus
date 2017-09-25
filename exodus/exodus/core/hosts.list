@@ -1,0 +1,439 @@
+||e.apsalar.com^
+||analytics-events.inshorts.com^
+||e-ssl.apsalar.com^
+||collector-axa.cloud.ca.com^
+||track.adform.net^
+||analytics.ff.avast.com^
+||api.miui.security.xiaomi.com^
+||metok.sys.miui.com^
+||sync.adotmob.com^
+||logger.cloudmobi.net^
+||tracker.adotmob.com^
+||dmx.sync.yume.com/tracker/
+||measuread.com^
+||global.cmcs.service.amazonsilk.com/metrics
+||analytics-tracker.thescore.com^
+||app.roximity.com^
+||dc.webtrends.com^
+||report.appmetrica.webvisor.com^
+||api.oneaudience.com^
+||api.gameofwhales.com^
+||geoplugin.net^
+||d.applvn.com^
+||rt.applvn.com^
+||sdklogs.avocarrot.com^
+||ip-api.com^$domain=~ip-api.com
+||apiv2.moengage.com^
+||rt.applovin.com^
+||track.uc.cn^
+||uc.ucweb.com^
+||puds.ucweb.com^
+||patriot.cs.pp.cn^
+||amdc.m.taobao.com^
+||sdk-orion.appboy.com^
+||api.elysium.opera.com/api/elysium/log_session_events
+||api.elysium.opera.com/api/elysium/log_session_info
+||pippio.com^
+||io.narrative.io^
+||loadus.exelator.com^
+||tracking.viewster.com^
+||logcollector.viewster.com^
+||api.mixpanel.com/track
+||api.mixpanel.com/engage
+||decide.mixpanel.com/decide
+||api.segment.io/v1/
+||applog.uc.cn^
+||dispatcher.upmc.uc.cn^
+||gj.applog.uc.cn^
+||gjapplog.uc.cn^
+||mazu.sec.miui.com^
+||shenghuo.xiaomi.com^
+||api.ad.xiaomi.com^
+||a.bitmango.com^
+||bitmango.com/log
+||tracking.directservices.it^
+||vortex.data.microsoft.com^
+||onedrive-collection.device.mobileengagement.windows.net^
+||metrics.timewarnercable.com^
+||flurry.agentportal-*.yahoodns.net^
+||amptrack-dailymail-co-uk.cdn.ampproject.org^
+||metrics-cbslocal-com.cdn.ampproject.org^
+||startappservice.com/tracking/
+||counter.hdvb.info^
+||tracking-server-prod-1.zenmxapps.com^
+||api.uca.cloud.unity3d.com^
+||resolver.msg.xiaomi.net^
+||resolver.gslb.mi-idc.com^
+||o2o.api.xiaomi.com^
+||auth.be.sec.miui.com^
+||thm.market.xiaomi.com/thm/stats
+||behacdn.ksmobile.net^
+||geoip.ifunny.co^
+||alogs.umeng.com^
+||alogs.umengcloud.com^
+||stats.umsns.com^
+||mobileanalytics.*.amazonaws.com^
+||device-metrics-*.amazon.com^
+||flurry.agentportal.*.yahoodns.net^
+||analytics.rayjump.com^
+||api.appsflyer.com^
+||events.appsflyer.com^
+||stats.appsflyer.com^
+||t.appsflyer.com^
+||track.appsflyer.com^
+||ipify.org^
+||iapp-cp.nuggad.net^
+||2o7.net^
+||4seeresults.com^
+||abcd.mdc.akamaized.net/materials/index/?country=
+||abtest.mistat.xiaomi.com^
+||ad-analytics-bootstrap.metaps.com^
+||adash.m.taobao.com/rest/sur?ak=
+||adfuture.cn^
+||adj.st^
+||adserver.snapads.com^
+||adsunflower.com^
+||adv.sec.miui.com^
+||advmob.cn^
+||alog.umeng.com^
+||alog.umengcloud.com^
+||amp-error-reporting.appspot.com^
+||analytics-server.gimbal.com^
+||analytics.ad.daum.net^
+||analytics.liftoff.io^
+||analytics.mobile.yandex.net^
+||analytics.mopub.com^
+||analytics.query.yahoo.com^
+||analyzer.omniata.com^
+||andmlb.kshwtj.com^
+||api-analytics-bootstrap.metaps.com^
+||api-analytics.metaps.com^
+||api.amplitude.com^
+||api.analytics.omgpop.com^
+||api.appsee.com^
+||api.apptentive.com^
+||api.branch.io^
+||api.crittercism.com^
+||api.gameanalytics.com^
+||api.gimbal.com^
+||api.sec.miui.com^
+||api.taplytics.com^
+||api.vigo.ru^
+||app.adjust.com^
+||appmetrica.yandex.com^
+||ar.umeng.com^
+||beacon.carfax.com^
+||beacon.qq.com^
+||beacon.shazam.com^
+||beha.ksmobile.com^
+||bidder.mdspinc.com^
+||bmbs.baidu.com/reportinfo.php
+||brahe.apptimize.com^
+||c.bigmir.net^
+||carfax.sc.omtrdc.net^
+||cb.ksmobile.com^
+||cedexis-radar.net^
+||cedexis.com^
+||click.webeyemob.com/*/ad/click?subsite_id=
+||clientmetrics-augmentum.kik.com^
+||clientmetrics.kik.com^
+||clktrk.display.io^
+||collector.brandify.com^
+||config2.mparticle.com^
+||counter.kingsoft.com^
+||crasheye.cn^
+||e.crashlytics.com^
+||crittercism.com/api/
+||crwdcntrl.net^
+||data.mistat.xiaomi.com^
+||data.sec.miui.com^
+||dc.services.visualstudio.com/v2/track
+||demdex.net^
+||dsg.sc.omtrdc.net^
+||ep.xone.com^
+||etl.tindersparks.com^
+||etl.xlmc.sandai.net^
+||events.lbesecapi.com^
+||facebook.com/rtb_impression/?tr=
+||fcanr.tracking.miui.com^
+||gate.hockeyapp.net^
+||geoip.fotoable.net^
+||google-analytics.com^
+||googleadapis.l.google.com^
+||graph.instagram.com/logging_client_events
+||iam-agof-app.irquest.com^
+||imp.apprevolve.com^
+||inst.platform.bing.com/api/log
+||installtracker.com^
+||invenio_tracking_*.sgnapps.com^
+||krxd.net^
+||lepodownload.mediatek.com^
+||lhzbdvm.com^
+||log.droid4x.cn^
+||log.umsns.com^
+||logger.ntracecloud.com^
+||logupdate.avlyun.sec.miui.com^
+||lp4.io^
+||m.vk.com/counters.php
+||m.xiangce.baidu.com/mobileapp/motu-*?guid=
+||metrics.adflake.com^
+||metrics.bestbuy.com^
+||metrics.macys.net^
+||metrics.sdkbox.com^
+||mixpanel.com/track
+||mlb.did.ijinshan.com^
+||mobile-collector.newrelic.com^
+||mobile-global.baidu.com/mbrowser/stat/
+||mobileanalytics.*.amazonaws.com^
+||mobilelog.upqzfile.com^
+||ms.cmcm.com^
+||mtlog.droid4x.cn^
+||nativesdks.mparticle.com^
+||nlog.droid4x.cn^
+||nrc.tapas.net^
+||oc.umeng.com^
+||onelink.me^
+||online-metrix.net^
+||openstat.net^
+||ping.taplytics.com^
+||ping.xlmc.sandai.net^
+||pingma.qq.com/mstat/
+||pingma.qq.com^
+||pipe.aria.microsoft.com/Collector/
+||play.googleapis.com/log|
+||play.googleapis.com/play/log^
+||prugskh.com^
+||prugskh.net^
+||quantcount.com^
+||r.browser.miui.com^
+||rc.dxsvr.com^
+||regist.fotoable.net/regist/
+||report.appmetrica.yandex.net^
+||rlog-api.under9.co^
+||rlog.9gag.com^
+||sc-analytics.appspot.com^
+||sdk-api.yozio.com/?os
+||sdk.appbrain.com/api/
+||sdkconfig.ad.xiaomi.com^
+||ssl-google-analytics.l.google.com^
+||sstats.economist.com/b/ss/econdarwinproduction/
+||stat.duokanbox.com^
+||statistics.videofarm.daum.net^
+||stats.popcap.com^
+||stats.unity3d.com^
+||sypi.gpshopper.com^
+||tapjoy.com^
+||tapjoy.net^
+||taurus.iad.appboy.com^
+||tknet.rayjump.com^
+||tns.simba.taobao.com^
+||track.pingstart.com^
+||tracker-api.my.com^
+||tracking.lenzmx.com^
+||tracking.miui.com^
+||trk.pinterest.com^
+||tu.dxcnd.cn^
+||tumblr.com/services/cslog
+||tunein.adswizz.com^
+||ulink.adjust.com^
+||umeng.com/app_logs
+||upalytics.com^
+||ups.ksmobile.net^
+||ws.ksmobile.net^
+||www-google-analytics.l.google.com^
+||xiti.com^
+||xlmc.sec.miui.com^
+||yadro.ru^
+||yikyakapi.net/api/logEvent?
+||ymtracking.com^
+||zdbb.net^
+! UC Browser
+||alog.umeng.co/app_logs^
+||localytics.com^
+||upoll.umengcloud.com^
+||utop.umengcloud.com^
+! KingRoot
+||analy.qq.com^
+||appsupport.qq.com/cgi-bin/appstage/mstats_batch_report
+||monitor.uu.qq.com/analytics/
+||mobile-campaigns.avast.com^
+! https://github.com/AdguardTeam/AdguardFilters/issues/6167
+||ketchapp.org/crosspromo/
+! https://github.com/AdguardTeam/AdguardFilters/issues/6134
+! https://github.com/AdguardTeam/AdguardFilters/issues/6133
+! https://forum.adguard.com/index.php?threads/13437/
+! https://forum.adguard.com/index.php?threads/13437/
+! https://github.com/AdguardTeam/AdguardFilters/issues/5248
+||global.appnext.com/offerWallApi.aspx
+! https://github.com/AdguardTeam/AdguardFilters/issues/3346
+! https://forum.adguard.com/index.php?threads/le-bon-coin-apk-from-googleplay.18840/
+! fix ?ad_id= in Liste FR
+! https://github.com/AdguardTeam/AdguardFilters/issues/5191
+||104.199.8.250^*/webservices/getDialogAdDetails.php
+! https://forum.adguard.com/index.php?threads/21611/
+||todayweather.co/ads.json
+! https://github.com/AdguardTeam/AdguardFilters/issues/4901
+! https://github.com/AdguardTeam/AdguardFilters/issues/4898
+! https://forum.adguard.com/index.php?threads/s-photo-editor-missed-ads-android.21096/
+||advs2sonline.goforandroid.com^
+||adpush.goforandroid.com^
+||advonline.goforandroid.com^
+! https://forum.adguard.com/index.php?threads/dodonpachi-unlimited-missed-ads-android.21000/
+||dzpu6za66svjl.cloudfront.net^
+! com.camerasideas.instashot
+||ad.api.kaffnet.com^
+! https://github.com/AdguardTeam/AdguardFilters/issues/4774
+! https://github.com/AdguardTeam/AdguardFilters/issues/4757
+||ad.flipboard.com^
+! https://github.com/AdguardTeam/AdguardFilters/issues/4759
+||overall.ikvapp.ru/api/ad?api_key=
+! https://github.com/AdguardTeam/AdguardFilters/issues/4722
+||api.bitmango.com/api/ad_manager
+! https://forum.adguard.com/index.php?threads/19617/
+! https://forum.adguard.com/index.php?threads/20641/
+||wpsconfig4svr.elasticbeanstalk.com/config/android/list?
+||minfo.wps.cn/minfo/infos.ads?
+||abroad-ad.kingsoft-office-service.com^
+||cloudservice14.kingsoft-office-service.com/onlineParam
+! https://forum.adguard.com/index.php?threads/hd-videobox.20645/
+||startappservice.com/*/getadsmetadata?
+! https://github.com/AdguardTeam/AdguardFilters/issues/4645
+||adserver.shadow.snapads.com^
+||ads-chunks.prod.ihrhls.com^
+! https://github.com/AdguardTeam/AdguardFilters/issues/4644
+||api.hh.ru/banners_targeting
+! https://forum.adguard.com/index.php?threads/le-bon-coin-apk-from-googleplay.18840/ fix ?ad_id= in Liste FR
+! https://github.com/AdguardTeam/AdguardFilters/issues/4572
+! https://github.com/AdguardTeam/AdguardFilters/issues/4572
+||m.banner.t-online.de/adsdk/
+! https://github.com/AdguardTeam/AdguardFilters/issues/4493
+! https://github.com/AdguardTeam/AdguardFilters/issues/4471
+! https://github.com/AdguardTeam/AdguardForAndroid/issues/1016
+! https://github.com/AdguardTeam/AdguardFilters/issues/4184
+! https://github.com/AdguardTeam/AdguardFilters/issues/4161
+! com.sofoot app
+! https://github.com/AdguardTeam/AdguardFilters/issues/3933
+! Yandex apps
+||banners-slb.mobile.yandex.net^
+||banners.mobile.yandex.net^
+! https://github.com/AdguardTeam/AdguardFilters/issues/3533
+! https://github.com/AdguardTeam/AdguardFilters/issues/3738
+||crosspromo*.qplaze.com/PushCampaignXMLOut.php
+! https://github.com/AdguardTeam/AdguardFilters/issues/3717
+! https://github.com/AdguardTeam/AdguardFilters/issues/3634
+||server.idreams.pl/news/ads_sfr_*.json
+! FOCUS Online
+! https://github.com/AdguardTeam/AdguardFilters/issues/3131
+@@||ads.cricbuzz.com/adserver/units/mobile/set_ads_values.php
+! https://github.com/AdguardTeam/AdguardFilters/issues/2697
+! https://github.com/AdguardTeam/AdguardForAndroid/issues/569
+||alxanosoft.com/rk/$empty
+! Dailyhunt
+! sport1.mobile.android.apps
+||assets.sport1.de/imagix/filter2/jpeg/_set=dyn_size_no_crop/imagix/
+! Gumtree app
+||gumtree.com/partner/bing?*&adUnitId=
+||gumtree.com/partner/bingimpression?
+! AfreecaTV
+||ad.daum.net/imp
+||afreeca-tag.ad-mapps.com^
+||mtag.mman.kr^
+! Zigbang (analytics)
+! Tinder (analytics)
+||etl.tindersparks.com^
+! https://forum.adguard.com/index.php?threads/13437/#post-101138
+! For Xiaomi devices
+||market.mi-img.com/download/AdCenter/
+||market.xiaomi.com/download/AdCenter/
+! https://github.com/AdguardTeam/AdguardFilters/issues/2461
+! https://forum.adguard.com/index.php?threads/adguard-blocking-news-clips-on-ynet-app.10114/#post-81493
+! Daily Mail Online
+! GO Keyboard
+||navigation.api.hk.goforandroid.com/api/*/website/navigations?virtual_id=
+! Investing.com Forex
+||investingapp.net/ads_api.php?
+! WPS Office
+||cloudservice24.kingsoft-office-service.com/cards
+! https://github.com/AdguardTeam/AdguardFilters/issues/2462
+! The Chive
+@@||api.branch.io/v1/open
+! Watch ABC
+||api.ads.watchabc.go.com^
+! https://github.com/AdguardTeam/AdguardFilters/issues/2318
+@@||ingress.com/intel?$document
+! https://forum.adguard.com/index.php?threads/igaworks-com-android.10777/#post-86234
+||igaworks.com/AdPOPcorn/
+! https://forum.adguard.com/index.php?threads/10722/
+||banners.etermax.com^
+! https://github.com/AdguardTeam/AdguardForAndroid/issues/587
+! https://github.com/AdguardTeam/AdguardFilters/issues/2245
+@@||mingle.kijiji.ca/api/ads/
+! https://github.com/AdguardTeam/AdguardFilters/issues/2182
+||config.sdk.scopely.io/*/android/ads_config.json
+||s3.amazonaws.com/promos.withbuddies.com/prod/ads/
+! https://github.com/AdguardTeam/AdguardFilters/issues/2253
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/2191
+@@||googleads.g.doubleclick.net/mads/gma?*&_package_name=com.nextradiotv.bfmbusiness
+@@||googleads.g.doubleclick.net/mads/gma?request_id=*&_package_name=com.nextradiotv.bfmbusiness
+! Start: YT app
+! https://github.com/AdguardTeam/AdguardForAndroid/issues/573
+! https://github.com/AdguardTeam/AdguardForAndroid/issues/621
+! End: YT app
+! https://forum.adguard.com/index.php?threads/10132/
+||api.live.daum.net/*/ad/
+! https://forum.adguard.com/index.php?threads/10132/
+||vads-api.daumkakao.com/xylophone/adrequest/json
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/2026
+||spoofgames.com/prod/*.txt
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/1742
+||bahamut.com.tw/JS/ad/
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/2022
+||gdeposylka.ru/js/primatic.js?_=
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/1806
+! Jewels Maze 2
+||m.ezjoygame.com/update_android.json?os=
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/1759
+! Privet app
+||privetapp.ru/ads/
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/1065
+||staticaws.365scores.com/AdsConfig/
+! Plants vs. Zombies
+||eamobile.com/gameasset/direct/draper/*/ads/
+! DU Browser
+||mobile-global.baidu.com/mbrowser/promotion/get_advertisement_conf?
+! Fixing Buffer app
+@@||api.bufferapp.com/*/profiles.json
+@@||api.bufferapp.com/*/service/
+@@||api.bufferapp.com/*/user
+! com.setsnail.daddylonglegs
+||d27tpsznug51gz.cloudfront.net^
+! Crunchyroll
+@@||api.crunchyroll.com/log_ad_event.0.json
+@@||v.fwmrm.net/ad/*&resp=vast2
+! megogo for Android
+||vcdn.biz/*_mggads/
+! START: ivi.ru for Android
+.mp4?redirected=1&quality=
+@@.digitalaccess.ru/*sessionID=
+@@.ivi.ru/*sessionID=
+@@.mp4?redirected=1&sessionID=$domain=ivi.ru
+||dfs.digitalaccess.ru/mp4-hi/*digitalaccess.ru/contents/*.mp4$domain=ivi.ru
+! END: ivi.ru for Android
+! https://github.com/AdguardTeam/ExperimentalFilter/issues/1083
+@@||sp.ad.adlantis.jp/sp/load_app_ads?
+! DU Speed Booster
+||api.mobula.ds.duapps.com/adunion/
+||api.mobula.sdk.duapps.com/adunion/
+||rts.mobula.sdk.duapps.com^
+! Asphalt 8
+||gameloft.com/*/index.ppp?ad=
+! https://play.google.com/store/apps/details?id=fr.playsoft.teleloisirs
+||ad.prismamediadigital.com^
+! https://play.google.com/store/apps/details?id=fr.francetv.pluzz&hl=fr
+||ad2play.ftv-publicite.fr^
+! https://github.com/AdguardTeam/AdguardForAndroid/issues/249
+||adeventtracker.spotify.com^
+||do-not-tracker.org^
+||eviltracker.net^
+||spotify.com/ads/
+||trackersimulator.org^

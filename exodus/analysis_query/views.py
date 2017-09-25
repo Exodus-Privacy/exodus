@@ -7,17 +7,15 @@ from django.core.urlresolvers import reverse
 from django.views.generic import FormView, DetailView, ListView
 from .forms import AnalysisRequestForm
 from .models import AnalysisRequest
-from exodus.core.analysis import StaticAnalysis
+from exodus.core.apk import StaticAnalysis
 
 class AnalysisRequestView(FormView):
     template_name = 'apk_upload.html'
     form_class = AnalysisRequestForm
 
     def form_valid(self, form):
-        analysis_q = AnalysisRequest(
-            apk=self.get_form_kwargs().get('files')['apk'])
+        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'])
         analysis_q.save()
-        self.id = analysis_q.id
 
         static = StaticAnalysis(analysis_q)
         static.start()

@@ -1,8 +1,12 @@
 {% extends "base.html"%}
 {% block content %}
     {% if report %}
+    <p class="small"> Provide this URI to Electra for report completion: 
+        <code>
+            /api/report/{{report.id}}/
+        </code>
+    </p>
     <h1>{{report.application.handle}} - {{report.application.version}}</h1>
-
     <div class="row">
         <div class="col col-lg-5">
             <h2>Report</h2>
@@ -30,5 +34,50 @@
             </ul>
         </div>
     </div>
+    {% if report.networkanalysis_set %}
+            {% for na in report.networkanalysis_set.all %}
+                {% if na.dnsquery_set %}
+                <div class="row">
+                    <div class="col">
+                        <h2>DNS queries</h2>
+                        <table>
+                        {% for dns in na.dnsquery_set.all %}
+                            <tr>
+                                <td><code>{{dns.hostname}}</code></td>
+                                <td><code>{{dns.ip}}</code></td>
+                                <td>
+                                {% ifequal dns.is_tracker True %}
+                                <span class="badge badge-danger" data-toggle="tooltip" title="Potential tracker">⛔️</span>
+                                {% else %}
+                                     
+                                {% endifequal %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% if na.httpanalysis_set %}
+                <div class="row">
+                    <div class="col">
+                        <h2>HTTP</h2>
+                        <div>
+                        {% for http_analysis in na.httpanalysis_set.all %}
+                            {% for payload in http_analysis.httppayload_set.all %}
+                                <p>{{payload.layer}} - <code>{{payload.destination_uri}}</code></p>
+                                <div class="card small">
+                                        <pre>
+                                            {{payload.payload}}
+                                        </pre>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+    {% endif %}
     {% endif %}
 {% endblock %}

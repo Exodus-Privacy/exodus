@@ -8,6 +8,3 @@ urlpatterns = [
     url(r'^pcap/(?P<r_id>[0-9]+)/$', views.upload_pcap),
     url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
 ]
-
-
-# curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@test.mp3" http://mysuperserver/media/1234/upload/
