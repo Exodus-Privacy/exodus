@@ -12,6 +12,7 @@ class AnalysisRequest(models.Model):
     uploaded_at = models.DateField(auto_now_add=True)
     path = 'apks/' + str(uuid.uuid4())
     storage_path = models.TextField(default=path)
-    apk = models.FileField(upload_to=path)
+    apk = models.CharField(max_length=500, default='')
+    handle = models.CharField(max_length=500)
     description = models.TextField(blank=True)
     processed = models.BooleanField(default=False)

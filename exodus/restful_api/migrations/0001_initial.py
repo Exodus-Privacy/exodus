@@ -14,14 +14,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='AnalysisRequest',
+            name='ReportInfos',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('uploaded_at', models.DateField(auto_now_add=True)),
-                ('storage_path', models.TextField(default='apks/aebc55d7-aa80-4a2d-827b-07192302632d')),
-                ('apk', models.FileField(upload_to='apks/aebc55d7-aa80-4a2d-827b-07192302632d')),
-                ('description', models.TextField(blank=True)),
-                ('processed', models.BooleanField(default=False)),
+                ('creation_date', models.DateTimeField()),
+                ('report_id', models.IntegerField()),
+                ('handle', models.CharField(max_length=500)),
+                ('apk_dl_link', models.CharField(max_length=500)),
+                ('pcap_upload_link', models.CharField(max_length=500)),
+                ('flow_upload_link', models.CharField(max_length=500)),
             ],
         ),
     ]

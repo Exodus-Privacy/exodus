@@ -33,6 +33,7 @@ class DNSQuery(models.Model):
     network_analysis = models.ForeignKey(NetworkAnalysis, on_delete=models.CASCADE)
     hostname = models.CharField(max_length=200)
     ip = models.CharField(max_length=200)
+    is_tracker = models.BooleanField(default=False)
 
 class HTTPAnalysis(models.Model):
     network_analysis = models.ForeignKey(NetworkAnalysis, on_delete=models.CASCADE)

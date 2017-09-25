@@ -20,9 +20,11 @@ import mimetypes, os
 from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper
 
+from exodus.core.dns import *
+from exodus.core.http import *
+
 @csrf_exempt
 @api_view(['GET'])
-@authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_report_infos(request, r_id):
     if request.method == 'GET':
@@ -66,11 +68,12 @@ def upload_pcap(request, r_id):
         destination_path = os.path.join(storage_path, up_file.name)
         destination = open(destination_path, 'wb+')
         for chunk in up_file.chunks():
-
             destination.write(chunk)
         destination.close()
         report.pcap_file = destination_path
         report.save()
+        analyze_dns.delay(r_id)
+        analyze_http.delay(r_id)
     except Exception as e:
         print(e)
         return HttpResponse(status=500)

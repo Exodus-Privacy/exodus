@@ -6,7 +6,7 @@ from django.conf import settings
 from analysis_query.models import AnalysisRequest
 from celery import Celery
 
-app = Celery('exodus', backend='amqp://', include=['exodus.core.analysis'])
+app = Celery('exodus', backend='amqp://', include=['exodus.core.apk','exodus.core.dns','exodus.core.http'])
 
 if __name__ == '__main__':
     app.start()
