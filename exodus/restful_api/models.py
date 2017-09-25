@@ -19,3 +19,4 @@ class ReportInfos(models.Model):
     apk_dl_link = models.CharField(max_length=500)
     pcap_upload_link = models.CharField(max_length=500)
     flow_upload_link = models.CharField(max_length=500)
+

@@ -8,6 +8,7 @@ from django.views.generic import FormView, DetailView, ListView
 from .forms import AnalysisRequestForm
 from .models import AnalysisRequest
 from exodus.core.apk import StaticAnalysis
+from django.core.exceptions import ValidationError
 
 class AnalysisRequestView(FormView):
     template_name = 'apk_upload.html'
@@ -18,10 +19,11 @@ class AnalysisRequestView(FormView):
         analysis_q.save()
 
         static = StaticAnalysis(analysis_q)
-        static.start()
+        r_id = static.start()
+        if r_id < 0:
+            raise ValidationError('Unable to analyze the APK file')
 
-        return HttpResponseRedirect('/analysis')
-
+        return HttpResponseRedirect('/reports/%s/'%r_id)
 
 class AnalysisRequestListView(ListView):
     template_name = 'queries_list.html'

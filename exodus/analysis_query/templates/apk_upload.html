@@ -5,19 +5,41 @@
           <form method='post' enctype='multipart/form-data' action="{% url 'analysis:submit' %}">
             <div class="form-group jumbotron">
               {% csrf_token %}
-              <label for="handle">Application handle</label>
-              <input type="text" class="form-control" id="handle" aria-describedby="handle_help" placeholder="fr.meteo">
+              <h2>Analyze an application</h2>
+              {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger small">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+              <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help" placeholder="fr.meteo">
               <small id="handle_help" class="form-text text-muted text-center">You can find the handle in the Google Play URL of the application <i>i.e.</i> <br> <code>https://play.google.com/store/apps/details?id=<b>fr.meteo</b></code> </small>
               <br>
               <p class="text-center">
-                <button type='submit' class="btn btn-primary">Submit</button>
+                <button type='submit' onclick="show_spinner()" class="btn btn-primary">Perform analysis</button>
               </p>
               <br>
-              <div class="alert alert-light" role="alert">
-                  The analysis could take a long time, you will be automatically redirected to the report.
+              <br>
+              <div id="loading" class="text-center" style="display:none;">
+                <img style="width:200px;" src="/static/img/loading.gif" alt="">
+                <div class="alert alert-light" role="alert">
+                    The analysis could take a long time, you will be automatically redirected to the report.
+                </div>
               </div>
             </div>
           </form>
         </div>
     </div>
+
+<script>
+var show_spinner=function(){
+  s = document.getElementById("loading")
+  if(s != undefined){
+    s.style.display = "block"
+  }
+}
+</script>
 {% endblock %}

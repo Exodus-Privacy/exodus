@@ -2,9 +2,20 @@
 from __future__ import unicode_literals
 
 import uuid
-
+from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
+import re, requests
+
+def validate_handle(value):
+    reg = re.compile(r'^(\w+\.)+\w+$')
+    if reg.match(value) == None :
+        raise ValidationError(u'%s is not a valid application handle' % value)
+    
+    r=requests.get('%s%s' % ('https://play.google.com/store/apps/details?id=', value))
+    if r.status_code == 404:
+        raise ValidationError(u'%s application not found on Google Play' % value)
 
 class AnalysisRequest(models.Model):
     #TODO Check file 
@@ -13,6 +24,6 @@ class AnalysisRequest(models.Model):
     path = 'apks/' + str(uuid.uuid4())
     storage_path = models.TextField(default=path)
     apk = models.CharField(max_length=500, default='')
-    handle = models.CharField(max_length=500)
+    handle = models.CharField(max_length=500,validators=[validate_handle])
     description = models.TextField(blank=True)
     processed = models.BooleanField(default=False)

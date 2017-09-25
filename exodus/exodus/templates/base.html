@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg  sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">💣 Exodus v1.0</a>
+<nav class="navbar navbar-expand-lg  sticky-top navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand" href="/">
+        <object width="50px" style="margin-bottom:-15px" data="/static/img/logo_purple.svg" type="image/svg+xml">
+        </object> 
+        Exodus v1.0</a>
     <div class="collapse navbar-collapse" id="">
         <div class="dropdown">
             <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="reports_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Reports
             </button>
             <div class="dropdown-menu" aria-labelledby="reports_dd">
-              <a class="dropdown-item" href="/reports/">Reports</a>
+                <a class="dropdown-item" href="/reports/">All</a>
+                <a class="dropdown-item" href="/reports/apps/">All applications</a>
             </div>
         </div>
         &nbsp;
@@ -41,7 +45,19 @@
 <br>
 <div class="container-fluid">
 {% block content %}
-Welcome on the Exodus privacy auditing platform.
+<div class="row justify-content-md-center">
+    <div class="col-lg-6 col-centered">
+        <div class="form-group jumbotron text-center">
+            <h1>Welcome on the Exodus privacy auditing platform.</h1>
+            <object width="300px" data="/static/img/logo_purple.svg" type="image/svg+xml">
+            </object>
+            <div>
+                Find us on Mastodon: <a href="https://framapiaf.org/@exodus">@exodus</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 </div>
 
