@@ -10,8 +10,22 @@ from exodus.core.http import *
 def index(request):
     try:
         reports = Report.objects.order_by('-creation_date')
-    except Tracker.DoesNotExist:
+    except Report.DoesNotExist:
         raise Http404("reports do not exist")
+    return render(request, 'reports_list.html', {'reports': reports})
+
+def get_all_apps(request):
+    try:
+        apps = Application.objects.order_by('handle').distinct('handle')
+    except Application.DoesNotExist:
+        raise Http404("No apps found")
+    return render(request, 'apps_list.html', {'apps': apps})
+
+def search_by_handle(request, handle):
+    try:
+        reports = Report.objects.order_by('-creation_date').filter(application__handle = handle)
+    except Report.DoesNotExist:
+        raise Http404("No reports found")
     return render(request, 'reports_list.html', {'reports': reports})
 
 def detail(request, report_id):

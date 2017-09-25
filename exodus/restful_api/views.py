@@ -38,7 +38,7 @@ def get_report_infos(request, r_id):
         infos.flow_upload_link = '/api/flow/%s/' % report.id
         serializer = ReportInfosSerializer(infos, many=False)
         return JsonResponse(serializer.data, safe=True)
-
+        
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))

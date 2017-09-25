@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col">
+    {% if apps %}
+        <ul>
+        {% for app in apps %}
+            <li><a href="{% url 'reports:search_by_handle' app.handle %}"><b>{{ app.handle }}</b></a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
