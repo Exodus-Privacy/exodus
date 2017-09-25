@@ -10,20 +10,48 @@
   * retreive HTTP posted data
   * generate JSON report
 
-# System dependencies
-  * `sudo apt-get install python-dev libffi-dev libssl-dev`
-  * `sudo apt-get install mongodb-server`
-  * `sudo apt-get install tshark`
+# Deploy
+## System dependencies
+```
+sudo apt install git virtualenv postgresql-9.6 rabbitmq-server
+```
 
-# Python dependencies   
-  * `pip install PyYAML`
-  * `pip install pyshark`
-  * `pip install Flask`
-  * `pip install pymongo`
-  * `pip install Flask-Script`
-  * `pip install commonmark`
+## Clone the project
+```
+git clone -b v1 ssh://<username>@62.210.131.96:19100/data/depots/exodus/exodus.git Exodus
+```
 
-# Run `tcpdump` as simple user
+## Create database
+```
+sudo su - postgres
+psql
+CREATE USER exodus WITH PASSWORD 'a big password';
+CREATE DATABASE exodus WITH OWNER exodus;
+```
+Set the password in the file `Exodus/exodus/exodus/settings.py` line 97.
+
+## Set Python virtual environement and dependencies   
+```
+cd Exodus
+virtualenv ./venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Create the DB schema
+```
+cd exodus/exodus
+python manage.py migrate --fake-initial
+python manage.py migrate
+```
+
+## Create admin user
+```
+python manage.py createsuperuser
+```
+
+# Notes
+## Run `tcpdump` as simple user
 ```bash
 sudo visudo
 ```
@@ -32,7 +60,7 @@ and append the following line before the `include ...` one at the bottom of the 
 <usename>  ALL=(ALL) NOPASSWD: /usr/sbin/tcpdump
 ```
 
-# Read `.pcap` files  as simple user
+## Read `.pcap` files  as simple user
 ```bash
 chmod g+s net
 ```
