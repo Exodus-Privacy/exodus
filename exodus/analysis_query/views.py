@@ -8,14 +8,20 @@ from django.views.generic import FormView, DetailView, ListView
 from .forms import AnalysisRequestForm
 from .models import AnalysisRequest
 from exodus.core.apk import StaticAnalysis
+from django.conf import settings
 from django.core.exceptions import ValidationError
+import random, string, os
+
+def randomword(length):
+   return ''.join(random.choice(string.lowercase) for i in range(length))
 
 class AnalysisRequestView(FormView):
     template_name = 'apk_upload.html'
     form_class = AnalysisRequestForm
 
     def form_valid(self, form):
-        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'])
+        path = os.path.join(settings.EX_APK_FS_ROOT, str(randomword(64)))
+        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'], storage_path = path)
         analysis_q.save()
 
         static = StaticAnalysis(analysis_q)

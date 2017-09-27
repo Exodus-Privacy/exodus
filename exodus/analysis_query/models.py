@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import uuid
+import os
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
 import re, requests
+import random, string
+
+def randomword(length):
+   return ''.join(random.choice(string.lowercase) for i in range(length))
 
 def validate_handle(value):
     reg = re.compile(r'^(\w+\.)+\w+$')
@@ -21,7 +25,7 @@ class AnalysisRequest(models.Model):
     #TODO Check file 
     #TODO Use configuration for storage location
     uploaded_at = models.DateField(auto_now_add=True)
-    path = 'apks/' + str(uuid.uuid4())
+    path = os.path.join(settings.EX_APK_FS_ROOT, str(randomword(64)))
     storage_path = models.TextField(default=path)
     apk = models.CharField(max_length=500, default='')
     handle = models.CharField(max_length=500,validators=[validate_handle])
