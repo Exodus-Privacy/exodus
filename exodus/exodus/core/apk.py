@@ -10,6 +10,8 @@ import zipfile
 import subprocess as sp
 import yaml
 import datetime
+import string
+from django.conf import settings
 
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
 from trackers.models import Tracker
@@ -20,6 +22,42 @@ def grep(folder, pattern):
     output = process.communicate()[0]
     exitCode = process.returncode
     return exitCode == 0
+
+@app.task(bind=True)
+def find_trackers(self, analysis):
+    trackers = Tracker.objects.order_by('name')
+    found = []
+    for t in trackers:
+        print(t.name)
+        for p in t.detectionrule_set.all():
+            print(p.pattern)
+            if grep(analysis.decoded_dir, p.pattern):
+                found.append(t)
+                break
+    return found
+
+@app.task(bind=True)
+def find_and_save_app_icon(self, analysis):
+    cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % analysis.apk_path
+    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    icon = string.replace(process.communicate()[0], '\n', '')
+    print(cmd)
+    print(icon)
+    exitCode = process.returncode
+    if exitCode != 0 or icon == '':
+        return ''
+
+    source_icon_path = os.path.join(analysis.decoded_dir, icon)
+    saved_icon_path = os.path.join(analysis.query.storage_path, 'icon.png')
+    cmd = "cp %s %s" % (source_icon_path, saved_icon_path)
+    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    output = process.communicate()[0]
+    print(cmd)
+    print(output)
+    exitCode = process.returncode
+    if exitCode != 0:
+        return ''
+    return saved_icon_path
 
 @app.task(bind=True)
 def find_trackers(self, analysis):
@@ -108,12 +146,14 @@ def start_static_analysis(analysis):
                     get_handle.s(analysis),
                     get_permissions.s(analysis),
                     find_trackers.s(analysis),
+                    find_and_save_app_icon.s(analysis),
                     )()
         infos = infos_group.get()
         version = infos[0]
         handle = infos[1]
         perms = infos[2]
         trackers = infos[3]
+        icon_path = infos[4]
 
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
@@ -128,6 +168,8 @@ def start_static_analysis(analysis):
         app = Application(report=report)
         app.handle = handle
         app.version = version
+        if icon_path != '':
+            app.icon_path = os.path.relpath(icon_path, settings.EX_FS_ROOT)# Dirty trick to make the icon readable from templates
         app.save(force_insert=True)
 
         apk = Apk(application = app)

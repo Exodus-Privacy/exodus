@@ -13,7 +13,7 @@
 # Deploy
 ## System dependencies
 ```
-sudo apt install git virtualenv postgresql-9.6 rabbitmq-server
+sudo apt install git virtualenv postgresql-9.6 rabbitmq-server aapt
 ```
 
 ## Clone the project
