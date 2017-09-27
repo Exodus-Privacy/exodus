@@ -49,7 +49,7 @@ class HTTPSAnalysis(models.Model):
     
 class HTTPSPayload(models.Model):
     https_analysis = models.ForeignKey(HTTPSAnalysis, on_delete=models.CASCADE)
-    destination_uri = models.CharField(max_length=200)
+    destination_uri = models.CharField(max_length=2000)
     payload = models.CharField(max_length=20000)
     layer = models.CharField(max_length=50)
 

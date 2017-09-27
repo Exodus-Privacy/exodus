@@ -29,7 +29,7 @@ def find_trackers(self, analysis):
         print(t.name)
         for p in t.detectionrule_set.all():
             print(p.pattern)
-            if grep(analysis.extracted_dir, p.pattern):
+            if grep(analysis.decoded_dir, p.pattern):
                 found.append(t)
                 break
     return found
@@ -77,7 +77,7 @@ def sha256sum(self, analysis):
 
 @app.task(bind=True)
 def decode(self, analysis):
-    cmd = '/usr/bin/java -jar %s d %s -o %s/' % (analysis.apktool, analysis.apk_path, analysis.decoded_dir)
+    cmd = '/usr/bin/java -jar %s d %s -s -o %s/' % (analysis.apktool, analysis.apk_path, analysis.decoded_dir)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
     exitCode = process.returncode
@@ -92,14 +92,14 @@ def download_apk(self, analysis):
     cmd = 'gplaycli -y -d %s -f %s/' % (analysis.query.handle, analysis.query.storage_path)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
-    exitCode = process.returncode
+    exitCode = ('Error' in output)
     return exitCode == 0
 
 def start_static_analysis(analysis):
     dl_r = download_apk.delay(analysis)
     if not dl_r.get():
         return -1
-    g = group(decode.s(analysis), sha256sum.s(analysis), extract_apk.s(analysis))()
+    g = group(decode.s(analysis), sha256sum.s(analysis))()
     g_r = g.get()
     
     if g_r[0]:
@@ -115,7 +115,12 @@ def start_static_analysis(analysis):
         perms = infos[2]
         trackers = infos[3]
 
-        report = Report(apk_file=analysis.query.apk, storage_path=analysis.query.storage_path)
+        # If a report exists for this couple (handle, version), just return it
+        existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
+        if existing_report != None:
+            return existing_report.id
+
+        report = Report(apk_file=analysis.apk_path, storage_path=analysis.query.storage_path)
         report.save()
         net_analysis = NetworkAnalysis(report=report)
         net_analysis.save()
