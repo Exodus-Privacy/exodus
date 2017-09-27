@@ -141,16 +141,19 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "storage"),
 ]
 
 ###############################################################
 # Exodus setting
 # File storage
 EX_FS_ROOT = os.path.join(BASE_DIR, "storage")  
-EX_APK_FS_ROOT = os.path.join(EX_FS_ROOT, "apks")  
+EX_APK_FS_ROOT = os.path.join(EX_FS_ROOT, "apks")
 EX_NET_FS_ROOT = os.path.join(EX_FS_ROOT, "net")  
 # Celery
 CELERY_BROKER_URL = 'pyamqp://guest:guest@localhost//'
 CELERY_RESULT_BACKEND = 'pyamqp://'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+# DEFAULT_FILE_STORAGE = os.path.join(os.path.dirname(__file__), '../storage') 

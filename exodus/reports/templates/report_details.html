@@ -1,12 +1,15 @@
 {% extends "base.html"%}
 {% block content %}
+{% load sort_dns %} 
+    {% load static %}
     {% if report %}
     <p class="small"> Provide this URI to Electra for report completion: 
         <code>
             /api/report/{{report.id}}/
         </code>
     </p>
-    <h1>{{report.application.handle}} - {{report.application.version}}</h1>
+    <h1><img src="{% get_static_prefix %}{{report.application.icon_path}}" width="60px" alt="">
+        {{report.application.handle}} - {{report.application.version}} </h1>
     <div class="row">
         <div class="col col-lg-5">
             <h2>Report</h2>
@@ -41,9 +44,9 @@
                     <div class="col">
                         <h2>DNS queries</h2>
                         <table>
-                        {% for dns in na.dnsquery_set.all %}
+                        {% for dns in na.dnsquery_set.all|sort_dns %}
                             <tr>
-                                <td><code>{{dns.hostname}}</code></td>
+                                <td class="text-right"><code>{{dns.hostname}}</code></td>
                                 <td><code>{{dns.ip}}</code></td>
                                 <td>
                                 {% ifequal dns.is_tracker True %}

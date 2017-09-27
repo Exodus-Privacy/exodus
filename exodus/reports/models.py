@@ -3,7 +3,9 @@ from __future__ import unicode_literals
 
 from django.db import models
 from trackers.models import Tracker
+from django.utils.encoding import python_2_unicode_compatible
 
+@python_2_unicode_compatible
 class Report(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     found_trackers = models.ManyToManyField(Tracker)
@@ -12,10 +14,14 @@ class Report(models.Model):
     pcap_file = models.CharField(max_length=200, default='')
     flow_file = models.CharField(max_length=200, default='')
 
+    def __str__(self):
+        return self.application.handle
+
 class Application(models.Model):
     report = models.OneToOneField(Report)
     handle = models.CharField(max_length=200)
     version = models.CharField(max_length=50)
+    icon_path = models.CharField(max_length=500, default='')
 
 class Apk(models.Model):
     application = models.OneToOneField(Application)
@@ -40,7 +46,7 @@ class HTTPAnalysis(models.Model):
 
 class HTTPPayload(models.Model):
     http_analysis = models.ForeignKey(HTTPAnalysis, on_delete=models.CASCADE)
-    destination_uri = models.CharField(max_length=200)
+    destination_uri = models.CharField(max_length=2000)
     payload = models.CharField(max_length=20000)
     layer = models.CharField(max_length=50)
 

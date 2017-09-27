@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 <div class="row">
-    <div class="col">
     {% if apps %}
-        <ul>
         {% for app in apps %}
-            <li><a href="{% url 'reports:search_by_handle' app.handle %}"><b>{{ app.handle }}</b></a></li>
+            <div class="col-md-2">
+
+
+                <figure class="figure text-center small">
+                    <a href="{% url 'reports:search_by_handle' app.handle %}">
+                        {% if app.icon_path.strip %}
+                            <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}{{app.icon_path}}" width="80px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                        {% else %}
+                            <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}/img/android.jpeg" width="80px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                        {% endif %}
+                        <figcaption class="figure-caption"><b>{{ app.handle|truncatechars_html:15 }}</b></figcaption>
+                    </a>
+                </figure>
+            </div>
         {% endfor %}
-        </ul>
     {% endif %}
-    </div>
 </div>
 {% endblock %}
