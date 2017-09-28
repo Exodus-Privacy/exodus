@@ -24,7 +24,7 @@ def validate_handle(value):
 class AnalysisRequest(models.Model):
     #TODO Check file 
     #TODO Use configuration for storage location
-    uploaded_at = models.DateField(auto_now_add=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
     path = os.path.join(settings.EX_APK_FS_ROOT, str(randomword(64)))
     storage_path = models.TextField(default=path)
     apk = models.CharField(max_length=500, default='')

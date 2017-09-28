@@ -50,6 +50,9 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+# ToDo
+  * add geo-tagged pictures in Android custom build
+
 # Notes
 ## Run `tcpdump` as simple user
 ```bash
