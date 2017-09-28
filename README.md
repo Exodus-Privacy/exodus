@@ -50,8 +50,41 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+# Electra
+## Install Android 7.1 (deprecated)
+Download the ISO of Android 7.1 x86_64 : 
+```
+torify wget https://osdn.net/frs/redir.php?m=rwthaachen&f=%2Fandroid-x86%2F67834%2Fandroid-x86_64-7.1-rc1.iso
+```
+Create a new VM and set: 
+```
+Pointer device : PS/2
+```
+Set `bridge` network mode.
+Specify the shitty GMail account.
+Install the FakeGPS application.
+Create a snapshot
+
+## Install Android 6.0
+See https://www.osboxes.org/android-x86/
+Set `bridge` network mode.
+Specify the shitty GMail account.
+Install the FakeGPS application.
+Create a snapshot
+
+## Configure ADB
+In Android terminal emulator
+```
+su
+setprop service.adb.tcp.port 5555
+stop adbd
+start adbd
+ifconfig
+```
+
 # ToDo
   * add geo-tagged pictures in Android custom build
+
 
 # Notes
 ## Run `tcpdump` as simple user
