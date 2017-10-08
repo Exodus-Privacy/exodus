@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 <div class="row">
     <div class="col">
     {% if reports %}
         <ul>
         {% for report in reports %}
-            <li><a href="{% url 'reports:detail' report.id %}"><b>{{ report.application.handle }}</b></a> <span class="small"> version <b>{{ report.application.version }}</b> - analyzed on {{ report.creation_date }}</span></li>
+            <li><a href="{% url 'reports:detail' report.id %}">
+                {% if report.application.icon_path.strip %}
+                    <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}{{report.application.icon_path}}" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                {% else %}
+                    <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}/img/android.jpeg" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                {% endif %}
+                <b>{{ report.application.handle }}</b>
+            </a> <span class="small"> version <b>{{ report.application.version }}</b> - analyzed on {{ report.creation_date }}</span></li>
         {% endfor %}
         </ul>
     {% endif %}

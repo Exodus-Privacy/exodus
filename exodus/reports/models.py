@@ -4,6 +4,9 @@ from __future__ import unicode_literals
 from django.db import models
 from trackers.models import Tracker
 from django.utils.encoding import python_2_unicode_compatible
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+import shutil
 
 @python_2_unicode_compatible
 class Report(models.Model):
@@ -67,3 +70,10 @@ class UDPPayload(models.Model):
     destination_uri = models.CharField(max_length=200)
     payload = models.CharField(max_length=20000)
     layer = models.CharField(max_length=50)
+
+
+
+@receiver(post_delete, sender=Report, dispatch_uid='report_delete_signal')
+def remove_report_files(sender, instance, using, **kwargs):
+    print("Removing %s "%instance.storage_path)
+    shutil.rmtree(instance.storage_path, ignore_errors=True)
