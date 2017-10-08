@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+{% block content %}
+    <div class="row justify-content-md-center">
+        <div class="col-lg-4 col-centered">
+          <div class="alert alert-light" role="alert">
+              {% if error %}
+                {{error}}
+              {% endif %}
+          </div>
+        </div>
+    </div>
+{% endblock %}

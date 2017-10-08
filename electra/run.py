@@ -10,7 +10,7 @@ from utils import *
 
 # Credentials
 username = 'lambda'
-password = 'xxxxxxxx'
+password = 'xxxxxxxxxxxxxx'
 
 # Programs
 adb_bin = "/home/lambda/Android/Sdk/platform-tools/adb"
@@ -18,9 +18,9 @@ adb = ADB(adb_bin)
 
 # Virtual Box
 vboxmanage = "/usr/bin/vboxmanage"
-vm_name = "Android"
-vm_ip = "192.168.1.110"
-vm_snapshot = "Android-gmail-account3"
+vm_name = "Android_6.0"
+vm_ip = "192.168.1.114"
+vm_snapshot = "Snapshot2"
 vbox_config = VBoxConfig(vm_name, vm_snapshot, vm_ip, vboxmanage)
 
 # Directories
@@ -31,7 +31,7 @@ net_folder = os.path.join(electra_dir, "net")
 os_run('mkdir -p %s' % apk_folder)
 os_run('mkdir -p %s' % net_folder)
 
-DEBUG = True
+DEBUG = False
 
 # Clear all
 if not DEBUG:
@@ -50,7 +50,7 @@ apk_path = exodus.download_apk(apk_folder)
 tcpdump_duration = 80
 iface = "wlp4s0"
 dns_ip = "192.168.1.108"
-tcpdump_filter = "\"dst host 192.168.1.110 or src host 192.168.1.110\""
+tcpdump_filter = "\"dst host 192.168.1.114 or src host 192.168.1.114\""
 pcap_output = '%s/%s.pcap' % (net_folder, handle)
 tcpdump_config = TCPDumpConfig(tcpdump_duration, pcap_output, iface, tcpdump_filter)
 
@@ -75,8 +75,8 @@ if not DEBUG:
     print("Installing the APK")
     if not adb.install(apk_path):
         raise SystemError('Unable to install the APK')
-    if not adb.grant(handle, 'android.permission.ACCESS_COARSE_LOCATION'):
-        pass
+    # if not adb.grant(handle, 'android.permission.ACCESS_COARSE_LOCATION'):
+    #     pass
 
     print("Starting tcpdump")
     tcpdump = TCPDump(tcpdump_config)

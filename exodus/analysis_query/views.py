@@ -11,6 +11,7 @@ from exodus.core.apk import StaticAnalysis
 from django.conf import settings
 from django.core.exceptions import ValidationError
 import random, string, os
+from django.shortcuts import render
 
 def randomword(length):
    return ''.join(random.choice(string.lowercase) for i in range(length))
@@ -27,7 +28,7 @@ class AnalysisRequestView(FormView):
         static = StaticAnalysis(analysis_q)
         r_id = static.start()
         if r_id < 0:
-            raise ValidationError('Unable to analyze the APK file')
+            return render(request, 'query_error.html', {'error': 'Unable to analyze the APK file'})
 
         return HttpResponseRedirect('/reports/%s/'%r_id)
 

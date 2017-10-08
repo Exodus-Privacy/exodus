@@ -12,7 +12,7 @@ import yaml
 import datetime
 import string
 from django.conf import settings
-
+import shutil
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
 from trackers.models import Tracker
 
@@ -64,9 +64,9 @@ def find_trackers(self, analysis):
     trackers = Tracker.objects.order_by('name')
     found = []
     for t in trackers:
-        print(t.name)
+        # print(t.name)
         for p in t.detectionrule_set.all():
-            print(p.pattern)
+            # print(p.pattern)
             if grep(analysis.decoded_dir, p.pattern):
                 found.append(t)
                 break
@@ -158,6 +158,7 @@ def start_static_analysis(analysis):
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
         if existing_report != None:
+            analysis.clean()
             return existing_report.id
 
         report = Report(apk_file=analysis.apk_path, storage_path=analysis.query.storage_path)
@@ -184,7 +185,11 @@ def start_static_analysis(analysis):
 
         report.found_trackers = trackers
         report.save()
+
+        analysis.clean()
+
         return report.id
+    analysis.clean()
     return -1
 
 class StaticAnalysis:
@@ -197,6 +202,10 @@ class StaticAnalysis:
         self.decoded_dir = os.path.join(self.tmpdir, 'decoded')
         self.extracted_dir = os.path.join(self.tmpdir, 'extracted')
         self.apk_path = os.path.join(self.query.storage_path, '%s.apk'%self.query.handle)
+
+    def clean(self):
+        print('Removing %s'%self.tmpdir)
+        shutil.rmtree(self.tmpdir, ignore_errors=True)
 
     def start(self):
         return start_static_analysis(self)

@@ -21,7 +21,7 @@
             </ul>
         </div>
         <div class="col col-lg-2">
-            <h2>Trackers</h2>
+            <h2><span class="" data-toggle="tooltip" title="Potential trackers found using static analysis">Trackers</span></h2>
             <ul>
                 {% for t in report.found_trackers.all %}
                     <li><a href="{% url 'trackers:detail' t.id %}"><code>{{t.name}}</code></a></li>
