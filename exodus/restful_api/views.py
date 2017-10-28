@@ -78,3 +78,27 @@ def upload_pcap(request, r_id):
         print(e)
         return HttpResponse(status=500)
     return HttpResponse(status=200)
+
+@csrf_exempt
+@api_view(['POST'])
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
+def upload_flow(request, r_id):
+    try:
+        up_file = request.FILES['file']
+        print(up_file)
+        report = Report.objects.get(pk=r_id)
+        storage_path = report.storage_path
+        destination_path = os.path.join(storage_path, up_file.name)
+        destination = open(destination_path, 'wb+')
+        for chunk in up_file.chunks():
+            destination.write(chunk)
+        destination.close()
+        report.flow_file = destination_path
+        report.save()
+        analyze_dns.delay(r_id)
+        analyze_http.delay(r_id)
+    except Exception as e:
+        print(e)
+        return HttpResponse(status=500)
+    return HttpResponse(status=200)
