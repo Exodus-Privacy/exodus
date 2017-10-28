@@ -33,9 +33,9 @@ Set the password in the file `Exodus/exodus/exodus/settings.py` line 97.
 ## Set Python virtual environement and dependencies   
 ```
 cd Exodus
-virtualenv ./venv
+virtualenv ./venv -p python3
 source venv/bin/activate
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Create the DB schema
