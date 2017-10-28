@@ -24,19 +24,6 @@ def grep(folder, pattern):
     return exitCode == 0
 
 @app.task(bind=True)
-def find_trackers(self, analysis):
-    trackers = Tracker.objects.order_by('name')
-    found = []
-    for t in trackers:
-        print(t.name)
-        for p in t.detectionrule_set.all():
-            print(p.pattern)
-            if grep(analysis.decoded_dir, p.pattern):
-                found.append(t)
-                break
-    return found
-
-@app.task(bind=True)
 def find_and_save_app_icon(self, analysis):
     cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % analysis.apk_path
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
