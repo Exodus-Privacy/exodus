@@ -10,7 +10,7 @@ import re, requests
 import random, string
 
 def randomword(length):
-   return ''.join(random.choice(string.lowercase) for i in range(length))
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
 def validate_handle(value):
     reg = re.compile(r'^(\w+\.)+\w+$')
