@@ -5,12 +5,12 @@ import requests
 from exodus import Exodus
 from vbox import VBoxConfig, VBox
 from adb import ADB
-from network import TCPDumpConfig, TCPDump
+from network import TCPDumpConfig, TCPDump, MITMProxyConfig, MITMProxy
 from utils import *
 
 # Credentials
 username = 'lambda'
-password = 'xxxxxxxxxxxxxx'
+password = 'xxx'
 
 # Programs
 adb_bin = "/home/lambda/Android/Sdk/platform-tools/adb"
@@ -19,8 +19,8 @@ adb = ADB(adb_bin)
 # Virtual Box
 vboxmanage = "/usr/bin/vboxmanage"
 vm_name = "Android_6.0"
-vm_ip = "192.168.1.114"
-vm_snapshot = "Snapshot2"
+vm_ip = "192.168.30.6"
+vm_snapshot = "updates"
 vbox_config = VBoxConfig(vm_name, vm_snapshot, vm_ip, vboxmanage)
 
 # Directories
@@ -48,11 +48,18 @@ apk_path = exodus.download_apk(apk_folder)
 
 # Tcpdump
 tcpdump_duration = 80
-iface = "wlp4s0"
+iface = "proute"
 dns_ip = "192.168.1.108"
-tcpdump_filter = "\"dst host 192.168.1.114 or src host 192.168.1.114\""
+tcpdump_filter = "\"dst host %s or src host %s\"" % (vm_ip, vm_ip)
 pcap_output = '%s/%s.pcap' % (net_folder, handle)
 tcpdump_config = TCPDumpConfig(tcpdump_duration, pcap_output, iface, tcpdump_filter)
+
+# MitmProxy + SSLStrip
+flow_output = '%s/%s.flow' % (net_folder, handle)
+mitmproxy_config = MITMProxyConfig(flow_output, 8080)
+
+mitm = MITMProxy(mitmproxy_config)
+mitm.start()
 
 vbox = VBox(vbox_config)
 if not DEBUG:
@@ -94,9 +101,11 @@ if not DEBUG:
     if not vbox.stop():
         pass
 
+
+    mitm.stop()
     tcpdump.join()
 print("PCAP file saved")
 
-exodus.upload_pcap(pcap_output)
+# exodus.upload_pcap(pcap_output)
 
 sys.exit(0)
