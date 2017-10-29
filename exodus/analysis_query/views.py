@@ -14,7 +14,7 @@ import random, string, os
 from django.shortcuts import render
 
 def randomword(length):
-   return ''.join(random.choice(string.lowercase) for i in range(length))
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
 class AnalysisRequestView(FormView):
     template_name = 'apk_upload.html'
@@ -28,7 +28,7 @@ class AnalysisRequestView(FormView):
         static = StaticAnalysis(analysis_q)
         r_id = static.start()
         if r_id < 0:
-            return render(request, 'query_error.html', {'error': 'Unable to analyze the APK file'})
+            return render(request, 'query_error.html', {'error': 'Unable to analyze the APK file'}) #FIXME
 
         return HttpResponseRedirect('/reports/%s/'%r_id)
 

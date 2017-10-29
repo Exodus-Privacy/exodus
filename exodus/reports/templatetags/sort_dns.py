@@ -1,7 +1,6 @@
 from django import template
 from django.template.defaultfilters import stringfilter
 from django.db.models.query import QuerySet
-from sets import Set
 
 register = template.Library()
 
@@ -9,9 +8,10 @@ register = template.Library()
 def sort_dns(value):
     ret = []
     if isinstance(value, QuerySet):
-        domains = Set()
-        for q in value:
-            domains.add('.'.join(q.hostname.split('.')[-2:]))
+        domains = {'.'.join(q.hostname.split('.')[-2:]) for q in value}
+        # domains = {}
+        # for q in value:
+        #     domains |= ('.'.join(q.hostname.split('.')[-2:]))
         sorted_domains = []
         sorted_domains = list(domains)
         sorted_domains.sort()
@@ -21,7 +21,7 @@ def sort_dns(value):
             for q in value:
                 if d in q.hostname:
                     tmp.append(q)
-            tmp.sort(key=lambda item: (len(item.hostname), item))
+            # tmp.sort(key=lambda item: (len(item.hostname), item))
             ret += tmp
         return ret
     return value

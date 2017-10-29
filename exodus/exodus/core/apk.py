@@ -27,7 +27,7 @@ def grep(folder, pattern):
 def find_and_save_app_icon(self, analysis):
     cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % analysis.apk_path
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    icon = string.replace(process.communicate()[0], '\n', '')
+    icon = str(process.communicate()[0]).replace('\n', '')
     print(cmd)
     print(icon)
     exitCode = process.returncode
@@ -117,7 +117,7 @@ def download_apk(self, analysis):
     cmd = 'gplaycli -y -d %s -f %s/' % (analysis.query.handle, analysis.query.storage_path)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
-    exitCode = ('Error' in output)
+    exitCode = ('Error' in str(output))
     return exitCode == 0
 
 def start_static_analysis(analysis):
