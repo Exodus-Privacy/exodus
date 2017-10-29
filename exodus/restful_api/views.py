@@ -96,8 +96,7 @@ def upload_flow(request, r_id):
         destination.close()
         report.flow_file = destination_path
         report.save()
-        analyze_dns.delay(r_id)
-        analyze_http.delay(r_id)
+        #TODO do analysis
     except Exception as e:
         print(e)
         return HttpResponse(status=500)
