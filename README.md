@@ -81,6 +81,45 @@ stop adbd
 start adbd
 ifconfig
 ```
+## MITMProxy
+```
+sudo brctl addbr proute
+sudo ip link set proute up
+sudo iptables -t nat -A POSTROUTING -s 192.168.30.0/24 -j MASQUERADE
+sudo iptables -A FORWARD -i proute -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o proute -j ACCEPT
+sudo iptables -t nat -A PREROUTING -i proute -p tcp --dport 80 -j REDIRECT --to-port 8080
+sudo iptables -t nat -A PREROUTING -i proute -p tcp --dport 443 -j REDIRECT --to-port 8080
+```
+
+In `/etc/network/interfaces`, add:
+```
+auto proute
+iface proute inet static
+    address 192.168.30.1
+    netmask 255.255.255.0
+```
+
+In `/etc/default/isc-dhcp-server`, set:
+```
+INTERFACES="proute"
+```
+
+In `/etc/dhcp/dhcpd.conf`, declare:
+```
+option domain-name "exodus.lan";
+option domain-name-servers 80.67.169.12,80.67.169.40;
+option routers 192.168.30.1;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+subnet 192.168.30.0 netmask 255.255.255.0 {
+  range 192.168.30.3 192.168.30.224;
+}
+authoritative;
+```
+
 
 # ToDo
   * add geo-tagged pictures in Android custom build
