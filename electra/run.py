@@ -106,6 +106,7 @@ if not DEBUG:
     tcpdump.join()
 print("PCAP file saved")
 
-# exodus.upload_pcap(pcap_output)
+exodus.upload_pcap(pcap_output)
+exodus.upload_flow(flow_output)
 
 sys.exit(0)
