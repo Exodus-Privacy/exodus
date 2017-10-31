@@ -27,7 +27,7 @@ def grep(folder, pattern):
 def find_and_save_app_icon(self, analysis):
     cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % analysis.apk_path
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    icon = str(process.communicate()[0]).replace('\n', '')
+    icon = process.communicate()[0].decode(encoding='UTF-8').replace('\n', '')
     print(cmd)
     print(icon)
     exitCode = process.returncode
