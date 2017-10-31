@@ -25,7 +25,7 @@ def refresh_dns(self):
     for q in dns_queries:
         q.is_tracker = False
         for r in rules:
-            rule = string.replace(r.pattern, '\\', '')
+            rule = r.pattern.replace('\\', '')
             if q.hostname in rule or rule in q.hostname:
                 print('%s  -  %s'%(q.hostname, rule))
                 q.is_tracker = True
