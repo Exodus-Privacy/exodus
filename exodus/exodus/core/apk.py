@@ -114,7 +114,7 @@ def download_apk(self, analysis):
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
 
-    cmd = 'gplaycli -y -d %s -f %s/' % (analysis.query.handle, analysis.query.storage_path)
+    cmd = 'gplaycli -t -y -d %s -f %s/' % (analysis.query.handle, analysis.query.storage_path)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
     exitCode = ('Error' in str(output))
