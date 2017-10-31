@@ -11,6 +11,7 @@ import subprocess as sp
 import yaml
 import datetime
 import string
+from pathlib import Path
 from django.conf import settings
 import shutil
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
@@ -110,6 +111,9 @@ def decode(self, analysis):
 
 @app.task(bind=True)
 def download_apk(self, analysis):
+    # Fix#12 - We have to remove the cached token :S
+    shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
+
     cmd = 'mkdir -p %s' % analysis.query.storage_path
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
