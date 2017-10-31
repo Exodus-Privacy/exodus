@@ -8,75 +8,119 @@
             /api/report/{{report.id}}/
         </code>
     </p>
-    <h1><img src="{% get_static_prefix %}{{report.application.icon_path}}" width="60px" alt="">
-        {{report.application.handle}} - {{report.application.version}} </h1>
-    <div class="row">
-        <div class="col col-lg-5">
-            <h2>Report</h2>
-            <ul>
-                <li>Report date: <code>{{report.creation_date}}</code></li> 
-                <li>APK checksum: <code>{{report.application.apk.sum}}</code></li> 
-                <li>Application handle: <code>{{report.application.handle}}</code></li>
-                <li>Version: <code>{{report.application.version}}</code></li>
-            </ul>
-        </div>
-        <div class="col col-lg-2">
-            <h2><span class="" data-toggle="tooltip" title="Potential trackers found using static analysis">Trackers</span></h2>
-            <ul>
-                {% for t in report.found_trackers.all %}
-                    <li><a href="{% url 'trackers:detail' t.id %}"><code>{{t.name}}</code></a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="col">
-            <h2>Permissions</h2>
-            <ul>
-                {% for perm in report.application.permission_set.all %}
-                    <li><code>{{perm.name}}</code></li>
-                {% endfor %}
-            </ul>
-        </div>
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">
+            <img src="{% get_static_prefix %}{{report.application.icon_path}}" width="60px" alt="">
+            {{report.application.handle}} - {{report.application.version}}
+        </h4>
+        <p>This report was automatically issued on {{report.creation_date}}.</p>
+        <p class="mb-0 small">
+            <a class="" data-toggle="collapse" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">View APK file details</a>
+            <div class="collapse" id="collapseAPKDetails">
+                <div class="card card-body small">
+                    <ul>
+                        <li>Report date: <code>{{report.creation_date}}</code></li> 
+                        <li>APK checksum: <code>{{report.application.apk.sum}}</code></li> 
+                        <li>Application handle: <code>{{report.application.handle}}</code></li>
+                        <li>Version: <code>{{report.application.version}}</code></li>
+                    </ul>
+                </div>
+            </div>
+        </p>
     </div>
+
+    <div class="row">
+        <div class="col col-lg-4">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <h4 class="">Trackers</h4>
+                </div>
+                <div class="card-body">
+                    We have found these trackers in the application:
+                    <ul>
+                        {% for t in report.found_trackers.all %}
+                            <li><a href="{% url 'trackers:detail' t.id %}"><code>{{t.name}}</code></a></li>
+                        {% endfor %}
+                    </ul>
+                    <i class="small">A tracker is a piece of software meant to collect data about you or your usages. We do not guarantee the exhaustiveness of this list.</i>
+                </div>
+            </div>
+        </div>
+        <div class="col col-lg-4">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <h4 class="">Permissions</h4>
+                </div>
+                <div class="card-body">
+                    We have found these trackers in the application:
+                    <ul>
+                        {% for perm in report.application.permission_set.all %}
+                            <li><code>{{perm.name}}</code></li>
+                        {% endfor %}
+                    </ul>
+                    <i class="small">Permissions are actions the application can do on your phone.</i>
+                </div>
+            </div>
+        </div>
+        {% if report.networkanalysis_set %}
+            {% for na in report.networkanalysis_set.all %}
+                {% if na.dnsquery_set and na.dnsquery_set.count > 0 %}
+                    <div class="col col-lg-4">
+                        <div class="card bg-light">
+                            <div class="card-header">
+                                <h4 class="">DNS queries</h4>
+                            </div>
+                            <div class="card-body">
+                                During the execution, the application has requested those domain resolutions:
+                                <table>
+                                    {% for dns in na.dnsquery_set.all|sort_dns %}
+                                        <tr>
+                                            <td class="text-right"><code>{{dns.hostname}}</code></td>
+                                            <td><code>{{dns.ip}}</code></td>
+                                            <td>
+                                            {% ifequal dns.is_tracker True %}
+                                            <span class="badge badge-danger" data-toggle="tooltip" title="Potential tracker">⛔️</span>
+                                            {% else %}
+                                                    
+                                            {% endifequal %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                                <i class="small">A DNS resolution can confirm that a tracker was looking for the IP address of its associated server.</i>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="row"><div class="col"></div><hr></div>
     {% if report.networkanalysis_set %}
             {% for na in report.networkanalysis_set.all %}
-                {% if na.dnsquery_set %}
-                <div class="row">
-                    <div class="col">
-                        <h2>DNS queries</h2>
-                        <table>
-                        {% for dns in na.dnsquery_set.all|sort_dns %}
-                            <tr>
-                                <td class="text-right"><code>{{dns.hostname}}</code></td>
-                                <td><code>{{dns.ip}}</code></td>
-                                <td>
-                                {% ifequal dns.is_tracker True %}
-                                <span class="badge badge-danger" data-toggle="tooltip" title="Potential tracker">⛔️</span>
-                                {% else %}
-                                     
-                                {% endifequal %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </table>
-                    </div>
-                </div>
-                {% endif %}
                 {% if na.httpanalysis_set %}
                 <div class="row">
                     <div class="col">
-                        <h2>HTTP</h2>
-                        <div>
                         {% for http_analysis in na.httpanalysis_set.all %}
                             {% for payload in http_analysis.httppayload_set.all %}
-                                <p>{{payload.layer}} - <code>{{payload.destination_uri}}</code></p>
-                                <div class="card small">
-                                        <pre>
-                                            {{payload.payload}}
-                                        </pre>
+                            <div class="card bg-light">
+                                <div class="card-header">
+                                    <h4 class="">
+                                        <a class="btn btn-secondary" data-toggle="collapse" href="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">Expand</a>
+                                        Sent data to <code>{{payload.destination_uri|truncatechars_html:65}}</code></h4>
                                 </div>
+                                <div class="collapse" id="collapse{{forloop.counter}}">
+                                    <div class="card-body">
+                                        <div class="card small">
+                                            <pre>
+                                                {{payload.payload}}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {% endfor %}
                         {% endfor %}
-                        </div>
                     </div>
                 </div>
                 {% endif %}
