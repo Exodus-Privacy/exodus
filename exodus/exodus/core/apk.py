@@ -145,7 +145,7 @@ def start_static_analysis(analysis):
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
         if existing_report != None:
-            analysis.clean()
+            analysis.clean(True)
             return existing_report.id
 
         report = Report(apk_file=analysis.apk_path, storage_path=analysis.query.storage_path)
@@ -176,7 +176,7 @@ def start_static_analysis(analysis):
         analysis.clean()
 
         return report.id
-    analysis.clean()
+    analysis.clean(True)
     return -1
 
 class StaticAnalysis:
@@ -190,9 +190,12 @@ class StaticAnalysis:
         self.extracted_dir = os.path.join(self.tmpdir, 'extracted')
         self.apk_path = os.path.join(self.query.storage_path, '%s.apk'%self.query.handle)
 
-    def clean(self):
+    def clean(self, remove_from_storage=False):
         print('Removing %s'%self.tmpdir)
         shutil.rmtree(self.tmpdir, ignore_errors=True)
+        if remove_from_storage:
+            print('Removing %s'%self.query.storage_path)
+            shutil.rmtree(self.query.storage_path, ignore_errors=True)
 
     def start(self):
         return start_static_analysis(self)
