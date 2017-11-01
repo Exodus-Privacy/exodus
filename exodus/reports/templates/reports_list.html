@@ -4,22 +4,38 @@
 <div class="row justify-content-md-center">
     <div class="col-lg-6 col-centered">
     {% if reports %}
-        <ul>
+    <div class=" alert alert-info">
+        <div class="alert-heading">
+            <h4><span class="badge badge-info">{{ reports|length }}</span> Available reports</h4>
+        </div>
+        <hr>
+        <table style="margin: auto; border:none" class="table table-hover">
         {% for report in reports %}
-            <li><a href="{% url 'reports:detail' report.id %}">
-                {% if report.application.icon_path.strip %}
-                    <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}{{report.application.icon_path}}" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
-                {% else %}
-                    <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}/img/android.jpeg" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
-                {% endif %}
-                {% if report.application.name.strip %}
-                    <b>{{ report.application.name }}</b>
-                {% else %}
-                    <b>{{ report.application.handle }}</b>
-                {% endif %}
-            </a> <span class="small"> version <b>{{ report.application.version }}</b> - analyzed on {{ report.creation_date }}</span></li>
+            <tr>
+                <td>
+                    <a href="{% url 'reports:detail' report.id %}">
+                    {% if report.application.icon_path.strip %}
+                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}{{report.application.icon_path}}" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                    {% else %}
+                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}/img/android.jpeg" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                    {% endif %}
+                    {% if report.application.name.strip %}
+                        <b>{{ report.application.name }}</b>
+                    {% else %}
+                        <b>{{ report.application.handle }}</b>
+                    {% endif %}
+                    </a>
+                </td>
+                <td>
+                     <span class="small"><b>{{ report.application.version }}</b></span> 
+                </td>
+                <td>
+                    <span class="small"><b>{{ report.creation_date }}</b></span>
+                </td>
+            </tr>
         {% endfor %}
-        </ul>
+        </table>
+    </div>
     {% endif %}
     </div>
 </div>
