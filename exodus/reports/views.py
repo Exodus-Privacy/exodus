@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-from .models import Report
+from django.db import connection
 from exodus.core.dns import *
 from exodus.core.http import *
 
@@ -39,3 +39,36 @@ def refreshdns(request):
     if request.method == 'GET':
         refresh_dns.delay()
         return HttpResponse(status=200)
+
+def get_stats(request):
+    from collections import namedtuple
+    try:
+        reports = NetworkAnalysis.objects.all()
+        apps = Application.objects.order_by('handle').distinct('handle')
+    except:
+        raise Http404("NetworkAnalysis do not exist")
+
+    cursor = connection.cursor()
+    cursor.execute("select count(hostname) as score, hostname from reports_dnsquery group by hostname having count(hostname) > 3 order by score desc;")
+    desc = cursor.description
+    nt_result = namedtuple('Result', [col[0] for col in desc])
+    domains = [nt_result(*row) for row in cursor.fetchall()]
+    sum = 0
+    for r in reports:
+        if len(r.dnsquery_set.all()) > 0:
+            sum += 1
+    domain_results = []
+    for d in domains:
+        domain_results.append({'hostname':d.hostname, 'score':int(100.*d.score/sum)})
+
+    cursor.execute("SELECT tt.name, COUNT(*) as c FROM reports_report_found_trackers AS ft, trackers_tracker AS tt WHERE tt.id = ft.tracker_id GROUP BY ft.tracker_id, tt.name ORDER BY c DESC LIMIT 21;")
+    desc = cursor.description
+    nt_result = namedtuple('Result', [col[0] for col in desc])
+    trackers = [nt_result(*row) for row in cursor.fetchall()]
+
+    sum = len(apps)
+    tracker_results = []
+    for t in trackers:
+        tracker_results.append({'name':t.name, 'score':int(100.*t.c/sum)})
+    
+    return render(request, 'stats_details.html', {'domains': domain_results, 'trackers':tracker_results})
