@@ -28,7 +28,7 @@ class AnalysisRequestView(FormView):
         static = StaticAnalysis(analysis_q)
         r_id = static.start()
         if r_id < 0:
-            return render(request, 'query_error.html', {'error': 'Unable to analyze the APK file'}) #FIXME
+            return render(self.request, 'query_error.html', {'error': 'Unable to analyze the APK file'})
 
         return HttpResponseRedirect('/reports/%s/'%r_id)
 

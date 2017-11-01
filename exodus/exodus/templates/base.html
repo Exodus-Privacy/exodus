@@ -31,15 +31,17 @@
             </div>
         </div>
         &nbsp;
-        <div class="dropdown">
-            <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Analysis
-            </button>
-            <div class="dropdown-menu" aria-labelledby="analysis_dd">
-                <a class="dropdown-item" href="/analysis/">List</a>
-                <a class="dropdown-item" href="/analysis/submit/">Submit</a>
+        {% if request.user.is_superuser %}
+            <div class="dropdown">
+                <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Analysis
+                </button>
+                <div class="dropdown-menu" aria-labelledby="analysis_dd">
+                    <a class="dropdown-item" href="/analysis/">List</a>
+                    <a class="dropdown-item" href="/analysis/submit/">Submit</a>
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
 </nav>
 <br>
