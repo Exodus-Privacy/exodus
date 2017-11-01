@@ -57,7 +57,7 @@
         <div class="col col-lg-4">
             <div class="card bg-light">
                 <div class="card-header">
-                    <h4 class="">Trackers</h4>
+                    <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.all|length }}</span> Trackers</h4>
                 </div>
                 <div class="card-body">
                     We have found these trackers in the application:
@@ -73,7 +73,7 @@
         <div class="col col-lg-4">
             <div class="card bg-light">
                 <div class="card-header">
-                    <h4 class="">Permissions</h4>
+                    <h4 class=""><span class="badge badge-secondary">{{ report.application.permission_set.all|length }}</span> Permissions </h4>
                 </div>
                 <div class="card-body">
                     We have found these permissions in the application:
@@ -92,7 +92,7 @@
                     <div class="col col-lg-4">
                         <div class="card bg-light">
                             <div class="card-header">
-                                <h4 class="">DNS queries</h4>
+                                <h4 class=""><span class="badge badge-secondary">{{ na.dnsquery_set.all|length }}</span> DNS queries</h4>
                             </div>
                             <div class="card-body">
                                 During the execution, the application has requested these domain resolutions:
