@@ -126,5 +126,7 @@ def getApplicationInfos(handle):
                 c['end'] =  v['start']
                 c['value'] = lines[1][c['start']:c['end']].strip(" ")
                 result[c['name']] = c['value']
-        print(result)
-        return result
+        if handle in result['handle']:
+            return result
+        else:
+            return None
