@@ -87,7 +87,9 @@ def getSha256Sum(apk_path):
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     return process.stdout.read()
 
-def decodeAPK(apk_path, decoded_dir, apktool):
+def decodeAPK(apk_path, decoded_dir):
+    root_dir = os.path.dirname(os.path.realpath(__file__))
+    apktool = os.path.join(root_dir, "apktool.jar")
     cmd = '/usr/bin/java -jar %s d %s -s -o %s/' % (apktool, apk_path, decoded_dir)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]

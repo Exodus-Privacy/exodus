@@ -50,7 +50,7 @@ def sha256sum(self, analysis):
 
 @app.task(bind=True)
 def decode(self, analysis):
-    return decodeAPK(analysis.apk_path, analysis.decoded_dir, analysis.apktool)
+    return decodeAPK(analysis.apk_path, analysis.decoded_dir)
 
 @app.task(bind=True)
 def download_apk(self, analysis):
