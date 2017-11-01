@@ -12,7 +12,11 @@
                 {% else %}
                     <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}/img/android.jpeg" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
                 {% endif %}
-                <b>{{ report.application.handle }}</b>
+                {% if report.application.name.strip %}
+                    <b>{{ report.application.name }}</b>
+                {% else %}
+                    <b>{{ report.application.handle }}</b>
+                {% endif %}
             </a> <span class="small"> version <b>{{ report.application.version }}</b> - analyzed on {{ report.creation_date }}</span></li>
         {% endfor %}
         </ul>

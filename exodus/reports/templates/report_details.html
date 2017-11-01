@@ -9,24 +9,48 @@
         </code>
     </p>
     <div class="alert alert-info" role="alert">
-        <h4 class="alert-heading">
-            <img src="{% get_static_prefix %}{{report.application.icon_path}}" width="60px" alt="">
-            {{report.application.handle}} - {{report.application.version}}
-        </h4>
-        <p>This report was automatically issued on {{report.creation_date}}.</p>
-        <p class="mb-0 small">
-            <a class="" data-toggle="collapse" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">View APK file details</a>
-            <div class="collapse" id="collapseAPKDetails">
-                <div class="card card-body small">
+        <div class="row">
+            <div class="col">
+                <div class="alert-heading">
+                    {% if report.application.name.strip %}
+                        <h2>Privacy report for <b>{{report.application.name}}</b></h2>
+                    {% else %}
+                        <h2>Privacy report</h2>
+                    {% endif%}
+                </div>
+                <p>This report was automatically issued on {{report.creation_date}}.</p>
+                <p class="mb-0 small">
+                    <a class="" data-toggle="collapse" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">View APK file details</a>
+                    <div class="collapse" id="collapseAPKDetails">
+                        <div class="card card-body small">
+                            <ul>
+                                <li>Report date: <code>{{report.creation_date}}</code></li> 
+                                <li>APK checksum: <code>{{report.application.apk.sum}}</code></li> 
+                                <li>Application handle: <code>{{report.application.handle}}</code></li>
+                                <li>Version: <code>{{report.application.version}}</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </p>
+            </div>
+
+            <div class="col">
+                    <div class="alert-heading">
+                        <h4>
+                        <img src="{% get_static_prefix %}{{report.application.icon_path}}" width="60px" alt="">
+                            {{report.application.handle}} - {{report.application.version}}
+                        </h4>
+                    </div>
                     <ul>
-                        <li>Report date: <code>{{report.creation_date}}</code></li> 
-                        <li>APK checksum: <code>{{report.application.apk.sum}}</code></li> 
-                        <li>Application handle: <code>{{report.application.handle}}</code></li>
-                        <li>Version: <code>{{report.application.version}}</code></li>
+                        {% if report.application.creator.strip %}
+                            <li>Creator: <b>{{report.application.creator}}</b></li> 
+                        {% endif %}
+                        {% if report.application.downloads.strip %}
+                            <li>Downloads: <b>{{report.application.downloads}}</b></li> 
+                        {% endif %}
                     </ul>
                 </div>
-            </div>
-        </p>
+        </div>
     </div>
 
     <div class="row">
@@ -52,7 +76,7 @@
                     <h4 class="">Permissions</h4>
                 </div>
                 <div class="card-body">
-                    We have found these trackers in the application:
+                    We have found these permissions in the application:
                     <ul>
                         {% for perm in report.application.permission_set.all %}
                             <li><code>{{perm.name}}</code></li>
@@ -71,7 +95,7 @@
                                 <h4 class="">DNS queries</h4>
                             </div>
                             <div class="card-body">
-                                During the execution, the application has requested those domain resolutions:
+                                During the execution, the application has requested these domain resolutions:
                                 <table>
                                     {% for dns in na.dnsquery_set.all|sort_dns %}
                                         <tr>
