@@ -1,13 +1,19 @@
 {% extends "base.html"%}
 {% block content %}
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-4">
         {% if trackers %}
-            <ul>
-            {% for tracker in trackers %}
-                <li><a href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a></li>
-            {% endfor %}
-            </ul>
+            <div class=" alert alert-info">
+                <div class="alert-heading">
+                    <h4><span class="badge badge-info">{{ trackers|length }}</span> Recognized trackers</h4>
+                </div>
+                <hr>
+                <ul>
+                {% for tracker in trackers %}
+                    <li><a href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
         {% else %}
             <p>No trackers are available.</p>
         {% endif %}

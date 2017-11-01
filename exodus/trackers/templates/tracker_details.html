@@ -2,17 +2,20 @@
 {% load markdown %} 
 
 {% block content %}
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-4">
         {% if tracker %}
-            <h1>{{tracker.name}}</h1>
+        <div class=" alert alert-info">
+            <div class="alert-heading">
+                <h2>{{tracker.name}}</h2>
+            </div>
             <p>
                 <a href="{{tracker.website}}"> Go to the tracker web page.</a>
             </p>
             <p>
                 {{tracker.description|markdown|safe}}
             </p>
-            <h2>Detection rules</h2>
+            <h3>Detection rules</h3>
             <ul>
                 {% for rule in tracker.detectionrule_set.all %}
                     <li><code>{{ rule.pattern }}</code></li>
