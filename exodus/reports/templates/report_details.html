@@ -54,7 +54,7 @@
     </div>
 
     <div class="row">
-        <div class="col col-lg-4">
+        <div class="col col-lg-3">
             <div class="card bg-light">
                 <div class="card-header">
                     <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.all|length }}</span> Trackers</h4>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="col col-lg-4">
+        <div class="col">
             <div class="card bg-light">
                 <div class="card-header">
                     <h4 class=""><span class="badge badge-secondary">{{ report.application.permission_set.all|length }}</span> Permissions </h4>
@@ -89,7 +89,7 @@
         {% if report.networkanalysis_set %}
             {% for na in report.networkanalysis_set.all %}
                 {% if na.dnsquery_set and na.dnsquery_set.count > 0 %}
-                    <div class="col col-lg-4">
+                    <div class="col">
                         <div class="card bg-light">
                             <div class="card-header">
                                 <h4 class=""><span class="badge badge-secondary">{{ na.dnsquery_set.all|length }}</span> DNS queries</h4>
