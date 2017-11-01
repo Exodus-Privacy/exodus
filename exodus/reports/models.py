@@ -23,6 +23,9 @@ class Report(models.Model):
 class Application(models.Model):
     report = models.OneToOneField(Report)
     handle = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default='')
+    creator = models.CharField(max_length=200, default='')
+    downloads = models.CharField(max_length=200, default='')
     version = models.CharField(max_length=50)
     icon_path = models.CharField(max_length=500, default='')
 

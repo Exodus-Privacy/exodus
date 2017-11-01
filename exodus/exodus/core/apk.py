@@ -16,49 +16,15 @@ from django.conf import settings
 import shutil
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
 from trackers.models import Tracker
-
-def grep(folder, pattern):
-    cmd = '/bin/grep -r "%s" %s/' % (pattern, folder)
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    return exitCode == 0
+from .static_analysis import *
 
 @app.task(bind=True)
 def find_and_save_app_icon(self, analysis):
-    cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % analysis.apk_path
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    icon = process.communicate()[0].decode(encoding='UTF-8').replace('\n', '')
-    print(cmd)
-    print(icon)
-    exitCode = process.returncode
-    if exitCode != 0 or icon == '':
-        return ''
-
-    source_icon_path = os.path.join(analysis.decoded_dir, icon)
-    saved_icon_path = os.path.join(analysis.query.storage_path, 'icon.png')
-    cmd = "cp %s %s" % (source_icon_path, saved_icon_path)
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    output = process.communicate()[0]
-    print(cmd)
-    print(output)
-    exitCode = process.returncode
-    if exitCode != 0:
-        return ''
-    return saved_icon_path
+    return getIcon(analysis.decoded_dir, analysis.query.storage_path, analysis.apk_path)
 
 @app.task(bind=True)
 def find_trackers(self, analysis):
-    trackers = Tracker.objects.order_by('name')
-    found = []
-    for t in trackers:
-        # print(t.name)
-        for p in t.detectionrule_set.all():
-            # print(p.pattern)
-            if grep(analysis.decoded_dir, p.pattern):
-                found.append(t)
-                break
-    return found
+    return findTrackers(analysis.decoded_dir)
 
 @app.task(bind=True)
 def extract_apk(self, analysis):
@@ -68,46 +34,23 @@ def extract_apk(self, analysis):
 
 @app.task(bind=True)
 def get_version(self, analysis):
-    yml = os.path.join(analysis.decoded_dir, 'apktool.yml')
-    yml_new = os.path.join(analysis.decoded_dir, 'apktool.yml.new')
-    cmd = '/bin/cat %s | /bin/grep -v "\!\!" > %s' % (yml, yml_new)
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    if exitCode != 0:
-        return ''    
-    with open(yml_new) as f:
-        dataMap = yaml.safe_load(f)
-        return dataMap['versionInfo']['versionName']
+    return getVersion(analysis.decoded_dir)
 
 @app.task(bind=True)
 def get_handle(self, analysis):
-    xmldoc = minidom.parse(os.path.join(analysis.decoded_dir, 'AndroidManifest.xml'))
-    man = xmldoc.getElementsByTagName('manifest')[0]
-    return man.getAttribute('package')
+    return getHandle(analysis.decoded_dir)
 
 @app.task(bind=True)
 def get_permissions(self, analysis):
-    xmldoc = minidom.parse(os.path.join(analysis.decoded_dir, 'AndroidManifest.xml'))
-    permissions = xmldoc.getElementsByTagName('uses-permission')
-    perms = []
-    for perm in permissions:
-        perms.append(perm.getAttribute('android:name'))
-    return perms
+    return getPermissions(analysis.decoded_dir)
 
 @app.task(bind=True)
 def sha256sum(self, analysis):
-    cmd = '/usr/bin/sha256sum %s | head -c 64' % analysis.apk_path
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    return process.stdout.read()
+    return getSha256Sum(analysis.apk_path)
 
 @app.task(bind=True)
 def decode(self, analysis):
-    cmd = '/usr/bin/java -jar %s d %s -s -o %s/' % (analysis.apktool, analysis.apk_path, analysis.decoded_dir)
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    return exitCode == 0
+    return decodeAPK(analysis.apk_path, analysis.decoded_dir, analysis.apktool)
 
 @app.task(bind=True)
 def download_apk(self, analysis):
@@ -124,6 +67,10 @@ def download_apk(self, analysis):
     exitCode = ('Error' in str(output))
     return exitCode == 0
 
+@app.task(bind=True)
+def get_app_infos(self, analysis):
+    return getApplicationInfos(analysis.query.handle)
+
 def start_static_analysis(analysis):
     dl_r = download_apk.delay(analysis)
     if not dl_r.get():
@@ -138,6 +85,7 @@ def start_static_analysis(analysis):
                     get_permissions.s(analysis),
                     find_trackers.s(analysis),
                     find_and_save_app_icon.s(analysis),
+                    get_app_infos.s(analysis),
                     )()
         infos = infos_group.get()
         version = infos[0]
@@ -145,6 +93,7 @@ def start_static_analysis(analysis):
         perms = infos[2]
         trackers = infos[3]
         icon_path = infos[4]
+        app_infos = infos[5]
 
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
@@ -160,6 +109,10 @@ def start_static_analysis(analysis):
         app = Application(report=report)
         app.handle = handle
         app.version = version
+        if app_infos is not None:
+            app.name = app_infos['title']
+            app.creator = app_infos['creator']
+            app.downloads = app_infos['downloads']
         if icon_path != '':
             app.icon_path = os.path.relpath(icon_path, settings.EX_FS_ROOT)# Dirty trick to make the icon readable from templates
         app.save(force_insert=True)

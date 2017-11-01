@@ -14,7 +14,11 @@
                         {% else %}
                             <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}/img/android.jpeg" width="80px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
                         {% endif %}
-                        <figcaption class="figure-caption"><b>{{ app.handle|truncatechars_html:15 }}</b></figcaption>
+                        {% if app.name.strip %}
+                            <figcaption class="figure-caption"><b>{{ app.name|truncatechars_html:15 }}</b></figcaption>
+                        {% else %}
+                            <figcaption class="figure-caption"><b>{{ app.handle|truncatechars_html:15 }}</b></figcaption>
+                        {% endif %}
                     </a>
                 </figure>
             </div>
