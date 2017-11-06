@@ -40,7 +40,7 @@ pip3 install -r requirements.txt
 
 ## Create the DB schema
 ```
-cd exodus/exodus
+cd Exodus/exodus
 python manage.py migrate --fake-initial
 python manage.py migrate
 ```
