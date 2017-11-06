@@ -50,6 +50,12 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+## Start the application
+
+```
+python manage.py runserver [host:port]
+```
+
 # Electra
 ## Install Android 7.1 (deprecated)
 Download the ISO of Android 7.1 x86_64 : 
