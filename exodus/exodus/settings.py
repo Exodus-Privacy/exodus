@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for exodus project.
 
@@ -11,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from settings_base import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -156,4 +158,10 @@ CELERY_RESULT_BACKEND = 'pyamqp://'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 
-# DEFAULT_FILE_STORAGE = os.path.join(os.path.dirname(__file__), '../storage') 
+# DEFAULT_FILE_STORAGE = os.path.join(os.path.dirname(__file__), '../storage')
+
+# Surcharge les paramètres en utilisant le fichier settings_local.py
+try:
+    from settings_local import *
+except ImportError:
+    pass
