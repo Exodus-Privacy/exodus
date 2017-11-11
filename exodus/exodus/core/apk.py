@@ -46,14 +46,15 @@ def decode(self, analysis):
 
 @app.task(bind=True)
 def download_apk(self, analysis):
-    # Fix#12 - We have to remove the cached token :S
-    shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
-
-    cmd = 'gplaycli -v -t -y -pd %s -f %s/' % (analysis.query.handle, analysis.tmp_dir)
-    print(cmd)
+    device_code_names = ['hammerhead', 'manta', 'cloudbook', 'bullhead']
     retry = 5
     exit_code = 1
     while retry != 0:
+        # Rotate devices
+        cmd = 'gplaycli -v -a -t -y -pd %s -dc %s -f %s/' % (analysis.query.handle, device_code_names[retry%len(device_code_names)], analysis.tmp_dir)
+        print(cmd)
+        # Fix#12 - We have to remove the cached token :S
+        shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
         process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
         output = process.communicate()[0]
         print(output)
