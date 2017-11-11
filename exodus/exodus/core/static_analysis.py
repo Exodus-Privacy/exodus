@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
-from .celery import app
-from celery import group, chain, chord
-import tempfile
+
+import os
 import shutil
-from xml.dom import minidom
-import sys, os
-import zipfile
 import subprocess as sp
-import yaml
-import datetime
-import string
 from pathlib import Path
+from xml.dom import minidom
+
+import yaml
 from django.conf import settings
-import shutil
-from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
-from trackers.models import Tracker
 from minio import Minio
-from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+from minio.error import (ResponseError)
+from trackers.models import Tracker
 
 
 def grep(folder, pattern):

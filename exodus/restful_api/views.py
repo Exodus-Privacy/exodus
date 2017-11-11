@@ -1,55 +1,22 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import permissions
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser, FileUploadParser
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes, authentication_classes, parser_classes
 
 from reports.models import Report
 from restful_api.models import ReportInfos
 from restful_api.serializers import ReportInfosSerializer
 import tempfile
-import mimetypes, os, io
-from django.http import StreamingHttpResponse
-from wsgiref.util import FileWrapper
 from django.conf import settings
 from minio import Minio
-from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+from minio.error import (ResponseError)
 
 from exodus.core.dns import *
 from exodus.core.http import *
-
-
-def iterable_to_stream(iterable, buffer_size=io.DEFAULT_BUFFER_SIZE):
-    """
-    Lets you use an iterable (e.g. a generator) that yields bytestrings as a read-only
-    input stream.
-
-    The stream implements Python 3's newer I/O API (available in Python 2's io module).
-    For efficiency, the stream is buffered.
-    """
-    class IterStream(io.RawIOBase):
-        def __init__(self):
-            self.leftover = None
-        def readable(self):
-            return True
-        def readinto(self, b):
-            try:
-                l = len(b)  # We're supposed to return at most this much
-                chunk = self.leftover or next(iterable)
-                output, self.leftover = chunk[:l], chunk[l:]
-                b[:len(output)] = output
-                return len(output)
-            except StopIteration:
-                return 0    # indicate EOF
-    return io.BufferedReader(IterStream(), buffer_size=buffer_size)
 
 
 @csrf_exempt

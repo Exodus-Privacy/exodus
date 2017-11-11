@@ -1,5 +1,5 @@
 import requests
-import json, os
+import os
 
 EXODUS_LOGIN_URI = '/api/get_auth_token/'
 

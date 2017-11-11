@@ -1,7 +1,5 @@
 import sys, os
-import json, time
-import subprocess as sp
-import requests
+import time
 from exodus import Exodus
 from vbox import VBoxConfig, VBox
 from adb import ADB
@@ -10,7 +8,7 @@ from utils import *
 
 # Credentials
 username = 'lambda'
-password = 'xxx'
+password = 'perillaud'
 
 # Programs
 adb_bin = "/home/lambda/Android/Sdk/platform-tools/adb"
@@ -31,12 +29,13 @@ net_folder = os.path.join(electra_dir, "net")
 os_run('mkdir -p %s' % apk_folder)
 os_run('mkdir -p %s' % net_folder)
 
-DEBUG = False
+DEBUG = True
 
 # Clear all
 if not DEBUG:
     os.system("rm -rf %s/*" % apk_folder)
     os.system("rm -rf %s/*" % net_folder)
+#    os.system("rm -f ~/.cache/gplaycli/token")
 
 report_url = sys.argv[1]
 
@@ -45,6 +44,7 @@ exodus.login(username, password)
 handle = exodus.get_report_infos()['handle']
 print("Downloading the APK")
 apk_path = exodus.download_apk(apk_folder)
+print(apk_path)
 
 # Tcpdump
 tcpdump_duration = 80
@@ -104,9 +104,8 @@ if not DEBUG:
 
     mitm.stop()
     tcpdump.join()
-print("PCAP file saved")
 
 exodus.upload_pcap(pcap_output)
 exodus.upload_flow(flow_output)
-
+print("PCAP file saved")
 sys.exit(0)

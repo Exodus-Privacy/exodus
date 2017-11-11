@@ -5,7 +5,7 @@ from reports.models import *
 import shutil, os
 import tempfile
 from minio import Minio
-from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+from minio.error import (ResponseError)
 
 
 class Command(BaseCommand):
