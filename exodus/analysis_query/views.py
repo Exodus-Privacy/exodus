@@ -21,8 +21,9 @@ class AnalysisRequestView(FormView):
     form_class = AnalysisRequestForm
 
     def form_valid(self, form):
-        path = os.path.join(settings.EX_APK_FS_ROOT, str(randomword(64)))
-        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'], storage_path = path)
+        randhex = str(randomword(60))
+        path = os.path.join(settings.EX_APK_FS_ROOT, randhex)
+        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'], storage_path=path, bucket=randhex)
         analysis_q.save()
 
         static = StaticAnalysis(analysis_q)

@@ -14,16 +14,12 @@
             <tr>
                 <td>
                     <a href="{% url 'reports:detail' report.id %}">
-                    {% if report.application.icon_path.strip %}
-                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}{{report.application.icon_path}}" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
-                    {% else %}
-                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% get_static_prefix %}/img/android.jpeg" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
-                    {% endif %}
-                    {% if report.application.name.strip %}
-                        <b>{{ report.application.name }}</b>
-                    {% else %}
-                        <b>{{ report.application.handle }}</b>
-                    {% endif %}
+                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                        {% if report.application.name.strip %}
+                            <b>{{ report.application.name }}</b>
+                        {% else %}
+                            <b>{{ report.application.handle }}</b>
+                        {% endif %}
                     </a>
                 </td>
                 <td>

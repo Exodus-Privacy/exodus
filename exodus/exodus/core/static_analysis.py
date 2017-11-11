@@ -16,6 +16,9 @@ from django.conf import settings
 import shutil
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
 from trackers.models import Tracker
+from minio import Minio
+from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+
 
 def grep(folder, pattern):
     cmd = '/bin/grep -r "%s" %s/' % (pattern, folder)
@@ -24,27 +27,33 @@ def grep(folder, pattern):
     exitCode = process.returncode
     return exitCode == 0
 
-def getIcon(decoded_dir, storage_path, apk_path):
-    cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % apk_path
+
+def getIcon(decoded_dir, icon_name, apk_tmp):
+    cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % apk_tmp
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     icon = process.communicate()[0].decode(encoding='UTF-8').replace('\n', '')
     print(cmd)
     print(icon)
-    exitCode = process.returncode
-    if exitCode != 0 or icon == '':
+    exit_code = process.returncode
+    if exit_code != 0 or icon == '':
         return ''
 
     source_icon_path = os.path.join(decoded_dir, icon)
-    saved_icon_path = os.path.join(storage_path, 'icon.png')
-    cmd = "cp %s %s" % (source_icon_path, saved_icon_path)
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    output = process.communicate()[0]
-    print(cmd)
-    print(output)
-    exitCode = process.returncode
-    if exitCode != 0:
+    icon_file = Path(source_icon_path)
+    if not icon_file.is_file():
         return ''
-    return saved_icon_path    
+    
+    # Upload icon in storage
+    minio_client = Minio(settings.MINIO_URL,
+                access_key=settings.MINIO_ACCESS_KEY,
+                secret_key=settings.MINIO_SECRET_KEY,
+                secure=settings.MINIO_SECURE)
+    try:
+        minio_client.fput_object(settings.MINIO_BUCKET, icon_name, source_icon_path)
+    except ResponseError as err:
+        print(err)
+    return icon_name
+
 
 def findTrackers(decoded_dir):
     trackers = Tracker.objects.order_by('name')
@@ -55,6 +64,7 @@ def findTrackers(decoded_dir):
                 found.append(t)
                 break
     return found
+
 
 def getVersion(decoded_dir):
     yml = os.path.join(decoded_dir, 'apktool.yml')
@@ -69,10 +79,12 @@ def getVersion(decoded_dir):
         dataMap = yaml.safe_load(f)
         return dataMap['versionInfo']['versionName']
 
+
 def getHandle(decoded_dir):
     xmldoc = minidom.parse(os.path.join(decoded_dir, 'AndroidManifest.xml'))
     man = xmldoc.getElementsByTagName('manifest')[0]
     return man.getAttribute('package')
+
 
 def getPermissions(decoded_dir):
     xmldoc = minidom.parse(os.path.join(decoded_dir, 'AndroidManifest.xml'))
@@ -82,10 +94,12 @@ def getPermissions(decoded_dir):
         perms.append(perm.getAttribute('android:name'))
     return perms
 
+
 def getSha256Sum(apk_path):
     cmd = '/usr/bin/sha256sum %s | head -c 64' % apk_path
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     return process.stdout.read()
+
 
 def decodeAPK(apk_path, decoded_dir):
     root_dir = os.path.dirname(os.path.realpath(__file__))
@@ -95,6 +109,7 @@ def decodeAPK(apk_path, decoded_dir):
     output = process.communicate()[0]
     exitCode = process.returncode
     return exitCode == 0
+
 
 def getApplicationInfos(handle):
     # Fix#12 - We have to remove the cached token :S
