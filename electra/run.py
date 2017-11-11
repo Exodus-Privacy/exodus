@@ -8,7 +8,7 @@ from utils import *
 
 # Credentials
 username = 'lambda'
-password = 'perillaud'
+password = 'xxx'
 
 # Programs
 adb_bin = "/home/lambda/Android/Sdk/platform-tools/adb"

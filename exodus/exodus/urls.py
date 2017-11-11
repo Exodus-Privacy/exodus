@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^', TemplateView.as_view(template_name='base.html'), name='home')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-handler404 = 'exodus.views.page_not_found'
-handler500 = 'exodus.views.page_not_found'
+handler404 = 'exodus_backend.views.page_not_found'
+handler500 = 'exodus_backend.views.page_not_found'
