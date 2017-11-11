@@ -2,8 +2,10 @@ from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from exodus.core.static_analysis import *
 from reports.models import *
-import shutil
+import shutil, os
 import tempfile
+from minio import Minio
+from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
 
 
 class Command(BaseCommand):
@@ -18,10 +20,24 @@ class Command(BaseCommand):
         for report in reports:
             tmpdir = tempfile.mkdtemp()
             decoded_dir = os.path.join(tmpdir, 'decoded')
-            apk_path = report.application.apk.name
-            storage_path = report.storage_path
+            icon_name = '%s_%s.png' % (report.bucket, report.application.handle)
+            apk_name = report.apk_file
+            apk_tmp = os.path.join(tmpdir, apk_name)
+
+            # Download APK from storage
+            minio_client = Minio(settings.MINIO_URL,
+                         access_key=settings.MINIO_ACCESS_KEY,
+                         secret_key=settings.MINIO_SECRET_KEY,
+                         secure=settings.MINIO_SECURE)
+            try:
+                data = minio_client.get_object(settings.MINIO_BUCKET, apk_name)
+                with open(apk_tmp, 'wb') as file_data:
+                    for d in data.stream(32 * 1024):
+                        file_data.write(d)
+            except ResponseError as err:
+                print(err)
             # Decode APK
-            if decodeAPK(apk_path, decoded_dir):
+            if decodeAPK(apk_tmp, decoded_dir):
                 # Refresh trackers
                 trackers = findTrackers(decoded_dir)
                 if len(trackers) > len(report.found_trackers.all()):
@@ -29,9 +45,9 @@ class Command(BaseCommand):
                     report.save()
                     self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
                 # Refresh icon
-                icon_path = getIcon(decoded_dir, storage_path, apk_path)
+                icon_path = getIcon(decoded_dir, icon_name, apk_tmp)
                 if icon_path != '':
-                    report.application.icon_path = os.path.relpath(icon_path, settings.EX_FS_ROOT)
+                    report.application.icon_path = icon_path
                     report.application.save()
                     self.stdout.write(self.style.SUCCESS('Successfully update icon of "%s"' % report.application.handle))
 

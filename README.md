@@ -13,7 +13,7 @@
 # Deploy
 ## System dependencies
 ```
-sudo apt install git virtualenv postgresql-9.6 rabbitmq-server aapt build-essential libssl-dev libffi-dev python-dev openjdk-8-jre
+sudo apt install git virtualenv postgresql-9.6 rabbitmq-server aapt build-essential libssl-dev libffi-dev python3-dev openjdk-8-jre
 ```
 
 ## Clone the project

@@ -25,8 +25,10 @@ class AnalysisRequest(models.Model):
     #TODO Check file 
     #TODO Use configuration for storage location
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    path = os.path.join(settings.EX_APK_FS_ROOT, str(randomword(64)))
+    randhex = str(randomword(64))
+    path = os.path.join(settings.EX_APK_FS_ROOT, randhex)
     storage_path = models.TextField(default=path)
+    bucket = models.CharField(max_length=200, default='')
     apk = models.CharField(max_length=500, default='')
     handle = models.CharField(max_length=500,validators=[validate_handle])
     description = models.TextField(blank=True)

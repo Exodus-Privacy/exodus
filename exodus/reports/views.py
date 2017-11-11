@@ -6,6 +6,11 @@ from django.template import loader
 from django.db import connection
 from exodus.core.dns import *
 from exodus.core.http import *
+from django.conf import settings
+import os
+from minio import Minio
+from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+
 
 def index(request):
     try:
@@ -14,12 +19,14 @@ def index(request):
         raise Http404("reports do not exist")
     return render(request, 'reports_list.html', {'reports': reports})
 
+
 def get_all_apps(request):
     try:
         apps = Application.objects.order_by('handle').distinct('handle')
     except Application.DoesNotExist:
         raise Http404("No apps found")
     return render(request, 'apps_list.html', {'apps': apps})
+
 
 def search_by_handle(request, handle):
     try:
@@ -28,6 +35,7 @@ def search_by_handle(request, handle):
         raise Http404("No reports found")
     return render(request, 'reports_list.html', {'reports': reports})
 
+
 def detail(request, report_id):
     try:
         report = Report.objects.get(pk=report_id)
@@ -35,10 +43,31 @@ def detail(request, report_id):
         raise Http404("report does not exist")
     return render(request, 'report_details.html', {'report': report})
 
+
 def refreshdns(request):
     if request.method == 'GET':
         refresh_dns.delay()
         return HttpResponse(status=200)
+
+
+def get_app_icon(request, app_id):
+    minioClient = Minio(settings.MINIO_URL,
+                access_key=settings.MINIO_ACCESS_KEY,
+                secret_key=settings.MINIO_SECRET_KEY,
+                secure=settings.MINIO_SECURE)
+    try:
+        app = Application.objects.get(pk=app_id)
+    except Application.DoesNotExist:
+        raise Http404("app does not exist")
+
+    try:
+        data = minioClient.get_object(settings.MINIO_BUCKET, app.icon_path)
+        return HttpResponse(data.data, content_type="image/png")
+    except Exception as err:
+        print(err)
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'android.jpeg'), "rb") as f:
+            return HttpResponse(f.read(), content_type="image/jpeg")
+
 
 def get_stats(request):
     from collections import namedtuple
