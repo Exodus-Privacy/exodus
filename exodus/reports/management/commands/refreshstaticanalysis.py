@@ -53,4 +53,3 @@ class Command(BaseCommand):
 
             shutil.rmtree(tmpdir, ignore_errors=True)
 
-            

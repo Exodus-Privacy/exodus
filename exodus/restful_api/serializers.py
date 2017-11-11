@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from restful_api.models import ReportInfos
+
 
 class ReportInfosSerializer(serializers.Serializer):
     creation_date = serializers.DateTimeField()

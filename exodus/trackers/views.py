@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.template import loader
 from .models import *
 from reports.models import *
+
 
 def index(request):
     try:
@@ -13,12 +12,14 @@ def index(request):
         raise Http404("trackers does not exist")
     return render(request, 'trackers_list.html', {'trackers': trackers})
 
+
 def detail(request, tracker_id):
     try:
         tracker = Tracker.objects.get(pk=tracker_id)
     except Tracker.DoesNotExist:
         raise Http404("tracker does not exist")
     return render(request, 'tracker_details.html', {'tracker': tracker})
+
 
 def graph(request):
     try:
