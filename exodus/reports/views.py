@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.http import Http404
 from django.db import connection
 from exodus.core.dns import *
 from exodus.core.http import *

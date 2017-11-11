@@ -6,3 +6,6 @@ from django.template import loader
 
 def index(request):
     return render(request, 'base.html')
+
+def page_not_found(request):
+    return render(request, '404.html')
