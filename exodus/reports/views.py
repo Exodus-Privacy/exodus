@@ -2,14 +2,12 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.template import loader
 from django.db import connection
 from exodus.core.dns import *
 from exodus.core.http import *
 from django.conf import settings
 import os
 from minio import Minio
-from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
 
 
 def index(request):
