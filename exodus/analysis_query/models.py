@@ -2,15 +2,16 @@
 from __future__ import unicode_literals
 
 import os
-from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
 import re, requests
 import random, string
 
+
 def randomword(length):
    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+
 
 def validate_handle(value):
     reg = re.compile(r'^(\w+\.)+\w+$')
@@ -21,9 +22,8 @@ def validate_handle(value):
     if r.status_code == 404:
         raise ValidationError(u'%s application not found on Google Play' % value)
 
+
 class AnalysisRequest(models.Model):
-    #TODO Check file 
-    #TODO Use configuration for storage location
     uploaded_at = models.DateTimeField(auto_now_add=True)
     randhex = str(randomword(64))
     path = os.path.join(settings.EX_APK_FS_ROOT, randhex)

@@ -35,7 +35,8 @@ def get_report_infos(request, r_id):
         infos.flow_upload_link = '/api/flow/%s/' % report.id
         serializer = ReportInfosSerializer(infos, many=False)
         return JsonResponse(serializer.data, safe=True)
-        
+
+
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
@@ -55,6 +56,7 @@ def get_apk(request, r_id):
         except Exception as err:
             print(err)
             return HttpResponse(status=500)
+
 
 @csrf_exempt
 @api_view(['POST'])
@@ -86,6 +88,7 @@ def upload_pcap(request, r_id):
         print(e)
         return HttpResponse(status=500)
     return HttpResponse(status=200)
+
 
 @csrf_exempt
 @api_view(['POST'])

@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
-from django.views.generic import FormView, DetailView, ListView
+from django.views.generic import FormView, ListView
 from .forms import AnalysisRequestForm
 from .models import AnalysisRequest
 from exodus.core.apk import StaticAnalysis
 from django.conf import settings
-from django.core.exceptions import ValidationError
 import random, string, os
 from django.shortcuts import render
 
+
 def randomword(length):
    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+
 
 class AnalysisRequestView(FormView):
     template_name = 'apk_upload.html'
@@ -32,6 +31,7 @@ class AnalysisRequestView(FormView):
             return render(self.request, 'query_error.html', {'error': 'Unable to analyze the APK file'})
 
         return HttpResponseRedirect('/reports/%s/'%r_id)
+
 
 class AnalysisRequestListView(ListView):
     template_name = 'queries_list.html'

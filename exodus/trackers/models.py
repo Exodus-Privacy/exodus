@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
+
 @python_2_unicode_compatible
 class Tracker(models.Model):
     name = models.CharField(max_length=200)
@@ -13,6 +14,7 @@ class Tracker(models.Model):
 
     def __str__(self):
         return self.name
+
 
 @python_2_unicode_compatible
 class DetectionRule(models.Model):

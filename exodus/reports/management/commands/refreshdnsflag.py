@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from exodus.core.static_analysis import *
 from exodus.core.dns import *
 
+
 class Command(BaseCommand):
     help = 'Refresh DNS tracking flag'
 

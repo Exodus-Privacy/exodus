@@ -49,10 +49,6 @@ def download_apk(self, analysis):
     # Fix#12 - We have to remove the cached token :S
     shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
 
-    # cmd = 'mkdir -p %s' % analysis.query.storage_path
-    # process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    # output = process.communicate()[0]
-
     cmd = 'gplaycli -v -t -y -pd %s -f %s/' % (analysis.query.handle, analysis.tmp_dir)
     print(cmd)
     retry = 5
