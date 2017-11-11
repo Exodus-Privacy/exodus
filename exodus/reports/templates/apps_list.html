@@ -5,8 +5,6 @@
     {% if apps %}
         {% for app in apps %}
             <div class="col-md-2">
-
-
                 <figure class="figure text-center small">
                     <a href="{% url 'reports:search_by_handle' app.handle %}">
                         <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{app.id}}/icon" width="80px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
