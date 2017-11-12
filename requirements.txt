@@ -4,6 +4,7 @@ anyjson==0.3.3
 argh==0.26.2
 args==0.1.0
 asn1crypto==0.23.0
+beautifulsoup4==4.6.0
 billiard==3.3.0.23
 blinker==1.4
 brotlipy==0.6.0
