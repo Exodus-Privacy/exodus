@@ -22,31 +22,47 @@ def grep(folder, pattern):
     return exitCode == 0
 
 
-def getIcon(decoded_dir, icon_name, apk_tmp):
-    cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % apk_tmp
-    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
-    icon = process.communicate()[0].decode(encoding='UTF-8').replace('\n', '')
-    print(cmd)
-    print(icon)
-    exit_code = process.returncode
-    if exit_code != 0 or icon == '':
-        return ''
+def getIcon(decoded_dir, icon_name, apk_tmp, handle):
+    # cmd = "aapt d --values badging %s | grep application-icon | tail -n1 | cut -d \"'\" -f2" % apk_tmp
+    # process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    # icon = process.communicate()[0].decode(encoding='UTF-8').replace('\n', '')
+    # print(cmd)
+    # print(icon)
+    # exit_code = process.returncode
+    # if exit_code != 0 or icon == '':
+    #     return ''
+    #
+    # source_icon_path = os.path.join(decoded_dir, icon)
+    # icon_file = Path(source_icon_path)
+    # if not icon_file.is_file():
+    #     return ''
+    import re
+    from bs4 import BeautifulSoup
+    import urllib2, tempfile
 
-    source_icon_path = os.path.join(decoded_dir, icon)
-    icon_file = Path(source_icon_path)
-    if not icon_file.is_file():
-        return ''
-    
-    # Upload icon in storage
-    minio_client = Minio(settings.MINIO_URL,
-                access_key=settings.MINIO_ACCESS_KEY,
-                secret_key=settings.MINIO_SECRET_KEY,
-                secure=settings.MINIO_SECURE)
-    try:
-        minio_client.fput_object(settings.MINIO_BUCKET, icon_name, source_icon_path)
-    except ResponseError as err:
-        print(err)
-    return icon_name
+    address = 'https://play.google.com/store/apps/details?id=%s' % handle
+    text = urllib2.urlopen(address).read()
+    soup = BeautifulSoup(text, 'html.parser')
+    i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
+    if len(i) > 0:
+        url = 'https:%s'%i[0]['src']
+        try:
+            f = urllib2.urlopen(url)
+            print("Downloading " + url)
+            with tempfile.NamedTemporaryFile(delete=True) as fp:
+                fp.write(f.read())
+                # Upload icon in storage
+                minio_client = Minio(settings.MINIO_URL,
+                                     access_key=settings.MINIO_ACCESS_KEY,
+                                     secret_key=settings.MINIO_SECRET_KEY,
+                                     secure=settings.MINIO_SECURE)
+                try:
+                    minio_client.fput_object(settings.MINIO_BUCKET, icon_name, fp.name)
+                except ResponseError as err:
+                    print(err)
+                return icon_name
+        except Exception:
+            return ''
 
 
 def findTrackers(decoded_dir):

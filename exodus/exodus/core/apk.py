@@ -11,7 +11,7 @@ from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyEx
 
 @app.task(bind=True)
 def find_and_save_app_icon(self, analysis):
-    return getIcon(analysis.decoded_dir, analysis.icon_name, analysis.apk_tmp)
+    return getIcon(analysis.decoded_dir, analysis.icon_name, analysis.apk_tmp, analysis.query.handle)
 
 
 @app.task(bind=True)
