@@ -25,6 +25,7 @@ enum34==1.1.6
 futures==3.1.1
 gpapi==0.2.5
 GPlayCli==3.10
+gunicorn==19.7.1
 h2==2.6.2
 hpack==3.0.0
 html2text==2016.9.19
