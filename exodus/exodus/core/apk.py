@@ -46,12 +46,12 @@ def decode(self, analysis):
 
 @app.task(bind=True)
 def download_apk(self, analysis):
-    device_code_names = ['hammerhead', 'manta', 'cloudbook', 'bullhead']
+    device_code_names = ['', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
     retry = 5
     exit_code = 1
     while retry != 0:
         # Rotate devices
-        cmd = 'gplaycli -v -a -t -y -pd %s -dc %s -f %s/' % (analysis.query.handle, device_code_names[retry%len(device_code_names)], analysis.tmp_dir)
+        cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (analysis.query.handle, device_code_names[retry%len(device_code_names)], analysis.tmp_dir)
         print(cmd)
         # Fix#12 - We have to remove the cached token :S
         shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
@@ -64,7 +64,8 @@ def download_apk(self, analysis):
         retry -= 1
 
     # Upload APK in storage
-    if exit_code == 0:
+    apk = Path(analysis.apk_tmp)
+    if exit_code == 0 and apk.is_file():
         minioClient = Minio(settings.MINIO_URL,
                     access_key=settings.MINIO_ACCESS_KEY,
                     secret_key=settings.MINIO_SECRET_KEY,
@@ -81,6 +82,7 @@ def download_apk(self, analysis):
             minioClient.fput_object(settings.MINIO_BUCKET, analysis.apk_name, analysis.apk_tmp)
         except ResponseError as err:
             print(err)
+            return False
     
     return exit_code == 0
 
@@ -187,7 +189,7 @@ class StaticAnalysis:
                     secure=settings.MINIO_SECURE)
             try:
                 try:
-                    objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=instance.bucket, recursive=True)
+                    objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=self.bucket, recursive=True)
                     for obj in objects:
                         minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
                 except ResponseError as err:
