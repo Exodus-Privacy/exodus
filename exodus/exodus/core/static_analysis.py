@@ -36,18 +36,17 @@ def getIcon(decoded_dir, icon_name, apk_tmp, handle):
     # icon_file = Path(source_icon_path)
     # if not icon_file.is_file():
     #     return ''
-    import re
     from bs4 import BeautifulSoup
-    import urllib2, tempfile
+    import urllib.request, tempfile
 
     address = 'https://play.google.com/store/apps/details?id=%s' % handle
-    text = urllib2.urlopen(address).read()
+    text = urllib.request.urlopen(address).read()
     soup = BeautifulSoup(text, 'html.parser')
     i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
     if len(i) > 0:
         url = 'https:%s'%i[0]['src']
         try:
-            f = urllib2.urlopen(url)
+            f = urllib.request.urlopen(url)
             print("Downloading " + url)
             with tempfile.NamedTemporaryFile(delete=True) as fp:
                 fp.write(f.read())
