@@ -147,7 +147,7 @@ def getApplicationInfos(handle):
             v['start'] = lines[0].find(v['text'])
             if i > 0:
                 c = columns[i-1]
-                c['end'] =  v['start']
+                c['end'] = v['start']
                 c['value'] = lines[1][c['start']:c['end']].strip(" ")
                 result[c['name']] = c['value']
         if handle in result['handle']:
