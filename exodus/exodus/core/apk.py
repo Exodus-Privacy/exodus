@@ -7,6 +7,7 @@ from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
 from .static_analysis import *
 from minio import Minio
 from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+import time
 
 
 @app.task(bind=True)
@@ -49,12 +50,12 @@ def download_apk(self, analysis):
     device_code_names = ['', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
     retry = 5
     exit_code = 1
+    # Fix#12 - We have to remove the cached token :S
+    shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
     while retry != 0:
         # Rotate devices
         cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (analysis.query.handle, device_code_names[retry%len(device_code_names)], analysis.tmp_dir)
         print(cmd)
-        # Fix#12 - We have to remove the cached token :S
-        shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
         process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
         output = process.communicate()[0]
         print(output)
@@ -62,6 +63,7 @@ def download_apk(self, analysis):
         if exit_code == 0:
             break
         retry -= 1
+        time.sleep(2)
 
     # Upload APK in storage
     apk = Path(analysis.apk_tmp)
