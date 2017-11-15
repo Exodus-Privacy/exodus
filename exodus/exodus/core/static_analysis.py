@@ -60,7 +60,8 @@ def getIcon(decoded_dir, icon_name, apk_tmp, handle):
                 except ResponseError as err:
                     print(err)
                 return icon_name
-        except Exception:
+        except Exception as e:
+            print(e)
             return ''
 
 
