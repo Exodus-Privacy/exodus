@@ -34,6 +34,8 @@ class Command(BaseCommand):
                 raise CommandError('No reports found')
 
         for report in reports:
+            self.stdout.write(
+                self.style.SUCCESS('Start updating report "%s"' % report.id))
             tmpdir = tempfile.mkdtemp()
             decoded_dir = os.path.join(tmpdir, 'decoded')
             icon_name = '%s_%s.png' % (report.bucket, report.application.handle)
