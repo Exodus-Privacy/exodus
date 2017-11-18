@@ -15,7 +15,7 @@ from trackers.models import Tracker
 
 
 def grep(folder, pattern):
-    cmd = '/bin/grep -r "%s" %s/' % (pattern, folder)
+    cmd = '/bin/grep -r "%s" %s/*.dex' % (pattern, folder)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
     exitCode = process.returncode
@@ -44,7 +44,9 @@ def getIcon(decoded_dir, icon_name, apk_tmp, handle):
     soup = BeautifulSoup(text, 'html.parser')
     i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
     if len(i) > 0:
-        url = 'https:%s'%i[0]['src']
+        url = '%s'%i[0]['src']
+        if 'http' not in url:
+            url = 'https:%s' % url
         try:
             f = urllib.request.urlopen(url)
             print("Downloading " + url)
