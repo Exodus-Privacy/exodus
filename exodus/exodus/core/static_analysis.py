@@ -45,6 +45,7 @@ def download_and_put(url, destination_name):
 
 def getIcon(icon_name, handle, url=None):
     from bs4 import BeautifulSoup
+    import urllib.request, tempfile
 
     if url is None:
         address = 'https://play.google.com/store/apps/details?id=%s' % handle
