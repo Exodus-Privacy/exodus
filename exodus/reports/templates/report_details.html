@@ -94,7 +94,7 @@
                     We have found these permissions in the application:
                     <br>
                     <br>
-                    <table style="margin: auto; padding:5px">
+                    <table class="table table-sm">
                         {% for perm in report.application.permission_set.all %}
                             <tr>
                                 <td class="text-right"><samp>{{perm.name}}</samp></td>
@@ -118,7 +118,7 @@
                                 During the execution, the application has requested these domain resolutions:
                                 <br>
                                 <br>
-                                <table style="margin: auto; padding:5px">
+                                <table class="table table-sm">
                                     {% for dns in na.dnsquery_set.all|sort_dns %}
                                         <tr>
                                             <td class="text-right"><samp>{{dns.hostname}}</samp></td>
