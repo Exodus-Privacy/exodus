@@ -1,7 +1,7 @@
 {% extends "base.html"%}
 {% block content %}
 {% load sort_dns %} 
-{% load perm_doc %}
+{% load permission_doc %}
     {% load static %}
     {% if report %}
     {% if request.user.is_superuser %}

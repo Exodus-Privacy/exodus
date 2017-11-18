@@ -1,8 +1,8 @@
 from django import template
-from django.template.defaultfilters import stringfilter
 from django.db.models.query import QuerySet
 
 register = template.Library()
+
 
 @register.filter(name='sort_dns', is_safe=True)
 def sort_dns(value):
