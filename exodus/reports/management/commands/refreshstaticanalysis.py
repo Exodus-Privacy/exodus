@@ -61,7 +61,7 @@ class Command(BaseCommand):
                     report.save()
                     self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
                 # Refresh icon
-                icon_path = getIcon(decoded_dir, icon_name, apk_tmp, report.application.handle)
+                icon_path = getIcon(icon_name, report.application.handle)
                 if icon_path != '':
                     report.application.icon_path = icon_path
                     report.application.save()
