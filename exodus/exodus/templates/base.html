@@ -9,43 +9,45 @@
     <title>εxodus</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg  sticky-top navbar-dark bg-dark justify-content-between">
-    <a class="navbar-brand" href="/">
-        <object width="50px" style="margin-bottom:-15px" data="/static/img/logo_purple.svg" type="image/svg+xml">
-        </object> 
-        <span class="h2">εxodus</span> <span class="small text-muted">v1.0</span></a>
-    <div class="collapse navbar-collapse" id="">
-        <div class="dropdown">
-            <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="reports_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Reports
-            </button>
-            <div class="dropdown-menu" aria-labelledby="reports_dd">
-                <a class="dropdown-item" href="/reports/">All</a>
-                <a class="dropdown-item" href="/reports/apps/">All applications</a>
-                <a class="dropdown-item" href="/reports/stats/">Statistics</a>
-            </div>
-        </div>
-        &nbsp;
-        <div class="dropdown">
-            <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="trackers_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Trackers
-            </button>
-            <div class="dropdown-menu" aria-labelledby="trackers_dd">
-                <a class="dropdown-item" href="/trackers/">List</a>
-            </div>
-        </div>
-        &nbsp;
-        {% if request.user.is_superuser %}
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark justify-content-between">
+    <div class="navbar-inner">
+        <a class="navbar-brand" href="/">
+            <object width="50px" style="margin-bottom:-15px" data="/static/img/logo_purple.svg" type="image/svg+xml">
+            </object>
+            <span class="h2">εxodus</span> <span class="small text-muted">v1.0</span></a>
+        <div class="collapse navbar-collapse" id="">
             <div class="dropdown">
-                <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Analysis
+                <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="reports_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Reports
                 </button>
-                <div class="dropdown-menu" aria-labelledby="analysis_dd">
-                    <a class="dropdown-item" href="/analysis/">List</a>
-                    <a class="dropdown-item" href="/analysis/submit/">Submit</a>
+                <div class="dropdown-menu" aria-labelledby="reports_dd">
+                    <a class="dropdown-item" href="/reports/">All</a>
+                    <a class="dropdown-item" href="/reports/apps/">All applications</a>
+                    <a class="dropdown-item" href="/reports/stats/">Statistics</a>
                 </div>
             </div>
-        {% endif %}
+            &nbsp;
+            <div class="dropdown">
+                <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="trackers_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Trackers
+                </button>
+                <div class="dropdown-menu" aria-labelledby="trackers_dd">
+                    <a class="dropdown-item" href="/trackers/">List</a>
+                </div>
+            </div>
+            &nbsp;
+            {% if request.user.is_superuser %}
+                <div class="dropdown">
+                    <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Analysis
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="analysis_dd">
+                        <a class="dropdown-item" href="/analysis/">List</a>
+                        <a class="dropdown-item" href="/analysis/submit/">Submit</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </nav>
 <br>
