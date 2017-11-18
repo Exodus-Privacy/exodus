@@ -96,7 +96,7 @@
                     <br>
                     <ul>
                         {% for perm in report.application.permission_set.all %}
-                            <li><samp>{{perm.name}}</samp> {{perm.name|perm_doc}}</li>
+                            <li><samp>{{perm.name}}</samp> {{perm.name|perm_doc|safe}}</li>
                         {% endfor %}
                     </ul>
                     <i class="small">Permissions are actions the application can do on your phone.</i>
