@@ -1,6 +1,7 @@
 {% extends "base.html"%}
 {% block content %}
 {% load sort_dns %} 
+{% load perm_doc %}
     {% load static %}
     {% if report %}
     {% if request.user.is_superuser %}
@@ -95,7 +96,7 @@
                     <br>
                     <ul>
                         {% for perm in report.application.permission_set.all %}
-                            <li><samp>{{perm.name}}</samp></li>
+                            <li><samp>{{perm.name}}</samp> {{perm.name|perm_doc}}</li>
                         {% endfor %}
                     </ul>
                     <i class="small">Permissions are actions the application can do on your phone.</i>
