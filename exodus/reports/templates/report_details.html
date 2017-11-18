@@ -65,7 +65,7 @@
                     <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.all|length }}</span> Trackers</h4>
                 </div>
                 <div class="card-body">
-                    We have found these trackers in the application:
+                    We have found code signature of these trackers in the application:
                     <br>
                     <br>
                     <ul>
@@ -73,11 +73,13 @@
                             <li><a href="{% url 'trackers:detail' t.id %}"><samp>{{t.name}}</samp></a></li>
                         {% endfor %}
                     </ul>
-                    <i class="small">A tracker is a piece of software meant to collect data about you or your usages. We do not guarantee the exhaustiveness of this list.</i>
+                    <p  class="small alert">
+                        <i>A tracker is a piece of software meant to collect data about you or your usages. We do not guarantee the exhaustiveness of this list.</i>
+                    </p>
                     <p class="alert alert-danger small">
                         Privacy protecting applications embed lists of trackers signatures in order to block them. εxodus could find trackers signatures in these
                         blacklists and falsely report them as part of the application. If you have doubts about this report, contact us
-                        at <a href="mailto:contact@exodus-privacy.eu.org?subject=Report {{report.id}}">contact@exodus-privacy.eu.org</a>
+                        at <a href="mailto:contact@exodus-privacy.eu.org?subject=Exodus - Question about report {{report.id}}">contact@exodus-privacy.eu.org</a>
                     </p>
                 </div>
             </div>
