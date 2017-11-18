@@ -10,6 +10,6 @@ def perm_doc(value):
     perm = str(value)
     if perm.startswith('android.permission.'):
         perm = perm.replace('android.permission.', '')
-        return '<a class="btn btn-outline-info btn-sm" href="https://developer.android.com/reference/android/Manifest.permission.html#%s" target="_blank">&nbsp;Info️</a>' % perm
+        return '<a class="alert alert-info" href="https://developer.android.com/reference/android/Manifest.permission.html#%s" target="_blank">&nbsp;Info️</a>' % perm
 
     return ''
