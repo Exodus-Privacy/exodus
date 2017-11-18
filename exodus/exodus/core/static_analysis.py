@@ -45,7 +45,7 @@ def getIcon(decoded_dir, icon_name, apk_tmp, handle):
     i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
     if len(i) > 0:
         url = '%s'%i[0]['src']
-        if 'http' not in url:
+        if not url.startswith('http'):
             url = 'https:%s' % url
         try:
             f = urllib.request.urlopen(url)
