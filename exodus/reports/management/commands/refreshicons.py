@@ -21,4 +21,5 @@ class Command(BaseCommand):
             if result != '':
                 report.application.icon_path = result
                 report.application.save()
+                self.stdout.write(self.style.SUCCESS('Successfully update icon for report %s - %s' % (report_id, report.application.handle)))
 
