@@ -118,7 +118,7 @@
                                 During the execution, the application has requested these domain resolutions:
                                 <br>
                                 <br>
-                                <table>
+                                <table style="margin: auto; padding:5px">
                                     {% for dns in na.dnsquery_set.all|sort_dns %}
                                         <tr>
                                             <td class="text-right"><samp>{{dns.hostname}}</samp></td>
