@@ -36,7 +36,7 @@ class Command(BaseCommand):
         for report in reports:
             self.stdout.write(
                 self.style.SUCCESS('Start updating report "%s"' % report.id))
-            with tempfile.mkdtemp() as tmpdir:
+            with tempfile.TemporaryDirectory() as tmpdir:
                 decoded_dir = os.path.join(tmpdir, 'decoded')
                 icon_name = '%s_%s.png' % (report.bucket, report.application.handle)
                 apk_name = report.apk_file
