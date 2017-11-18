@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = 'Refresh all reports'
 
     def add_arguments(self, parser):
-        parser.add_argument('report_id', nargs='+', type=int)
+        parser.add_argument('report_id', nargs='*', type=int)
 
         parser.add_argument(
             '--all',
