@@ -58,10 +58,11 @@ class Command(BaseCommand):
                 if decodeAPK(apk_tmp, decoded_dir):
                     # Refresh trackers
                     trackers = findTrackers(decoded_dir)
-                    if len(trackers) > len(report.found_trackers.all()):
-                        report.found_trackers = trackers
-                        report.save()
-                        self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
+                    # if len(trackers) > len(report.found_trackers.all()):
+                    print(trackers)
+                    report.found_trackers = trackers
+                    report.save()
+                    self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
                     # Refresh icon
                     icon_path = getIcon(icon_name, report.application.handle)
                     if icon_path != '':
