@@ -11,11 +11,27 @@ from minio.error import (ResponseError)
 class Command(BaseCommand):
     help = 'Refresh all reports'
 
+    def add_arguments(self, parser):
+        parser.add_argument('report_id', nargs='+', type=int)
+
+        parser.add_argument(
+            '--all',
+            action='store_true',
+            dest='all',
+            help='Update all reports',
+        )
+
     def handle(self, *args, **options):
-        try:
-            reports = Report.objects.order_by('-creation_date')
-        except Report.DoesNotExist:
-            raise CommandError('No reports found')
+        if options['all']:
+            try:
+                reports = Report.objects.order_by('-creation_date')
+            except Report.DoesNotExist:
+                raise CommandError('No reports found')
+        else:
+            try:
+                reports = Report.objects.filter(pk__in=options['report_id'])
+            except Report.DoesNotExist:
+                raise CommandError('No reports found')
 
         for report in reports:
             tmpdir = tempfile.mkdtemp()
