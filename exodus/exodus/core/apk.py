@@ -12,7 +12,7 @@ import time
 
 @app.task(bind=True)
 def find_and_save_app_icon(self, analysis):
-    return getIcon(analysis.decoded_dir, analysis.icon_name, analysis.apk_tmp, analysis.query.handle)
+    return getIcon(analysis.icon_name, analysis.query.handle)
 
 
 @app.task(bind=True)
@@ -121,7 +121,7 @@ def start_static_analysis(analysis):
         handle = infos[1]
         perms = infos[2]
         trackers = infos[3]
-        icon_path = infos[4]
+        icon_file = infos[4]
         app_info = infos[5]
 
         # If a report exists for this couple (handle, version), just return it
@@ -142,7 +142,7 @@ def start_static_analysis(analysis):
             app.name = app_info['title']
             app.creator = app_info['creator']
             app.downloads = app_info['downloads']
-        if icon_path != '':
+        if icon_file != '':
             app.icon_path = analysis.icon_name
         app.save(force_insert=True)
 
