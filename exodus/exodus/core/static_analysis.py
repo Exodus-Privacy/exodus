@@ -15,7 +15,7 @@ from trackers.models import Tracker
 
 
 def grep(folder, pattern):
-    cmd = '/bin/grep -r "%s" %s/*.dex' % (pattern, folder)
+    cmd = '/bin/grep -r "%s" %s/*.dex %s/AndroidManifest.xml' % (pattern, folder, folder)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
     exitCode = process.returncode
