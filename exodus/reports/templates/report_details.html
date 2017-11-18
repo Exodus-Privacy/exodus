@@ -94,11 +94,14 @@
                     We have found these permissions in the application:
                     <br>
                     <br>
-                    <ul>
+                    <table>
                         {% for perm in report.application.permission_set.all %}
-                            <li><samp>{{perm.name}}</samp> {{perm.name|perm_doc|safe}}</li>
+                            <tr>
+                                <td class="text-right"><samp>{{perm.name}}</samp></td>
+                                <td>{{perm.name|perm_doc|safe}}</td>
+                            </tr>
                         {% endfor %}
-                    </ul>
+                    </table>
                     <i class="small">Permissions are actions the application can do on your phone.</i>
                 </div>
             </div>
