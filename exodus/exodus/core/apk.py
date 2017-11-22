@@ -123,7 +123,7 @@ def clear_analysis_files(self, analysis, remove_from_storage=False):
 def start_static_analysis(analysis):
     dl_r = download_apk.delay(analysis)
     if not dl_r.get():
-        clear_analysis_files(analysis, True)
+        clear_analysis_files.delay(analysis, True)
         return -1
     g = group(decode.s(analysis), sha256sum.s(analysis))()
     g_r = g.get()
@@ -148,7 +148,7 @@ def start_static_analysis(analysis):
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
         if existing_report is not None:
-            clear_analysis_files(analysis, True)
+            clear_analysis_files.delay(analysis, True)
             return existing_report.id
 
         report = Report(apk_file=analysis.apk_name, storage_path='', bucket=analysis.query.bucket)
@@ -180,10 +180,10 @@ def start_static_analysis(analysis):
         report.found_trackers = trackers
         report.save()
 
-        clear_analysis_files(analysis, False)
+        clear_analysis_files.delay(analysis, False)
 
         return report.id
-    clear_analysis_files(analysis, True)
+    clear_analysis_files.delay(analysis, True)
     return -1
 
 
