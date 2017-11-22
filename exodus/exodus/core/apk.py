@@ -100,9 +100,30 @@ def get_app_infos(self, analysis):
     return getApplicationInfos(analysis.query.handle)
 
 
+@app.task(bind=True)
+def clear_analysis_files(self, analysis, remove_from_storage=False):
+    print('Removing %s' % self.tmp_dir)
+    shutil.rmtree(self.tmp_dir, ignore_errors=True)
+    if remove_from_storage:
+        minio_client = Minio(settings.MINIO_URL,
+                access_key=settings.MINIO_ACCESS_KEY,
+                secret_key=settings.MINIO_SECRET_KEY,
+                secure=settings.MINIO_SECURE)
+        try:
+            try:
+                objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=self.bucket, recursive=True)
+                for obj in objects:
+                    minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
+            except ResponseError as err:
+                print(err)
+        except ResponseError as err:
+            print(err)
+
+
 def start_static_analysis(analysis):
     dl_r = download_apk.delay(analysis)
     if not dl_r.get():
+        clear_analysis_files(analysis, True)
         return -1
     g = group(decode.s(analysis), sha256sum.s(analysis))()
     g_r = g.get()
@@ -127,7 +148,7 @@ def start_static_analysis(analysis):
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
         if existing_report is not None:
-            analysis.clean(True)
+            clear_analysis_files(analysis, True)
             return existing_report.id
 
         report = Report(apk_file=analysis.apk_name, storage_path='', bucket=analysis.query.bucket)
@@ -159,10 +180,10 @@ def start_static_analysis(analysis):
         report.found_trackers = trackers
         report.save()
 
-        analysis.clean()
+        clear_analysis_files(analysis, False)
 
         return report.id
-    analysis.clean(True)
+    clear_analysis_files(analysis, True)
     return -1
 
 
