@@ -202,23 +202,5 @@ class StaticAnalysis:
         self.apk_name = '%s_%s.apk' % (self.bucket, self.query.handle)
         self.icon_name = '%s_%s.png' % (self.bucket, self.query.handle)
 
-    def clean(self, remove_from_storage=False):
-        print('Removing %s' % self.tmp_dir)
-        shutil.rmtree(self.tmp_dir, ignore_errors=True)
-        if remove_from_storage:
-            minio_client = Minio(settings.MINIO_URL,
-                    access_key=settings.MINIO_ACCESS_KEY,
-                    secret_key=settings.MINIO_SECRET_KEY,
-                    secure=settings.MINIO_SECURE)
-            try:
-                try:
-                    objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=self.bucket, recursive=True)
-                    for obj in objects:
-                        minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
-                except ResponseError as err:
-                    print(err)
-            except ResponseError as err:
-                print(err)
-
     def start(self):
         return start_static_analysis(self)
