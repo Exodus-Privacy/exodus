@@ -102,8 +102,8 @@ def get_app_infos(self, analysis):
 
 @app.task(bind=True)
 def clear_analysis_files(self, analysis, remove_from_storage=False):
-    print('Removing %s' % self.tmp_dir)
-    shutil.rmtree(self.tmp_dir, ignore_errors=True)
+    print('Removing %s' % analysis.tmp_dir)
+    shutil.rmtree(analysis.tmp_dir, ignore_errors=True)
     if remove_from_storage:
         minio_client = Minio(settings.MINIO_URL,
                 access_key=settings.MINIO_ACCESS_KEY,
@@ -111,7 +111,7 @@ def clear_analysis_files(self, analysis, remove_from_storage=False):
                 secure=settings.MINIO_SECURE)
         try:
             try:
-                objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=self.bucket, recursive=True)
+                objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=analysis.bucket, recursive=True)
                 for obj in objects:
                     minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
             except ResponseError as err:
