@@ -21,37 +21,41 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <div class="dropdown">
-                <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="reports_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Reports
-                </button>
-                <div class="dropdown-menu" aria-labelledby="reports_dd">
-                    <a class="dropdown-item" href="/reports/">All</a>
-                    <a class="dropdown-item" href="/reports/apps/">All applications</a>
-                    <a class="dropdown-item" href="/reports/stats/">Statistics</a>
-                </div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="dropdown">
+                  <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="reports_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Reports
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="reports_dd">
+                      <a class="dropdown-item" href="/reports/">All</a>
+                      <a class="dropdown-item" href="/reports/apps/">All applications</a>
+                      <a class="dropdown-item" href="/reports/stats/">Statistics</a>
+                  </div>
+              </div>
+              &nbsp;
+              <div class="dropdown">
+                  <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="trackers_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Trackers
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="trackers_dd">
+                      <a class="dropdown-item" href="/trackers/">List</a>
+                  </div>
+              </div>
+              &nbsp;
+              {% if request.user.is_superuser %}
+                  <div class="dropdown">
+                      <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Analysis
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="analysis_dd">
+                          <a class="dropdown-item" href="/analysis/">List</a>
+                          <a class="dropdown-item" href="/analysis/submit/">Submit</a>
+                      </div>
+                  </div>
+              {% endif %}
             </div>
-            &nbsp;
-            <div class="dropdown">
-                <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="trackers_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Trackers
-                </button>
-                <div class="dropdown-menu" aria-labelledby="trackers_dd">
-                    <a class="dropdown-item" href="/trackers/">List</a>
-                </div>
-            </div>
-            &nbsp;
-            {% if request.user.is_superuser %}
-                <div class="dropdown">
-                    <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Analysis
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="analysis_dd">
-                        <a class="dropdown-item" href="/analysis/">List</a>
-                        <a class="dropdown-item" href="/analysis/submit/">Submit</a>
-                    </div>
-                </div>
-            {% endif %}
+          </div>
         </div>
 </nav>
 <br>
