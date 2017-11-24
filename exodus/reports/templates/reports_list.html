@@ -9,10 +9,10 @@
             <h4><span class="badge badge-info">{{ reports|length }}</span> Available reports</h4>
         </div>
         <hr>
-        <table style="margin: auto; border:none" class="table table-hover">
+        <table style=" border:none" class="table table-hover table-responsive-md">
         {% for report in reports %}
-            <tr>
-                <td>
+            <tr class="d-flex">
+                <td class="col-md-6">
                     <a href="{% url 'reports:detail' report.id %}">
                         <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
                         {% if report.application.name.strip %}
@@ -23,7 +23,7 @@
                     </a>
                 </td>
                 <td>
-                     <span class="small"><b>{{ report.application.version }}</b></span> 
+                     <span class="small"><b>{{ report.application.version }}</b></span>
                 </td>
                 <td>
                     <span class="small"><b>{{ report.creation_date }}</b></span>
