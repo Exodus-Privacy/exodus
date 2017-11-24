@@ -1,11 +1,11 @@
 {% extends "base.html"%}
 {% block content %}
-{% load sort_dns %} 
+{% load sort_dns %}
 {% load permission_doc %}
     {% load static %}
     {% if report %}
     {% if request.user.is_superuser %}
-    <p class="small"> Provide this URI to Electra for report completion: 
+    <p class="small"> Provide this URI to Electra for report completion:
         <samp>
             /api/report/{{report.id}}/
         </samp>
@@ -21,7 +21,7 @@
                         <h2>Privacy report</h2>
                     {% endif%}
                 </div>
-                <h4><span class="badge badge-warning">{{ report.found_trackers.all|length }}</span> trackers, 
+                <h4><span class="badge badge-warning">{{ report.found_trackers.all|length }}</span> trackers,
                     <span class="badge badge-warning">{{ report.application.permission_set.all|length }}</span> permissions found.
                 </h4>
                 <p class="text-muted small">This report was automatically issued on {{report.creation_date}}.</p>
@@ -30,8 +30,8 @@
                     <div class="collapse" id="collapseAPKDetails">
                         <div class="card card-body small">
                             <ul>
-                                <li>Report date: <samp>{{report.creation_date}}</samp></li> 
-                                <li>APK checksum: <samp>{{report.application.apk.sum}}</samp></li> 
+                                <li>Report date: <samp>{{report.creation_date}}</samp></li>
+                                <li>APK checksum: <samp>{{report.application.apk.sum}}</samp></li>
                                 <li>Application handle: <samp>{{report.application.handle}}</samp></li>
                                 <li>Version: <samp>{{report.application.version}}</samp></li>
                             </ul>
@@ -49,10 +49,10 @@
                     </div>
                     <ul>
                         {% if report.application.creator.strip %}
-                            <li>Creator: <b>{{report.application.creator}}</b></li> 
+                            <li>Creator: <b>{{report.application.creator}}</b></li>
                         {% endif %}
                         {% if report.application.downloads.strip %}
-                            <li>Downloads: <b>{{report.application.downloads}}</b></li> 
+                            <li>Downloads: <b>{{report.application.downloads}}</b></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -94,7 +94,7 @@
                     We have found these permissions in the application:
                     <br>
                     <br>
-                    <table class="table table-sm">
+                    <table class="table table-sm table-responsive">
                         {% for perm in report.application.permission_set.all %}
                             <tr>
                                 <td class="text-right"><samp>{{perm.name}}</samp></td>
@@ -127,7 +127,7 @@
                                             {% ifequal dns.is_tracker True %}
                                             <span class="badge badge-danger" data-toggle="tooltip" title="Potential tracker">⛔️</span>
                                             {% else %}
-                                                    
+
                                             {% endifequal %}
                                             </td>
                                         </tr>
