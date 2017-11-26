@@ -13,12 +13,7 @@
 # Deploy
 ## System dependencies
 ```
-sudo apt install git virtualenv postgresql-9.6 rabbitmq-server aapt build-essential libssl-dev libffi-dev python3-dev openjdk-8-jre
-```
-
-## Clone the project
-```
-git clone -b v1 ssh://<username>@62.210.131.96:19100/data/depots/exodus/exodus.git Exodus
+sudo apt install git virtualenv postgresql-9.6 rabbitmq-server tshark aapt build-essential libssl-dev libffi-dev python3-dev openjdk-8-jre
 ```
 
 ## Create database
