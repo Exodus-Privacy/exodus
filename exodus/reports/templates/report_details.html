@@ -34,6 +34,7 @@
                                 <li>APK checksum: <samp>{{report.application.apk.sum}}</samp></li> 
                                 <li>Application handle: <samp>{{report.application.handle}}</samp></li>
                                 <li>Version: <samp>{{report.application.version}}</samp></li>
+                                <li>Version code: <samp>{{report.application.version_code}}</samp></li>
                             </ul>
                         </div>
                     </div>
@@ -66,7 +67,7 @@
                     <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.all|length }}</span> Trackers</h4>
                 </div>
                 <div class="card-body">
-                    We have found code signature of these trackers in the application:
+                    We have found signature of these trackers in the application:
                     <br>
                     <br>
                     <ul>
@@ -78,9 +79,10 @@
                         <i>A tracker is a piece of software meant to collect data about you or your usages. We do not guarantee the exhaustiveness of this list.</i>
                     </p>
                     <p class="alert alert-danger small">
-                        Privacy protecting applications embed lists of trackers signatures in order to block them. εxodus could find tracker signatures in these
-                        blacklists and falsely report them as part of the application. If you have doubts about this report, contact us
-                        at <a href="mailto:contact@exodus-privacy.eu.org?subject=Exodus - Question about report {{report.id}}">contact@exodus-privacy.eu.org</a>
+                        Here is the list of trackers signatures found by static analysis in this APK. This is not a proof of presence and/or activity of these trackers.
+                        Some false-positives could be found due to embedded frameworks or libraries. If you have doubts about this report, contact us
+                        at <a href="mailto:contact@exodus-privacy.eu.org?subject=Exodus - Question about report {{report.id}}">contact@exodus-privacy.eu.org</a>.
+                        We do not decompile the application because it is forbidden by law.
                     </p>
                 </div>
             </div>
