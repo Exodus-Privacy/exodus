@@ -26,6 +26,11 @@ def get_version(self, analysis):
 
 
 @app.task(bind=True)
+def get_version_code(self, analysis):
+    return getVersionCode(analysis.decoded_dir)
+
+
+@app.task(bind=True)
 def get_handle(self, analysis):
     return getHandle(analysis.decoded_dir)
 
@@ -130,12 +135,13 @@ def start_static_analysis(analysis):
     
     if g_r[0]:
         shasum = g_r[1]
-        infos_group = group(get_version.s(analysis), 
+        infos_group = group(get_version.s(analysis),
                     get_handle.s(analysis),
                     get_permissions.s(analysis),
                     find_trackers.s(analysis),
                     find_and_save_app_icon.s(analysis),
                     get_app_infos.s(analysis),
+                    get_version_code.s(analysis),
                     )()
         infos = infos_group.get()
         version = infos[0]
@@ -144,6 +150,7 @@ def start_static_analysis(analysis):
         trackers = infos[3]
         icon_file = infos[4]
         app_info = infos[5]
+        version_code = infos[6]
 
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
@@ -159,6 +166,7 @@ def start_static_analysis(analysis):
         app = Application(report=report)
         app.handle = handle
         app.version = version
+        app.version_code = version_code
         if app_info is not None:
             app.name = app_info['title']
             app.creator = app_info['creator']

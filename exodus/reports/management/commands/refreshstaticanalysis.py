@@ -34,8 +34,7 @@ class Command(BaseCommand):
                 raise CommandError('No reports found')
 
         for report in reports:
-            self.stdout.write(
-                self.style.SUCCESS('Start updating report "%s"' % report.id))
+            self.stdout.write(self.style.SUCCESS('Start updating report "%s"' % report.id))
             with tempfile.TemporaryDirectory() as tmpdir:
                 decoded_dir = os.path.join(tmpdir, 'decoded')
                 icon_name = '%s_%s.png' % (report.bucket, report.application.handle)
@@ -54,15 +53,20 @@ class Command(BaseCommand):
                             file_data.write(d)
                 except ResponseError as err:
                     print(err)
+
                 # Decode APK
                 if decodeAPK(apk_tmp, decoded_dir):
                     # Refresh trackers
                     trackers = findTrackers(decoded_dir)
-                    # if len(trackers) > len(report.found_trackers.all()):
                     print(trackers)
                     report.found_trackers = trackers
                     report.save()
                     self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
+
+                    # Get version code if missing
+                    if len(report.application.version_code) == 0:
+                        report.application.version_code = getVersionCode(decoded_dir)
+
                     # Refresh icon
                     icon_path = getIcon(icon_name, report.application.handle)
                     if icon_path != '':

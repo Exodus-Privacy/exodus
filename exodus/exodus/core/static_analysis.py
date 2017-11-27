@@ -43,20 +43,24 @@ def download_and_put(url, destination_name):
         print(e)
         return ''
 
+
 def getIcon(icon_name, handle, url=None):
     from bs4 import BeautifulSoup
     import urllib.request, tempfile
 
     if url is None:
-        address = 'https://play.google.com/store/apps/details?id=%s' % handle
-        text = urllib.request.urlopen(address).read()
-        soup = BeautifulSoup(text, 'html.parser')
-        i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
-        if len(i) > 0:
-            url = '%s'%i[0]['src']
-            if not url.startswith('http'):
-                url = 'https:%s' % url
-        else:
+        try:
+            address = 'https://play.google.com/store/apps/details?id=%s' % handle
+            text = urllib.request.urlopen(address).read()
+            soup = BeautifulSoup(text, 'html.parser')
+            i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
+            if len(i) > 0:
+                url = '%s'%i[0]['src']
+                if not url.startswith('http'):
+                    url = 'https:%s' % url
+            else:
+                return ''
+        except Exception:
             return ''
 
     return download_and_put(url, icon_name)
@@ -71,6 +75,20 @@ def findTrackers(decoded_dir):
                 found.append(t)
                 break
     return found
+
+
+def getVersionCode(decoded_dir):
+    yml = os.path.join(decoded_dir, 'apktool.yml')
+    yml_new = os.path.join(decoded_dir, 'apktool.yml.new')
+    cmd = '/bin/cat %s | /bin/grep -v "\!\!" > %s' % (yml, yml_new)
+    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    output = process.communicate()[0]
+    exitCode = process.returncode
+    if exitCode != 0:
+        return ''
+    with open(yml_new) as f:
+        dataMap = yaml.safe_load(f)
+        return dataMap['versionInfo']['versionCode']
 
 
 def getVersion(decoded_dir):

@@ -32,6 +32,7 @@ class Application(models.Model):
     creator = models.CharField(max_length=200, default='')
     downloads = models.CharField(max_length=200, default='')
     version = models.CharField(max_length=50)
+    version_code = models.CharField(max_length=50, default='')
     icon_path = models.CharField(max_length=500, default='')
 
 
