@@ -89,7 +89,7 @@ class Command(BaseCommand):
                     # Get version code if missing
                     if len(report.application.version_code) == 0 or options['versions']:
                         report.application.version_code = getVersionCode(decoded_dir)
-                        report.save()
+                        report.application.save()
                         self.stdout.write(self.style.SUCCESS('Successfully update version of "%s"' % report.application.handle))
 
                     # Refresh icon
