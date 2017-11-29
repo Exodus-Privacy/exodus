@@ -14,7 +14,8 @@ class ReportInfosSerializer(serializers.Serializer):
 class LightReportSerializer(serializers.Serializer):
     creation_date = serializers.DateTimeField()
     report_id = serializers.IntegerField(read_only=True)
-    report_url = serializers.CharField(max_length=500)
+    web_report_url = serializers.CharField(max_length=500)
+    api_report_url = serializers.CharField(max_length=500)
     application_handle = serializers.CharField(max_length=500)
     application_version = serializers.CharField(max_length=500)
     application_version_code = serializers.CharField(max_length=500)
@@ -22,7 +23,8 @@ class LightReportSerializer(serializers.Serializer):
     permission_count = serializers.IntegerField()
 
 
-class ReportSerializer(serializers.Serializer):
+class ReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = Report
-        fields = ['creation_date', 'found_trackers', 'application', 'network_analysis']
+        fields = ['creation_date', 'found_trackers', 'application']
+        depth = 1

@@ -44,4 +44,4 @@ class LightReport(models.Model):
         self.application_version = report.application.version
         self.application_version_code = report.application.version_code
         self.trackers_count = len(report.found_trackers.all())
-        self.permission_count = len(report.application.permissions.all())
+        self.permission_count = len(report.application.permissions_set.all())

@@ -124,16 +124,20 @@ def upload_flow(request, r_id):
 
 @csrf_exempt
 @api_view(['GET'])
+@authentication_classes(())
+@permission_classes(())
 def get_all_reports(request):
     if request.method == 'GET':
         report_list = Report.objects.order_by('-creation_date')
         reports = [LightReport(report) for report in report_list]
         serializer = LightReportSerializer(reports, many=True)
-        return JsonResponse(serializer.data, safe=True)
+        return JsonResponse(serializer.data, safe=False)
 
 
 @csrf_exempt
 @api_view(['GET'])
+@authentication_classes(())
+@permission_classes(())
 def get_report_details(request, r_id):
     if request.method == 'GET':
         try:
@@ -142,3 +146,5 @@ def get_report_details(request, r_id):
             raise Http404("No reports found")
         serializer = ReportSerializer(report, many=False)
         return JsonResponse(serializer.data, safe=True)
+
+
