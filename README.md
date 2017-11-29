@@ -44,7 +44,10 @@ python manage.py migrate --settings=exodus.settings.dev
 ```
 
 ## Step 6 - Create admin user
+You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 ```
+source venv/bin/activate
+cd exodus
 python manage.py createsuperuser --settings=exodus.settings.dev
 ```
 
