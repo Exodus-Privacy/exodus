@@ -21,6 +21,27 @@ class Command(BaseCommand):
             help='Update all reports',
         )
 
+        parser.add_argument(
+            '--icons',
+            action='store_true',
+            dest='icons',
+            help='Update icons',
+        )
+
+        parser.add_argument(
+            '--trackers',
+            action='store_true',
+            dest='trackers',
+            help='Update found trackers',
+        )
+
+        parser.add_argument(
+            '--versions',
+            action='store_true',
+            dest='versions',
+            help='Update application version code',
+        )
+
     def handle(self, *args, **options):
         if options['all']:
             try:
@@ -53,25 +74,29 @@ class Command(BaseCommand):
                             file_data.write(d)
                 except ResponseError as err:
                     print(err)
+                    continue
 
                 # Decode APK
                 if decodeAPK(apk_tmp, decoded_dir):
                     # Refresh trackers
-                    trackers = findTrackers(decoded_dir)
-                    print(trackers)
-                    report.found_trackers = trackers
-                    report.save()
-                    self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
+                    if options['trackers']:
+                        trackers = findTrackers(decoded_dir)
+                        print(trackers)
+                        report.found_trackers = trackers
+                        report.save()
+                        self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
 
                     # Get version code if missing
-                    if len(report.application.version_code) == 0:
+                    if len(report.application.version_code) == 0 or options['versions']:
                         report.application.version_code = getVersionCode(decoded_dir)
+                        self.stdout.write(self.style.SUCCESS('Successfully update version of "%s"' % report.application.handle))
 
                     # Refresh icon
-                    icon_path = getIcon(icon_name, report.application.handle)
-                    if icon_path != '':
-                        report.application.icon_path = icon_path
-                        report.application.save()
-                        self.stdout.write(self.style.SUCCESS('Successfully update icon of "%s"' % report.application.handle))
+                    if options['icons']:
+                        icon_path = getIcon(icon_name, report.application.handle)
+                        if icon_path != '':
+                            report.application.icon_path = icon_path
+                            report.application.save()
+                            self.stdout.write(self.style.SUCCESS('Successfully update icon of "%s"' % report.application.handle))
 
 
