@@ -95,13 +95,19 @@ and password.
 
 ## Step 9 - Start the εxodus worker
 The εxodus handle asynchronous tasks submitted by the front-end.
+You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 ```
+source venv/bin/activate
+cd exodus
 export DJANGO_SETTINGS_MODULE=exodus.settings.dev; python manage.py celery worker -A exodus.core -l info
 ```
 Now, the εxodus worker is waiting for tasks.
 
 ## Step 10 - Start the εxodus front-end
+You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 ```
+source venv/bin/activate
+cd exodus
 python manage.py runserver --settings=exodus.settings.dev
 ```
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
@@ -116,8 +122,10 @@ and click on submit.
 It is probably a configuration issue. First of all, check the file `$HOME/.config/gplaycli/gplaycli.conf`, it 
 should contains:
   * `android_ID=3d716411bf8bc802`
+  
  If the issue remains, fill:
    * `gmail_address`
    * `gmail_password`
+   
 with a real Google Account :-(
 
