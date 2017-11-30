@@ -60,7 +60,7 @@ chmod +x $HOME/minio
 ### Configure Minio
 ```
 mkdir -p $HOME/.minio
-cat > $HOME/.minio/minio.json << EOL
+cat > $HOME/.minio/config.json << EOL
 {
         "version": "20",
         "credential": {
