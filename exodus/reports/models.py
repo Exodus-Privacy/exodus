@@ -14,12 +14,14 @@ from minio.error import (ResponseError)
 @python_2_unicode_compatible
 class Report(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     found_trackers = models.ManyToManyField(Tracker)
     storage_path = models.CharField(max_length=200, default='')
     bucket = models.CharField(max_length=200, default='')
     apk_file = models.CharField(max_length=200, default='')
     pcap_file = models.CharField(max_length=200, default='')
     flow_file = models.CharField(max_length=200, default='')
+    class_list_file = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return self.application.handle

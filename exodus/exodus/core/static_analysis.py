@@ -14,11 +14,12 @@ from minio.error import (ResponseError)
 from trackers.models import Tracker
 
 
-def grep(folder, pattern):
-    cmd = '/bin/grep -r "%s" %s/*.dex %s/AndroidManifest.xml' % (pattern, folder, folder)
+def grep(file, pattern):
+    cmd = '/bin/grep -E "%s" %s' % (pattern, file)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
     exitCode = process.returncode
+    print(exitCode)
     return exitCode == 0
 
 
@@ -66,14 +67,13 @@ def getIcon(icon_name, handle, url=None):
     return download_and_put(url, icon_name)
 
 
-def findTrackers(decoded_dir):
+def findTrackers(class_list_file):
     trackers = Tracker.objects.order_by('name')
     found = []
     for t in trackers:
-        for p in t.detectionrule_set.all():
-            if grep(decoded_dir, p.pattern):
+        if len(t.code_signature) > 3:
+            if grep(class_list_file, t.code_signature):
                 found.append(t)
-                break
     return found
 
 
@@ -134,6 +134,29 @@ def decodeAPK(apk_path, decoded_dir):
     output = process.communicate()[0]
     exitCode = process.returncode
     return exitCode == 0
+
+
+def listClasses(decoded_dir, class_list_file):
+    root_dir = os.path.dirname(os.path.realpath(__file__))
+    dexdump = os.path.join(root_dir, "dexdump")
+    list_file = '%s/class_list.txt' % decoded_dir
+    cmd = '%s %s/classes*.dex > %s; head %s' % (dexdump, decoded_dir, list_file, list_file)
+    process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
+    output = process.communicate()[0]
+    exitCode = process.returncode
+    if exitCode == 0:
+        # Upload class list file
+        minio_client = Minio(settings.MINIO_URL,
+                             access_key=settings.MINIO_ACCESS_KEY,
+                             secret_key=settings.MINIO_SECRET_KEY,
+                             secure=settings.MINIO_SECURE)
+        try:
+            minio_client.fput_object(settings.MINIO_BUCKET, class_list_file, list_file)
+        except ResponseError as err:
+            print(err)
+            return ''
+        return list_file
+    return ''
 
 
 def getApplicationInfos(handle):

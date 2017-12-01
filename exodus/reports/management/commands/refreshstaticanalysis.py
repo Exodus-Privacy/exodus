@@ -72,32 +72,54 @@ class Command(BaseCommand):
                     with open(apk_tmp, 'wb') as file_data:
                         for d in data.stream(32 * 1024):
                             file_data.write(d)
-                except ResponseError as err:
-                    print(err)
-                    continue
+                except ResponseError:
+                    raise CommandError('Unable to get APK')
 
-                # Decode APK
-                if decodeAPK(apk_tmp, decoded_dir):
-                    # Refresh trackers
-                    if options['trackers']:
-                        trackers = findTrackers(decoded_dir)
-                        print(trackers)
-                        report.found_trackers = trackers
-                        report.save()
-                        self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
+                # Refresh trackers
+                if options['trackers']:
+                    # Check if classes list has already been generated
+                    if len(report.class_list_file) == 0:
+                        # Decode APK
+                        if decodeAPK(apk_tmp, decoded_dir):
+                            class_list_file = '%s_%s.clist' % (report.bucket, report.application.handle)
+                            if listClasses(decoded_dir, class_list_file) != '':
+                                report.class_list_file = class_list_file
+                                report.save()
 
-                    # Get version code if missing
-                    if len(report.application.version_code) == 0 or options['versions']:
+                    # Download class list file
+                    minio_client = Minio(settings.MINIO_URL,
+                                 access_key=settings.MINIO_ACCESS_KEY,
+                                 secret_key=settings.MINIO_SECRET_KEY,
+                                 secure=settings.MINIO_SECURE)
+                    clist_tmp = os.path.join(tmpdir, report.class_list_file)
+                    try:
+                        data = minio_client.get_object(settings.MINIO_BUCKET, report.class_list_file)
+                        with open(clist_tmp, 'wb') as file_data:
+                            for d in data.stream(32 * 1024):
+                                file_data.write(d)
+                    except ResponseError as err:
+                        print(err)
+                        raise CommandError('Unable to clist file')
+                    trackers = findTrackers(clist_tmp)
+                    print(trackers)
+                    report.found_trackers = trackers
+                    report.save()
+                    self.stdout.write(self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
+
+                # Get version code if missing
+                if len(report.application.version_code) == 0 or options['versions']:
+                    # Decode APK
+                    if decodeAPK(apk_tmp, decoded_dir):
                         report.application.version_code = getVersionCode(decoded_dir)
                         report.application.save()
                         self.stdout.write(self.style.SUCCESS('Successfully update version of "%s"' % report.application.handle))
 
-                    # Refresh icon
-                    if options['icons']:
-                        icon_path = getIcon(icon_name, report.application.handle)
-                        if icon_path != '':
-                            report.application.icon_path = icon_path
-                            report.application.save()
-                            self.stdout.write(self.style.SUCCESS('Successfully update icon of "%s"' % report.application.handle))
+                # Refresh icon
+                if options['icons']:
+                    icon_path = getIcon(icon_name, report.application.handle)
+                    if icon_path != '':
+                        report.application.icon_path = icon_path
+                        report.application.save()
+                        self.stdout.write(self.style.SUCCESS('Successfully update icon of "%s"' % report.application.handle))
 
 
