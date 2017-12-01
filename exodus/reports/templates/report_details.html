@@ -97,7 +97,7 @@
                     <br>
                     <br>
                     <table class="table table-sm">
-                        {% for perm in report.application.permission_set.all %}
+                        {% for perm in report.application.permissions %}
                             <tr>
                                 <td class="text-right"><samp>{{perm.name}}</samp></td>
                                 <td>{{perm.name|perm_doc|safe}}</td>

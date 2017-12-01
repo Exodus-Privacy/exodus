@@ -37,6 +37,8 @@ class Application(models.Model):
     version_code = models.CharField(max_length=50, default='')
     icon_path = models.CharField(max_length=500, default='')
 
+    def permissions(self):
+        return self.permission_set.all().order_by('name')
 
 class Apk(models.Model):
     application = models.OneToOneField(Application)

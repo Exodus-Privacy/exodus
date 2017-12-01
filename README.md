@@ -60,7 +60,7 @@ chmod +x $HOME/minio
 ### Configure Minio
 ```
 mkdir -p $HOME/.minio
-cat > $HOME/.minio/minio.json << EOL
+cat > $HOME/.minio/config.json << EOL
 {
         "version": "20",
         "credential": {
@@ -131,4 +131,14 @@ should contains:
    * `gmail_password`
    
 with a real Google Account :-(
+
+## How to import another database?
+You first need to delete the previous database, then import the new one :
+```
+sudo su - postgres
+psql
+DROP DATABASE exodus;
+CREATE DATABASE exodus WITH OWNER exodus;
+psql exodus < exodus.sql
+```
 

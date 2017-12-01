@@ -16,7 +16,9 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, '..', 'static'), )
 
 CELERY_BROKER_URL = 'pyamqp://guest@localhost//'

@@ -21,7 +21,7 @@ def index(request):
 
 def get_all_apps(request):
     try:
-        apps = Application.objects.order_by('handle').distinct('handle')
+        apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Application.DoesNotExist:
         raise Http404("No apps found")
     return render(request, 'apps_list.html', {'apps': apps})
@@ -72,7 +72,7 @@ def get_stats(request):
     from collections import namedtuple
     try:
         reports = NetworkAnalysis.objects.all()
-        apps = Application.objects.order_by('handle').distinct('handle')
+        apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except:
         raise Http404("NetworkAnalysis do not exist")
 
