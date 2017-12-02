@@ -17,7 +17,6 @@ class Tracker(models.Model):
     def __str__(self):
         return self.name
 
-
 @python_2_unicode_compatible
 class DetectionRule(models.Model):
     tracker = models.ForeignKey(Tracker, on_delete=models.CASCADE)

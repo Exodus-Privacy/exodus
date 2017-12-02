@@ -21,6 +21,34 @@
                     <li><code>{{ rule.pattern }}</code></li>
                 {% endfor %}
             </ul>
+            <div class=" alert alert-info">
+              <div class="alert-heading">
+                <h4><span class="badge badge-info">{{ reports|length }}</span> Available reports</h4>
+              </div>
+              <hr>
+              <table style="margin: auto; border:none" class="table table-hover">
+                {% for report in reports %}
+                <tr>
+                  <td>
+                    <a href="{% url 'reports:detail' report.id %}">
+                      <img  data-toggle="tooltip" title="{{ report.application.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                      {% if report.application.name.strip %}
+                      <b>{{ report.application.name }}</b>
+                      {% else %}
+                      <b>{{ report.application.handle }}</b>
+                      {% endif %}
+                    </a>
+                  </td>
+                  <td>
+                    <span class="small"><b>{{ report.application.version }}</b></span>
+                  </td>
+                  <td>
+                    <span class="small"><b>{{ report.creation_date }}</b></span>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
         {% endif %}
         </div>
     </div>

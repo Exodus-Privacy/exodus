@@ -16,9 +16,10 @@ def index(request):
 def detail(request, tracker_id):
     try:
         tracker = Tracker.objects.get(pk=tracker_id)
+        reports = Report.objects.order_by('-creation_date').filter(found_trackers=tracker_id)
     except Tracker.DoesNotExist:
         raise Http404("tracker does not exist")
-    return render(request, 'tracker_details.html', {'tracker': tracker})
+    return render(request, 'tracker_details.html', {'tracker': tracker, 'reports': reports})
 
 
 def graph(request):
