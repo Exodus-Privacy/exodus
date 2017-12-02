@@ -26,6 +26,8 @@ class Report(models.Model):
     def __str__(self):
         return self.application.handle
 
+    def trackers(self):
+        return self.found_trackers.order_by('name')
 
 class Application(models.Model):
     report = models.OneToOneField(Report)

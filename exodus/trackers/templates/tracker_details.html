@@ -7,20 +7,24 @@
         {% if tracker %}
         <div class=" alert alert-info">
             <div class="alert-heading">
-                <h2>{{tracker.name}}</h2>
+                <h1>{{tracker.name}}</h1>
             </div>
             <p>
                 <a href="{{tracker.website}}"> Go to the tracker web page.</a>
             </p>
-            <p>
-                {{tracker.description|markdown|safe}}
-            </p>
             <h3>Detection rules</h3>
             <ul>
-                {% for rule in tracker.detectionrule_set.all %}
-                    <li><code>{{ rule.pattern }}</code></li>
-                {% endfor %}
+                {% if tracker.code_signature|length > 3 %}
+                    <li>Code detection rule: <code>{{tracker.code_signature}}</code></li>
+                {% else %}
+                    <li>Code signature: <code>unknown</code></li>
+                {% endif %}
+                <li>Network detection rule: <code>{{tracker.network_signature}}</code></li>
             </ul>
+            <hr>
+            <div class="small">
+                {{tracker.description|markdown|safe}}
+            </div>
         {% endif %}
         </div>
     </div>
