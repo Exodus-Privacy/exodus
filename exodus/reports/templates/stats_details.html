@@ -12,15 +12,13 @@
             <hr>
             <table style="margin: auto">
             {% for result in trackers %}
-            <tr><td class="text-right">{{result.name}} </td><td style="width:300px"> 
+            <tr><td class="text-right">{{result.name}} </td>
+                <td class="small">
+                    found in {{result.count}} apps
+                </td>
+                <td style="width:300px">
                 <div class="progress">
-                    {% if result.score >= 66 %}
-                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                    {% elif result.score >= 33 %}
-                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                    {% else %}
-                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                    {% endif %}
+                    <div class="progress-bar bg-info" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
                 </div>
                 </td></tr>
             {% endfor %}

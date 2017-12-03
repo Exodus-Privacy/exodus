@@ -97,6 +97,6 @@ def get_stats(request):
     sum = len(apps)
     tracker_results = []
     for t in trackers:
-        tracker_results.append({'name':t.name, 'score':int(100.*t.c/sum)})
+        tracker_results.append({'name': t.name, 'score': int(100.*t.c/sum), 'count': int(t.c)})
     
-    return render(request, 'stats_details.html', {'domains': domain_results, 'trackers':tracker_results})
+    return render(request, 'stats_details.html', {'domains': domain_results, 'trackers': tracker_results})
