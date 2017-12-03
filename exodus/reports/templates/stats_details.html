@@ -18,7 +18,13 @@
                 </td>
                 <td style="width:300px">
                 <div class="progress">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
+                    {% if result.score >= 50 %}
+                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
+                    {% elif result.score >= 33 %}
+                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
+                    {% else %}
+                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
+                    {% endif %}
                 </div>
                 </td></tr>
             {% endfor %}
