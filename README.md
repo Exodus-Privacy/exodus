@@ -131,8 +131,25 @@ should contains:
    * `gmail_password`
    
 with a real Google Account :-(
+   
+If the file `$HOME/.config/gplaycli/gplaycli.conf` does not exist, create it and put that into: 
+```
+[Credentials]
+gmail_address=
+gmail_password=
+#keyring_service=gplaycli
+android_ID=3d716411bf8bc802
+language=en_US
+token=True
+token_url=https://matlink.fr/token/email/gsfid
+
+[Cache]
+token=~/.cache/gplaycli/token
+```
 
 ## How to import another database?
+You can grab dummy data from [here](https://seahub.0x39b.fr/d/c17dc0992a/).
+
 You first need to delete the previous database, then import the new one :
 ```
 sudo su - postgres
