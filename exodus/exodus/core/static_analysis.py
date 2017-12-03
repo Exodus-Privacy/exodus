@@ -15,7 +15,7 @@ from trackers.models import Tracker
 
 
 def grep(file, pattern):
-    cmd = '/bin/grep -E "%s" %s' % (pattern, file)
+    cmd = '/bin/grep -q -E "%s" %s' % (pattern, file)
     process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
     output = process.communicate()[0]
     exitCode = process.returncode
