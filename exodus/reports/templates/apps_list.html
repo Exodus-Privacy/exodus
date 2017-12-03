@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-<div class="row">
+<div class="row text-center">
     {% if apps %}
         {% for app in apps %}
-            <div class="col-md-2">
+            <div class="col-6 col-md-3 col-lg-1">
                 <figure class="figure text-center small">
                     <a href="{% url 'reports:search_by_handle' app.handle %}">
-                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{app.id}}/icon" width="80px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{app.id}}/icon" width="90px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
                         {% if app.name.strip %}
-                            <figcaption class="figure-caption"><b>{{ app.name|truncatechars_html:15 }}</b></figcaption>
+                            <figcaption class="figure-caption text-truncate">
+                                <b>{{ app.name|truncatechars_html:20 }}</b>
+                            </figcaption>
                         {% else %}
-                            <figcaption class="figure-caption"><b>{{ app.handle|truncatechars_html:15 }}</b></figcaption>
+                            <figcaption class="figure-caption text-truncate">
+                                <b>{{ app.handle|truncatechars_html:20 }}</b>
+                            </figcaption>
                         {% endif %}
                     </a>
                 </figure>
