@@ -108,7 +108,11 @@
                     <h4 class=""><span class="badge badge-secondary">{{ report.application.permission_set.count }}</span> Permission{{ report.application.permission_set.count|pluralize }} </h4>
                 </div>
                 <div class="card-body">
-                    We have found these permissions in the application:
+                    {% if report.application.permission_set.all %}
+                        {% if report.application.permission_set.count == 1 %}
+                            We have found this permission in the application:
+                        {% else %}
+                            We have found these permissions in the application:
                     <br>
                     <br>
                     <table class="table table-sm table-responsive">
@@ -120,6 +124,9 @@
                         {% endfor %}
                     </table>
                     <i class="small">Permissions are actions the application can do on your phone.</i>
+                    {% else %}
+                        This application doesn't require any permissions.
+                    {% endif %}
                 </div>
             </div>
         </div>
