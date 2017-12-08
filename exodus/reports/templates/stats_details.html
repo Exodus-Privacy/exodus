@@ -14,7 +14,7 @@
             {% for result in trackers %}
             <tr><td class="text-right">{{result.name}} </td>
                 <td class="small text-muted">
-                    found in {{result.count}} apps
+                    found in {{result.count}} app{{ result.count|pluralize }}
                 </td>
                 <td style="width:300px">
                 <div class="progress">
