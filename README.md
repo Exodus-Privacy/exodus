@@ -102,6 +102,7 @@ You have to activate the virtual venv and `cd` into the same directory as `manag
 ```
 source venv/bin/activate
 cd exodus
+
 export DJANGO_SETTINGS_MODULE=exodus.settings.dev; python manage.py celery worker -A exodus.core -l info
 ```
 Now, the εxodus worker is waiting for tasks.
@@ -110,6 +111,8 @@ Now, the εxodus worker is waiting for tasks.
 You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 ```
 source venv/bin/activate
+mkdir -p $HOME/.config/gplaycli/
+cp venv/lib/python3.5/site-packages/$HOME/.config/gplaycli/gplaycli.conf $HOME/.config/gplaycli/gplaycli.conf
 cd exodus
 python manage.py runserver --settings=exodus.settings.dev
 ```
