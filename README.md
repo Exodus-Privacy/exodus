@@ -116,7 +116,7 @@ python manage.py runserver --settings=exodus.settings.dev
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Step * - Analyse an application
-Browse [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) and enter your login and password. Then, 
+Browse [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) and enter your login and password. Then, 
 browse [http://127.0.0.1:8000/analysis/submit/](http://127.0.0.1:8000/analysis/submit/), specify an application handle 
 and click on submit.
 
