@@ -26,8 +26,8 @@
                         <h2>Privacy report</h2>
                     {% endif%}
                 </div>
-                <h4><span class="badge badge-warning">{{ report.found_trackers.all|length }}</span> trackers, 
-                    <span class="badge badge-warning">{{ report.application.permission_set.all|length }}</span> permissions found.
+                <h4><span class="badge badge-warning">{{ report.found_trackers.count }}</span> tracker{{ report.found_trackers.count|pluralize }},
+                    <span class="badge badge-warning">{{ report.application.permission_set.count }}</span> permission{{report.application.permission_set.count|pluralize }} found.
                 </h4>
                 <p class="text-muted small">This report was automatically issued on <b>{{report.creation_date}}</b>.<br>
                     This report was automatically updated on <b>{{report.updated_at}}</b>.</p>
@@ -70,11 +70,15 @@
         <div class="col col-lg-3">
             <div class="card bg-light">
                 <div class="card-header">
-                    <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.all|length }}</span> Trackers</h4>
+                    <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.count }}</span> Tracker{{ report.found_trackers.count|pluralize }}</h4>
                 </div>
                 <div class="card-body">
                     {% if report.found_trackers.all %}
-                        We have found <b>code signature</b> of these trackers in the application:
+                        {% if report.found_trackers.count == 1 %}
+                            We have found <b>code signature</b> of this tracker in the application:
+                        {% else %}
+                            We have found <b>code signature</b> of these trackers in the application:
+                        {% endif %}
                         <br>
                         <br>
                         <ul>
@@ -101,10 +105,14 @@
         <div class="col">
             <div class="card bg-light">
                 <div class="card-header">
-                    <h4 class=""><span class="badge badge-secondary">{{ report.application.permission_set.all|length }}</span> Permissions </h4>
+                    <h4 class=""><span class="badge badge-secondary">{{ report.application.permission_set.count }}</span> Permission{{ report.application.permission_set.count|pluralize }} </h4>
                 </div>
                 <div class="card-body">
-                    We have found these permissions in the application:
+                    {% if report.application.permission_set.all %}
+                        {% if report.application.permission_set.count == 1 %}
+                            We have found this permission in the application:
+                        {% else %}
+                            We have found these permissions in the application:
                     <br>
                     <br>
                     <table class="table table-sm table-responsive">
@@ -116,6 +124,9 @@
                         {% endfor %}
                     </table>
                     <i class="small">Permissions are actions the application can do on your phone.</i>
+                    {% else %}
+                        This application doesn't require any permissions.
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -125,10 +136,14 @@
                     <div class="col">
                         <div class="card bg-light">
                             <div class="card-header">
-                                <h4 class=""><span class="badge badge-secondary">{{ na.dnsquery_set.all|length }}</span> DNS queries</h4>
+                                <h4 class=""><span class="badge badge-secondary">{{ na.dnsquery_set.count }}</span> DNS quer{{ na.dnsquery_set.count|pluralize:"y,ies" }}</h4>
                             </div>
                             <div class="card-body">
-                                During the execution, the application has requested these domain resolutions:
+                                {% if na.dnsquery_set.count == 1 %}
+                                    During the execution, the application has requested this domain resolution:
+                                {% else %}
+                                    During the execution, the application has requested these domain resolutions:
+                                {% endif %}
                                 <br>
                                 <br>
                                 <table class="table table-sm">

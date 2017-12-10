@@ -6,7 +6,7 @@
     {% if reports %}
     <div class=" alert alert-info">
         <div class="alert-heading">
-            <h4><span class="badge badge-info">{{ reports|length }}</span> Available reports</h4>
+            <h4><span class="badge badge-info">{{ reports.count }}</span> Available report{{ reports.count|pluralize }}</h4>
         </div>
         <hr>
         <table style="margin: auto; border:none" class="table table-hover table-responsive-md">
@@ -24,13 +24,13 @@
                 </td>
                 <td class="col-md-2 text-truncate">
                     <span>
-                        <span class="badge badge-warning">{{ report.found_trackers.all|length }}</span>
-                        trackers
+                        <span class="badge badge-warning">{{ report.found_tracker.count }}</span>
+                        tracker{{ report.found_trackers.count|pluralize }}
                     </span>
                     <br>
                     <span>
-                        <span class="badge badge-warning">{{ report.application.permission_set.all|length }}</span>
-                        permissions
+                        <span class="badge badge-warning">{{ report.application.permission_set.count }}</span>
+                        permission{{ report.application.permission_set.count|pluralize }}
                     </span>
                 </td>
                 <td class="">

@@ -5,7 +5,7 @@
         {% if trackers %}
             <div class=" alert alert-info">
                 <div class="alert-heading">
-                    <h4><span class="badge badge-info">{{ trackers|length }}</span> Recognized trackers</h4>
+                    <h4><span class="badge badge-info">{{ trackers.count }}</span> Recognized tracker{{ trackers.count|pluralize }}</h4>
                 </div>
                 <hr>
                 <ul>

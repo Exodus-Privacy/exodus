@@ -31,7 +31,7 @@
         <div class="col-6">
             <div class=" alert alert-warning">
               <div class="alert-heading">
-                <h4><span class="badge badge-info">{{ reports|length }}</span> Available reports for this tracker</h4>
+                <h4><span class="badge badge-info">{{ reports.count}}</span> Available report{{ reports.count|pluralize }} for this tracker</h4>
               </div>
               <table style="margin: auto; border:none" class="table table-hover">
                 {% for report in reports %}
