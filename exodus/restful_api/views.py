@@ -5,11 +5,12 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django.http import Http404
 from rest_framework.decorators import api_view, permission_classes, authentication_classes, parser_classes
 
-from reports.models import Report
-from restful_api.models import ReportInfos
-from restful_api.serializers import ReportInfosSerializer
+from reports.models import *
+from restful_api.models import *
+from restful_api.serializers import *
 import tempfile
 from django.conf import settings
 from minio import Minio
@@ -119,3 +120,31 @@ def upload_flow(request, r_id):
         print(e)
         return HttpResponse(status=500)
     return HttpResponse(status=200)
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes(())
+@permission_classes(())
+def get_all_reports(request):
+    if request.method == 'GET':
+        report_list = Report.objects.order_by('-creation_date')
+        reports = [LightReport(report) for report in report_list]
+        serializer = LightReportSerializer(reports, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes(())
+@permission_classes(())
+def get_report_details(request, r_id):
+    if request.method == 'GET':
+        try:
+            report = Report.objects.get(pk=r_id)
+        except Report.DoesNotExist:
+            raise Http404("No reports found")
+        serializer = ReportSerializer(report, many=False)
+        return JsonResponse(serializer.data, safe=True)
+
+

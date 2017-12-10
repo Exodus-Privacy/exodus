@@ -16,13 +16,23 @@ def find_and_save_app_icon(self, analysis):
 
 
 @app.task(bind=True)
-def find_trackers(self, analysis):
-    return findTrackers(analysis.decoded_dir)
+def compute_and_save_class_list(self, analysis):
+    return listClasses(analysis.decoded_dir, analysis.class_list_file)
+
+
+@app.task(bind=True)
+def find_trackers(self, class_file):
+    return findTrackers(class_file)
 
 
 @app.task(bind=True)
 def get_version(self, analysis):
     return getVersion(analysis.decoded_dir)
+
+
+@app.task(bind=True)
+def get_version_code(self, analysis):
+    return getVersionCode(analysis.decoded_dir)
 
 
 @app.task(bind=True)
@@ -130,20 +140,30 @@ def start_static_analysis(analysis):
     
     if g_r[0]:
         shasum = g_r[1]
-        infos_group = group(get_version.s(analysis), 
+        infos_group = group(get_version.s(analysis),
                     get_handle.s(analysis),
                     get_permissions.s(analysis),
-                    find_trackers.s(analysis),
+                    compute_and_save_class_list.s(analysis),
                     find_and_save_app_icon.s(analysis),
                     get_app_infos.s(analysis),
+                    get_version_code.s(analysis),
                     )()
         infos = infos_group.get()
         version = infos[0]
         handle = infos[1]
         perms = infos[2]
-        trackers = infos[3]
+        local_class_list_file = infos[3]
         icon_file = infos[4]
         app_info = infos[5]
+        version_code = infos[6]
+
+        # If class list file does not exists abort.
+        if local_class_list_file == '':
+            clear_analysis_files.delay(analysis, True)
+            return -1
+
+        # Find trackers
+        trackers_task = find_trackers.delay(local_class_list_file)
 
         # If a report exists for this couple (handle, version), just return it
         existing_report = Report.objects.filter(application__handle=handle, application__version=version).order_by('-creation_date').first()
@@ -155,10 +175,12 @@ def start_static_analysis(analysis):
         report.save()
         net_analysis = NetworkAnalysis(report=report)
         net_analysis.save()
+        report.class_list_file = analysis.class_list_file
         report.save()
         app = Application(report=report)
         app.handle = handle
         app.version = version
+        app.version_code = version_code
         if app_info is not None:
             app.name = app_info['title']
             app.creator = app_info['creator']
@@ -177,7 +199,7 @@ def start_static_analysis(analysis):
             p.name = perm
             p.save(force_insert=True)
 
-        report.found_trackers = trackers
+        report.found_trackers = trackers_task.get()
         report.save()
 
         clear_analysis_files.delay(analysis, False)
@@ -201,6 +223,7 @@ class StaticAnalysis:
         self.apk_tmp = os.path.join(self.tmp_dir, '%s.apk'%self.query.handle)
         self.apk_name = '%s_%s.apk' % (self.bucket, self.query.handle)
         self.icon_name = '%s_%s.png' % (self.bucket, self.query.handle)
+        self.class_list_file = '%s_%s.clist' % (self.bucket, self.query.handle)
 
     def start(self):
         return start_static_analysis(self)

@@ -21,7 +21,7 @@ def index(request):
 
 def get_all_apps(request):
     try:
-        apps = Application.objects.order_by('handle').distinct('handle')
+        apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Application.DoesNotExist:
         raise Http404("No apps found")
     return render(request, 'apps_list.html', {'apps': apps})
@@ -72,7 +72,7 @@ def get_stats(request):
     from collections import namedtuple
     try:
         reports = NetworkAnalysis.objects.all()
-        apps = Application.objects.order_by('handle').distinct('handle')
+        apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except:
         raise Http404("NetworkAnalysis do not exist")
 
@@ -97,6 +97,6 @@ def get_stats(request):
     sum = len(apps)
     tracker_results = []
     for t in trackers:
-        tracker_results.append({'name':t.name, 'score':int(100.*t.c/sum)})
+        tracker_results.append({'name': t.name, 'score': int(100.*t.c/sum), 'count': int(t.c)})
     
-    return render(request, 'stats_details.html', {'domains': domain_results, 'trackers':tracker_results})
+    return render(request, 'stats_details.html', {'domains': domain_results, 'trackers': tracker_results})

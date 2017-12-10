@@ -10,129 +10,155 @@
   * retrieve HTTP posted data
   * generate JSON report
 
-# Deploy
-## System dependencies
+# Development environment
+## Step 1 - System dependencies
 ```
-sudo apt install git virtualenv postgresql-9.6 rabbitmq-server aapt build-essential libssl-dev libffi-dev python3-dev openjdk-8-jre
-```
-
-## Clone the project
-```
-git clone -b v1 ssh://<username>@62.210.131.96:19100/data/depots/exodus/exodus.git Exodus
+sudo apt install git virtualenv postgresql-9.6 rabbitmq-server tshark aapt build-essential libssl-dev aapt libffi-dev python3-dev openjdk-8-jre
 ```
 
-## Create database
+## Step 2 - Clone the project
+```
+git clone https://github.com/Exodus-Privacy/exodus.git
+```
+
+## Step 3 - Create database and user
 ```
 sudo su - postgres
 psql
-CREATE USER exodus WITH PASSWORD 'a big password';
+CREATE USER exodus WITH PASSWORD 'exodus';
 CREATE DATABASE exodus WITH OWNER exodus;
 ```
-Set the password in the file `Exodus/exodus/exodus/settings.py` line 97.
 
-## Set Python virtual environement and dependencies   
+## Step 4 - Set Python virtual environment and install dependencies   
 ```
-cd Exodus
+cd exodus
 virtualenv ./venv -p python3
 source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-## Create the DB schema
+## Step 5 - Create the DB schema
 ```
-cd exodus/exodus
-python manage.py migrate --fake-initial
-python manage.py migrate
-```
-
-## Create admin user
-```
-python manage.py createsuperuser
+cd exodus
+python manage.py migrate --fake-initial --settings=exodus.settings.dev
+python manage.py makemigrations --settings=exodus.settings.dev
+python manage.py migrate --settings=exodus.settings.dev
 ```
 
-# Electra
-## Install Android 7.1 (deprecated)
-Download the ISO of Android 7.1 x86_64 : 
+## Step 6 - Create admin user
+You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 ```
-torify wget https://osdn.net/frs/redir.php?m=rwthaachen&f=%2Fandroid-x86%2F67834%2Fandroid-x86_64-7.1-rc1.iso
-```
-Create a new VM and set: 
-```
-Pointer device : PS/2
-```
-Set `bridge` network mode.
-Specify the shitty GMail account.
-Install the FakeGPS application.
-Create a snapshot
-
-## Install Android 6.0
-See https://www.osboxes.org/android-x86/
-Set `bridge` network mode.
-Specify the shitty GMail account.
-Install the FakeGPS application.
-Create a snapshot
-
-## Configure ADB
-In Android terminal emulator
-```
-su
-setprop service.adb.tcp.port 5555
-stop adbd
-start adbd
-ifconfig
-```
-## MITMProxy
-```
-sudo brctl addbr proute
-sudo ip link set proute up
-sudo iptables -t nat -A POSTROUTING -s 192.168.30.0/24 -j MASQUERADE
-sudo iptables -A FORWARD -i proute -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-sudo iptables -A FORWARD -i eth0 -o proute -j ACCEPT
-sudo iptables -t nat -A PREROUTING -i proute -p tcp --dport 80 -j REDIRECT --to-port 8080
-sudo iptables -t nat -A PREROUTING -i proute -p tcp --dport 443 -j REDIRECT --to-port 8080
+source venv/bin/activate
+cd exodus
+python manage.py createsuperuser --settings=exodus.settings.dev
 ```
 
-In `/etc/network/interfaces`, add:
+## Step 7 - Install Minio server
+Minio is in charge to store files like APK, icons, flow and pcap files.
 ```
-auto proute
-iface proute inet static
-    address 192.168.30.1
-    netmask 255.255.255.0
+wget https://dl.minio.io/server/minio/release/linux-amd64/minio -O $HOME/minio
+chmod +x $HOME/minio
 ```
-
-In `/etc/default/isc-dhcp-server`, set:
+### Configure Minio
 ```
-INTERFACES="proute"
-```
-
-In `/etc/dhcp/dhcpd.conf`, declare:
-```
-option domain-name "exodus.lan";
-option domain-name-servers 80.67.169.12,80.67.169.40;
-option routers 192.168.30.1;
-
-default-lease-time 600;
-max-lease-time 7200;
-
-subnet 192.168.30.0 netmask 255.255.255.0 {
-  range 192.168.30.3 192.168.30.224;
+mkdir -p $HOME/.minio
+cat > $HOME/.minio/config.json << EOL
+{
+        "version": "20",
+        "credential": {
+                "accessKey": "exodusexodus",
+                "secretKey": "exodusexodus"
+        },
+        "region": "",
+        "browser": "on",
+        "logger": {
+                "console": {
+                        "enable": true
+                },
+                "file": {
+                        "enable": false,
+                        "filename": ""
+                }
+        },
+        "notify": {}
 }
-authoritative;
+EOL
 ```
 
-
-# ToDo
-  * add geo-tagged pictures in Android custom build
-
-
-# Notes
-## Run `tcpdump` as simple user
-```bash
-sudo visudo
+### Create Minio storage location
 ```
-and append the following line before the `include ...` one at the bottom of the file
+mkdir -p /tmp/exodus-storage
 ```
-<usename>  ALL=(ALL) NOPASSWD: /usr/sbin/tcpdump
+
+## Step 8 - Start Minio
+```
+$HOME/minio server /tmp/exodus-storage
+```
+Minio is now listening on `9000` port and the browser interface is available 
+at [http://127.0.0.1:9000](http://127.0.0.1:9000). Use `exodusexodus` as both login 
+and password.
+
+## Step 9 - Start the εxodus worker
+The εxodus handle asynchronous tasks submitted by the front-end.
+You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
+```
+source venv/bin/activate
+cd exodus
+export DJANGO_SETTINGS_MODULE=exodus.settings.dev; python manage.py celery worker -A exodus.core -l info
+```
+Now, the εxodus worker is waiting for tasks.
+
+## Step 10 - Start the εxodus front-end
+You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
+```
+source venv/bin/activate
+cd exodus
+python manage.py runserver --settings=exodus.settings.dev
+```
+Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## Step * - Analyse an application
+Browse [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) and enter your login and password. Then, 
+browse [http://127.0.0.1:8000/analysis/submit/](http://127.0.0.1:8000/analysis/submit/), specify an application handle 
+and click on submit.
+
+# FAQ
+## GPlaycli refuses to download APK
+It is probably a configuration issue. First of all, check the file `$HOME/.config/gplaycli/gplaycli.conf`, it 
+should contains:
+  * `android_ID=3d716411bf8bc802`
+  
+ If the issue remains, fill:
+   * `gmail_address`
+   * `gmail_password`
+   
+with a real Google Account :-(
+   
+If the file `$HOME/.config/gplaycli/gplaycli.conf` does not exist, create it and put that into: 
+```
+[Credentials]
+gmail_address=
+gmail_password=
+#keyring_service=gplaycli
+android_ID=3d716411bf8bc802
+language=en_US
+token=True
+token_url=https://matlink.fr/token/email/gsfid
+
+[Cache]
+token=~/.cache/gplaycli/token
+```
+
+## How to import another database?
+You can grab dummy data from [here](https://seahub.0x39b.fr/d/c17dc0992a/).
+
+You first need to delete the previous database, then import the new one :
+```
+sudo su - postgres
+psql
+DROP DATABASE exodus;
+CREATE DATABASE exodus WITH OWNER exodus;
+psql exodus < exodus.sql
 ```
 
 ## Read `.pcap` files  as simple user

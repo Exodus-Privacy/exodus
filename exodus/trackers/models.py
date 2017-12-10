@@ -10,6 +10,8 @@ class Tracker(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     creation_date = models.DateField(auto_now_add=True)
+    code_signature = models.CharField(max_length=500, default='')
+    network_signature = models.CharField(max_length=500, default='')
     website = models.URLField()
 
     def __str__(self):

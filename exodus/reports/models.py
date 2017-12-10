@@ -14,16 +14,20 @@ from minio.error import (ResponseError)
 @python_2_unicode_compatible
 class Report(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     found_trackers = models.ManyToManyField(Tracker)
     storage_path = models.CharField(max_length=200, default='')
     bucket = models.CharField(max_length=200, default='')
     apk_file = models.CharField(max_length=200, default='')
     pcap_file = models.CharField(max_length=200, default='')
     flow_file = models.CharField(max_length=200, default='')
+    class_list_file = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return self.application.handle
 
+    def trackers(self):
+        return self.found_trackers.order_by('name')
 
 class Application(models.Model):
     report = models.OneToOneField(Report)
@@ -32,8 +36,11 @@ class Application(models.Model):
     creator = models.CharField(max_length=200, default='')
     downloads = models.CharField(max_length=200, default='')
     version = models.CharField(max_length=50)
+    version_code = models.CharField(max_length=50, default='')
     icon_path = models.CharField(max_length=500, default='')
 
+    def permissions(self):
+        return self.permission_set.all().order_by('name')
 
 class Apk(models.Model):
     application = models.OneToOneField(Application)

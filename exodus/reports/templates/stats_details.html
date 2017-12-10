@@ -3,31 +3,6 @@
 {% load static %}
 <h1>Statistics</h1>
 <div class="row">
-    {% if domains %}
-    <div class="col">
-        <div class=" alert alert-info">
-            <div class="alert-heading">
-                <h4>Potential tracking domains</h4>
-            </div>
-            <hr>
-            <table style="margin: auto">
-            {% for result in domains %}
-            <tr><td class="text-right"><samp>{{result.hostname}} </spam></td><td style="width:300px"> 
-                <div class="progress">
-                    {% if result.score >= 66 %}
-                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                    {% elif result.score >= 33 %}
-                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                    {% else %}
-                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                    {% endif %}
-                </div>
-                </td></tr>
-            {% endfor %}
-            </table>
-        </div>
-    </div>
-    {% endif %}
     {% if trackers %}
     <div class="col">
         <div class="alert alert-info">
@@ -37,14 +12,18 @@
             <hr>
             <table style="margin: auto">
             {% for result in trackers %}
-            <tr><td class="text-right">{{result.name}} </td><td style="width:300px"> 
+            <tr><td class="text-right">{{result.name}} </td>
+                <td class="small text-muted">
+                    found in {{result.count}} apps
+                </td>
+                <td style="width:300px">
                 <div class="progress">
-                    {% if result.score >= 66 %}
-                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% if result.score >= 50 %}
+                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
                     {% elif result.score >= 33 %}
-                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
                     {% else %}
-                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{result.score}}%;" aria-valuenow="{{result.score}}" aria-valuemin="0" aria-valuemax="100">{{result.score}}%</div>
                     {% endif %}
                 </div>
                 </td></tr>

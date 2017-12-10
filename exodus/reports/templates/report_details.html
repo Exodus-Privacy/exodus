@@ -5,9 +5,14 @@
     {% load static %}
     {% if report %}
     {% if request.user.is_superuser %}
-    <p class="small"> Provide this URI to Electra for report completion: 
+    <p class="small alert alert-warning"> Provide this URI to Electra for report completion:
         <samp>
             /api/report/{{report.id}}/
+        </samp>
+        <br>
+        Prefix in storage:
+        <samp>
+            {{report.bucket}}
         </samp>
     </p>
     {% endif %}
@@ -24,7 +29,8 @@
                 <h4><span class="badge badge-warning">{{ report.found_trackers.all|length }}</span> trackers, 
                     <span class="badge badge-warning">{{ report.application.permission_set.all|length }}</span> permissions found.
                 </h4>
-                <p class="text-muted small">This report was automatically issued on {{report.creation_date}}.</p>
+                <p class="text-muted small">This report was automatically issued on <b>{{report.creation_date}}</b>.<br>
+                    This report was automatically updated on <b>{{report.updated_at}}</b>.</p>
                 <p class="mb-0 small">
                     <a class="" data-toggle="collapse" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">View APK file details</a>
                     <div class="collapse" id="collapseAPKDetails">
@@ -34,6 +40,7 @@
                                 <li>APK checksum: <samp>{{report.application.apk.sum}}</samp></li> 
                                 <li>Application handle: <samp>{{report.application.handle}}</samp></li>
                                 <li>Version: <samp>{{report.application.version}}</samp></li>
+                                <li>Version code: <samp>{{report.application.version_code}}</samp></li>
                             </ul>
                         </div>
                     </div>
@@ -66,22 +73,28 @@
                     <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.all|length }}</span> Trackers</h4>
                 </div>
                 <div class="card-body">
-                    We have found code signature of these trackers in the application:
-                    <br>
-                    <br>
-                    <ul>
-                        {% for t in report.found_trackers.all %}
-                            <li><a href="{% url 'trackers:detail' t.id %}"><samp>{{t.name}}</samp></a></li>
-                        {% endfor %}
-                    </ul>
-                    <p  class="small alert">
-                        <i>A tracker is a piece of software meant to collect data about you or your usages. We do not guarantee the exhaustiveness of this list.</i>
-                    </p>
-                    <p class="alert alert-danger small">
-                        Privacy protecting applications embed lists of trackers signatures in order to block them. εxodus could find tracker signatures in these
-                        blacklists and falsely report them as part of the application. If you have doubts about this report, contact us
-                        at <a href="mailto:contact@exodus-privacy.eu.org?subject=Exodus - Question about report {{report.id}}">contact@exodus-privacy.eu.org</a>
-                    </p>
+                    {% if report.found_trackers.all %}
+                        We have found <b>code signature</b> of these trackers in the application:
+                        <br>
+                        <br>
+                        <ul>
+                            {% for t in report.trackers %}
+                                <li><a href="{% url 'trackers:detail' t.id %}"><samp>{{t.name}}</samp></a></li>
+                            {% endfor %}
+                        </ul>
+                        <p  class="small alert">
+                            <i>A tracker is a piece of software meant to collect data about you or your usages. We do not guarantee the exhaustiveness of this list.</i>
+                        </p>
+                        <p class="alert alert-danger small">
+                            Here is the list of trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers.
+                            The application could contain tracker(s) we do not know yet.
+                            <br>
+                            If you have doubts about this report, contact us
+                            at <a href="mailto:contact@exodus-privacy.eu.org?subject=Exodus - Question about report {{report.id}}">contact@exodus-privacy.eu.org</a>.
+                        </p>
+                    {% else %}
+                        We have not found <b>code signature</b> of any tracker we know in the application. The application could contain tracker(s) we do not know yet.
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -94,8 +107,8 @@
                     We have found these permissions in the application:
                     <br>
                     <br>
-                    <table class="table table-sm">
-                        {% for perm in report.application.permission_set.all %}
+                    <table class="table table-sm table-responsive">
+                        {% for perm in report.application.permissions %}
                             <tr>
                                 <td class="text-right"><samp>{{perm.name}}</samp></td>
                                 <td>{{perm.name|perm_doc|safe}}</td>
