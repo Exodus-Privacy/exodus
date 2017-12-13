@@ -152,17 +152,18 @@ token_url=https://matlink.fr/token/email/gsfid
 token=~/.cache/gplaycli/token
 ```
 
-## How to import another database?
-You can grab dummy data from [here](https://seahub.0x39b.fr/d/c17dc0992a/).
-
-You first need to delete the previous database, then import the new one :
+## How to import trackers definitions?
+We periodically export trackers definitions from the poduction instance. This export is a JSON file you can easily import using Django admin.
+To do so, get trackers definition from [production](https://y.0x39b.fr/zerobin/?b8cd1e442301940d#HCuV45xNQ/MAPvHVFifCr0tdoX7dxP7f2H55JXc1PHg=) by clicking on *Raw text* and copying the content into a json file, for example in `/tmp/trackers.json`.
+Once saved, activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following command:
+```bash
+python manage.py loaddata /tmp/trackers.json --settings=exodus.settings.dev
 ```
-sudo su - postgres
-psql
-DROP DATABASE exodus;
-CREATE DATABASE exodus WITH OWNER exodus;
-psql exodus < exodus.sql
+Django should say something like
 ```
+Installed 71 object(s) from 1 fixture(s)
+```
+Now, browse [your tracker list](http://localhost:8000/trackers/).
 
 ## Read `.pcap` files  as simple user
 ```bash
