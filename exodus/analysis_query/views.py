@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import random
+import string
+
+from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+from django.http.response import Http404
+from django.shortcuts import render
 from django.views.generic import FormView, ListView
+
+from exodus.core.apk import *
 from .forms import AnalysisRequestForm
 from .models import AnalysisRequest
-from exodus.core.apk import StaticAnalysis
-from django.conf import settings
-import random, string, os
-from django.shortcuts import render
 
 
 def randomword(length):
-   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
 
 class AnalysisRequestView(FormView):
@@ -21,16 +26,31 @@ class AnalysisRequestView(FormView):
 
     def form_valid(self, form):
         randhex = str(randomword(60))
-        path = os.path.join(settings.EX_APK_FS_ROOT, randhex)
-        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'], storage_path=path, bucket=randhex)
+        analysis_q = AnalysisRequest(handle = form.cleaned_data['handle'], bucket = randhex)
+        analysis_q.description = 'Your request will be handled soon'
         analysis_q.save()
 
         static = StaticAnalysis(analysis_q)
-        r_id = static.start()
-        if r_id < 0:
-            return render(self.request, 'query_error.html', {'error': 'Unable to analyze the APK file'})
+        start_static_analysis.delay(static)
 
-        return HttpResponseRedirect('/reports/%s/'%r_id)
+        return HttpResponseRedirect('/analysis/%s' % analysis_q.id)
+
+
+def wait(request, r_id):
+    try:
+        r = AnalysisRequest.objects.get(pk = r_id)
+    except AnalysisRequest.DoesNotExist:
+        raise Http404("AnalysisRequest does not exist")
+    return render(request, 'query_wait.html', {'request': r})
+
+
+def json(request, r_id):
+    try:
+        r = AnalysisRequest.objects.get(pk = r_id)
+    except AnalysisRequest.DoesNotExist:
+        raise Http404("AnalysisRequest does not exist")
+    r.bucket = ''
+    return JsonResponse(model_to_dict(r), safe = False)
 
 
 class AnalysisRequestListView(ListView):

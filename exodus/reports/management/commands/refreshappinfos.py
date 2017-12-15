@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from exodus.core.static_analysis import *
-from reports.models import *
+
+from exodus.reports.models import *
 
 
 class Command(BaseCommand):
@@ -14,7 +15,7 @@ class Command(BaseCommand):
 
         for report in reports:
             handle = report.application.handle
-            infos = getApplicationInfos(handle)
+            infos = get_application_details(handle)
             if infos is not None:
                 report.application.name = infos['title']
                 report.application.creator = infos['creator']

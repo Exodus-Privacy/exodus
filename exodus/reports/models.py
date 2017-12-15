@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
-from trackers.models import Tracker
-from django.utils.encoding import python_2_unicode_compatible
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-from django.conf import settings
+from django.utils.encoding import python_2_unicode_compatible
 from minio import Minio
 from minio.error import (ResponseError)
+
+from trackers.models import Tracker
 
 
 @python_2_unicode_compatible
@@ -16,7 +17,7 @@ class Report(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     found_trackers = models.ManyToManyField(Tracker)
-    storage_path = models.CharField(max_length=200, default='')
+    storage_path = models.CharField(max_length = 200, default = '')
     bucket = models.CharField(max_length=200, default='')
     apk_file = models.CharField(max_length=200, default='')
     pcap_file = models.CharField(max_length=200, default='')

@@ -1,6 +1,6 @@
-from django.core.management.base import BaseCommand, CommandError
-from exodus.core.static_analysis import *
+from django.core.management.base import BaseCommand
 from exodus.core.dns import *
+from exodus.core.static_analysis import *
 
 
 class Command(BaseCommand):

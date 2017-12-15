@@ -1,44 +1,41 @@
 {% extends "base.html"%}
 {% block content %}
-    <div class="row justify-content-md-center">
-        <div class="col-lg-4 col-centered">
-          {% if request.user.is_superuser %}
-            <form method='post' enctype='multipart/form-data' action="{% url 'analysis:submit' %}">
-              <div class="form-group jumbotron">
+<div class="row justify-content-md-center">
+    <div class="col-lg-4 col-centered">
+        <form method='post' enctype='multipart/form-data' action="{% url 'analysis:submit' %}">
+            <div class="form-group jumbotron">
                 {% csrf_token %}
                 <h2>Analyze an application</h2>
                 {% if form.errors %}
-                  {% for field in form %}
-                      {% for error in field.errors %}
-                          <div class="alert alert-danger small">
-                              <strong>{{ error|escape }}</strong>
-                          </div>
-                      {% endfor %}
-                  {% endfor %}
-              {% endif %}
-                <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help" placeholder="fr.meteo">
-                <small id="handle_help" class="form-text text-muted text-center">You can find the handle in the Google Play URL of the application <i>i.e.</i> <br> <code>https://play.google.com/store/apps/details?id=<b>fr.meteo</b></code> </small>
+                {% for field in form %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger small">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                {% endif %}
+                <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help"
+                       placeholder="fr.meteo">
+                <small id="handle_help" class="form-text text-muted text-center">You can find the handle in the Google
+                    Play URL of the application <i>i.e.</i> <br> <code>https://play.google.com/store/apps/details?id=<b>fr.meteo</b></code>
+                </small>
                 <br>
                 <p class="text-center">
-                  <button type='submit' onclick="show_spinner()" class="btn btn-primary">Perform analysis</button>
+                    <button type='submit' onclick="show_spinner()" class="btn btn-primary">Perform analysis</button>
                 </p>
                 <br>
                 <br>
                 <div id="loading" class="text-center" style="display:none;">
-                  <img style="width:200px;" src="/static/img/loading.gif" alt="">
-                  <div class="alert alert-light" role="alert">
-                      The analysis could take a long time, you will be automatically redirected to the report.
-                  </div>
+                    <img style="width:200px;" src="/static/img/loading.gif" alt="">
+                    <div class="alert alert-light" role="alert">
+                        The analysis could take a long time, you will be automatically redirected to the report.
+                    </div>
                 </div>
-              </div>
-            </form>
-          {% else %}
-            <div class="alert alert-danger small">
-                <strong>You need to be registered.</strong>
             </div>
-          {% endif %}
-        </div>
+        </form>
     </div>
+</div>
 
 <script>
 var show_spinner=function(){
@@ -47,5 +44,6 @@ var show_spinner=function(){
     s.style.display = "block"
   }
 }
+
 </script>
 {% endblock %}

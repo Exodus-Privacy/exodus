@@ -1,17 +1,17 @@
 {% extends "base.html"%}
 {% block content %}
-    <div class="row justify-content-md-center">
-        <div class="col-lg-5 col-centered">
-            {% if request.user.is_superuser %}
-                <ul>
-                {% for q in queries %}
-                    <li>{{ q.handle }} - {{ q.uploaded_at }}</li>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <div class="alert alert-danger small">
-                    <strong>You need to be registered.</strong>
-                </div>
+<div class="row justify-content-md-center">
+    <div class="col-lg-5 col-centered">
+        {% if request.user.is_superuser %}
+        <ul>
+            {% for q in queries %}
+            <li>{{ q.id }} - {{ q.handle }} - {{ q.uploaded_at }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="alert alert-danger small">
+            <strong>You need to be registered.</strong>
+        </div>
         {% endif %}
     </div>
 </div>
