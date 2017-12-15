@@ -12,10 +12,9 @@ from .static_analysis import *
 @app.task(bind = True)
 def start_static_analysis(self, analysis):
     """
-
-    :param self:
-    :param analysis:
-    :return:
+    Compute the entire static analysis
+    :param self: celery task
+    :param analysis: a StaticAnalysis instance
     """
     request = AnalysisRequest.objects.get(pk = analysis.query.id)
     request.description = 'Your request is running'
