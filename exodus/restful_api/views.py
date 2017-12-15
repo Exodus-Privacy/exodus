@@ -9,6 +9,7 @@ from django.http import Http404
 from rest_framework.decorators import api_view, permission_classes, authentication_classes, parser_classes
 
 from reports.models import *
+from trackers.models import *
 from restful_api.models import *
 from restful_api.serializers import *
 import tempfile
@@ -129,9 +130,39 @@ def upload_flow(request, r_id):
 def get_all_reports(request):
     if request.method == 'GET':
         report_list = Report.objects.order_by('-creation_date')
-        reports = [LightReport(report) for report in report_list]
-        serializer = LightReportSerializer(reports, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        applications = {}
+        for report in report_list:
+            if report.application.handle not in applications:
+                applications[report.application.handle] = {}
+            application = applications[report.application.handle] 
+            application['name'] = report.application.name
+            application['creator'] = report.application.creator
+            if 'reports' not in application:
+                application['reports'] = []
+
+
+            application['reports'].append({
+                "creation_date": report.creation_date,
+                "updated_at": report.updated_at,
+                "version": report.application.version,
+                "version_code": report.application.version_code,
+                "downloads": report.application.downloads,
+                "trackers": [t.id for t in report.found_trackers.all()],
+            })
+
+            trackers = {}
+            for t in Tracker.objects.order_by('id'):
+                tracker = {}
+                tracker['name'] = t.name;
+                tracker['description'] = t.description;
+                tracker['creation_date'] = t.creation_date;
+                tracker['code_signature'] = t.code_signature;
+                tracker['network_signature'] = t.network_signature;
+                tracker['website'] = t.website;
+                trackers[t.id] = tracker
+
+        return JsonResponse({"applications": applications, "trackers": trackers})
+
 
 
 @csrf_exempt
