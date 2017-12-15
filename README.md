@@ -169,3 +169,10 @@ Now, browse [your tracker list](http://localhost:8000/trackers/).
 ```bash
 chmod g+s net
 ```
+## minio Error
+if you encounter a `minio.error.InvalidPartOrder` with the latest release of minio, use the latest tested release `RELEASE.2017-10-27T18-59-02Z` by using 
+```
+wget https://dl.minio.io/server/minio/release/linux-amd64/archive/minio.RELEASE.2017-10-27T18-59-02Z -o $HOME/minio
+
+```
+and select version 19 instead of 20 in `$HOME/.minio/config.json"`
