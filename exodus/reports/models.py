@@ -7,7 +7,7 @@ from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from django.utils.encoding import python_2_unicode_compatible
 from minio import Minio
-from minio.error import (ResponseError)
+from minio.error import (ResponseError, NoSuchBucket)
 
 from trackers.models import Tracker
 
@@ -105,11 +105,10 @@ def remove_report_files(sender, instance, using, **kwargs):
                          secret_key=settings.MINIO_SECRET_KEY,
                          secure=settings.MINIO_SECURE)
     try:
-        try:
-            objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=instance.bucket, recursive=True)
-            for obj in objects:
-                minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
-        except ResponseError as err:
-            print(err)
+        objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=instance.bucket, recursive=True)
+        for obj in objects:
+            minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
     except ResponseError as err:
+        print(err)
+    except NoSuchBucket as err:
         print(err)

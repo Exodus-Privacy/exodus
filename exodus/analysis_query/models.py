@@ -10,13 +10,18 @@ from reports.models import *
 
 
 def validate_handle(value):
-    reg = re.compile(r'^(\w+\.)+\w+$')
-    if reg.match(value) is None:
+    package_reg = re.compile(r'^(\w+\.)+\w+$')
+    if package_reg.match(value) is None:
         raise ValidationError(u'%s is not a valid application handle' % value)
 
     r = requests.get('%s%s' % ('https://play.google.com/store/apps/details?id=', value))
     if r.status_code == 404:
         raise ValidationError(u'%s application not found on Google Play' % value)
+
+    pending_queries = AnalysisRequest.objects.filter(processed = False).count()
+    print(pending_queries)
+    if pending_queries > 19:
+        raise ValidationError('Too much pending requests, please retry later')
 
 
 class AnalysisRequest(models.Model):

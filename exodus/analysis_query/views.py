@@ -21,7 +21,7 @@ def randomword(length):
 
 
 class AnalysisRequestView(FormView):
-    template_name = 'apk_upload.html'
+    template_name = 'query_submit.html'
     form_class = AnalysisRequestForm
 
     def form_valid(self, form):
