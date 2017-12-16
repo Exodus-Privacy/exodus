@@ -22,12 +22,24 @@
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="dropdown">
+            <button class="btn nav-item btn-info dropdown-toggle" type="button" id="ep_dd"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Exodus Privacy
+            </button>
+            <div class="dropdown-menu" aria-labelledby="ep_dd">
+                <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org">Home</a>
+                <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/#help">Help us!</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/Exodus-Privacy/exodus/issues">Report an issue</a>
+            </div>
+        </div>
+        &nbsp;
+        <div class="dropdown">
             <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="reports_dd"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Reports
             </button>
             <div class="dropdown-menu" aria-labelledby="reports_dd">
-                <a class="dropdown-item" href="/reports/">All</a>
+                <a class="dropdown-item" href="/reports/">All reports</a>
                 <a class="dropdown-item" href="/reports/apps/">All applications</a>
                 <a class="dropdown-item" href="/reports/stats/">Statistics</a>
             </div>
@@ -43,18 +55,18 @@
             </div>
         </div>
         &nbsp
-        {% if request.user.is_superuser %}
         <div class="dropdown">
             <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Analysis
             </button>
             <div class="dropdown-menu" aria-labelledby="analysis_dd">
-                <a class="dropdown-item" href="/analysis/">List</a>
+                {% if request.user.is_superuser %}
+                    <a class="dropdown-item" href="/analysis/">List</a>
+                {% endif %}
                 <a class="dropdown-item" href="/analysis/submit/">Submit</a>
             </div>
         </div>
-        {% endif %}
     </div>
 </nav>
 <br>
