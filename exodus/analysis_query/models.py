@@ -18,8 +18,10 @@ def validate_handle(value):
     if r.status_code == 404:
         raise ValidationError(u'%s application not found on Google Play' % value)
 
+    duplicate_queries = AnalysisRequest.objects.filter(processed = False, handle = value).count()
+    if duplicate_queries > 0:
+        raise ValidationError('This application is being analyzed.')
     pending_queries = AnalysisRequest.objects.filter(processed = False).count()
-    print(pending_queries)
     if pending_queries > 19:
         raise ValidationError('Too much pending requests, please retry later')
 
