@@ -10,7 +10,7 @@ from .celery import app
 from .static_analysis import *
 
 
-@app.task(bind = True)
+@app.task(bind = True, ignore_result=True)
 def start_static_analysis(self, analysis):
     """
     Compute the entire static analysis
