@@ -78,10 +78,10 @@ jQuery("#handle").on("change paste keyup", function() {
         }
     } else {
         const regex_pk = /^((?:\w+\.)+\w+)$/gmi;
-        jQuery("#reports").html('')
         if(regex_pk.test(handle)){
             jQuery.get("/api/search/"+handle, function(rq){
                 if(rq[handle]){
+                    jQuery("#reports").html('')
                     jQuery("#reports").show()
                     var p = document.createElement('p')
                     var name = handle
