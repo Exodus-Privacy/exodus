@@ -174,7 +174,7 @@ def get_sha256sum(apk_path):
     """
     cmd = '/usr/bin/sha256sum %s | head -c 64' % apk_path
     process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-    return process.stdout.read()
+    return process.communicate()[0]
 
 
 def decode_apk_file(apk_path, decoded_dir):
@@ -237,6 +237,7 @@ def get_application_details(handle):
             if 'Traceback' in line or 'Error' in line:
                 return None
             lines.append(line.replace('\n', ''))
+        p.communicate()
         if len(lines) != 2:
             return None
         columns = []
