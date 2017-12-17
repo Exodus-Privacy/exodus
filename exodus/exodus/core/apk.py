@@ -2,7 +2,8 @@
 from __future__ import absolute_import, unicode_literals
 
 import tempfile
-
+import tracemalloc
+import gc
 from analysis_query.models import *
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
 from .celery import app
@@ -16,6 +17,9 @@ def start_static_analysis(self, analysis):
     :param self: celery task
     :param analysis: a StaticAnalysis instance
     """
+    tracemalloc.start()
+    snapshot1 = tracemalloc.take_snapshot()
+
     request = AnalysisRequest.objects.get(pk = analysis.query.id)
     request.description = 'Your request is running'
     request.save()
@@ -27,6 +31,14 @@ def start_static_analysis(self, analysis):
         request.description = 'Unable to download the APK'
         request.processed = True
         request.save()
+
+        gc.collect()
+        snapshot2 = tracemalloc.take_snapshot()
+        top_stats = snapshot2.compare_to(snapshot1, 'lineno')
+        print("[ Top 10 differences - on error 1 ]")
+        for stat in top_stats[:10]:
+            print(stat)
+
         return -1
 
     request.description = 'Download APK: success'
@@ -39,6 +51,14 @@ def start_static_analysis(self, analysis):
         request.description = 'Unable to decode the APK'
         request.processed = True
         request.save()
+
+        gc.collect()
+        snapshot2 = tracemalloc.take_snapshot()
+        top_stats = snapshot2.compare_to(snapshot1, 'lineno')
+        print("[ Top 10 differences - on error 2 ]")
+        for stat in top_stats[:10]:
+            print(stat)
+
         return -1
 
     request.description = 'Decode APK: success'
@@ -53,6 +73,14 @@ def start_static_analysis(self, analysis):
         request.description = 'Unable to compute the class list'
         request.processed = True
         request.save()
+
+        gc.collect()
+        snapshot2 = tracemalloc.take_snapshot()
+        top_stats = snapshot2.compare_to(snapshot1, 'lineno')
+        print("[ Top 10 differences - on error 3 ]")
+        for stat in top_stats[:10]:
+            print(stat)
+
         return -1
 
     request.description = 'List embedded classes: success'
@@ -84,6 +112,14 @@ def start_static_analysis(self, analysis):
         request.processed = True
         request.report_id = existing_report.id
         request.save()
+
+        gc.collect()
+        snapshot2 = tracemalloc.take_snapshot()
+        top_stats = snapshot2.compare_to(snapshot1, 'lineno')
+        print("[ Top 10 differences - on existing report ]")
+        for stat in top_stats[:10]:
+            print(stat)
+
         return existing_report.id
 
     report = Report(apk_file = analysis.apk_name, storage_path = '', bucket = request.bucket)
@@ -122,6 +158,14 @@ def start_static_analysis(self, analysis):
     request.processed = True
     request.report_id = report.id
     request.save()
+
+    gc.collect()
+    snapshot2 = tracemalloc.take_snapshot()
+    top_stats = snapshot2.compare_to(snapshot1, 'lineno')
+    print("[ Top 10 differences - on success ]")
+    for stat in top_stats[:10]:
+        print(stat)
+
     return report.id
 
 
