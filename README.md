@@ -169,3 +169,5 @@ Now, browse [your tracker list](http://localhost:8000/trackers/).
 ```bash
 chmod g+s net
 ```
+## minio Error
+if you encounter a `minio.error.InvalidPartOrder` with the latest release of minio, please check that you are using the release 3.0 of the python minio lib (see https://github.com/minio/minio-py/pull/591)
