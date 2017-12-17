@@ -48,7 +48,7 @@ def start_static_analysis(self, analysis):
 
     if local_class_list_file == '':
         # Unable to compute the class list
-        clear_analysis_files(analysis, True)
+        clear_analysis_files(analysis.tmp_dir, analysis.bucket, True)
         request.in_error = True
         request.description = 'Unable to compute the class list'
         request.processed = True
@@ -79,7 +79,7 @@ def start_static_analysis(self, analysis):
     existing_report = Report.objects.filter(application__handle = handle, application__version = version).order_by(
         '-creation_date').first()
     if existing_report is not None:
-        clear_analysis_files(analysis, True)
+        clear_analysis_files(analysis.tmp_dir, analysis.bucket, True)
         request.description = 'A report already exists for this application version'
         request.processed = True
         request.report_id = existing_report.id
@@ -117,7 +117,7 @@ def start_static_analysis(self, analysis):
     report.found_trackers = trackers
     report.save()
 
-    clear_analysis_files(analysis, False)
+    clear_analysis_files(analysis.tmp_dir, analysis.bucket, False)
     request.description = 'Static analysis complete'
     request.processed = True
     request.report_id = report.id
