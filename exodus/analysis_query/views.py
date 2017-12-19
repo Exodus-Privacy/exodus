@@ -30,7 +30,7 @@ class AnalysisRequestView(FormView):
         analysis_q.description = 'Your request will be handled soon'
         analysis_q.save()
 
-        static = StaticAnalysis(analysis_q)
+        static = StaticAnalysisParameters(analysis_q)
         start_static_analysis.delay(static)
 
         return HttpResponseRedirect('/analysis/%s' % analysis_q.id)

@@ -2,66 +2,298 @@
 from __future__ import absolute_import, unicode_literals
 
 import os
+import re
 import shutil
-import subprocess as sp
 import time
+import logging
+from hashlib import sha256
 from pathlib import Path
-from xml.dom import minidom
 
-import yaml
-from django.conf import settings
-from minio import Minio
-from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+from androguard.core.bytecodes.apk import APK
+from androguard.core.bytecodes.dvm import DalvikVMFormat
+from minio.error import (ResponseError)
 
 from trackers.models import Tracker
 
 
-def grep(file, pattern):
-    """
-    Find the given pattern in the given file.
-    :param file: path to file to check
-    :param pattern: pattern to find in the file
-    :return: True if the pattern has been found in the file, False otherwise.
-    """
-    cmd = '/bin/grep -q -E "%s" %s' % (pattern, file)
-    process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    print(exitCode)
-    return exitCode == 0
+class StaticAnalysis:
+    def __init__(self, apk_path = None):
+        self.apk = None
+        self.decoded = None
+        self.apk_path = apk_path
+        self.signatures = None
+        if apk_path is not None:
+            self.load_apk()
+
+    def load_trackers_signatures(self):
+        """
+        Load trackers signatures from database.
+        """
+        self.signatures = Tracker.objects.order_by('name')
+
+    def load_apk(self):
+        """
+        Load the APK file.
+        """
+        self.apk = APK(self.apk_path)
+
+    def decode_apk(self):
+        """
+        Decode the APK file.
+        """
+        self.decoded = DalvikVMFormat(self.apk)
+
+    def detect_trackers_in_list(self, class_list):
+        """
+        Detect embedded trackers in the provided classes list.
+        :return: list of embedded trackers
+        """
+        trackers = []
+        if self.signatures is None:
+            self.load_trackers_signatures()
+        for tracker in self.signatures:
+            if len(tracker.code_signature) > 3:
+                for clazz in class_list:
+                    m = re.search(tracker.code_signature, clazz)
+                    if m is not None:
+                        trackers.append(tracker)
+                        break
+        return trackers
+
+    def detect_trackers(self, class_list_file = None):
+        """
+        Detect embedded trackers.
+        :return: list of embedded trackers
+        """
+        if self.signatures is None:
+            self.load_trackers_signatures()
+        if class_list_file is None:
+            if self.signatures is None:
+                self.load_trackers_signatures()
+            if self.decoded is None:
+                self.decode_apk()
+            return self.detect_trackers_in_list(self.get_embedded_classes())
+        else:
+            with open(class_list_file, 'r') as classes_file:
+                classes = classes_file.readlines()
+                return self.detect_trackers_in_list(classes)
+
+    def get_embedded_classes(self):
+        """
+        List embedded Java classes
+        :return: list of Java classes
+        """
+        return self.decoded.get_classes_names()
+
+    def save_embedded_classes_in_file(self, file_path):
+        """
+        Save list of embedded classes in file.
+        :param file_path: file to write
+        """
+        with open(file_path, 'w+') as f:
+            f.write('\n'.join(self.get_embedded_classes()))
+
+    def get_version(self):
+        """
+        Get the application version name
+        :return: version name
+        """
+        return self.apk.get_androidversion_name()
+
+    def get_version_code(self):
+        """
+        Get the application version code
+        :return: version code
+        """
+        return self.apk.get_androidversion_code()
+
+    def get_permissions(self):
+        """
+        Get application permissions
+        :return: application permissions list
+        """
+        return self.apk.get_permissions()
+
+    def get_app_name(self):
+        """
+        Get application name
+        :return: application name
+        """
+        return self.apk.get_app_name()
+
+    def get_package(self):
+        """
+        Get application package
+        :return: application package
+        """
+        return self.apk.get_package()
+
+    def get_libraries(self):
+        """
+        Get application libraries
+        :return: application libraries list
+        """
+        return self.apk.get_libraries()
+
+    def get_sha256(self):
+        """
+        Get the sha256sum of the APK file
+        :return: hex sha256sum
+        """
+        BLOCKSIZE = 65536
+        hasher = sha256()
+        with open(self.apk_path, 'rb') as apk:
+            buf = apk.read(BLOCKSIZE)
+            while len(buf) > 0:
+                hasher.update(buf)
+                buf = apk.read(BLOCKSIZE)
+        return hasher.hexdigest()
 
 
-def download_and_put(url, destination_name):
-    """
-    Download a file and put it on Minio storage.
-    :param url: URL of the file to download
-    :param destination_name: file name in Minio storage
-    :return: the destination name if succeed, empty string otherwise
-    """
-    import urllib.request, tempfile
-    try:
-        f = urllib.request.urlopen(url)
-        print("Downloading " + url)
-        with tempfile.NamedTemporaryFile(delete = True) as fp:
-            fp.write(f.read())
-            # Upload icon in storage
-            minio_client = Minio(settings.MINIO_URL,
-                                 access_key = settings.MINIO_ACCESS_KEY,
-                                 secret_key = settings.MINIO_SECRET_KEY,
-                                 secure = settings.MINIO_SECURE)
-            try:
-                minio_client.fput_object(settings.MINIO_BUCKET, destination_name, fp.name)
-            except ResponseError as err:
-                print(err)
-            return destination_name
-    except Exception as e:
-        print(e)
-        return ''
+from gplaycli import gplaycli
+import requests
 
 
-def get_application_icon(icon_name, handle, url = None):
+class ExGPlaycli(gplaycli.GPlaycli):
+    def __init__(self):
+        gplaycli.GPlaycli.__init__(self)
+
+    def after_download(self, failed_downloads):
+        pass
+
+    def retrieve_token(self, force_new = False):
+        token, gsfid = self.get_cached_token()
+        if token is not None and not force_new:
+            logging.info("Using cached token.")
+            return token, gsfid
+            logging.info("Retrieving token ...")
+        r = requests.get(self.token_url)
+        if r.text == 'Auth error':
+            logging.info('Token dispenser auth error, probably too many connections')
+            raise ConnectionError('Token dispenser auth error, probably too many connections')
+        elif r.text == "Server error":
+            logging.info('Token dispenser server error')
+            raise ConnectionError('Token dispenser server error')
+        token, gsfid = r.text.split(" ")
+        logging.info("Token: %s", token)
+        logging.info("GSFId: %s", gsfid)
+        self.token = token
+        self.gsfid = gsfid
+        self.write_cached_token(token, gsfid)
+        return token, gsfid
+
+
+def get_application_details(handle):
+    """
+    Get the application details like creator, number of downloads, etc.
+    :param handle: application handle
+    :return: application details dictionary
+    """
+    # Fix#12 - We have to remove the cached token :S
+    shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
+
+    gpc = ExGPlaycli()
+    gpc.token_enable = False
+    # gpc.token_url = "https://matlink.fr/token/email/gsfid"
+    # try:
+    #     gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
+    # except ConnectionError:
+    #     try:
+    #         time.sleep(2)
+    #         gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
+    #     except ConnectionError:
+    #         return None
+    success, error = gpc.connect_to_googleplay_api()
+    if error is not None:
+        return None
+    results = gpc.search(list(), handle, 1, True)
+    if len(results) == 2:
+        infos = {
+            'title': results[1][0],
+            'creator': results[1][1],
+            'size': results[1][2],
+            'downloads': results[1][3],
+            'update': results[1][4],
+            'handle': results[1][5],
+            'version': results[1][6],
+            'rating': results[1][7],
+        }
+        if handle in results[1][5]:
+            return infos
+    return None
+
+
+def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
+    """
+    Download the APK from Google Play for the given handle.
+    :param storage: minio storage helper
+    :param handle: application handle to download
+    :param tmp_dir: download destination directory
+    :param apk_name: name of the APK in Minio storage
+    :param apk_tmp: apk temporary name
+    :return: True if succeed, False otherwise
+    """
+    device_code_names = ['', 'hammerhead', 'manta', 'cloudbook', 'bullhead']
+    retry = 5
+    exit_code = 1
+    gpc = ExGPlaycli()
+    gpc.token_enable = False
+    # gpc.token_url = "https://matlink.fr/token/email/gsfid"
+    # try:
+    #     gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
+    # except ConnectionError:
+    #     try:
+    #         time.sleep(2)
+    #         gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
+    #     except ConnectionError:
+    #         return None
+    success, error = gpc.connect_to_googleplay_api()
+    if error is not None:
+        return False
+    while retry != 0:
+        if device_code_names[retry % len(device_code_names)] != '':
+            gpc.device_codename = device_code_names[retry % len(device_code_names)]
+        gpc.set_download_folder(tmp_dir)
+        gpc.download_packages([handle])
+        apk = Path(apk_tmp)
+        if apk.is_file():
+            exit_code = 0
+
+        if exit_code == 0:
+            break
+
+        retry -= 1
+        time.sleep(2)
+
+    # Upload APK in storage
+    apk = Path(apk_tmp)
+    if exit_code == 0 and apk.is_file():
+        try:
+            storage.put_file(apk_tmp, apk_name)
+        except ResponseError as err:
+            logging.info(err)
+            return False
+
+    return exit_code == 0
+
+
+def clear_analysis_files(storage, tmp_dir, bucket, remove_from_storage = False):
+    """
+    Clear the analysis files (local + on Minio storage).
+    :param tmp_dir: local temporary dir to remove
+    :param bucket: Minio object prefix to remove
+    :param remove_from_storage: remove objects in Minio if set to True
+    """
+    logging.info('Removing %s' % tmp_dir)
+    shutil.rmtree(tmp_dir, ignore_errors = True)
+    if remove_from_storage:
+        storage.clear_prefix(bucket)
+
+
+def get_application_icon(storage, icon_name, handle, url = None):
     """
     Download the application icon from Google Play.
+    :param storage: Minio storage helper
     :param icon_name: icon name in Minio storage
     :param handle: handle of the application
     :param url: force to use the given URL for downloading the icon
@@ -85,257 +317,4 @@ def get_application_icon(icon_name, handle, url = None):
         except Exception:
             return ''
 
-    return download_and_put(url, icon_name)
-
-
-def find_embedded_trackers(class_list_file):
-    """
-    Find tracker signatures in the given file.
-    :param class_list_file: file containing the list of embedded classes
-    :return: array of found trackers
-    """
-    trackers = Tracker.objects.order_by('name')
-    found = []
-    for t in trackers:
-        if len(t.code_signature) > 3:
-            if grep(class_list_file, t.code_signature):
-                found.append(t)
-    return found
-
-
-def get_application_version_code(decoded_dir):
-    """
-    Get the application version code from a decoded APK.
-    :param decoded_dir: path to the decoded APK
-    :return: version code if found, empty string otherwise
-    """
-    yml = os.path.join(decoded_dir, 'apktool.yml')
-    yml_new = os.path.join(decoded_dir, 'apktool.yml.new')
-    cmd = '/bin/cat %s | /bin/grep -v "\!\!" > %s' % (yml, yml_new)
-    process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    if exitCode != 0:
-        return ''
-    with open(yml_new) as f:
-        dataMap = yaml.safe_load(f)
-        return dataMap['versionInfo']['versionCode']
-
-
-def get_application_version(decoded_dir):
-    """
-    Get the application version from a decoded APK.
-    :param decoded_dir: path to the decoded APK
-    :return: version if found, empty string otherwise
-    """
-    yml = os.path.join(decoded_dir, 'apktool.yml')
-    yml_new = os.path.join(decoded_dir, 'apktool.yml.new')
-    cmd = '/bin/cat %s | /bin/grep -v "\!\!" > %s' % (yml, yml_new)
-    process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    if exitCode != 0:
-        return ''
-    with open(yml_new) as f:
-        dataMap = yaml.safe_load(f)
-        return dataMap['versionInfo']['versionName']
-
-
-def get_application_handle(decoded_dir):
-    """
-    Get the application handle from a decoded APK.
-    :param decoded_dir: path to the decoded APK
-    :return: handle
-    """
-    xmldoc = minidom.parse(os.path.join(decoded_dir, 'AndroidManifest.xml'))
-    man = xmldoc.getElementsByTagName('manifest')[0]
-    return man.getAttribute('package')
-
-
-def get_application_permissions(decoded_dir):
-    """
-    Get the application permissions from a decoded APK.
-    :param decoded_dir: path to the decoded APK
-    :return: array of permissions (strings)
-    """
-    xmldoc = minidom.parse(os.path.join(decoded_dir, 'AndroidManifest.xml'))
-    permissions = xmldoc.getElementsByTagName('uses-permission')
-    perms = []
-    for perm in permissions:
-        perms.append(perm.getAttribute('android:name'))
-    return perms
-
-
-def get_sha256sum(apk_path):
-    """
-    Compute the sha256sum of the given APK.
-    :param apk_path: path to the APK file
-    :return: sha256 sum
-    """
-    cmd = '/usr/bin/sha256sum %s | head -c 64' % apk_path
-    process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-    return process.communicate()[0]
-
-
-def decode_apk_file(apk_path, decoded_dir):
-    """
-    Decode the given APK to the given directory.
-    :param apk_path: path to the APK
-    :param decoded_dir: path to the target directory
-    :return: True if succeed, False otherwise
-    """
-    root_dir = os.path.dirname(os.path.realpath(__file__))
-    apktool = os.path.join(root_dir, "apktool.jar")
-    cmd = '/usr/bin/java -jar %s d %s -s -o %s/' % (apktool, apk_path, decoded_dir)
-    process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    return exitCode == 0
-
-
-def list_embedded_classes(decoded_dir, class_list_file):
-    """
-    List embedded Java classes into the given file and put in into Minio storage.
-    :param decoded_dir: path to the decoded APK
-    :param class_list_file: file in which to put the class list
-    :return: name of the class list file if succeed, empty string otherwise
-    """
-    root_dir = os.path.dirname(os.path.realpath(__file__))
-    dexdump = os.path.join(root_dir, "dexdump")
-    list_file = '%s/class_list.txt' % decoded_dir
-    cmd = '%s %s/classes*.dex > %s; head %s' % (dexdump, decoded_dir, list_file, list_file)
-    process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-    output = process.communicate()[0]
-    exitCode = process.returncode
-    if exitCode == 0:
-        # Upload class list file
-        minio_client = Minio(settings.MINIO_URL,
-                             access_key = settings.MINIO_ACCESS_KEY,
-                             secret_key = settings.MINIO_SECRET_KEY,
-                             secure = settings.MINIO_SECURE)
-        try:
-            minio_client.fput_object(settings.MINIO_BUCKET, class_list_file, list_file)
-        except ResponseError as err:
-            print(err)
-            return ''
-        return list_file
-    return ''
-
-
-def get_application_details(handle):
-    """
-    Get the application details like creator, number of downloads, etc.
-    :param handle: application handle
-    :return: application details dictionary
-    """
-    # Fix#12 - We have to remove the cached token :S
-    shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
-    cmd = 'gplaycli -t -s %s -n 1' % handle
-    lines = []
-    with sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT, universal_newlines = True) as p:
-        for line in iter(p.stdout):
-            if 'Traceback' in line or 'Error' in line:
-                return None
-            lines.append(line.replace('\n', ''))
-        p.communicate()
-        if len(lines) != 2:
-            return None
-        columns = []
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'title', 'text': 'Title'})
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'creator', 'text': 'Creator'})
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'size', 'text': 'Size'})
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'downloads', 'text': 'Downloads'})
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'update', 'text': 'Last Update'})
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'handle', 'text': 'AppID'})
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'version', 'text': 'Version'})
-        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'rating', 'text': 'Rating'})
-        result = {}
-        for i in range(0, len(columns)):
-            v = columns[i]
-            v['start'] = lines[0].find(v['text'])
-            if i > 0:
-                c = columns[i - 1]
-                c['end'] = v['start']
-                c['value'] = lines[1][c['start']:c['end']].strip(" ")
-                result[c['name']] = c['value']
-        if handle in result['handle']:
-            return result
-        else:
-            return None
-
-
-def download_apk(handle, tmp_dir, apk_name, apk_tmp):
-    """
-    Download the APK from Google Play for the given handle.
-    :param handle: application handle to download
-    :param tmp_dir: download destination directory
-    :param apk_name: name of the APK in Minio storage
-    :param apk_tmp: apk temporary name
-    :return: True if succeed, False otherwise
-    """
-    device_code_names = ['', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
-    retry = 5
-    exit_code = 1
-    # Fix#12 - We have to remove the cached token :S
-    shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
-    while retry != 0:
-        # Rotate devices
-        cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (
-            handle, device_code_names[retry % len(device_code_names)], tmp_dir)
-        print(cmd)
-        process = sp.Popen(cmd, shell = True, stdout = sp.PIPE, stderr = sp.STDOUT)
-        output = process.communicate()[0]
-        print(output)
-        exit_code = ('Error' in str(output))
-        if exit_code == 0:
-            break
-        retry -= 1
-        time.sleep(2)
-
-    # Upload APK in storage
-    apk = Path(apk_tmp)
-    if exit_code == 0 and apk.is_file():
-        minio_client = Minio(settings.MINIO_URL,
-                             access_key = settings.MINIO_ACCESS_KEY,
-                             secret_key = settings.MINIO_SECRET_KEY,
-                             secure = settings.MINIO_SECURE)
-        try:
-            minio_client.make_bucket(settings.MINIO_BUCKET, location = "")
-        except BucketAlreadyOwnedByYou as err:
-            pass
-        except BucketAlreadyExists as err:
-            pass
-        except ResponseError as err:
-            print(err)
-        try:
-            minio_client.fput_object(settings.MINIO_BUCKET, apk_name, apk_tmp)
-        except ResponseError as err:
-            print(err)
-            return False
-
-    return exit_code == 0
-
-
-def clear_analysis_files(tmp_dir, bucket, remove_from_storage = False):
-    """
-    Clear the analysis files (local + on Minio storage).
-    :param tmp_dir: local temporary dir to remove
-    :param bucket: Minio object prefix to remove
-    :param remove_from_storage: remove objects in Minio if set to True
-    """
-    print('Removing %s' % tmp_dir)
-    shutil.rmtree(tmp_dir, ignore_errors = True)
-    if remove_from_storage:
-        minio_client = Minio(settings.MINIO_URL,
-                             access_key = settings.MINIO_ACCESS_KEY,
-                             secret_key = settings.MINIO_SECRET_KEY,
-                             secure = settings.MINIO_SECURE)
-        try:
-            try:
-                objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix = bucket, recursive = True)
-                for obj in objects:
-                    minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
-            except ResponseError as err:
-                print(err)
-        except ResponseError as err:
-            print(err)
+    return storage.download_and_put(url, icon_name)
