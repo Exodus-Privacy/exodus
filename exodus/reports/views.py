@@ -15,7 +15,7 @@ from minio import Minio
 def index(request):
     try:
         reports = Report.objects.order_by('-creation_date')
-        paginator = Paginator(reports, 1)
+        paginator = Paginator(reports, 6)
         page = request.GET.get('page', 1)
         reports = paginator.page(page)
     except Report.DoesNotExist:
