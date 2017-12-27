@@ -3,14 +3,17 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 import re
+import shlex
 import shutil
 import time
 import logging
 from hashlib import sha256
 from pathlib import Path
 
+import gc
 from androguard.core.bytecodes.apk import APK
 from androguard.core.bytecodes.dvm import DalvikVMFormat
+from future.moves import subprocess
 from minio.error import (ResponseError)
 
 from trackers.models import Tracker
@@ -233,11 +236,12 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
     """
-    device_code_names = ['', 'hammerhead', 'manta', 'cloudbook', 'bullhead']
+    device_code_names = ['', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
     retry = 5
     exit_code = 1
-    gpc = ExGPlaycli()
-    gpc.token_enable = False
+    # gpc = ExGPlaycli()
+    # gpc.token_enable = False
+    # gpc.verbose = True
     # gpc.token_url = "https://matlink.fr/token/email/gsfid"
     # try:
     #     gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
@@ -247,14 +251,19 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     #         gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
     #     except ConnectionError:
     #         return None
-    success, error = gpc.connect_to_googleplay_api()
-    if error is not None:
-        return False
+    # success, error = gpc.connect_to_googleplay_api()
+    # if error is not None:
+    #     return False
     while retry != 0:
-        if device_code_names[retry % len(device_code_names)] != '':
-            gpc.device_codename = device_code_names[retry % len(device_code_names)]
-        gpc.set_download_folder(tmp_dir)
-        gpc.download_packages([handle])
+        # if device_code_names[retry % len(device_code_names)] != '':
+        #     gpc.device_codename = device_code_names[retry % len(device_code_names)]
+        # gpc.set_download_folder(tmp_dir)
+        # gpc.download_packages([handle])
+        cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (handle, device_code_names[retry % len(device_code_names)], tmp_dir)
+        try:
+            exit_code = subprocess.check_call(shlex.split(cmd), shell = False)
+        except:
+            exit_code = 1
         apk = Path(apk_tmp)
         if apk.is_file():
             exit_code = 0
@@ -264,12 +273,12 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
 
         retry -= 1
         time.sleep(2)
-
     # Upload APK in storage
     apk = Path(apk_tmp)
     if exit_code == 0 and apk.is_file():
         try:
             storage.put_file(apk_tmp, apk_name)
+            gc.collect()
         except ResponseError as err:
             logging.info(err)
             return False
