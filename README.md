@@ -35,6 +35,7 @@ cd exodus
 virtualenv ./venv -p python3
 source venv/bin/activate
 pip3 install -r requirements.txt
+pip install git+https://github.com/androguard/androguard.git
 ```
 
 ## Step 5 - Create the DB schema
