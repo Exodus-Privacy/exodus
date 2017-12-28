@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^trackers/', include('trackers.urls')),
     url(r'^reports/', include('reports.urls')),
     url(r'^api/', include('restful_api.urls')),
+    url(r'^search/', include('search.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', TemplateView.as_view(template_name='base.html'), name='home')

@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^reports$', views.get_all_reports),
     url(r'^report/(?P<r_id>[0-9]+)/details$', views.get_report_details),
     url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
-    url(r'^search/(?P<handle>[a-z|.]+)$', views.search_handle, name = 'search_handle'),
+    url(r'^search/(?P<handle>[a-z|.]+)$', views.search_strict_handle, name = 'search_strict_handle'),
+    url(r'^search$', views.search, name = 'search'),
 ]

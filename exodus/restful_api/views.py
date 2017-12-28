@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import math
+from django.db.models import Q
 from django.http import Http404
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.parsers import JSONParser
 from rest_framework.permissions import IsAuthenticated
 
 from exodus.core.dns import *
@@ -128,13 +131,13 @@ def create_reports(report_list):
             application['reports'] = []
 
         application['reports'].append({
-            "id": report.id,
-            "creation_date": report.creation_date,
-            "updated_at": report.updated_at,
-            "version": report.application.version,
-            "version_code": report.application.version_code,
-            "downloads": report.application.downloads,
-            "trackers": [t.id for t in report.found_trackers.all()],
+            'id': report.id,
+            'creation_date': report.creation_date,
+            'updated_at': report.updated_at,
+            'version': report.application.version,
+            'version_code': report.application.version_code,
+            'downloads': report.application.downloads,
+            'trackers': [t.id for t in report.found_trackers.all()],
         })
     return applications
 
@@ -159,14 +162,14 @@ def get_all_reports(request):
             tracker['website'] = t.website
             trackers[t.id] = tracker
 
-        return JsonResponse({"applications": applications, "trackers": trackers})
+        return JsonResponse({'applications': applications, 'trackers': trackers})
 
 
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes(())
 @permission_classes(())
-def search_handle(request, handle):
+def search_strict_handle(request, handle):
     if request.method == 'GET':
         try:
             reports = Report.objects.filter(application__handle = handle)
@@ -184,6 +187,36 @@ def get_report_details(request, r_id):
         try:
             report = Report.objects.get(pk = r_id)
         except Report.DoesNotExist:
-            raise Http404("No reports found")
+            raise Http404('No reports found')
         serializer = ReportSerializer(report, many = False)
         return JsonResponse(serializer.data, safe = True)
+
+
+@csrf_exempt
+@api_view(['POST'])
+@authentication_classes(())
+@permission_classes(())
+def search(request):
+    data = JSONParser().parse(request)
+    serializer = SearchQuerySerializer(data = data)
+    if serializer.is_valid():
+        query = serializer.create(serializer.validated_data)
+        limit = max(2, query.limit)
+        if len(query.query) >= 3:
+            if query.type == 'application':
+                try:
+                    applications = Application.objects.filter(
+                        Q(handle__icontains = query.query) | Q(name__icontains = query.query)).order_by('name', 'handle')[:limit]
+                except Application.DoesNotExist:
+                    return JsonResponse([], safe = False)
+                serializer = ApplicationSerializer(applications, many = True)
+                return JsonResponse({'results': serializer.data}, safe = False)
+            elif query.type == 'tracker':
+                try:
+                    applications = Tracker.objects.filter(
+                        Q(name__icontains = query.query) | Q(description__icontains = query.query)).order_by('name')[:limit]
+                except Tracker.DoesNotExist:
+                    return JsonResponse([], safe = False)
+                serializer = TrackerSerializer(applications, many = True)
+                return JsonResponse({'results': serializer.data}, safe = False)
+    return JsonResponse([], safe = False)

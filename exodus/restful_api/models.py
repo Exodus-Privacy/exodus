@@ -23,25 +23,34 @@ class ReportInfos(models.Model):
     flow_upload_link = models.CharField(max_length=500)
 
 
-class LightReport(models.Model):
-    creation_date = models.DateTimeField()
-    report_id = models.IntegerField()
-    web_report_url = models.CharField(max_length=500)
-    api_report_url = models.CharField(max_length=500)
-    application_handle = models.CharField(max_length=500)
-    application_version = models.CharField(max_length=500)
-    application_version_code = models.CharField(max_length=500)
-    trackers_count = models.IntegerField()
-    permission_count = models.IntegerField()
+class SearchQuery(models.Model):
+    type = models.CharField(max_length=50)
+    query = models.CharField(max_length=500)
+    limit = models.PositiveIntegerField()
 
-    def __init__(self, report):
-        self.creation_date = report.creation_date
-        self.report_id = report.id
-        # FixMe get rid of constant string
-        self.web_report_url = 'https://reports.exodus-privacy.eu.org/reports/%s/' % report.id
-        self.api_report_url = 'https://reports.exodus-privacy.eu.org/api/report/%s/details' % report.id
-        self.application_handle = report.application.handle
-        self.application_version = report.application.version
-        self.application_version_code = report.application.version_code
-        self.trackers_count = len(report.found_trackers.all())
-        self.permission_count = len(report.application.permission_set.all())
+    # @staticmethod
+    # def create(validated_data):
+    #     return SearchQuery(**validated_data)
+
+# class LightReport(models.Model):
+#     creation_date = models.DateTimeField()
+#     report_id = models.IntegerField()
+#     web_report_url = models.CharField(max_length=500)
+#     api_report_url = models.CharField(max_length=500)
+#     application_handle = models.CharField(max_length=500)
+#     application_version = models.CharField(max_length=500)
+#     application_version_code = models.CharField(max_length=500)
+#     trackers_count = models.IntegerField()
+#     permission_count = models.IntegerField()
+#
+#     def __init__(self, report):
+#         self.creation_date = report.creation_date
+#         self.report_id = report.id
+#         # FixMe get rid of constant string
+#         self.web_report_url = 'https://reports.exodus-privacy.eu.org/reports/%s/' % report.id
+#         self.api_report_url = 'https://reports.exodus-privacy.eu.org/api/report/%s/details' % report.id
+#         self.application_handle = report.application.handle
+#         self.application_version = report.application.version
+#         self.application_version_code = report.application.version_code
+#         self.trackers_count = len(report.found_trackers.all())
+#         self.permission_count = len(report.application.permission_set.all())
