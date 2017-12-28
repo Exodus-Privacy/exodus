@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="col-6">
+        <div class="col-lg-6 col-sm-12">
         {% if tracker %}
             <div class=" alert alert-info">
                 <div class="alert-heading">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-sm-12">
             <div class=" alert alert-warning">
               <div class="alert-heading">
                 <h4><span class="badge badge-info">{{ reports.count}}</span> Available report{{ reports.count|pluralize }} for this tracker</h4>

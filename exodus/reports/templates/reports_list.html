@@ -9,7 +9,7 @@
             <h4><span class="badge badge-info">{{ reports.count }}</span> Available report{{ reports.count|pluralize }}</h4>
         </div>
         <hr>
-        <table style="margin: auto; border:none" class="table table-hover table-responsive-md">
+        <table style="margin: auto; border:none" class="table table-hover table-responsive">
         {% for report in reports %}
             <tr class="d-flex">
                 <td class="col-md-6 text-truncate">
@@ -33,10 +33,10 @@
                         permission{{ report.application.permission_set.count|pluralize }}
                     </span>
                 </td>
-                <td class="">
+                <td class="col-md-2 text-truncate">
                      <span class="small"><b>{{ report.application.version|truncatechars_html:8 }}</b></span>
                 </td>
-                <td>
+                <td class="col-md-2 text-truncate">
                     <span class="small"><b>{{ report.creation_date }}</b></span>
                 </td>
             </tr>
