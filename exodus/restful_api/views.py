@@ -206,7 +206,7 @@ def search(request):
             if query.type == 'application':
                 try:
                     applications = Application.objects.filter(
-                        Q(handle__icontains = query.query) | Q(name__icontains = query.query)).order_by('name', 'handle')[:limit]
+                        Q(handle__icontains = query.query) | Q(name__icontains = query.query)).order_by('name', 'handle').distinct('name', 'handle')[:limit]
                 except Application.DoesNotExist:
                     return JsonResponse([], safe = False)
                 serializer = ApplicationSerializer(applications, many = True)
