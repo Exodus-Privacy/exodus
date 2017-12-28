@@ -38,13 +38,17 @@ class StaticAnalysis:
         """
         Load the APK file.
         """
-        self.apk = APK(self.apk_path)
+        if self.apk is None:
+            self.apk = APK(self.apk_path)
 
     def decode_apk(self):
         """
         Decode the APK file.
         """
-        self.decoded = DalvikVMFormat(self.apk)
+        if self.apk is None:
+            self.load_apk()
+        if self.decoded is None:
+            self.decoded = DalvikVMFormat(self.apk)
 
     def detect_trackers_in_list(self, class_list):
         """
@@ -86,6 +90,8 @@ class StaticAnalysis:
         List embedded Java classes
         :return: list of Java classes
         """
+        if self.decoded is None:
+            self.decode_apk()
         return self.decoded.get_classes_names()
 
     def save_embedded_classes_in_file(self, file_path):

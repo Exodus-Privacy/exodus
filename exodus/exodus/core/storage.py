@@ -23,6 +23,10 @@ class RemoteStorageHelper():
         return self.prefix
 
     def clear_prefix(self, prefix = None):
+        """
+        Remove all files having the given prefix from the Minio storage.
+        :param prefix: files prefix
+        """
         if prefix is None:
             prefix = self.prefix
         try:
@@ -33,9 +37,20 @@ class RemoteStorageHelper():
             logging.info(err)
 
     def put_file(self, local_path, remote_name):
+        """
+        Upload the given file to the Minio storage.
+        :param local_path: local file to upload
+        :param remote_name: file name in Minio storage
+        """
         self.minio_client.fput_object(settings.MINIO_BUCKET, remote_name, local_path)
 
     def get_file(self, remote_name, local_path):
+        """
+        Download a file from the Minio storage.
+        :param remote_name: file name in Minio storage
+        :param local_path: local destination file
+        :return:
+        """
         data = self.minio_client.get_object(settings.MINIO_BUCKET, remote_name)
         with open(local_path, 'wb') as file_data:
             for d in data.stream(32 * 1024):

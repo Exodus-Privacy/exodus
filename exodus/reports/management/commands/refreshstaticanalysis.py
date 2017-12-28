@@ -1,12 +1,8 @@
-import os
 import tempfile
 
-from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
-from exodus.core.static_analysis import *
-from minio import Minio
-from minio.error import (ResponseError)
 
+from exodus.core.static_analysis import *
 from exodus.core.storage import RemoteStorageHelper
 from reports.models import *
 
@@ -38,6 +34,13 @@ class Command(BaseCommand):
             help = 'Update found trackers',
         )
 
+        parser.add_argument(
+            '--clist',
+            action = 'store_true',
+            dest = 'clist',
+            help = 'Update clist file',
+        )
+
     def handle(self, *args, **options):
         if options['all']:
             try:
@@ -50,19 +53,30 @@ class Command(BaseCommand):
             except Report.DoesNotExist:
                 raise CommandError('No reports found')
 
+        count = 1
         for report in reports:
-            self.stdout.write(self.style.SUCCESS('Start updating report "%s"' % report.id))
+            self.stdout.write(
+                self.style.SUCCESS('Start updating report "%s" - %s/%s' % (report.id, count, len(reports))))
+            count += 1
             with tempfile.TemporaryDirectory() as tmpdir:
-                decoded_dir = os.path.join(tmpdir, 'decoded')
                 icon_name = '%s_%s.png' % (report.bucket, report.application.handle)
                 apk_name = report.apk_file
                 apk_tmp = os.path.join(tmpdir, apk_name)
 
                 storage_helper = RemoteStorageHelper(report.bucket)
-                try:
-                    storage_helper.get_file(apk_name, apk_tmp)
-                except ResponseError:
-                    raise CommandError('Unable to get APK')
+
+                # Refresh clist
+                if options['clist']:
+                    try:
+                        storage_helper.get_file(apk_name, apk_tmp)
+                    except ResponseError:
+                        raise CommandError('Unable to get APK')
+                    static_analysis = StaticAnalysis(apk_path = apk_tmp)
+                    with tempfile.NamedTemporaryFile(delete = True) as fp:
+                        static_analysis.save_embedded_classes_in_file(fp.name)
+                        storage_helper.put_file(fp.name, report.class_list_file)
+                    self.stdout.write(
+                        self.style.SUCCESS('Successfully updated classes list of "%s"' % report.application.handle))
 
                 # Refresh trackers
                 if options['trackers']:
@@ -72,14 +86,15 @@ class Command(BaseCommand):
                     try:
                         storage_helper.get_file(report.class_list_file, clist_tmp)
                     except ResponseError as err:
-                        print(err)
                         raise CommandError('Unable to clist file')
                     trackers = static_analysis.detect_trackers(clist_tmp)
-                    print(trackers)
+                    self.stdout.write(
+                        self.style.WARNING(
+                            'previous: %s - new: %s trackers' % (report.found_trackers.count(), len(trackers))))
                     report.found_trackers = trackers
                     report.save()
                     self.stdout.write(
-                        self.style.SUCCESS('Successfully update trackers list of "%s"' % report.application.handle))
+                        self.style.SUCCESS('Successfully updated trackers list of "%s"' % report.application.handle))
 
                 # Refresh icon
                 if options['icons']:
@@ -88,4 +103,4 @@ class Command(BaseCommand):
                         report.application.icon_path = icon_path
                         report.application.save()
                         self.stdout.write(
-                            self.style.SUCCESS('Successfully update icon of "%s"' % report.application.handle))
+                            self.style.SUCCESS('Successfully updated icon of "%s"' % report.application.handle))
