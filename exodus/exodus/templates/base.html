@@ -61,6 +61,7 @@
             </div>
         </div>
         &nbsp
+        {% if request.user.is_superuser %}
         <div class="dropdown">
             <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,6 +74,7 @@
                 <a class="dropdown-item" href="/analysis/submit/">Submit</a>
             </div>
         </div>
+        {% endif %}
     </div>
 </nav>
 <br>
@@ -96,7 +98,7 @@
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->
-{% include "search_form.html" %}
+        {% include "search_form.html" %}
     {% endblock %}
 </div>
 <script>
