@@ -119,7 +119,7 @@ def upload_flow(request, r_id):
     return HttpResponse(status = 200)
 
 
-def create_reports(report_list):
+def create_reports_list(report_list):
     applications = {}
     for report in report_list:
         if report.application.handle not in applications:
@@ -142,6 +142,20 @@ def create_reports(report_list):
     return applications
 
 
+def create_tracker_list():
+    trackers = {}
+    for t in Tracker.objects.order_by('id'):
+        tracker = {}
+        tracker['name'] = t.name
+        tracker['description'] = t.description
+        tracker['creation_date'] = t.creation_date
+        tracker['code_signature'] = t.code_signature
+        tracker['network_signature'] = t.network_signature
+        tracker['website'] = t.website
+        trackers[t.id] = tracker
+    return trackers
+
+
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes(())
@@ -149,20 +163,19 @@ def create_reports(report_list):
 def get_all_reports(request):
     if request.method == 'GET':
         report_list = Report.objects.order_by('-creation_date')
-        applications = create_reports(report_list)
-
-        trackers = {}
-        for t in Tracker.objects.order_by('id'):
-            tracker = {}
-            tracker['name'] = t.name
-            tracker['description'] = t.description
-            tracker['creation_date'] = t.creation_date
-            tracker['code_signature'] = t.code_signature
-            tracker['network_signature'] = t.network_signature
-            tracker['website'] = t.website
-            trackers[t.id] = tracker
-
+        applications = create_reports_list(report_list)
+        trackers = create_tracker_list()
         return JsonResponse({'applications': applications, 'trackers': trackers})
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes(())
+@permission_classes(())
+def get_all_trackers(request):
+    if request.method == 'GET':
+        trackers = create_tracker_list()
+        return JsonResponse({'trackers': trackers})
 
 
 @csrf_exempt
@@ -175,7 +188,7 @@ def search_strict_handle(request, handle):
             reports = Report.objects.filter(application__handle = handle)
         except Report.DoesNotExist:
             return JsonResponse({}, safe = True)
-        return JsonResponse(create_reports(reports))
+        return JsonResponse(create_reports_list(reports))
 
 
 @csrf_exempt
