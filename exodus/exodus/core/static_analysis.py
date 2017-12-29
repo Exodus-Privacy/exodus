@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+import logging
 import os
 import re
 import shlex
 import shutil
 import time
-import logging
 from hashlib import sha256
 from pathlib import Path
 
-import gc
 from androguard.core.bytecodes.apk import APK
 from androguard.core.bytecodes.dvm import DalvikVMFormat
 from future.moves import subprocess
@@ -201,17 +200,17 @@ def get_application_details(handle):
     # Fix#12 - We have to remove the cached token :S
     shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
 
-    gpc = ExGPlaycli()
-    gpc.token_enable = False
-    # gpc.token_url = "https://matlink.fr/token/email/gsfid"
-    # try:
-    #     gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
-    # except ConnectionError:
-    #     try:
-    #         time.sleep(2)
-    #         gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
-    #     except ConnectionError:
-    #         return None
+    gpc = gplaycli.GPlaycli()
+    gpc.token_enable = True
+    gpc.token_url = "https://matlink.fr/token/email/gsfid"
+    try:
+        gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
+    except ConnectionError:
+        try:
+            time.sleep(2)
+            gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
+        except ConnectionError:
+            return None
     success, error = gpc.connect_to_googleplay_api()
     if error is not None:
         return None
@@ -284,7 +283,6 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     if exit_code == 0 and apk.is_file():
         try:
             storage.put_file(apk_tmp, apk_name)
-            gc.collect()
         except ResponseError as err:
             logging.info(err)
             return False
