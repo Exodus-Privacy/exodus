@@ -3,159 +3,27 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 import os
-import re
 import shlex
 import shutil
 import time
-from hashlib import sha256
 from pathlib import Path
 
-from androguard.core.bytecodes.apk import APK
-from androguard.core.bytecodes.dvm import DalvikVMFormat
+from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
 from future.moves import subprocess
 from minio.error import (ResponseError)
 
 from trackers.models import Tracker
 
 
-class StaticAnalysis:
+class StaticAnalysis(CoreSA):
     def __init__(self, apk_path = None):
-        self.apk = None
-        self.decoded = None
-        self.apk_path = apk_path
-        self.signatures = None
-        if apk_path is not None:
-            self.load_apk()
+        super().__init__(apk_path)
 
     def load_trackers_signatures(self):
         """
         Load trackers signatures from database.
         """
         self.signatures = Tracker.objects.order_by('name')
-
-    def load_apk(self):
-        """
-        Load the APK file.
-        """
-        if self.apk is None:
-            self.apk = APK(self.apk_path)
-
-    def decode_apk(self):
-        """
-        Decode the APK file.
-        """
-        if self.apk is None:
-            self.load_apk()
-        if self.decoded is None:
-            self.decoded = DalvikVMFormat(self.apk)
-
-    def detect_trackers_in_list(self, class_list):
-        """
-        Detect embedded trackers in the provided classes list.
-        :return: list of embedded trackers
-        """
-        trackers = []
-        if self.signatures is None:
-            self.load_trackers_signatures()
-        for tracker in self.signatures:
-            if len(tracker.code_signature) > 3:
-                for clazz in class_list:
-                    m = re.search(tracker.code_signature, clazz)
-                    if m is not None:
-                        trackers.append(tracker)
-                        break
-        return trackers
-
-    def detect_trackers(self, class_list_file = None):
-        """
-        Detect embedded trackers.
-        :return: list of embedded trackers
-        """
-        if self.signatures is None:
-            self.load_trackers_signatures()
-        if class_list_file is None:
-            if self.signatures is None:
-                self.load_trackers_signatures()
-            if self.decoded is None:
-                self.decode_apk()
-            return self.detect_trackers_in_list(self.get_embedded_classes())
-        else:
-            with open(class_list_file, 'r') as classes_file:
-                classes = classes_file.readlines()
-                return self.detect_trackers_in_list(classes)
-
-    def get_embedded_classes(self):
-        """
-        List embedded Java classes
-        :return: list of Java classes
-        """
-        if self.decoded is None:
-            self.decode_apk()
-        return self.decoded.get_classes_names()
-
-    def save_embedded_classes_in_file(self, file_path):
-        """
-        Save list of embedded classes in file.
-        :param file_path: file to write
-        """
-        with open(file_path, 'w+') as f:
-            f.write('\n'.join(self.get_embedded_classes()))
-
-    def get_version(self):
-        """
-        Get the application version name
-        :return: version name
-        """
-        return self.apk.get_androidversion_name()
-
-    def get_version_code(self):
-        """
-        Get the application version code
-        :return: version code
-        """
-        return self.apk.get_androidversion_code()
-
-    def get_permissions(self):
-        """
-        Get application permissions
-        :return: application permissions list
-        """
-        return self.apk.get_permissions()
-
-    def get_app_name(self):
-        """
-        Get application name
-        :return: application name
-        """
-        return self.apk.get_app_name()
-
-    def get_package(self):
-        """
-        Get application package
-        :return: application package
-        """
-        return self.apk.get_package()
-
-    def get_libraries(self):
-        """
-        Get application libraries
-        :return: application libraries list
-        """
-        return self.apk.get_libraries()
-
-    def get_sha256(self):
-        """
-        Get the sha256sum of the APK file
-        :return: hex sha256sum
-        """
-        BLOCKSIZE = 65536
-        hasher = sha256()
-        with open(self.apk_path, 'rb') as apk:
-            buf = apk.read(BLOCKSIZE)
-            while len(buf) > 0:
-                hasher.update(buf)
-                buf = apk.read(BLOCKSIZE)
-        return hasher.hexdigest()
 
 
 from gplaycli import gplaycli
@@ -264,7 +132,8 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         #     gpc.device_codename = device_code_names[retry % len(device_code_names)]
         # gpc.set_download_folder(tmp_dir)
         # gpc.download_packages([handle])
-        cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (handle, device_code_names[retry % len(device_code_names)], tmp_dir)
+        cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (
+        handle, device_code_names[retry % len(device_code_names)], tmp_dir)
         try:
             exit_code = subprocess.check_call(shlex.split(cmd), shell = False)
         except:

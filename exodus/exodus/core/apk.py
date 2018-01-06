@@ -39,8 +39,8 @@ def start_static_analysis(analysis):
     try:
         static_analysis = StaticAnalysis(analysis.apk_tmp)
         static_analysis.load_apk()
-        static_analysis.decode_apk()
-    except Exception:
+    except Exception as e:
+        print(e)
         # Unable to decode the APK
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
         request.in_error = True

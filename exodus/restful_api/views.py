@@ -146,6 +146,7 @@ def create_tracker_list():
     trackers = {}
     for t in Tracker.objects.order_by('id'):
         tracker = {}
+        tracker['id'] = t.id
         tracker['name'] = t.name
         tracker['description'] = t.description
         tracker['creation_date'] = t.creation_date
