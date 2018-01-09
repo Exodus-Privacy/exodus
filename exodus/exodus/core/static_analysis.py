@@ -42,7 +42,7 @@ class ExGPlaycli(gplaycli.GPlaycli):
         if token is not None and not force_new:
             logging.info("Using cached token.")
             return token, gsfid
-            logging.info("Retrieving token ...")
+        logging.info("Retrieving token ...")
         r = requests.get(self.token_url)
         if r.text == 'Auth error':
             logging.info('Token dispenser auth error, probably too many connections')
@@ -132,7 +132,7 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         #     gpc.device_codename = device_code_names[retry % len(device_code_names)]
         # gpc.set_download_folder(tmp_dir)
         # gpc.download_packages([handle])
-        cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (
+        cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
         handle, device_code_names[retry % len(device_code_names)], tmp_dir)
         try:
             exit_code = subprocess.check_call(shlex.split(cmd), shell = False)
