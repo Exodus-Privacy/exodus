@@ -66,18 +66,18 @@ def get_application_details(handle):
     :return: application details dictionary
     """
     # Fix#12 - We have to remove the cached token :S
-    shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
+    # shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
 
     gpc = gplaycli.GPlaycli()
     gpc.token_enable = True
     gpc.token_url = "https://matlink.fr/token/email/gsfid"
     try:
         gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
-    except ConnectionError:
+    except (ConnectionError, ValueError):
         try:
             time.sleep(2)
-            gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
-        except ConnectionError:
+            gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = True)
+        except (ConnectionError, ValueError):
             return None
     success, error = gpc.connect_to_googleplay_api()
     if error is not None:

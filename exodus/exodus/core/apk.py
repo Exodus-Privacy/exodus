@@ -112,6 +112,7 @@ def start_static_analysis(analysis):
     app.handle = handle
     app.version = version
     app.version_code = version_code
+    app.name = static_analysis.get_app_name()
     if app_info is not None:
         app.name = app_info['title']
         app.creator = app_info['creator']
