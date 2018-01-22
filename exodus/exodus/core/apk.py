@@ -134,7 +134,7 @@ def start_static_analysis(analysis):
     report.found_trackers = trackers
     report.save()
 
-    clear_analysis_files(analysis.tmp_dir, analysis.bucket, False)
+    clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, False)
     request.description = 'Static analysis complete'
     logging.info(request.description)
     request.processed = True
