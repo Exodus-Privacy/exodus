@@ -13,7 +13,7 @@
 # Development environment
 ## Step 1 - System dependencies
 ```
-sudo apt install git virtualenv postgresql-9.6 rabbitmq-server tshark aapt build-essential libssl-dev aapt libffi-dev python3-dev openjdk-8-jre
+sudo apt install git virtualenv postgresql-9.6 rabbitmq-server tshark aapt build-essential libssl-dev aapt libffi-dev python3-dev openjdk-8-jre libxml2-dev libxslt1-dev
 ```
 
 ## Step 2 - Clone the project
