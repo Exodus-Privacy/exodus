@@ -1,0 +1,39 @@
+- name: install packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - nginx
+    - uwsgi
+    - python3-django-uwsgi
+
+- name: copy exodus configuration
+  become: true
+  copy:
+    src: exodus.ini
+    dest: /etc/uwsgi/apps-enabled/
+  notify: uwsgi restart
+
+- name: start services
+  become: true
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - nginx
+    - uwsgi
+
+- name: remove default vhost
+  become: true
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: copy exodus vhost
+  become: true
+  copy:
+    src: exodus
+    dest: /etc/nginx/sites-enabled/
+  notify: nginx reload
