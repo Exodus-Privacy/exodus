@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./exodus/static/img/logo_purple_without_text.png" alt="logo exodus" />
+</p>
+
 # Exodus
 **Exodus** is meant to:
   * download a bunch of APK files from *Google Play*
