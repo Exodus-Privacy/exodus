@@ -16,53 +16,131 @@
         </samp>
     </p>
     {% endif %}
-    <div class="alert alert-info" role="alert">
+    <div class="alert bg-light" role="alert">
         <div class="row">
+            <div class="col col-md-2 cold-sm-3">
+                {% if report.found_trackers.count == 0 %}
+                    <div class="alert alert-success text-center">
+                {% elif report.found_trackers.count < 5 %}
+                    <div class="alert alert-warning text-center">
+                {% else %}
+                    <div class="alert alert-danger text-center">
+                {% endif %}
+                    <p class="h1"><b>{{ report.found_trackers.count }}</b></p>
+                    <h6>tracker{{ report.found_trackers.count|pluralize }}</h6>
+                </div>
+                {% if report.application.permission_set.count == 0 %}
+                    <div class="alert alert-success text-center">
+                {% elif report.application.permission_set.count < 5 %}
+                    <div class="alert alert-warning text-center">
+                {% else %}
+                    <div class="alert alert-danger text-center">
+                {% endif %}
+                    <p class="h1"><b>{{ report.application.permission_set.count }}</b></p>
+                    <h6>permission{{report.application.permission_set.count|pluralize }}</h6>
+                </div>
+            </div>
+
             <div class="col">
                 <div class="alert-heading">
                     {% if report.application.name.strip %}
-                        <h2>Privacy report for <b>{{report.application.name}}</b></h2>
+                    <h2><img src="/reports/{{report.application.id}}/icon" width="60px" alt=""> <b>{{report.application.name}}</b> - <i>{{report.application.version}}</i></h2>
                     {% else %}
-                        <h2>Privacy report</h2>
+                        <h2><img src="/reports/{{report.application.id}}/icon" width="60px" alt=""> <b>{{report.application.handle}}</b> - <i>{{report.application.version}}</i></h2>
                     {% endif%}
-                </div>
-                <h4><span class="badge badge-warning">{{ report.found_trackers.count }}</span> tracker{{ report.found_trackers.count|pluralize }},
-                    <span class="badge badge-warning">{{ report.application.permission_set.count }}</span> permission{{report.application.permission_set.count|pluralize }} found.
-                </h4>
-                <p class="text-muted small">This report was automatically issued on <b>{{report.creation_date}}</b>.<br>
-                    This report was automatically updated on <b>{{report.updated_at}}</b>.</p>
-                <p class="mb-0 small">
-                    <a class="" data-toggle="collapse" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">View APK file details</a>
-                    <div class="collapse" id="collapseAPKDetails">
-                        <div class="card card-body small">
-                            <ul>
-                                <li>Report date: <samp>{{report.creation_date}}</samp></li> 
-                                <li>APK checksum: <samp>{{report.application.apk.sum}}</samp></li> 
-                                <li>Application handle: <samp>{{report.application.handle}}</samp></li>
-                                <li>Version: <samp>{{report.application.version}}</samp></li>
-                                <li>Version code: <samp>{{report.application.version_code}}</samp></li>
-                            </ul>
-                        </div>
+
+                    <ul class="list-unstyled">
+                        {% if report.application.creator.strip %}
+                            <li>Creator: <b>{{report.application.creator}}</b></li>
+                        {% endif %}
+                        {% if report.application.downloads.strip %}
+                            <li>Downloads: <b>{{report.application.downloads}}</b></li>
+                        {% endif %}
+                    </ul>
+                    <a class="btn btn-secondary btn-sm" href="/reports/search/{{ report.application.handle }}">Other versions</a>
+                    <a class="btn btn-secondary btn-sm" target="_blank" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">On Google Play</a>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-secondary btn-sm">APK signature</button>
+                      <button type="button" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">Text</a>
+                        <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetailsJSON" aria-expanded="false" aria-controls="collapseAPKDetailsJSON">JSON</a>
+                      </div>
                     </div>
+
+                    <div class="modal fade" id="collapseAPKDetails" tabindex="-1" role="dialog" aria-labelledby="collapseAPKDetails" aria-hidden="true">
+                      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">APK signature</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <ul class="list-unstyled">
+                                <li><b>APK checksum</b>: <samp>{{report.application.apk.sum}}</samp></li>
+                                <li><b>Handle</b>: <samp>{{report.application.handle}}</samp></li>
+                                <li><b>Name</b>: <samp>{{report.application.name}}</samp></li>
+                                <li><b>UAID</b>: <samp>{{report.application.app_uid}}</samp></li>
+                                <li><b>Version</b>: <samp>{{report.application.version}}</samp></li>
+                                <li><b>Version code</b>: <samp>{{report.application.version_code}}</samp></li>
+                                <li><b>Icon hash</b>: <samp>{{report.application.icon_phash}}</samp></li>
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="collapseAPKDetailsJSON" tabindex="-1" role="dialog" aria-labelledby="collapseAPKDetailsJSON" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">APK signature</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <pre><code>{{report.application.json_signature}}</code></pre>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <p></p>
+                <p class="text-muted small">This report was automatically issued on <b>{{report.creation_date}}</b>.<br>
+                    This report was automatically updated on <b>{{report.updated_at}}</b>.
                 </p>
             </div>
 
             <div class="col">
-                    <div class="alert-heading">
-                        <h4>
-                        <img src="/reports/{{report.application.id}}/icon" width="60px" alt="">
-                            {{report.application.handle}} - {{report.application.version}}
-                        </h4>
-                    </div>
-                    <ul>
-                        {% if report.application.creator.strip %}
-                            <li>Creator: <b>{{report.application.creator}}</b></li> 
-                        {% endif %}
-                        {% if report.application.downloads.strip %}
-                            <li>Downloads: <b>{{report.application.downloads}}</b></li> 
-                        {% endif %}
-                    </ul>
+                <div class="alert-heading">
+                    <h4>
+                        🔏 Signed by:
+                    </h4>
                 </div>
+                {% if report.application.apk.certificate_set.all %}
+                    <ul class="list-unstyled">
+                        {% for c in report.application.apk.certificate_set.all %}
+                        <li><b>Fingerprint:</b> <code>{{ c.fingerprint }}</code></li>
+                        <li><b>Issuer:</b> <samp>{{ c.issuer }}</samp></li>
+                        <li><b>Subject:</b> <samp>{{ c.subject }}</samp></li>
+                        <li><b>Serial:</b> <samp>{{ c.serial_number }}</samp></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    No signatures found.
+                {% endif %}
+            </div>
         </div>
     </div>
 
@@ -89,7 +167,7 @@
                         <p  class="small alert">
                             <i>A tracker is a piece of software meant to collect data about you or your usages. We do not guarantee the exhaustiveness of this list.</i>
                         </p>
-                        <p class="alert alert-danger small">
+                        <p class="alert alert-warning small">
                             Here is the list of trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers.
                             The application could contain tracker(s) we do not know yet.
                             <br>
@@ -120,7 +198,11 @@
                         {% for perm in report.application.permissions %}
                             <tr>
                                 <td class="text-right"><samp>{{perm.name}}</samp></td>
-                                <td>{{perm.name|perm_doc|safe}}</td>
+                                {% if perm.severity == 'dangerous' %}
+                                    <td class="text-center"><a href="#" class="badge badge-pill badge-danger" data-toggle="tooltip" data-placement="top" title="{{perm.details}}">Dangerous</a></td>
+                                {% else %}
+                                    <td class="text-center"><a href="#" class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="top" title="{{perm.details}}">Normal</a></td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     </table>

@@ -2,6 +2,8 @@
 from __future__ import absolute_import, unicode_literals
 
 import tempfile
+import os
+
 from analysis_query.models import *
 from exodus.core.storage import RemoteStorageHelper
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
@@ -9,7 +11,7 @@ from .celery import app
 from .static_analysis import *
 
 
-@app.task(ignore_result=True)
+@app.task(ignore_result = True)
 def start_static_analysis(analysis):
     """
     Compute the entire static analysis
@@ -72,17 +74,13 @@ def start_static_analysis(analysis):
     logging.info(request.description)
     request.save()
 
+    # APK
     shasum = static_analysis.get_sha256()
-    version = static_analysis.get_version()
-    handle = static_analysis.get_package()
-    perms = static_analysis.get_permissions()
-    icon_file = get_application_icon(storage_helper, analysis.icon_name, request.handle)
-    app_info = get_application_details(request.handle)
-    version_code = static_analysis.get_version_code()
 
-    request.description = 'Get application details: success'
-    logging.info(request.description)
-    request.save()
+    # Application
+    handle = static_analysis.get_package()
+    version = static_analysis.get_version()
+    version_code = static_analysis.get_version_code()
 
     # If a report exists for this couple (handle, version), just return it
     existing_report = Report.objects.filter(application__handle = handle, application__version = version).order_by(
@@ -94,6 +92,23 @@ def start_static_analysis(analysis):
         request.report_id = existing_report.id
         request.save()
         return existing_report.id
+
+    # Application
+    perms = static_analysis.get_permissions()
+    app_uid = static_analysis.get_application_universal_id()
+    # icon_file = get_application_icon(storage_helper, analysis.icon_name, request.handle)
+    icon_file = static_analysis.get_application_icon(storage_helper, analysis.icon_name)
+    icon_phash = static_analysis.get_icon_phash()
+
+    # APK
+    certificates = static_analysis.get_certificates()
+
+    # Application details
+    app_info = get_application_details(request.handle)
+
+    request.description = 'Get application details: success'
+    logging.info(request.description)
+    request.save()
 
     # Find trackers
     trackers = static_analysis.detect_trackers()
@@ -113,6 +128,8 @@ def start_static_analysis(analysis):
     app.version = version
     app.version_code = version_code
     app.name = static_analysis.get_app_name()
+    app.icon_phash = icon_phash
+    app.app_uid = app_uid
     if app_info is not None:
         app.name = app_info['title']
         app.creator = app_info['creator']
@@ -125,6 +142,14 @@ def start_static_analysis(analysis):
     apk.name = analysis.apk_name
     apk.sum = shasum
     apk.save(force_insert = True)
+
+    for certificate in certificates:
+        c = Certificate(apk = apk)
+        c.issuer = certificate.issuer
+        c.fingerprint = certificate.fingerprint
+        c.subject = certificate.subject
+        c.serial_number = certificate.serial
+        c.save(force_insert = True)
 
     for perm in perms:
         p = Permission(application = app)

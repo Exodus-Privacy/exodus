@@ -27,6 +27,9 @@
 {% verbatim %}
 <script id="tpl" style="display:none;" type="text/x-handlebars-template">
 <table class="table table-hover table-responsive">
+{{#unless results.length}}
+<h4>No results found.</h4>
+{{/unless}}
 {{#each results}}
     <tr class="">
         <td class="col-md-2">
@@ -48,19 +51,31 @@
 {% endverbatim %}
 
 <script>
-const tpl_source   = document.getElementById("tpl").innerHTML;
+const tpl_source = document.getElementById("tpl").innerHTML;
 const tpl = Handlebars.compile(tpl_source);
-
+jQuery(function() {
+  jQuery("#query").focus();
+});
 const display_results = function(results) {
     jQuery("#results").hide()
     jQuery("#results-title").hide()
+    jQuery("#results").html("")
+    jQuery("#results").html(tpl(results))
+    jQuery("#results").show()
     if(results.results.length > 0){
-        jQuery("#results").html(tpl(results))
-        jQuery("#results").show()
         jQuery("#results-title").show()
     }
 }
-
+jQuery.fn.enterKey = function (fnc) {
+    return this.each(function () {
+        $(this).keypress(function (ev) {
+            var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+            if (keycode == '13') {
+                fnc.call(this, ev);
+            }
+        })
+    })
+}
 const get_results = function(query, limit) {
     jQuery.ajax({
         type: 'POST',
@@ -75,12 +90,15 @@ jQuery("#go").on("click", function() {
     const query = jQuery.trim(jQuery("#query").val())
     get_results(query, 50)
 })
-
 jQuery("#query").on("change paste keyup", function() {
     const query = jQuery.trim(jQuery(this).val())
     if(query.length >= 5) {
         get_results(query, 20)
     }
+});
+jQuery("#query").enterKey(function() {
+    const query = jQuery.trim(jQuery("#query").val())
+    get_results(query, 50)
 });
 
 </script>

@@ -1,5 +1,5 @@
 import tempfile
-
+import os
 from django.core.management.base import BaseCommand, CommandError
 
 from exodus.core.static_analysis import *
@@ -98,7 +98,12 @@ class Command(BaseCommand):
 
                 # Refresh icon
                 if options['icons']:
-                    icon_path = get_application_icon(storage_helper, icon_name, report.application.handle)
+                    try:
+                        storage_helper.get_file(apk_name, apk_tmp)
+                    except ResponseError:
+                        raise CommandError('Unable to get APK')
+                    static_analysis = StaticAnalysis(apk_path = apk_tmp)
+                    icon_path = static_analysis.get_application_icon(storage_helper, icon_name)
                     if icon_path != '':
                         report.application.icon_path = icon_path
                         report.application.save()

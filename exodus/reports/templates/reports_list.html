@@ -4,7 +4,7 @@
 <div class="row justify-content-md-center">
     <div class="col-lg-6 col-centered">
     {% if reports %}
-    <div class=" alert alert-info">
+    <div class="alert bg-light">
         <div class="alert-heading">
             <h4><span class="badge badge-info">{{ reports.count }}</span> Available report{{ reports.count|pluralize }}</h4>
         </div>
@@ -22,7 +22,7 @@
                         {% endif %}
                     </a>
                 </td>
-                <td class="col-md-2 text-truncate">
+                <td class="col-md-4 text-truncate">
                     <span>
                         <span class="badge badge-warning">{{ report.found_trackers.count }}</span>
                         tracker{{ report.found_trackers.count|pluralize }}
@@ -35,9 +35,6 @@
                 </td>
                 <td class="col-md-2 text-truncate">
                      <span class="small"><b>{{ report.application.version|truncatechars_html:8 }}</b></span>
-                </td>
-                <td class="col-md-2 text-truncate">
-                    <span class="small"><b>{{ report.creation_date }}</b></span>
                 </td>
             </tr>
         {% endfor %}

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from androguard.core.bytecodes.dvm_permissions import DVM_PERMISSIONS
 from django.conf import settings
+import json
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
@@ -40,9 +42,24 @@ class Application(models.Model):
     version = models.CharField(max_length = 50)
     version_code = models.CharField(max_length = 50, default = '')
     icon_path = models.CharField(max_length = 500, default = '')
+    app_uid = models.CharField(max_length = 128, default = '')
+    icon_phash = models.CharField(max_length = 128, default = '')
 
     def permissions(self):
         return self.permission_set.all().order_by('name')
+
+    @property
+    def json_signature(self):
+        sign = {
+            'handle': self.handle,
+            'uaid': self.app_uid,
+            'sha256sum': self.apk.sum,
+            'name': self.name,
+            'version': self.version,
+            'version_code': self.version_code,
+            'icon_hash': self.icon_phash,
+        }
+        return json.dumps(sign, indent = 2)
 
 
 class Apk(models.Model):
@@ -51,9 +68,33 @@ class Apk(models.Model):
     sum = models.CharField(max_length = 200)
 
 
+class Certificate(models.Model):
+    apk = models.ForeignKey(Apk, on_delete = models.CASCADE)
+    has_expired = models.BooleanField(default = False)
+    serial_number = models.CharField(max_length = 128, default = '')
+    issuer = models.CharField(max_length = 256, default = '')
+    subject = models.CharField(max_length = 256, default = '')
+    fingerprint = models.CharField(max_length = 256, default = '')
+
+
 class Permission(models.Model):
     application = models.ForeignKey(Application, on_delete = models.CASCADE)
     name = models.CharField(max_length = 200)
+
+    @property
+    def severity(self):
+        perm = str(self.name).split('.')[-1]
+        if perm in DVM_PERMISSIONS["MANIFEST_PERMISSION"]:
+            severity = DVM_PERMISSIONS["MANIFEST_PERMISSION"][perm][0]
+            return severity
+        return 'normal'
+
+    @property
+    def details(self):
+        perm = str(self.name).split('.')[-1]
+        if perm in DVM_PERMISSIONS["MANIFEST_PERMISSION"]:
+            return DVM_PERMISSIONS["MANIFEST_PERMISSION"][perm][2]
+        return ''
 
 
 class NetworkAnalysis(models.Model):

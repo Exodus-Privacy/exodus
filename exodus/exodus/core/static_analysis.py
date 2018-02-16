@@ -2,11 +2,11 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import os
 import shlex
 import shutil
 import time
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
 from future.moves import subprocess
@@ -24,6 +24,18 @@ class StaticAnalysis(CoreSA):
         Load trackers signatures from database.
         """
         self.signatures = Tracker.objects.order_by('name')
+
+    def get_application_icon(self, storage, icon_name):
+        with NamedTemporaryFile() as f:
+            icon_path = self.save_icon(f.name)
+            if icon_path is None:
+                return ''
+            try:
+                storage.put_file(f.name, icon_name)
+            except ResponseError as err:
+                logging.info(err)
+                return ''
+            return icon_name
 
 
 from gplaycli import gplaycli
@@ -133,7 +145,7 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         # gpc.set_download_folder(tmp_dir)
         # gpc.download_packages([handle])
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
-        handle, device_code_names[retry % len(device_code_names)], tmp_dir)
+            handle, device_code_names[retry % len(device_code_names)], tmp_dir)
         try:
             exit_code = subprocess.check_call(shlex.split(cmd), shell = False)
         except:
@@ -162,6 +174,7 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
 def clear_analysis_files(storage, tmp_dir, bucket, remove_from_storage = False):
     """
     Clear the analysis files (local + on Minio storage).
+    :param storage: Minio storage helper
     :param tmp_dir: local temporary dir to remove
     :param bucket: Minio object prefix to remove
     :param remove_from_storage: remove objects in Minio if set to True
@@ -170,33 +183,3 @@ def clear_analysis_files(storage, tmp_dir, bucket, remove_from_storage = False):
     shutil.rmtree(tmp_dir, ignore_errors = True)
     if remove_from_storage:
         storage.clear_prefix(bucket)
-
-
-def get_application_icon(storage, icon_name, handle, url = None):
-    """
-    Download the application icon from Google Play.
-    :param storage: Minio storage helper
-    :param icon_name: icon name in Minio storage
-    :param handle: handle of the application
-    :param url: force to use the given URL for downloading the icon
-    :return: icon name if succeed, empty string otherwise
-    """
-    from bs4 import BeautifulSoup
-    import urllib.request
-
-    if url is None:
-        try:
-            address = 'https://play.google.com/store/apps/details?id=%s' % handle
-            text = urllib.request.urlopen(address).read()
-            soup = BeautifulSoup(text, 'html.parser')
-            i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
-            if len(i) > 0:
-                url = '%s' % i[0]['src']
-                if not url.startswith('http'):
-                    url = 'https:%s' % url
-            else:
-                return ''
-        except Exception:
-            return ''
-
-    return storage.download_and_put(url, icon_name)

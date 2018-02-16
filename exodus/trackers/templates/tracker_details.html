@@ -5,7 +5,7 @@
     <div class="row justify-content-md-center">
         <div class="col-lg-6 col-sm-12">
         {% if tracker %}
-            <div class=" alert alert-info">
+            <div class="alert bg-light">
                 <div class="alert-heading">
                     <h1>{{tracker.name}}</h1>
                 </div>
@@ -22,14 +22,14 @@
                     <li>Network detection rule: <code>{{tracker.network_signature}}</code></li>
                 </ul>
             </div>
-            <div class=" alert alert-info">
+            <div class="alert bg-light">
                 <div class="">
                     {{tracker.description|markdown|safe}}
                 </div>
             </div>
         </div>
         <div class="col-lg-6 col-sm-12">
-            <div class=" alert alert-warning">
+            <div class="alert alert-warning">
               <div class="alert-heading">
                 <h4><span class="badge badge-info">{{ reports.count}}</span> Available report{{ reports.count|pluralize }} for this tracker</h4>
               </div>
