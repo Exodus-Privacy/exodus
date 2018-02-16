@@ -57,6 +57,7 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.SUCCESS('Successfully updated icon'))
                 report.application.app_uid = static_analysis.get_application_universal_id()
                 report.application.icon_phash = static_analysis.get_icon_phash()
+                report.application.save()
                 if report.application.apk.certificate_set.count() == 0:
                     certificates = static_analysis.get_certificates()
                     for certificate in certificates:
