@@ -55,7 +55,10 @@ class Command(BaseCommand):
                     report.application.icon_path = icon_path
                     report.application.save()
                     self.stdout.write(self.style.SUCCESS('Successfully updated icon'))
-                report.application.app_uid = static_analysis.get_application_universal_id()
+                try:
+                    report.application.app_uid = static_analysis.get_application_universal_id()
+                except Exception as e:
+                    self.style.WARNING(e)
                 report.application.icon_phash = static_analysis.get_icon_phash()
                 report.application.save()
                 if report.application.apk.certificate_set.count() == 0:
