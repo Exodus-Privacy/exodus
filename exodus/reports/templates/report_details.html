@@ -44,12 +44,15 @@
             <div class="col">
                 <div class="alert-heading">
                     {% if report.application.name.strip %}
-                    <h2><img src="/reports/{{report.application.id}}/icon" width="60px" alt=""> <b>{{report.application.name}}</b> - <i>{{report.application.version}}</i></h2>
+                    <h2><img src="/reports/{{report.application.id}}/icon" width="60px" alt=""> <b>{{report.application.name}}</b></h2>
                     {% else %}
-                        <h2><img src="/reports/{{report.application.id}}/icon" width="60px" alt=""> <b>{{report.application.handle}}</b> - <i>{{report.application.version}}</i></h2>
+                        <h2><img src="/reports/{{report.application.id}}/icon" width="60px" alt=""> <b>{{report.application.handle}}</b></h2>
                     {% endif%}
 
                     <ul class="list-unstyled">
+                        {% if report.application.version.strip %}
+                            <li>Version: <b>{{report.application.version}}</b></li>
+                        {% endif %}
                         {% if report.application.creator.strip %}
                             <li>Creator: <b>{{report.application.creator}}</b></li>
                         {% endif %}
