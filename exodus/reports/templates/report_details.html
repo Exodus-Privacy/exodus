@@ -63,7 +63,7 @@
                     <a class="btn btn-secondary btn-sm" href="/reports/search/{{ report.application.handle }}">Other versions</a>
                     <a class="btn btn-secondary btn-sm" target="_blank" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">On Google Play</a>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-secondary btn-sm">APK signature</button>
+                      <button type="button" class="btn btn-secondary btn-sm">APK fingerprint</button>
                       <button type="button" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                       </button>
@@ -77,7 +77,7 @@
                       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title">APK signature</h5>
+                            <h5 class="modal-title">APK fingerprint</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -104,7 +104,7 @@
                       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title">APK signature</h5>
+                            <h5 class="modal-title">APK fingerprint</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -141,7 +141,7 @@
                         {% endfor %}
                     </ul>
                 {% else %}
-                    No signatures found.
+                No signatures found <b>OR</b> x509 certificate does not comply the RFC.
                 {% endif %}
             </div>
         </div>
