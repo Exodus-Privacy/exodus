@@ -63,11 +63,8 @@
                     <a class="btn btn-secondary btn-sm" href="/reports/search/{{ report.application.handle }}">Other versions</a>
                     <a class="btn btn-secondary btn-sm" target="_blank" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">On Google Play</a>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-secondary btn-sm">APK fingerprint</button>
-                      <button type="button" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <div class="dropdown-menu">
+                      <button type="button" class="btn btn-secondary btn-sm dropdown-toggle"  type="button" id="dropdownApkFingerprint" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">APK fingerprint</button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownApkFingerprint">
                         <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">Text</a>
                         <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetailsJSON" aria-expanded="false" aria-controls="collapseAPKDetailsJSON">JSON</a>
                       </div>
