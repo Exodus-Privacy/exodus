@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from androguard.core.bytecodes.dvm_permissions import DVM_PERMISSIONS
+from androguard.core.api_specific_resources import load_permissions
 from django.conf import settings
 import json
 from django.db import models
@@ -13,6 +13,7 @@ from minio.error import (ResponseError, NoSuchBucket)
 
 from trackers.models import Tracker
 
+MANIFEST_PERMISSIONS = load_permissions(24)
 
 @python_2_unicode_compatible
 class Report(models.Model):
@@ -83,17 +84,19 @@ class Permission(models.Model):
 
     @property
     def severity(self):
-        perm = str(self.name).split('.')[-1]
-        if perm in DVM_PERMISSIONS["MANIFEST_PERMISSION"]:
-            severity = DVM_PERMISSIONS["MANIFEST_PERMISSION"][perm][0]
+        #perm = str(self.name).split('.')[-1]
+        perm = str(self.name)
+        if perm in MANIFEST_PERMISSIONS:
+            severity = MANIFEST_PERMISSIONS[perm]["protectionLevel"]
             return severity
         return 'normal'
 
     @property
     def details(self):
-        perm = str(self.name).split('.')[-1]
-        if perm in DVM_PERMISSIONS["MANIFEST_PERMISSION"]:
-            return DVM_PERMISSIONS["MANIFEST_PERMISSION"][perm][2]
+        #perm = str(self.name).split('.')[-1]
+        perm = str(self.name)
+        if perm in MANIFEST_PERMISSIONS:
+            return MANIFEST_PERMISSIONS[perm]['description']
         return ''
 
 
