@@ -33,10 +33,10 @@
 {{#each results}}
     <tr class="">
         <td class="col-md-2">
-            <img src="/reports/{{id}}/icon" width="50px">
+            <img src="{% url 'reports:get_app_icon' id %}" width="50px">
         </td>
         <td class="col-md-10 text-truncate text-left">
-            <a href="/reports/search/{{handle}}">
+            <a href="{% 'reports:search_by_handle' handle %}">
                 {{#if name}}
                     {{name}}
                 {{else}}

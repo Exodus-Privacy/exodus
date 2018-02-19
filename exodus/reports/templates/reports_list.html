@@ -14,7 +14,7 @@
             <tr class="d-flex">
                 <td class="col-md-6 text-truncate">
                     <a href="{% url 'reports:detail' report.id %}">
-                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% url 'reports:get_app_icon' report.application.id %}" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
                         {% if report.application.name.strip %}
                             <b>{{ report.application.name }}</b>
                         {% else %}

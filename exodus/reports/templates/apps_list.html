@@ -7,7 +7,7 @@
             <div class="col-6 col-md-3 col-lg-1">
                 <figure class="figure text-center small">
                     <a href="{% url 'reports:search_by_handle' app.handle %}">
-                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{app.id}}/icon" width="90px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="{% url 'reports:get_app_icon' app.id %}" width="90px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
                         {% if app.name.strip %}
                             <figcaption class="figure-caption text-truncate">
                                 <b>{{ app.name|truncatechars_html:20 }}</b>

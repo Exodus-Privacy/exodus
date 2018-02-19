@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.http.response import Http404
 from django.shortcuts import render
 from django.views.generic import FormView, ListView
+from django.urls import reverse
 
 from exodus.core.apk import *
 from .forms import AnalysisRequestForm
@@ -33,7 +34,10 @@ class AnalysisRequestView(FormView):
         static = StaticAnalysisParameters(analysis_q)
         start_static_analysis.delay(static)
 
-        return HttpResponseRedirect('/analysis/%s' % analysis_q.id)
+        url = reverse('analysis:wait', kwargs={'r_id' : analysis_q.id})
+
+        return HttpResponseRedirect(url)
+
 
 
 def wait(request, r_id):

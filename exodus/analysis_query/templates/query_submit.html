@@ -94,7 +94,7 @@ jQuery("#handle").on("change paste keyup", function() {
                     rq[handle].reports.forEach(function(r) {
                         var li = document.createElement('li')
                         const version = r.version.substring(0, Math.min(8,r.version.length));
-                        li.innerHTML = name + ' version '+r.version+' - <a href="/reports/'+r.id+'/">Go to the report</a>'
+                        li.innerHTML = name + ' version '+r.version+' - <a href="{% url 'reports:index' %}' + r.id + '/">Go to the report</a>'
                         ul.appendChild(li)
                     })
                     jQuery("#reports").append(ul)

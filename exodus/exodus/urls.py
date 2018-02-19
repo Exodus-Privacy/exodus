@@ -21,12 +21,12 @@ from django.views.generic.base import TemplateView
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^analysis/', include('analysis_query.urls')),
-    url(r'^trackers/', include('trackers.urls')),
-    url(r'^reports/', include('reports.urls')),
-    url(r'^api/', include('restful_api.urls')),
-    url(r'^search/', include('search.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^analysis/', include('analysis_query.urls', namespace='analysis')),
+    url(r'^trackers/', include('trackers.urls', namespace='trackers')),
+    url(r'^reports/', include('reports.urls', namespace='reports')),
+    url(r'^api/', include('restful_api.urls', namespace='api')),
+    url(r'^search/', include('search.urls', namespace='search')),
+    url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^', TemplateView.as_view(template_name='base.html'), name='home')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

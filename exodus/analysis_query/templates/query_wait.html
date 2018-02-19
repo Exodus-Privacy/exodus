@@ -34,7 +34,7 @@
 const refresh = function(){
       console.log("Refresh")
 
-      jQuery.get("/analysis/{{request.id}}/json", function(rq){
+      jQuery.get("{% url 'analysis:json' r_id=request.id %}", function(rq){
             jQuery("#description").removeClass("alert-danger alert-info")
             jQuery("#description").html(rq.description)
             if(rq.in_error){
@@ -45,7 +45,7 @@ const refresh = function(){
             if(rq.processed){
                 jQuery("#snake").hide()
                 if(!rq.in_error){
-                    jQuery("#report").attr("href", "/reports/"+rq.report_id+"/")
+                    jQuery("#report").attr("href", "{% url 'reports:index' %}"+rq.report_id+"/")
                     jQuery("#report").show()
                 }
             } else {
