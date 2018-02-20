@@ -6,4 +6,4 @@ User=vagrant
 Group=vagrant
 Environment=DJANGO_SETTINGS_MODULE=exodus.settings.dev
 WorkingDirectory=/vagrant/exodus
-ExecStart=/vagrant/venv/bin/python manage.py celery worker -A exodus.core -l info
+ExecStart=/bin/bash worker.sh
