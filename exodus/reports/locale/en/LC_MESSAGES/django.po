@@ -1,0 +1,283 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-10 16:51+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: reports/templates/report_details.html:9
+msgid "Provide this URI to Electra for report completion:"
+msgstr ""
+
+#: reports/templates/report_details.html:14
+msgid "Prefix in storage:"
+msgstr ""
+
+#: reports/templates/report_details.html:31
+#: reports/templates/reports_list.html:35
+msgid "tracker"
+msgstr ""
+
+#: reports/templates/report_details.html:41
+#: reports/templates/reports_list.html:40
+msgid "permission"
+msgstr ""
+
+#: reports/templates/report_details.html:64
+msgid "Other versions"
+msgstr ""
+
+#: reports/templates/report_details.html:65
+msgid "On Google Play"
+msgstr ""
+
+#: reports/templates/report_details.html:67
+#: reports/templates/report_details.html:78
+#: reports/templates/report_details.html:105
+msgid "APK fingerprint"
+msgstr ""
+
+#: reports/templates/report_details.html:69
+msgid "Text"
+msgstr ""
+
+#: reports/templates/report_details.html:85
+msgid "APK checksum"
+msgstr ""
+
+#: reports/templates/report_details.html:86
+msgid "Handle"
+msgstr ""
+
+#: reports/templates/report_details.html:87
+msgid "Name"
+msgstr ""
+
+#: reports/templates/report_details.html:88
+msgid "UAID"
+msgstr ""
+
+#: reports/templates/report_details.html:89
+msgid "Version"
+msgstr ""
+
+#: reports/templates/report_details.html:90
+msgid "Version code"
+msgstr ""
+
+#: reports/templates/report_details.html:91
+msgid "Icon hash"
+msgstr ""
+
+#: reports/templates/report_details.html:95
+#: reports/templates/report_details.html:114
+msgid "Close"
+msgstr ""
+
+#: reports/templates/report_details.html:121
+msgid "This report was automatically issued on"
+msgstr ""
+
+#: reports/templates/report_details.html:122
+msgid "This report was automatically updated on"
+msgstr ""
+
+#: reports/templates/report_details.html:129
+msgid "Signed by:"
+msgstr ""
+
+#: reports/templates/report_details.html:135
+msgid "Fingerprint:"
+msgstr ""
+
+#: reports/templates/report_details.html:136
+msgid "Issuer"
+msgstr ""
+
+#: reports/templates/report_details.html:137
+msgid "Subject"
+msgstr ""
+
+#: reports/templates/report_details.html:138
+msgid "Serial"
+msgstr ""
+
+#: reports/templates/report_details.html:142
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr ""
+
+#: reports/templates/report_details.html:152
+msgid "Tracker"
+msgstr ""
+
+#: reports/templates/report_details.html:157
+#: reports/templates/report_details.html:159
+msgid "We have found"
+msgstr ""
+
+#: reports/templates/report_details.html:157
+msgid "of this tracker in the application:"
+msgstr ""
+
+#: reports/templates/report_details.html:159
+msgid "of these trackers in the application:"
+msgstr ""
+
+#: reports/templates/report_details.html:169
+msgid ""
+"A tracker is a piece of software meant to collect data about you or your "
+"usages. We do not guarantee the exhaustiveness of this list."
+msgstr ""
+
+#: reports/templates/report_details.html:172
+msgid ""
+"Here is the list of trackers signatures found by static analysis in this "
+"APK. This is not a proof of activity of these trackers."
+msgstr ""
+
+#: reports/templates/report_details.html:173
+msgid "The application could contain tracker(s) we do not know yet."
+msgstr ""
+
+#: reports/templates/report_details.html:175
+msgid "If you have doubts about this report, contact us"
+msgstr ""
+
+#: reports/templates/report_details.html:176
+msgid "Exodus - Question about report"
+msgstr ""
+
+#: reports/templates/report_details.html:179
+msgid "We have not found"
+msgstr ""
+
+#: reports/templates/report_details.html:179
+msgid ""
+"of any tracker we know in the application. The application could contain "
+"tracker(s) we do not know yet."
+msgstr ""
+
+#: reports/templates/report_details.html:187
+msgid "Permission"
+msgstr ""
+
+#: reports/templates/report_details.html:192
+msgid "We have found this permission in the application:"
+msgstr ""
+
+#: reports/templates/report_details.html:194
+msgid "We have found these permissions in the application:"
+msgstr ""
+
+#: reports/templates/report_details.html:203
+msgid "Dangerous"
+msgstr ""
+
+#: reports/templates/report_details.html:205
+msgid "Normal"
+msgstr ""
+
+#: reports/templates/report_details.html:210
+msgid "Permissions are actions the application can do on your phone"
+msgstr ""
+
+#: reports/templates/report_details.html:212
+msgid "This application doesn't require any permissions."
+msgstr ""
+
+#: reports/templates/report_details.html:224
+msgid ""
+"\n"
+"                                    DNS query\n"
+"                                    "
+msgid_plural ""
+"\n"
+"                                    DNS queries\n"
+"                                    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: reports/templates/report_details.html:233
+msgid ""
+"During the execution, the application has requested this domain resolution:"
+msgstr ""
+
+#: reports/templates/report_details.html:235
+msgid ""
+"During the execution, the application has requested these domain resolutions:"
+msgstr ""
+
+#: reports/templates/report_details.html:246
+msgid "Potential tracker"
+msgstr ""
+
+#: reports/templates/report_details.html:254
+msgid ""
+"A DNS resolution can confirm that a tracker was looking for the IP address "
+"of its associated server."
+msgstr ""
+
+#: reports/templates/report_details.html:273
+msgid "Details"
+msgstr ""
+
+#: reports/templates/report_details.html:274
+msgid "Sent data to"
+msgstr ""
+
+#: reports/templates/reports_list.html:11
+msgid ""
+"\n"
+"                Available report\n"
+"                "
+msgid_plural ""
+"\n"
+"                Available reports\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#: reports/templates/stats_details.html:5
+msgid "Statistics"
+msgstr ""
+
+#: reports/templates/stats_details.html:11
+msgid "Most frequent trackers"
+msgstr ""
+
+#: reports/views.py:19
+msgid "reports do not exist"
+msgstr ""
+
+#: reports/views.py:27
+msgid "No apps found"
+msgstr ""
+
+#: reports/views.py:35
+msgid "No reports found"
+msgstr ""
+
+#: reports/views.py:43
+msgid "report does not exist"
+msgstr ""
+
+#: reports/views.py:61
+msgid "App does not exist"
+msgstr ""
+
+#: reports/views.py:78
+msgid "NetworkAnalysis do not exist"
+msgstr ""
