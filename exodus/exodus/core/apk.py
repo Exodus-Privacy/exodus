@@ -4,6 +4,8 @@ from __future__ import absolute_import, unicode_literals
 import tempfile
 import os
 
+from django.utils.translation import gettext_lazy as _
+
 from analysis_query.models import *
 from exodus.core.storage import RemoteStorageHelper
 from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
@@ -18,7 +20,7 @@ def start_static_analysis(analysis):
     :param analysis: a StaticAnalysis instance
     """
     request = AnalysisRequest.objects.get(pk = analysis.query.id)
-    request.description = 'Your request is running'
+    request.description = _('Your request is running')
     request.save()
     storage_helper = RemoteStorageHelper(analysis.bucket)
 
@@ -28,12 +30,12 @@ def start_static_analysis(analysis):
         # Unable to download the APK
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
         request.in_error = True
-        request.description = 'Unable to download the APK'
+        request.description = _('Unable to download the APK')
         request.processed = True
         request.save()
         return -1
 
-    request.description = 'Download APK: success'
+    request.description = _('Download APK: success')
     logging.info(request.description)
     request.save()
 
@@ -46,12 +48,12 @@ def start_static_analysis(analysis):
         # Unable to decode the APK
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
         request.in_error = True
-        request.description = 'Unable to decode the APK'
+        request.description = _('Unable to decode the APK')
         request.processed = True
         request.save()
         return -1
 
-    request.description = 'Decode APK: success'
+    request.description = _('Decode APK: success')
     logging.info(request.description)
     request.save()
 
@@ -65,12 +67,12 @@ def start_static_analysis(analysis):
         # Unable to compute the class list
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
         request.in_error = True
-        request.description = 'Unable to compute the class list'
+        request.description = _('Unable to compute the class list')
         request.processed = True
         request.save()
         return -1
 
-    request.description = 'List embedded classes: success'
+    request.description = _('List embedded classes: success')
     logging.info(request.description)
     request.save()
 
@@ -87,7 +89,7 @@ def start_static_analysis(analysis):
         '-creation_date').first()
     if existing_report is not None:
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
-        request.description = 'A report already exists for this application version'
+        request.description = _('A report already exists for this application version')
         request.processed = True
         request.report_id = existing_report.id
         request.save()
@@ -106,14 +108,14 @@ def start_static_analysis(analysis):
     # Application details
     app_info = get_application_details(request.handle)
 
-    request.description = 'Get application details: success'
+    request.description = _('Get application details: success')
     logging.info(request.description)
     request.save()
 
     # Find trackers
     trackers = static_analysis.detect_trackers()
 
-    request.description = 'Tracker analysis: success'
+    request.description = _('Tracker analysis: success')
     logging.info(request.description)
     request.save()
 
@@ -160,7 +162,7 @@ def start_static_analysis(analysis):
     report.save()
 
     clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, False)
-    request.description = 'Static analysis complete'
+    request.description = _('Static analysis complete')
     logging.info(request.description)
     request.processed = True
     request.report_id = report.id

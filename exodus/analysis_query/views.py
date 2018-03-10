@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import random
 import string
 
+from django.utils.translation import gettext_lazy as _
 from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
@@ -27,7 +28,7 @@ class AnalysisRequestView(FormView):
     def form_valid(self, form):
         randhex = str(randomword(60))
         analysis_q = AnalysisRequest(handle = form.cleaned_data['handle'], bucket = randhex)
-        analysis_q.description = 'Your request will be handled soon'
+        analysis_q.description = _('Your request will be handled soon')
         analysis_q.save()
 
         static = StaticAnalysisParameters(analysis_q)
@@ -40,7 +41,7 @@ def wait(request, r_id):
     try:
         r = AnalysisRequest.objects.get(pk = r_id)
     except AnalysisRequest.DoesNotExist:
-        raise Http404("AnalysisRequest does not exist")
+        raise Http404(_("AnalysisRequest does not exist"))
     return render(request, 'query_wait.html', {'request': r})
 
 
@@ -48,7 +49,7 @@ def json(request, r_id):
     try:
         r = AnalysisRequest.objects.get(pk = r_id)
     except AnalysisRequest.DoesNotExist:
-        raise Http404("AnalysisRequest does not exist")
+        raise Http404(_("AnalysisRequest does not exist"))
     r.bucket = ''
     return JsonResponse(model_to_dict(r), safe = False)
 

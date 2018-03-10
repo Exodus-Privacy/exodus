@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.utils.translation import gettext_lazy as _
 from django.http.response import Http404
 from django.shortcuts import render
 
@@ -11,7 +12,7 @@ def index(request):
     try:
         trackers = Tracker.objects.order_by('name')
     except Tracker.DoesNotExist:
-        raise Http404("trackers does not exist")
+        raise Http404(_("trackers does not exist"))
     return render(request, 'trackers_list.html', {'trackers': trackers})
 
 
@@ -20,7 +21,7 @@ def detail(request, tracker_id):
         tracker = Tracker.objects.get(pk = tracker_id)
         reports = Report.objects.order_by('-creation_date').filter(found_trackers = tracker_id)
     except Tracker.DoesNotExist:
-        raise Http404("tracker does not exist")
+        raise Http404(_("tracker does not exist"))
     return render(request, 'tracker_details.html', {'tracker': tracker, 'reports': reports})
 
 
@@ -41,5 +42,5 @@ def graph(request):
 
         g += "<br>}"
     except Tracker.DoesNotExist:
-        raise Http404("tracker does not exist")
+        raise Http404(_("tracker does not exist"))
     return render(request, 'trackers_graph.html', {'g': g})
