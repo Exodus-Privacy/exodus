@@ -1,27 +1,28 @@
 {% extends "base.html"%}
+{% load i18n %}
 {% block content %}
 <div class="row justify-content-md-center">
     <div class="col-lg-4 col-centered">
         <div class="jumbotron">
             <div id="loading" class="text-center" style="">
-                <h2>εxodus is processing your request</h2>
+                <h2>εxodus {% trans "is processing your request" %}</h2>
                 <br>
                 <div id="description" class="alert alert-info" role="alert">
                     {{ request.description }}
                 </div>
-                <a id="report" style="display:none" href="#" class="btn btn-lg btn-success">See the report</a>
+                <a id="report" style="display:none" href="#" class="btn btn-lg btn-success">{% trans "See the report" %}</a>
                 <img id="snake" style="display:none" style="width:200px;" src="/static/img/loading.gif" alt="">
                 <div class="text-muted small">
-                    Will refresh automatically every 10 seconds.
+                    {% trans "Will refresh automatically every 10 seconds." %}
                 </div>
             </div>
             <hr>
             <div class="text-center alert alert-warning">
                 <p>
-                <a href="https://exodus-privacy.eu.org/" target="_blank">Exodus Privacy</a> is a non-profit
-                organization which provides this service for free.
+                    <a href="https://exodus-privacy.eu.org/" target="_blank">Exodus Privacy</a> {% tans "is a non-profit
+                    organization which provides this service for free." %}
                 </p>
-                <a class="btn btn-info" href="https://exodus-privacy.eu.org/#help" target="_blank">Help us!</a>
+                <a class="btn btn-info" href="https://exodus-privacy.eu.org/#help" target="_blank">{% trans "Help us!" %}</a>
             </div>
         </div>
     </div>

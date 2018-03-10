@@ -1,3 +1,4 @@
+{% load i18n %}
 <!doctype html>
 <html>
 <head>
@@ -37,32 +38,32 @@
                 Exodus Privacy
             </button>
             <div class="dropdown-menu" aria-labelledby="ep_dd">
-                <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org">Home</a>
-                <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/#help">Help us!</a>
-                <a class="dropdown-item" target="_blank" href="https://github.com/Exodus-Privacy/exodus/issues">Report an issue</a>
+                <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org">{% trans "Home" %}</a>
+                <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/#help">{% trans "Help us!" %}</a>
+                <a class="dropdown-item" target="_blank" href="https://github.com/Exodus-Privacy/exodus/issues">{% trans "Report an issue" %}</a>
             </div>
         </div>
         &nbsp;
         <div class="dropdown">
             <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="reports_dd"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Reports
+                    {% trans "Reports" %}
             </button>
             <div class="dropdown-menu" aria-labelledby="reports_dd">
-                <a class="dropdown-item" href="/reports/">All reports</a>
-                <a class="dropdown-item" href="/reports/apps/">All applications</a>
-                <a class="dropdown-item" href="/search/">Search</a>
+                <a class="dropdown-item" href="/reports/">{% trans "All reports" %}</a>
+                <a class="dropdown-item" href="/reports/apps/">{% trans "All applications" %}</a>
+                <a class="dropdown-item" href="/search/">{% trans "Search" %}</a>
             </div>
         </div>
         &nbsp;
         <div class="dropdown">
             <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="trackers_dd"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Trackers
+                    {% trans "Trackers" %}
             </button>
             <div class="dropdown-menu" aria-labelledby="trackers_dd">
-                <a class="dropdown-item" href="/trackers/">List</a>
-                <a class="dropdown-item" href="/reports/stats/">Statistics</a>
+                <a class="dropdown-item" href="/trackers/">{% trans "List" %}</a>
+                <a class="dropdown-item" href="/reports/stats/">{% trans "Statistics" %}</a>
             </div>
         </div>
         &nbsp
@@ -70,13 +71,13 @@
         <div class="dropdown">
             <button class="btn nav-item btn-secondary dropdown-toggle" type="button" id="analysis_dd"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Analysis
+                    {% trans "Analysis" %}
             </button>
             <div class="dropdown-menu" aria-labelledby="analysis_dd">
                 {% if request.user.is_superuser %}
-                    <a class="dropdown-item" href="/analysis/">List</a>
+                <a class="dropdown-item" href="/analysis/">{% trans "List" %}</a>
                 {% endif %}
-                <a class="dropdown-item" href="/analysis/submit/">Submit</a>
+                <a class="dropdown-item" href="/analysis/submit/">{% trans "Submit" %}</a>
             </div>
         </div>
         {% endif %}
@@ -88,17 +89,17 @@
     <!--<div class="row justify-content-md-center">-->
         <!--<div class="col-lg-6 col-centered">-->
             <!--<div class="form-group jumbotron text-center">-->
-                <!--<h1>Welcome on the εxodus privacy auditing platform.</h1>-->
+                <!--<h1>{% trans "Welcome on the εxodus privacy auditing platform." %}</h1>-->
                 <!--<img src="/static/img/logo_purple_without_text.png" alt="">-->
                 <!--<hr>-->
                 <!--<div>-->
-                    <!--This platform is meant to automatically analyze Android applications.-->
-                    <!--It generates reports listing embedded trackers and (if possible)-->
-                    <!--associated network traffic.-->
+                    <!--{% trans "This platform is meant to automatically analyze Android applications." %}-->
+                    <!--{% trans "It generates reports listing embedded trackers and (if possible)" %}-->
+                    <!--{% trans "associated network traffic." %}-->
                 <!--</div>-->
                 <!--<hr>-->
                 <!--<div>-->
-                    <!--Find us on Mastodon: <a href="https://framapiaf.org/@exodus">@exodus</a>-->
+                    <!--{% trans "Find us on Mastodon:" %} <a href="https://framapiaf.org/@exodus">@exodus</a>-->
                 <!--</div>-->
             <!--</div>-->
         <!--</div>-->

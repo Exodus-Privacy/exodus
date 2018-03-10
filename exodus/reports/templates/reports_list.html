@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 {% load static %}
 <div class="row justify-content-md-center">
@@ -6,7 +7,13 @@
     {% if reports %}
     <div class="alert bg-light">
         <div class="alert-heading">
-            <h4><span class="badge badge-info">{{ reports.count }}</span> Available report{{ reports.count|pluralize }}</h4>
+            <h4><span class="badge badge-info">{{ reports.count }}</span>
+                {% blocktrans count counter=reports.count %}
+                Available report
+                {% plural %}
+                Available reports
+                {% endblocktrans %}
+            </h4>
         </div>
         <hr>
         <table style="margin: auto; border:none" class="table table-hover table-responsive">
@@ -25,12 +32,12 @@
                 <td class="col-md-4 text-truncate">
                     <span>
                         <span class="badge badge-warning">{{ report.found_trackers.count }}</span>
-                        tracker{{ report.found_trackers.count|pluralize }}
+                        {% trans "tracker" %}{{ report.found_trackers.count|pluralize }}
                     </span>
                     <br>
                     <span>
                         <span class="badge badge-warning">{{ report.application.permission_set.count }}</span>
-                        permission{{ report.application.permission_set.count|pluralize }}
+                        {% trans "permission" %}{{ report.application.permission_set.count|pluralize }}
                     </span>
                 </td>
                 <td class="col-md-2 text-truncate">

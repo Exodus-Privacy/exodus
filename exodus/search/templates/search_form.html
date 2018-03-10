@@ -1,8 +1,9 @@
+{% load i18n %}
 <div class="row justify-content-md-center">
     <div class="col-lg-7 col-sm-12 col-centered">
             <div class="form-group jumbotron">
                 {% csrf_token %}
-                <h1 class="text-center">Search</h1>
+                <h1 class="text-center">{% trans "Search" %}</h1>
                 <div class="input-group input-group-lg">
                     <input type="text" class="form-control text-center" id="query" name="query" aria-describedby="query_help"
                        placeholder="fr.meteo">
@@ -11,12 +12,12 @@
                     </span>
                 </div>
 
-                <small id="query_help" class="form-text text-muted text-center">Here you can search for an application
-                    using its name or handle <i>i.e.</i> <code><b>fr.meteo</b></code><br>
+                <small id="query_help" class="form-text text-muted text-center">{% trans "Here you can search for an application
+                    using its name or handle" %} <i>i.e.</i> <code><b>fr.meteo</b></code><br>
                 </small>
                 <br>
 
-                <h2 style="display: none" id="results-title">Results</h2>
+                <h2 style="display: none" id="results-title">{% trans "Results" %}</h2>
                 <div id="results" style="display: none" class="">
                 </div>
 
@@ -28,7 +29,7 @@
 <script id="tpl" style="display:none;" type="text/x-handlebars-template">
 <table class="table table-hover table-responsive">
 {{#unless results.length}}
-<h4>No results found.</h4>
+    <h4>{% trans "No results found." %}</h4>
 {{/unless}}
 {{#each results}}
     <tr class="">

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load markdown %} 
 
 {% block content %}
@@ -10,16 +11,16 @@
                     <h1>{{tracker.name}}</h1>
                 </div>
                 <p>
-                    <a href="{{tracker.website}}"> Go to the tracker web page.</a>
+                    <a href="{{tracker.website}}">{% trans "Go to the tracker web page." %}</a>
                 </p>
-                <h3>Detection rules</h3>
+                <h3>{% trans "Detection rules" %}</h3>
                 <ul>
                     {% if tracker.code_signature|length > 3 %}
-                        <li>Code detection rule: <code>{{tracker.code_signature}}</code></li>
+                    <li>{% trans "Code detection rule:" %} <code>{{tracker.code_signature}}</code></li>
                     {% else %}
-                        <li>Code signature: <code>unknown</code></li>
+                    <li>{% trans "Code signature:" %} <code>unknown</code></li>
                     {% endif %}
-                    <li>Network detection rule: <code>{{tracker.network_signature}}</code></li>
+                    <li>{% trans "Network detection rule:" %} <code>{{tracker.network_signature}}</code></li>
                 </ul>
             </div>
             <div class="alert bg-light">
@@ -31,7 +32,13 @@
         <div class="col-lg-6 col-sm-12">
             <div class="alert alert-warning">
               <div class="alert-heading">
-                <h4><span class="badge badge-info">{{ reports.count}}</span> Available report{{ reports.count|pluralize }} for this tracker</h4>
+                  <h4><span class="badge badge-info">{{ reports.count}}</span>
+                      {% blocktrans count counter=reports.count %}
+                      Available report for this tracker
+                      {% plural %}
+                      Available reports for this tracker
+                      {% endblocktrans %}
+                  </h4>
               </div>
               <table style="margin: auto; border:none" class="table table-hover">
                 {% for report in reports %}

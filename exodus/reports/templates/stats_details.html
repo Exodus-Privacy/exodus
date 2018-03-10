@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 {% load static %}
-<h1>Statistics</h1>
+<h1>{% trans "Statistics" %}</h1>
 <div class="row">
     {% if trackers %}
     <div class="col">
         <div class="alert bg-light">
             <div class="alert-heading">
-                <h4>Most frequent trackers</h4>
+                <h4>{% trans "Most frequent trackers" %}</h4>
             </div>
             <hr>
             <table style="margin: auto">
