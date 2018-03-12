@@ -20,7 +20,7 @@ vagrant up
 
 Now, you can [make a tea](https://wiki.laquadrature.net/TeaHouse).
 
-Or you can follow the [step by step installation](doc/install.md) guide.
+Or you can follow the [step by step installation](doc/install.md) guide. Check the [FAQ](doc/faq.md) if you encounter problem.
 
 # Analyse an application
 
