@@ -1,0 +1,19 @@
+{
+    "version": "20",
+    "credential": {
+        "accessKey": "exodusexodus",
+        "secretKey": "exodusexodus"
+    },
+    "region": "",
+    "browser": "on",
+    "logger": {
+        "console": {
+            "enable": true
+        },
+        "file": {
+            "enable": false,
+            "filename": ""
+        }
+    },
+    "notify": {}
+}
