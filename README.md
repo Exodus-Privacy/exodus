@@ -2,6 +2,8 @@
 **εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be 
 dangerous for user privacy like ads, tracking, analytics, … 
 
+The official instance of εxodus is available [here](https://reports.exodus-privacy.eu.org/).
+
 # Development environment
 
 Install [vagrant](https://www.vagrantup.com/) and execute:
