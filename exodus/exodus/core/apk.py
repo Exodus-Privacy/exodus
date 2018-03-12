@@ -93,6 +93,19 @@ def start_static_analysis(analysis):
         request.save()
         return existing_report.id
 
+    # APK
+    try:
+        certificates = static_analysis.get_certificates()
+    except Exception as e:
+        logging.info(e)
+        # Unable to get certificates
+        clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+        request.in_error = True
+        request.description = 'Unable to get certificates'
+        request.processed = True
+        request.save()
+        return -1
+
     # Application
     perms = static_analysis.get_permissions()
     app_uid = static_analysis.get_application_universal_id()
@@ -100,11 +113,35 @@ def start_static_analysis(analysis):
     icon_file = static_analysis.get_application_icon(storage_helper, analysis.icon_name)
     icon_phash = static_analysis.get_icon_phash()
 
-    # APK
-    certificates = static_analysis.get_certificates()
+    error_message = ''
+    has_error = False
+    if len(app_uid) < 16:
+        error_message = 'Unable to compute the Universal Application ID'
+    elif icon_phash <= 0:
+        error_message = 'Unable to compute the icon perceptual hash'
+
+    if has_error:
+        logging.info(error_message)
+        clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+        request.in_error = True
+        request.description = error_message
+        request.processed = True
+        request.save()
+        return -1
+
 
     # Application details
-    app_info = get_application_details(request.handle)
+    try:
+        app_info = get_application_details(request.handle)
+    except Exception as e:
+        logging.info(e)
+        # Unable to get application details form Google Play
+        clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+        request.in_error = True
+        request.description = 'Unable to get application details form Google Play'
+        request.processed = True
+        request.save()
+        return -1
 
     request.description = 'Get application details: success'
     logging.info(request.description)
