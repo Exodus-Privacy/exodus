@@ -1,0 +1,35 @@
+- name: download minio
+  get_url:
+    url: https://dl.minio.io/server/minio/release/linux-amd64/minio
+    checksum: sha256:98cf1e082368e3f57f2be39dd49b1abffca4068e6d3e859f300ae93b4e5f6a5a
+    dest: ~/minio
+    mode: u+x
+
+- name: create configuration directory
+  file:
+    path: ~/.minio
+    state: directory
+
+- name: copy configuration
+  copy:
+    src: config.json
+    dest: ~/.minio/
+
+- name: create minio storage location
+  file:
+    path: /vagrant/storage
+    state: directory
+
+- name: copy minio service
+  become: true
+  copy:
+    src: minio.service
+    dest: /etc/systemd/system
+
+- name: start minio service
+  become: true
+  systemd:
+    name: minio
+    state: started
+    daemon_reload: yes
+    enabled: yes

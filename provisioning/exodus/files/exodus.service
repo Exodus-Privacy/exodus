@@ -1,0 +1,9 @@
+[Unit]
+Description=Exodus worker
+
+[Service]
+User=vagrant
+Group=vagrant
+Environment=DJANGO_SETTINGS_MODULE=exodus.settings.dev
+WorkingDirectory=/vagrant/exodus
+ExecStart=/bin/bash worker.sh

@@ -1,0 +1,12 @@
+- name: Install rabbitmq
+  become: true
+  apt:
+    name: rabbitmq-server
+    state: present
+
+- name: Start rabbitmq service
+  become: true
+  service:
+    name: rabbitmq-server
+    state: started
+    enabled: true
