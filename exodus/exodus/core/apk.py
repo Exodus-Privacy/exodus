@@ -117,7 +117,7 @@ def start_static_analysis(analysis):
     has_error = False
     if len(app_uid) < 16:
         error_message = 'Unable to compute the Universal Application ID'
-    elif icon_phash <= 0:
+    elif len(str(icon_phash)) < 5:
         error_message = 'Unable to compute the icon perceptual hash'
 
     if has_error:
