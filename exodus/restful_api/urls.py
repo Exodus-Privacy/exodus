@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^trackers$', views.get_all_trackers),
     url(r'^report/(?P<r_id>[0-9]+)/details$', views.get_report_details),
     url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
-    url(r'^search/(?P<handle>[a-z|.]+)$', views.search_strict_handle, name = 'search_strict_handle'),
+    url(r'^search/(?P<handle>[a-z0-9|.]+)$', views.search_strict_handle, name = 'search_strict_handle'),
     url(r'^search$', views.search, name = 'search'),
 ]
