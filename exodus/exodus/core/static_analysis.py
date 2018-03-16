@@ -147,7 +147,8 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
             handle, device_code_names[retry % len(device_code_names)], tmp_dir)
         try:
-            exit_code = subprocess.check_call(shlex.split(cmd), shell = False)
+            # Timeout of 4 minutes
+            exit_code = subprocess.check_call(shlex.split(cmd), shell = False, timeout = 240)
         except:
             exit_code = 1
         apk = Path(apk_tmp)
