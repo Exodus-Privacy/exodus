@@ -113,6 +113,10 @@ def start_static_analysis(analysis):
         # icon_file = get_application_icon(storage_helper, analysis.icon_name, request.handle)
         icon_file = static_analysis.get_application_icon(storage_helper, analysis.icon_name)
         icon_phash = static_analysis.get_icon_phash()
+        if len(app_uid) < 16:
+            raise Exception('Unable to compute the Universal Application ID')
+        elif len(str(icon_phash)) < 16:
+            raise Exception('Unable to compute the icon perceptual hash')
     except Exception as e:
         logging.info(e)
         # Unable to compute APK fingerprint
