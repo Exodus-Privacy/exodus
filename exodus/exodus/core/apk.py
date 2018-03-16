@@ -106,29 +106,22 @@ def start_static_analysis(analysis):
         request.save()
         return -1
 
-    # Application
-    perms = static_analysis.get_permissions()
-    app_uid = static_analysis.get_application_universal_id()
-    # icon_file = get_application_icon(storage_helper, analysis.icon_name, request.handle)
-    icon_file = static_analysis.get_application_icon(storage_helper, analysis.icon_name)
-    icon_phash = static_analysis.get_icon_phash()
-
-    error_message = ''
-    has_error = False
-    if len(app_uid) < 16:
-        error_message = 'Unable to compute the Universal Application ID'
-    elif len(str(icon_phash)) < 5:
-        error_message = 'Unable to compute the icon perceptual hash'
-
-    if has_error:
-        logging.info(error_message)
+    # Fingerprint
+    try:
+        perms = static_analysis.get_permissions()
+        app_uid = static_analysis.get_application_universal_id()
+        # icon_file = get_application_icon(storage_helper, analysis.icon_name, request.handle)
+        icon_file = static_analysis.get_application_icon(storage_helper, analysis.icon_name)
+        icon_phash = static_analysis.get_icon_phash()
+    except Exception as e:
+        logging.info(e)
+        # Unable to compute APK fingerprint
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
         request.in_error = True
-        request.description = error_message
+        request.description = 'Unable to compute APK fingerprint'
         request.processed = True
         request.save()
         return -1
-
 
     # Application details
     try:
