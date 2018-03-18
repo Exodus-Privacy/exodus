@@ -27,7 +27,7 @@ token=~/.cache/gplaycli/token
 ```
 
 ## How to import trackers definitions?
-We periodically export trackers definitions from the poduction instance. This export is a JSON file you can easily import using Django admin.
+We periodically export trackers definitions from the production instance. This export is a JSON file you can easily import using Django admin.
 To do so, get trackers definition from [production](https://y.0x39b.fr/zerobin/?b8cd1e442301940d#HCuV45xNQ/MAPvHVFifCr0tdoX7dxP7f2H55JXc1PHg=) by clicking on *Raw text* and copying the content into a json file, for example in `/tmp/trackers.json`.
 Once saved, activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following command:
 ```bash
