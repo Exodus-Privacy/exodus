@@ -16,7 +16,7 @@ class Command(BaseCommand):
         if (Tracker.objects.all()[:1].count() > 0):
             raise CommandError('Your trakers table in not empty, please truncate its before the import')
 
-        json_str = self.read_file(options['filename'])
+        json_str = self.read_file(options['filename']).decode('utf-8')
         trackers = json.loads(json_str)
 
         for id, tracker in trackers['trackers'].items():
