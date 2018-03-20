@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
@@ -24,9 +25,20 @@ def index(request):
 
 def get_all_apps(request):
     try:
-        apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
+        apps_list = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Application.DoesNotExist:
         raise Http404("No apps found")
+    paginator = Paginator(apps_list, 10)
+
+    page = request.GET.get('page')
+
+
+    try:
+        apps = paginator.page(page)
+    except PageNotAnInteger:
+        apps = paginator.page(1)
+    except EmptyPage:
+        apps = paginator.page(paginator.num_pages)
     return render(request, 'apps_list.html', {'apps': apps})
 
 
