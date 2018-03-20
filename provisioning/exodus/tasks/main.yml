@@ -1,0 +1,91 @@
+- name: install system dependencies
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+     - aapt
+     - build-essential
+     - dexdump
+     - git
+     - libffi-dev
+     - libssl-dev
+     - libxml2-dev
+     - libxslt1-dev
+     - openjdk-8-jre
+     - policykit-1
+     - python3-pip
+     - python3-dev
+     - tshark
+     - virtualenv
+
+- name: install dependencies
+  pip:
+    virtualenv: /vagrant/venv
+    virtualenv_python: python3
+    requirements: requirements.txt
+    chdir: /vagrant
+
+- name: install androguard
+  pip:
+    virtualenv: /vagrant/venv
+    virtualenv_python: python3
+    name: git+https://github.com/androguard/androguard.git@v3.1.0-rc1
+    chdir: /vagrant
+
+- name: make migration
+  django_manage:
+    command: makemigrations
+    app_path: /vagrant/exodus
+    settings: exodus.settings.dev
+    virtualenv: /vagrant/venv
+
+- name: migrate
+  django_manage:
+    command: migrate
+    app_path: /vagrant/exodus
+    settings: exodus.settings.dev
+    virtualenv: /vagrant/venv
+
+- name: create admin user
+  django_manage:
+    command: createsuperuser
+    app_path: /vagrant/exodus
+    settings: exodus.settings.dev
+    virtualenv: /vagrant/venv
+
+- name: create gplaycli configuration directory
+  file:
+    path: ~/.config/gplaycli
+    state: directory
+
+- name: copy gplaycli configuration
+  file:
+    src: /vagrant/venv/lib/python3.5/site-packages/home/vagrant/.config/gplaycli/gplaycli.conf
+    dest: ~/.config/gplaycli/gplaycli.conf
+    state: link
+
+- name: copy εxodus services
+  become: true
+  copy:
+    src: exodus.service
+    dest: /etc/systemd/system
+  notify: exodus restart
+
+- name: systemd daemon-reload
+  become: true
+  command: systemctl daemon-reload
+
+- name: start εxodus services
+  become: true
+  service:
+    name: exodus
+    state: started
+    enabled: yes
+
+- name: import trakers definitions
+  django_manage:
+    command: importtrackers
+    app_path: /vagrant/exodus
+    settings: exodus.settings.dev
+    virtualenv: /vagrant/venv

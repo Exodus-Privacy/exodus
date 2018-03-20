@@ -95,18 +95,52 @@ def start_static_analysis(analysis):
         request.save()
         return existing_report.id
 
-    # Application
-    perms = static_analysis.get_permissions()
-    app_uid = static_analysis.get_application_universal_id()
-    # icon_file = get_application_icon(storage_helper, analysis.icon_name, request.handle)
-    icon_file = static_analysis.get_application_icon(storage_helper, analysis.icon_name)
-    icon_phash = static_analysis.get_icon_phash()
-
     # APK
-    certificates = static_analysis.get_certificates()
+    try:
+        certificates = static_analysis.get_certificates()
+    except Exception as e:
+        logging.info(e)
+        # Unable to get certificates
+        clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+        request.in_error = True
+        request.description = 'Unable to get certificates'
+        request.processed = True
+        request.save()
+        return -1
+
+    # Fingerprint
+    try:
+        perms = static_analysis.get_permissions()
+        app_uid = static_analysis.get_application_universal_id()
+        # icon_file = get_application_icon(storage_helper, analysis.icon_name, request.handle)
+        icon_file = static_analysis.get_application_icon(storage_helper, analysis.icon_name)
+        icon_phash = static_analysis.get_icon_phash()
+        if len(app_uid) < 16:
+            raise Exception('Unable to compute the Universal Application ID')
+        elif len(str(icon_phash)) < 16:
+            raise Exception('Unable to compute the icon perceptual hash')
+    except Exception as e:
+        logging.info(e)
+        # Unable to compute APK fingerprint
+        clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+        request.in_error = True
+        request.description = 'Unable to compute APK fingerprint'
+        request.processed = True
+        request.save()
+        return -1
 
     # Application details
-    app_info = get_application_details(request.handle)
+    try:
+        app_info = get_application_details(request.handle)
+    except Exception as e:
+        logging.info(e)
+        # Unable to get application details form Google Play
+        clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+        request.in_error = True
+        request.description = 'Unable to get application details form Google Play'
+        request.processed = True
+        request.save()
+        return -1
 
     request.description = _('Get application details: success')
     logging.info(request.description)

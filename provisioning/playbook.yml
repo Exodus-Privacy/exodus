@@ -1,0 +1,3 @@
+- hosts: default
+  roles:
+    - exodus

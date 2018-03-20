@@ -23,7 +23,7 @@ django-filter==1.1.0
 djangorestframework==3.7.3
 EditorConfig==0.12.1
 enum34==1.1.6
-https://github.com/Exodus-Privacy/exodus-core/releases/download/v1.0.7/exodus_core-1.0.7.tar.gz
+https://github.com/Exodus-Privacy/exodus-core/releases/download/v1.0.8/exodus_core-1.0.8.tar.gz
 first==2.0.1
 future==0.16.0
 futures==3.1.1
@@ -45,7 +45,7 @@ kombu==3.0.37
 Logbook==1.1.0
 lxml==4.1.1
 Markdown==2.6.10
-minio==3.0.0
+minio==3.0.4
 mistune==0.7.4
 mitmproxy==2.0.2
 ndg-httpsclient==0.4.3

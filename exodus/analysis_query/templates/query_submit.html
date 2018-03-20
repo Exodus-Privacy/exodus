@@ -7,6 +7,7 @@
             <div class="form-group jumbotron">
                 {% csrf_token %}
                 <h2 class="text-center">{% trans "Analyze an application" %}</h2>
+                <h5 class="text-center">{% trans "Free application only" %}</h5>
                 {% if form.errors %}
                 {% for field in form %}
                 {% for error in field.errors %}

@@ -6,6 +6,7 @@ import shlex
 import shutil
 import time
 from pathlib import Path
+from subprocess import TimeoutExpired
 from tempfile import NamedTemporaryFile
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
@@ -139,7 +140,7 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     # success, error = gpc.connect_to_googleplay_api()
     # if error is not None:
     #     return False
-    while retry != 0:
+    while retry > 0:
         # if device_code_names[retry % len(device_code_names)] != '':
         #     gpc.device_codename = device_code_names[retry % len(device_code_names)]
         # gpc.set_download_folder(tmp_dir)
@@ -147,9 +148,14 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
             handle, device_code_names[retry % len(device_code_names)], tmp_dir)
         try:
-            exit_code = subprocess.check_call(shlex.split(cmd), shell = False)
+            # Timeout of 4 minutes
+            exit_code = subprocess.check_call(shlex.split(cmd), shell = False, timeout = 240)
+        except TimeoutExpired:
+            exit_code = 1
+            break
         except:
             exit_code = 1
+
         apk = Path(apk_tmp)
         if apk.is_file():
             exit_code = 0

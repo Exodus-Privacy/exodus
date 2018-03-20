@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.utils.translation import gettext_lazy as _
 from django.http import HttpResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.http import Http404
 from django.db import connection
@@ -15,10 +16,12 @@ from minio import Minio
 def index(request):
     try:
         reports = Report.objects.order_by('-creation_date')
+        paginator = Paginator(reports, 6)
+        page = request.GET.get('page', 1)
+        reports = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404(_("reports do not exist"))
     return render(request, 'reports_list.html', {'reports': reports})
-
 
 def get_all_apps(request):
     try:
