@@ -23,7 +23,7 @@ def detail(request, tracker_id):
     except Tracker.DoesNotExist:
         raise Http404("tracker does not exist")
 
-    paginator = Paginator(reports_list, 20)
+    paginator = Paginator(reports_list, settings.EX_PAGINATOR_COUNT)
     page = request.GET.get('page')
 
     try:

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
@@ -16,19 +15,20 @@ from minio import Minio
 def index(request):
     try:
         reports = Report.objects.order_by('-creation_date')
-        paginator = Paginator(reports, 6)
+        paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
         page = request.GET.get('page', 1)
         reports = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404("reports do not exist")
     return render(request, 'reports_list.html', {'reports': reports})
 
+
 def get_all_apps(request):
     try:
         apps_list = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Application.DoesNotExist:
         raise Http404("No apps found")
-    paginator = Paginator(apps_list, 10)
+    paginator = Paginator(apps_list, settings.EX_PAGINATOR_COUNT)
 
     page = request.GET.get('page')
 
