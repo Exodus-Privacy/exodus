@@ -183,6 +183,20 @@ def get_all_trackers(request):
 @api_view(['GET'])
 @authentication_classes(())
 @permission_classes(())
+def get_all_applications(request):
+    if request.method == 'GET':
+        try:
+            applications = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
+            serializer = ApplicationSerializer(applications, many = True)
+            return JsonResponse({'applications': serializer.data}, safe = False)
+        except Application.DoesNotExist:
+            return JsonResponse({}, safe = True)
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes(())
+@permission_classes(())
 def search_strict_handle(request, handle):
     if request.method == 'GET':
         try:
