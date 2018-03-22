@@ -21,7 +21,7 @@ class ReportSerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        exclude = ('icon_path', 'id', 'report', 'version', 'version_code')
+        exclude = ('icon_path', 'report', 'version', 'version_code')
 
 
 class TrackerSerializer(serializers.ModelSerializer):
