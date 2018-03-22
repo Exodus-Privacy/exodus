@@ -163,7 +163,7 @@ def create_tracker_list():
 @permission_classes(())
 def get_all_reports(request):
     if request.method == 'GET':
-        report_list = Report.objects.order_by('-creation_date')
+        report_list = Report.objects.order_by('-creation_date')[:500]
         applications = create_reports_list(report_list)
         trackers = create_tracker_list()
         return JsonResponse({'applications': applications, 'trackers': trackers})
