@@ -28,7 +28,7 @@ first==2.0.1
 future==0.16.0
 futures==3.1.1
 gpapi==0.3.2
-GPlayCli==3.14
+GPlayCli==3.21
 gunicorn==19.7.1
 h2==2.6.2
 hpack==3.0.0
