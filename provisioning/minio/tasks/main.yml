@@ -1,6 +1,6 @@
 - name: download minio
   get_url:
-    url: https://dl.minio.io/server/minio/release/linux-amd64/minio
+    url: https://dl.minio.io/server/minio/release/linux-amd64/archive/minio.RELEASE.2018-02-09T22-40-05Z
     checksum: sha256:98cf1e082368e3f57f2be39dd49b1abffca4068e6d3e859f300ae93b4e5f6a5a
     dest: ~/minio
     mode: u+x
