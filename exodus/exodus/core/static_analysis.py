@@ -26,6 +26,7 @@ class StaticAnalysis(CoreSA):
         Load trackers signatures from database.
         """
         self.signatures = Tracker.objects.order_by('name')
+        self._compile_signatures()
 
     def get_application_icon(self, storage, icon_name):
         with NamedTemporaryFile() as f:
