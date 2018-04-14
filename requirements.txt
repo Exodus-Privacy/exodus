@@ -8,7 +8,7 @@ billiard==3.5.0.3
 blinker==1.4
 brotlipy==0.7.0
 celery==3.1.25
-certifi==2017.11.5
+certifi==2018.1.18
 cffi==1.11.0
 chardet==3.0.4
 click==6.7
@@ -27,8 +27,8 @@ https://github.com/Exodus-Privacy/exodus-core/releases/download/v1.0.8/exodus_co
 first==2.0.1
 future==0.16.0
 futures==3.1.1
-gpapi==0.3.2
-GPlayCli==3.21
+gpapi==0.4.2
+gplaycli==3.21
 gunicorn==19.7.1
 h2==2.6.2
 hpack==3.0.0
@@ -43,7 +43,7 @@ jsbeautifier==1.7.5
 kaitaistruct==0.7
 kombu==3.0.37
 Logbook==1.1.0
-lxml==4.1.1
+lxml==4.2.1
 Markdown==2.6.10
 minio==3.0.4
 mistune==0.7.4
@@ -58,7 +58,7 @@ pexpect==4.3.1
 pickleshare==0.7.4
 pip-review==1.0
 prompt-toolkit==1.0.15
-protobuf==3.5.0.post1
+protobuf==3.5.2.post1
 psycopg2==2.7.3.2
 ptyprocess==0.5.2
 py==1.5.2
@@ -66,7 +66,7 @@ pyasn1==0.3.6
 pyaxmlparser==0.3.7
 pycparser==2.18
 pycrypto==2.6.1
-pycryptodome==3.4.7
+pycryptodome==3.6.0
 Pygments==2.2.0
 pyOpenSSL==17.5.0
 pyparsing==2.2.0
