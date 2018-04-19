@@ -181,8 +181,10 @@ def get_all_trackers(request):
 
 @csrf_exempt
 @api_view(['GET'])
-@authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@authentication_classes(())
+@permission_classes(())
+# @authentication_classes((TokenAuthentication,))
+# @permission_classes((IsAuthenticated,))
 def get_all_applications(request):
     if request.method == 'GET':
         try:
