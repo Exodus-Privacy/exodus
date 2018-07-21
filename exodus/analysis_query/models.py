@@ -23,7 +23,7 @@ def validate_handle(value):
         raise ValidationError('This application is being analyzed.')
     pending_queries = AnalysisRequest.objects.filter(processed = False).count()
     if pending_queries > 19:
-        raise ValidationError('Too much pending requests, please retry later')
+        raise ValidationError('Too many pending requests, please retry later')
 
 
 class AnalysisRequest(models.Model):
