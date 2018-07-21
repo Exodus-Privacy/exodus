@@ -6,7 +6,7 @@ The official instance of εxodus is available [here](https://reports.exodus-priv
 
 # Development environment
 
-Install [vagrant](https://www.vagrantup.com/) and execute:
+Install [vagrant](https://www.vagrantup.com/) and [ansible](https://www.ansible.com/) then execute:
 
 ```
 vagrant up
