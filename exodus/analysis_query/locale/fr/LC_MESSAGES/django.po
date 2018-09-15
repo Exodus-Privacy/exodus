@@ -21,72 +21,74 @@ msgstr ""
 #: analysis_query/models.py:16
 #, python-format
 msgid "%s is not a valid application handle"
-msgstr ""
+msgstr "%s n'est pas un identifiant d'application valide"
 
 #: analysis_query/models.py:20
 #, python-format
 msgid "%s application not found on Google Play"
-msgstr ""
+msgstr "%s application introuvable sur Google Play"
 
 #: analysis_query/models.py:24
 msgid "This application is being analyzed."
-msgstr ""
+msgstr "Cette application est en cours d'analyse."
 
 #: analysis_query/models.py:27
 msgid "Too much pending requests, please retry later"
-msgstr ""
+msgstr "Trop de requêtes en attente, veuillez réessayer plus tard"
 
 #: analysis_query/templates/queries_list.html:14
 msgid "You need to be registered"
-msgstr ""
+msgstr "Vous devez être connecté.e"
 
 #: analysis_query/templates/query_submit.html:9
 msgid "Analyze an application"
-msgstr ""
+msgstr "Analyser une application"
 
 #: analysis_query/templates/query_submit.html:10
 msgid "Free application only"
-msgstr ""
+msgstr "Applications gratuites uniquement"
 
 #: analysis_query/templates/query_submit.html:31
 msgid "Perform analysis"
-msgstr ""
+msgstr "Commencer l'analyse"
 
 #: analysis_query/templates/query_submit.html:38
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
+"L'analyse peut prendre du temps, vous serez automatiquement redirigé.e vers "
+"le rapport"
 
 #: analysis_query/templates/query_submit.html:53
 #: analysis_query/templates/query_wait.html:25
 msgid "Help us!"
-msgstr ""
+msgstr "Aidez-nous !"
 
 #: analysis_query/templates/query_submit.html:93
 msgid "report(s) found for"
-msgstr ""
+msgstr "rapport(s) trouvés pour"
 
 #: analysis_query/templates/query_submit.html:99
 msgid "Go to the report"
-msgstr ""
+msgstr "Accéder au rapport"
 
 #: analysis_query/templates/query_wait.html:8
 msgid "is processing your request"
-msgstr ""
+msgstr "s'occupe de votre requête"
 
 #: analysis_query/templates/query_wait.html:13
 msgid "See the report"
-msgstr ""
+msgstr "Voir le rapport"
 
 #: analysis_query/templates/query_wait.html:16
 msgid "Will refresh automatically every 10 seconds."
-msgstr ""
+msgstr "La page se rafraîchira automatiquement toutes les 10 secondes."
 
 #: analysis_query/views.py:31
 msgid "Your request will be handled soon"
-msgstr ""
+msgstr "Votre demande sera bientôt traitée"
 
 #: analysis_query/views.py:44 analysis_query/views.py:52
 msgid "AnalysisRequest does not exist"
-msgstr ""
+msgstr "La demande d'analyse n'existe pas"

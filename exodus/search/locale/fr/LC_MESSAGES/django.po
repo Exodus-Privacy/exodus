@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-15 11:21+0200\n"
+"POT-Creation-Date: 2018-09-15 13:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: search/templates/search_form.html:6
+#: templates/search_form.html:6
 msgid "Search"
-msgstr ""
+msgstr "Recherche"
 
-#: search/templates/search_form.html:20
+#: templates/search_form.html:15
+msgid "Here you can search for an application using its name or handle"
+msgstr "Vous pouvez chercher une application par son nom ou son identifiant"
+
+#: templates/search_form.html:20
 msgid "Results"
-msgstr ""
+msgstr "Résultats"

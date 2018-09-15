@@ -20,23 +20,23 @@ msgstr ""
 
 #: trackers/templates/tracker_details.html:14
 msgid "Go to the tracker web page."
-msgstr ""
+msgstr "Accéder à la page de traqueurs."
 
 #: trackers/templates/tracker_details.html:16
 msgid "Detection rules"
-msgstr ""
+msgstr "Règles de détection"
 
 #: trackers/templates/tracker_details.html:19
 msgid "Code detection rule:"
-msgstr ""
+msgstr "Problème avec la règle de détection :"
 
 #: trackers/templates/tracker_details.html:21
 msgid "Code signature:"
-msgstr ""
+msgstr "Problème avec la signature :"
 
 #: trackers/templates/tracker_details.html:23
 msgid "Network detection rule:"
-msgstr ""
+msgstr "Règle de détection du réseau :"
 
 #: trackers/templates/tracker_details.html:36
 msgid ""
@@ -48,7 +48,13 @@ msgid_plural ""
 "                      Available reports for this tracker\n"
 "                      "
 msgstr[0] ""
+"\n"
+"                      Rapport disponible pour ce traqueur\n"
+"                      "
 msgstr[1] ""
+"\n"
+"                      Rapports disponibles pour ce traqueur\n"
+"                      "
 
 #: trackers/templates/trackers_list.html:10
 msgid ""
@@ -60,16 +66,22 @@ msgid_plural ""
 "                        Recognized trackers\n"
 "                        "
 msgstr[0] ""
+"\n"
+"                         Traqueur reconnu\n"
+"                         "
 msgstr[1] ""
+"\n"
+"                         Traqueurs reconnus\n"
+"                         "
 
 #: trackers/templates/trackers_list.html:25
 msgid "No trackers are available"
-msgstr ""
+msgstr "Aucun traqueur disponible"
 
 #: trackers/views.py:15
 msgid "trackers does not exist"
-msgstr ""
+msgstr "les traqueurs n'existent pas"
 
 #: trackers/views.py:24 trackers/views.py:45
 msgid "tracker does not exist"
-msgstr ""
+msgstr "le traqueur n'existe pas"
