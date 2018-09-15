@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-10 16:51+0100\n"
+"POT-Creation-Date: 2018-09-15 11:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,13 +161,9 @@ msgid "Exodus - Question about report"
 msgstr ""
 
 #: reports/templates/report_details.html:179
-msgid "We have not found"
-msgstr ""
-
-#: reports/templates/report_details.html:179
 msgid ""
-"of any tracker we know in the application. The application could contain "
-"tracker(s) we do not know yet."
+"We have not found <b>code signature</b> of any tracker we know in the "
+"application. The application could contain tracker(s) we do not know yet."
 msgstr ""
 
 #: reports/templates/report_details.html:187
@@ -258,26 +254,26 @@ msgstr ""
 msgid "Most frequent trackers"
 msgstr ""
 
-#: reports/views.py:19
+#: reports/views.py:23
 msgid "reports do not exist"
 msgstr ""
 
-#: reports/views.py:27
+#: reports/views.py:30
 msgid "No apps found"
 msgstr ""
 
-#: reports/views.py:35
+#: reports/views.py:38
 msgid "No reports found"
 msgstr ""
 
-#: reports/views.py:43
+#: reports/views.py:46
 msgid "report does not exist"
 msgstr ""
 
-#: reports/views.py:61
+#: reports/views.py:64
 msgid "App does not exist"
 msgstr ""
 
-#: reports/views.py:78
+#: reports/views.py:81
 msgid "NetworkAnalysis do not exist"
 msgstr ""

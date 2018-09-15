@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-10 16:51+0100\n"
+"POT-Creation-Date: 2018-09-15 11:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,26 +44,30 @@ msgstr ""
 msgid "Analyze an application"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:30
+#: analysis_query/templates/query_submit.html:10
+msgid "Free application only"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:31
 msgid "Perform analysis"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:37
+#: analysis_query/templates/query_submit.html:38
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:52
+#: analysis_query/templates/query_submit.html:53
 #: analysis_query/templates/query_wait.html:25
 msgid "Help us!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:92
+#: analysis_query/templates/query_submit.html:93
 msgid "report(s) found for"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:98
+#: analysis_query/templates/query_submit.html:99
 msgid "Go to the report"
 msgstr ""
 
