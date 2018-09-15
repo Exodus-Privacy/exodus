@@ -137,7 +137,7 @@ def start_static_analysis(analysis):
         # Unable to get application details form Google Play
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
         request.in_error = True
-        request.description = 'Unable to get application details form Google Play'
+        request.description = 'Unable to get application details from Google Play'
         request.processed = True
         request.save()
         return -1

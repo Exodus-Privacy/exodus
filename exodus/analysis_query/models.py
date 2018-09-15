@@ -27,6 +27,7 @@ def validate_handle(value):
         raise ValidationError(_('Too much pending requests, please retry later'))
 
 
+
 class AnalysisRequest(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add = True)
     bucket = models.CharField(max_length = 200, default = '')

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from androguard.core.bytecodes.dvm_permissions import DVM_PERMISSIONS
-from django.conf import settings
 import json
+
+from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
@@ -11,6 +11,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from minio import Minio
 from minio.error import (ResponseError, NoSuchBucket)
 
+from exodus.core.dvm_permissions import DVM_PERMISSIONS
 from trackers.models import Tracker
 
 
