@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.parsers import JSONParser
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from exodus.core.dns import *
 from exodus.core.http import *
@@ -28,7 +28,8 @@ def get_report_infos(request, r_id):
         infos.creation_date = report.creation_date
         infos.report_id = report.id
         infos.handle = report.application.handle
-        infos.apk_dl_link = '/api/apk/%s/' % report.id
+        if request.user.is_staff:
+            infos.apk_dl_link = '/api/apk/%s/' % report.id
         infos.pcap_upload_link = '/api/pcap/%s/' % report.id
         infos.flow_upload_link = '/api/flow/%s/' % report.id
         serializer = ReportInfosSerializer(infos, many = False)
@@ -38,7 +39,7 @@ def get_report_infos(request, r_id):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated,IsAdminUser))
 def get_apk(request, r_id):
     if request.method == 'GET':
         report = Report.objects.get(pk = r_id)
