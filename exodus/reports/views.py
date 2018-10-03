@@ -107,11 +107,11 @@ def get_stats(request):
     #     domain_results.append({'hostname':d.hostname, 'score':int(100.*d.score/sum)})
 
     tracker_query = """
-        SELECT tt.name, tt.id, COUNT(*) as c
+        SELECT tt.name, tt.id, COUNT(*) as count
         FROM reports_report_found_trackers AS ft, trackers_tracker AS tt
         WHERE tt.id = ft.tracker_id
         GROUP BY ft.tracker_id, tt.name, tt.id
-        ORDER BY c
+        ORDER BY count
         DESC LIMIT 21;
     """
     cursor.execute(tracker_query)
@@ -122,6 +122,8 @@ def get_stats(request):
     sum = len(apps)
     tracker_results = []
     for t in trackers:
-        tracker_results.append({'id': t.id, 'name': t.name, 'score': int(100.*t.c/sum), 'count': int(t.c)})
+        score = int(100.*t.count/sum)
+        count = int(t.count)
+        tracker_results.append({'id': t.id, 'name': t.name, 'score': score, 'count': count})
 
     return render(request, 'stats_details.html', {'domains': domain_results, 'trackers': tracker_results})
