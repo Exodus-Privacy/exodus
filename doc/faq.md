@@ -31,7 +31,7 @@ Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` f
 ```bash
 python manage.py importtrackers --settings=exodus.settings.dev
 ```
-```
+
 Now, browse [your tracker list](http://localhost:8000/trackers/).
 
 ## Read `.pcap` files  as simple user
