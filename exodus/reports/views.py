@@ -104,7 +104,15 @@ def get_stats(request):
     for d in domains:
         domain_results.append({'hostname':d.hostname, 'score':int(100.*d.score/sum)})
 
-    cursor.execute("SELECT tt.name, COUNT(*) as c FROM reports_report_found_trackers AS ft, trackers_tracker AS tt WHERE tt.id = ft.tracker_id GROUP BY ft.tracker_id, tt.name ORDER BY c DESC LIMIT 21;")
+    tracker_query = """
+        SELECT tt.name, COUNT(*) as c
+        FROM reports_report_found_trackers AS ft, trackers_tracker AS tt
+        WHERE tt.id = ft.tracker_id
+        GROUP BY ft.tracker_id, tt.name
+        ORDER BY c
+        DESC LIMIT 21;
+    """
+    cursor.execute(tracker_query)
     desc = cursor.description
     nt_result = namedtuple('Result', [col[0] for col in desc])
     trackers = [nt_result(*row) for row in cursor.fetchall()]
