@@ -17,10 +17,10 @@ def index(request):
         reports = Report.objects.order_by('-creation_date')
         paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
         page = request.GET.get('page', 1)
-        reports = paginator.page(page)
+        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404("reports do not exist")
-    return render(request, 'reports_list.html', {'reports': reports})
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count()})
 
 
 def get_all_apps(request):
@@ -113,5 +113,5 @@ def get_stats(request):
     tracker_results = []
     for t in trackers:
         tracker_results.append({'name': t.name, 'score': int(100.*t.c/sum), 'count': int(t.c)})
-    
+
     return render(request, 'stats_details.html', {'domains': domain_results, 'trackers': tracker_results})
