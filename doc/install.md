@@ -118,4 +118,4 @@ Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
 
 ## Step 12 - Submit an analysis
 Browse [the analysis submission page](http://127.0.0.1:8000/analysis/submit/) and start a new analysis (ex: fr.meteo).
-When the analysis is finished, compare the results with the same report from the official instance.
+When the analysis is finished, compare the results with the same report from [the official instance](https://reports.exodus-privacy.eu.org).
