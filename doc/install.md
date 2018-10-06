@@ -108,3 +108,14 @@ cd exodus
 python manage.py runserver --settings=exodus.settings.dev
 ```
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## Step 11 - Import the trackers definitions
+Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following command:
+```
+python manage.py importtrackers --settings=exodus.settings.dev
+```
+Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
+
+## Step 12 - Submit an analysis
+Browse [the analysis submission page](http://127.0.0.1:8000/analysis/submit/) and start a new analysis (ex: fr.meteo).
+When the analysis is finished, compare the results with the same report from the official instance.
