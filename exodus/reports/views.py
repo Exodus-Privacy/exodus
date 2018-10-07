@@ -86,25 +86,9 @@ def get_app_icon(request, app_id):
 def get_stats(request):
     from collections import namedtuple
     try:
-        # reports = NetworkAnalysis.objects.all()
         apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Exception as e:
         raise Http404(e)
-
-    cursor = connection.cursor()
-
-    # The part below is unused at the moment (undisplayed stats)
-    domain_results = []
-    # cursor.execute("select count(hostname) as score, hostname from reports_dnsquery group by hostname having count(hostname) > 3 order by score desc;")
-    # desc = cursor.description
-    # nt_result = namedtuple('Result', [col[0] for col in desc])
-    # domains = [nt_result(*row) for row in cursor.fetchall()]
-    # sum = 0
-    # for r in reports:
-    #     if len(r.dnsquery_set.all()) > 0:
-    #         sum += 1
-    # for d in domains:
-    #     domain_results.append({'hostname':d.hostname, 'score':int(100.*d.score/sum)})
 
     tracker_query = """
         SELECT tt.name, tt.id, COUNT(*) as count
@@ -114,6 +98,7 @@ def get_stats(request):
         ORDER BY count
         DESC LIMIT 21;
     """
+    cursor = connection.cursor()
     cursor.execute(tracker_query)
     desc = cursor.description
     nt_result = namedtuple('Result', [col[0] for col in desc])
@@ -126,4 +111,4 @@ def get_stats(request):
         count = int(t.count)
         tracker_results.append({'id': t.id, 'name': t.name, 'score': score, 'count': count})
 
-    return render(request, 'stats_details.html', {'domains': domain_results, 'trackers': tracker_results})
+    return render(request, 'stats_details.html', {'trackers': tracker_results})
