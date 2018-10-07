@@ -22,8 +22,7 @@ CREATE DATABASE exodus WITH OWNER exodus;
 cd exodus
 virtualenv ./venv -p python3
 source venv/bin/activate
-pip3 install -r requirements.txt
-pip install git+https://github.com/androguard/androguard.git
+pip install -r requirements.txt
 ```
 
 ## Step 5 - Create the DB schema
