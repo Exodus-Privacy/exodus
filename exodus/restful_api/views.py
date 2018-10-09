@@ -203,9 +203,9 @@ def get_all_applications(request):
 def search_strict_handle(request, handle):
     if request.method == 'GET':
         try:
-            reports = Report.objects.filter(application__handle = handle)
+            reports = Report.objects.filter(application__handle=handle).order_by('-application__version')
         except Report.DoesNotExist:
-            return JsonResponse({}, safe = True)
+            return JsonResponse({}, safe=True)
         return JsonResponse(create_reports_list(reports))
 
 
@@ -281,4 +281,3 @@ def search_strict_handle_details(request, handle):
         except Report.DoesNotExist:
             return JsonResponse({}, safe = True)
         return JsonResponse(details, safe = False)
-
