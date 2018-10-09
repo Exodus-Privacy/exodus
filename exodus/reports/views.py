@@ -45,9 +45,12 @@ def get_all_apps(request):
 def search_by_handle(request, handle):
     try:
         reports = Report.objects.order_by('-creation_date').filter(application__handle = handle)
+        paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
+        page = request.GET.get('page', 1)
+        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404("No reports found")
-    return render(request, 'reports_list.html', {'reports': reports})
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count()})
 
 
 def detail(request, report_id):
