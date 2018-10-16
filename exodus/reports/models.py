@@ -49,6 +49,14 @@ class Application(models.Model):
     def permissions(self):
         return self.permission_set.all().order_by('name')
 
+    def count_dangerous_permissions(self):
+        perms = self.permissions()
+        count = 0
+        for p in perms:
+            if p.severity == "dangerous":
+                count += 1
+        return count
+
     @property
     def json_signature(self):
         sign = {
