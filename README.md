@@ -6,6 +6,36 @@ The official instance of εxodus is available [here](https://reports.exodus-priv
 
 # Development environment
 
+## Docker
+
+Run dependencies:
+
+```
+docker-compose up -d
+```
+
+Run εxodus container:
+
+```
+docker-compose -f docker-compose.run.yml up -d
+```
+
+Create database, user and import trackers:
+```
+docker exec -it <εxodus_container> /entrypoint.sh "create-db"
+docker exec -it <εxodus_container> /entrypoint.sh "create-user"
+docker exec -it <εxodus_container> /entrypoint.sh "import-trackers"
+```
+
+Run worker and frontend:
+```
+docker exec -it <εxodus_container> /entrypoint.sh "start-worker"
+docker exec -it <εxodus_container> /entrypoint.sh "start-frontend"
+```
+
+
+## Vagrant
+
 Install [vagrant](https://www.vagrantup.com/) and [ansible](https://www.ansible.com/) then execute:
 
 ```
