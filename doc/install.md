@@ -22,8 +22,7 @@ CREATE DATABASE exodus WITH OWNER exodus;
 cd exodus
 virtualenv ./venv -p python3
 source venv/bin/activate
-pip3 install -r requirements.txt
-pip install git+https://github.com/androguard/androguard.git
+pip install -r requirements.txt
 ```
 
 ## Step 5 - Create the DB schema
@@ -108,3 +107,14 @@ cd exodus
 python manage.py runserver --settings=exodus.settings.dev
 ```
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## Step 11 - Import the trackers definitions
+Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following command:
+```
+python manage.py importtrackers --settings=exodus.settings.dev
+```
+Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
+
+## Step 12 - Submit an analysis
+Browse [the analysis submission page](http://127.0.0.1:8000/analysis/submit/) and start a new analysis (ex: fr.meteo).
+When the analysis is finished, compare the results with the same report from [the official instance](https://reports.exodus-privacy.eu.org).

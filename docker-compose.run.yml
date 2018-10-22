@@ -1,0 +1,13 @@
+version: "3"
+services:
+
+  exodus:
+    image: exodus
+    build: ./
+    ports:
+      - "80:8000"
+
+networks:
+  default:
+    external:
+      name: exodus_backend

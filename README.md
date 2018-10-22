@@ -1,10 +1,19 @@
 # εxodus
-**εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be 
-dangerous for user privacy like ads, tracking, analytics, … 
+**εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be
+dangerous for user privacy like ads, tracking, analytics, …
 
 The official instance of εxodus is available [here](https://reports.exodus-privacy.eu.org/).
 
 # Development environment
+
+You have 3 different ways of setting up your development environment (Docker, Vagrant or manual).
+Check the [FAQ](doc/faq.md) if you encounter problem.
+
+## Docker
+
+Follow the [Docker setup](doc/docker.md) guide.
+
+## Vagrant
 
 Install [vagrant](https://www.vagrantup.com/) and [ansible](https://www.ansible.com/) then execute:
 
@@ -14,7 +23,9 @@ vagrant up
 
 Now, you can [make a tea](https://wiki.laquadrature.net/TeaHouse).
 
-Or you can follow the [step by step installation](doc/install.md) guide. Check the [FAQ](doc/faq.md) if you encounter problem.
+## Manual installation
+
+Follow the [step by step installation](doc/install.md) guide.
 
 # Analyse an application
 
