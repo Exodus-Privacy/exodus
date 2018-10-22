@@ -12,15 +12,17 @@ import os
 from minio import Minio
 
 
-def index(request):
+def get_reports(request, handle=None):
     try:
         reports = Report.objects.order_by('-creation_date')
+        if handle:
+            reports = reports.filter(application__handle=handle)
         paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
         page = request.GET.get('page', 1)
-        reports = paginator.page(page)
+        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
-        raise Http404("reports do not exist")
-    return render(request, 'reports_list.html', {'reports': reports})
+        raise Http404("Reports do not exist")
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count()})
 
 
 def get_all_apps(request):
@@ -40,14 +42,6 @@ def get_all_apps(request):
     except EmptyPage:
         apps = paginator.page(paginator.num_pages)
     return render(request, 'apps_list.html', {'apps': apps})
-
-
-def search_by_handle(request, handle):
-    try:
-        reports = Report.objects.order_by('-creation_date').filter(application__handle = handle)
-    except Report.DoesNotExist:
-        raise Http404("No reports found")
-    return render(request, 'reports_list.html', {'reports': reports})
 
 
 def detail(request, report_id):

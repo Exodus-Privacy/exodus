@@ -6,7 +6,7 @@
     {% if reports %}
     <div class="alert bg-light">
         <div class="alert-heading">
-            <h4><span class="badge badge-info">{{ reports.count }}</span> Available report{{ reports.count|pluralize }}</h4>
+            <h4><span class="badge badge-info">{{ count }}</span> available report{{ count|pluralize }}</h4>
         </div>
         <hr>
         <table style="margin: auto; border:none" class="table table-hover table-responsive">
@@ -24,13 +24,29 @@
                 </td>
                 <td class="col-md-4 text-truncate">
                     <span>
-                        <span class="badge badge-warning">{{ report.found_trackers.count }}</span>
-                        tracker{{ report.found_trackers.count|pluralize }}
+                        {% with nb_trackers=report.found_trackers.count %}
+                            {% if nb_trackers == 0 %}
+                                <span class="badge badge-success reports">{{ nb_trackers }}</span>
+                            {% elif nb_trackers < 5 %}
+                                <span class="badge badge-warning reports">{{ nb_trackers }}</span>
+                            {% else %}
+                                <span class="badge badge-danger reports">{{ nb_trackers }}</span>
+                            {% endif %}
+                            tracker{{ nb_trackers|pluralize }}
+                        {% endwith %}
                     </span>
                     <br>
                     <span>
-                        <span class="badge badge-warning">{{ report.application.permission_set.count }}</span>
-                        permission{{ report.application.permission_set.count|pluralize }}
+                        {% with nb_perm=report.application.permission_set.count %}
+                            {% if nb_perm == 0 %}
+                                <span class="badge badge-success reports">{{ nb_perm }}</span>
+                            {% elif nb_perm < 5 %}
+                                <span class="badge badge-warning reports">{{ nb_perm }}</span>
+                            {% else %}
+                                <span class="badge badge-danger reports">{{ nb_perm }}</span>
+                            {% endif %}
+                            permission{{ nb_perm|pluralize }}
+                        {% endwith %}
                     </span>
                 </td>
                 <td class="col-md-2 text-truncate">
