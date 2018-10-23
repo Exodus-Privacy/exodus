@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 {% block content %}
-{% load sort_dns %} 
+{% load sort_dns %}
 {% load permission_doc %}
     {% load static %}
     {% if report %}
@@ -197,23 +197,37 @@
                     <table class="table table-sm table-responsive">
                         {% for perm in report.application.permissions %}
                             <tr>
-                                <td class="text-right"><samp>{{perm.name}}</samp></td>
-                                {% if perm.severity == 'dangerous' %}
-                                    <td class="text-center"><a href="#" class="badge badge-pill badge-danger" data-toggle="tooltip" data-placement="top" title="{{perm.details}}">Dangerous</a></td>
-                                {% else %}
-                                    <td class="text-center"><a href="#" class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="top" title="{{perm.details}}">Normal</a></td>
-                                {% endif %}
+                                <td>
+                                    {% autoescape off %}
+                                        {{ perm.group_icon }}
+                                    {% endautoescape %}
+                                </td>
+                                <td>
+                                    <samp data-toggle="tooltip" data-placement="top" title="{{ perm.description }}">{{ perm.short_name }} ({{ perm.prefix }})</samp>
+                                </td>
+                                <td class="text-center">
+                                    {% if perm.severity == 'Special' %}
+                                        <a href="#" class="badge badge-pill badge-danger" data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}">{{ perm.severity }}</a>
+                                    {% elif perm.severity == 'Dangerous' %}
+                                        <a href="#" class="badge badge-pill badge-warning" data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}">{{ perm.severity }}</a>
+                                    {% else %}
+                                        <a href="#" class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}">{{ perm.severity }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                         {% endfor %}
                     </table>
-                    <i class="small">Permissions are actions the application can do on your phone.</i>
+                    <i class="small">
+                        Permissions are actions the application can do on your phone.
+                        The severity levels are defined according to <a href="https://developer.android.com/guide/topics/permissions/overview">Google's protection levels</a>.
+                    </i>
                     {% else %}
                         This application doesn't require any permissions.
                     {% endif %}
                 </div>
             </div>
         </div>
-        {% if report.networkanalysis_set %}
+        <!-- {% if report.networkanalysis_set %}
             {% for na in report.networkanalysis_set.all %}
                 {% if na.dnsquery_set and na.dnsquery_set.count > 0 %}
                     <div class="col">
@@ -238,7 +252,7 @@
                                             {% ifequal dns.is_tracker True %}
                                             <span class="badge badge-danger" data-toggle="tooltip" title="Potential tracker">⛔️</span>
                                             {% else %}
-                                                    
+
                                             {% endifequal %}
                                             </td>
                                         </tr>
@@ -282,6 +296,6 @@
                 </div>
                 {% endif %}
             {% endfor %}
-    {% endif %}
+    {% endif %} -->
     {% endif %}
 {% endblock %}

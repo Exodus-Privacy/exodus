@@ -11,7 +11,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from minio import Minio
 from minio.error import (ResponseError, NoSuchBucket)
 
-from exodus.core.dvm_permissions import DVM_PERMISSIONS
+from exodus.core.permissions_en import AOSP_PERMISSIONS
 from trackers.models import Tracker
 
 
@@ -79,23 +79,66 @@ class Certificate(models.Model):
 
 
 class Permission(models.Model):
-    application = models.ForeignKey(Application, on_delete = models.CASCADE)
-    name = models.CharField(max_length = 200)
+    application = models.ForeignKey(Application, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+
+    def get_permission_details(self):
+        permissions = AOSP_PERMISSIONS["permissions"]
+        perm = permissions.get(self.name, {})
+        return perm
+
+    def get_group_details(self):
+        groups = AOSP_PERMISSIONS["groups"]
+        group = groups.get(self.group, {})
+        return group
+
+    @property
+    def short_name(self):
+        return str(self.name).split('.')[-1]
+
+    @property
+    def prefix(self):
+        return '.'.join(str(self.name).split('.')[:-1])
+
+    @property
+    def protection_level(self):
+        name = self.short_name
+        if name == "SYSTEM_ALERT_WINDOW" or name == "WRITE_SETTINGS":
+            return "Special"
+
+        perm = self.get_permission_details()
+        protection_level = perm.get("protection_level", "Unknown")
+        return protection_level
 
     @property
     def severity(self):
-        perm = str(self.name).split('.')[-1]
-        if perm in DVM_PERMISSIONS["MANIFEST_PERMISSION"]:
-            severity = DVM_PERMISSIONS["MANIFEST_PERMISSION"][perm][0]
-            return severity
-        return 'normal'
+        protection_level = self.protection_level
+
+        if protection_level == "Special" or protection_level == "Unknown":
+            return protection_level
+
+        if "dangerous" in protection_level:
+            return "Dangerous"
+
+        return "Normal"
 
     @property
-    def details(self):
-        perm = str(self.name).split('.')[-1]
-        if perm in DVM_PERMISSIONS["MANIFEST_PERMISSION"]:
-            return DVM_PERMISSIONS["MANIFEST_PERMISSION"][perm][2]
-        return ''
+    def description(self):
+        perm = self.get_permission_details()
+        description = perm.get("description", "")
+        return description
+
+    @property
+    def group(self):
+        perm = self.get_permission_details()
+        group = perm.get("permission_group", "")
+        return group
+
+    @property
+    def group_icon(self):
+        group = self.get_group_details()
+        icon = group.get("icon", "")
+        return icon
 
 
 class NetworkAnalysis(models.Model):
