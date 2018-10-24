@@ -102,25 +102,25 @@ class Permission(models.Model):
 
     @property
     def protection_level(self):
-        name = self.short_name
-        if name == "SYSTEM_ALERT_WINDOW" or name == "WRITE_SETTINGS":
-            return "Special"
-
         perm = self.get_permission_details()
         protection_level = perm.get("protection_level", "Unknown")
         return protection_level
 
     @property
     def severity(self):
-        protection_level = self.protection_level
+        # These 2 permissions are defined as "special permissions" by Google
+        name = self.short_name
+        if name == "SYSTEM_ALERT_WINDOW" or name == "WRITE_SETTINGS":
+            return "Special"
 
-        if protection_level == "Special" or protection_level == "Unknown":
-            return protection_level
+        protection_level = self.protection_level
 
         if "dangerous" in protection_level:
             return "Dangerous"
-
-        return "Normal"
+        elif protection_level == "Unknown":
+            return "Unknown"
+        else:
+            return "Normal"
 
     @property
     def description(self):
