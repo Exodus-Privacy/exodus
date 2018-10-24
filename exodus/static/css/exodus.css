@@ -4,3 +4,10 @@ body {
 .badge.reports {
     width: 20px;
 }
+tr.permission_line {
+    height:51px;
+    overflow:hidden;
+}
+tr.permission_line > td {
+    vertical-align:middle;
+}

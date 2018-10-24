@@ -129,6 +129,12 @@ class Permission(models.Model):
         return description
 
     @property
+    def label(self):
+        perm = self.get_permission_details()
+        label = perm.get("label", "")
+        return label
+
+    @property
     def group(self):
         perm = self.get_permission_details()
         group = perm.get("permission_group", "")

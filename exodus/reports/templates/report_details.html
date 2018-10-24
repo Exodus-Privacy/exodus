@@ -152,11 +152,7 @@
                 </div>
                 <div class="card-body">
                     {% if report.found_trackers.all %}
-                        {% if report.found_trackers.count == 1 %}
-                            We have found <b>code signature</b> of this tracker in the application:
-                        {% else %}
-                            We have found <b>code signature</b> of these trackers in the application:
-                        {% endif %}
+                        We have found <b>code signature</b> of the following tracker{{ report.found_trackers.count|pluralize }} in the application:
                         <br>
                         <br>
                         <ul>
@@ -187,16 +183,12 @@
                 </div>
                 <div class="card-body">
                     {% if report.application.permission_set.all %}
-                        {% if report.application.permission_set.count == 1 %}
-                            We have found this permission in the application:
-                        {% else %}
-                            We have found these permissions in the application:
-                        {% endif %}
+                    We have found the following permission{{ report.application.permission_set.count|pluralize }} in the application:
                     <br>
                     <br>
                     <table class="table table-sm table-responsive">
                         {% for perm in report.application.permissions %}
-                            <tr>
+                            <tr class="permission_line">
                                 <td>
                                     {% autoescape off %}
                                         {{ perm.group_icon }}
@@ -204,6 +196,9 @@
                                 </td>
                                 <td>
                                     <samp data-toggle="tooltip" data-placement="top" title="{{ perm.description }}">{{ perm.short_name }} ({{ perm.prefix }})</samp>
+                                    {% if perm.label %}
+                                        <small class="text-capitalize" style="display:block"><i>{{ perm.label }}</i></small>
+                                    {% endif %}
                                 </td>
                                 <td class="text-center">
                                     {% if perm.severity == 'Special' %}
