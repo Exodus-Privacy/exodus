@@ -16,38 +16,49 @@ from exodus.core.dns import refresh_dns
 from reports.models import Report, Application
 
 
+def _get_paginated(request, data):
+    paginator = Paginator(data, settings.EX_PAGINATOR_COUNT)
+    page = request.GET.get('page', 1)
+
+    try:
+        data_paged = paginator.page(page)
+    except PageNotAnInteger:
+        data_paged = paginator.page(1)
+    except EmptyPage:
+        data_paged = paginator.page(paginator.num_pages)
+
+    return data_paged
+
+
 def get_reports(request, handle=None):
     try:
         reports = Report.objects.order_by('-creation_date')
         if handle:
             reports = reports.filter(application__handle=handle)
-        paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
-        page = request.GET.get('page', 1)
-        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404("Reports do not exist")
+
+    reports_paged = _get_paginated(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': handle})
 
 
 def get_reports_no_trackers(request):
     try:
         reports = Report.objects.filter(found_trackers=None).order_by('-creation_date')
-        paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
-        page = request.GET.get('page', 1)
-        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404("Reports do not exist")
+
+    reports_paged = _get_paginated(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': 'no trackers'})
 
 
 def get_reports_most_trackers(request):
     try:
         reports = Report.objects.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
-        paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
-        page = request.GET.get('page', 1)
-        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404("Reports do not exist")
+
+    reports_paged = _get_paginated(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': 'most trackers'})
 
 
@@ -56,16 +67,8 @@ def get_all_apps(request):
         apps_list = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Application.DoesNotExist:
         raise Http404("No apps found")
-    paginator = Paginator(apps_list, settings.EX_PAGINATOR_COUNT)
 
-    page = request.GET.get('page')
-
-    try:
-        apps = paginator.page(page)
-    except PageNotAnInteger:
-        apps = paginator.page(1)
-    except EmptyPage:
-        apps = paginator.page(paginator.num_pages)
+    apps = _get_paginated(request, apps_list)
     return render(request, 'apps_list.html', {'apps': apps})
 
 
