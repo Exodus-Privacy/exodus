@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="{% url 'home' %}">
         <object width="50px" style="margin-bottom:-15px" data="/static/img/logo_purple.svg" type="image/svg+xml">
         </object>
         <span class="h2">εxodus</span> <span class="small text-muted">v1.2</span>
@@ -44,12 +44,12 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="reports_dd">
                 <div class="dropdown-header">Reports</div>
-                <a class="dropdown-item" href="/reports/all/">All reports</a>
-                <a class="dropdown-item" href="/reports/no_trackers/">No known trackers</a>
-                <a class="dropdown-item" href="/reports/most_trackers/">Most trackers</a>
-                <a class="dropdown-item" href="/search/">Search</a>
+                <a class="dropdown-item" href="{% url 'reports:index' %}">Latest reports</a>
+                <a class="dropdown-item" href="{% url 'reports:get_reports_no_trackers' %}">No known trackers</a>
+                <a class="dropdown-item" href="{% url 'reports:get_reports_most_trackers' %}">Most trackers</a>
+                <a class="dropdown-item" href="{% url 'search:search' %}">Search</a>
                 <div class="dropdown-header">Applications</div>
-                <a class="dropdown-item" href="/reports/apps/">All applications</a>
+                <a class="dropdown-item" href="{% url 'reports:get_all_apps' %}">All applications</a>
             </div>
         </div>
         &nbsp;
@@ -59,8 +59,8 @@
                 Trackers
             </button>
             <div class="dropdown-menu" aria-labelledby="trackers_dd">
-                <a class="dropdown-item" href="/trackers/">List</a>
-                <a class="dropdown-item" href="/reports/stats/">Statistics</a>
+                <a class="dropdown-item" href="{% url 'trackers:index' %}">List</a>
+                <a class="dropdown-item" href="{% url 'reports:get_stats' %}">Statistics</a>
             </div>
         </div>
         &nbsp
@@ -71,9 +71,9 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="analysis_dd">
                 {% if request.user.is_superuser %}
-                    <a class="dropdown-item" href="/analysis/">List</a>
+                    <a class="dropdown-item" href="{% url 'analysis:index' %}">List</a>
                 {% endif %}
-                <a class="dropdown-item" href="/analysis/submit/">Submit</a>
+                <a class="dropdown-item" href="{% url 'analysis:submit' %}">Submit</a>
             </div>
         </div>
     </div>
