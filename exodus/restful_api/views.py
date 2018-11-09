@@ -244,10 +244,41 @@ def search(request):
                 return JsonResponse({'results': serializer.data}, safe = False)
             elif query.type == 'tracker':
                 try:
-                    applications = Tracker.objects.filter(
+                    trackers = Tracker.objects.filter(
                         Q(name__icontains = query.query) | Q(description__icontains = query.query)).order_by('name')[:limit]
                 except Tracker.DoesNotExist:
                     return JsonResponse([], safe = False)
-                serializer = TrackerSerializer(applications, many = True)
+                serializer = TrackerSerializer(trackers, many = True)
                 return JsonResponse({'results': serializer.data}, safe = False)
     return JsonResponse([], safe = False)
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
+def search_strict_handle_details(request, handle):
+    if request.method == 'GET':
+        try:
+            reports = Report.objects.filter(application__handle = handle)
+            details = []
+            for r in reports:
+                details.append({
+                    'handle': r.application.handle,
+                    'app_name': r.application.name,
+                    'uaid': r.application.app_uid,
+                    'version_name': r.application.version,
+                    'version_code': r.application.version_code,
+                    'icon_hash': r.application.icon_phash,
+                    'apk_hash': r.application.apk.sum,
+                    'created': r.creation_date,
+                    'updated': r.updated_at,
+                    'report': r.id,
+                    'creator': r.application.creator,
+                    'downloads': r.application.downloads,
+                    'trackers': [t.id for t in r.found_trackers.all()]
+                })
+        except Report.DoesNotExist:
+            return JsonResponse({}, safe = True)
+        return JsonResponse(details, safe = False)
+

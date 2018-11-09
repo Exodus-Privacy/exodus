@@ -13,15 +13,17 @@ import os
 from minio import Minio
 
 
-def index(request):
+def get_reports(request, handle=None):
     try:
         reports = Report.objects.order_by('-creation_date')
+        if handle:
+            reports = reports.filter(application__handle=handle)
         paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
         page = request.GET.get('page', 1)
-        reports = paginator.page(page)
+        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404(_("reports do not exist"))
-    return render(request, 'reports_list.html', {'reports': reports})
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count()})
 
 
 def get_all_apps(request):
@@ -41,14 +43,6 @@ def get_all_apps(request):
     except EmptyPage:
         apps = paginator.page(paginator.num_pages)
     return render(request, 'apps_list.html', {'apps': apps})
-
-
-def search_by_handle(request, handle):
-    try:
-        reports = Report.objects.order_by('-creation_date').filter(application__handle = handle)
-    except Report.DoesNotExist:
-        raise Http404(_("No reports found"))
-    return render(request, 'reports_list.html', {'reports': reports})
 
 
 def detail(request, report_id):
@@ -87,25 +81,20 @@ def get_app_icon(request, app_id):
 def get_stats(request):
     from collections import namedtuple
     try:
-        reports = NetworkAnalysis.objects.all()
         apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
-    except:
-        raise Http404(_("NetworkAnalysis do not exist"))
+    except Exception as e:
+        raise Http404(e)
 
+    tracker_query = """
+        SELECT tt.name, tt.id, COUNT(*) as count
+        FROM reports_report_found_trackers AS ft, trackers_tracker AS tt
+        WHERE tt.id = ft.tracker_id
+        GROUP BY ft.tracker_id, tt.name, tt.id
+        ORDER BY count
+        DESC LIMIT 21;
+    """
     cursor = connection.cursor()
-    cursor.execute("select count(hostname) as score, hostname from reports_dnsquery group by hostname having count(hostname) > 3 order by score desc;")
-    desc = cursor.description
-    nt_result = namedtuple('Result', [col[0] for col in desc])
-    domains = [nt_result(*row) for row in cursor.fetchall()]
-    sum = 0
-    for r in reports:
-        if len(r.dnsquery_set.all()) > 0:
-            sum += 1
-    domain_results = []
-    for d in domains:
-        domain_results.append({'hostname':d.hostname, 'score':int(100.*d.score/sum)})
-
-    cursor.execute("SELECT tt.name, COUNT(*) as c FROM reports_report_found_trackers AS ft, trackers_tracker AS tt WHERE tt.id = ft.tracker_id GROUP BY ft.tracker_id, tt.name ORDER BY c DESC LIMIT 21;")
+    cursor.execute(tracker_query)
     desc = cursor.description
     nt_result = namedtuple('Result', [col[0] for col in desc])
     trackers = [nt_result(*row) for row in cursor.fetchall()]
@@ -113,6 +102,8 @@ def get_stats(request):
     sum = len(apps)
     tracker_results = []
     for t in trackers:
-        tracker_results.append({'name': t.name, 'score': int(100.*t.c/sum), 'count': int(t.c)})
-    
-    return render(request, 'stats_details.html', {'domains': domain_results, 'trackers': tracker_results})
+        score = int(100.*t.count/sum)
+        count = int(t.count)
+        tracker_results.append({'id': t.id, 'name': t.name, 'score': score, 'count': count})
+
+    return render(request, 'stats_details.html', {'trackers': tracker_results})

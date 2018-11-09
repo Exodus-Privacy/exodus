@@ -84,9 +84,13 @@ def start_static_analysis(analysis):
     version = static_analysis.get_version()
     version_code = static_analysis.get_version_code()
 
-    # If a report exists for this couple (handle, version), just return it
-    existing_report = Report.objects.filter(application__handle = handle, application__version = version).order_by(
-        '-creation_date').first()
+    # If a report exists for the same handle, version & version_code, return it
+    existing_report = Report.objects.filter(
+        application__handle=handle,
+        application__version=version,
+        application__version_code=version_code
+    ).order_by('-creation_date').first()
+
     if existing_report is not None:
         clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
         request.description = _('A report already exists for this application version')
