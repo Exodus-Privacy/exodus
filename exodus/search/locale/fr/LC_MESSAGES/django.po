@@ -24,8 +24,12 @@ msgstr "Recherche"
 
 #: templates/search_form.html:15
 msgid "Here you can search for an application using its name or handle"
-msgstr "Vous pouvez chercher une application par son nom ou son identifiant"
+msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
 
 #: templates/search_form.html:20
 msgid "Results"
 msgstr "Résultats"
+
+#: templates/search_form.html:32
+msgid "No results found."
+msgstr "Aucun résultat."

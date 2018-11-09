@@ -40,6 +40,18 @@ msgstr "permission"
 msgid "Other versions"
 msgstr "Autres versions"
 
+#: reports/templates/report_details.html:55
+msgid "Version:"
+msgstr "Version :"
+
+#: reports/templates/report_details.html:58
+msgid "Creator:"
+msgstr "Créateur :"
+
+#: reports/templates/report_details.html:61
+msgid "Downloads:"
+msgstr "Téléchargements :"
+
 #: reports/templates/report_details.html:65
 msgid "On Google Play"
 msgstr "Sur Google Play"
@@ -55,32 +67,28 @@ msgid "Text"
 msgstr "Texte"
 
 #: reports/templates/report_details.html:85
-msgid "APK checksum"
-msgstr "somme de contrôle MD5"
+msgid "APK checksum:"
+msgstr "Somme de contrôle :"
 
 #: reports/templates/report_details.html:86
-msgid "Handle"
-msgstr "Placement :"
+msgid "Handle:"
+msgstr "Identifiant :"
 
 #: reports/templates/report_details.html:87
-msgid "Name"
-msgstr "Nom "
+msgid "Name:"
+msgstr "Nom :"
 
 #: reports/templates/report_details.html:88
-msgid "UAID"
-msgstr "UAID"
-
-#: reports/templates/report_details.html:89
-msgid "Version"
-msgstr "Version"
+msgid "UAID:"
+msgstr "UAID :"
 
 #: reports/templates/report_details.html:90
-msgid "Version code"
-msgstr "Version de code"
+msgid "Version code:"
+msgstr "Code de version :"
 
 #: reports/templates/report_details.html:91
-msgid "Icon hash"
-msgstr "Empreinte de l'icône"
+msgid "Icon hash:"
+msgstr "Empreinte de l'icône :"
 
 #: reports/templates/report_details.html:95
 #: reports/templates/report_details.html:114
@@ -89,11 +97,11 @@ msgstr "Fermer"
 
 #: reports/templates/report_details.html:121
 msgid "This report was automatically issued on"
-msgstr "Ce signalement est automatiquement redirigé vers"
+msgstr "Ce rapport a été automatiquement créé le"
 
 #: reports/templates/report_details.html:122
 msgid "This report was automatically updated on"
-msgstr "Ce signalement est automatiquement mis à jour sur"
+msgstr "Ce rapport a été automatiquement mis à jour le"
 
 #: reports/templates/report_details.html:129
 msgid "Signed by:"
@@ -104,16 +112,16 @@ msgid "Fingerprint:"
 msgstr "Empreinte :"
 
 #: reports/templates/report_details.html:136
-msgid "Issuer"
-msgstr "Émetteur :"
+msgid "Issuer:"
+msgstr "Émetteur :"
 
 #: reports/templates/report_details.html:137
-msgid "Subject"
-msgstr "Sujet"
+msgid "Subject:"
+msgstr "Sujet :"
 
 #: reports/templates/report_details.html:138
-msgid "Serial"
-msgstr "Série"
+msgid "Serial:"
+msgstr "Série :"
 
 #: reports/templates/report_details.html:142
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
@@ -143,7 +151,7 @@ msgid ""
 "usages. We do not guarantee the exhaustiveness of this list."
 msgstr ""
 "Un pisteur est une partie du logiciel dédiée à la collecte de données sur "
-"vous et vos usage. Nous ne garantissons pas l’exhaustivité de cette liste."
+"vous et vos usages. Nous ne garantissons pas l’exhaustivité de cette liste."
 
 #: reports/templates/report_details.html:172
 msgid ""
@@ -151,18 +159,18 @@ msgid ""
 "APK. This is not a proof of activity of these trackers."
 msgstr ""
 "Voici la liste des signatures des pisteurs que nous avons trouvés par "
-"l'analyse statique de cet APK. Cela ne veux pas dire que ces pisteurs sont "
-"actifs."
+"l'analyse statique de cet APK. Cela ne constitue pas une preuve de l'activité "
+"de ces pisteurs."
 
 #: reports/templates/report_details.html:173
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
-"Cette application est susceptible de contenir un ou plusieurs pisteurs que "
-"nous n'avons pas encore identifiés. "
+"L'application pourrait contenir un ou plusieurs pisteurs que "
+"nous n'avons pas encore identifiés."
 
 #: reports/templates/report_details.html:175
-msgid "If you have doubts about this report, contact us"
-msgstr "Si vous avez des doutes au sujet de ce rapport, contactez-nous."
+msgid "If you have doubts about this report, contact us at"
+msgstr "Si vous avez des doutes au sujet de ce rapport, contactez-nous à"
 
 #: reports/templates/report_details.html:176
 msgid "Exodus - Question about report"
@@ -171,10 +179,10 @@ msgstr "Exodus - Question à propos d'un rapport"
 #: reports/templates/report_details.html:179
 msgid ""
 "We have not found <b>code signature</b> of any tracker we know in the "
-"application. The application could contain tracker(s) we do not know yet."
+"application."
 msgstr ""
-"We have not found <b>code signature</b> of any tracker we know in the "
-"application. The application could contain tracker(s) we do not know yet."
+"Nous n'avons pas de trouvé la <b>signature</b> de pisteurs que nous "
+" connaissons dans l'application."
 
 #: reports/templates/report_details.html:187
 msgid "Permission"
@@ -196,11 +204,16 @@ msgstr "Dangereux"
 msgid "Normal"
 msgstr "Normale"
 
-#: reports/templates/report_details.html:210
-msgid "Permissions are actions the application can do on your phone"
+#: reports/templates/report_details.html:220
+msgid "Permissions are actions the application can do on your phone. "
+"The severity levels are defined according to "
 msgstr ""
-"Les autorisations sont les actions que l'application peux faire dans votre "
-"téléphone"
+"Les permissions sont les actions que l'application peut effectuer sur votre "
+"téléphone. Les niveaux de sévérité sont définis conformément aux "
+
+#: reports/templates/report_details.html:221
+msgid "Google's protection levels"
+msgstr "niveaux de protection de Google"
 
 #: reports/templates/report_details.html:212
 msgid "This application doesn't require any permissions."
@@ -259,22 +272,8 @@ msgid "Sent data to"
 msgstr "Données envoyées à"
 
 #: reports/templates/reports_list.html:11
-msgid ""
-"\n"
-"                Available report\n"
-"                "
-msgid_plural ""
-"\n"
-"                Available reports\n"
-"                "
-msgstr[0] ""
-"\n"
-"                Rapport disponible\n"
-"                 "
-msgstr[1] ""
-"\n"
-"                Rapports disponibles\n"
-"                 "
+msgid "report"
+msgstr "rapport"
 
 #: reports/templates/stats_details.html:5
 msgid "Statistics"

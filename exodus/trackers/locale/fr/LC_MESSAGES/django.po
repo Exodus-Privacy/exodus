@@ -20,7 +20,7 @@ msgstr ""
 
 #: trackers/templates/tracker_details.html:14
 msgid "Go to the tracker web page."
-msgstr "Accéder à la page de traqueurs."
+msgstr "Page web du pisteur"
 
 #: trackers/templates/tracker_details.html:16
 msgid "Detection rules"
@@ -28,15 +28,15 @@ msgstr "Règles de détection"
 
 #: trackers/templates/tracker_details.html:19
 msgid "Code detection rule:"
-msgstr "Problème avec la règle de détection :"
+msgstr "Règle de détection (code) :"
 
 #: trackers/templates/tracker_details.html:21
 msgid "Code signature:"
-msgstr "Problème avec la signature :"
+msgstr "Signature :"
 
 #: trackers/templates/tracker_details.html:23
 msgid "Network detection rule:"
-msgstr "Règle de détection du réseau :"
+msgstr "Règle de détection (réseau) :"
 
 #: trackers/templates/tracker_details.html:36
 msgid ""
@@ -49,11 +49,11 @@ msgid_plural ""
 "                      "
 msgstr[0] ""
 "\n"
-"                      Rapport disponible pour ce traqueur\n"
+"                      Rapport disponible pour ce pisteur\n"
 "                      "
 msgstr[1] ""
 "\n"
-"                      Rapports disponibles pour ce traqueur\n"
+"                      Rapports disponibles pour ce pisteur\n"
 "                      "
 
 #: trackers/templates/trackers_list.html:10
@@ -67,21 +67,17 @@ msgid_plural ""
 "                        "
 msgstr[0] ""
 "\n"
-"                         Traqueur reconnu\n"
+"                         Pisteur reconnu\n"
 "                         "
 msgstr[1] ""
 "\n"
-"                         Traqueurs reconnus\n"
+"                         Pisteurs reconnus\n"
 "                         "
 
 #: trackers/templates/trackers_list.html:25
 msgid "No trackers are available"
-msgstr "Aucun traqueur disponible"
-
-#: trackers/views.py:15
-msgid "trackers does not exist"
-msgstr "les traqueurs n'existent pas"
+msgstr "Aucun pisteur disponible"
 
 #: trackers/views.py:24 trackers/views.py:45
-msgid "tracker does not exist"
-msgstr "le traqueur n'existe pas"
+msgid "Tracker does not exist"
+msgstr "Aucun pisteur trouvé"

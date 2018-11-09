@@ -50,7 +50,7 @@ msgstr "Applications gratuites uniquement"
 
 #: templates/query_submit.html:23
 msgid "You can find the handle in the Google Play URL of the application"
-msgstr ""
+msgstr "Vous pouvez trouver l'identifiant dans l'URL Google Play de l'application"
 
 #: templates/query_submit.html:32
 msgid "Perform analysis"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: templates/query_submit.html:52
 msgid "is a non-profit organization which provides this service for free."
-msgstr ""
+msgstr "est un organisme à but non lucratif qui fournit ce service gratuitement"
 
 #: templates/query_submit.html:54 templates/query_wait.html:25
 msgid "Help us!"

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load markdown %} 
+{% load markdown %}
 
 {% block content %}
     <div class="row justify-content-md-center">
@@ -32,8 +32,8 @@
         <div class="col-lg-6 col-sm-12">
             <div class="alert alert-warning">
               <div class="alert-heading">
-                  <h4><span class="badge badge-info">{{ reports.count}}</span>
-                      {% blocktrans count counter=reports.count %}
+                  <h4><span class="badge badge-info">{{ count}}</span>
+                      {% blocktrans count counter=count %}
                       Available report for this tracker
                       {% plural %}
                       Available reports for this tracker

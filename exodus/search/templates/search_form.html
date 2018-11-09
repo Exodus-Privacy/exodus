@@ -29,7 +29,7 @@
 <script id="tpl" style="display:none;" type="text/x-handlebars-template">
 <table class="table table-hover table-responsive">
 {{#unless results.length}}
-    <h4>{% trans "No results found." %}</h4>
+    {% endverbatim %}<h4>{% trans "No results found." %}</h4>{% verbatim %}
 {{/unless}}
 {{#each results}}
     <tr class="">
@@ -78,9 +78,10 @@ jQuery.fn.enterKey = function (fnc) {
     })
 }
 const get_results = function(query, limit) {
+    console.log(query)
     jQuery.ajax({
         type: 'POST',
-        url: "/api/search",
+        url: "/en/api/search",
         data: '{"type": "application", "query":"'+query+'", "limit":'+limit+'}',
         success: display_results,
         contentType: "application/json",
