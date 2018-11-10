@@ -20,23 +20,23 @@ msgstr ""
 
 #: exodus/core/apk.py:23
 msgid "Your request is running"
-msgstr ""
+msgstr "Votre requête est en cours"
 
 #: exodus/core/apk.py:33
 msgid "Unable to download the APK"
-msgstr ""
+msgstr "Impossible de télécharger l'APK"
 
 #: exodus/core/apk.py:38
 msgid "Download APK: success"
-msgstr ""
+msgstr "Télécharger l'APK : succès"
 
 #: exodus/core/apk.py:51
 msgid "Unable to decode the APK"
-msgstr ""
+msgstr "Impossible de décoder l'APK"
 
 #: exodus/core/apk.py:56
 msgid "Decode APK: success"
-msgstr ""
+msgstr "Décoder l'APK : succès"
 
 #: exodus/core/apk.py:70
 msgid "Unable to compute the class list"
@@ -44,71 +44,71 @@ msgstr ""
 
 #: exodus/core/apk.py:75
 msgid "List embedded classes: success"
-msgstr ""
+msgstr "Lister les classes embarquées : succès"
 
 #: exodus/core/apk.py:92
 msgid "A report already exists for this application version"
-msgstr ""
+msgstr "Un rapport existe déjà pour cette version de l'application"
 
 #: exodus/core/apk.py:145
 msgid "Get application details: success"
-msgstr ""
+msgstr "Récupérer les détails de l'application : succès"
 
 #: exodus/core/apk.py:152
 msgid "Tracker analysis: success"
-msgstr ""
+msgstr "Analyse des pisteurs : succès"
 
 #: exodus/core/apk.py:199
 msgid "Static analysis complete"
-msgstr ""
+msgstr "Analyse statique : succès"
 
 #: exodus/templates/base.html:39
 msgid "Home"
-msgstr ""
+msgstr "Accueils"
 
 #: exodus/templates/base.html:40
 msgid "Help us!"
-msgstr ""
+msgstr "Aidez-nous !"
 
 #: exodus/templates/base.html:41
 msgid "Report an issue"
-msgstr ""
+msgstr "Signaler un problème"
 
 #: exodus/templates/base.html:48
 msgid "Reports"
-msgstr ""
+msgstr "Rapports"
 
 #: exodus/templates/base.html:51
 msgid "All reports"
-msgstr ""
+msgstr "Tous les rapports"
 
 #: exodus/templates/base.html:52
 msgid "All applications"
-msgstr ""
+msgstr "Toutes les applications"
 
 #: exodus/templates/base.html:53
 msgid "Search"
-msgstr ""
+msgstr "Recherche"
 
 #: exodus/templates/base.html:60
 msgid "Trackers"
-msgstr ""
+msgstr "Pisteurs"
 
 #: exodus/templates/base.html:63 exodus/templates/base.html:75
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #: exodus/templates/base.html:64
 msgid "Statistics"
-msgstr ""
+msgstr "Statistiques"
 
 #: exodus/templates/base.html:71
 msgid "Analysis"
-msgstr ""
+msgstr "Analyse"
 
 #: exodus/templates/base.html:77
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 #: exodus/templates/base.html:88
 msgid "Welcome on the εxodus privacy auditing platform."

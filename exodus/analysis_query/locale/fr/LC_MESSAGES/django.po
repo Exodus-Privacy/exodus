@@ -66,7 +66,7 @@ msgstr ""
 
 #: templates/query_submit.html:52
 msgid "is a non-profit organization which provides this service for free."
-msgstr "est un organisme à but non lucratif qui fournit ce service gratuitement"
+msgstr "est un organisme à but non lucratif qui fournit ce service gratuitement."
 
 #: templates/query_submit.html:54 templates/query_wait.html:25
 msgid "Help us!"
@@ -107,3 +107,10 @@ msgstr "Votre demande sera bientôt traitée"
 #: views.py:44 views.py:52
 msgid "AnalysisRequest does not exist"
 msgstr "La demande d'analyse n'existe pas"
+
+# TRANSLATIONS FOR EXODUS MODULE
+msgid "List"
+msgstr "Liste"
+
+msgid "Statistics"
+msgstr "Statistiques"
