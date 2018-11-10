@@ -272,8 +272,8 @@ msgid "Sent data to"
 msgstr "Données envoyées à"
 
 #: reports/templates/reports_list.html:11
-msgid "report"
-msgstr "rapport"
+msgid "Report"
+msgstr "Rapport"
 
 #: reports/templates/stats_details.html:5
 msgid "Statistics"

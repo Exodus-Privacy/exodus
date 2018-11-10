@@ -86,7 +86,7 @@ msgid ""
 "application feel-free to submit the analysis."
 msgstr ""
 "Si vous pensez qu'εxodus n'a pas encore analysé la dernière version de cette "
-"application, n'hésitez pas à soumettre l'analyse"
+"application, n'hésitez pas à soumettre l'analyse."
 
 #: templates/query_wait.html:8
 msgid "is processing your request"
