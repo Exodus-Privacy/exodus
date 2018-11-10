@@ -283,6 +283,10 @@ msgstr "Statistiques"
 msgid "Most frequent trackers"
 msgstr "Pisteurs les plus fréquents"
 
+#: reports/templates/stats_details.html:21
+msgid "found in"
+msgstr "trouvé dans"
+
 #: reports/views.py:23
 msgid "reports do not exist"
 msgstr "rapports n'existent pas"
@@ -305,4 +309,4 @@ msgstr "L'application n'existe pas"
 
 #: reports/views.py:81
 msgid "NetworkAnalysis do not exist"
-msgstr "L'analyse réseau n'est pas disponbile"
+msgstr "L'analyse réseau n'est pas disponible"

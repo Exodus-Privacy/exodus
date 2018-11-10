@@ -114,3 +114,27 @@ msgstr "Liste"
 
 msgid "Statistics"
 msgstr "Statistiques"
+
+msgid "Submit"
+msgstr "Soumettre"
+
+msgid "Report an issue"
+msgstr "Signaler un problème"
+
+msgid "Reports"
+msgstr "Rapports"
+
+msgid "All reports"
+msgstr "Tous les rapports"
+
+msgid "All applications"
+msgstr "Toutes les applications"
+
+msgid "Search"
+msgstr "Recherche"
+
+msgid "Trackers"
+msgstr "Pisteurs"
+
+msgid "Analysis"
+msgstr "Analyse"
