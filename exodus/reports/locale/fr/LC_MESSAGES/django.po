@@ -181,28 +181,45 @@ msgid ""
 "We have not found <b>code signature</b> of any tracker we know in the "
 "application."
 msgstr ""
-"Nous n'avons pas de trouvé la <b>signature</b> de pisteurs que nous "
+"Nous n'avons pas trouvé la <b>signature</b> de pisteurs que nous "
 " connaissons dans l'application."
 
 #: reports/templates/report_details.html:187
 msgid "Permission"
 msgstr "Permission"
 
-#: reports/templates/report_details.html:192
-msgid "We have found this permission in the application:"
-msgstr "Vous avons trouvé cette permission dans l'application :"
-
-#: reports/templates/report_details.html:194
-msgid "We have found these permissions in the application:"
-msgstr "Nous avons trouvé ces demandes d'autorisations dans cette application."
-
-#: reports/templates/report_details.html:203
-msgid "Dangerous"
-msgstr "Dangereux"
-
-#: reports/templates/report_details.html:205
-msgid "Normal"
-msgstr "Normale"
+msgid ""
+"\n"
+"                        We have found <b>code signature</b> of the following tracker in the application:\n"
+"                        "
+msgid_plural ""
+"\n"
+"                        We have found <b>code signature</b> of the following trackers in the application:\n"
+"                        "
+msgstr[0] ""
+"\n"
+"                        Nous avons trouvé la <b>signature</b> du pisteur suivant dans cette application :\n"
+"                        "
+msgstr[1] ""
+"\n"
+"                        Nous avons trouvé la <b>signature</b> des pisteurs suivants dans cette application :\n"
+"                        "
+msgid ""
+"\n"
+"                        We have found the following permission in the application:\n"
+"                        "
+msgid_plural ""
+"\n"
+"                        We have found the following permissions in the application:\n"
+"                        "
+msgstr[0] ""
+"\n"
+"                        Nous avons trouvé la permission suivante dans cette application :\n"
+"                        "
+msgstr[1] ""
+"\n"
+"                        Nous avons trouvé les permissions suivantes dans cette application :\n"
+"                        "
 
 #: reports/templates/report_details.html:220
 msgid "Permissions are actions the application can do on your phone. "
@@ -218,58 +235,6 @@ msgstr "niveaux de protection de Google"
 #: reports/templates/report_details.html:212
 msgid "This application doesn't require any permissions."
 msgstr "Cette application ne demande aucun autorisation."
-
-#: reports/templates/report_details.html:224
-msgid ""
-"\n"
-"                                    DNS query\n"
-"                                    "
-msgid_plural ""
-"\n"
-"                                    DNS queries\n"
-"                                    "
-msgstr[0] ""
-"\n"
-"requête DNS\n"
-" "
-msgstr[1] ""
-"\n"
-"requêtes DNS\n"
-" "
-
-#: reports/templates/report_details.html:233
-msgid ""
-"During the execution, the application has requested this domain resolution:"
-msgstr ""
-"Pendant son exécution, l'application à fait une requête de résolution de ce "
-"domaine :"
-
-#: reports/templates/report_details.html:235
-msgid ""
-"During the execution, the application has requested these domain resolutions:"
-msgstr ""
-"Pendant son exécution, l'application à émis des requêtes de résolution pour "
-"ces domaines :"
-
-#: reports/templates/report_details.html:246
-msgid "Potential tracker"
-msgstr "Pisteur potentiel"
-
-#: reports/templates/report_details.html:254
-msgid ""
-"A DNS resolution can confirm that a tracker was looking for the IP address "
-"of its associated server."
-msgstr ""
-"Une résolution DNS peut confirmer qu'un pisteur a demandé l'adresse IP "
-"associée à un serveur."
-
-#: reports/templates/report_details.html:273
-msgid "Details"
-msgstr "Détails"
-
-#: reports/templates/report_details.html:274
-msgid "Sent data to"
-msgstr "Données envoyées à"
 
 #: reports/templates/reports_list.html:11
 msgid "Report"

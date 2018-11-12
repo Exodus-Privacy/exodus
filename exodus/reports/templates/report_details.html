@@ -156,7 +156,11 @@
                 </div>
                 <div class="card-body">
                     {% if report.found_trackers.all %}
-                        We have found <b>code signature</b> of the following tracker{{ report.found_trackers.count|pluralize }} in the application:
+                        {% blocktrans count counter=report.found_trackers.count %}
+                        We have found <b>code signature</b> of the following tracker in the application:
+                        {% plural %}
+                        We have found <b>code signature</b> of the following trackers in the application:
+                        {% endblocktrans %}
                         <br>
                         <br>
                         <ul>
@@ -188,7 +192,11 @@
                 </div>
                 <div class="card-body">
                     {% if report.application.permission_set.all %}
-                        We have found the following permission{{ report.application.permission_set.count|pluralize }} in the application:
+                        {% blocktrans count counter=report.application.permission_set.count %}
+                        We have found the following permission in the application:
+                        {% plural %}
+                        We have found the following permissions in the application:
+                        {% endblocktrans %}
                         <br>
                         <br>
                         <table class="table table-sm table-responsive">
@@ -227,81 +235,5 @@
                 </div>
             </div>
         </div>
-        <!-- {% if report.networkanalysis_set %}
-            {% for na in report.networkanalysis_set.all %}
-                {% if na.dnsquery_set and na.dnsquery_set.count > 0 %}
-                    <div class="col">
-                        <div class="card bg-light">
-                            <div class="card-header">
-                                <h4 class=""><span class="badge badge-secondary">{{ na.dnsquery_set.count }}</span>
-                                    {% blocktrans count counter=na.dnsquery_set.count %}
-                                    DNS query
-                                    {% plural %}
-                                    DNS queries
-                                    {% endblocktrans %}
-                                </h4>
-                            </div>
-                            <div class="card-body">
-                                {% if na.dnsquery_set.count == 1 %}
-                                {% trans "During the execution, the application has requested this domain resolution:" %}
-                                {% else %}
-                                {% trans "During the execution, the application has requested these domain resolutions:" %}
-                                {% endif %}
-                                <br>
-                                <br>
-                                <table class="table table-sm">
-                                    {% for dns in na.dnsquery_set.all|sort_dns %}
-                                        <tr>
-                                            <td class="text-right"><samp>{{dns.hostname}}</samp></td>
-                                            <td><code>{{dns.ip}}</code></td>
-                                            <td>
-                                            {% ifequal dns.is_tracker True %}
-                                            <span class="badge badge-danger" data-toggle="tooltip" title="{% trans "Potential tracker" %}">⛔️</span>
-                                            {% else %}
-
-                                            {% endifequal %}
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                </table>
-                                <i class="small">{% trans "A DNS resolution can confirm that a tracker was looking for the IP address of its associated server." %}</i>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-    <div class="row"><div class="col"></div><hr></div>
-    {% if report.networkanalysis_set %}
-            {% for na in report.networkanalysis_set.all %}
-                {% if na.httpanalysis_set %}
-                <div class="row">
-                    <div class="col">
-                        {% for http_analysis in na.httpanalysis_set.all %}
-                            {% for payload in http_analysis.httppayload_set.all %}
-                            <div class="card bg-light">
-                                <div class="card-header">
-                                    <h4 class="">
-                                        <a class="btn btn-secondary" data-toggle="collapse" href="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">{% trans "Details" %}</a>
-                                        {% trans "Sent data to" %} <code>{{payload.destination_uri|truncatechars_html:65}}</code></h4>
-                                </div>
-                                <div class="collapse" id="collapse{{forloop.counter}}">
-                                    <div class="card-body">
-                                        <div class="card small">
-                                            <pre>
-                                                {{payload.payload}}
-                                            </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-            {% endfor %}
-    {% endif %} -->
 {% endif %}
 {% endblock %}
