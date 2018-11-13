@@ -12,16 +12,29 @@ import os
 from minio import Minio
 
 
+def _paginate(request, data):
+    paginator = Paginator(data, settings.EX_PAGINATOR_COUNT)
+    page = request.GET.get('page')
+
+    try:
+        paginated_data = paginator.page(page)
+    except PageNotAnInteger:
+        paginated_data = paginator.page(1)
+    except EmptyPage:
+        paginated_data = paginator.page(paginator.num_pages)
+
+    return paginated_data
+
+
 def get_reports(request, handle=None):
     try:
         reports = Report.objects.order_by('-creation_date')
         if handle:
             reports = reports.filter(application__handle=handle)
-        paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
-        page = request.GET.get('page', 1)
-        reports_paged = paginator.page(page)
     except Report.DoesNotExist:
         raise Http404("Reports do not exist")
+
+    reports_paged = _paginate(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count()})
 
 
@@ -30,17 +43,8 @@ def get_all_apps(request):
         apps_list = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Application.DoesNotExist:
         raise Http404("No apps found")
-    paginator = Paginator(apps_list, settings.EX_PAGINATOR_COUNT)
 
-    page = request.GET.get('page')
-
-
-    try:
-        apps = paginator.page(page)
-    except PageNotAnInteger:
-        apps = paginator.page(1)
-    except EmptyPage:
-        apps = paginator.page(paginator.num_pages)
+    apps = _paginate(request, apps_list)
     return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
 
 
