@@ -41,7 +41,7 @@ def get_all_apps(request):
         apps = paginator.page(1)
     except EmptyPage:
         apps = paginator.page(paginator.num_pages)
-    return render(request, 'apps_list.html', {'apps': apps})
+    return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
 
 
 def detail(request, report_id):
