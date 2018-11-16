@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
+<div class="alert-heading">
+    <h4><span class="badge badge-info">{{ count }}</span> Application{{ count|pluralize }}</h4>
+</div>
+<hr>
 <div class="row text-center">
     {% if apps %}
         {% for app in apps %}

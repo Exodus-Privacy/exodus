@@ -16,18 +16,18 @@ from exodus.core.dns import refresh_dns
 from reports.models import Report, Application
 
 
-def _get_paginated(request, data):
+def _paginate(request, data):
     paginator = Paginator(data, settings.EX_PAGINATOR_COUNT)
-    page = request.GET.get('page', 1)
+    page = request.GET.get('page')
 
     try:
-        data_paged = paginator.page(page)
+        paginated_data = paginator.page(page)
     except PageNotAnInteger:
-        data_paged = paginator.page(1)
+        paginated_data = paginator.page(1)
     except EmptyPage:
-        data_paged = paginator.page(paginator.num_pages)
+        paginated_data = paginator.page(paginator.num_pages)
 
-    return data_paged
+    return paginated_data
 
 
 def get_reports(request, handle=None):
@@ -38,7 +38,7 @@ def get_reports(request, handle=None):
     except Report.DoesNotExist:
         raise Http404("Reports do not exist")
 
-    reports_paged = _get_paginated(request, reports)
+    reports_paged = _paginate(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': handle})
 
 
@@ -48,7 +48,7 @@ def get_reports_no_trackers(request):
     except Report.DoesNotExist:
         raise Http404("Reports do not exist")
 
-    reports_paged = _get_paginated(request, reports)
+    reports_paged = _paginate(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': 'no trackers'})
 
 
@@ -58,7 +58,7 @@ def get_reports_most_trackers(request):
     except Report.DoesNotExist:
         raise Http404("Reports do not exist")
 
-    reports_paged = _get_paginated(request, reports)
+    reports_paged = _paginate(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': 'most trackers'})
 
 
@@ -68,8 +68,8 @@ def get_all_apps(request):
     except Application.DoesNotExist:
         raise Http404("No apps found")
 
-    apps = _get_paginated(request, apps_list)
-    return render(request, 'apps_list.html', {'apps': apps})
+    apps = _paginate(request, apps_list)
+    return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
 
 
 def detail(request, report_id):
