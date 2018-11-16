@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from minio import Minio
 
+from .forms import TrackerForm
 from exodus.core.dns import refresh_dns
 from reports.models import Report, Application
 
@@ -136,3 +137,23 @@ def get_stats(request):
         tracker_results.append({'id': t.id, 'name': t.name, 'score': score, 'count': count})
 
     return render(request, 'stats_details.html', {'trackers': tracker_results})
+
+
+def reports_by_trackers(request):
+    if request.method == 'POST':
+        form = TrackerForm(request.POST)
+        if form.is_valid():
+            trackers_id = form.cleaned_data.get('trackers')
+            try:
+                reports_list = Report.objects.order_by('-creation_date')
+                for id in trackers_id:
+                    reports_list = reports_list.filter(found_trackers=id)
+            except Report.DoesNotExist:
+                raise Http404("No reports found")
+
+            return render(request, 'reports_by_trackers.html', {'reports': reports_list})
+
+    else:
+        form = TrackerForm()
+
+    return render(request, 'search_trackers.html', {'form': form})
