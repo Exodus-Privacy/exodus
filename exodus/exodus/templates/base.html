@@ -45,11 +45,12 @@
             <div class="dropdown-menu" aria-labelledby="reports_dd">
                 <div class="dropdown-header">Reports</div>
                 <a class="dropdown-item" href="{% url 'reports:index' %}">Latest reports</a>
-                <a class="dropdown-item" href="{% url 'reports:get_reports_no_trackers' %}">No known trackers</a>
                 <a class="dropdown-item" href="{% url 'reports:get_reports_most_trackers' %}">Most trackers</a>
-                <a class="dropdown-item" href="{% url 'search:search' %}">Search</a>
+                <a class="dropdown-item" href="{% url 'reports:get_reports_no_trackers' %}">No known trackers</a>
+                <a class="dropdown-item" href="{% url 'reports:by_tracker' %}">Search by tracker</a>
                 <div class="dropdown-header">Applications</div>
                 <a class="dropdown-item" href="{% url 'reports:get_all_apps' %}">All applications</a>
+                <a class="dropdown-item" href="{% url 'search:search' %}">Search</a>
             </div>
         </div>
         &nbsp;

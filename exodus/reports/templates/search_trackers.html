@@ -4,17 +4,17 @@
     <div class="row justify-content-md-center">
         <div class="alert bg-light">
             <div class="alert-heading">
-                <h4>Search reports by trackers</h4>
+                <h4>Search reports by tracker(s)</h4>
             </div>
             <hr>
             {% if form.trackers.errors %}
                 <div><strong>{{ form.trackers.errors }}</strong></div>
             {% endif %}
-            <form action="{% url 'reports:reports_by_trackers' %}" method="post">
+            <form action="{% url 'reports:by_tracker' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <!-- {{ form }} -->
-                    <label for="test-trackers">Select desired trackers</label>
+                    <label for="test-trackers">Select desired tracker(s):</label>
                     <select multiple class="form-control" name="{{ form.trackers.name }}" id="test-trackers">
                         {% for choice in form.trackers.field.choices %}
                             <option value="{{ choice.0 }}">{{ choice.1 }}</option>

@@ -139,7 +139,7 @@ def get_stats(request):
     return render(request, 'stats_details.html', {'trackers': tracker_results})
 
 
-def reports_by_trackers(request):
+def by_tracker(request):
     if request.method == 'POST':
         form = TrackerForm(request.POST)
         if form.is_valid():
@@ -151,7 +151,7 @@ def reports_by_trackers(request):
             except Report.DoesNotExist:
                 raise Http404("No reports found")
 
-            return render(request, 'reports_by_trackers.html', {'reports': reports_list})
+            return render(request, 'reports_by_tracker.html', {'reports': reports_list})
 
     else:
         form = TrackerForm()

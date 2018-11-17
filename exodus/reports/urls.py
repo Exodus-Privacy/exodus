@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^apps/$', views.get_all_apps, name='get_all_apps'),
     url(r'^stats/$', views.get_stats, name='get_stats'),
     url(r'^search/(?P<handle>.+)$', views.get_reports, name='search_by_handle'),
-    url(r'^reports_by_trackers/$', views.reports_by_trackers, name='reports_by_trackers'),
+    url(r'^by_tracker/$', views.by_tracker, name='by_tracker'),
 ]
