@@ -127,8 +127,17 @@ msgstr "Signaler un problème"
 msgid "Reports"
 msgstr "Rapports"
 
-msgid "All reports"
-msgstr "Tous les rapports"
+msgid "Latest reports"
+msgstr "Derniers rapports"
+
+msgid "Most trackers"
+msgstr "Triés par nombre de pisteurs"
+
+msgid "No known trackers"
+msgstr "Aucun pisteurs identifiés"
+
+msgid "Search by tracker"
+msgstr "Recherche par pisteur"
 
 msgid "All applications"
 msgstr "Toutes les applications"

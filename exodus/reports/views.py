@@ -51,7 +51,7 @@ def get_reports_no_trackers(request):
         raise Http404("Reports do not exist")
 
     reports_paged = _paginate(request, reports)
-    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': 'no trackers'})
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': _('No known trackers')})
 
 
 def get_reports_most_trackers(request):
@@ -61,7 +61,7 @@ def get_reports_most_trackers(request):
         raise Http404("Reports do not exist")
 
     reports_paged = _paginate(request, reports)
-    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': 'most trackers'})
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': _('Most trackers')})
 
 
 def get_all_apps(request):
