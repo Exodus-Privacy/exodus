@@ -49,6 +49,22 @@ class Application(models.Model):
     def permissions(self):
         return self.permission_set.all().order_by('name')
 
+    def count_dangerous_permissions(self):
+        perms = self.permissions()
+        count = 0
+        for p in perms:
+            if p.severity == "Dangerous":
+                count += 1
+        return count
+
+    def count_special_permissions(self):
+        perms = self.permissions()
+        count = 0
+        for p in perms:
+            if p.severity == "Special":
+                count += 1
+        return count
+
     @property
     def json_signature(self):
         sign = {
@@ -108,13 +124,15 @@ class Permission(models.Model):
 
     @property
     def severity(self):
-        # These 2 permissions are defined as "special permissions" by Google
-        name = self.short_name
-        if name == "SYSTEM_ALERT_WINDOW" or name == "WRITE_SETTINGS":
+        # These permissions are defined as "special permissions" by Google
+        SPECIAL_PERMISSIONS = [
+            "SYSTEM_ALERT_WINDOW",
+            "WRITE_SETTINGS"
+        ]
+        if self.short_name in SPECIAL_PERMISSIONS:
             return "Special"
 
         protection_level = self.protection_level
-
         if "dangerous" in protection_level:
             return "Dangerous"
         elif protection_level == "Unknown":
