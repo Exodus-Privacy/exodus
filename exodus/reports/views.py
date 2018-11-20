@@ -10,6 +10,7 @@ from django.db.models import Count
 from django.http import Http404
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 from minio import Minio
 
 from .forms import TrackerForm
@@ -37,7 +38,7 @@ def get_reports(request, handle=None):
         if handle:
             reports = reports.filter(application__handle=handle)
     except Report.DoesNotExist:
-        raise Http404("Reports do not exist")
+        raise Http404(_("reports do not exist"))
 
     reports_paged = _paginate(request, reports)
     return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': handle})
@@ -67,7 +68,7 @@ def get_all_apps(request):
     try:
         apps_list = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
     except Application.DoesNotExist:
-        raise Http404("No apps found")
+        raise Http404(_("No apps found"))
 
     apps = _paginate(request, apps_list)
     return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
@@ -77,7 +78,7 @@ def detail(request, report_id):
     try:
         report = Report.objects.get(pk=report_id)
     except Report.DoesNotExist:
-        raise Http404("report does not exist")
+        raise Http404(_("report does not exist"))
     return render(request, 'report_details.html', {'report': report})
 
 
@@ -97,7 +98,7 @@ def get_app_icon(request, app_id):
     try:
         app = Application.objects.get(pk=app_id)
     except Application.DoesNotExist:
-        raise Http404("app does not exist")
+        raise Http404(_("App does not exist"))
 
     try:
         data = minioClient.get_object(settings.MINIO_BUCKET, app.icon_path)

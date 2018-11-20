@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 {% load static %}
 <div class="row justify-content-md-center">
@@ -7,7 +8,7 @@
     <div class="alert bg-light">
         <div class="alert-heading">
             <h4>
-                <span class="badge badge-info">{{ count }}</span> available report{{ count|pluralize }}
+                <span class="badge badge-info">{{ count }}</span> {% trans "Report" %}{{ count|pluralize }}
                 {% if title %}
                     <small>({{ title }})</small>
                 {% endif %}
@@ -37,7 +38,7 @@
                             {% else %}
                                 <span class="badge badge-danger reports">{{ nb_trackers }}</span>
                             {% endif %}
-                            tracker{{ nb_trackers|pluralize }}
+                            {% trans "tracker" %}{{ nb_trackers|pluralize }}
                         {% endwith %}
                     </span>
                     <br>
@@ -50,7 +51,7 @@
                             {% else %}
                                 <span class="badge badge-danger reports">{{ nb_perm }}</span>
                             {% endif %}
-                            permission{{ nb_perm|pluralize }}
+                            {% trans "permission" %}{{ nb_perm|pluralize }}
                         {% endwith %}
                     </span>
                 </td>
