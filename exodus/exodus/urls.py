@@ -31,7 +31,7 @@ urlpatterns += i18n_patterns(
     url(r'^search/', include('search.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^', TemplateView.as_view(template_name='base.html'), name='home'),
+    url(r'^$', TemplateView.as_view(template_name='base.html'), name='home'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'exodus.views.page_not_found'
