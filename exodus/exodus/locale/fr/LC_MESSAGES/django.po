@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-15 11:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: exodus/core/apk.py:23
+msgid "Your request is running"
+msgstr "Votre requête est en cours"
+
+#: exodus/core/apk.py:33
+msgid "Unable to download the APK"
+msgstr "Impossible de télécharger l'APK"
+
+#: exodus/core/apk.py:38
+msgid "Download APK: success"
+msgstr "Télécharger l'APK : succès"
+
+#: exodus/core/apk.py:51
+msgid "Unable to decode the APK"
+msgstr "Impossible de décoder l'APK"
+
+#: exodus/core/apk.py:56
+msgid "Decode APK: success"
+msgstr "Décoder l'APK : succès"
+
+#: exodus/core/apk.py:70
+msgid "Unable to compute the class list"
+msgstr ""
+
+#: exodus/core/apk.py:75
+msgid "List embedded classes: success"
+msgstr "Lister les classes embarquées : succès"
+
+#: exodus/core/apk.py:92
+msgid "A report already exists for this application version"
+msgstr "Un rapport existe déjà pour cette version de l'application"
+
+#: exodus/core/apk.py:145
+msgid "Get application details: success"
+msgstr "Récupérer les détails de l'application : succès"
+
+#: exodus/core/apk.py:152
+msgid "Tracker analysis: success"
+msgstr "Analyse des pisteurs : succès"
+
+#: exodus/core/apk.py:199
+msgid "Static analysis complete"
+msgstr "Analyse statique : succès"

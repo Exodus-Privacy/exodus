@@ -1,11 +1,18 @@
 {% extends "base.html"%}
+{% load i18n %}
 {% block content %}
     <div class="row justify-content-md-center">
         <div class="col-lg-4">
         {% if trackers %}
             <div class="alert bg-light">
                 <div class="alert-heading">
-                    <h4><span class="badge badge-info">{{ trackers.count }}</span> Recognized tracker{{ trackers.count|pluralize }}</h4>
+                    <h4><span class="badge badge-info">{{ trackers.count }}</span>
+                        {% blocktrans count counter=trackers.count %}
+                        Recognized tracker
+                        {% plural %}
+                        Recognized trackers
+                        {% endblocktrans %}
+                    </h4>
                 </div>
                 <hr>
                 <ul>
@@ -15,7 +22,7 @@
                 </ul>
             </div>
         {% else %}
-            <p>No trackers are available.</p>
+            <p>{% trans "No trackers are available" %}.</p>
         {% endif %}
         </div>
     </div>
