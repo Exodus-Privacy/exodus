@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^(?P<app_id>[0-9]+)/icon$', views.get_app_icon, name='get_app_icon'),
     url(r'^apps/$', views.get_all_apps, name='get_all_apps'),
     url(r'^stats/$', views.get_stats, name='get_stats'),
-    url(r'^search/(?P<handle>.+)$', views.get_reports, name='search_by_handle'),
+    url(r'^search/(?P<handle>.+)/$', views.get_reports, name='search_by_handle'),
     url(r'^by_tracker/$', views.by_tracker, name='by_tracker'),
 ]
