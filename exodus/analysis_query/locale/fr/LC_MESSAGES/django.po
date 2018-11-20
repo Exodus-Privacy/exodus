@@ -109,6 +109,9 @@ msgid "AnalysisRequest does not exist"
 msgstr "La demande d'analyse n'existe pas"
 
 # TRANSLATIONS FOR EXODUS MODULE
+msgid "Website"
+msgstr "Site web"
+
 msgid "List"
 msgstr "Liste"
 
