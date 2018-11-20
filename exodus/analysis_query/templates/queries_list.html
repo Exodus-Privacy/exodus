@@ -1,4 +1,5 @@
 {% extends "base.html"%}
+{% load i18n %}
 {% block content %}
 <div class="row justify-content-md-center">
     <div class="col-lg-5 col-centered">
@@ -10,7 +11,7 @@
         </ul>
         {% else %}
         <div class="alert alert-danger small">
-            <strong>You need to be registered.</strong>
+            <strong>{% trans "You need to be registered" %}.</strong>
         </div>
         {% endif %}
     </div>

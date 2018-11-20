@@ -16,11 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 from django.views.generic.base import TemplateView
+from django.views.i18n import set_language
 
 from django.conf.urls import url, include
 
-urlpatterns = [
+urlpatterns = [ url(r'^i18n/', include('django.conf.urls.i18n')), ]
+urlpatterns += i18n_patterns(
     url(r'^analysis/', include('analysis_query.urls')),
     url(r'^trackers/', include('trackers.urls')),
     url(r'^reports/', include('reports.urls')),
@@ -28,8 +31,8 @@ urlpatterns = [
     url(r'^search/', include('search.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^$', TemplateView.as_view(template_name='base.html'), name='home')
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^$', TemplateView.as_view(template_name='base.html'), name='home'),
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'exodus.views.page_not_found'
 handler500 = 'exodus.views.page_not_found'
