@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import os
+import sys
 
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -13,9 +14,12 @@ from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from minio import Minio
 
-from .forms import TrackerForm
 from exodus.core.dns import refresh_dns
 from reports.models import Report, Application
+
+# Workaround to avoid issue with DB migrations
+if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
+    from .forms import TrackerForm
 
 
 def _paginate(request, data):
