@@ -1,16 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.utils.translation import gettext_lazy as _
-from django.http import HttpResponse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render
-from django.http import Http404
-from django.db import connection
-from exodus.core.dns import *
-from exodus.core.http import *
-from django.conf import settings
+
 import os
+import sys
+
+from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db import connection
+from django.db.models import Count
+from django.http import Http404
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 from minio import Minio
+
+from exodus.core.dns import refresh_dns
+from reports.models import Report, Application
+
+# Workaround to avoid issue with DB migrations
+if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
+    from .forms import TrackerForm
 
 
 def _paginate(request, data):
@@ -36,7 +45,27 @@ def get_reports(request, handle=None):
         raise Http404(_("reports do not exist"))
 
     reports_paged = _paginate(request, reports)
-    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count()})
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': handle})
+
+
+def get_reports_no_trackers(request):
+    try:
+        reports = Report.objects.filter(found_trackers=None).order_by('-creation_date')
+    except Report.DoesNotExist:
+        raise Http404("Reports do not exist")
+
+    reports_paged = _paginate(request, reports)
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': _('No known trackers')})
+
+
+def get_reports_most_trackers(request):
+    try:
+        reports = Report.objects.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
+    except Report.DoesNotExist:
+        raise Http404("Reports do not exist")
+
+    reports_paged = _paginate(request, reports)
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': _('Most trackers')})
 
 
 def get_all_apps(request):
@@ -64,10 +93,12 @@ def refreshdns(request):
 
 
 def get_app_icon(request, app_id):
-    minioClient = Minio(settings.MINIO_URL,
-                access_key=settings.MINIO_ACCESS_KEY,
-                secret_key=settings.MINIO_SECRET_KEY,
-                secure=settings.MINIO_SECURE)
+    minioClient = Minio(
+        settings.MINIO_URL,
+        access_key=settings.MINIO_ACCESS_KEY,
+        secret_key=settings.MINIO_SECRET_KEY,
+        secure=settings.MINIO_SECURE
+    )
     try:
         app = Application.objects.get(pk=app_id)
     except Application.DoesNotExist:
@@ -111,3 +142,23 @@ def get_stats(request):
         tracker_results.append({'id': t.id, 'name': t.name, 'score': score, 'count': count})
 
     return render(request, 'stats_details.html', {'trackers': tracker_results})
+
+
+def by_tracker(request):
+    if request.method == 'POST':
+        form = TrackerForm(request.POST)
+        if form.is_valid():
+            trackers_id = form.cleaned_data.get('trackers')
+            try:
+                reports_list = Report.objects.order_by('-creation_date')
+                for id in trackers_id:
+                    reports_list = reports_list.filter(found_trackers=id)
+            except Report.DoesNotExist:
+                raise Http404("No reports found")
+
+            return render(request, 'reports_by_tracker.html', {'reports': reports_list})
+
+    else:
+        form = TrackerForm()
+
+    return render(request, 'search_trackers.html', {'form': form})

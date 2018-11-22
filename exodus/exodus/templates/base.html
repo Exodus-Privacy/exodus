@@ -16,7 +16,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{% url 'home' %}">
             <object width="50px" style="margin-bottom:-15px" data="/static/img/logo_purple.svg" type="image/svg+xml">
             </object>
             <span class="h2">εxodus</span> <span class="small text-muted">v1.2</span>
@@ -45,9 +45,14 @@
                         {% trans "Reports" %}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="reports_dd">
-                        <a class="dropdown-item" href="/reports/">{% trans "All reports" %}</a>
-                        <a class="dropdown-item" href="/reports/apps/">{% trans "All applications" %}</a>
-                        <a class="dropdown-item" href="/search/">{% trans "Search" %}</a>
+                        <div class="dropdown-header">{% trans "Reports" %}</div>
+                        <a class="dropdown-item" href="{% url 'reports:index' %}">{% trans "Latest reports" %}</a>
+                        <a class="dropdown-item" href="{% url 'reports:get_reports_most_trackers' %}">{% trans "Most trackers" %}</a>
+                        <a class="dropdown-item" href="{% url 'reports:get_reports_no_trackers' %}">{% trans "No known trackers" %}</a>
+                        <a class="dropdown-item" href="{% url 'reports:by_tracker' %}">{% trans "Search by tracker" %}</a>
+                        <div class="dropdown-header">{% trans "Applications" %}</div>
+                        <a class="dropdown-item" href="{% url 'reports:get_all_apps' %}">{% trans "All applications" %}</a>
+                        <a class="dropdown-item" href="{% url 'search:search' %}">{% trans "Search" %}</a>
                     </div>
                 </li>
                 &nbsp;
@@ -56,8 +61,8 @@
                         {% trans "Trackers" %}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="trackers_dd">
-                        <a class="dropdown-item" href="/trackers/">{% trans "List" %}</a>
-                        <a class="dropdown-item" href="/reports/stats/">{% trans "Statistics" %}</a>
+                        <a class="dropdown-item" href="{% url 'trackers:index' %}">{% trans "List" %}</a>
+                        <a class="dropdown-item" href="{% url 'reports:get_stats' %}">{% trans "Statistics" %}</a>
                     </div>
                 </li>
                 &nbsp;
@@ -67,9 +72,9 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="analysis_dd">
                         {% if request.user.is_superuser %}
-                            <a class="dropdown-item" href="/analysis/">{% trans "List" %}</a>
+                            <a class="dropdown-item" href="{% url 'analysis:index' %}">{% trans "List" %}</a>
                         {% endif %}
-                        <a class="dropdown-item" href="/analysis/submit/">{% trans "Submit" %}</a>
+                        <a class="dropdown-item" href="{% url 'analysis:submit' %}">{% trans "Submit" %}</a>
                     </div>
                 </li>
                 &nbsp;

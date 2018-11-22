@@ -7,7 +7,12 @@
     {% if reports %}
     <div class="alert bg-light">
         <div class="alert-heading">
-            <h4><span class="badge badge-info">{{ count }}</span> {% trans "Report" %}{{ count|pluralize }}</h4>
+            <h4>
+                <span class="badge badge-info">{{ count }}</span> {% trans "Report" %}{{ count|pluralize }}
+                {% if title %}
+                    <small>({{ title }})</small>
+                {% endif %}
+            </h4>
         </div>
         <hr>
         <table style="margin: auto; border:none" class="table table-hover table-responsive">
