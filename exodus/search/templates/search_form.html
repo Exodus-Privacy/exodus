@@ -78,10 +78,9 @@ jQuery.fn.enterKey = function (fnc) {
     })
 }
 const get_results = function(query, limit) {
-    console.log(query)
     jQuery.ajax({
         type: 'POST',
-        url: "/en/api/search",
+        url: "/api/search",
         data: '{"type": "application", "query":"'+query+'", "limit":'+limit+'}',
         success: display_results,
         contentType: "application/json",
