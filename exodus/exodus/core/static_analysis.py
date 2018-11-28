@@ -129,6 +129,15 @@ def get_application_details(handle):
     return None
 
 
+def remove_token():
+    token_path = os.path.join(str(Path.home()), '.cache/gplaycli/token')
+    if os.path.exists(token_path):
+        logging.info("Removing cached token")
+        os.remove(token_path)
+    else:
+        logging.info("No token found in %s", token_path)
+
+
 def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     """
     Download the APK from Google Play for the given handle.
@@ -172,8 +181,7 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
             break
         except Exception as e:
             logging.info(e)
-            logging.info("Deleting cached token")
-            shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
+            remove_token()
             exit_code = 1
 
         apk = Path(apk_tmp)
