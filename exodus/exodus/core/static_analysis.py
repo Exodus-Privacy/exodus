@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 import logging
+import os
 import shlex
 import shutil
 import time
@@ -165,11 +166,14 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
             handle, device_code_names[retry % len(device_code_names)], tmp_dir)
         try:
             # Timeout of 4 minutes
-            exit_code = subprocess.check_call(shlex.split(cmd), shell = False, timeout = 240)
+            exit_code = subprocess.check_call(shlex.split(cmd), shell=False, timeout=240)
         except TimeoutExpired:
             exit_code = 1
             break
-        except:
+        except Exception as e:
+            logging.info(e)
+            logging.info("Deleting cached token")
+            shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
             exit_code = 1
 
         apk = Path(apk_tmp)
