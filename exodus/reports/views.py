@@ -37,35 +37,25 @@ def _paginate(request, data):
 
 
 def get_reports(request, handle=None):
+    title = ''
+    filter = request.GET.get('filter', None)
     try:
-        reports = Report.objects.order_by('-creation_date')
-        if handle:
-            reports = reports.filter(application__handle=handle)
+        if filter == 'no_trackers':
+            reports = Report.objects.filter(found_trackers=None).order_by('-creation_date')
+            title = _('No known trackers')
+        elif filter == 'most_trackers':
+            reports = Report.objects.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
+            title = _('Most trackers')
+        else:
+            reports = Report.objects.order_by('-creation_date')
+            if handle:
+                reports = reports.filter(application__handle=handle)
+                title = handle
     except Report.DoesNotExist:
         raise Http404(_("reports do not exist"))
 
     reports_paged = _paginate(request, reports)
-    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': handle})
-
-
-def get_reports_no_trackers(request):
-    try:
-        reports = Report.objects.filter(found_trackers=None).order_by('-creation_date')
-    except Report.DoesNotExist:
-        raise Http404("Reports do not exist")
-
-    reports_paged = _paginate(request, reports)
-    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': _('No known trackers')})
-
-
-def get_reports_most_trackers(request):
-    try:
-        reports = Report.objects.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
-    except Report.DoesNotExist:
-        raise Http404("Reports do not exist")
-
-    reports_paged = _paginate(request, reports)
-    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': _('Most trackers')})
+    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': title})
 
 
 def get_all_apps(request):
