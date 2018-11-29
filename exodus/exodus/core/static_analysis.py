@@ -155,9 +155,10 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     MAX_RETRIES = len(device_code_names)
     retry = MAX_RETRIES
     exit_code = 1
+
     while retry > 0:
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
-            handle, device_code_names[retry % len(device_code_names)], tmp_dir)
+            handle, device_code_names[retry % MAX_RETRIES], tmp_dir)
         # TODO: handle the case of an error due to a non compatible mobile
         # device (no exception and exit_code=0, just "[ERROR]" in the gpc logs)
         try:
