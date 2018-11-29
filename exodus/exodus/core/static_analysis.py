@@ -133,7 +133,10 @@ def remove_token():
     token_path = os.path.join(str(Path.home()), '.cache/gplaycli/token')
     if os.path.exists(token_path):
         logging.info("Removing cached token")
-        os.remove(token_path)
+        try:
+            os.remove(token_path)
+        except Exception as e:
+            logging.info("Impossible to remove the token: %s", str(e))
     else:
         logging.info("No token found in %s", token_path)
 
