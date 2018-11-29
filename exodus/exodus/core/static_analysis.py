@@ -95,34 +95,31 @@ def get_application_details(handle):
     gpc.token_enable = True
     gpc.token_url = "https://matlink.fr/token/email/gsfid"
     try:
-        gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
+        gpc.token, gpc.gsfid = gpc.retrieve_token(force_new=False)
     except (ConnectionError, ValueError):
         try:
             time.sleep(2)
-            gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = True)
+            gpc.token, gpc.gsfid = gpc.retrieve_token(force_new=True)
         except (ConnectionError, ValueError):
             return None
-    # success, error = gpc.connect_to_googleplay_api()
-    # if error is not None:
-    #     return None
     gpc.connect()
-    obj = gpc.api.search(handle, 1)
+    objs = gpc.api.search(handle, 5)
     try:
-        # obj = json.loads(results)
-        if handle not in obj[0]['docId']:
-            return None
-        infos = {
-            'title': obj[0]['title'],
-            'creator': obj[0]['author'],
-            'size': obj[0]['installationSize'],
-            'downloads': obj[0]['numDownloads'],
-            'update': obj[0]['uploadDate'],
-            'handle': obj[0]['docId'],
-            'version': obj[0]['versionCode'],
-            'rating': 'unknown',
-        }
-        return infos
-    except Exception as e :
+        for obj in objs:
+            if obj['docId'] != handle:
+                continue
+            infos = {
+                'title': obj['title'],
+                'creator': obj['author'],
+                'size': obj['installationSize'],
+                'downloads': obj['numDownloads'],
+                'update': obj['uploadDate'],
+                'handle': obj['docId'],
+                'version': obj['versionCode'],
+                'rating': 'unknown',
+            }
+            return infos
+    except Exception as e:
         logging.error('Unable to parse applications details')
         logging.error(e)
         return None
