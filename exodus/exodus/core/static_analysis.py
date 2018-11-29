@@ -148,8 +148,9 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
     """
-    device_code_names = ['', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
-    retry = 5
+    device_code_names = ['', '', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
+    MAX_RETRIES = len(device_code_names)
+    retry = MAX_RETRIES
     exit_code = 1
     # gpc = ExGPlaycli()
     # gpc.token_enable = False
@@ -173,6 +174,8 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         # gpc.download_packages([handle])
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
             handle, device_code_names[retry % len(device_code_names)], tmp_dir)
+        # TODO: handle the case of an error due to a non compatible mobile
+        # device (no exception and exit_code=0, just "[ERROR]" in the gpc logs)
         try:
             # Timeout of 4 minutes
             exit_code = subprocess.check_call(shlex.split(cmd), shell=False, timeout=240)
@@ -181,7 +184,6 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
             break
         except Exception as e:
             logging.info(e)
-            remove_token()
             exit_code = 1
 
         apk = Path(apk_tmp)
@@ -191,8 +193,13 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         if exit_code == 0:
             break
 
+        # Remove the token only if it failed on the first attempt
+        if retry == MAX_RETRIES:
+            remove_token()
+
         retry -= 1
         time.sleep(2)
+
     # Upload APK in storage
     apk = Path(apk_tmp)
     if exit_code == 0 and apk.is_file():
