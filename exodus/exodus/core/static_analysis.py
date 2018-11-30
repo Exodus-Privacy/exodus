@@ -83,9 +83,6 @@ def get_application_details(handle):
     TIME_BEFORE_RETRY = 2
     API_SEARCH_LIMIT = 5
 
-    # Fix#12 - We have to remove the cached token :S
-    # shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
-
     gpc = gplaycli.GPlaycli()
     gpc.token_enable = True
     gpc.token_url = "https://matlink.fr/token/email/gsfid"
