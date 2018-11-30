@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
-import json
 import logging
 import os
 import shlex
@@ -75,19 +74,15 @@ class ExGPlaycli(gplaycli.GPlaycli):
         return token, gsfid
 
 
-def parse_application_details(doc):
-    try:
-        obj = json.loads(doc)
-    except:
-        raise Exception('Unable to parse applications details')
-
-
 def get_application_details(handle):
     """
     Get the application details like creator, number of downloads, etc.
     :param handle: application handle
     :return: application details dictionary
     """
+    TIME_BEFORE_RETRY = 2
+    API_SEARCH_LIMIT = 5
+
     # Fix#12 - We have to remove the cached token :S
     # shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors = True)
 
@@ -98,12 +93,12 @@ def get_application_details(handle):
         gpc.token, gpc.gsfid = gpc.retrieve_token(force_new=False)
     except (ConnectionError, ValueError):
         try:
-            time.sleep(2)
+            time.sleep(TIME_BEFORE_RETRY)
             gpc.token, gpc.gsfid = gpc.retrieve_token(force_new=True)
         except (ConnectionError, ValueError):
             return None
     gpc.connect()
-    objs = gpc.api.search(handle, 5)
+    objs = gpc.api.search(handle, API_SEARCH_LIMIT)
     try:
         for obj in objs:
             if obj['docId'] != handle:
