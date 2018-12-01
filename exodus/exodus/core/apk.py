@@ -6,9 +6,9 @@ import os
 
 from django.utils.translation import gettext_lazy as _
 
-from analysis_query.models import *
+from analysis_query.models import AnalysisRequest
 from exodus.core.storage import RemoteStorageHelper
-from reports.models import Report, Application, Apk, Permission, NetworkAnalysis
+from reports.models import Certificate, Report, Application, Apk, Permission, NetworkAnalysis
 from .celery import app
 from .static_analysis import *
 
