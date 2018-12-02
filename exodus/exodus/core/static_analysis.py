@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 import os
+import requests
 import shlex
 import shutil
 import time
@@ -12,13 +13,14 @@ from tempfile import NamedTemporaryFile
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
 from future.moves import subprocess
+from gplaycli import gplaycli
 from minio.error import (ResponseError)
 
 from trackers.models import Tracker
 
 
 class StaticAnalysis(CoreSA):
-    def __init__(self, apk_path = None):
+    def __init__(self, apk_path=None):
         super().__init__(apk_path)
 
     def load_trackers_signatures(self):
@@ -29,6 +31,12 @@ class StaticAnalysis(CoreSA):
         self._compile_signatures()
 
     def get_application_icon(self, storage, icon_name):
+        """
+        Get the application icon and save it to Minio
+        :param storage: minio storage helper
+        :param icon_name: file name for the icon
+        :return: icon name if success, empty string in case of failure
+        """
         with NamedTemporaryFile() as f:
             icon_path = self.save_icon(f.name)
             if icon_path is None:
@@ -41,10 +49,7 @@ class StaticAnalysis(CoreSA):
             return icon_name
 
 
-from gplaycli import gplaycli
-import requests
-
-
+# TODO: remove this class if unused
 class ExGPlaycli(gplaycli.GPlaycli):
     def __init__(self):
         gplaycli.GPlaycli.__init__(self)
@@ -52,7 +57,7 @@ class ExGPlaycli(gplaycli.GPlaycli):
     def after_download(self, failed_downloads):
         pass
 
-    def retrieve_token(self, force_new = False):
+    def retrieve_token(self, force_new=False):
         token, gsfid = self.get_cached_token()
         if token is not None and not force_new:
             logging.info("Using cached token.")
@@ -60,11 +65,13 @@ class ExGPlaycli(gplaycli.GPlaycli):
         logging.info("Retrieving token ...")
         r = requests.get(self.token_url)
         if r.text == 'Auth error':
-            logging.info('Token dispenser auth error, probably too many connections')
-            raise ConnectionError('Token dispenser auth error, probably too many connections')
+            msg = 'Token dispenser auth error, probably too many connections'
+            logging.info(msg)
+            raise ConnectionError(msg)
         elif r.text == "Server error":
-            logging.info('Token dispenser server error')
-            raise ConnectionError('Token dispenser server error')
+            msg = 'Token dispenser server error'
+            logging.info(msg)
+            raise ConnectionError(msg)
         token, gsfid = r.text.split(" ")
         logging.info("Token: %s", token)
         logging.info("GSFId: %s", gsfid)
@@ -194,7 +201,7 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     return exit_code == 0
 
 
-def clear_analysis_files(storage, tmp_dir, bucket, remove_from_storage = False):
+def clear_analysis_files(storage, tmp_dir, bucket, remove_from_storage=False):
     """
     Clear the analysis files (local + on Minio storage).
     :param storage: Minio storage helper
@@ -203,6 +210,6 @@ def clear_analysis_files(storage, tmp_dir, bucket, remove_from_storage = False):
     :param remove_from_storage: remove objects in Minio if set to True
     """
     logging.info('Removing %s' % tmp_dir)
-    shutil.rmtree(tmp_dir, ignore_errors = True)
+    shutil.rmtree(tmp_dir, ignore_errors=True)
     if remove_from_storage:
         storage.clear_prefix(bucket)
