@@ -151,19 +151,29 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
     """
-    device_code_names = ['', '', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
-    MAX_RETRIES = len(device_code_names)
+    DEVICE_CODE_NAMES = [
+        '',
+        '',
+        '-dc hammerhead',
+        '-dc manta',
+        '-dc cloudbook',
+        '-dc bullhead'
+    ]
+    MAX_RETRIES = len(DEVICE_CODE_NAMES)
+
     retry = MAX_RETRIES
     exit_code = 1
-
     while retry > 0:
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
-            handle, device_code_names[retry % MAX_RETRIES], tmp_dir)
+            handle, DEVICE_CODE_NAMES[retry % MAX_RETRIES], tmp_dir)
         # TODO: handle the case of an error due to a non compatible mobile
         # device (no exception and exit_code=0, just "[ERROR]" in the gpc logs)
         try:
-            # Timeout of 4 minutes
-            exit_code = subprocess.check_call(shlex.split(cmd), shell=False, timeout=240)
+            exit_code = subprocess.check_call(
+                shlex.split(cmd),
+                shell=False,
+                timeout=240,  # Timeout of 4 minutes
+            )
         except TimeoutExpired:
             exit_code = 1
             break
