@@ -237,6 +237,3 @@ rts.mobula.sdk.duapps.com
 ad.prismamediadigital.com
 ad2play.ftv-publicite.fr
 adeventtracker.spotify.com
-do-not-tracker.org
-eviltracker.net
-trackersimulator.org
