@@ -129,7 +129,10 @@ def remove_token():
     token_path = os.path.join(str(Path.home()), '.cache/gplaycli/token')
     if os.path.exists(token_path):
         logging.info("Removing cached token")
-        os.remove(token_path)
+        try:
+            os.remove(token_path)
+        except Exception as e:
+            logging.info("Impossible to remove the token: %s", str(e))
     else:
         logging.info("No token found in %s", token_path)
 
@@ -144,40 +147,34 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
     """
-    device_code_names = ['', '-dc hammerhead', '-dc manta', '-dc cloudbook', '-dc bullhead']
-    retry = 5
+    DEVICE_CODE_NAMES = [
+        '',
+        '',
+        '-dc hammerhead',
+        '-dc manta',
+        '-dc cloudbook',
+        '-dc bullhead'
+    ]
+    MAX_RETRIES = len(DEVICE_CODE_NAMES)
+
+    retry = MAX_RETRIES
     exit_code = 1
-    # gpc = ExGPlaycli()
-    # gpc.token_enable = False
-    # gpc.verbose = True
-    # gpc.token_url = "https://matlink.fr/token/email/gsfid"
-    # try:
-    #     gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
-    # except ConnectionError:
-    #     try:
-    #         time.sleep(2)
-    #         gpc.token, gpc.gsfid = gpc.retrieve_token(force_new = False)
-    #     except ConnectionError:
-    #         return None
-    # success, error = gpc.connect_to_googleplay_api()
-    # if error is not None:
-    #     return False
     while retry > 0:
-        # if device_code_names[retry % len(device_code_names)] != '':
-        #     gpc.device_codename = device_code_names[retry % len(device_code_names)]
-        # gpc.set_download_folder(tmp_dir)
-        # gpc.download_packages([handle])
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
-            handle, device_code_names[retry % len(device_code_names)], tmp_dir)
+            handle, DEVICE_CODE_NAMES[retry % MAX_RETRIES], tmp_dir)
+        # TODO: handle the case of an error due to a non compatible mobile
+        # device (no exception and exit_code=0, just "[ERROR]" in the gpc logs)
         try:
-            # Timeout of 4 minutes
-            exit_code = subprocess.check_call(shlex.split(cmd), shell=False, timeout=240)
+            exit_code = subprocess.check_call(
+                shlex.split(cmd),
+                shell=False,
+                timeout=240,  # Timeout of 4 minutes
+            )
         except TimeoutExpired:
             exit_code = 1
             break
         except Exception as e:
             logging.info(e)
-            remove_token()
             exit_code = 1
 
         apk = Path(apk_tmp)
@@ -187,8 +184,13 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         if exit_code == 0:
             break
 
+        # Remove the token only if it failed on the first attempt
+        if retry == MAX_RETRIES:
+            remove_token()
+
         retry -= 1
         time.sleep(2)
+
     # Upload APK in storage
     apk = Path(apk_tmp)
     if exit_code == 0 and apk.is_file():
