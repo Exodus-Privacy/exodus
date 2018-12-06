@@ -166,14 +166,17 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     while retry > 0:
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
             handle, DEVICE_CODE_NAMES[retry % MAX_RETRIES], tmp_dir)
-        # TODO: handle the case of an error due to a non compatible mobile
-        # device (no exception and exit_code=0, just "[ERROR]" in the gpc logs)
         try:
-            exit_code = subprocess.check_call(
+            proc = subprocess.Popen(
                 shlex.split(cmd),
-                shell=False,
-                timeout=240,  # Timeout of 4 minutes
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
             )
+            outs, errs = proc.communicate(timeout=240)
+            exit_code = proc.returncode
+            if "[ERROR]" in str(errs) or "[ERROR]" in str(outs):
+                print(errs.decode("utf-8"))
+                raise Exception("Error while downloading apk file")
         except TimeoutExpired:
             exit_code = 1
             break
