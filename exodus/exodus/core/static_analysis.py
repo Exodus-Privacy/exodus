@@ -163,22 +163,21 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
             handle, DEVICE_CODE_NAMES[retry % MAX_RETRIES], tmp_dir)
         try:
-            proc = subprocess.Popen(
+            output = subprocess.check_output(
                 shlex.split(cmd),
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE
+                stderr=subprocess.STDOUT,
+                timeout=240  # Timeout of 4 minutes
             )
-            outs, errs = proc.communicate(timeout=240)
-            exit_code = proc.returncode
-            if "[ERROR]" in str(errs) or "[ERROR]" in str(outs):
-                print(errs.decode("utf-8"))
+            print(output.decode("utf-8"))
+
+            if "[ERROR]" in str(output):
                 raise Exception("Error while downloading apk file")
+
+            exit_code = 0
         except TimeoutExpired:
-            exit_code = 1
             break
         except Exception as e:
             logging.info(e)
-            exit_code = 1
 
         apk = Path(apk_tmp)
         if apk.is_file():
