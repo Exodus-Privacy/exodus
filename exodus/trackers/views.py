@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.utils.translation import gettext_lazy as _
-from django.http.response import Http404
+from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http.response import Http404
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 
-from reports.models import *
+from reports.models import Application, Report
+from trackers.models import Tracker
 
 
 def index(request):
@@ -19,11 +21,11 @@ def index(request):
 
 def detail(request, tracker_id):
     try:
-        tracker = Tracker.objects.get(pk = tracker_id)
+        tracker = Tracker.objects.get(pk=tracker_id)
         # Add spaces aroung pipes for better rendering of signatures
         tracker.network_signature = tracker.network_signature.replace("|", " | ")
         tracker.code_signature = tracker.code_signature.replace("|", " | ")
-        reports_list = Report.objects.order_by('-creation_date').filter(found_trackers = tracker_id)
+        reports_list = Report.objects.order_by('-creation_date').filter(found_trackers=tracker_id)
     except Tracker.DoesNotExist:
 
         raise Http404(_("Tracker does not exist"))
@@ -38,7 +40,12 @@ def detail(request, tracker_id):
     except EmptyPage:
         reports = paginator.page(paginator.num_pages)
 
-    return render(request, 'tracker_details.html', {'tracker': tracker, 'reports': reports, 'count': reports_list.count})
+    data_to_render = {
+        'tracker': tracker,
+        'reports': reports,
+        'count': reports_list.count
+    }
+    return render(request, 'tracker_details.html', data_to_render)
 
 
 def graph(request):
