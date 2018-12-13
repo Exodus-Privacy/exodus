@@ -20,6 +20,9 @@ def index(request):
 def detail(request, tracker_id):
     try:
         tracker = Tracker.objects.get(pk = tracker_id)
+        # Add spaces aroung pipes for better rendering of signatures
+        tracker.network_signature = tracker.network_signature.replace("|", " | ")
+        tracker.code_signature = tracker.code_signature.replace("|", " | ")
         reports_list = Report.objects.order_by('-creation_date').filter(found_trackers = tracker_id)
     except Tracker.DoesNotExist:
 
