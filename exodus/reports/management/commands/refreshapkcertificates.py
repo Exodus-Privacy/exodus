@@ -41,9 +41,8 @@ class Command(BaseCommand):
                 apk_name = report.apk_file
                 apk_tmp = os.path.join(tmp_dir, apk_name)
 
-                storage_helper = RemoteStorageHelper(report.bucket)
-
                 try:
+                    storage_helper = RemoteStorageHelper(report.bucket)
                     storage_helper.get_file(apk_name, apk_tmp)
                 except Exception as e:
                     self.stdout.write(
