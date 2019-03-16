@@ -1,4 +1,5 @@
 {% extends "base.html"%}
+{% get_current_language as LANGUAGE_CODE %}
 {% load i18n %}
 {% block content %}
 <div class="row justify-content-md-center">
@@ -19,10 +20,10 @@
             <hr>
             <div class="text-center alert alert-warning">
                 <p>
-                    <a href="https://exodus-privacy.eu.org/" target="_blank">Exodus Privacy</a>
+                    <a href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}" target="_blank">Exodus Privacy</a>
                      {% trans "is a non-profit organization which provides this service for free." %}
                 </p>
-                <a class="btn btn-info" href="https://exodus-privacy.eu.org/#help" target="_blank">{% trans "Help us!" %}</a>
+                <a class="btn btn-info" href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/page/contribute/" target="_blank">{% trans "Help us!" %}</a>
             </div>
         </div>
     </div>
