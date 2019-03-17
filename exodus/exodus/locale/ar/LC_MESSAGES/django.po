@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-15 11:21+0200\n"
+"PO-Revision-Date: 2019-03-17 17:13+0000\n"
+"Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
+"Language-Team: none\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 3.5\n"
+
+#: exodus/core/apk.py:23
+msgid "Your request is running"
+msgstr "جارٍ معالجة طلبك"
+
+#: exodus/core/apk.py:33
+msgid "Unable to download the APK"
+msgstr "تعذر تنزيل ملف APK"
+
+#: exodus/core/apk.py:38
+msgid "Download APK: success"
+msgstr "تنزيل ملف APK: تم بنجاح"
+
+#: exodus/core/apk.py:51
+msgid "Unable to decode the APK"
+msgstr "تعذر فك شفرة ملف APK"
+
+#: exodus/core/apk.py:56
+msgid "Decode APK: success"
+msgstr "فك ملف APK: تم بنجاح"
+
+#: exodus/core/apk.py:70
+msgid "Unable to compute the class list"
+msgstr "تعذر حساب فئة القائمة"
+
+#: exodus/core/apk.py:75
+msgid "List embedded classes: success"
+msgstr "عرض الفئات المدمجة: تم بنجاح"
+
+#: exodus/core/apk.py:92
+msgid "A report already exists for this application version"
+msgstr "يوجد هناك تقرير عن هذه النسخة بالذات للتطبيق"
+
+#: exodus/core/apk.py:145
+msgid "Get application details: success"
+msgstr "جلب تفاصيل التطبيق: تم بنجاح"
+
+#: exodus/core/apk.py:152
+msgid "Tracker analysis: success"
+msgstr "فحص المتعقِّب: تم بنجاح"
+
+#: exodus/core/apk.py:199
+msgid "Static analysis complete"
+msgstr "اكتملت عملية التحليل الساكن"
+
+#: exodus/templates/base.html:39
+msgid "Home"
+msgstr "الرئيسية"
+
+#: exodus/templates/base.html:40
+msgid "Help us!"
+msgstr "ساعدنا!"
+
+#: exodus/templates/base.html:41
+msgid "Report an issue"
+msgstr "الإبلاغ عن مشكلة"
+
+#: exodus/templates/base.html:48
+msgid "Reports"
+msgstr "التقارير"
+
+#: exodus/templates/base.html:51
+msgid "All reports"
+msgstr "كافة التقارير"
+
+#: exodus/templates/base.html:52
+msgid "All applications"
+msgstr "كافة التطبيقات"
+
+#: exodus/templates/base.html:53
+msgid "Search"
+msgstr "البحث"
+
+#: exodus/templates/base.html:60
+msgid "Trackers"
+msgstr "المتعقّبون"
+
+#: exodus/templates/base.html:63 exodus/templates/base.html:75
+msgid "List"
+msgstr "القائمة"
+
+#: exodus/templates/base.html:64
+msgid "Statistics"
+msgstr "الإحصائيات"
+
+#: exodus/templates/base.html:71
+msgid "Analysis"
+msgstr "الفحص"
+
+#: exodus/templates/base.html:77
+msgid "Submit"
+msgstr "إرسال"
+
+#: exodus/templates/base.html:88
+msgid "Welcome on the εxodus privacy auditing platform."
+msgstr "أهلا بكم على منصة الفحص لـ εxodus privacy."
+
+#: exodus/templates/base.html:92
+msgid "This platform is meant to automatically analyze Android applications."
+msgstr "غرض هذه المنصة هو فحص تطبيقات الأندرويد آليا."
+
+#: exodus/templates/base.html:93
+msgid "It generates reports listing embedded trackers and (if possible)"
+msgstr "يقوم بإنشاء تقارير سرد للمتعقّبين المدمَجة  (إن أمكن)"
+
+#: exodus/templates/base.html:94
+msgid "associated network traffic."
+msgstr "حركة شبكة المرور المقترِنة."
+
+#: exodus/templates/base.html:98
+msgid "Find us on Mastodon:"
+msgstr "اتصل بنا على ماستدون:"
