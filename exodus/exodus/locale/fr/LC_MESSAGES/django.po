@@ -20,23 +20,23 @@ msgstr ""
 
 #: exodus/core/apk.py:23
 msgid "Your request is running"
-msgstr "Votre requête est en cours"
+msgstr "Votre requête est en cours d’exécution"
 
 #: exodus/core/apk.py:33
 msgid "Unable to download the APK"
-msgstr "Impossible de télécharger l'APK"
+msgstr "Impossible de télécharger l’APK"
 
 #: exodus/core/apk.py:38
 msgid "Download APK: success"
-msgstr "Télécharger l'APK : succès"
+msgstr "Télécharger l’APK : succès"
 
 #: exodus/core/apk.py:51
 msgid "Unable to decode the APK"
-msgstr "Impossible de décoder l'APK"
+msgstr "Impossible de décoder l’APK"
 
 #: exodus/core/apk.py:56
 msgid "Decode APK: success"
-msgstr "Décoder l'APK : succès"
+msgstr "Décoder l’APK : succès"
 
 #: exodus/core/apk.py:70
 msgid "Unable to compute the class list"
@@ -48,11 +48,11 @@ msgstr "Lister les classes embarquées : succès"
 
 #: exodus/core/apk.py:92
 msgid "A report already exists for this application version"
-msgstr "Un rapport existe déjà pour cette version de l'application"
+msgstr "Un rapport existe déjà pour cette version de l’application"
 
 #: exodus/core/apk.py:145
 msgid "Get application details: success"
-msgstr "Récupérer les détails de l'application : succès"
+msgstr "Récupérer les détails de l’application : succès"
 
 #: exodus/core/apk.py:152
 msgid "Tracker analysis: success"
