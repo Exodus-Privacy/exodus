@@ -88,7 +88,7 @@ msgstr "Code de version :"
 
 #: reports/templates/report_details.html:91
 msgid "Icon hash:"
-msgstr "Empreinte de l'icône :"
+msgstr "Empreinte de l’icône :"
 
 #: reports/templates/report_details.html:95
 #: reports/templates/report_details.html:114
@@ -139,11 +139,11 @@ msgstr "Nous avons trouvé"
 
 #: reports/templates/report_details.html:157
 msgid "of this tracker in the application:"
-msgstr "de ce traqueur dans l'application :"
+msgstr "de ce traqueur dans l’application :"
 
 #: reports/templates/report_details.html:159
 msgid "of these trackers in the application:"
-msgstr "de ces traqueurs dans l'application :"
+msgstr "de ces traqueurs dans l’application :"
 
 #: reports/templates/report_details.html:169
 msgid ""
@@ -159,14 +159,14 @@ msgid ""
 "APK. This is not a proof of activity of these trackers."
 msgstr ""
 "Voici la liste des signatures des pisteurs que nous avons trouvés par "
-"l'analyse statique de cet APK. Cela ne constitue pas une preuve de l'activité "
+"l’analyse statique de cet APK. Cela ne constitue pas une preuve de l’activité "
 "de ces pisteurs."
 
 #: reports/templates/report_details.html:173
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
-"L'application pourrait contenir un ou plusieurs pisteurs que "
-"nous n'avons pas encore identifiés."
+"L’application pourrait contenir un ou plusieurs pisteurs que "
+"nous n’avons pas encore identifiés."
 
 #: reports/templates/report_details.html:175
 msgid "If you have doubts about this report, contact us at"
@@ -174,15 +174,15 @@ msgstr "Si vous avez des doutes au sujet de ce rapport, contactez-nous à"
 
 #: reports/templates/report_details.html:176
 msgid "Exodus - Question about report"
-msgstr "Exodus - Question à propos d'un rapport"
+msgstr "Exodus - Question à propos d’un rapport"
 
 #: reports/templates/report_details.html:179
 msgid ""
 "We have not found <b>code signature</b> of any tracker we know in the "
 "application."
 msgstr ""
-"Nous n'avons pas trouvé la <b>signature</b> de pisteurs que nous "
-" connaissons dans l'application."
+"Nous n’avons pas trouvé la <b>signature</b> de pisteurs que nous "
+" connaissons dans l’application."
 
 #: reports/templates/report_details.html:187
 msgid "Permission"
@@ -225,11 +225,11 @@ msgstr[1] ""
 msgid "Permissions are actions the application can do on your phone. "
 "The severity levels are defined according to "
 msgstr ""
-"Les permissions sont les actions que l'application peut effectuer sur votre "
+"Les permissions sont les actions que l’application peut effectuer sur votre "
 "téléphone. Les niveaux de sévérité sont définis conformément aux "
 
 #: reports/templates/report_details.html:221
-msgid "Google's protection levels"
+msgid "Google’s protection levels"
 msgstr "niveaux de protection de Google"
 
 #: reports/templates/report_details.html:212
@@ -254,7 +254,7 @@ msgstr "trouvé dans"
 
 #: reports/views.py:23
 msgid "reports do not exist"
-msgstr "rapports n'existent pas"
+msgstr "rapports n’existent pas"
 
 #: reports/views.py:30
 msgid "No apps found"
@@ -266,12 +266,12 @@ msgstr "Aucun rapport trouvé"
 
 #: reports/views.py:46
 msgid "report does not exist"
-msgstr "le rapport n'existe pas"
+msgstr "le rapport n’existe pas"
 
 #: reports/views.py:64
 msgid "App does not exist"
-msgstr "L'application n'existe pas"
+msgstr "L’application n’existe pas"
 
 #: reports/views.py:81
 msgid "NetworkAnalysis do not exist"
-msgstr "L'analyse réseau n'est pas disponible"
+msgstr "L’analyse réseau n’est pas disponible"

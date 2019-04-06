@@ -21,7 +21,7 @@ msgstr ""
 #: models.py:16
 #, python-format
 msgid "%s is not a valid application handle"
-msgstr "%s n'est pas un identifiant d'application valide"
+msgstr "%s n’est pas un identifiant d’application valide"
 
 #: models.py:20
 #, python-format
@@ -30,7 +30,7 @@ msgstr "%s application introuvable sur Google Play"
 
 #: models.py:24
 msgid "This application is being analyzed."
-msgstr "Cette application est en cours d'analyse."
+msgstr "Cette application est en cours d’analyse."
 
 #: models.py:27
 msgid "Too much pending requests, please retry later"
@@ -50,18 +50,18 @@ msgstr "Applications gratuites uniquement"
 
 #: templates/query_submit.html:23
 msgid "You can find the handle in the Google Play URL of the application"
-msgstr "Vous pouvez trouver l'identifiant dans l'URL Google Play de l'application"
+msgstr "Vous pouvez trouver l’identifiant dans l’URL Google Play de l’application"
 
 #: templates/query_submit.html:32
 msgid "Perform analysis"
-msgstr "Commencer l'analyse"
+msgstr "Commencer l’analyse"
 
 #: templates/query_submit.html:39
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
-"L'analyse peut prendre du temps, vous serez automatiquement redirigé.e vers "
+"L’analyse peut prendre du temps, vous serez automatiquement redirigé.e vers "
 "le rapport"
 
 #: templates/query_submit.html:52
@@ -85,12 +85,12 @@ msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application feel-free to submit the analysis."
 msgstr ""
-"Si vous pensez qu'εxodus n'a pas encore analysé la dernière version de cette "
-"application, n'hésitez pas à soumettre l'analyse."
+"Si vous pensez qu’εxodus n’a pas encore analysé la dernière version de cette "
+"application, n’hésitez pas à soumettre l’analyse."
 
 #: templates/query_wait.html:8
 msgid "is processing your request"
-msgstr "s'occupe de votre requête"
+msgstr "traite votre requête"
 
 #: templates/query_wait.html:13
 msgid "See the report"
@@ -106,7 +106,7 @@ msgstr "Votre demande sera bientôt traitée"
 
 #: views.py:44 views.py:52
 msgid "AnalysisRequest does not exist"
-msgstr "La demande d'analyse n'existe pas"
+msgstr "La demande d’analyse n’existe pas"
 
 # TRANSLATIONS FOR EXODUS MODULE
 msgid "Website"
