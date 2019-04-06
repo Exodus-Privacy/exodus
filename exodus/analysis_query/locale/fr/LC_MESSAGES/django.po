@@ -90,7 +90,7 @@ msgstr ""
 
 #: templates/query_wait.html:8
 msgid "is processing your request"
-msgstr "traite de votre requête"
+msgstr "traite votre requête"
 
 #: templates/query_wait.html:13
 msgid "See the report"
