@@ -148,5 +148,8 @@ msgstr "Recherche"
 msgid "Trackers"
 msgstr "Pisteurs"
 
-msgid "Analysis"
-msgstr "Analyse"
+msgid "Analyzes"
+msgstr "Analyses"
+
+msgid "New analysis"
+msgstr "Nouvelle analyse"

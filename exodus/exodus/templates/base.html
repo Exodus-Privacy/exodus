@@ -67,19 +67,24 @@
                 </li>
                 &nbsp;
                 <li class="nav-item dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" id="analysis_dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% trans "Analysis" %}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="analysis_dd">
-                        {% if request.user.is_superuser %}
-                            <a class="dropdown-item" href="{% url 'analysis:index' %}">{% trans "List" %}</a>
-                        {% endif %}
-                        <a class="dropdown-item" href="{% url 'analysis:submit' %}">{% trans "Submit" %}</a>
-                    </div>
+                    <a class="btn btn-secondary" href="{% url 'analysis:submit' %}" role="button">{% trans "New analysis" %}</a>
                 </li>
                 &nbsp;
             </ul>
 
+            {% if request.user.is_superuser %}
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="btn btn-sm btn-danger dropdown-toggle" href="#" id="admin-dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans "Admin" %}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="admin-dd">
+                        <a class="dropdown-item" href="{% url 'analysis:index' %}">{% trans "Analyzes" %}</a>
+                    </div>
+                </li>
+            </ul>
+            &nbsp;
+            {% endif %}
             <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ redirect_to }}">
