@@ -16,7 +16,7 @@ construct==2.8.16
 cryptography==2.2.2
 cssutils==1.0.2
 decorator==4.1.2
-Django==1.11.5
+Django~=1.11.5
 django-celery==3.2.2
 django-filter==1.1.0
 djangorestframework==3.7.3
