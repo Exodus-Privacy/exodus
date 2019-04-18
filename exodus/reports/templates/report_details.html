@@ -197,6 +197,17 @@
                         {% plural %}
                         We have found the following permissions in the application:
                         {% endblocktrans %}
+
+                        {% if report.application.count_special_permissions or report.application.count_dangerous_permissions %}
+                            (
+                            {% if report.application.count_special_permissions %}
+                                {{ report.application.count_special_permissions }} <span class="badge badge-danger">Special</span>
+                            {% endif %}
+                            {% if report.application.count_dangerous_permissions %}
+                                {{ report.application.count_dangerous_permissions }} <span class="badge badge-warning">Dangerous</span>
+                            {% endif %}
+                            )
+                        {% endif %}
                         <br>
                         <br>
                         <table class="table table-sm table-responsive">
