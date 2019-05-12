@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-15 11:21+0200\n"
-"PO-Revision-Date: 2019-03-17 17:13+0000\n"
+"PO-Revision-Date: 2019-05-12 16:17+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.5\n"
+"X-Generator: Weblate 3.6.1\n"
 
 #: reports/templates/report_details.html:9
 msgid "Provide this URI to Electra for report completion:"
@@ -285,4 +285,60 @@ msgstr "التطبيق غير موجود"
 
 #: reports/views.py:81
 msgid "NetworkAnalysis do not exist"
-msgstr ""
+msgstr "التحليل الشبكي غير متوفر"
+
+#: reports/templates/report_details.html:55
+msgid "Version:"
+msgstr "الإصدار:"
+
+#: reports/templates/report_details.html:58
+msgid "Creator:"
+msgstr "المطوّر:"
+
+#: reports/templates/report_details.html:61
+msgid "Downloads:"
+msgstr "التنزيلات:"
+
+#: reports/templates/report_details.html:85
+msgid "APK checksum:"
+msgstr "المجموع الاختباري للمراقبة:"
+
+#: reports/templates/report_details.html:86
+msgid "Handle:"
+msgstr "المُعرِّف:"
+
+#: reports/templates/report_details.html:87
+msgid "Name:"
+msgstr "الاسم:"
+
+#: reports/templates/report_details.html:90
+msgid "Version code:"
+msgstr "رمز الإصدار:"
+
+#: reports/templates/report_details.html:91
+msgid "Icon hash:"
+msgstr "بصمة الأيقونة:"
+
+#: reports/templates/report_details.html:136
+msgid "Issuer:"
+msgstr "صادر مِن:"
+
+#: reports/templates/report_details.html:137
+msgid "Subject:"
+msgstr "العنوان:"
+
+#: reports/templates/report_details.html:138
+msgid "Serial:"
+msgstr "الرقم التسلسلي:"
+
+#: reports/templates/report_details.html:175
+msgid "If you have doubts about this report, contact us at"
+msgstr "إذا كان لديك تحفّظات حول هذا التقرير ، يرجى الاتصال بنا على"
+
+#: reports/templates/reports_list.html:11
+msgid "Report"
+msgstr "التقرير"
+
+#: reports/templates/stats_details.html:21
+msgid "found in"
+msgstr "وُجِد في"
