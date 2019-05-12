@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-15 11:21+0200\n"
-"PO-Revision-Date: 2019-03-17 17:14+0000\n"
+"PO-Revision-Date: 2019-05-12 16:19+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.5\n"
+"X-Generator: Weblate 3.6.1\n"
 
 #: trackers/templates/tracker_details.html:14
 msgid "Go to the tracker web page."
-msgstr "الذهاب إلى صفحة المتعقّب."
+msgstr "الذهاب إلى صفحة المتعقّب"
 
 #: trackers/templates/tracker_details.html:16
 msgid "Detection rules"
@@ -29,7 +29,7 @@ msgstr "قواعد الكشف"
 
 #: trackers/templates/tracker_details.html:19
 msgid "Code detection rule:"
-msgstr ""
+msgstr "قاعدة الكشف (الشفرة):"
 
 #: trackers/templates/tracker_details.html:21
 msgid "Code signature:"
@@ -37,7 +37,7 @@ msgstr "رمز التوقيع:"
 
 #: trackers/templates/tracker_details.html:23
 msgid "Network detection rule:"
-msgstr ""
+msgstr "قاعدة الكشف (الشبكة):"
 
 #: trackers/templates/tracker_details.html:36
 msgid ""
@@ -82,3 +82,7 @@ msgstr "المتتبعون غير موجودين"
 #: trackers/views.py:24 trackers/views.py:45
 msgid "tracker does not exist"
 msgstr "المتعقب غير موجود"
+
+#: trackers/views.py:24 trackers/views.py:45
+msgid "Tracker does not exist"
+msgstr "لم يتم العثور على أي متعقّب"
