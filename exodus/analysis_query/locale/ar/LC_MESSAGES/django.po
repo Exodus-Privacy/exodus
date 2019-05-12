@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-23 21:48+0200\n"
-"PO-Revision-Date: 2019-03-17 17:13+0000\n"
+"PO-Revision-Date: 2019-05-12 15:54+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -17,17 +17,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.5\n"
+"X-Generator: Weblate 3.6.1\n"
 
 #: models.py:16
 #, python-format
 msgid "%s is not a valid application handle"
-msgstr ""
+msgstr "%s ليس بمُعرّف تطبيق صحيح"
 
 #: models.py:20
 #, python-format
 msgid "%s application not found on Google Play"
-msgstr ""
+msgstr "التطبيق %s لا يوجد على متجر غوغل للتطبيقات"
 
 #: models.py:24
 msgid "This application is being analyzed."
@@ -73,7 +73,7 @@ msgstr "ساعدنا!"
 
 #: templates/query_submit.html:94
 msgid " report(s) found for"
-msgstr ""
+msgstr " تقرير وُجِد لـ"
 
 #: templates/query_submit.html:100
 msgid "Go to the report"
@@ -84,6 +84,8 @@ msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application feel-free to submit the analysis."
 msgstr ""
+"إذا كنت تعتقد أ نّ εxodus لم يقم بعد بتحليل أحدث نسخة من هذا التطبيق ، لا "
+"تتردد في طلب التحليل."
 
 #: templates/query_wait.html:8
 msgid "is processing your request"
@@ -103,4 +105,47 @@ msgstr "سيتم التعامل مع طلبك قريبا"
 
 #: views.py:44 views.py:52
 msgid "AnalysisRequest does not exist"
-msgstr ""
+msgstr "طلب التحليل غير موجود"
+
+# TRANSLATIONS FOR EXODUS MODULE
+msgid "Website"
+msgstr "موقع الويب"
+
+msgid "List"
+msgstr "القائمة"
+
+msgid "Statistics"
+msgstr "الإحصائيات"
+
+msgid "Submit"
+msgstr "أرسل"
+
+msgid "Report an issue"
+msgstr "الإبلاغ عن مشكلة"
+
+msgid "Reports"
+msgstr "التقارير"
+
+msgid "Latest reports"
+msgstr "آخِر التقارير"
+
+msgid "Most trackers"
+msgstr "مرتبة حسب عدد المتعقبين"
+
+msgid "No known trackers"
+msgstr "لم يتم التعرف على أي متعقب"
+
+msgid "Search by tracker"
+msgstr "البحث حسب المتعقب"
+
+msgid "All applications"
+msgstr "كافة التطبيقات"
+
+msgid "Search"
+msgstr "البحث"
+
+msgid "Trackers"
+msgstr "المُتعقّبون"
+
+msgid "Analysis"
+msgstr "تحليل"
