@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-15 13:30+0200\n"
-"PO-Revision-Date: 2019-03-17 17:13+0000\n"
+"PO-Revision-Date: 2019-05-12 16:18+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.5\n"
+"X-Generator: Weblate 3.6.1\n"
 
 #: templates/search_form.html:6
 msgid "Search"
@@ -30,3 +30,7 @@ msgstr "يمكنكم البحث هنا عن تطبيق باستخدام اسمه
 #: templates/search_form.html:20
 msgid "Results"
 msgstr "النتائج"
+
+#: templates/search_form.html:32
+msgid "No results found."
+msgstr "دون نتيجة."
