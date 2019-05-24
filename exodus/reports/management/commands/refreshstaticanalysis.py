@@ -11,34 +11,34 @@ class Command(BaseCommand):
     help = 'Refresh all reports'
 
     def add_arguments(self, parser):
-        parser.add_argument('report_id', nargs = '*', type = int)
+        parser.add_argument('report_id', nargs='*', type=int)
 
         parser.add_argument(
             '--all',
-            action = 'store_true',
-            dest = 'all',
-            help = 'Update all reports',
+            action='store_true',
+            dest='all',
+            help='Update all reports',
         )
 
         parser.add_argument(
             '--icons',
-            action = 'store_true',
-            dest = 'icons',
-            help = 'Update icons',
+            action='store_true',
+            dest='icons',
+            help='Update icons',
         )
 
         parser.add_argument(
             '--trackers',
-            action = 'store_true',
-            dest = 'trackers',
-            help = 'Update found trackers',
+            action='store_true',
+            dest='trackers',
+            help='Update found trackers',
         )
 
         parser.add_argument(
             '--clist',
-            action = 'store_true',
-            dest = 'clist',
-            help = 'Update clist file',
+            action='store_true',
+            dest='clist',
+            help='Update clist file',
         )
 
     def handle(self, *args, **options):
@@ -47,19 +47,28 @@ class Command(BaseCommand):
                 reports = Report.objects.order_by('-creation_date')
             except Report.DoesNotExist:
                 raise CommandError('No reports found')
-        else:
+        elif options['report_id']:
             try:
-                reports = Report.objects.filter(pk__in = options['report_id'])
+                reports = Report.objects.filter(pk__in=options['report_id'])
             except Report.DoesNotExist:
                 raise CommandError('No reports found')
+        else:
+            raise CommandError('Please specify a report id or --all option')
 
         count = 1
         for report in reports:
-            self.stdout.write(
-                self.style.SUCCESS('Start updating report "%s" - %s/%s' % (report.id, count, len(reports))))
+            self.stdout.write('Start updating report "%s" - %s/%s' % (report.id, count, len(reports)))
+
+            # report.application could fail with malformed reports
+            try:
+                handle = report.application.handle
+            except Exception as e:
+                self.stdout.write(self.style.WARNING(str(e)))
+                continue
+
             count += 1
             with tempfile.TemporaryDirectory() as tmpdir:
-                icon_name = '%s_%s.png' % (report.bucket, report.application.handle)
+                icon_name = '%s_%s.png' % (report.bucket, handle)
                 apk_name = report.apk_file
                 apk_tmp = os.path.join(tmpdir, apk_name)
 
@@ -71,12 +80,12 @@ class Command(BaseCommand):
                         storage_helper.get_file(apk_name, apk_tmp)
                     except ResponseError:
                         raise CommandError('Unable to get APK')
-                    static_analysis = StaticAnalysis(apk_path = apk_tmp)
-                    with tempfile.NamedTemporaryFile(delete = True) as fp:
+                    static_analysis = StaticAnalysis(apk_path=apk_tmp)
+                    with tempfile.NamedTemporaryFile(delete=True) as fp:
                         static_analysis.save_embedded_classes_in_file(fp.name)
                         storage_helper.put_file(fp.name, report.class_list_file)
                     self.stdout.write(
-                        self.style.SUCCESS('Successfully updated classes list of "%s"' % report.application.handle))
+                        self.style.SUCCESS('Successfully updated classes list of "%s"' % handle))
 
                 # Refresh trackers
                 if options['trackers']:
@@ -94,7 +103,7 @@ class Command(BaseCommand):
                     report.found_trackers = trackers
                     report.save()
                     self.stdout.write(
-                        self.style.SUCCESS('Successfully updated trackers list of "%s"' % report.application.handle))
+                        self.style.SUCCESS('Successfully updated trackers list of "%s"' % handle))
 
                 # Refresh icon
                 if options['icons']:
@@ -102,7 +111,7 @@ class Command(BaseCommand):
                         storage_helper.get_file(apk_name, apk_tmp)
                     except ResponseError:
                         raise CommandError('Unable to get APK')
-                    static_analysis = StaticAnalysis(apk_path = apk_tmp)
+                    static_analysis = StaticAnalysis(apk_path=apk_tmp)
                     icon_path = static_analysis.get_application_icon(storage_helper, icon_name)
                     if icon_path != '':
                         report.application.icon_path = icon_path
