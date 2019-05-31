@@ -46,6 +46,9 @@ class Application(models.Model):
     app_uid = models.CharField(max_length=128, default='')
     icon_phash = models.CharField(max_length=128, default='')
 
+    def __str__(self):
+        return self.handle
+
     def permissions(self):
         return self.permission_set.all().order_by('name')
 
@@ -84,6 +87,9 @@ class Apk(models.Model):
     name = models.CharField(max_length=200)
     sum = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
 
 class Certificate(models.Model):
     apk = models.ForeignKey(Apk, on_delete=models.CASCADE)
@@ -93,10 +99,16 @@ class Certificate(models.Model):
     subject = models.CharField(max_length=256, default='')
     fingerprint = models.CharField(max_length=256, default='')
 
+    def __str__(self):
+        return self.fingerprint
+
 
 class Permission(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
     def get_permission_details(self):
         permissions = AOSP_PERMISSIONS["permissions"]

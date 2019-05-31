@@ -34,8 +34,20 @@ class Command(BaseCommand):
 
         count = 1
         for report in reports:
-            self.stdout.write('%s/%s - Start updating report "%s"' % (count, len(reports), report.id))
+            self.stdout.write('{}/{} - Start updating report "{}"'.format(count, len(reports), report.id))
             count += 1
+
+            try:
+                if report.application:
+                    pass
+            except Exception:
+                self.stdout.write(
+                    self.style.WARNING('No application for this report'))
+                continue
+
+            if report.application.apk.certificate_set.count() > 0 and len(report.application.app_uid) > 2:
+                self.stdout.write('Already uptodate')
+                continue
 
             with tempfile.TemporaryDirectory() as tmp_dir:
                 apk_name = report.apk_file
@@ -46,20 +58,34 @@ class Command(BaseCommand):
                     storage_helper.get_file(apk_name, apk_tmp)
                 except Exception as e:
                     self.stdout.write(
-                        self.style.WARNING('Unable to get APK: '+str(e)))
+                        self.style.WARNING('Unable to get APK: {}'.format(e)))
                     continue
 
-                static_analysis = StaticAnalysis(apk_path=apk_tmp)
+                try:
+                    sa = StaticAnalysis(apk_path=apk_tmp)
 
-                if report.application.apk.certificate_set.count() == 0:
-                    certificates = static_analysis.get_certificates()
-                    for certificate in certificates:
-                        c = Certificate(apk=report.application.apk)
-                        c.issuer = certificate.issuer
-                        c.fingerprint = certificate.fingerprint
-                        c.subject = certificate.subject
-                        c.serial_number = certificate.serial
-                        c.save(force_insert=True)
-                    self.stdout.write(self.style.SUCCESS('Certificates added'))
-                else:
-                    self.stdout.write('Certificates already in the DB')
+                    if report.application.apk.certificate_set.count() == 0:
+                        certificates = sa.get_certificates()
+                        for certificate in certificates:
+                            c = Certificate(apk=report.application.apk)
+                            c.issuer = certificate.issuer
+                            c.fingerprint = certificate.fingerprint
+                            c.subject = certificate.subject
+                            c.serial_number = certificate.serial
+                            c.save(force_insert=True)
+                        self.stdout.write(self.style.SUCCESS('Certificates added'))
+                    else:
+                        self.stdout.write('Certificates already in the DB')
+
+                    if len(report.application.app_uid) < 2:
+                        app_uid = sa.get_application_universal_id()
+                        if len(app_uid) >= 16:
+                            report.application.app_uid = app_uid
+                            report.application.save()
+                            self.stdout.write(self.style.SUCCESS('UAID added'))
+                    else:
+                        self.stdout.write('UAID already in the DB')
+
+                except Exception as e:
+                    self.stdout.write(
+                        self.style.WARNING('Error: {}'.format(e)))
