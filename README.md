@@ -1,40 +1,38 @@
 # εxodus
-**εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be
-dangerous for user privacy like ads, tracking, analytics, …
+
+**εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be dangerous for user privacy like ads, tracking, analytics, …
 
 The official instance of εxodus is available [here](https://reports.exodus-privacy.eu.org/).
 
 ## Contribute to the identification of trackers
 
-All the data about trackers are stored on [ETIP](https://etip.exodus-privacy.eu.org) (εxodus tracker investigation platform).
+All data about trackers are stored on [ETIP](https://etip.exodus-privacy.eu.org) (εxodus tracker investigation platform).
 
-If you wish to help us identify new trackers, you can request an ETIP account by sending a pseudonym and an email address to etip@exodus-privacy.eu.org
+If you wish to help us identify new trackers, you can request an ETIP account by sending a username and an email address to [etip@exodus-privacy.eu.org](mailto:etip@exodus-privacy.eu.org)
 
-## Development environment
+## Getting Started
 
-You have 3 different ways of setting up your development environment (Docker, Vagrant or manual).
-Check the [FAQ](doc/faq.md) if you encounter problem.
+### Installing
 
-### Docker
+You have 3 different ways of setting up your development environment:
 
-Follow the [Docker setup](doc/docker.md) guide.
+- [Manual](doc/install/manual.md)
+- [Docker](doc/install/docker.md)
+- [Vagrant](doc/install/vagrant.md)
 
-### Vagrant
+### Analyzing an application
 
-Install [vagrant](https://www.vagrantup.com/) and [ansible](https://www.ansible.com/) then execute:
+Browse to [the analysis submission page](http://127.0.0.1:8000/analysis/submit/) and start a new analysis (ex: `fr.meteo`).
+When the analysis is finished, compare the results with the same report from [the official instance](https://reports.exodus-privacy.eu.org).
 
-```
-vagrant up
-```
+### FAQ
 
-Now, you can [make a tea](https://wiki.laquadrature.net/TeaHouse).
+Check the [FAQ](doc/faq.md) if you encounter any problem or need an extended documentation about εxodus.
 
-### Manual installation
+## API documentation
 
-Follow the [step by step installation](doc/install.md) guide.
+You can find the εxodus API documentation [here](doc/api.md).
 
-### Analyse an application
+## License
 
-Browse [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) and enter your login and password. Then,
-browse [http://127.0.0.1:8000/analysis/submit/](http://127.0.0.1:8000/analysis/submit/), specify an application handle
-and click on submit.
+This project is licensed under the GNU AGPL v3 License - see the [LICENSE](LICENSE) file for details.
