@@ -9,7 +9,8 @@ RUN apt-get update && \
     libssl-dev \
     libffi-dev \
     libxml2-dev \
-    libxslt1-dev
+    libxslt1-dev \
+    postgresql-client
 
 COPY ./requirements.txt /opt/requirements.txt
 RUN pip3 install -r /opt/requirements.txt
@@ -27,4 +28,4 @@ RUN chown -R exodus:exodus /home/exodus
 USER exodus
 WORKDIR /home/exodus/exodus/exodus
 
-CMD ["sleep", "infinity"]
+CMD ["/entrypoint.sh", "init"]

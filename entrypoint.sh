@@ -4,7 +4,6 @@ EXODUS_HOME="/home/exodus/exodus"
 
 function createDB() {
 	cd ${EXODUS_HOME}/exodus/
-	python3 manage.py migrate --fake-initial --settings=exodus.settings.docker
 	python3 manage.py makemigrations --settings=exodus.settings.docker
 	python3 manage.py migrate --settings=exodus.settings.docker
 }
@@ -30,7 +29,21 @@ function importTrackers() {
 	python3 manage.py importtrackers --settings=exodus.settings.docker
 }
 
+function init() {
+	while ! pg_isready -h db -p 5432 > /dev/null 2> /dev/null; do
+		echo "Connecting to db (postgresql) Failed: Waiting ..."
+    	sleep 1
+	done
+	createDB
+	importTrackers
+	echo "Exodus is ready."
+	startFrontend
+}
+
 case "${1}" in
+	"init")
+		init
+		;;
 	"create-db")
 		createDB
 		;;
@@ -47,3 +60,4 @@ case "${1}" in
 		importTrackers
 		;;
 esac
+
