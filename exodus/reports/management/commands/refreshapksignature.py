@@ -50,7 +50,7 @@ class Command(BaseCommand):
                 except ResponseError:
                     raise CommandError('Unable to get APK')
                 static_analysis = StaticAnalysis(apk_path = apk_tmp)
-                icon_path = static_analysis.get_application_icon(storage_helper, icon_name)
+                icon_path, icon_phash = static_analysis.get_icon_and_phash(storage_helper, icon_name)
                 if icon_path != '':
                     report.application.icon_path = icon_path
                     report.application.save()
@@ -59,7 +59,7 @@ class Command(BaseCommand):
                     report.application.app_uid = static_analysis.get_application_universal_id()
                 except Exception as e:
                     self.style.WARNING(e)
-                report.application.icon_phash = static_analysis.get_icon_phash()
+                report.application.icon_phash = icon_phash
                 report.application.save()
                 if report.application.apk.certificate_set.count() == 0:
                     certificates = static_analysis.get_certificates()
@@ -70,4 +70,3 @@ class Command(BaseCommand):
                         c.subject = certificate.subject
                         c.serial_number = certificate.serial
                         c.save(force_insert = True)
-

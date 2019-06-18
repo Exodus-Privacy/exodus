@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 import os
-import requests
 import shlex
 import shutil
 import time
@@ -13,7 +12,6 @@ from tempfile import NamedTemporaryFile
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
 from future.moves import subprocess
-from gplaycli import gplaycli
 from minio.error import (ResponseError)
 
 from trackers.models import Tracker
@@ -30,99 +28,48 @@ class StaticAnalysis(CoreSA):
         self.signatures = Tracker.objects.order_by('name')
         self._compile_signatures()
 
-    def get_application_icon(self, storage, icon_name):
+    def get_icon_and_phash(self, storage, icon_name):
         """
-        Get the application icon and save it to Minio
+        Get the application icon, save it to Minio and get its perceptual hash
         :param storage: minio storage helper
         :param icon_name: file name for the icon
-        :return: icon name if success, empty string in case of failure
+        :return: icon name and phash if success, otherwise empty strings
         """
         with NamedTemporaryFile() as f:
             icon_path = self.save_icon(f.name)
             if icon_path is None:
-                return ''
+                return ('', '')
+
             try:
                 storage.put_file(f.name, icon_name)
             except ResponseError as err:
                 logging.info(err)
-                return ''
-            return icon_name
+                icon_name = ''
 
+            icon_phash = self.get_phash(f.name)
 
-# TODO: remove this class if unused
-class ExGPlaycli(gplaycli.GPlaycli):
-    def __init__(self):
-        gplaycli.GPlaycli.__init__(self)
+            return (icon_name, icon_phash)
 
-    def after_download(self, failed_downloads):
-        pass
-
-    def retrieve_token(self, force_new=False):
-        token, gsfid = self.get_cached_token()
-        if token is not None and not force_new:
-            logging.info("Using cached token.")
-            return token, gsfid
-        logging.info("Retrieving token ...")
-        r = requests.get(self.token_url)
-        if r.text == 'Auth error':
-            msg = 'Token dispenser auth error, probably too many connections'
-            logging.info(msg)
-            raise ConnectionError(msg)
-        elif r.text == "Server error":
-            msg = 'Token dispenser server error'
-            logging.info(msg)
-            raise ConnectionError(msg)
-        token, gsfid = r.text.split(" ")
-        logging.info("Token: %s", token)
-        logging.info("GSFId: %s", gsfid)
-        self.token = token
-        self.gsfid = gsfid
-        self.write_cached_token(token, gsfid)
-        return token, gsfid
-
-
-def get_application_details(handle):
-    """
-    Get the application details like creator, number of downloads, etc.
-    :param handle: application handle
-    :return: application details dictionary
-    """
-    TIME_BEFORE_RETRY = 2
-    API_SEARCH_LIMIT = 5
-
-    gpc = gplaycli.GPlaycli()
-    gpc.token_enable = True
-    gpc.token_url = "https://matlink.fr/token/email/gsfid"
-    try:
-        gpc.token, gpc.gsfid = gpc.retrieve_token(force_new=False)
-    except (ConnectionError, ValueError):
-        try:
-            time.sleep(TIME_BEFORE_RETRY)
-            gpc.token, gpc.gsfid = gpc.retrieve_token(force_new=True)
-        except (ConnectionError, ValueError):
+    def get_app_info(self):
+        """
+        Get the application information like creator, number of downloads, etc.
+        :return: app info dictionary if available, None otherwise
+        """
+        app_details = self.get_application_details()
+        if app_details is None:
             return None
-    gpc.connect()
-    objs = gpc.api.search(handle, API_SEARCH_LIMIT)
-    try:
-        for obj in objs:
-            if obj['docId'] != handle:
-                continue
-            infos = {
-                'title': obj['title'],
-                'creator': obj['author'],
-                'size': obj['installationSize'],
-                'downloads': obj['numDownloads'],
-                'update': obj['uploadDate'],
-                'handle': obj['docId'],
-                'version': obj['versionCode'],
-                'rating': 'unknown',
-            }
-            return infos
-    except Exception as e:
-        logging.error('Unable to parse applications details')
-        logging.error(e)
-        return None
-    return None
+
+        info = {
+            'title': app_details.get('title'),
+            'creator': app_details.get('author'),
+            'size': app_details.get('installationSize'),
+            'downloads': app_details.get('numDownloads'),
+            'update': app_details.get('uploadDate'),
+            'handle': app_details.get('docId'),
+            'version': app_details.get('versionCode'),
+            'rating': 'unknown',
+        }
+        return info
 
 
 def remove_token():
