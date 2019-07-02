@@ -69,18 +69,22 @@ msgstr ""
 msgid "Help us!"
 msgstr ""
 
-#: templates/query_submit.html:94
-msgid " report(s) found for"
+#: templates/query_submit.html:97
+msgid "This application has already been analyzed!"
 msgstr ""
 
-#: templates/query_submit.html:100
-msgid "Go to the report"
+#: templates/query_submit.html:103
+msgid "analyzed on"
 msgstr ""
 
-#: templates/query_submit.html:106
+#: templates/query_submit.html:103
+msgid "Go to the latest report"
+msgstr ""
+
+#: templates/query_submit.html:107
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
-"application feel-free to submit the analysis."
+"application, feel free to submit the analysis."
 msgstr ""
 
 #: templates/query_wait.html:8
