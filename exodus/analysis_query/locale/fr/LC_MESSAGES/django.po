@@ -73,17 +73,21 @@ msgid "Help us!"
 msgstr "Aidez-nous !"
 
 #: templates/query_submit.html:94
-msgid " report(s) found for"
-msgstr " rapport(s) trouvé(s) pour"
+msgid "This application has already been analyzed!"
+msgstr "Cette application a déjà été analysée !"
 
 #: templates/query_submit.html:100
-msgid "Go to the report"
-msgstr "Accéder au rapport"
+msgid "analyzed on"
+msgstr "analysée le"
+
+#: templates/query_submit.html:100
+msgid "Go to the latest report"
+msgstr "Accéder au dernier rapport"
 
 #: templates/query_submit.html:106
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
-"application feel-free to submit the analysis."
+"application, feel free to submit the analysis."
 msgstr ""
 "Si vous pensez qu’εxodus n’a pas encore analysé la dernière version de cette "
 "application, n’hésitez pas à soumettre l’analyse."
