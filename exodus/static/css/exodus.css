@@ -11,3 +11,7 @@ tr.permission_line {
 tr.permission_line > td {
     vertical-align:middle;
 }
+td.report {
+    border: 0px;
+    vertical-align: middle;
+}
