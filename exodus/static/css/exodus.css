@@ -2,7 +2,7 @@ body {
     font-size: 0.9rem;
 }
 .badge.reports {
-    width: 20px;
+    min-width: 22px;
 }
 tr.permission_line {
     height:51px;
