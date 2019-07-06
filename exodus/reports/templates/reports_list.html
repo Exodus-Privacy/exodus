@@ -6,30 +6,40 @@
 <div class="row justify-content-md-center">
     <div class="col-lg-6 col-centered">
     {% if reports %}
-    <div class="alert bg-light">
-        <div class="alert-heading">
-            <h4>
+        <div style="text-align:center">
+            <h2>
                 <span class="badge badge-info">{{ count }}</span> {% trans "Report" %}{{ count|pluralize }}
-                {% if title %}
-                    <small>({{ title }})</small>
-                {% endif %}
-            </h4>
+                {% if handle %}<small>({{ handle }})</small>{% endif %}
+            </h2>
         </div>
-        <hr>
-        <table style="margin: auto; border:none" class="table table-hover table-responsive">
+
+        {% if not handle %}
+            <select onchange="this.options[this.selectedIndex].value && (window.location = '/reports/' + this.options[this.selectedIndex].value);">
+                <option value=" ">{% trans "Latest reports" %}</option>
+                <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>{% trans "Most trackers" %}</option>
+                <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>{% trans "No known trackers" %}</option>
+            </select>
+        {% endif %}
+
+        <table style="margin: auto" class="table table-responsive">
         {% for report in reports %}
-            <tr class="d-flex">
-                <td class="col-md-6 text-truncate">
-                    <a href="{% url 'reports:detail' report.id %}">
-                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
-                        {% if report.application.name.strip %}
-                            <b>{{ report.application.name }}</b>
-                        {% else %}
-                            <b>{{ report.application.handle }}</b>
-                        {% endif %}
-                    </a>
+            <tr>
+                <td class="report" style="width:5%">
+                    <img data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="50px" class="rounded" alt="{{app.handle}}">
                 </td>
-                <td class="col-md-4 text-truncate">
+                <td class="col-md-4 text-truncate report">
+                    <span>
+                        <a href="{% url 'reports:detail' report.id %}">
+                            {% if report.application.name.strip %}
+                                <b>{{ report.application.name }}</b>
+                            {% else %}
+                                <b>{{ report.application.handle }}</b>
+                            {% endif %}
+                        </a>
+                    </span>
+                    <br>
+                    <span class="small"><b>{{ report.application.version|truncatechars_html:20 }}</b></span>
+                    <br>
                     <span>
                         {% with nb_trackers=report.found_trackers.count %}
                             {% if nb_trackers == 0 %}
@@ -41,9 +51,6 @@
                             {% endif %}
                             {% trans "tracker" %}{{ nb_trackers|pluralize }}
                         {% endwith %}
-                    </span>
-                    <br>
-                    <span>
                         {% with nb_perm=report.application.permission_set.count %}
                             {% if nb_perm == 0 %}
                                 <span class="badge badge-success reports">{{ nb_perm }}</span>
@@ -56,13 +63,9 @@
                         {% endwith %}
                     </span>
                 </td>
-                <td class="col-md-2 text-truncate">
-                     <span class="small"><b>{{ report.application.version|truncatechars_html:8 }}</b></span>
-                </td>
             </tr>
         {% endfor %}
         </table>
-    </div>
     <div>
         <ul class="pagination pagination-sm justify-content-center">
             {% if reports.has_previous %}

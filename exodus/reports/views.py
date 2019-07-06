@@ -37,25 +37,29 @@ def _paginate(request, data):
 
 
 def get_reports(request, handle=None):
-    title = ''
     filter = request.GET.get('filter', None)
     try:
         if filter == 'no_trackers':
             reports = Report.objects.filter(found_trackers=None).order_by('-creation_date')
-            title = _('No known trackers')
         elif filter == 'most_trackers':
             reports = Report.objects.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
-            title = _('Most trackers')
         else:
             reports = Report.objects.order_by('-creation_date')
             if handle:
                 reports = reports.filter(application__handle=handle)
-                title = handle
     except Report.DoesNotExist:
         raise Http404(_("reports do not exist"))
 
     reports_paged = _paginate(request, reports)
-    return render(request, 'reports_list.html', {'reports': reports_paged, 'count': reports.count(), 'title': title})
+    return render(
+        request, 'reports_list.html',
+        {
+            'reports': reports_paged,
+            'count': reports.count(),
+            'filter': filter,
+            'handle': handle
+        }
+    )
 
 
 def get_all_apps(request):
