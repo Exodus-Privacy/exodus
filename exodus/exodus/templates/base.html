@@ -41,19 +41,11 @@
                 </li>
                 &nbsp;
                 <li class="nav-item dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" id="reports_dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% trans "Reports" %}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="reports_dd">
-                        <div class="dropdown-header">{% trans "Reports" %}</div>
-                        <a class="dropdown-item" href="{% url 'reports:index' %}">{% trans "Latest reports" %}</a>
-                        <a class="dropdown-item" href="{% url 'reports:index' %}?filter=most_trackers">{% trans "Most trackers" %}</a>
-                        <a class="dropdown-item" href="{% url 'reports:index' %}?filter=no_trackers">{% trans "No known trackers" %}</a>
-                        <!-- <a class="dropdown-item" href="{% url 'reports:by_tracker' %}">{% trans "Search by tracker" %}</a> -->
-                        <div class="dropdown-header">{% trans "Applications" %}</div>
-                        <a class="dropdown-item" href="{% url 'reports:get_all_apps' %}">{% trans "All applications" %}</a>
-                        <a class="dropdown-item" href="{% url 'search:search' %}">{% trans "Search" %}</a>
-                    </div>
+                    <a class="btn btn-secondary" href="{% url 'reports:index' %}" role="button">{% trans "Reports" %}</a>
+                </li>
+                &nbsp;
+                <li class="nav-item dropdown">
+                    <a class="btn btn-secondary" href="{% url 'reports:get_all_apps' %}" role="button">{% trans "Applications" %}</a>
                 </li>
                 &nbsp;
                 <li class="nav-item dropdown">
