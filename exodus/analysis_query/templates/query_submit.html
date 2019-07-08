@@ -67,7 +67,7 @@ var show_spinner=function(){
     s.style.display = "block"
   }
 }
-jQuery("#handle").on("change paste keyup", function() {
+jQuery("#handle").on("input", function() {
     // Extract handle from Google Play url
     const regex = /id=((?:\w+\.)+\w+)/gmi;
     const handle = jQuery.trim(jQuery(this).val())
