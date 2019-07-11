@@ -1,5 +1,5 @@
 FROM debian:9
-MAINTAINER Codimp
+LABEL maintainer="Codimp"
 
 RUN apt-get update && \
     apt-get install -y \
