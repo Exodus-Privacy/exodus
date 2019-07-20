@@ -15,19 +15,19 @@
             {% for t in trackers %}
             <tr>
                 <td class="text-right">
-                  <a href="{% url 'trackers:detail' t.id %}">{{t.name}} </a>
+                  <a href="{% url 'trackers:detail' t.id %}">{{ t.name }} </a>
                 </td>
                 <td class="small text-muted">
-                    {% trans "found in" %} {{t.count}} app{{ t.count|pluralize }}
+                    {% trans "found in" %} {{ t.count }} {% trans "report" %}{{ t.count|pluralize }}
                 </td>
                 <td style="width:300px">
                   <div class="progress">
                       {% if t.score >= 50 %}
-                          <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{t.score}}%;" aria-valuenow="{{t.score}}" aria-valuemin="0" aria-valuemax="100">{{t.score}}%</div>
-                      {% elif t.score >= 33 %}
-                          <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{t.score}}%;" aria-valuenow="{{t.score}}" aria-valuemin="0" aria-valuemax="100">{{t.score}}%</div>
+                          <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
+                      {% elif  t.score  >= 33 %}
+                          <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
                       {% else %}
-                          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{t.score}}%;" aria-valuenow="{{t.score}}" aria-valuemin="0" aria-valuemax="100">{{t.score}}%</div>
+                          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
                       {% endif %}
                   </div>
                 </td>
