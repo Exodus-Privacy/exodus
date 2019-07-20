@@ -81,3 +81,6 @@ msgstr "Aucun pisteur disponible"
 #: trackers/views.py:24 trackers/views.py:45
 msgid "Tracker does not exist"
 msgstr "Aucun pisteur trouvé"
+
+msgid "report"
+msgstr "rapport"

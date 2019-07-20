@@ -48,6 +48,26 @@ def detail(request, tracker_id):
     return render(request, 'tracker_details.html', data_to_render)
 
 
+def get_stats(request):
+    NB_OF_TRACKERS_TO_DISPLAY = 21
+
+    try:
+        trackers = Tracker.objects.order_by('name')
+    except Tracker.DoesNotExist:
+        raise Http404(_("Tracker does not exist"))
+
+    reports_number = Report.objects.count()
+
+    for t in trackers:
+        t.count = Report.objects.filter(found_trackers=t.id).count()
+        t.score = int(100.*t.count/reports_number)
+
+    sorted_trackers = sorted(trackers, key=lambda i: i.score, reverse=True)
+    sorted_trackers = sorted_trackers[0:NB_OF_TRACKERS_TO_DISPLAY]
+
+    return render(request, 'stats_details.html', {'trackers': sorted_trackers})
+
+
 def graph(request):
     try:
         g = "digraph {<br>"

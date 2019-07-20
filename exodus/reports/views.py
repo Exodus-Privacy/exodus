@@ -6,7 +6,6 @@ import sys
 
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db import connection
 from django.db.models import Count
 from django.http import Http404
 from django.http import HttpResponse
@@ -105,37 +104,6 @@ def get_app_icon(request, app_id):
         print(err)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'android.jpeg'), "rb") as f:
             return HttpResponse(f.read(), content_type="image/jpeg")
-
-
-def get_stats(request):
-    from collections import namedtuple
-    try:
-        apps = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
-    except Exception as e:
-        raise Http404(e)
-
-    tracker_query = """
-        SELECT tt.name, tt.id, COUNT(*) as count
-        FROM reports_report_found_trackers AS ft, trackers_tracker AS tt
-        WHERE tt.id = ft.tracker_id
-        GROUP BY ft.tracker_id, tt.name, tt.id
-        ORDER BY count
-        DESC LIMIT 21;
-    """
-    cursor = connection.cursor()
-    cursor.execute(tracker_query)
-    desc = cursor.description
-    nt_result = namedtuple('Result', [col[0] for col in desc])
-    trackers = [nt_result(*row) for row in cursor.fetchall()]
-
-    sum = len(apps)
-    tracker_results = []
-    for t in trackers:
-        score = int(100.*t.count/sum)
-        count = int(t.count)
-        tracker_results.append({'id': t.id, 'name': t.name, 'score': score, 'count': count})
-
-    return render(request, 'stats_details.html', {'trackers': tracker_results})
 
 
 def by_tracker(request):
