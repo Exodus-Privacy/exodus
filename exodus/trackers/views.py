@@ -51,12 +51,11 @@ def detail(request, tracker_id):
 def get_stats(request):
     NB_OF_TRACKERS_TO_DISPLAY = 21
 
-    try:
-        trackers = Tracker.objects.order_by('name')
-    except Tracker.DoesNotExist:
-        raise Http404(_("Tracker does not exist"))
-
+    trackers = Tracker.objects.order_by('name')
     reports_number = Report.objects.count()
+
+    if trackers.count() == 0 or reports_number == 0:
+        raise Http404(_("report does not exist"))
 
     for t in trackers:
         t.count = Report.objects.filter(found_trackers=t.id).count()
