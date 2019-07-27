@@ -28,7 +28,11 @@ class Report(models.Model):
     class_list_file = models.CharField(max_length=200, default='')
 
     def __str__(self):
-        return self.application.handle
+        try:
+            handle = self.application.handle
+        except Exception:
+            handle = "<malformed report>"
+        return handle
 
     def trackers(self):
         return self.found_trackers.order_by('name')
