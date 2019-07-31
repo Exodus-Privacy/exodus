@@ -61,7 +61,7 @@ def get_stats(request):
         t.count = Report.objects.filter(found_trackers=t.id).count()
         t.score = int(100.*t.count/reports_number)
 
-    sorted_trackers = sorted(trackers, key=lambda i: i.score, reverse=True)
+    sorted_trackers = sorted(trackers, key=lambda i: i.count, reverse=True)
     sorted_trackers = sorted_trackers[0:NB_OF_TRACKERS_TO_DISPLAY]
 
     return render(request, 'stats_details.html', {'trackers': sorted_trackers})
