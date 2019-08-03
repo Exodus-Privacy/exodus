@@ -95,61 +95,54 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :return: True if succeed, False otherwise
     """
     DEVICE_CODE_NAMES = [
-        '',
-        '',
-        '-dc hammerhead',
-        '-dc manta',
-        '-dc cloudbook',
-        '-dc bullhead'
+        'bacon',
+        'hammerhead',
+        'manta',
+        'cloudbook',
+        'bullhead'
     ]
-    MAX_RETRIES = len(DEVICE_CODE_NAMES)
+    RETRY_PER_DEVICE = 3
 
-    retry = MAX_RETRIES
-    exit_code = 1
-    while retry > 0:
-        cmd = 'gplaycli -v -a -y -pd %s %s -f %s/' % (
-            handle, DEVICE_CODE_NAMES[retry % MAX_RETRIES], tmp_dir)
-        try:
-            output = subprocess.check_output(
-                shlex.split(cmd),
-                stderr=subprocess.STDOUT,
-                timeout=240  # Timeout of 4 minutes
-            )
-            print(output.decode("utf-8"))
+    refreshed_token = False
+    for device in DEVICE_CODE_NAMES:
+        cmd = 'gplaycli -v -a -y -pd {} -dc {} -f {}/'.format(
+            handle,
+            device,
+            tmp_dir
+        )
+        for i in range(RETRY_PER_DEVICE):
+            try:
+                output = subprocess.check_output(
+                    shlex.split(cmd),
+                    stderr=subprocess.STDOUT,
+                    timeout=240  # Timeout of 4 minutes
+                )
+                logging.info(output.decode("utf-8"))
+                if "[ERROR]" in str(output):
+                    raise Exception("Error while downloading apk file")
 
-            if "[ERROR]" in str(output):
-                raise Exception("Error while downloading apk file")
+                apk = Path(apk_tmp)
+                if apk.is_file():
+                    try:
+                        storage.put_file(apk_tmp, apk_name)
+                        return True
+                    except ResponseError as err:
+                        logging.info(err)
+                        return False
 
-            exit_code = 0
-        except TimeoutExpired:
-            break
-        except Exception as e:
-            logging.info(e)
+            except TimeoutExpired:
+                logging.warning("Timeout of gplaycli download command")
+                return False
+            except Exception as e:
+                logging.info(e)
 
-        apk = Path(apk_tmp)
-        if apk.is_file():
-            exit_code = 0
+            logging.info("Could not download with device {}".format(device))
+            if not refreshed_token:
+                remove_token()
+                refreshed_token = True
+            time.sleep(2)
 
-        if exit_code == 0:
-            break
-
-        # Remove the token only if it failed on the first attempt
-        if retry == MAX_RETRIES:
-            remove_token()
-
-        retry -= 1
-        time.sleep(2)
-
-    # Upload APK in storage
-    apk = Path(apk_tmp)
-    if exit_code == 0 and apk.is_file():
-        try:
-            storage.put_file(apk_tmp, apk_name)
-        except ResponseError as err:
-            logging.info(err)
-            return False
-
-    return exit_code == 0
+    return False
 
 
 def clear_analysis_files(storage, tmp_dir, bucket, remove_from_storage=False):
