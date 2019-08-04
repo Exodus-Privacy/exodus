@@ -2,7 +2,7 @@
 <!doctype html>
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
-<head>
+  <head>
     {% load static %}
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/exodus.css" %}">
@@ -13,85 +13,85 @@
     <script src="{% static "js/handlebars.min-latest.js" %}" ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>εxodus</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="{% url 'home' %}">
-            <object width="50px" style="margin-bottom:-15px" data="/static/img/logo_purple.svg" type="image/svg+xml">
-            </object>
-            <span class="h2">εxodus</span> <span class="small text-muted">v1.3</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <object width="50px" style="margin-bottom:-15px" data="/static/img/logo_purple.svg" type="image/svg+xml">
+        </object>
+        <span class="h2">εxodus</span> <span class="small text-muted">v1.3</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mr-auto">
-                &nbsp;
-                <li class="nav-item dropdown">
-                    <a class="btn btn-info dropdown-toggle" href="#" id="ep_dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Exodus Privacy
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="ep_dd">
-                        <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE }}">{% trans "Website" %}</a>
-                        <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE}}/page/contribute/">{% trans "Help us!" %}</a>
-                        <a class="dropdown-item" target="_blank" href="https://github.com/Exodus-Privacy/exodus/issues">{% trans "Report an issue" %}</a>
-                    </div>
-                </li>
-                &nbsp;
-                <li class="nav-item dropdown">
-                    <a class="btn btn-secondary" href="{% url 'reports:index' %}" role="button">{% trans "Reports" %}</a>
-                </li>
-                &nbsp;
-                <li class="nav-item dropdown">
-                    <a class="btn btn-secondary" href="{% url 'reports:get_all_apps' %}" role="button">{% trans "Applications" %}</a>
-                </li>
-                &nbsp;
-                <li class="nav-item dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" id="trackers_dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% trans "Trackers" %}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="trackers_dd">
-                        <a class="dropdown-item" href="{% url 'trackers:index' %}">{% trans "List" %}</a>
-                        <a class="dropdown-item" href="{% url 'trackers:get_stats' %}">{% trans "Statistics" %}</a>
-                    </div>
-                </li>
-                &nbsp;
-                <li class="nav-item dropdown">
-                    <a class="btn btn-secondary" href="{% url 'analysis:submit' %}" role="button">{% trans "New analysis" %}</a>
-                </li>
-                &nbsp;
-            </ul>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+          &nbsp;
+          <li class="nav-item dropdown">
+            <a class="btn btn-info dropdown-toggle" href="#" id="ep_dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Exodus Privacy
+            </a>
+            <div class="dropdown-menu" aria-labelledby="ep_dd">
+              <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE }}">{% trans "Website" %}</a>
+              <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE}}/page/contribute/">{% trans "Help us!" %}</a>
+              <a class="dropdown-item" target="_blank" href="https://github.com/Exodus-Privacy/exodus/issues">{% trans "Report an issue" %}</a>
+            </div>
+          </li>
+          &nbsp;
+          <li class="nav-item dropdown">
+            <a class="btn btn-secondary" href="{% url 'reports:index' %}" role="button">{% trans "Reports" %}</a>
+          </li>
+          &nbsp;
+          <li class="nav-item dropdown">
+            <a class="btn btn-secondary" href="{% url 'reports:get_all_apps' %}" role="button">{% trans "Applications" %}</a>
+          </li>
+          &nbsp;
+          <li class="nav-item dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" id="trackers_dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% trans "Trackers" %}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="trackers_dd">
+              <a class="dropdown-item" href="{% url 'trackers:index' %}">{% trans "List" %}</a>
+              <a class="dropdown-item" href="{% url 'trackers:get_stats' %}">{% trans "Statistics" %}</a>
+            </div>
+          </li>
+          &nbsp;
+          <li class="nav-item dropdown">
+            <a class="btn btn-secondary" href="{% url 'analysis:submit' %}" role="button">{% trans "New analysis" %}</a>
+          </li>
+          &nbsp;
+        </ul>
 
-            {% if request.user.is_superuser %}
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="btn btn-sm btn-danger dropdown-toggle" href="#" id="admin-dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% trans "Admin" %}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="admin-dd">
-                        <a class="dropdown-item" href="{% url 'analysis:index' %}">{% trans "Analyzes" %}</a>
-                        <a class="dropdown-item" href="{% url 'admin:logout' %}">{% trans "Log out" %}</a>
-                    </div>
-                </li>
-            </ul>
-            &nbsp;
-            {% endif %}
-            <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}">
-                <select class="custom-select custom-select-sm" name="language" onchange='if(this.value !=  "{{ LANGUAGE_CODE }}") { this.form.submit(); }'>
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
-                            {{ language.code }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </form>
+        {% if request.user.is_superuser %}
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="btn btn-sm btn-danger dropdown-toggle" href="#" id="admin-dd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% trans "Admin" %}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="admin-dd">
+              <a class="dropdown-item" href="{% url 'analysis:index' %}">{% trans "Analyzes" %}</a>
+              <a class="dropdown-item" href="{% url 'admin:logout' %}">{% trans "Log out" %}</a>
+            </div>
+          </li>
+        </ul>
+        &nbsp;
+        {% endif %}
+        <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ redirect_to }}">
+          <select class="custom-select custom-select-sm" name="language" onchange='if(this.value !=  "{{ LANGUAGE_CODE }}") { this.form.submit(); }'>
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+              <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                {{ language.code }}
+              </option>
+            {% endfor %}
+          </select>
+        </form>
 
       </div>
     </nav>
@@ -99,34 +99,34 @@
     <br>
 
     <div class="container-fluid">
-        {% block content %}
-            <!--<div class="row justify-content-md-center">-->
-                <!--<div class="col-lg-6 col-centered">-->
-                    <!--<div class="form-group jumbotron text-center">-->
-                        <!--<h1>"Welcome on the εxodus privacy auditing platform."</h1>-->
-                        <!--<img src="/static/img/logo_purple_without_text.png" alt="">-->
-                        <!--<hr>-->
-                        <!--<div>-->
-                            <!--"This platform is meant to automatically analyze Android applications."-->
-                            <!--"It generates reports listing embedded trackers and (if possible)"-->
-                            <!--"associated network traffic."-->
-                        <!--</div>-->
-                        <!--<hr>-->
-                        <!--<div>-->
-                            <!--"Find us on Mastodon:" <a href="https://framapiaf.org/@exodus">@exodus</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            {% include "search_form.html" %}
-        {% endblock %}
+      {% block content %}
+        <!-- <div class="row justify-content-md-center">
+          <div class="col-lg-6 col-centered">
+            <div class="form-group jumbotron text-center">
+              <h1>"Welcome on the εxodus privacy auditing platform."</h1>
+              <img src="/static/img/logo_purple_without_text.png" alt="">
+              <hr>
+              <div>
+                "This platform is meant to automatically analyze Android applications."
+                "It generates reports listing embedded trackers and (if possible)"
+                "associated network traffic."
+              </div>
+              <hr>
+              <div>
+                "Find us on Mastodon:" <a href="https://framapiaf.org/@exodus">@exodus</a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        {% include "search_form.html" %}
+      {% endblock %}
     </div>
     <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
     </script>
     {% block scripts %}
     {% endblock %}
-</body>
+  </body>
 </html>
