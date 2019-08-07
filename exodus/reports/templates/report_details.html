@@ -210,7 +210,8 @@
                         {% endif %}
                         <br>
                         <br>
-                        <table class="table table-sm table-responsive">
+                        <div class="table-responsive">
+                        <table class="table table-sm">
                             {% for perm in report.application.permissions %}
                                 <tr class="permission_line">
                                     <td>
@@ -236,6 +237,7 @@
                                 </tr>
                             {% endfor %}
                         </table>
+                        </div>
                         <i class="small">
                             {% trans "Permissions are actions the application can do on your phone. The severity levels are defined according to " %}
                             <a href="https://developer.android.com/guide/topics/permissions/overview">{% trans "Google's protection levels" %}</a>.

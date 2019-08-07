@@ -27,7 +27,8 @@
 
 {% verbatim %}
 <script id="tpl" style="display:none;" type="text/x-handlebars-template">
-<table class="table table-hover table-responsive">
+<div class="table-responsive">
+<table class="table table-hover">
 {{#unless results.length}}
     {% endverbatim %}<h4>{% trans "No results found." %}</h4>{% verbatim %}
 {{/unless}}
@@ -48,6 +49,7 @@
     </tr>
 {{/each}}
 </table>
+</div>
 </script>
 {% endverbatim %}
 
