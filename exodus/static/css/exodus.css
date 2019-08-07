@@ -15,6 +15,13 @@ td.report {
     border: 0px;
     vertical-align: middle;
 }
+li.nav-item.active > a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+nav.navbar {
+  font-size: 1rem !important;
+}
 
 @media print {
   .alert-heading .btn-secondary {
