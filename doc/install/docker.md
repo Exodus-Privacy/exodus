@@ -3,7 +3,8 @@
 ## Run
 
 ```
-docker-compose up
+docker-compose up -d
+docker logs -f exodus
 ```
 
 When everything is up (Docker logs `Exodus is ready.`), launch the worker:
