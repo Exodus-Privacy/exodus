@@ -1,107 +1,106 @@
 {% load i18n %}
 <div class="row justify-content-md-center">
-    <div class="col-lg-7 col-sm-12 col-centered">
-            <div class="form-group jumbotron">
-                {% csrf_token %}
-                <h1 class="text-center">{% trans "Search" %}</h1>
-                <div class="input-group input-group-lg">
-                    <input type="text" class="form-control text-center" id="query" name="query" aria-describedby="query_help"
-                       placeholder="fr.meteo">
-                    <div class="input-group-append">
-                        <button id="go" class="btn btn-secondary" type="button">Go!</button>
-                    </div>
-                </div>
+  <div class="col-lg-7 col-sm-12 col-centered">
+    <div class="form-group jumbotron">
+      {% csrf_token %}
+      <h1 class="text-center">{% trans "Search" %}</h1>
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control text-center" id="query" name="query" aria-describedby="query_help"
+           placeholder="fr.meteo">
+        <div class="input-group-append">
+          <button id="go" class="btn btn-secondary" type="button">Go!</button>
+        </div>
+      </div>
 
-                <small id="query_help" class="form-text text-muted text-center">{% trans "Here you can search for an application using its name or handle" %}
-                    <i>i.e.</i> <code><b>fr.meteo</b></code><br>
-                </small>
-                <br>
+      <small id="query_help" class="form-text text-muted text-center">{% trans "Here you can search for an application using its name or handle" %}
+        <i>i.e.</i> <code><b>fr.meteo</b></code><br>
+      </small>
+      <br>
 
-                <h2 style="display: none" id="results-title">{% trans "Results" %}</h2>
-                <div id="results" style="display: none" class="">
-                </div>
+      <h2 style="display: none" id="results-title">{% trans "Results" %}</h2>
+      <div id="results" style="display: none" class="">
+      </div>
 
-            </div>
     </div>
+  </div>
 </div>
 
 {% verbatim %}
 <script id="tpl" style="display:none;" type="text/x-handlebars-template">
-<div class="table-responsive">
-<table class="table table-hover">
-{{#unless results.length}}
-    {% endverbatim %}<h4>{% trans "No results found." %}</h4>{% verbatim %}
-{{/unless}}
-{{#each results}}
-    <tr class="">
-        <td class="col-md-2">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      {{#unless results.length}}
+        {% endverbatim %}<h4>{% trans "No results found." %}</h4>{% verbatim %}
+      {{/unless}}
+      {{#each results}}
+        <tr class="">
+          <td class="col-md-2">
             <img class="rounded" src="/reports/{{id}}/icon" width="50px">
-        </td>
-        <td class="col-md-10 text-truncate text-left">
+          </td>
+          <td class="col-md-10 text-truncate text-left">
             <a href="/reports/search/{{handle}}">
-                {{#if name}}
-                    {{name}}
-                {{else}}
-                    {{handle}}
-                {{/if}}
+              {{#if name}}
+                {{name}}
+              {{else}}
+                {{handle}}
+              {{/if}}
             </a>
-        </td>
-    </tr>
-{{/each}}
-</table>
-</div>
+          </td>
+        </tr>
+      {{/each}}
+    </table>
+  </div>
 </script>
 {% endverbatim %}
 
 <script>
-const tpl_source = document.getElementById("tpl").innerHTML;
-const tpl = Handlebars.compile(tpl_source);
-jQuery(function() {
-  jQuery("#query").focus();
-});
-const display_results = function(results) {
+  const tpl_source = document.getElementById("tpl").innerHTML;
+  const tpl = Handlebars.compile(tpl_source);
+  jQuery(function() {
+    jQuery("#query").focus();
+  });
+  const display_results = function(results) {
     jQuery("#results").hide()
     jQuery("#results-title").hide()
     jQuery("#results").html("")
     jQuery("#results").html(tpl(results))
     jQuery("#results").show()
     if(results.results.length > 0){
-        jQuery("#results-title").show()
+      jQuery("#results-title").show()
     }
-}
-jQuery.fn.enterKey = function (fnc) {
+  }
+  jQuery.fn.enterKey = function (fnc) {
     return this.each(function () {
-        $(this).keypress(function (ev) {
-            var keycode = (ev.keyCode ? ev.keyCode : ev.which);
-            if (keycode == '13') {
-                fnc.call(this, ev);
-            }
-        })
+      $(this).keypress(function (ev) {
+        var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+        if (keycode == '13') {
+          fnc.call(this, ev);
+        }
+      })
     })
-}
-const get_results = function(query, limit) {
+  }
+  const get_results = function(query, limit) {
     jQuery.ajax({
-        type: 'POST',
-        url: "/api/search",
-        data: '{"type": "application", "query":"'+query+'", "limit":'+limit+'}',
-        success: display_results,
-        contentType: "application/json",
-        dataType: 'json'
+      type: 'POST',
+      url: "/api/search",
+      data: '{"type": "application", "query":"'+query+'", "limit":'+limit+'}',
+      success: display_results,
+      contentType: "application/json",
+      dataType: 'json'
     })
-}
-jQuery("#go").on("click", function() {
+  }
+  jQuery("#go").on("click", function() {
     const query = jQuery.trim(jQuery("#query").val())
     get_results(query, 50)
-})
-jQuery("#query").on("change paste keyup", function() {
+  })
+  jQuery("#query").on("change paste keyup", function() {
     const query = jQuery.trim(jQuery(this).val())
     if(query.length >= 5) {
-        get_results(query, 20)
+      get_results(query, 20)
     }
-});
-jQuery("#query").enterKey(function() {
+  });
+  jQuery("#query").enterKey(function() {
     const query = jQuery.trim(jQuery("#query").val())
     get_results(query, 50)
-});
-
+  });
 </script>
