@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="16px" viewBox="0 0 4 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>icone/danger</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icone/danger" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0.18,1.5 C0.18,0.671572875 0.851572875,1.09245946e-13 1.68,1.09245946e-13 C2.50842712,1.09245946e-13 3.18,0.671572875 3.18,1.5 L3.18,8.39 C3.18,9.21842712 2.50842712,9.89 1.68,9.89 C0.851572875,9.89 0.18,9.21842712 0.18,8.39 L0.18,1.5 Z M1.72,15.01 C0.77007023,15.01 2.68673972e-14,14.2399298 2.68673972e-14,13.29 C2.68673972e-14,12.3400702 0.77007023,11.57 1.72,11.57 C2.66992977,11.57 3.44,12.3400702 3.44,13.29 C3.44,14.2399298 2.66992977,15.01 1.72,15.01 Z" id="Mask" fill="#E61718"></path>
+    </g>
+</svg>
