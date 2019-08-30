@@ -18,9 +18,12 @@ from django.conf.urls import url, include
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.views.generic.base import TemplateView
 
-urlpatterns = [ url(r'^i18n/', include('django.conf.urls.i18n')), ]
+from . import views
+
+urlpatterns = [
+    url(r'^i18n/', include('django.conf.urls.i18n'))
+]
 urlpatterns += [
     url(r'^api/', include('restful_api.urls')),
     url(r'^admin/', admin.site.urls),
@@ -31,7 +34,7 @@ urlpatterns += i18n_patterns(
     url(r'^trackers/', include('trackers.urls')),
     url(r'^reports/', include('reports.urls')),
     url(r'^search/', include('search.urls')),
-    url(r'^$', TemplateView.as_view(template_name='base.html'), name='home'),
+    url(r'^$', views.index, name='home'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # handler404 = 'exodus.views.page_not_found'

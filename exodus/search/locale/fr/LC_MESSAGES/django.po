@@ -19,8 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: templates/search_form.html:6
-msgid "Search"
-msgstr "Recherche"
+msgid "Search a report"
+msgstr "Rechercher un rapport"
+
+msgid "Application name"
+msgstr "Nom de l'application"
+
+msgid "Let's go!"
+msgstr "C'est parti!"
+
+msgid "The privacy audit platform for Android applications"
+msgstr "La plateforme d'audit de la vie privée des applications Android"
 
 #: templates/search_form.html:15
 msgid "Here you can search for an application using its name or handle"
