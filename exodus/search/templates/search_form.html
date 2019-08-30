@@ -1,54 +1,67 @@
 {% load i18n %}
-<div class="row justify-content-md-center">
-  <div class="col-lg-7 col-sm-12 col-centered">
-    <div class="form-group jumbotron">
+<div class="row justify-content-center">
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5 d-flex align-items-center">
+    <img src="/static/img/logo_purple_small.svg" class="mx-auto d-block img-fluid">
+  </div>
+  <div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 text-center">
+    <h1 class="main-title">εxodus</h1>
+    <h5><b>{% trans "The privacy audit platform for Android applications" %}</b></h5>
+  </div>
+</div>
+<br>
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-sm-12 col-centered">
+    <div class="form-group">
       {% csrf_token %}
-      <h1 class="text-center">{% trans "Search" %}</h1>
-      <div class="input-group input-group-lg">
-        <input type="text" class="form-control text-center" id="query" name="query" aria-describedby="query_help"
-           placeholder="fr.meteo">
+      <h3>{% trans "Search a report" %}</h3>
+      <label for="query">{% trans "Application name" %}</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="query" aria-describedby="query_help" placeholder="fr.meteo">
         <div class="input-group-append">
-          <button id="go" class="btn btn-secondary" type="button">Go!</button>
+          <span class="input-group-text" id="query_help">
+            <small><img src="/static/img/search.svg"></img></small>
+          </span>
         </div>
       </div>
-
-      <small id="query_help" class="form-text text-muted text-center">{% trans "Here you can search for an application using its name or handle" %}
-        <i>i.e.</i> <code><b>fr.meteo</b></code><br>
+      <small class="form-text text-muted text-center">{% trans "Here you can search for an application using its name or handle" %}
+        <i>i.e.</i> <b>fr.meteo</b><br>
       </small>
       <br>
-
       <h2 style="display: none" id="results-title">{% trans "Results" %}</h2>
       <div id="results" style="display: none" class="">
       </div>
 
+      <div id="go-div" class="row justify-content-center">
+        <div class="col-6 col-md-4">
+          <button id="go" class="btn btn-secondary btn-block">{% trans "Let's go!" %}</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 {% verbatim %}
 <script id="tpl" style="display:none;" type="text/x-handlebars-template">
-  <div class="table-responsive">
-    <table class="table table-hover">
-      {{#unless results.length}}
-        {% endverbatim %}<h4>{% trans "No results found." %}</h4>{% verbatim %}
-      {{/unless}}
-      {{#each results}}
-        <tr class="">
-          <td class="col-md-2">
-            <img class="rounded" src="/reports/{{id}}/icon" width="50px">
-          </td>
-          <td class="col-md-10 text-truncate text-left">
-            <a href="/reports/search/{{handle}}">
-              {{#if name}}
-                {{name}}
-              {{else}}
-                {{handle}}
-              {{/if}}
-            </a>
-          </td>
-        </tr>
-      {{/each}}
-    </table>
+  <div class="container">
+    {{#unless results.length}}
+      {% endverbatim %}<h4>{% trans "No results found." %}</h4>{% verbatim %}
+    {{/unless}}
+    {{#each results}}
+      <div class="row">
+        <div class="col-3">
+          <img class="rounded" src="/reports/{{id}}/icon" width="50px">
+        </div>
+        <div class="col-9 text-truncate d-flex align-items-center">
+          <a href="/reports/search/{{handle}}">
+            {{#if name}}
+              {{name}}
+            {{else}}
+              {{handle}}
+            {{/if}}
+          </a>
+        </div>
+      </div>
+    {{/each}}
   </div>
 </script>
 {% endverbatim %}
@@ -60,6 +73,7 @@
     jQuery("#query").focus();
   });
   const display_results = function(results) {
+    jQuery("#go-div").hide()
     jQuery("#results").hide()
     jQuery("#results-title").hide()
     jQuery("#results").html("")
@@ -97,6 +111,11 @@
     const query = jQuery.trim(jQuery(this).val())
     if(query.length >= 5) {
       get_results(query, 20)
+    }
+    if(query == '') {
+      jQuery("#go-div").show()
+      jQuery("#results").hide()
+      jQuery("#results-title").hide()
     }
   });
   jQuery("#query").enterKey(function() {

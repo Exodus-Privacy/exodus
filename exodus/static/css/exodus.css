@@ -22,6 +22,11 @@ li.nav-item.active > a {
 nav.navbar {
   font-size: 1rem !important;
 }
+h1.main-title {
+  color: #684971;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
 
 @media print {
   .alert-heading .btn-secondary {

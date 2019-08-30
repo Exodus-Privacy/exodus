@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="/static/img/logo_purple.svg" width="40" height="40" class="d-inline-block align-top">
+        <img src="/static/img/logo_purple_small.svg" width="40" height="40" class="d-inline-block align-top">
         <span class="h2">εxodus</span> <span class="small text-muted">v1.3</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +91,7 @@
 
     <br>
 
-    <div class="container-fluid">
+    <div class="{% if main_div_class %}{{ main_div_class }}{% else %}container-fluid{% endif %}">
       {% block content %}
         <!-- <div class="row justify-content-md-center">
           <div class="col-lg-6 col-centered">

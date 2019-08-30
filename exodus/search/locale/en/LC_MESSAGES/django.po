@@ -18,7 +18,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: templates/search_form.html:6
-msgid "Search"
+msgid "Search a report"
+msgstr ""
+
+msgid "Application name"
+msgstr ""
+
+msgid "Let's go!"
+msgstr ""
+
+msgid "The privacy audit platform for Android applications"
 msgstr ""
 
 #: templates/search_form.html:15
@@ -27,4 +36,8 @@ msgstr ""
 
 #: templates/search_form.html:20
 msgid "Results"
+msgstr ""
+
+#: templates/search_form.html:32
+msgid "No results found."
 msgstr ""
