@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="row justify-content-center">
-  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5 d-flex align-items-center">
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 d-flex align-items-center">
     <img src="/static/img/logo_purple_small.svg" class="mx-auto d-block img-fluid">
   </div>
   <div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 text-center">
@@ -10,12 +10,12 @@
 </div>
 <br>
 <div class="row justify-content-center">
-  <div class="col-lg-8 col-sm-12 col-centered">
+  <div class="col-lg-8 col-sm-12">
     <div class="form-group">
       {% csrf_token %}
-      <h3>{% trans "Search a report" %}</h3>
+      <h4>{% trans "Search a report" %}</h4>
       <label for="query">{% trans "Application name" %}</label>
-      <div class="input-group mb-3">
+      <div class="input-group input-group-lg mb-3">
         <input type="text" class="form-control" id="query" aria-describedby="query_help" placeholder="fr.meteo">
         <div class="input-group-append">
           <span class="input-group-text" id="query_help">
@@ -27,32 +27,72 @@
         <i>i.e.</i> <b>fr.meteo</b><br>
       </small>
       <br>
-      <h2 style="display: none" id="results-title">{% trans "Results" %}</h2>
-      <div id="results" style="display: none" class="">
-      </div>
-
       <div id="go-div" class="row justify-content-center">
         <div class="col-6 col-md-4">
           <button id="go" class="btn btn-secondary btn-block">{% trans "Let's go!" %}</button>
         </div>
       </div>
+      <h4 style="display: none" id="results-title">{% trans "Results" %}</h4>
+      <div id="results" style="display: none">
+      </div>
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-sm-12">
+    {% trans "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>" %}
+    <br>
+    <br>
+    {% trans "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake." %}
+    <br>
+    <br>
+    {% trans "εxodus does not decompile applications, its analysis technic is legal." %}
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-sm-12">
+    <h4>{% trans "Need an overview?" %}</h4>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:index' %}" class="main-link">{% trans "Latest reports" %}</a>
+  </div>
+</div>
+<br>
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:index' %}?filter=no_trackers" class="main-link">{% trans "No known trackers" %}</a>
+  </div>
+</div>
+<br>
+<div class="row justify-content-center">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:index' %}?filter=most_trackers" class="main-link">{% trans "Most trackers" %}</a>
+  </div>
+</div>
+<br>
 
 {% verbatim %}
 <script id="tpl" style="display:none;" type="text/x-handlebars-template">
   <div class="container">
     {{#unless results.length}}
-      {% endverbatim %}<h4>{% trans "No results found." %}</h4>{% verbatim %}
+      {% endverbatim %}<h5>{% trans "No results found." %}</h5>{% verbatim %}
     {{/unless}}
     {{#each results}}
-      <div class="row">
-        <div class="col-3">
+      <br>
+      <div class="row position-relative">
+        <div class="col-3 col-md-2">
           <img class="rounded" src="/reports/{{id}}/icon" width="50px">
         </div>
-        <div class="col-9 text-truncate d-flex align-items-center">
-          <a href="/reports/search/{{handle}}">
+        <div class="col-9 col-md-10 text-truncate d-flex align-items-center position-static">
+          <a href="/reports/search/{{handle}}" class="stretched-link">
             {{#if name}}
               {{name}}
             {{else}}

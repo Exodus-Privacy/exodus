@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="15px" viewBox="0 0 10 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>icone/fleche/droite/grande</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icone/fleche/droite/grande" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icone" transform="translate(1.000000, 1.000000)" stroke="#684971" stroke-width="2">
+            <polyline id="Shape" transform="translate(4.000000, 6.500000) rotate(180.000000) translate(-4.000000, -6.500000) " points="8 12.5 -8.8817842e-16 6.5 8 0.5"></polyline>
+        </g>
+    </g>
+</svg>

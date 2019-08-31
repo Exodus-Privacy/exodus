@@ -27,6 +27,14 @@ h1.main-title {
   font-weight: bold;
   margin-bottom: 15px;
 }
+a.main-link {
+  color: #684971;
+  font-weight:bold;
+}
+a.main-link:after {
+  content: url(/static/img/arrow-right.svg);
+  padding-left: 10px;
+}
 
 @media print {
   .alert-heading .btn-secondary {
