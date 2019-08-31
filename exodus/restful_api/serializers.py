@@ -19,9 +19,16 @@ class ReportSerializer(serializers.ModelSerializer):
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
+    class TimestampField(serializers.Field):
+        def to_representation(self, value):
+            return value.timestamp()
+
+    report_updated_at = TimestampField(source='report.updated_at')
+
     class Meta:
         model = Application
-        exclude = ('icon_path', 'report', 'version', 'version_code')
+        fields = ['id', 'handle', 'name', 'creator', 'downloads', 'app_uid',
+                  'icon_phash', 'report_updated_at']
 
 
 class TrackerSerializer(serializers.ModelSerializer):
