@@ -31,6 +31,18 @@ msgstr "C'est parti!"
 msgid "The privacy audit platform for Android applications"
 msgstr "La plateforme d'audit de la vie privée des applications Android"
 
+msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
+msgstr "εxodus analyse les applications Android dans le but de <b>lister les pisteurs embarqués.</b>"
+
+msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr "Un pisteur est un bout de logiciel <b>dont le but est la collecte de données à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous révèlent les ingrédients du gâteau."
+
+msgid "εxodus does not decompile applications, its analysis technic is legal."
+msgstr "εxodus ne décompile pas les applications, sa technique d’analyse est légale."
+
+msgid "Need an overview?"
+msgstr "Besoin d'une vision d'ensemble&nbsp;?"
+
 #: templates/search_form.html:15
 msgid "Here you can search for an application using its name or handle"
 msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"

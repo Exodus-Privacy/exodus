@@ -132,7 +132,7 @@ msgid "Reports"
 msgstr "Rapports"
 
 msgid "Latest reports"
-msgstr "Derniers rapports"
+msgstr "Les derniers rapports"
 
 msgid "Most trackers"
 msgstr "Triés par nombre de pisteurs"
