@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{# UI Model: https://app.presentator.io/#/iGT5zQEn/prototypes/11829/screens/60924?mode=preview #}
+{% block content %}
+{% load static %}
+<div class="row justify-content-md-center">
+    <div class="col-lg-4 col-centered">
+        <h1>
+          {% trans "Understand better" %}
+        </h1>
+    </div>
+</div>
+<article class="row justify-content-md-center">
+    <div class="col-lg-3">
+      <img src="{% static "img/eye_phone.png" %}" alt="{% trans "An open eye watching a smartphone" %}">
+    </div>
+    <div class="col-lg-5">
+      <h2>{% trans "Trackers" %}</h2>
+        <p>
+          {% blocktrans %}
+          Know more about trackers and their impact on privacy
+          {% endblocktrans %}
+        </p>
+        <a href="{# {% url 'trackers' %} #}" class="btn">{% trans "Read" %}</a>
+    </div>
+</article>
+<article class="row justify-content-md-center">
+    <div class="col-lg-3">
+      <img src="{% static "img/locate_phone.png" %}" alt="{% trans "A location marker on a smartphone" %}">
+    </div>
+    <div class="col-lg-5">
+      <h2>{% trans "Permissions" %}</h2>
+        <p>
+          {% blocktrans %}
+          What is a permission and what are the problems they rise about privacy ?
+          {% endblocktrans %}
+        </p>
+        <a href="{# {% url 'permission' %} #}" class="btn">{% trans "Read" %}</a>
+    </div>
+</article>
+<article class="row justify-content-md-center">
+    <div class="col-lg-3">
+      <img src="{% static "img/loves_phone.png" %}" alt="{% trans "Love hearts on a smartphone" %}">
+    </div>
+    <div class="col-lg-5">
+      <h2>{% trans "Libre alternatives" %}</h2>
+        <p>
+          {% blocktrans %}
+          Why are free as freedom alternatives so cool ?
+          {% endblocktrans %}
+        </p>
+        <a href="{# {% url 'free_alternatives' %} #}" class="btn">{% trans "Read" %}</a>
+    </div>
+</article>
+<article class="row justify-content-md-center">
+    <div class="col-lg-3">
+      <img src="{% static "img/love_phone.png" %}" alt="{% trans "A love heart on a smartphone" %}">
+    </div>
+    <div class="col-lg-5">
+      <h2>{% trans "Other alternatives" %}</h2>
+        <p>
+          {% blocktrans %}
+          What are the other alternatives ?
+          {% endblocktrans %}
+        </p>
+        <a href="{# {% url 'other_alternatives' %} #}" class="btn">{% trans "Read" %}</a>
+    </div>
+</article>
+{% endblock %}
