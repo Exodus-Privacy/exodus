@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from trackers.models import Tracker
 import json
 
+
 class Command(BaseCommand):
     help = 'Import trackers from exodus'
 

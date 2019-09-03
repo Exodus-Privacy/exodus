@@ -39,6 +39,6 @@ class RestfulApiGetAllApplicationsTests(TestCase):
         self.assertEqual(response_application['name'], application.name)
         self.assertEqual(response_application['handle'], application.handle)
         self.assertEqual(
-             response_application['report_updated_at'],
-             report_updated_at.timestamp()
+            response_application['report_updated_at'],
+            report_updated_at.timestamp()
         )

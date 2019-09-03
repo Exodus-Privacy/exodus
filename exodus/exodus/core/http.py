@@ -1,11 +1,11 @@
 import pyshark
 import tempfile
-from reports.models import *
 from django.conf import settings
 from minio import Minio
 from minio.error import (ResponseError)
 
 from .celery import app
+from reports.models import Report, NetworkAnalysis, HTTPAnalysis, HTTPPayload
 
 
 @app.task(bind=True)
@@ -23,10 +23,12 @@ def analyze_http(self, report_id):
     http_analysis.save()
 
     # Download pcap file
-    minio_client = Minio(settings.MINIO_URL,
-                 access_key=settings.MINIO_ACCESS_KEY,
-                 secret_key=settings.MINIO_SECRET_KEY,
-                 secure=settings.MINIO_SECURE)
+    minio_client = Minio(
+        settings.MINIO_URL,
+        access_key=settings.MINIO_ACCESS_KEY,
+        secret_key=settings.MINIO_SECRET_KEY,
+        secure=settings.MINIO_SECURE
+    )
     try:
         with tempfile.NamedTemporaryFile(delete=True) as fp:
             minio_client.fget_object(settings.MINIO_BUCKET, report.pcap_file, fp.name)
@@ -34,7 +36,7 @@ def analyze_http(self, report_id):
             for pkt in cap:
                 try:
                     if pkt.http.request_method == "POST":
-                        payload=HTTPPayload(http_analysis=http_analysis)
+                        payload = HTTPPayload(http_analysis=http_analysis)
                         if pkt.highest_layer != 'HTTP':
                             payload.destination_uri = pkt.http.request_full_uri
                             payload.layer = 'HTTP'

@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from reports.models import *
+from reports.models import Report, Application, Tracker
 from .models import SearchQuery
+
 
 class ReportInfosSerializer(serializers.Serializer):
     creation_date = serializers.DateTimeField()

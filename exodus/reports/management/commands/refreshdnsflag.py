@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
-from exodus.core.dns import *
-from exodus.core.static_analysis import *
+from exodus.core.dns import refresh_dns
 
 
 class Command(BaseCommand):
