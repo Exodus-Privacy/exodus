@@ -2,16 +2,20 @@ branches:
   only:
   - v1
 
+stages:
+  - linter
+  - test
+
 dist: xenial
 
 language: python
 
+python:
+  - 3.5
+  - 3.6
+
 services:
   - postgresql
-
-python:
-  - "3.5"
-  - "3.6"
 
 env:
   - DJANGO_SETTINGS_MODULE=exodus.settings.dev
@@ -26,3 +30,14 @@ install:
 script:
   - cd exodus
   - python manage.py test
+
+jobs:
+  include:
+    - stage: linter
+      services: []
+      before_install: []
+      python: 3.6
+      install:
+        - pip install flake8
+      script:
+        - flake8 exodus/
