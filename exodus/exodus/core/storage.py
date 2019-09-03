@@ -8,12 +8,12 @@ class RemoteStorageHelper():
     def __init__(self, prefix):
         self.prefix = prefix
         self.minio_client = Minio(settings.MINIO_URL,
-                                  access_key = settings.MINIO_ACCESS_KEY,
-                                  secret_key = settings.MINIO_SECRET_KEY,
-                                  secure = settings.MINIO_SECURE)
+                                  access_key=settings.MINIO_ACCESS_KEY,
+                                  secret_key=settings.MINIO_SECRET_KEY,
+                                  secure=settings.MINIO_SECURE)
         # Create Minio storage if needed
         try:
-            self.minio_client.make_bucket(settings.MINIO_BUCKET, location = "")
+            self.minio_client.make_bucket(settings.MINIO_BUCKET, location="")
         except BucketAlreadyOwnedByYou:
             pass
         except BucketAlreadyExists:
@@ -22,7 +22,7 @@ class RemoteStorageHelper():
     def get_prefix(self):
         return self.prefix
 
-    def clear_prefix(self, prefix = None):
+    def clear_prefix(self, prefix=None):
         """
         Remove all files having the given prefix from the Minio storage.
         :param prefix: files prefix
@@ -30,7 +30,7 @@ class RemoteStorageHelper():
         if prefix is None:
             prefix = self.prefix
         try:
-            objects = self.minio_client.list_objects(settings.MINIO_BUCKET, prefix = self.prefix, recursive = True)
+            objects = self.minio_client.list_objects(settings.MINIO_BUCKET, prefix=self.prefix, recursive=True)
             for obj in objects:
                 self.minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
         except ResponseError as err:
@@ -63,10 +63,11 @@ class RemoteStorageHelper():
         :param remote_name: file name in Minio storage
         :return: the destination name if succeed, empty string otherwise
         """
-        import urllib.request, tempfile
+        import urllib.request
+        import tempfile
         try:
             f = urllib.request.urlopen(url)
-            with tempfile.NamedTemporaryFile(delete = True) as fp:
+            with tempfile.NamedTemporaryFile(delete=True) as fp:
                 fp.write(f.read())
                 try:
                     self.minio_client.fput_object(settings.MINIO_BUCKET, remote_name, fp.name)

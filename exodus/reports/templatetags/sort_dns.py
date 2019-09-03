@@ -25,4 +25,3 @@ def sort_dns(value):
             ret += tmp
         return ret
     return value
-    

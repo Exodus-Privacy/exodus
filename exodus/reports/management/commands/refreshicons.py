@@ -1,18 +1,18 @@
 from django.core.management.base import BaseCommand, CommandError
-from exodus.core.static_analysis import *
-from reports.models import *
+from exodus.core.static_analysis import get_application_icon
+from reports.models import Report
 
 
 class Command(BaseCommand):
     help = 'Refresh application icon'
 
     def add_arguments(self, parser):
-        parser.add_argument('report_id', nargs = '+', type = int)
+        parser.add_argument('report_id', nargs='+', type=int)
 
     def handle(self, *args, **options):
         for report_id in options['report_id']:
             try:
-                report = Report.objects.get(pk = report_id)
+                report = Report.objects.get(pk=report_id)
             except Report.DoesNotExist:
                 raise CommandError('Report %s not found' % report_id)
 

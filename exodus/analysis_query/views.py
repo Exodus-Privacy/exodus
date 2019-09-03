@@ -12,7 +12,7 @@ from django.http.response import Http404
 from django.shortcuts import render
 from django.views.generic import FormView, ListView
 
-from exodus.core.apk import *
+from exodus.core.apk import StaticAnalysisParameters, start_static_analysis
 from .forms import AnalysisRequestForm
 from .models import AnalysisRequest
 
@@ -27,7 +27,7 @@ class AnalysisRequestView(FormView):
 
     def form_valid(self, form):
         randhex = str(randomword(60))
-        analysis_q = AnalysisRequest(handle = form.cleaned_data['handle'], bucket = randhex)
+        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'], bucket=randhex)
         analysis_q.description = _('Your request will be handled soon')
         analysis_q.save()
 
@@ -39,7 +39,7 @@ class AnalysisRequestView(FormView):
 
 def wait(request, r_id):
     try:
-        r = AnalysisRequest.objects.get(pk = r_id)
+        r = AnalysisRequest.objects.get(pk=r_id)
     except AnalysisRequest.DoesNotExist:
         raise Http404(_("AnalysisRequest does not exist"))
     return render(request, 'query_wait.html', {'request': r})
@@ -47,11 +47,11 @@ def wait(request, r_id):
 
 def json(request, r_id):
     try:
-        r = AnalysisRequest.objects.get(pk = r_id)
+        r = AnalysisRequest.objects.get(pk=r_id)
     except AnalysisRequest.DoesNotExist:
         raise Http404(_("AnalysisRequest does not exist"))
     r.bucket = ''
-    return JsonResponse(model_to_dict(r), safe = False)
+    return JsonResponse(model_to_dict(r), safe=False)
 
 
 class AnalysisRequestListView(ListView):

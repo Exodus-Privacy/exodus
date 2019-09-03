@@ -1,10 +1,11 @@
 import tempfile
 import os
 from django.core.management.base import BaseCommand, CommandError
+from minio.error import ResponseError
 
-from exodus.core.static_analysis import *
+from exodus.core.static_analysis import StaticAnalysis
 from exodus.core.storage import RemoteStorageHelper
-from reports.models import *
+from reports.models import Report
 
 
 class Command(BaseCommand):
@@ -94,7 +95,7 @@ class Command(BaseCommand):
                     clist_tmp = os.path.join(tmpdir, report.class_list_file)
                     try:
                         storage_helper.get_file(report.class_list_file, clist_tmp)
-                    except ResponseError as err:
+                    except ResponseError:
                         raise CommandError('Unable to clist file')
                     trackers = static_analysis.detect_trackers(clist_tmp)
                     self.stdout.write(
