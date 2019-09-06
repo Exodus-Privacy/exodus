@@ -3,7 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
 <div class="row justify-content-md-center">
-    <div class="col-lg-6 col-sm-10 col-centered">
+    <div class="col-lg-8 col-sm-10 col-centered">
         <form method='post' enctype='multipart/form-data' action="{% url 'analysis:submit' %}">
             <div class="form-group jumbotron">
                 {% csrf_token %}
@@ -46,7 +46,7 @@
 </div>
 
 <div class="row justify-content-md-center">
-    <div class="col-lg-6 col-sm-10 col-centered">
+    <div class="col-lg-8 col-sm-10 col-centered">
         <div class="text-center alert alert-warning">
             <p>
                 <a href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/" target="_blank">Exodus Privacy</a>

@@ -2,25 +2,26 @@
 {% load i18n %}
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="col-lg-4">
+        <div class="col-lg-8">
         {% if trackers %}
-            <div class="alert bg-light">
-                <div class="alert-heading">
-                    <h4><span class="badge badge-info">{{ trackers.count }}</span>
+                <div style="text-align:center">
+                    <h3><span class="badge badge-info">{{ trackers.count }}</span>
                         {% blocktrans count counter=trackers.count %}
                         Recognized tracker
                         {% plural %}
                         Recognized trackers
                         {% endblocktrans %}
-                    </h4>
+                    </h3>
                 </div>
                 <hr>
+                <div class="row">
                 <ul>
                 {% for tracker in trackers %}
                     <li><a href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a></li>
                 {% endfor %}
                 </ul>
-            </div>
+                </div>
+                <hr>
         {% else %}
             <p>{% trans "No trackers are available" %}.</p>
         {% endif %}

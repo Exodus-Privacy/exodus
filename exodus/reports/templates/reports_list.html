@@ -4,15 +4,15 @@
 {% load static %}
 {% load url_replace %}
 <div class="row justify-content-md-center">
-    <div class="col-lg-6 col-centered">
+    <div class="col-lg-8 col-centered">
     {% if reports %}
         <div style="text-align:center">
-            <h2>
+            <h3>
                 <span class="badge badge-info">{{ count }}</span> {% trans "Report" %}{{ count|pluralize }}
                 {% if handle %}<small>({{ handle }})</small>{% endif %}
-            </h2>
+            </h3>
         </div>
-
+        <hr>
         {% if not handle %}
             <select onchange="this.options[this.selectedIndex].value && (window.location = '/reports/' + this.options[this.selectedIndex].value);">
                 <option value=" ">{% trans "Latest reports" %}</option>
@@ -21,51 +21,50 @@
             </select>
         {% endif %}
 
-        <table style="margin: auto" class="table table-responsive">
+        <div class="container mb-4">
         {% for report in reports %}
-            <tr>
-                <td class="report" style="width:5%">
-                    <img data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="50px" class="rounded" alt="{{app.handle}}">
-                </td>
-                <td class="col-md-4 text-truncate report">
-                    <span>
-                        <a href="{% url 'reports:detail' report.id %}">
-                            {% if report.application.name.strip %}
-                                <b>{{ report.application.name }}</b>
-                            {% else %}
-                                <b>{{ report.application.handle }}</b>
-                            {% endif %}
-                        </a>
-                    </span>
-                    <br>
-                    <span class="small"><b>{{ report.application.version|truncatechars_html:20 }}</b></span>
-                    <br>
-                    <span>
-                        {% with nb_trackers=report.found_trackers.count %}
-                            {% if nb_trackers == 0 %}
-                                <span class="badge badge-success reports">{{ nb_trackers }}</span>
-                            {% elif nb_trackers < 5 %}
-                                <span class="badge badge-warning reports">{{ nb_trackers }}</span>
-                            {% else %}
-                                <span class="badge badge-danger reports">{{ nb_trackers }}</span>
-                            {% endif %}
-                            {% trans "tracker" %}{{ nb_trackers|pluralize }}
-                        {% endwith %}
-                        {% with nb_perm=report.application.permission_set.count %}
-                            {% if nb_perm == 0 %}
-                                <span class="badge badge-success reports">{{ nb_perm }}</span>
-                            {% elif nb_perm < 5 %}
-                                <span class="badge badge-warning reports">{{ nb_perm }}</span>
-                            {% else %}
-                                <span class="badge badge-danger reports">{{ nb_perm }}</span>
-                            {% endif %}
-                            {% trans "permission" %}{{ nb_perm|pluralize }}
-                        {% endwith %}
-                    </span>
-                </td>
-            </tr>
+            <br>
+            <div class="row position-relative">
+              <div class="col-3 col-sm-2 col-md-2 d-flex align-items-center">
+                <img data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="50px" class="rounded" alt="{{app.handle}}">
+              </div>
+              <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">
+                <div>
+                  <a href="{% url 'reports:detail' report.id %}" class="stretched-link report-link">
+                    {% if report.application.name.strip %}
+                        {{ report.application.name }}
+                    {% else %}
+                        {{ report.application.handle }}
+                    {% endif %}
+                  </a>
+                </div>
+                <div class="small"><b>{{ report.application.version|truncatechars_html:20 }}</b></div>
+                <div>
+                    {% with nb_trackers=report.found_trackers.count %}
+                        {% if nb_trackers == 0 %}
+                            <span class="badge badge-success reports">{{ nb_trackers }}</span>
+                        {% elif nb_trackers < 5 %}
+                            <span class="badge badge-warning reports">{{ nb_trackers }}</span>
+                        {% else %}
+                            <span class="badge badge-danger reports">{{ nb_trackers }}</span>
+                        {% endif %}
+                        {% trans "tracker" %}{{ nb_trackers|pluralize }}
+                    {% endwith %}
+                    {% with nb_perm=report.application.permission_set.count %}
+                        {% if nb_perm == 0 %}
+                            <span class="badge badge-success reports">{{ nb_perm }}</span>
+                        {% elif nb_perm < 5 %}
+                            <span class="badge badge-warning reports">{{ nb_perm }}</span>
+                        {% else %}
+                            <span class="badge badge-danger reports">{{ nb_perm }}</span>
+                        {% endif %}
+                        {% trans "permission" %}{{ nb_perm|pluralize }}
+                    {% endwith %}
+                </div>
+              </div>
+            </div>
         {% endfor %}
-        </table>
+        </div>
     <div>
         <ul class="pagination pagination-sm justify-content-center">
             {% if reports.has_previous %}

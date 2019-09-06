@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'base.html', {'main_div_class': 'container'})
+    return render(request, 'base.html')
 
 
 def page_not_found(request):

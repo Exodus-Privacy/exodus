@@ -17,9 +17,9 @@
             </samp>
         </p>
     {% endif %}
-    <div class="alert bg-light" role="alert">
+    <div class="alert" role="alert">
         <div class="row">
-            <div class="col col-md-2 cold-sm-3">
+            <div class="col col-xl-2">
                 {% if report.found_trackers.count == 0 %}
                     <div class="alert alert-success text-center">
                 {% elif report.found_trackers.count < 5 %}
@@ -42,8 +42,7 @@
                 </div>
             </div>
 
-            <div class="col">
-                <div class="alert-heading">
+            <div class="col-9 col-xl-5">
                     {% if report.application.name.strip %}
                         <h2><img src="/reports/{{report.application.id}}/icon" class="rounded" width="60px" alt=""> <b>{{report.application.name}}</b></h2>
                     {% else %}
@@ -116,7 +115,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
                 <p></p>
                 <p class="text-muted small">
@@ -126,8 +124,9 @@
 
             </div>
 
-            <div class="col">
-                <div class="alert-heading">
+            <div class="col col-xl-5">
+              <small>
+                <div>
                     <h4>
                         🔏 {% trans "Signed by:" %}
                     </h4>
@@ -144,15 +143,16 @@
                 {% else %}
                     {% trans "No signatures found <b>OR</b> x509 certificate does not comply the RFC." %}
                 {% endif %}
+              </small>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col col-lg-3">
+        <div class="col col-lg-4">
             <div class="card bg-light">
                 <div class="card-header">
-                    <h4 class=""><span class="badge badge-secondary">{{ report.found_trackers.count }}</span> {% trans "Tracker" %}{{ report.found_trackers.count|pluralize }}</h4>
+                    <h4><span class="badge badge-secondary">{{ report.found_trackers.count }}</span> {% trans "Tracker" %}{{ report.found_trackers.count|pluralize }}</h4>
                 </div>
                 <div class="card-body">
                     {% if report.found_trackers.all %}
@@ -188,7 +188,7 @@
         <div class="col">
             <div class="card bg-light">
                 <div class="card-header">
-                    <h4 class=""><span class="badge badge-secondary">{{ report.application.permission_set.count }}</span> {% trans "Permission" %}{{ report.application.permission_set.count|pluralize }} </h4>
+                    <h4><span class="badge badge-secondary">{{ report.application.permission_set.count }}</span> {% trans "Permission" %}{{ report.application.permission_set.count|pluralize }} </h4>
                 </div>
                 <div class="card-body">
                     {% if report.application.permission_set.all %}

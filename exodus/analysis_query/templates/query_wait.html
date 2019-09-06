@@ -3,7 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
 <div class="row justify-content-md-center">
-    <div class="col-lg-4 col-centered">
+    <div class="col-lg-8 col-centered">
         <div class="jumbotron">
             <div id="loading" class="text-center" style="">
                 <h2>εxodus {% trans "is processing your request" %}</h2>
@@ -17,16 +17,19 @@
                     {% trans "Will refresh automatically every 10 seconds." %}
                 </div>
             </div>
-            <hr>
-            <div class="text-center alert alert-warning">
-                <p>
-                    <a href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}" target="_blank">Exodus Privacy</a>
-                     {% trans "is a non-profit organization which provides this service for free." %}
-                </p>
-                <a class="btn btn-info" href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/page/contribute/" target="_blank">{% trans "Help us!" %}</a>
-            </div>
         </div>
     </div>
+</div>
+<div class="row justify-content-md-center">
+  <div class="col-lg-8 col-sm-10 col-centered">
+    <div class="text-center alert alert-warning">
+      <p>
+        <a href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/" target="_blank">Exodus Privacy</a>
+        {% trans "is a non-profit organization which provides this service for free." %}
+      </p>
+      <a class="btn btn-info" href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/page/contribute/" target="_blank">{% trans "Help us!" %}</a>
+    </div>
+  </div>
 </div>
 {% endblock %}
 

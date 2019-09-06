@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-<div class="alert-heading">
-    <h4><span class="badge badge-info">{{ count }}</span> Application{{ count|pluralize }}</h4>
+<div style="text-align:center">
+    <h3><span class="badge badge-info">{{ count }}</span> Application{{ count|pluralize }}</h3>
 </div>
 <hr>
 <div class="row text-center">
     {% if apps %}
         {% for app in apps %}
-            <div class="col-6 col-md-3 col-lg-1">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                 <figure class="figure text-center small">
                     <a href="{% url 'reports:search_by_handle' app.handle %}">
                         <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{app.id}}/icon" width="90px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
