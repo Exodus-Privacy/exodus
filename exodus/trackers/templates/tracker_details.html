@@ -6,27 +6,21 @@
     <div class="row justify-content-md-center">
         <div class="col-lg-6 col-sm-12">
         {% if tracker %}
-            <div class="alert bg-light">
-                <div class="alert-heading">
-                    <h1>{{tracker.name}}</h1>
-                </div>
-                <p>
-                    <a href="{{tracker.website}}">{% trans "Go to the tracker web page." %}</a>
-                </p>
-                <h3>{% trans "Detection rules" %}</h3>
-                <ul>
-                    {% if tracker.code_signature|length > 3 %}
-                    <li>{% trans "Code detection rule:" %} <code>{{tracker.code_signature}}</code></li>
-                    {% else %}
-                    <li>{% trans "Code signature:" %} <code>unknown</code></li>
-                    {% endif %}
-                    <li>{% trans "Network detection rule:" %} <code>{{tracker.network_signature}}</code></li>
-                </ul>
-            </div>
-            <div class="alert bg-light">
-                <div class="">
-                    {{tracker.description|markdown|safe}}
-                </div>
+            <h1>{{ tracker.name }}</h1>
+            <p>
+                <a href="{{tracker.website}}">{% trans "Go to the tracker web page." %}</a>
+            </p>
+            <h3>{% trans "Detection rules" %}</h3>
+            <ul>
+                {% if tracker.code_signature|length > 3 %}
+                <li>{% trans "Code detection rule:" %} <code>{{ tracker.code_signature }}</code></li>
+                {% else %}
+                <li>{% trans "Code signature:" %} <code>unknown</code></li>
+                {% endif %}
+                <li>{% trans "Network detection rule:" %} <code>{{ tracker.network_signature }}</code></li>
+            </ul>
+            <div>
+                {{ tracker.description|markdown|safe }}
             </div>
         </div>
         <div class="col-lg-6 col-sm-12">
@@ -45,9 +39,10 @@
                 <tr>
                   <td>
                     <a href="{% url 'reports:detail' report.id %}">
-                      <img  data-toggle="tooltip" title="{{ report.application.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                      <img data-toggle="tooltip" title="{{ report.application.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
+                      &nbsp
                       {% if report.application.name.strip %}
-                      <b>{{ report.application.name }}</b>
+                      <b>{{ report.application.name | truncatechars_html:30}}</b>
                       {% else %}
                       <b>{{ report.application.handle }}</b>
                       {% endif %}
@@ -55,9 +50,6 @@
                   </td>
                   <td>
                     <span class="small"><b>{{ report.application.version }}</b></span>
-                  </td>
-                  <td>
-                    <span class="small"><b>{{ report.creation_date }}</b></span>
                   </td>
                 </tr>
                 {% endfor %}

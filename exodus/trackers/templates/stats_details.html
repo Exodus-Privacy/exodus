@@ -2,40 +2,38 @@
 {% load i18n %}
 {% block content %}
 {% load static %}
-<h1>{% trans "Statistics" %}</h1>
-<div class="row">
-    {% if trackers %}
-    <div class="col">
-        <div class="alert bg-light">
-            <div class="alert-heading">
-                <h4>{% trans "Most frequent trackers" %}</h4>
+<div class="row justify-content-md-center">
+  {% if trackers %}
+    <div class="col-lg-8">
+      <div style="text-align:center">
+        <h3>{% trans "Statistics" %}</h3>
+        <h4>{% trans "Most frequent trackers" %}</h4>
+      </div>
+      <hr>
+      <table style="margin: auto">
+      {% for t in trackers %}
+        <tr>
+          <td class="text-right">
+            <a href="{% url 'trackers:detail' t.id %}">{{ t.name }} </a>
+          </td>
+          <td class="small text-muted">
+            {% trans "found in" %} {{ t.count }} {% trans "report" %}{{ t.count|pluralize }}
+          </td>
+          <td style="width:250px">
+            <div class="progress">
+              {% if t.score >= 50 %}
+                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
+              {% elif  t.score  >= 33 %}
+                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
+              {% else %}
+                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
+              {% endif %}
             </div>
-            <hr>
-            <table style="margin: auto">
-            {% for t in trackers %}
-            <tr>
-                <td class="text-right">
-                  <a href="{% url 'trackers:detail' t.id %}">{{ t.name }} </a>
-                </td>
-                <td class="small text-muted">
-                    {% trans "found in" %} {{ t.count }} {% trans "report" %}{{ t.count|pluralize }}
-                </td>
-                <td style="width:300px">
-                  <div class="progress">
-                      {% if t.score >= 50 %}
-                          <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
-                      {% elif  t.score  >= 33 %}
-                          <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
-                      {% else %}
-                          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
-                      {% endif %}
-                  </div>
-                </td>
-              </tr>
-            {% endfor %}
-            </table>
-        </div>
+          </td>
+        </tr>
+      {% endfor %}
+      </table>
     </div>
-    {% endif %}
+  {% endif %}
 </div>
 {% endblock %}
