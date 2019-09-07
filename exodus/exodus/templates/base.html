@@ -54,9 +54,9 @@
               Exodus Privacy
             </a>
             <div class="dropdown-menu" aria-labelledby="EPDropdown">
-              <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE }}">{% trans "Website" %}</a>
-              <a class="dropdown-item" target="_blank" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE}}/page/contribute/">{% trans "Help us!" %}</a>
-              <a class="dropdown-item" target="_blank" href="https://github.com/Exodus-Privacy/exodus/issues">{% trans "Report an issue" %}</a>
+              <a class="dropdown-item" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE }}" target="_blank" rel="noreferrer">{% trans "Website" %}</a>
+              <a class="dropdown-item" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE}}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+              <a class="dropdown-item" href="https://github.com/Exodus-Privacy/exodus/issues" target="_blank" rel="noreferrer">{% trans "Report an issue" %}</a>
             </div>
           </li>
           {% if request.user.is_superuser %}
