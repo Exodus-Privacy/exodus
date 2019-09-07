@@ -21,8 +21,8 @@ if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
     from .forms import TrackerForm
 
 
-def _paginate(request, data):
-    paginator = Paginator(data, settings.EX_PAGINATOR_COUNT)
+def _paginate(request, data, per_page=settings.EX_PAGINATOR_COUNT):
+    paginator = Paginator(data, per_page)
     page = request.GET.get('page')
 
     try:
@@ -67,7 +67,7 @@ def get_all_apps(request):
     except Application.DoesNotExist:
         raise Http404(_("No apps found"))
 
-    apps = _paginate(request, apps_list)
+    apps = _paginate(request, apps_list, 30)
     return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
 
 
