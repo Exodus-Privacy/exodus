@@ -1,0 +1,131 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-22 10:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: oc\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Pootle-Path: /oc/exodus/django.po\n"
+"X-Pootle-Revision: 677\n"
+
+#: exodus/core/apk.py:23
+msgid "Your request is running"
+msgstr "Vòstra demanda es en execucion"
+
+#: exodus/core/apk.py:33
+msgid "Unable to download the APK"
+msgstr "Telecargament impossible de l’APK"
+
+#: exodus/core/apk.py:38
+msgid "Download APK: success"
+msgstr "Telecargament de l’APK : reüssit"
+
+#: exodus/core/apk.py:51
+msgid "Unable to decode the APK"
+msgstr "Decodatge impossible de l’APK"
+
+#: exodus/core/apk.py:56
+msgid "Decode APK: success"
+msgstr "Decodatge de l’APK : reüssit"
+
+#: exodus/core/apk.py:70
+msgid "Unable to compute the class list"
+msgstr "Calcul impossible d’aquesta lista de classa"
+
+#: exodus/core/apk.py:75
+msgid "List embedded classes: success"
+msgstr "Tria de las classas embarcadas : reüssida"
+
+#: exodus/core/apk.py:92
+msgid "A report already exists for this application version"
+msgstr "Un rapòrt existís ja per aquesta version de l’aplicacion"
+
+#: exodus/core/apk.py:145
+msgid "Get application details: success"
+msgstr "Recuperacion dels detalhs de l’aplicacion : reüssida"
+
+#: exodus/core/apk.py:152
+msgid "Tracker analysis: success"
+msgstr "Analisi dels traçadors : reüssida"
+
+#: exodus/core/apk.py:199
+msgid "Static analysis complete"
+msgstr "Analisis estatistica : reüssida"
+
+#: exodus/templates/base.html:39
+msgid "Home"
+msgstr "Acuèlh"
+
+#: exodus/templates/base.html:40
+msgid "Help us!"
+msgstr "Ajudatz-nos !"
+
+#: exodus/templates/base.html:41
+msgid "Report an issue"
+msgstr "Senhalar un problèma"
+
+#: exodus/templates/base.html:48
+msgid "Reports"
+msgstr "Rapòrts"
+
+#: exodus/templates/base.html:51
+msgid "All reports"
+msgstr "Totes los rapòrts"
+
+#: exodus/templates/base.html:52
+msgid "All applications"
+msgstr "Totas las aplicacions"
+
+#: exodus/templates/base.html:53
+msgid "Search"
+msgstr "Recercar"
+
+#: exodus/templates/base.html:60
+msgid "Trackers"
+msgstr "Traçadors"
+
+#: exodus/templates/base.html:63
+#: exodus/templates/base.html:75
+msgid "List"
+msgstr "Lista"
+
+#: exodus/templates/base.html:64
+msgid "Statistics"
+msgstr "Estatisticas"
+
+#: exodus/templates/base.html:71
+msgid "Analysis"
+msgstr "Analisis"
+
+#: exodus/templates/base.html:77
+msgid "Submit"
+msgstr "Enviar"
+
+#: exodus/templates/base.html:88
+msgid "Welcome on the εxodus privacy auditing platform."
+msgstr "La benvenguda a la plataforma d’audit de εxodus privacy."
+
+#: exodus/templates/base.html:92
+msgid "This platform is meant to automatically analyze Android applications."
+msgstr ""
+"Aquesta plataforma a per objectiu d’analizar automaticament las aplicacions "
+"Android."
+
+#: exodus/templates/base.html:93
+msgid "It generates reports listing embedded trackers and (if possible)"
+msgstr ""
+"Genèra de rapòrts que detalhan los traçadors embarcats e (s’es possible) "
+
+#: exodus/templates/base.html:94
+msgid "associated network traffic."
+msgstr "lo trafic ret associat."
+
+#: exodus/templates/base.html:98
+msgid "Find us on Mastodon:"
+msgstr "Nos trapar a Mastodon :"

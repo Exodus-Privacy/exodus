@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-22 10:25+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: oc\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Pootle-Path: /oc/analysis_query/django.po\n"
+"X-Pootle-Revision: 676\n"
+
+#: analysis_query/models.py:16
+msgid "%s is not a valid application handle"
+msgstr "%s es pas un identificant d’aplicacion valid"
+
+#: analysis_query/models.py:20
+msgid "%s application not found on Google Play"
+msgstr "%s aplicacion pas trobada sus Google Play"
+
+#: analysis_query/models.py:24
+msgid "This application is being analyzed."
+msgstr "Aquesta aplicacion es en analisi."
+
+#: analysis_query/models.py:27
+msgid "Too much pending requests, please retry later"
+msgstr "Tròp de demandas en espèra, tornatz ensajar mai tard"
+
+#: analysis_query/templates/queries_list.html:14
+msgid "You need to be registered"
+msgstr "Vos cal èsser connectat"
+
+#: analysis_query/templates/query_submit.html:9
+msgid "Analyze an application"
+msgstr "Analizar una aplicacion"
+
+#: analysis_query/templates/query_submit.html:10
+msgid "Free application only"
+msgstr "Aplicacions gratuitas solament"
+
+#: templates/query_submit.html:23
+msgid "You can find the handle in the Google Play URL of the application"
+msgstr "Podètz trobar l’identificant dins l’URL Google Play de l’aplicacion"
+
+#: analysis_query/templates/query_submit.html:31
+msgid "Perform analysis"
+msgstr "Començar l’analisi"
+
+#: analysis_query/templates/query_submit.html:38
+msgid ""
+"The analysis could take a long time, you will be automatically redirected to "
+"the report."
+msgstr "L’analisi pòt tardar, seretz automaticament mandat al rapòrt"
+
+#: templates/query_submit.html:52
+msgid "is a non-profit organization which provides this service for free."
+msgstr ""
+"es un organisme a sens but lucratiu que fornís aqueste servici gratuitament."
+
+#: analysis_query/templates/query_submit.html:53
+#: analysis_query/templates/query_wait.html:25
+msgid "Help us!"
+msgstr "Ajudatz-nos !"
+
+#: templates/query_submit.html:94
+msgid " report(s) found for"
+msgstr "rapòrt(s) trobat(s) per"
+
+#: analysis_query/templates/query_submit.html:99
+msgid "Go to the report"
+msgstr "Anar al rapòrt"
+
+#: templates/query_submit.html:106
+msgid ""
+"If you think εxodus has not yet analyzed the latest version of this "
+"application feel-free to submit the analysis."
+msgstr ""
+"Se pensatz qu’εxodus pas encara analizat la darrièra version d’aquesta "
+"aplicacion, esitetz pas a sometre l’analisi."
+
+#: analysis_query/templates/query_wait.html:8
+msgid "is processing your request"
+msgstr "tracta vòstra demanda"
+
+#: analysis_query/templates/query_wait.html:13
+msgid "See the report"
+msgstr "Veire lo rapòrt"
+
+#: analysis_query/templates/query_wait.html:16
+msgid "Will refresh automatically every 10 seconds."
+msgstr "La pagina s’actualiza automaticament cada 10 segondas"
+
+#: analysis_query/views.py:31
+msgid "Your request will be handled soon"
+msgstr "Vòstra demanda serà lèu tractada"
+
+#: analysis_query/views.py:44
+#: analysis_query/views.py:52
+msgid "AnalysisRequest does not exist"
+msgstr "La demanda d’analisi existís pas"
