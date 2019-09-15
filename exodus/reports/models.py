@@ -11,8 +11,15 @@ from django.utils.encoding import python_2_unicode_compatible
 from minio import Minio
 from minio.error import (ResponseError, NoSuchBucket)
 
-from exodus.core.permissions_en import AOSP_PERMISSIONS
+from django.utils import translation
 from trackers.models import Tracker
+from exodus.core.permissions_en import AOSP_PERMISSIONS_EN
+from exodus.core.permissions_fr import AOSP_PERMISSIONS_FR
+
+AOSP_PERMISSIONS = {
+    'en': AOSP_PERMISSIONS_EN,
+    'fr': AOSP_PERMISSIONS_FR
+}
 
 
 @python_2_unicode_compatible
@@ -115,12 +122,14 @@ class Permission(models.Model):
         return self.name
 
     def get_permission_details(self):
-        permissions = AOSP_PERMISSIONS["permissions"]
+        aosp_data = AOSP_PERMISSIONS[translation.get_language()]
+        permissions = aosp_data["permissions"]
         perm = permissions.get(self.name, {})
         return perm
 
     def get_group_details(self):
-        groups = AOSP_PERMISSIONS["groups"]
+        aosp_data = AOSP_PERMISSIONS[translation.get_language()]
+        groups = aosp_data["groups"]
         group = groups.get(self.group, {})
         return group
 
