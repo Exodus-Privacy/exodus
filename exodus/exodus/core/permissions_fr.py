@@ -1,37 +1,37 @@
-AOSP_PERMISSIONS_EN = {
+AOSP_PERMISSIONS_FR = {
     "groups": {
         "android.permission-group.CALENDAR": {
-            "description": "access your calendar",
+            "description": "accéder à votre agenda",
             "description_ptr": "permgroupdesc_calendar",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99 .9 -1.99 2L3 19c0 1.1 .89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_calendar",
-            "label": "Calendar",
+            "label": "Agenda",
             "label_ptr": "permgrouplab_calendar",
             "name": "android.permission-group.CALENDAR",
             "request_ptr": "permgrouprequest_calendar"
         },
         "android.permission-group.CALL_LOG": {
-            "description": "read and write phone call log",
+            "description": "Lire et écrire les journaux d'appels du téléphone",
             "description_ptr": "permgroupdesc_calllog",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24.0\" viewBox=\"0 0 24.0 24.0\" width=\"24.0\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M16.01,14.48l-2.62,2.62c-2.75,-1.49 -5.01,-3.75 -6.5,-6.5l2.62,-2.62c0.24,-0.24 0.34,-0.58 0.27,-0.9L9.13,3.82c-0.09,-0.47 -0.5,-0.8 -0.98,-0.8L4,3.01c-0.56,0 -1.03,0.47 -1,1.03c0.17,2.91 1.04,5.63 2.43,8.01c1.57,2.69 3.81,4.93 6.5,6.5c2.38,1.39 5.1,2.26 8.01,2.43c0.56,0.03 1.03,-0.44 1.03,-1v-4.15c0,-0.48 -0.34,-0.89 -0.8,-0.98l-3.26,-0.65C16.58,14.14 16.24,14.24 16.01,14.48z\" fill=\"#000000\"/><path d=\"M12,8h10V6H12V8zM12,4h10V2H12V4zM22,10H12v2h10V10z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_call_log",
-            "label": "Call logs",
+            "label": "Journaux d'appels",
             "label_ptr": "permgrouplab_calllog",
             "name": "android.permission-group.CALL_LOG",
             "request_ptr": "permgrouprequest_calllog"
         },
         "android.permission-group.CAMERA": {
-            "description": "take pictures and record video",
+            "description": "prendre des photos et enregistrer des vidéos",
             "description_ptr": "permgroupdesc_camera",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20,5h-3.17L15,3H9L7.17,5H4C2.9,5 2,5.9 2,7v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2V7C22,5.9 21.1,5 20,5zM20,19H4V7h16V19z\" fill=\"#000000\"/><path d=\"M12,9c-2.21,0 -4,1.79 -4,4c0,2.21 1.79,4 4,4s4,-1.79 4,-4C16,10.79 14.21,9 12,9z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_camera",
-            "label": "Camera",
+            "label": "Appareil photo",
             "label_ptr": "permgrouplab_camera",
             "name": "android.permission-group.CAMERA",
             "request_ptr": "permgrouprequest_camera"
         },
         "android.permission-group.CONTACTS": {
-            "description": "access your contacts",
+            "description": "accéder à vos contacts",
             "description_ptr": "permgroupdesc_contacts",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4,1h16v2h-16z\" fill=\"#000000\"/><path d=\"M4,21h16v2h-16z\" fill=\"#000000\"/><path d=\"M20,5H4C2.9,5 2,5.9 2,7v10c0,1.1 0.9,2 2,2h2h12h2c1.1,0 2,-0.9 2,-2V7C22,5.9 21.1,5 20,5zM8.21,17c0.7,-0.47 2.46,-1 3.79,-1s3.09,0.53 3.79,1H8.21zM20,17h-2c0,-1.99 -4,-3 -6,-3s-6,1.01 -6,3H4V7h16V17z\" fill=\"#000000\"/><path d=\"M12,13.5c1.66,0 3,-1.34 3,-3c0,-1.66 -1.34,-3 -3,-3s-3,1.34 -3,3C9,12.16 10.34,13.5 12,13.5zM12,9.5c0.55,0 1,0.45 1,1s-0.45,1 -1,1s-1,-0.45 -1,-1S11.45,9.5 12,9.5z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_contacts",
@@ -41,17 +41,17 @@ AOSP_PERMISSIONS_EN = {
             "request_ptr": "permgrouprequest_contacts"
         },
         "android.permission-group.LOCATION": {
-            "description": "access this device's location",
+            "description": "accéder à la position de l'appareil",
             "description_ptr": "permgroupdesc_location",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7,-7.75 7,-13C19,5.13 15.87,2 12,2zM7,9c0,-2.76 2.24,-5 5,-5s5,2.24 5,5c0,2.88 -2.88,7.19 -5,9.88C9.92,16.21 7,11.85 7,9z\" fill=\"#000000\"/><path d=\"M12,9m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_location",
-            "label": "Location",
+            "label": "Localisation",
             "label_ptr": "permgrouplab_location",
             "name": "android.permission-group.LOCATION",
             "request_ptr": "permgrouprequest_location"
         },
         "android.permission-group.MICROPHONE": {
-            "description": "record audio",
+            "description": "enregistrer des fichiers audio",
             "description_ptr": "permgroupdesc_microphone",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12,14c1.66,0 3,-1.34 3,-3V5c0,-1.66 -1.34,-3 -3,-3S9,3.34 9,5v6C9,12.66 10.34,14 12,14zM11,5c0,-0.55 0.45,-1 1,-1s1,0.45 1,1v6c0,0.55 -0.45,1 -1,1s-1,-0.45 -1,-1V5z\" fill=\"#000000\"/><path d=\"M17,11c0,2.76 -2.24,5 -5,5s-5,-2.24 -5,-5H5c0,3.53 2.61,6.43 6,6.92V21h2v-3.08c3.39,-0.49 6,-3.39 6,-6.92H17z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_microphone",
@@ -61,27 +61,27 @@ AOSP_PERMISSIONS_EN = {
             "request_ptr": "permgrouprequest_microphone"
         },
         "android.permission-group.PHONE": {
-            "description": "make and manage phone calls",
+            "description": "effectuer et gérer des appels téléphoniques",
             "description_ptr": "permgroupdesc_phone",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27 .67 -.36 1.02-.24 1.12 .37 2.33 .57 3.57 .57 .55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55 .45 -1 1-1h3.5c.55 0 1 .45 1 1 0 1.25 .2 2.45 .57 3.57 .11 .35 .03 .74-.25 1.02l-2.2 2.2z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_phone_calls",
-            "label": "Phone",
+            "label": "Téléphone",
             "label_ptr": "permgrouplab_phone",
             "name": "android.permission-group.PHONE",
             "request_ptr": "permgrouprequest_phone"
         },
         "android.permission-group.SENSORS": {
-            "description": "access sensor data about your vital signs",
+            "description": "accéder aux données des capteurs relatives à vos signes vitaux",
             "description_ptr": "permgroupdesc_sensors",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5 .1 -.8 .1 l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_sensors",
-            "label": "Body Sensors",
+            "label": "Capteurs corporels",
             "label_ptr": "permgrouplab_sensors",
             "name": "android.permission-group.SENSORS",
             "request_ptr": "permgrouprequest_sensors"
         },
         "android.permission-group.SMS": {
-            "description": "send and view SMS messages",
+            "description": "envoyer et consulter des SMS",
             "description_ptr": "permgroupdesc_sms",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20,2H4C2.9,2 2,2.9 2,4v18l4.75,-4h14C21.1,18 22,17.1 22,16V4C22,2.9 21.1,2 20,2zM20,16H4V4h16V16zM9,11H7V9h2V11zM17,11h-2V9h2V11zM13,11h-2V9h2V11z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_sms",
@@ -91,11 +91,11 @@ AOSP_PERMISSIONS_EN = {
             "request_ptr": "permgrouprequest_sms"
         },
         "android.permission-group.STORAGE": {
-            "description": "access photos, media, and files on your device",
+            "description": "accéder à des photos, à des contenus multimédias et à des fichiers sur votre appareil",
             "description_ptr": "permgroupdesc_storage",
             "icon": "<?xml version=\"1.0\" ?><svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20,6h-8l-2,-2H4C2.9,4 2.01,4.9 2.01,6L2,18c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2V8C22,6.9 21.1,6 20,6zM20,18H4V8h16V18z\" fill=\"#000000\"/></svg>",
             "icon_ptr": "perm_group_storage",
-            "label": "Storage",
+            "label": "Stockage",
             "label_ptr": "permgrouplab_storage",
             "name": "android.permission-group.STORAGE",
             "request_ptr": "permgrouprequest_storage"
@@ -112,7 +112,7 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.ACCEPT_HANDOVER": {
-            "description": "Allows the app to continue a call which was started in another app.",
+            "description": "Autorise l'application à continuer un appel qui a été démarré dans une autre application.",
             "description_ptr": "permdesc_acceptHandovers",
             "label": "",
             "label_ptr": "",
@@ -157,9 +157,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.ACCESS_COARSE_LOCATION": {
-            "description": "This app can get your location based on network sources such as cell towers and Wi-Fi networks. These location services must be turned on and available on your phone for the app to be able to use them.",
+            "description": "Cette application peut obtenir votre position via des sources de réseau telles que les antennes-relais et les réseaux Wi-Fi. Ces services de localisation doivent être activés et disponibles sur votre téléphone pour que l'application puisse les utiliser.",
             "description_ptr": "permdesc_accessCoarseLocation",
-            "label": "access approximate location\n            (network-based)",
+            "label": "accéder à votre position approximative (selon le réseau)",
             "label_ptr": "permlab_accessCoarseLocation",
             "name": "android.permission.ACCESS_COARSE_LOCATION",
             "permission_group": "android.permission-group.LOCATION",
@@ -184,9 +184,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.ACCESS_FINE_LOCATION": {
-            "description": "This app can get your location based on GPS or network location sources such as cell towers and Wi-Fi networks. These location services must be turned on and available on your phone for the app to be able to use them. This may increase battery consumption.",
+            "description": "Cette application peut obtenir votre position via le GPS ou des sources de positionnement de réseau telles que les antennes-relais et les réseaux Wi-Fi. Ces services de localisation doivent être activés et disponibles sur votre téléphone pour que l'application puisse les utiliser. Ceci peut réduire l'autonomie de la batterie.",
             "description_ptr": "permdesc_accessFineLocation",
-            "label": "access precise location (GPS and\n            network-based)",
+            "label": "accéder à votre position précise (GPS et réseau)",
             "label_ptr": "permlab_accessFineLocation",
             "name": "android.permission.ACCESS_FINE_LOCATION",
             "permission_group": "android.permission-group.LOCATION",
@@ -202,9 +202,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.ACCESS_IMS_CALL_SERVICE": {
-            "description": "Allows the app to use the IMS service to make calls without your intervention.",
+            "description": "Permet à l'application d'utiliser le service IMS pour passer des appels sans votre intervention.",
             "description_ptr": "permdesc_accessImsCallService",
-            "label": "access IMS call service",
+            "label": "accéder au service d'appel IMS",
             "label_ptr": "permlab_accessImsCallService",
             "name": "android.permission.ACCESS_IMS_CALL_SERVICE",
             "permission_group": "",
@@ -238,9 +238,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.ACCESS_LOCATION_EXTRA_COMMANDS": {
-            "description": "Allows the app to access\n                extra location provider commands.    This may allow the app to interfere\n                with the operation of the GPS or other location sources.",
+            "description": "Permet à l'application d'accéder à des commandes de localisation supplémentaires offertes par le fournisseur. Elle est ainsi susceptible d'interférer avec le bon fonctionnement du GPS ou de toute autre source de localisation.",
             "description_ptr": "permdesc_accessLocationExtraCommands",
-            "label": "access extra location provider commands",
+            "label": "Accès aux commandes de fournisseur de position géographique supplémentaires",
             "label_ptr": "permlab_accessLocationExtraCommands",
             "name": "android.permission.ACCESS_LOCATION_EXTRA_COMMANDS",
             "permission_group": "",
@@ -283,9 +283,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.ACCESS_NETWORK_STATE": {
-            "description": "Allows the app to view\n            information about network connections such as which networks exist and are\n            connected.",
+            "description": "Permet à l'application d'accéder à des informations sur les connexions réseau, comme les réseaux existants et connectés.",
             "description_ptr": "permdesc_accessNetworkState",
-            "label": "view network connections",
+            "label": "afficher les connexions réseau",
             "label_ptr": "permlab_accessNetworkState",
             "name": "android.permission.ACCESS_NETWORK_STATE",
             "permission_group": "",
@@ -301,9 +301,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged|appop"
         },
         "android.permission.ACCESS_NOTIFICATION_POLICY": {
-            "description": "Allows the app to read and write Do Not Disturb configuration.",
+            "description": "Permet à l'application de consulter et de modifier la configuration du mode Ne pas déranger.",
             "description_ptr": "permdesc_access_notification_policy",
-            "label": "access Do Not Disturb",
+            "label": "accéder au mode Ne pas déranger",
             "label_ptr": "permlab_access_notification_policy",
             "name": "android.permission.ACCESS_NOTIFICATION_POLICY",
             "permission_group": "",
@@ -382,18 +382,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|preinstalled"
         },
         "android.permission.ACCESS_WIFI_STATE": {
-            "description": "Allows the app to view information\n            about Wi-Fi networking, such as whether Wi-Fi is enabled and name of\n            connected Wi-Fi devices.",
+            "description": "Permet à l'application d'accéder à des informations sur les réseaux Wi-Fi afin de savoir si une connexion Wi-Fi est activée et pour connaître le nom des appareils connectés au Wi-Fi, par exemple.",
             "description_ptr": "permdesc_accessWifiState",
-            "label": "view Wi-Fi connections",
+            "label": "afficher les connexions Wi-Fi",
             "label_ptr": "permlab_accessWifiState",
             "name": "android.permission.ACCESS_WIFI_STATE",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.ACCESS_WIMAX_STATE": {
-            "description": "Allows the app to determine whether\n         WiMAX is enabled and information about any WiMAX networks that are\n         connected. ",
+            "description": "Permet à l'application de déterminer si le WiMAX est activé et d'obtenir des informations sur tous les réseaux WiMAX connectés.",
             "description_ptr": "permdesc_accessWimaxState",
-            "label": "connect and disconnect from WiMAX",
+            "label": "se connecter au réseau WiMAX et s'en déconnecter",
             "label_ptr": "permlab_accessWimaxState",
             "name": "android.permission.ACCESS_WIMAX_STATE",
             "permission_group": "",
@@ -436,9 +436,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.ANSWER_PHONE_CALLS": {
-            "description": "Allows the app to answer an incoming phone call.",
+            "description": "Autorise l'application à répondre à un appel téléphonique entrant.",
             "description_ptr": "permdesc_answerPhoneCalls",
-            "label": "answer phone calls",
+            "label": "répondre aux appels téléphoniques",
             "label_ptr": "permlab_answerPhoneCalls",
             "name": "android.permission.ANSWER_PHONE_CALLS",
             "permission_group": "android.permission-group.PHONE",
@@ -589,9 +589,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.BIND_CARRIER_SERVICES": {
-            "description": "Allows the holder to bind to carrier services. Should never be needed for normal apps.",
+            "description": "Permet à l'application autorisée de s'associer aux services d'un opérateur. Ne devrait pas être nécessaire pour les applications standards.",
             "description_ptr": "permdesc_bindCarrierServices",
-            "label": "bind to carrier services",
+            "label": "associer aux services de l'opérateur",
             "label_ptr": "permlab_bindCarrierServices",
             "name": "android.permission.BIND_CARRIER_SERVICES",
             "permission_group": "",
@@ -1003,18 +1003,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.BLUETOOTH": {
-            "description": "Allows the app to view the\n            configuration of the Bluetooth on the phone, and to make and accept\n            connections with paired devices.",
+            "description": "Permet à l'application d'accéder à la configuration du Bluetooth sur le téléphone, et d'établir et accepter des connexions avec les appareils associés.",
             "description_ptr": "permdesc_bluetooth",
-            "label": "pair with Bluetooth devices",
+            "label": "Associer à appareils Bluetooth",
             "label_ptr": "permlab_bluetooth",
             "name": "android.permission.BLUETOOTH",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.BLUETOOTH_ADMIN": {
-            "description": "Allows the app to configure\n            the local Bluetooth phone, and to discover and pair with remote devices.",
+            "description": "Permet à l'application de configurer le téléphone Bluetooth local, d'identifier des appareils distants et de les associer au téléphone.",
             "description_ptr": "permdesc_bluetoothAdmin",
-            "label": "access Bluetooth settings",
+            "label": "Accéder aux paramètres Bluetooth",
             "label_ptr": "permlab_bluetoothAdmin",
             "name": "android.permission.BLUETOOTH_ADMIN",
             "permission_group": "",
@@ -1048,9 +1048,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.BODY_SENSORS": {
-            "description": "Allows the app to access data from sensors\n        that monitor your physical condition, such as your heart rate.",
+            "description": "Permet à l'application d'accéder aux données des capteurs qui contrôlent votre condition physique, comme votre rythme cardiaque.",
             "description_ptr": "permdesc_bodySensors",
-            "label": "access body sensors (like heart rate monitors)\n        ",
+            "label": "accéder capteurs corp. (ex : cardiofréquencemètres)",
             "label_ptr": "permlab_bodySensors",
             "name": "android.permission.BODY_SENSORS",
             "permission_group": "android.permission-group.SENSORS",
@@ -1102,9 +1102,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.BROADCAST_STICKY": {
-            "description": "Allows the app to\n        send sticky broadcasts, which remain after the broadcast ends. Excessive\n        use may make the phone slow or unstable by causing it to use too\n        much memory.",
+            "description": "Permet à l'application d'envoyer des intentions de diffusion persistantes, qui perdurent une fois la diffusion terminée. Une utilisation excessive peut ralentir le téléphone ou le rendre instable en l'obligeant à utiliser trop de mémoire.",
             "description_ptr": "permdesc_broadcastSticky",
-            "label": "send sticky broadcast",
+            "label": "Envoi d'une diffusion persistante",
             "label_ptr": "permlab_broadcastSticky",
             "name": "android.permission.BROADCAST_STICKY",
             "permission_group": "",
@@ -1129,9 +1129,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.CALL_PHONE": {
-            "description": "Allows the app to call phone numbers\n            without your intervention. This may result in unexpected charges or calls.\n            Note that this doesn't allow the app to call emergency numbers.\n            Malicious apps may cost you money by making calls without your\n            confirmation.",
+            "description": "Permet à l'application d'appeler des numéros de téléphone sans votre intervention. Cette autorisation peut entraîner des frais ou des appels imprévus et ne permet pas à l'application d'appeler des numéros d'urgence. Les applications malveillantes peuvent générer des frais en passant des appels sans votre consentement.",
             "description_ptr": "permdesc_callPhone",
-            "label": "directly call phone numbers",
+            "label": "appeler directement les numéros de téléphone",
             "label_ptr": "permlab_callPhone",
             "name": "android.permission.CALL_PHONE",
             "permission_group": "android.permission-group.PHONE",
@@ -1147,9 +1147,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.CAMERA": {
-            "description": "This app can take pictures and record videos using the camera at any time.",
+            "description": "Cette application peut utiliser l'appareil photo pour prendre des photos et enregistrer des vidéos à tout moment.",
             "description_ptr": "permdesc_camera",
-            "label": "take pictures and videos",
+            "label": "prendre des photos et enregistrer des vidéos",
             "label_ptr": "permlab_camera",
             "name": "android.permission.CAMERA",
             "permission_group": "android.permission-group.CAMERA",
@@ -1300,9 +1300,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.CHANGE_NETWORK_STATE": {
-            "description": "Allows the app to change the state of network connectivity.",
+            "description": "Permet à l'application de modifier l'état de la connectivité du réseau.",
             "description_ptr": "permdesc_changeNetworkState",
-            "label": "change network connectivity",
+            "label": "modifier la connectivité réseau",
             "label_ptr": "permlab_changeNetworkState",
             "name": "android.permission.CHANGE_NETWORK_STATE",
             "permission_group": "",
@@ -1318,27 +1318,27 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.CHANGE_WIFI_MULTICAST_STATE": {
-            "description": "Allows the app to receive\n            packets sent to all devices on a Wi-Fi network using multicast addresses,\n            not just your phone.    It uses more power than the non-multicast mode.",
+            "description": "Permet à l'application de recevoir des paquets envoyés à tous les appareils (et pas seulement à votre téléphone) d'un réseau Wi-Fi qui utilise des adresses de multidiffusion. Cette autorisation entraîne une consommation d'énergie supérieure au mode de diffusion simple.",
             "description_ptr": "permdesc_changeWifiMulticastState",
-            "label": "allow Wi-Fi Multicast reception",
+            "label": "autoriser la réception de données en Wi-Fi multidiffusion",
             "label_ptr": "permlab_changeWifiMulticastState",
             "name": "android.permission.CHANGE_WIFI_MULTICAST_STATE",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.CHANGE_WIFI_STATE": {
-            "description": "Allows the app to connect to and\n            disconnect from Wi-Fi access points and to make changes to device\n            configuration for Wi-Fi networks.",
+            "description": "Permet à l'application de se connecter à des points d'accès Wi-Fi, de s'en déconnecter et de modifier la configuration de l'appareil pour les réseaux Wi-Fi.",
             "description_ptr": "permdesc_changeWifiState",
-            "label": "connect and disconnect from Wi-Fi",
+            "label": "Activer/désactiver la connexion Wi-Fi",
             "label_ptr": "permlab_changeWifiState",
             "name": "android.permission.CHANGE_WIFI_STATE",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.CHANGE_WIMAX_STATE": {
-            "description": "Allows the app to\n            connect the phone to and disconnect the phone from WiMAX networks.",
+            "description": "Permet à l'application de connecter le téléphone aux réseaux WiMAX et de l'en déconnecter.",
             "description_ptr": "permdesc_changeWimaxState",
-            "label": "change WiMAX state",
+            "label": "modifier l'état du WiMAX",
             "label_ptr": "permlab_changeWimaxState",
             "name": "android.permission.CHANGE_WIMAX_STATE",
             "permission_group": "",
@@ -1579,9 +1579,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.DISABLE_KEYGUARD": {
-            "description": "Allows the app to disable the\n            keylock and any associated password security.    For example, the phone\n            disables the keylock when receiving an incoming phone call, then\n            re-enables the keylock when the call is finished.",
+            "description": "Permet à l'application de désactiver le verrouillage des touches et toute mesure de sécurité via mot de passe associée. Par exemple, votre téléphone désactive le verrouillage des touches lorsque vous recevez un appel, puis le réactive lorsque vous raccrochez.",
             "description_ptr": "permdesc_disableKeyguard",
-            "label": "disable your screen lock",
+            "label": "Désactiver le verrouillage de l'écran",
             "label_ptr": "permlab_disableKeyguard",
             "name": "android.permission.DISABLE_KEYGUARD",
             "permission_group": "",
@@ -1624,9 +1624,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.EXPAND_STATUS_BAR": {
-            "description": "Allows the app to expand or collapse the status bar.",
+            "description": "Permet à l'application de réduire ou de développer la barre d'état.",
             "description_ptr": "permdesc_expandStatusBar",
-            "label": "expand/collapse status bar",
+            "label": "Agrandir/réduire la barre d'état",
             "label_ptr": "permlab_expandStatusBar",
             "name": "android.permission.EXPAND_STATUS_BAR",
             "permission_group": "",
@@ -1687,9 +1687,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.FOREGROUND_SERVICE": {
-            "description": "Allows the app to make use of foreground services.",
+            "description": "Autorise l'application à utiliser des services de premier plan.",
             "description_ptr": "permdesc_foregroundService",
-            "label": "run foreground service",
+            "label": "exécuter un service de premier plan",
             "label_ptr": "permlab_foregroundService",
             "name": "android.permission.FOREGROUND_SERVICE",
             "permission_group": "",
@@ -1714,9 +1714,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.GET_ACCOUNTS": {
-            "description": "Allows the app to get\n            the list of accounts known by the phone.    This may include any accounts\n            created by applications you have installed.",
+            "description": "Permet à l'application d'obtenir la liste des comptes connus par le téléphone. Il peut s'agir de n'importe quel compte créé par les applications que vous avez installées.",
             "description_ptr": "permdesc_getAccounts",
-            "label": "find accounts on the device",
+            "label": "rechercher des comptes sur l'appareil",
             "label_ptr": "permlab_getAccounts",
             "name": "android.permission.GET_ACCOUNTS",
             "permission_group": "android.permission-group.CONTACTS",
@@ -1768,9 +1768,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.GET_PACKAGE_SIZE": {
-            "description": "Allows the app to retrieve its code, data, and cache sizes",
+            "description": "Permet à l'application de récupérer son code, ses données et la taille de sa mémoire cache.",
             "description_ptr": "permdesc_getPackageSize",
-            "label": "measure app storage space",
+            "label": "évaluer l'espace de stockage de l'application",
             "label_ptr": "permlab_getPackageSize",
             "name": "android.permission.GET_PACKAGE_SIZE",
             "permission_group": "",
@@ -1795,9 +1795,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged|development"
         },
         "android.permission.GET_TASKS": {
-            "description": "Allows the app to retrieve information\n             about currently and recently running tasks.    This may allow the app to\n             discover information about which applications are used on the device.",
+            "description": "Permet à l'application de récupérer des informations sur des tâches en cours d'exécution et récemment exécutées. L'application est ainsi susceptible d'obtenir des informations sur les applications utilisées sur l'appareil.",
             "description_ptr": "permdesc_getTasks",
-            "label": "retrieve running apps",
+            "label": "récupérer les applications en cours d'exécution",
             "label_ptr": "permlab_getTasks",
             "name": "android.permission.GET_TASKS",
             "permission_group": "",
@@ -1975,9 +1975,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.INTERNET": {
-            "description": "Allows the app to create\n         network sockets and use custom network protocols. The browser and other\n         applications provide means to send data to the internet, so this\n         permission is not required to send data to the internet.",
+            "description": "Permet à l'application de créer des sockets réseau et d'utiliser des protocoles réseau personnalisés. Le navigateur et d'autres applications permettent d'envoyer des données sur Internet. Cette autorisation n'est donc pas nécessaire pour envoyer des données sur Internet.",
             "description_ptr": "permdesc_createNetworkSockets",
-            "label": "have full network access",
+            "label": "bénéficier d'un accès complet au réseau",
             "label_ptr": "permlab_createNetworkSockets",
             "name": "android.permission.INTERNET",
             "permission_group": "",
@@ -1993,9 +1993,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.KILL_BACKGROUND_PROCESSES": {
-            "description": "Allows the app to end\n            background processes of other apps.    This may cause other apps to stop\n            running.",
+            "description": "Permet à l'application de mettre fin aux processus d'autres applications exécutés en arrière-plan. Cette autorisation peut interrompre l'exécution d'autres applications.",
             "description_ptr": "permdesc_killBackgroundProcesses",
-            "label": "close other apps",
+            "label": "fermer les autres applications",
             "label_ptr": "permlab_killBackgroundProcesses",
             "name": "android.permission.KILL_BACKGROUND_PROCESSES",
             "permission_group": "",
@@ -2227,18 +2227,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.MANAGE_OWN_CALLS": {
-            "description": "Allows the app to route its calls through the system in\n                order to improve the calling experience.",
+            "description": "Autorise l'application à acheminer les appels via le système afin d'optimiser le confort d'utilisation.",
             "description_ptr": "permdesc_manageOwnCalls",
-            "label": "route calls through the system",
+            "label": "acheminer les appels via le système",
             "label_ptr": "permlab_manageOwnCalls",
             "name": "android.permission.MANAGE_OWN_CALLS",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.MANAGE_PROFILE_AND_DEVICE_OWNERS": {
-            "description": "Allows apps to set the profile owners and the device owner.",
+            "description": "Autoriser les applications à définir les propriétaires des profils et celui de l'appareil",
             "description_ptr": "permdesc_manageProfileAndDeviceOwners",
-            "label": "manage profile and device owners",
+            "label": "gérer les propriétaires des profils et de l'appareil",
             "label_ptr": "permlab_manageProfileAndDeviceOwners",
             "name": "android.permission.MANAGE_PROFILE_AND_DEVICE_OWNERS",
             "permission_group": "",
@@ -2380,9 +2380,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.MODIFY_AUDIO_SETTINGS": {
-            "description": "Allows the app to modify global audio settings such as volume and which speaker is used for output.",
+            "description": "Permet à l'application de modifier les paramètres audio généraux, tels que le volume et la sortie audio utilisée.",
             "description_ptr": "permdesc_modifyAudioSettings",
-            "label": "change your audio settings",
+            "label": "modifier vos paramètres audio",
             "label_ptr": "permlab_modifyAudioSettings",
             "name": "android.permission.MODIFY_AUDIO_SETTINGS",
             "permission_group": "",
@@ -2533,9 +2533,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.NFC": {
-            "description": "Allows the app to communicate\n            with Near Field Communication (NFC) tags, cards, and readers.",
+            "description": "Permet à l'application de communiquer avec des tags, des cartes et des lecteurs compatibles avec la technologie NFC (communication en champ proche).",
             "description_ptr": "permdesc_nfc",
-            "label": "control Near Field Communication",
+            "label": "contrôler la communication en champ proche",
             "label_ptr": "permlab_nfc",
             "name": "android.permission.NFC",
             "permission_group": "",
@@ -2686,18 +2686,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.PERSISTENT_ACTIVITY": {
-            "description": "Allows the app to make parts of itself persistent in memory.    This can limit memory available to other apps slowing down the phone.",
+            "description": "Permet à l'application de rendre certains de ces composants persistants dans la mémoire. Cette autorisation peut limiter la mémoire disponible pour d'autres applications et ralentir le téléphone.",
             "description_ptr": "permdesc_persistentActivity",
-            "label": "make app always run",
+            "label": "exécuter l'application en continu",
             "label_ptr": "permlab_persistentActivity",
             "name": "android.permission.PERSISTENT_ACTIVITY",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.PROCESS_OUTGOING_CALLS": {
-            "description": "Allows the app to see the\n                number being dialed during an outgoing call with the option to redirect\n                the call to a different number or abort the call altogether.",
+            "description": "Permettre à l'application de lire le numéro composé lors d'un appel sortant, et lui donner la possibilité de rediriger l'appel vers un autre numéro ou d'abandonner l'appel",
             "description_ptr": "permdesc_processOutgoingCalls",
-            "label": "reroute outgoing calls",
+            "label": "transférer les appels sortants",
             "label_ptr": "permlab_processOutgoingCalls",
             "name": "android.permission.PROCESS_OUTGOING_CALLS",
             "permission_group": "android.permission-group.CALL_LOG",
@@ -2749,36 +2749,36 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.READ_CALENDAR": {
-            "description": "This app can read all calendar events stored on your phone and share or save your calendar data.",
+            "description": "Cette application peut lire tous les événements d'agenda enregistrés sur votre téléphone et partager ou enregistrer vos données d'agenda.",
             "description_ptr": "permdesc_readCalendar",
-            "label": "Read calendar events and details",
+            "label": "Lire les événements d'agenda et les détails associés",
             "label_ptr": "permlab_readCalendar",
             "name": "android.permission.READ_CALENDAR",
             "permission_group": "android.permission-group.CALENDAR",
             "protection_level": "dangerous"
         },
         "android.permission.READ_CALL_LOG": {
-            "description": "This app can read your call history.",
+            "description": "Cette application peut lire l'historique de vos appels.",
             "description_ptr": "permdesc_readCallLog",
-            "label": "read call log",
+            "label": "lire le journal d'appels",
             "label_ptr": "permlab_readCallLog",
             "name": "android.permission.READ_CALL_LOG",
             "permission_group": "android.permission-group.CALL_LOG",
             "protection_level": "dangerous"
         },
         "android.permission.READ_CELL_BROADCASTS": {
-            "description": "Allows the app to read\n                cell broadcast messages received by your device. Cell broadcast alerts\n                are delivered in some locations to warn you of emergency situations.\n                Malicious apps may interfere with the performance or operation of your\n                device when an emergency cell broadcast is received.",
+            "description": "Permet à l'application de lire les messages que votre appareil reçoit via un canal de diffusion cellulaire. Dans certaines zones géographiques, des alertes vous sont envoyées afin de vous prévenir en cas de situation d'urgence. Les applications malveillantes peuvent venir perturber les performances ou le fonctionnement de votre appareil lorsqu'un message est reçu via un canal de diffusion cellulaire.",
             "description_ptr": "permdesc_readCellBroadcasts",
-            "label": "read cell broadcast messages",
+            "label": "lire les messages reçus via un canal de diffusion cellulaire",
             "label_ptr": "permlab_readCellBroadcasts",
             "name": "android.permission.READ_CELL_BROADCASTS",
             "permission_group": "android.permission-group.SMS",
             "protection_level": "dangerous"
         },
         "android.permission.READ_CONTACTS": {
-            "description": "Allows the app to\n            read data about your contacts stored on your phone, including the\n            frequency with which you've called, emailed, or communicated in other ways\n            with specific individuals. This permission allows apps to save your\n            contact data, and malicious apps may share contact data without your\n            knowledge.",
+            "description": "Permet à l'application de lire les données relatives aux contacts stockés sur votre téléphone, y compris la fréquence à laquelle vous avez appelé des personnes spécifiques, leur avez envoyé des e-mails ou avez communiqué avec elles par d'autres moyens. Cette autorisation permet aux applications d'enregistrer ces données. Les applications malveillantes peuvent les partager à votre insu.",
             "description_ptr": "permdesc_readContacts",
-            "label": "read your contacts",
+            "label": "Voir les contacts",
             "label_ptr": "permlab_readContacts",
             "name": "android.permission.READ_CONTACTS",
             "permission_group": "android.permission-group.CONTACTS",
@@ -2803,9 +2803,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.READ_EXTERNAL_STORAGE": {
-            "description": "Allows the app to read the contents of your SD card.",
+            "description": "Permettre à l'application de lire le contenu de la carte SD",
             "description_ptr": "permdesc_sdcardRead",
-            "label": "read the contents of your SD card",
+            "label": "voir le contenu de la carte SD",
             "label_ptr": "permlab_sdcardRead",
             "name": "android.permission.READ_EXTERNAL_STORAGE",
             "permission_group": "android.permission-group.STORAGE",
@@ -2830,9 +2830,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.READ_INSTALL_SESSIONS": {
-            "description": "Allows an application to read install sessions. This allows it to see details about active package installations.",
+            "description": "Permet à une application d'accéder aux sessions d'installation. Cela lui permet de consulter les détails relatifs à l'installation des packages actifs.",
             "description_ptr": "permdesc_readInstallSessions",
-            "label": "read install sessions",
+            "label": "accéder aux sessions d'installation",
             "label_ptr": "permlab_readInstallSessions",
             "name": "android.permission.READ_INSTALL_SESSIONS",
             "permission_group": "",
@@ -2875,18 +2875,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.READ_PHONE_NUMBERS": {
-            "description": "Allows the app to access the phone numbers of the device.",
+            "description": "Permet à l'application d'accéder aux numéros de téléphone de l'appareil.",
             "description_ptr": "permdesc_readPhoneNumbers",
-            "label": "read phone numbers",
+            "label": "lire les numéros de téléphone",
             "label_ptr": "permlab_readPhoneNumbers",
             "name": "android.permission.READ_PHONE_NUMBERS",
             "permission_group": "android.permission-group.PHONE",
             "protection_level": "dangerous|instant"
         },
         "android.permission.READ_PHONE_STATE": {
-            "description": "Allows the app to access the phone\n            features of the device.    This permission allows the app to determine the\n            phone number and device IDs, whether a call is active, and the remote number\n            connected by a call.",
+            "description": "Permet à l'application d'accéder aux fonctionnalités téléphoniques de l'appareil. Cette autorisation permet à l'application de déterminer le numéro de téléphone et les identifiants de l'appareil, si un appel est actif et le numéro distant connecté par un appel.",
             "description_ptr": "permdesc_readPhoneState",
-            "label": "read phone status and identity",
+            "label": "Voir l'état et l'identité du téléphone",
             "label_ptr": "permlab_readPhoneState",
             "name": "android.permission.READ_PHONE_STATE",
             "permission_group": "android.permission-group.PHONE",
@@ -2956,9 +2956,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.READ_SMS": {
-            "description": "This app can read all SMS (text) messages stored on your phone.",
+            "description": "Cette application peut lire tous les SMS enregistrés sur votre téléphone.",
             "description_ptr": "permdesc_readSms",
-            "label": "read your text messages (SMS or MMS)",
+            "label": "voir les messages texte (SMS ou MMS)",
             "label_ptr": "permlab_readSms",
             "name": "android.permission.READ_SMS",
             "permission_group": "android.permission-group.SMS",
@@ -2974,18 +2974,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "normal"
         },
         "android.permission.READ_SYNC_SETTINGS": {
-            "description": "Allows the app to read the sync settings for an account. For example, this can determine whether the People app is synced with an account.",
+            "description": "Permet à l'application d'accéder aux paramètres de synchronisation d'un compte. Par exemple, cette autorisation peut permettre de déterminer si l'application Contacts est synchronisée avec un compte ou non.",
             "description_ptr": "permdesc_readSyncSettings",
-            "label": "read sync settings",
+            "label": "lire les paramètres de synchronisation",
             "label_ptr": "permlab_readSyncSettings",
             "name": "android.permission.READ_SYNC_SETTINGS",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.READ_SYNC_STATS": {
-            "description": "Allows an app to read the sync stats for an account, including the history of sync events and how much data is synced. ",
+            "description": "Permet à une application d'accéder aux statistiques de synchronisation d'un compte, y compris l'historique des événements de synchronisation et le volume de données synchronisées.",
             "description_ptr": "permdesc_readSyncStats",
-            "label": "read sync statistics",
+            "label": "Lecture des statistiques de synchronisation",
             "label_ptr": "permlab_readSyncStats",
             "name": "android.permission.READ_SYNC_STATS",
             "permission_group": "",
@@ -3055,9 +3055,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.RECEIVE_BOOT_COMPLETED": {
-            "description": "Allows the app to\n                have itself started as soon as the system has finished booting.\n                This can make it take longer to start the phone and allow the\n                app to slow down the overall phone by always running.",
+            "description": "Permet à l'application de se lancer une fois le démarrage du système terminé. Elle peut rallonger le temps de démarrage du téléphone et ralentir son fonctionnement global en raison de son exécution continue.",
             "description_ptr": "permdesc_receiveBootCompleted",
-            "label": "run at startup",
+            "label": "s'exécuter au démarrage",
             "label_ptr": "permlab_receiveBootCompleted",
             "name": "android.permission.RECEIVE_BOOT_COMPLETED",
             "permission_group": "",
@@ -3091,18 +3091,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.RECEIVE_MMS": {
-            "description": "Allows the app to receive and process MMS\n            messages. This means the app could monitor or delete messages sent to your\n            device without showing them to you.",
+            "description": "Permet à l'application de recevoir et de traiter les MMS. Cette autorisation lui donne la possibilité de surveiller ou supprimer les messages envoyés à votre appareil sans vous les montrer.",
             "description_ptr": "permdesc_receiveMms",
-            "label": "receive text messages (MMS)",
+            "label": "recevoir des messages texte (MMS)",
             "label_ptr": "permlab_receiveMms",
             "name": "android.permission.RECEIVE_MMS",
             "permission_group": "android.permission-group.SMS",
             "protection_level": "dangerous"
         },
         "android.permission.RECEIVE_SMS": {
-            "description": "Allows the app to receive and process SMS\n            messages. This means the app could monitor or delete messages sent to your\n            device without showing them to you.",
+            "description": "Permet à l'application de recevoir et de traiter les SMS. Cette autorisation lui donne la possibilité de surveiller ou supprimer les messages envoyés à votre appareil sans vous les montrer.",
             "description_ptr": "permdesc_receiveSms",
-            "label": "receive text messages (SMS)",
+            "label": "recevoir des messages texte (SMS)",
             "label_ptr": "permlab_receiveSms",
             "name": "android.permission.RECEIVE_SMS",
             "permission_group": "android.permission-group.SMS",
@@ -3118,9 +3118,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.RECEIVE_WAP_PUSH": {
-            "description": "Allows the app to receive and process\n         WAP messages.    This permission includes the ability to monitor or delete\n         messages sent to you without showing them to you.",
+            "description": "Permet à l'application de recevoir et de traiter les messages WAP. Cette autorisation lui donne la possibilité de surveiller ou supprimer les messages envoyés à votre appareil sans vous les montrer.",
             "description_ptr": "permdesc_receiveWapPush",
-            "label": "receive text messages (WAP)",
+            "label": "recevoir des messages texte (WAP)",
             "label_ptr": "permlab_receiveWapPush",
             "name": "android.permission.RECEIVE_WAP_PUSH",
             "permission_group": "android.permission-group.SMS",
@@ -3136,9 +3136,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.RECORD_AUDIO": {
-            "description": "This app can record audio using the microphone at any time.",
+            "description": "Cette application peut utiliser le micro pour enregistrer du contenu audio à tout moment.",
             "description_ptr": "permdesc_recordAudio",
-            "label": "record audio",
+            "label": "enregistrer des fichiers audio",
             "label_ptr": "permlab_recordAudio",
             "name": "android.permission.RECORD_AUDIO",
             "permission_group": "android.permission-group.MICROPHONE",
@@ -3226,54 +3226,54 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.REORDER_TASKS": {
-            "description": "Allows the app to move tasks to the\n            foreground and background.    The app may do this without your input.",
+            "description": "Permet à l'application de déplacer les tâches au premier plan et en arrière-plan. L'application peut procéder à ces opérations sans votre intervention.",
             "description_ptr": "permdesc_reorderTasks",
-            "label": "reorder running apps",
+            "label": "réorganiser les applications en cours d'exécution",
             "label_ptr": "permlab_reorderTasks",
             "name": "android.permission.REORDER_TASKS",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND": {
-            "description": "This app can run in the background. This may drain battery faster.",
+            "description": "Cette application peut s'exécuter en arrière-plan, ce qui risque d'épuiser la batterie plus rapidement.",
             "description_ptr": "permdesc_runInBackground",
-            "label": "run in the background",
+            "label": "s'exécuter en arrière-plan",
             "label_ptr": "permlab_runInBackground",
             "name": "android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND": {
-            "description": "This app can use data in the background. This may increase data usage.",
+            "description": "Cette application peut utiliser des données en arrière-plan, ce qui risque d'augmenter la consommation des données.",
             "description_ptr": "permdesc_useDataInBackground",
-            "label": "use data in the background",
+            "label": "consommer des données en arrière-plan",
             "label_ptr": "permlab_useDataInBackground",
             "name": "android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.REQUEST_DELETE_PACKAGES": {
-            "description": "Allows an application to request deletion of packages.",
+            "description": "Permet à une application de demander la suppression de packages.",
             "description_ptr": "permdesc_requestDeletePackages",
-            "label": "request delete packages",
+            "label": "demander la suppression de packages",
             "label_ptr": "permlab_requestDeletePackages",
             "name": "android.permission.REQUEST_DELETE_PACKAGES",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS": {
-            "description": "Allows an app to ask for permission to ignore battery optimizations for that app.",
+            "description": "Autorise une application à demander l'autorisation d'ignorer les optimisations de batterie pour cette application.",
             "description_ptr": "permdesc_requestIgnoreBatteryOptimizations",
-            "label": "ask to ignore battery optimizations",
+            "label": "demander à ignorer les optimisations de batterie",
             "label_ptr": "permlab_requestIgnoreBatteryOptimizations",
             "name": "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
             "permission_group": "",
             "protection_level": "normal"
         },
         "android.permission.REQUEST_INSTALL_PACKAGES": {
-            "description": "Allows an application to request installation of packages.",
+            "description": "Permet à une application de demander l'installation de packages.",
             "description_ptr": "permdesc_requestInstallPackages",
-            "label": "request install packages",
+            "label": "demander l'installation de packages",
             "label_ptr": "permlab_requestInstallPackages",
             "name": "android.permission.REQUEST_INSTALL_PACKAGES",
             "permission_group": "",
@@ -3307,9 +3307,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.RESTART_PACKAGES": {
-            "description": "Allows the app to end\n            background processes of other apps.    This may cause other apps to stop\n            running.",
+            "description": "Permet à l'application de mettre fin aux processus d'autres applications exécutés en arrière-plan. Cette autorisation peut interrompre l'exécution d'autres applications.",
             "description_ptr": "permdesc_killBackgroundProcesses",
-            "label": "close other apps",
+            "label": "fermer les autres applications",
             "label_ptr": "permlab_killBackgroundProcesses",
             "name": "android.permission.RESTART_PACKAGES",
             "permission_group": "",
@@ -3352,9 +3352,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|installer|verifier"
         },
         "android.permission.RUN_IN_BACKGROUND": {
-            "description": "This app can run in the background. This may drain battery faster.",
+            "description": "Cette application peut s'exécuter en arrière-plan, ce qui risque d'épuiser la batterie plus rapidement.",
             "description_ptr": "permdesc_runInBackground",
-            "label": "run in the background",
+            "label": "s'exécuter en arrière-plan",
             "label_ptr": "permlab_runInBackground",
             "name": "android.permission.RUN_IN_BACKGROUND",
             "permission_group": "",
@@ -3397,9 +3397,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.SEND_SMS": {
-            "description": "Allows the app to send SMS messages.\n         This may result in unexpected charges. Malicious apps may cost you money by\n         sending messages without your confirmation.",
+            "description": "Permet à l'application d'envoyer des messages SMS. Cette autorisation peut entraîner des frais inattendus. Les applications malveillantes peuvent générer des frais en envoyant des messages sans votre consentement.",
             "description_ptr": "permdesc_sendSms",
-            "label": "send and view SMS messages",
+            "label": "envoyer et consulter des SMS",
             "label_ptr": "permlab_sendSms",
             "name": "android.permission.SEND_SMS",
             "permission_group": "android.permission-group.SMS",
@@ -3559,9 +3559,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.SET_TIME_ZONE": {
-            "description": "Allows the app to change the phone's time zone.",
+            "description": "Permet à l'application de modifier le fuseau horaire du téléphone.",
             "description_ptr": "permdesc_setTimeZone",
-            "label": "set time zone",
+            "label": "Sélection du fuseau horaire",
             "label_ptr": "permlab_setTimeZone",
             "name": "android.permission.SET_TIME_ZONE",
             "permission_group": "",
@@ -3577,9 +3577,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged|development"
         },
         "android.permission.SET_WALLPAPER": {
-            "description": "Allows the app to set the system wallpaper.",
+            "description": "Permet à l'application de définir le fond d'écran du système.",
             "description_ptr": "permdesc_setWallpaper",
-            "label": "set wallpaper",
+            "label": "configurer le fond d'écran",
             "label_ptr": "permlab_setWallpaper",
             "name": "android.permission.SET_WALLPAPER",
             "permission_group": "",
@@ -3595,9 +3595,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.SET_WALLPAPER_HINTS": {
-            "description": "Allows the app to set the system wallpaper size hints.",
+            "description": "Permet à l'application de définir les bulles d'aide concernant la taille du fond d'écran du système.",
             "description_ptr": "permdesc_setWallpaperHints",
-            "label": "adjust your wallpaper size",
+            "label": "modifier la taille du fond d'écran",
             "label_ptr": "permlab_setWallpaperHints",
             "name": "android.permission.SET_WALLPAPER_HINTS",
             "permission_group": "",
@@ -3730,9 +3730,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.SYSTEM_ALERT_WINDOW": {
-            "description": "This app can appear on top of other apps or other parts of the screen. This may interfere with normal app usage and change the way that other apps appear.",
+            "description": "Cette application peut se superposer à d'autres applications ou à d'autres parties de l'écran. Cela peut altérer l'utilisation normale des applications et modifier l'apparence des autres applications.",
             "description_ptr": "permdesc_systemAlertWindow",
-            "label": "This app can appear on top of other apps",
+            "label": "Cette application peut se superposer à d'autres applications",
             "label_ptr": "permlab_systemAlertWindow",
             "name": "android.permission.SYSTEM_ALERT_WINDOW",
             "permission_group": "",
@@ -3775,9 +3775,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.TRANSMIT_IR": {
-            "description": "Allows the app to use the phone's infrared transmitter.",
+            "description": "Permet à l'application d'utiliser l'émetteur infrarouge du téléphone.",
             "description_ptr": "permdesc_transmitIr",
-            "label": "transmit infrared",
+            "label": "transmettre des signaux infrarouges",
             "label_ptr": "permlab_transmitIr",
             "name": "android.permission.TRANSMIT_IR",
             "permission_group": "",
@@ -3892,9 +3892,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.USE_BIOMETRIC": {
-            "description": "Allows the app to use biometric hardware for authentication",
+            "description": "Autoriser l'application à utiliser les composants biométriques pour l'authentification",
             "description_ptr": "permdesc_useBiometric",
-            "label": "use biometric hardware",
+            "label": "utiliser les composants biométriques",
             "label_ptr": "permlab_useBiometric",
             "name": "android.permission.USE_BIOMETRIC",
             "permission_group": "android.permission-group.SENSORS",
@@ -3919,18 +3919,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "normal"
         },
         "android.permission.USE_DATA_IN_BACKGROUND": {
-            "description": "This app can use data in the background. This may increase data usage.",
+            "description": "Cette application peut utiliser des données en arrière-plan, ce qui risque d'augmenter la consommation des données.",
             "description_ptr": "permdesc_useDataInBackground",
-            "label": "use data in the background",
+            "label": "consommer des données en arrière-plan",
             "label_ptr": "permlab_useDataInBackground",
             "name": "android.permission.USE_DATA_IN_BACKGROUND",
             "permission_group": "",
             "protection_level": "signature"
         },
         "android.permission.USE_FINGERPRINT": {
-            "description": "Allows the app to use fingerprint hardware for authentication",
+            "description": "Autoriser l'application à utiliser le matériel d'empreintes digitales pour l'authentification",
             "description_ptr": "permdesc_useFingerprint",
-            "label": "use fingerprint hardware",
+            "label": "Utiliser le matériel d'empreintes digitales",
             "label_ptr": "permlab_useFingerprint",
             "name": "android.permission.USE_FINGERPRINT",
             "permission_group": "android.permission-group.SENSORS",
@@ -3946,18 +3946,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "android.permission.USE_SIP": {
-            "description": "Allows the app to make and receive SIP calls.",
+            "description": "Autorise l'application à effectuer et à recevoir des appels SIP.",
             "description_ptr": "permdesc_use_sip",
-            "label": "make/receive SIP calls",
+            "label": "effectuer/recevoir des appels SIP",
             "label_ptr": "permlab_use_sip",
             "name": "android.permission.USE_SIP",
             "permission_group": "android.permission-group.PHONE",
             "protection_level": "dangerous"
         },
         "android.permission.VIBRATE": {
-            "description": "Allows the app to control the vibrator.",
+            "description": "Permet à l'application de contrôler le vibreur.",
             "description_ptr": "permdesc_vibrate",
-            "label": "control vibration",
+            "label": "contrôler le vibreur",
             "label_ptr": "permlab_vibrate",
             "name": "android.permission.VIBRATE",
             "permission_group": "",
@@ -3973,9 +3973,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|preinstalled"
         },
         "android.permission.WAKE_LOCK": {
-            "description": "Allows the app to prevent the phone from going to sleep.",
+            "description": "Permet à l'application d'empêcher le téléphone de passer en mode veille.",
             "description_ptr": "permdesc_wakeLock",
-            "label": "prevent phone from sleeping",
+            "label": "empêcher le téléphone de passer en mode veille",
             "label_ptr": "permlab_wakeLock",
             "name": "android.permission.WAKE_LOCK",
             "permission_group": "",
@@ -4009,27 +4009,27 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature"
         },
         "android.permission.WRITE_CALENDAR": {
-            "description": "This app can add, remove, or change calendar events on your phone. This app can send messages that may appear to come from calendar owners, or change events without notifying their owners.",
+            "description": "Cette application peut ajouter, supprimer ou modifier les événements d'agenda enregistrés sur votre téléphone. Elle peut en outre envoyer des messages qui semblent provenir du propriétaire de l'agenda, ou modifier des événements sans en informer leur propriétaire.",
             "description_ptr": "permdesc_writeCalendar",
-            "label": "add or modify calendar events and send email to guests without owners' knowledge",
+            "label": "ajouter ou modifier des événements d'agenda et envoyer des e-mails aux invités à l'insu des propriétaires",
             "label_ptr": "permlab_writeCalendar",
             "name": "android.permission.WRITE_CALENDAR",
             "permission_group": "android.permission-group.CALENDAR",
             "protection_level": "dangerous"
         },
         "android.permission.WRITE_CALL_LOG": {
-            "description": "Allows the app to modify your phone's call log, including data about incoming and outgoing calls.\n                Malicious apps may use this to erase or modify your call log.",
+            "description": "Permet à l'application de lire le journal d'appels de votre téléphone, y compris les données relatives aux appels entrants et sortants. Des applications malveillantes peuvent utiliser cette fonctionnalité pour effacer ou modifier votre journal d'appels.",
             "description_ptr": "permdesc_writeCallLog",
-            "label": "write call log",
+            "label": "modifier le journal d'appels",
             "label_ptr": "permlab_writeCallLog",
             "name": "android.permission.WRITE_CALL_LOG",
             "permission_group": "android.permission-group.CALL_LOG",
             "protection_level": "dangerous"
         },
         "android.permission.WRITE_CONTACTS": {
-            "description": "Allows the app to\n        modify the data about your contacts stored on your phone, including the\n        frequency with which you've called, emailed, or communicated in other ways\n        with specific contacts. This permission allows apps to delete contact\n        data.",
+            "description": "Permet à l'application de modifier les données relatives aux contacts stockés sur votre téléphone, y compris la fréquence à laquelle vous avez appelé des personnes spécifiques, leur avez envoyé des e-mails ou avez communiqué avec elles par d'autres moyens. Cette autorisation permet aux applications de supprimer ces données.",
             "description_ptr": "permdesc_writeContacts",
-            "label": "modify your contacts",
+            "label": "modifier les contacts",
             "label_ptr": "permlab_writeContacts",
             "name": "android.permission.WRITE_CONTACTS",
             "permission_group": "android.permission-group.CONTACTS",
@@ -4054,9 +4054,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged|development"
         },
         "android.permission.WRITE_EXTERNAL_STORAGE": {
-            "description": "Allows the app to write to the SD card.",
+            "description": "Permet à l'application de modifier le contenu de la carte SD.",
             "description_ptr": "permdesc_sdcardWrite",
-            "label": "modify or delete the contents of your SD card",
+            "label": "modifier ou supprimer le contenu de la carte SD",
             "label_ptr": "permlab_sdcardWrite",
             "name": "android.permission.WRITE_EXTERNAL_STORAGE",
             "permission_group": "android.permission-group.STORAGE",
@@ -4099,9 +4099,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged|development"
         },
         "android.permission.WRITE_SETTINGS": {
-            "description": "Allows the app to modify the\n                system's settings data. Malicious apps may corrupt your system's\n                configuration.",
+            "description": "Permet à l'application de modifier les paramètres du système. Des applications malveillantes peuvent exploiter cette fonctionnalité pour corrompre la configuration de votre système.",
             "description_ptr": "permdesc_writeSettings",
-            "label": "modify system settings",
+            "label": "modifier les paramètres du système",
             "label_ptr": "permlab_writeSettings",
             "name": "android.permission.WRITE_SETTINGS",
             "permission_group": "",
@@ -4126,9 +4126,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "normal"
         },
         "android.permission.WRITE_SYNC_SETTINGS": {
-            "description": "Allows an app to modify the sync settings for an account.    For example, this can be used to enable sync of the People app with an account.",
+            "description": "Permet à une application de modifier les paramètres de synchronisation d'un compte. Cette autorisation peut, par exemple, être utilisée pour activer la synchronisation de l'application Contacts avec un compte.",
             "description_ptr": "permdesc_writeSyncSettings",
-            "label": "toggle sync on and off",
+            "label": "activer/désactiver la synchronisation",
             "label_ptr": "permlab_writeSyncSettings",
             "name": "android.permission.WRITE_SYNC_SETTINGS",
             "permission_group": "",
@@ -4144,9 +4144,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "normal"
         },
         "com.android.alarm.permission.SET_ALARM": {
-            "description": "Allows the app to set an alarm in\n                an installed alarm clock app. Some alarm clock apps may\n                not implement this feature.",
+            "description": "Permet à l'application de régler la sonnerie d'un réveil installé. Cette fonctionnalité n'est pas disponible sur tous les réveils.",
             "description_ptr": "permdesc_setAlarm",
-            "label": "set an alarm",
+            "label": "définir une alarme",
             "label_ptr": "permlab_setAlarm",
             "name": "com.android.alarm.permission.SET_ALARM",
             "permission_group": "",
@@ -4171,18 +4171,18 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "normal"
         },
         "com.android.launcher.permission.INSTALL_SHORTCUT": {
-            "description": "Allows an application to add\n                Homescreen shortcuts without user intervention.",
+            "description": "Permettre à une application d'ajouter des raccourcis à l'écran d'accueil sans l'intervention de l'utilisateur",
             "description_ptr": "permdesc_install_shortcut",
-            "label": "install shortcuts",
+            "label": "Installer des raccourcis",
             "label_ptr": "permlab_install_shortcut",
             "name": "com.android.launcher.permission.INSTALL_SHORTCUT",
             "permission_group": "",
             "protection_level": "normal"
         },
         "com.android.launcher.permission.UNINSTALL_SHORTCUT": {
-            "description": "Allows the application to remove\n                Homescreen shortcuts without user intervention.",
+            "description": "Permettre à l'application de supprimer des raccourcis de l'écran d'accueil sans l'intervention de l'utilisateur",
             "description_ptr": "permdesc_uninstall_shortcut",
-            "label": "uninstall shortcuts",
+            "label": "désinstaller des raccourcis",
             "label_ptr": "permlab_uninstall_shortcut",
             "name": "com.android.launcher.permission.UNINSTALL_SHORTCUT",
             "permission_group": "",
@@ -4198,9 +4198,9 @@ AOSP_PERMISSIONS_EN = {
             "protection_level": "signature|privileged"
         },
         "com.android.voicemail.permission.ADD_VOICEMAIL": {
-            "description": "Allows the app to add messages\n            to your voicemail inbox.",
+            "description": "Permet à l'application d'ajouter des messages à votre messagerie vocale.",
             "description_ptr": "permdesc_addVoicemail",
-            "label": "add voicemail",
+            "label": "ajouter un message vocal",
             "label_ptr": "permlab_addVoicemail",
             "name": "com.android.voicemail.permission.ADD_VOICEMAIL",
             "permission_group": "android.permission-group.PHONE",
