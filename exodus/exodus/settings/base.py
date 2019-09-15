@@ -1,6 +1,4 @@
 # coding=utf-8
-from os.path import abspath, basename, dirname, join, normpath
-from sys import path
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'djcelery',
     'rest_framework',
     'rest_framework.authtoken'

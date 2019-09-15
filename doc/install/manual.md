@@ -19,6 +19,8 @@ sudo su - postgres
 psql
 CREATE USER exodus WITH PASSWORD 'exodus';
 CREATE DATABASE exodus WITH OWNER exodus;
+\c exodus
+CREATE EXTENSION pg_trgm;
 ```
 
 ## 4 - Set Python virtual environment and install dependencies
