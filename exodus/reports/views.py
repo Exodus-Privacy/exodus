@@ -71,6 +71,16 @@ def get_all_apps(request):
     return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
 
 
+def _get_color_class(count):
+    if count == 0:
+        color_class = "success"
+    elif count < 5:
+        color_class = "warning"
+    else:
+        color_class = "danger"
+    return color_class
+
+
 def detail(request, report_id=None, handle=None):
     try:
         if report_id:
@@ -81,7 +91,17 @@ def detail(request, report_id=None, handle=None):
             raise Report.DoesNotExist
     except Report.DoesNotExist:
         raise Http404(_("report does not exist"))
-    return render(request, 'report_details.html', {'report': report})
+    tracker_class = _get_color_class(report.found_trackers.count())
+    perm_class = _get_color_class(report.application.permission_set.count())
+
+    return render(
+        request, 'report_details.html',
+        {
+            'report': report,
+            'tracker_class': tracker_class,
+            'perm_class': perm_class
+        }
+    )
 
 
 def refreshdns(request):

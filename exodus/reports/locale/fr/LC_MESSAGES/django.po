@@ -36,25 +36,27 @@ msgstr "pisteur"
 msgid "permission"
 msgstr "permission"
 
-#: reports/templates/report_details.html:64
-msgid "Other versions"
-msgstr "Autres versions"
-
 #: reports/templates/report_details.html:55
-msgid "Version:"
-msgstr "Version :"
+msgid "version"
+msgstr "version"
 
 #: reports/templates/report_details.html:58
-msgid "Creator:"
-msgstr "Créateur :"
+msgid "Created by"
+msgstr "Créée par"
 
 #: reports/templates/report_details.html:61
-msgid "Downloads:"
-msgstr "Téléchargements :"
+msgid "downloads"
+msgstr "téléchargements"
 
 #: reports/templates/report_details.html:65
-msgid "On Google Play"
-msgstr "Sur Google Play"
+msgid "See on Google Play"
+msgstr "Voir sur Google Play"
+
+msgid "This report was created on"
+msgstr "Ce rapport a été créé le"
+
+msgid "and updated on"
+msgstr "et mis à jour le"
 
 #: reports/templates/report_details.html:67
 #: reports/templates/report_details.html:78
@@ -95,17 +97,9 @@ msgstr "Empreinte de l’icône :"
 msgid "Close"
 msgstr "Fermer"
 
-#: reports/templates/report_details.html:121
-msgid "This report was automatically issued on"
-msgstr "Ce rapport a été automatiquement créé le"
-
-#: reports/templates/report_details.html:122
-msgid "This report was automatically updated on"
-msgstr "Ce rapport a été automatiquement mis à jour le"
-
 #: reports/templates/report_details.html:129
-msgid "Signed by:"
-msgstr "Signé par :"
+msgid "Signed by"
+msgstr "Signée par"
 
 #: reports/templates/report_details.html:135
 msgid "Fingerprint:"
@@ -148,17 +142,17 @@ msgstr "de ces traqueurs dans l’application :"
 #: reports/templates/report_details.html:169
 msgid ""
 "A tracker is a piece of software meant to collect data about you or your "
-"usages. We do not guarantee the exhaustiveness of this list."
+"usages."
 msgstr ""
 "Un pisteur est une partie du logiciel dédiée à la collecte de données sur "
-"vous et vos usages. Nous ne garantissons pas l’exhaustivité de cette liste."
+"vous et vos usages."
 
 #: reports/templates/report_details.html:172
 msgid ""
-"Here is the list of trackers signatures found by static analysis in this "
+"This report lists trackers signatures found by static analysis in this "
 "APK. This is not a proof of activity of these trackers."
 msgstr ""
-"Voici la liste des signatures des pisteurs que nous avons trouvés par "
+"Ce rapport liste les signatures des pisteurs que nous avons trouvés par "
 "l’analyse statique de cet APK. Cela ne constitue pas une preuve de l’activité "
 "de ces pisteurs."
 
@@ -190,46 +184,51 @@ msgstr "Permission"
 
 msgid ""
 "\n"
-"                        We have found <b>code signature</b> of the following tracker in the application:\n"
-"                        "
+"            We have found <b>code signature</b> of the following tracker in the application:\n"
+"            "
 msgid_plural ""
 "\n"
-"                        We have found <b>code signature</b> of the following trackers in the application:\n"
-"                        "
+"            We have found <b>code signature</b> of the following trackers in the application:\n"
+"            "
 msgstr[0] ""
 "\n"
-"                        Nous avons trouvé la <b>signature</b> du pisteur suivant dans cette application :\n"
-"                        "
+"            Nous avons trouvé la <b>signature</b> du pisteur suivant dans cette application :\n"
+"            "
 msgstr[1] ""
 "\n"
-"                        Nous avons trouvé la <b>signature</b> des pisteurs suivants dans cette application :\n"
-"                        "
+"            Nous avons trouvé la <b>signature</b> des pisteurs suivants dans cette application :\n"
+"            "
 msgid ""
 "\n"
-"                        We have found the following permission in the application:\n"
-"                        "
+"            We have found the following permission in the application:\n"
+"            "
 msgid_plural ""
 "\n"
-"                        We have found the following permissions in the application:\n"
-"                        "
+"            We have found the following permissions in the application:\n"
+"            "
 msgstr[0] ""
 "\n"
-"                        Nous avons trouvé la permission suivante dans cette application :\n"
-"                        "
+"            Nous avons trouvé la permission suivante dans cette application :\n"
+"            "
 msgstr[1] ""
 "\n"
-"                        Nous avons trouvé les permissions suivantes dans cette application :\n"
-"                        "
+"            Nous avons trouvé les permissions suivantes dans cette application :\n"
+"            "
 
 #: reports/templates/report_details.html:220
-msgid "Permissions are actions the application can do on your phone. "
-"The severity levels are defined according to "
+msgid "Permissions are actions the application can do on your phone."
 msgstr ""
 "Les permissions sont les actions que l’application peut effectuer sur votre "
-"téléphone. Les niveaux de sévérité sont définis conformément aux "
+"téléphone."
+
+msgid "The icon"
+msgstr "L'icône"
+
+msgid "indicates a 'Dangerous' or 'Special' level according to"
+msgstr "indique un niveau 'Dangereux' ou 'Spécial' d'après les"
 
 #: reports/templates/report_details.html:221
-msgid "Google’s protection levels"
+msgid "Google's protection levels"
 msgstr "niveaux de protection de Google"
 
 #: reports/templates/report_details.html:212
