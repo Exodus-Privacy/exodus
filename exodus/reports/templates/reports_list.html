@@ -7,10 +7,10 @@
     <div class="col-lg-8 col-centered">
     {% if reports %}
         <div style="text-align:center">
-            <h3>
-                <span class="badge badge-info">{{ count }}</span> {% trans "Report" %}{{ count|pluralize }}
+            <h1 class="main-title">
+                {{ count }} {% trans "Report" %}{{ count | pluralize }}
                 {% if handle %}<small>({{ handle }})</small>{% endif %}
-            </h3>
+            </h1>
         </div>
         <hr>
         {% if not handle %}
