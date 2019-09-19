@@ -1,30 +1,32 @@
 {% extends "base.html"%}
 {% load i18n %}
 {% block content %}
-    <div class="row justify-content-md-center">
-        <div class="col-lg-8">
-        {% if trackers %}
-                <div style="text-align:center">
-                    <h3><span class="badge badge-info">{{ trackers.count }}</span>
-                        {% blocktrans count counter=trackers.count %}
-                        Recognized tracker
-                        {% plural %}
-                        Recognized trackers
-                        {% endblocktrans %}
-                    </h3>
-                </div>
-                <hr>
-                <div class="row">
-                <ul>
-                {% for tracker in trackers %}
-                    <li><a href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a></li>
-                {% endfor %}
-                </ul>
-                </div>
-                <hr>
-        {% else %}
-            <p>{% trans "No trackers are available" %}.</p>
-        {% endif %}
-        </div>
+{% if trackers %}
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 text-center mb-4">
+      <h1 class="main-title">
+        {% trans "Trackers" %}
+      </h1>
+      <h5>
+        <b>
+          {{ trackers.count }}
+          {% blocktrans count counter=trackers.count %}
+          Recognized tracker
+          {% plural %}
+          Recognized trackers
+          {% endblocktrans %}
+        </b>
+      </h5>
     </div>
+  </div>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12">
+      {% for tracker in trackers %}
+        <p><a class="link black" href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a></p>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+    <p>{% trans "No trackers are available" %}.</p>
+{% endif %}
 {% endblock %}
