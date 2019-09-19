@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: trackers/templates/tracker_details.html:14
-msgid "Go to the tracker web page."
+msgid "Tracker web page"
 msgstr ""
 
 #: trackers/templates/tracker_details.html:16
@@ -72,4 +72,10 @@ msgstr ""
 
 #: trackers/views.py:24 trackers/views.py:45
 msgid "tracker does not exist"
+msgstr ""
+
+msgid "Present in:"
+msgstr ""
+
+msgid "Present in"
 msgstr ""
