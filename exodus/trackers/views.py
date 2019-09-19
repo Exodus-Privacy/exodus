@@ -20,6 +20,7 @@ def index(request):
 
 
 def detail(request, tracker_id):
+    reports_number = Report.objects.count()
     try:
         tracker = Tracker.objects.get(pk=tracker_id)
         # Add spaces aroung pipes for better rendering of signatures
@@ -40,10 +41,21 @@ def detail(request, tracker_id):
     except EmptyPage:
         reports = paginator.page(paginator.num_pages)
 
+    count = reports_list.count()
+    score = int(100. * count / reports_number)
+    if score >= 50:
+        tracker_class = "danger"
+    elif score >= 33:
+        tracker_class = "warning"
+    else:
+        tracker_class = "info"
+
     data_to_render = {
         'tracker': tracker,
         'reports': reports,
-        'count': reports_list.count
+        'count': count,
+        'score': score,
+        'tracker_class': tracker_class
     }
     return render(request, 'tracker_details.html', data_to_render)
 

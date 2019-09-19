@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: trackers/templates/tracker_details.html:14
-msgid "Go to the tracker web page."
+msgid "Tracker web page"
 msgstr "Page web du pisteur"
 
 #: trackers/templates/tracker_details.html:16
@@ -84,3 +84,9 @@ msgstr "Aucun pisteur trouvé"
 
 msgid "report"
 msgstr "rapport"
+
+msgid "Present in:"
+msgstr "Présent dans :"
+
+msgid "Present in"
+msgstr "Présent dans"
