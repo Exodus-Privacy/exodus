@@ -71,9 +71,14 @@ def get_all_apps(request):
     return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
 
 
-def detail(request, report_id):
+def detail(request, report_id=None, handle=None):
     try:
-        report = Report.objects.get(pk=report_id)
+        if report_id:
+            report = Report.objects.get(pk=report_id)
+        elif handle:
+            report = Report.objects.filter(application__handle=handle).order_by('-creation_date')[0]
+        else:
+            raise Report.DoesNotExist
     except Report.DoesNotExist:
         raise Http404(_("report does not exist"))
     return render(request, 'report_details.html', {'report': report})
