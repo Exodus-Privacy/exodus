@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-15 11:21+0200\n"
+"POT-Creation-Date: 2019-09-21 15:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,119 +27,99 @@ msgid "Prefix in storage:"
 msgstr "Préfixe de stockage :"
 
 #: reports/templates/report_details.html:31
-#: reports/templates/reports_list.html:35
+#: reports/templates/reports_list.html:51
 msgid "tracker"
 msgstr "pisteur"
 
 #: reports/templates/report_details.html:41
-#: reports/templates/reports_list.html:40
+#: reports/templates/reports_list.html:61
 msgid "permission"
 msgstr "permission"
 
-#: reports/templates/report_details.html:55
+#: reports/templates/report_details.html:54
+#: reports/templates/report_details.html:88
 msgid "version"
 msgstr "version"
 
-#: reports/templates/report_details.html:58
+#: reports/templates/report_details.html:57
 msgid "Created by"
 msgstr "Créée par"
 
-#: reports/templates/report_details.html:61
+#: reports/templates/report_details.html:60
 msgid "downloads"
 msgstr "téléchargements"
 
-#: reports/templates/report_details.html:65
+#: reports/templates/report_details.html:64
 msgid "See on Google Play"
 msgstr "Voir sur Google Play"
 
-msgid "This report was created on"
-msgstr "Ce rapport a été créé le"
-
-msgid "and updated on"
-msgstr "et mis à jour le"
-
-#: reports/templates/report_details.html:67
-#: reports/templates/report_details.html:78
-#: reports/templates/report_details.html:105
+#: reports/templates/report_details.html:66
+#: reports/templates/report_details.html:77
+#: reports/templates/report_details.html:104
 msgid "APK fingerprint"
 msgstr "Empreinte de la clé"
 
-#: reports/templates/report_details.html:69
+#: reports/templates/report_details.html:68
 msgid "Text"
 msgstr "Texte"
 
-#: reports/templates/report_details.html:85
+#: reports/templates/report_details.html:84
 msgid "APK checksum:"
 msgstr "Somme de contrôle :"
 
-#: reports/templates/report_details.html:86
+#: reports/templates/report_details.html:85
 msgid "Handle:"
 msgstr "Identifiant :"
 
-#: reports/templates/report_details.html:87
+#: reports/templates/report_details.html:86
 msgid "Name:"
 msgstr "Nom :"
 
-#: reports/templates/report_details.html:88
+#: reports/templates/report_details.html:87
 msgid "UAID:"
 msgstr "UAID :"
 
-#: reports/templates/report_details.html:90
+#: reports/templates/report_details.html:89
 msgid "Version code:"
 msgstr "Code de version :"
 
-#: reports/templates/report_details.html:91
+#: reports/templates/report_details.html:90
 msgid "Icon hash:"
 msgstr "Empreinte de l’icône :"
 
-#: reports/templates/report_details.html:95
-#: reports/templates/report_details.html:114
+#: reports/templates/report_details.html:94
+#: reports/templates/report_details.html:113
 msgid "Close"
 msgstr "Fermer"
 
-#: reports/templates/report_details.html:129
-msgid "Signed by"
-msgstr "Signée par"
 
-#: reports/templates/report_details.html:135
-msgid "Fingerprint:"
-msgstr "Empreinte :"
-
-#: reports/templates/report_details.html:136
-msgid "Issuer:"
-msgstr "Émetteur :"
-
-#: reports/templates/report_details.html:137
-msgid "Subject:"
-msgstr "Sujet :"
-
-#: reports/templates/report_details.html:138
-msgid "Serial:"
-msgstr "Série :"
-
-#: reports/templates/report_details.html:142
-msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
-msgstr ""
-"Aucune signature trouvée <b>OU</b> certificat x509 non conforme avec la RFC."
-
-#: reports/templates/report_details.html:152
+#: reports/templates/report_details.html:133
 msgid "Tracker"
 msgstr "Pisteur"
 
-#: reports/templates/report_details.html:157
-#: reports/templates/report_details.html:159
-msgid "We have found"
-msgstr "Nous avons trouvé"
+#: reports/templates/report_details.html:137
+msgid ""
+"\n"
+"                        We have found <b>code signature</b> of the following "
+"tracker in the application:\n"
+"                        "
+msgid_plural ""
+"\n"
+"                        We have found <b>code signature</b> of the following "
+"trackers in the application:\n"
+"                        "
+msgstr[0] ""
+"\n"
+"                        Nous avons trouvé la <b>signature</b> du pisteur "
+"suivant dans cette application :\n"
+"                        "
+msgstr[1] ""
+"\n"
+"                        Nous avons trouvé la <b>signature</b> des pisteurs "
+"suivants dans cette application :\n"
+"                        "
 
-#: reports/templates/report_details.html:157
-msgid "of this tracker in the application:"
-msgstr "de ce traqueur dans l’application :"
-
-#: reports/templates/report_details.html:159
-msgid "of these trackers in the application:"
-msgstr "de ces traqueurs dans l’application :"
-
-#: reports/templates/report_details.html:169
+#: reports/templates/report_details.html:150
 msgid ""
 "A tracker is a piece of software meant to collect data about you or your "
 "usages."
@@ -147,76 +127,67 @@ msgstr ""
 "Un pisteur est une partie du logiciel dédiée à la collecte de données sur "
 "vous et vos usages."
 
-#: reports/templates/report_details.html:172
+#: reports/templates/report_details.html:153
 msgid ""
 "This report lists trackers signatures found by static analysis in this "
 "APK. This is not a proof of activity of these trackers."
 msgstr ""
 "Ce rapport liste les signatures des pisteurs que nous avons trouvés par "
-"l’analyse statique de cet APK. Cela ne constitue pas une preuve de l’activité "
-"de ces pisteurs."
+"l’analyse statique de cet APK. Cela ne constitue pas une preuve de "
+"l’activité de ces pisteurs."
 
-#: reports/templates/report_details.html:173
+#: reports/templates/report_details.html:154
+#: reports/templates/report_details.html:161
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
-"L’application pourrait contenir un ou plusieurs pisteurs que "
-"nous n’avons pas encore identifiés."
+"L’application pourrait contenir un ou plusieurs pisteurs que nous n’avons "
+"pas encore identifiés."
 
-#: reports/templates/report_details.html:175
+#: reports/templates/report_details.html:156
 msgid "If you have doubts about this report, contact us at"
 msgstr "Si vous avez des doutes au sujet de ce rapport, contactez-nous à"
 
-#: reports/templates/report_details.html:176
+#: reports/templates/report_details.html:157
 msgid "Exodus - Question about report"
 msgstr "Exodus - Question à propos d’un rapport"
 
-#: reports/templates/report_details.html:179
+#: reports/templates/report_details.html:160
 msgid ""
 "We have not found <b>code signature</b> of any tracker we know in the "
 "application."
 msgstr ""
-"Nous n’avons pas trouvé la <b>signature</b> de pisteurs que nous "
-" connaissons dans l’application."
+"Nous n’avons pas trouvé la <b>signature</b> de pisteurs que nous  "
+"connaissons dans l’application."
 
-#: reports/templates/report_details.html:187
+#: reports/templates/report_details.html:169
 msgid "Permission"
 msgstr "Permission"
 
+#: reports/templates/report_details.html:173
 msgid ""
 "\n"
-"            We have found <b>code signature</b> of the following tracker in the application:\n"
+"            We have found the following permission in the "
+"application:\n"
 "            "
 msgid_plural ""
 "\n"
-"            We have found <b>code signature</b> of the following trackers in the application:\n"
+"            We have found the following permissions in the "
+"application:\n"
 "            "
 msgstr[0] ""
 "\n"
-"            Nous avons trouvé la <b>signature</b> du pisteur suivant dans cette application :\n"
+"            Nous avons trouvé la permission suivante dans cette "
+"application :\n"
 "            "
 msgstr[1] ""
 "\n"
-"            Nous avons trouvé la <b>signature</b> des pisteurs suivants dans cette application :\n"
-"            "
-msgid ""
-"\n"
-"            We have found the following permission in the application:\n"
-"            "
-msgid_plural ""
-"\n"
-"            We have found the following permissions in the application:\n"
-"            "
-msgstr[0] ""
-"\n"
-"            Nous avons trouvé la permission suivante dans cette application :\n"
-"            "
-msgstr[1] ""
-"\n"
-"            Nous avons trouvé les permissions suivantes dans cette application :\n"
+"            Nous avons trouvé les permissions suivantes dans "
+"cette application :\n"
 "            "
 
 #: reports/templates/report_details.html:220
-msgid "Permissions are actions the application can do on your phone."
+msgid ""
+"Permissions are actions the application can do on your phone."
 msgstr ""
 "Les permissions sont les actions que l’application peut effectuer sur votre "
 "téléphone."
@@ -231,46 +202,72 @@ msgstr "indique un niveau 'Dangereux' ou 'Spécial' d'après les"
 msgid "Google's protection levels"
 msgstr "niveaux de protection de Google"
 
-#: reports/templates/report_details.html:212
+#: reports/templates/report_details.html:224
 msgid "This application doesn't require any permissions."
 msgstr "Cette application ne demande aucun autorisation."
+
+#: reports/templates/report_details.html:235
+msgid "Signed by"
+msgstr "Signée par"
+
+#: reports/templates/report_details.html:241
+msgid "Fingerprint:"
+msgstr "Empreinte :"
+
+#: reports/templates/report_details.html:242
+msgid "Issuer:"
+msgstr "Émetteur :"
+
+#: reports/templates/report_details.html:243
+msgid "Subject:"
+msgstr "Sujet :"
+
+#: reports/templates/report_details.html:244
+msgid "Serial:"
+msgstr "Série :"
+
+#: reports/templates/report_details.html:248
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr ""
+"Aucune signature trouvée <b>OU</b> certificat x509 non conforme avec la RFC."
 
 #: reports/templates/reports_list.html:11
 msgid "Report"
 msgstr "Rapport"
 
-#: reports/templates/stats_details.html:5
-msgid "Statistics"
-msgstr "Statistiques"
-
-#: reports/templates/stats_details.html:11
-msgid "Most frequent trackers"
-msgstr "Pisteurs les plus fréquents"
-
-#: reports/templates/stats_details.html:21
-msgid "found in"
-msgstr "trouvé dans"
-
-#: reports/views.py:23
+#: reports/views.py:50
 msgid "reports do not exist"
 msgstr "rapports n’existent pas"
 
-#: reports/views.py:30
+#: reports/views.py:68
 msgid "No apps found"
 msgstr "Aucune application trouvée"
 
-#: reports/views.py:38
-msgid "No reports found"
-msgstr "Aucun rapport trouvé"
-
-#: reports/views.py:46
+#: reports/views.py:78
 msgid "report does not exist"
 msgstr "le rapport n’existe pas"
 
-#: reports/views.py:64
+#: reports/views.py:98
 msgid "App does not exist"
 msgstr "L’application n’existe pas"
 
-#: reports/views.py:81
+msgid "We have found"
+msgstr "Nous avons trouvé"
+
+msgid "of this tracker in the application:"
+msgstr "de ce traqueur dans l’application :"
+
+msgid "of these trackers in the application:"
+msgstr "de ces traqueurs dans l’application :"
+
+msgid "Statistics"
+msgstr "Statistiques"
+
+msgid "found in"
+msgstr "trouvé dans"
+
+msgid "No reports found"
+msgstr "Aucun rapport trouvé"
+
 msgid "NetworkAnalysis do not exist"
 msgstr "L’analyse réseau n’est pas disponible"

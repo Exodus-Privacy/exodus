@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-15 13:30+0200\n"
+"POT-Creation-Date: 2019-09-21 15:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/search_form.html:6
-msgid "Search a report"
-msgstr "Rechercher un rapport"
-
-msgid "Application name"
-msgstr "Nom de l'application"
-
-msgid "Let's go!"
-msgstr "C'est parti !"
-
+#: search/templates/search_form.html:8
 msgid "The privacy audit platform for Android applications"
 msgstr "La plateforme d'audit de la vie privée des applications Android"
 
-msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
-msgstr "εxodus analyse les applications Android dans le but de <b>lister les pisteurs embarqués.</b>"
+#: search/templates/search_form.html:15
+msgid "Search a report"
+msgstr "Rechercher un rapport"
 
-msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
-msgstr "Un pisteur est un bout de logiciel <b>dont le but est la collecte de données à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous révèlent les ingrédients du gâteau."
+#: search/templates/search_form.html:16
+msgid "Application name"
+msgstr "Nom de l'application"
 
-msgid "εxodus does not decompile applications, its analysis technic is legal."
-msgstr "εxodus ne décompile pas les applications, sa technique d’analyse est légale."
-
-msgid "Need an overview?"
-msgstr "Besoin d'une vision d'ensemble&nbsp;?"
-
-#: templates/search_form.html:15
+#: search/templates/search_form.html:25
 msgid "Here you can search for an application using its name or handle"
 msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
 
-#: templates/search_form.html:20
+#: search/templates/search_form.html:30
+msgid "Let's go!"
+msgstr "C'est parti !"
+
+#: search/templates/search_form.html:33
 msgid "Results"
 msgstr "Résultats"
 
-#: templates/search_form.html:32
+#: search/templates/search_form.html:41
+msgid ""
+"εxodus analyzes Android applications in order to <b>list the embedded "
+"trackers.</b>"
+msgstr ""
+"εxodus analyse les applications Android dans le but de <b>lister les "
+"pisteurs embarqués.</b>"
+
+#: search/templates/search_form.html:42
+msgid ""
+"A tracker is a piece of software <b>meant to collect data about you or your "
+"usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr ""
+"Un pisteur est un bout de logiciel <b>dont le but est la collecte de données "
+"à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous "
+"révèlent les ingrédients du gâteau."
+
+#: search/templates/search_form.html:43
+msgid "εxodus does not decompile applications, its analysis technic is legal."
+msgstr ""
+"εxodus ne décompile pas les applications, sa technique d’analyse est légale."
+
+#: search/templates/search_form.html:48
+msgid "Need an overview?"
+msgstr "Besoin d'une vision d'ensemble&nbsp;?"
+
+#: search/templates/search_form.html:71
 msgid "No results found."
 msgstr "Aucun résultat."
+
+msgid ""
+"What is a tracker? And a permission? Are there any alternatives "
+"to protect yourself?"
+msgstr ""
+"Qu'est-ce qu'un pisteur ? Et une permission ? Existe-t-il des alternatives "
+"pour se protéger ?"

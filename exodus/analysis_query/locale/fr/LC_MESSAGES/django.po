@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-23 21:48+0200\n"
+"POT-Creation-Date: 2019-09-21 15:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,45 +18,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: models.py:16
+#: analysis_query/models.py:28
 #, python-format
 msgid "%s is not a valid application handle"
 msgstr "%s n’est pas un identifiant d’application valide"
 
-#: models.py:20
+#: analysis_query/models.py:34
 #, python-format
 msgid "%s application not found on Google Play"
 msgstr "%s application introuvable sur Google Play"
 
-#: models.py:24
+#: analysis_query/models.py:41
 msgid "This application is being analyzed."
 msgstr "Cette application est en cours d’analyse."
 
-#: models.py:27
+#: analysis_query/models.py:46
 msgid "Too much pending requests, please retry later"
 msgstr "Trop de requêtes en attente, veuillez réessayer plus tard"
 
-#: templates/queries_list.html:14
+#: analysis_query/templates/queries_list.html:14
 msgid "You need to be registered"
 msgstr "Vous devez être connecté.e"
 
-#: templates/query_submit.html:9
+#: analysis_query/templates/query_submit.html:10
 msgid "Analyze an application"
 msgstr "Analyser une application"
 
-#: templates/query_submit.html:10
+#: analysis_query/templates/query_submit.html:11
 msgid "Free application only"
 msgstr "Applications gratuites uniquement"
 
-#: templates/query_submit.html:23
+#: analysis_query/templates/query_submit.html:24
 msgid "You can find the handle in the Google Play URL of the application"
-msgstr "Vous pouvez trouver l’identifiant dans l’URL Google Play de l’application"
+msgstr ""
+"Vous pouvez trouver l’identifiant dans l’URL Google Play de l’application"
 
-#: templates/query_submit.html:32
+#: analysis_query/templates/query_submit.html:33
 msgid "Perform analysis"
 msgstr "Commencer l’analyse"
 
-#: templates/query_submit.html:39
+#: analysis_query/templates/query_submit.html:40
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
@@ -64,27 +65,30 @@ msgstr ""
 "L’analyse peut prendre du temps, vous serez automatiquement redirigé.e vers "
 "le rapport"
 
-#: templates/query_submit.html:52
+#: analysis_query/templates/query_submit.html:53
+#: analysis_query/templates/query_wait.html:28
 msgid "is a non-profit organization which provides this service for free."
-msgstr "est un organisme à but non lucratif qui fournit ce service gratuitement."
+msgstr ""
+"est un organisme à but non lucratif qui fournit ce service gratuitement."
 
-#: templates/query_submit.html:54 templates/query_wait.html:25
+#: analysis_query/templates/query_submit.html:55
+#: analysis_query/templates/query_wait.html:30
 msgid "Help us!"
 msgstr "Aidez-nous !"
 
-#: templates/query_submit.html:94
+#: analysis_query/templates/query_submit.html:97
 msgid "This application has already been analyzed!"
 msgstr "Cette application a déjà été analysée !"
 
-#: templates/query_submit.html:100
+#: analysis_query/templates/query_submit.html:103
 msgid "analyzed on"
 msgstr "analysée le"
 
-#: templates/query_submit.html:100
+#: analysis_query/templates/query_submit.html:103
 msgid "Go to the latest report"
 msgstr "Accéder au dernier rapport"
 
-#: templates/query_submit.html:106
+#: analysis_query/templates/query_submit.html:107
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."
@@ -92,23 +96,23 @@ msgstr ""
 "Si vous pensez qu’εxodus n’a pas encore analysé la dernière version de cette "
 "application, n’hésitez pas à soumettre l’analyse."
 
-#: templates/query_wait.html:8
+#: analysis_query/templates/query_wait.html:9
 msgid "is processing your request"
 msgstr "traite votre requête"
 
-#: templates/query_wait.html:13
+#: analysis_query/templates/query_wait.html:14
 msgid "See the report"
 msgstr "Voir le rapport"
 
-#: templates/query_wait.html:16
+#: analysis_query/templates/query_wait.html:17
 msgid "Will refresh automatically every 10 seconds."
 msgstr "La page se rafraîchira automatiquement toutes les 10 secondes."
 
-#: views.py:31
+#: analysis_query/views.py:31
 msgid "Your request will be handled soon"
 msgstr "Votre demande sera bientôt traitée"
 
-#: views.py:44 views.py:52
+#: analysis_query/views.py:44 analysis_query/views.py:52
 msgid "AnalysisRequest does not exist"
 msgstr "La demande d’analyse n’existe pas"
 

@@ -1,7 +1,8 @@
 # coding=utf-8
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(DIR)
 
 INSTALLED_APPS = [
     'analysis_query.apps.AnalysisQueryConfig',
@@ -106,3 +107,5 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 
 EX_PAGINATOR_COUNT = 25
+
+LOCALE_PATHS = (os.path.join(DIR, '../locale'),)

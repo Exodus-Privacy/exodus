@@ -89,6 +89,7 @@
         </p>
       {% endif %}
       {% trans "A tracker is a piece of software meant to collect data about you or your usages." %}
+      <a href="{% url 'trackers' %}">{% trans "Learn more..." %}</a>
     </div>
   </div>
 
@@ -132,6 +133,20 @@
         <p>{% trans "This application doesn't require any permissions." %}</p>
       {% endif %}
       {% trans "Permissions are actions the application can do on your phone." %}
+      <a href="{% url 'permissions' %}">{% trans "Learn more..." %}</a>
+    </div>
+  </div>
+
+  <div class="row justify-content-sm-center mb-4">
+    <div class="col-md-8 col-12">
+      <h4>{% trans "What's next?" %}</h4>
+      {% trans "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!" %}
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-3 col-6 text-center">
+      <a href="{% url 'next' %}" class="btn btn-secondary btn-block">{% trans "Read the article" %}</a>
     </div>
   </div>
 

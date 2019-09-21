@@ -8,6 +8,7 @@
     <h5><b>{% trans "The privacy audit platform for Android applications" %}</b></h5>
   </div>
 </div>
+
 <div class="row justify-content-center mb-5">
   <div class="col-lg-8 col-sm-12">
     <div class="form-group">
@@ -36,6 +37,7 @@
     </div>
   </div>
 </div>
+
 <div class="row justify-content-center mb-5">
   <div class="col-lg-8 col-sm-12">
     <p class=mb-4>{% trans "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>" %}</p>
@@ -43,21 +45,38 @@
     <p>{% trans "εxodus does not decompile applications, its analysis technic is legal." %}</p>
   </div>
 </div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-sm-12">
+    <h4>{% trans "Better understand" %}</h4>
+    <p>{% trans "What is a tracker? And a permission? Are there any alternatives to protect yourself?" %}</p>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-5">
+  <div class="col-6 col-md-3 text-center mb-4">
+    <a href="{% url 'next' %}" class="btn btn-secondary btn-block">{% trans "Read the article" %}</a>
+  </div>
+</div>
+
 <div class="row justify-content-center">
   <div class="col-lg-8 col-sm-12">
     <h4>{% trans "Need an overview?" %}</h4>
   </div>
 </div>
+
 <div class="row justify-content-center mb-4">
   <div class="col-lg-6 col-sm-8 text-right">
     <a href="{% url 'reports:index' %}" class="link main-link">{% trans "Latest reports" %}</a>
   </div>
 </div>
+
 <div class="row justify-content-center mb-4">
   <div class="col-lg-6 col-sm-8 text-right">
     <a href="{% url 'reports:index' %}?filter=no_trackers" class="link main-link">{% trans "No known trackers" %}</a>
   </div>
 </div>
+
 <div class="row justify-content-center mb-4">
   <div class="col-lg-6 col-sm-8 text-right">
     <a href="{% url 'reports:index' %}?filter=most_trackers" class="link main-link">{% trans "Most trackers" %}</a>

@@ -35,6 +35,10 @@ urlpatterns += i18n_patterns(
     url(r'^reports/', include('reports.urls')),
     url(r'^search/', include('search.urls')),
     url(r'^$', views.index, name='home'),
+    url(r'^info/permissions/$', views.permissions, name='permissions'),
+    url(r'^info/trackers/$', views.trackers, name='trackers'),
+    url(r'^info/next/$', views.next, name='next'),
+    url(r'^info/understand/$', views.understand, name='understand'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # handler404 = 'exodus.views.page_not_found'
