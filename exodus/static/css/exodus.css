@@ -40,6 +40,9 @@ a.report-link {
 .black {
   color: #212529;
 }
+h4 {
+  font-weight: bold;
+}
 
 @media print {
   .alert-heading .btn-secondary {

@@ -7,16 +7,15 @@
       <h1 class="main-title">
         {% trans "Trackers" %}
       </h1>
-      <h5>
-        <b>
-          {{ trackers.count }}
-          {% blocktrans count counter=trackers.count %}
-          Recognized tracker
-          {% plural %}
-          Recognized trackers
-          {% endblocktrans %}
-        </b>
-      </h5>
+      <h4>
+        {{ trackers.count }}
+        {% blocktrans count counter=trackers.count %}
+        Recognized tracker
+        {% plural %}
+        Recognized trackers
+        {% endblocktrans %}
+        - <a href="{% url 'trackers:get_stats' %}">{% trans "Statistics" %}</a>
+      </h4>
     </div>
   </div>
   <div class="row justify-content-sm-center">

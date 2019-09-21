@@ -8,5 +8,21 @@ def index(request):
     return render(request, 'base.html')
 
 
+def permissions(request):
+    return render(request, 'permissions.html')
+
+
+def trackers(request):
+    return render(request, 'trackers.html')
+
+
+def next(request):
+    return render(request, 'next.html')
+
+
+def understand(request):
+    return render(request, 'understand.html')
+
+
 def page_not_found(request):
     return render(request, '404.html')

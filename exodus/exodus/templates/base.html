@@ -29,8 +29,8 @@
         {% url 'reports:index' as reports_url %}
         {% url 'reports:get_all_apps' as apps_url %}
         {% url 'trackers:index' as trackers_url %}
-        {% url 'trackers:get_stats' as stats_url %}
         {% url 'analysis:submit' as submit_url %}
+        {% url 'understand' as understand %}
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item {% if request.path == home %}active{% endif %}">
             <a class="nav-link " href="{{ home }}">{% trans "Home" %}</a>
@@ -44,8 +44,8 @@
           <li class="nav-item {% if request.path == trackers_url %}active{% endif %}">
             <a class="nav-link " href="{{ trackers_url }}">{% trans "Trackers" %}</a>
           </li>
-          <li class="nav-item {% if request.path == stats_url %}active{% endif %}">
-            <a class="nav-link " href="{{ stats_url }}">{% trans "Statistics" %}</a>
+          <li class="nav-item {% if request.path == understand %}active{% endif %}">
+            <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
           </li>
           <li class="nav-item {% if request.path == submit_url %}active{% endif %}">
             <a class="nav-link " href="{{ submit_url }}">{% trans "New analysis" %}</a>
