@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 09:46+0200\n"
+"POT-Creation-Date: 2019-09-30 09:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,11 +239,19 @@ msgstr ""
 "Pour une navigation plus respectueuse de vos données personnelles, il existe "
 "certains navigateurs comme Firefox ou DuckDuckgo Privacy Browser."
 
-#: templates/next.html:68
+#: templates/next.html:67
+msgid ""
+"These browsers allow you to add your favorite websites on your home screen "
+"easily, just as an app (but lighter)."
+msgstr ""
+"Ces navigateurs permettent d'ajouter vos sites préférés sur votre écran "
+"d'accueil facilement, comme une application (en plus léger)."
+
+#: templates/next.html:71
 msgid "Install an ad blocker"
 msgstr "Installer un bloqueur de publicités"
 
-#: templates/next.html:75
+#: templates/next.html:78
 msgid ""
 "In all cases, Android smartphones allow you to install ad-blocking "
 "applications such as <a target='_blank' rel='noreferrer' href='https://"
@@ -256,17 +264,17 @@ msgstr ""
 "sur F-droid (cf. paragraphe précédent) ou depuis leur site internet. Cette "
 "application est en Français et est facile d'utilisation."
 
-#: templates/next.html:79
+#: templates/next.html:82
 msgid "Discover alternatives"
 msgstr "Découvrir des alternatives"
 
-#: templates/next.html:81
+#: templates/next.html:84
 msgid "For broader recommendations, here are some resources you can dig in:"
 msgstr ""
 "Pour des recommandations plus larges, voici quelques ressources en français "
 "dans lesquelles vous pouvez piocher :"
 
-#: templates/next.html:82
+#: templates/next.html:85
 msgid ""
 "\n"
 "      <ul>\n"
@@ -296,11 +304,11 @@ msgstr ""
 "      </ul>\n"
 "      "
 
-#: templates/next.html:92
+#: templates/next.html:95
 msgid "Remain curious!"
 msgstr "Rester curieux.se !"
 
-#: templates/next.html:94
+#: templates/next.html:97
 msgid ""
 "In this area, what is true today may not necessarily be true tomorrow: tools "
 "might come and go, application policies can change, security breaches can be "
@@ -310,7 +318,7 @@ msgstr ""
 "des outils peuvent apparaître, disparaître, les politiques des applications "
 "peuvent changer, une faille de sécurité peut être annoncée..."
 
-#: templates/next.html:97
+#: templates/next.html:100
 msgid ""
 "To this effect, you can attend workshops held by associations such as <a "
 "target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/"
@@ -324,14 +332,14 @@ msgstr ""
 "<a target='_blank' rel='noreferrer' href='https://www.ffdn.org/'>fournisseur "
 "d'accès à Internet associatif</a> le plus près de chez vous."
 
-#: templates/next.html:100
+#: templates/next.html:103
 msgid ""
 "To stay up to date on these topics, you can find useful resources there:"
 msgstr ""
 "Pour organiser une veille sur ces sujets, voici quelques ressources "
 "intéressantes :"
 
-#: templates/next.html:101
+#: templates/next.html:104
 msgid ""
 "\n"
 "      <ul>\n"
@@ -356,11 +364,11 @@ msgstr ""
 "      </ul>\n"
 "      "
 
-#: templates/next.html:110
+#: templates/next.html:113
 msgid "For advanced users"
 msgstr "Pour utilisateur⋅ice avancé⋅e :"
 
-#: templates/next.html:112
+#: templates/next.html:115
 msgid ""
 "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://"
 "lineageos.org/'>Lineage OS</a> is an operating system based on Android; it "
