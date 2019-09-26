@@ -31,7 +31,7 @@ msgid "report"
 msgstr "rapport"
 
 #: trackers/templates/tracker_details.html:11
-msgid "Tracker web page."
+msgid "Tracker web page"
 msgstr "Page web du pisteur"
 
 #: trackers/templates/tracker_details.html:13

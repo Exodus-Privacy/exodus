@@ -65,11 +65,11 @@ msgstr "Texte"
 
 #: reports/templates/report_details.html:84
 msgid "APK checksum:"
-msgstr "Somme de contrôle :"
+msgstr "Somme de contrôle&nbsp;:"
 
 #: reports/templates/report_details.html:85
 msgid "Handle:"
-msgstr "Identifiant :"
+msgstr "Identifiant&nbsp;:"
 
 #: reports/templates/report_details.html:86
 msgid "Name:"
@@ -77,15 +77,15 @@ msgstr "Nom :"
 
 #: reports/templates/report_details.html:87
 msgid "UAID:"
-msgstr "UAID :"
+msgstr "UAID&nbsp;:"
 
 #: reports/templates/report_details.html:89
 msgid "Version code:"
-msgstr "Code de version :"
+msgstr "Code de version&nbsp;:"
 
 #: reports/templates/report_details.html:90
 msgid "Icon hash:"
-msgstr "Empreinte de l’icône :"
+msgstr "Empreinte de l’icône&nbsp;:"
 
 #: reports/templates/report_details.html:94
 #: reports/templates/report_details.html:113
@@ -100,24 +100,24 @@ msgstr "Pisteur"
 #: reports/templates/report_details.html:137
 msgid ""
 "\n"
-"                        We have found <b>code signature</b> of the following "
+"          We have found <b>code signature</b> of the following "
 "tracker in the application:\n"
-"                        "
+"          "
 msgid_plural ""
 "\n"
-"                        We have found <b>code signature</b> of the following "
+"          We have found <b>code signature</b> of the following "
 "trackers in the application:\n"
-"                        "
+"          "
 msgstr[0] ""
 "\n"
-"                        Nous avons trouvé la <b>signature</b> du pisteur "
-"suivant dans cette application :\n"
-"                        "
+"          Nous avons trouvé la <b>signature</b> du pisteur "
+"suivant dans cette application&nbsp;:\n"
+"          "
 msgstr[1] ""
 "\n"
-"                        Nous avons trouvé la <b>signature</b> des pisteurs "
-"suivants dans cette application :\n"
-"                        "
+"          Nous avons trouvé la <b>signature</b> des pisteurs "
+"suivants dans cette application&nbsp;:\n"
+"          "
 
 #: reports/templates/report_details.html:150
 msgid ""
@@ -166,24 +166,24 @@ msgstr "Permission"
 #: reports/templates/report_details.html:173
 msgid ""
 "\n"
-"            We have found the following permission in the "
+"          We have found the following permission in the "
 "application:\n"
-"            "
+"          "
 msgid_plural ""
 "\n"
-"            We have found the following permissions in the "
+"          We have found the following permissions in the "
 "application:\n"
-"            "
+"          "
 msgstr[0] ""
 "\n"
-"            Nous avons trouvé la permission suivante dans cette "
-"application :\n"
-"            "
+"          Nous avons trouvé la permission suivante dans cette "
+"application&nbsp;:\n"
+"          "
 msgstr[1] ""
 "\n"
-"            Nous avons trouvé les permissions suivantes dans "
-"cette application :\n"
-"            "
+"          Nous avons trouvé les permissions suivantes dans "
+"cette application&nbsp;:\n"
+"          "
 
 #: reports/templates/report_details.html:220
 msgid ""
@@ -216,15 +216,15 @@ msgstr "Empreinte :"
 
 #: reports/templates/report_details.html:242
 msgid "Issuer:"
-msgstr "Émetteur :"
+msgstr "Émetteur&nbsp;:"
 
 #: reports/templates/report_details.html:243
 msgid "Subject:"
-msgstr "Sujet :"
+msgstr "Sujet&nbsp;:"
 
 #: reports/templates/report_details.html:244
 msgid "Serial:"
-msgstr "Série :"
+msgstr "Série&nbsp;:"
 
 #: reports/templates/report_details.html:248
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
@@ -255,10 +255,10 @@ msgid "We have found"
 msgstr "Nous avons trouvé"
 
 msgid "of this tracker in the application:"
-msgstr "de ce traqueur dans l’application :"
+msgstr "de ce traqueur dans l’application&nbsp;:"
 
 msgid "of these trackers in the application:"
-msgstr "de ces traqueurs dans l’application :"
+msgstr "de ces traqueurs dans l’application&nbsp;:"
 
 msgid "Statistics"
 msgstr "Statistiques"
@@ -271,3 +271,19 @@ msgstr "Aucun rapport trouvé"
 
 msgid "NetworkAnalysis do not exist"
 msgstr "L’analyse réseau n’est pas disponible"
+
+msgid "This report was created on"
+msgstr "Ce rapport a été créé le"
+
+msgid "and updated on"
+msgstr "et mis à jour le"
+
+msgid ""
+"If this application does not sufficiently respect your privacy in your "
+"opinion, some alternatives exist!"
+msgstr ""
+"Si cette application ne respecte pas suffisamment votre vie privée à votre "
+"goût, des alternatives existent&nbsp;!"
+
+msgid "Learn more"
+msgstr "En savoir plus"
