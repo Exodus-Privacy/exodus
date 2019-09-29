@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-21 15:09+0200\n"
+"POT-Creation-Date: 2019-09-29 09:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,57 +17,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: trackers/templates/stats_details.html:10
+#: templates/stats_details.html:9 templates/trackers_list.html:17
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: templates/stats_details.html:10
 msgid "Most frequent trackers"
 msgstr "Pisteurs les plus fréquents"
 
-#: trackers/templates/stats_details.html:20
+#: templates/stats_details.html:20
 msgid "found in"
 msgstr "trouvé dans"
 
-#: trackers/templates/stats_details.html:20
+#: templates/stats_details.html:20 templates/tracker_details.html:15
+#: templates/tracker_details.html:40
 msgid "report"
 msgstr "rapport"
 
-#: trackers/templates/tracker_details.html:11
+#: templates/tracker_details.html:15
+msgid "Present in:"
+msgstr "Présent dans :"
+
+#: templates/tracker_details.html:19
 msgid "Tracker web page"
 msgstr "Page web du pisteur"
 
-#: trackers/templates/tracker_details.html:13
+#: templates/tracker_details.html:31
 msgid "Detection rules"
 msgstr "Règles de détection"
 
-#: trackers/templates/tracker_details.html:16
+#: templates/tracker_details.html:32
 msgid "Code detection rule:"
 msgstr "Règle de détection (code) :"
 
-#: trackers/templates/tracker_details.html:18
-msgid "Code signature:"
-msgstr "Signature :"
-
-#: trackers/templates/tracker_details.html:20
+#: templates/tracker_details.html:34
 msgid "Network detection rule:"
 msgstr "Règle de détection (réseau) :"
 
-#: trackers/templates/tracker_details.html:30
-msgid ""
-"\n"
-"                      Available report for this tracker\n"
-"                      "
-msgid_plural ""
-"\n"
-"                      Available reports for this tracker\n"
-"                      "
-msgstr[0] ""
-"\n"
-"                      Rapport disponible pour ce pisteur\n"
-"                      "
-msgstr[1] ""
-"\n"
-"                      Rapports disponibles pour ce pisteur\n"
-"                      "
+#: templates/tracker_details.html:40
+msgid "Present in"
+msgstr "Présent dans"
 
-#: trackers/templates/trackers_list.html:9
+#: templates/trackers_list.html:8
+msgid "Trackers"
+msgstr "Pisteurs"
+
+#: templates/trackers_list.html:12
 msgid ""
 "\n"
 "        Recognized tracker\n"
@@ -86,16 +80,10 @@ msgstr[1] ""
 "        Pisteurs reconnus\n"
 "        "
 
-#: trackers/templates/trackers_list.html:26
+#: templates/trackers_list.html:29
 msgid "No trackers are available"
 msgstr "Aucun pisteur disponible"
 
-#: trackers/views.py:18 trackers/views.py:31 trackers/views.py:87
+#: views.py:18 views.py:32 views.py:70 views.py:99
 msgid "Tracker does not exist"
 msgstr "Aucun pisteur trouvé"
-
-msgid "Present in:"
-msgstr "Présent dans :"
-
-msgid "Present in"
-msgstr "Présent dans"

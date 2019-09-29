@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-23 21:48+0200\n"
+"POT-Creation-Date: 2019-09-29 09:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +16,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:16
+#: models.py:28
 #, python-format
 msgid "%s is not a valid application handle"
 msgstr ""
 
-#: models.py:20
+#: models.py:34
 #, python-format
 msgid "%s application not found on Google Play"
 msgstr ""
 
-#: models.py:24
+#: models.py:41
 msgid "This application is being analyzed."
 msgstr ""
 
-#: models.py:27
+#: models.py:46
 msgid "Too much pending requests, please retry later"
 msgstr ""
 
@@ -39,33 +38,33 @@ msgstr ""
 msgid "You need to be registered"
 msgstr ""
 
-#: templates/query_submit.html:9
+#: templates/query_submit.html:10
 msgid "Analyze an application"
 msgstr ""
 
-#: templates/query_submit.html:10
+#: templates/query_submit.html:11
 msgid "Free application only"
 msgstr ""
 
-#: templates/query_submit.html:23
+#: templates/query_submit.html:24
 msgid "You can find the handle in the Google Play URL of the application"
 msgstr ""
 
-#: templates/query_submit.html:32
+#: templates/query_submit.html:33
 msgid "Perform analysis"
 msgstr ""
 
-#: templates/query_submit.html:39
+#: templates/query_submit.html:40
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
 
-#: templates/query_submit.html:52
+#: templates/query_submit.html:53 templates/query_wait.html:28
 msgid "is a non-profit organization which provides this service for free."
 msgstr ""
 
-#: templates/query_submit.html:54 templates/query_wait.html:25
+#: templates/query_submit.html:55 templates/query_wait.html:30
 msgid "Help us!"
 msgstr ""
 
@@ -87,15 +86,15 @@ msgid ""
 "application, feel free to submit the analysis."
 msgstr ""
 
-#: templates/query_wait.html:8
+#: templates/query_wait.html:9
 msgid "is processing your request"
 msgstr ""
 
-#: templates/query_wait.html:13
+#: templates/query_wait.html:14
 msgid "See the report"
 msgstr ""
 
-#: templates/query_wait.html:16
+#: templates/query_wait.html:17
 msgid "Will refresh automatically every 10 seconds."
 msgstr ""
 

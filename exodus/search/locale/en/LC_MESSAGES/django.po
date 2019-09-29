@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-15 13:30+0200\n"
+"POT-Creation-Date: 2019-09-29 09:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +16,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/search_form.html:6
-msgid "Search a report"
-msgstr ""
-
-msgid "Application name"
-msgstr ""
-
-msgid "Let's go!"
-msgstr ""
-
+#: templates/search_form.html:8
 msgid "The privacy audit platform for Android applications"
 msgstr ""
 
-msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
+#: templates/search_form.html:16
+msgid "Search a report"
 msgstr ""
 
-msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+#: templates/search_form.html:17
+msgid "Application name"
 msgstr ""
 
-msgid "εxodus does not decompile applications, its analysis technic is legal."
-msgstr ""
-
-msgid "Need an overview?"
-msgstr ""
-
-#: templates/search_form.html:15
+#: templates/search_form.html:26
 msgid "Here you can search for an application using its name or handle"
 msgstr ""
 
-#: templates/search_form.html:20
+#: templates/search_form.html:31 templates/search_form.html:58
+msgid "Let's go!"
+msgstr ""
+
+#: templates/search_form.html:34
 msgid "Results"
 msgstr ""
 
-#: templates/search_form.html:32
+#: templates/search_form.html:43
+msgid ""
+"εxodus analyzes Android applications in order to <b>list the embedded "
+"trackers.</b>"
+msgstr ""
+
+#: templates/search_form.html:44
+msgid ""
+"A tracker is a piece of software <b>meant to collect data about you or your "
+"usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr ""
+
+#: templates/search_form.html:45
+msgid "εxodus does not decompile applications, its analysis technic is legal."
+msgstr ""
+
+#: templates/search_form.html:51
+msgid "Better understand"
+msgstr ""
+
+#: templates/search_form.html:52
+msgid ""
+"What is a tracker? And a permission? Are there any alternatives to protect "
+"yourself?"
+msgstr ""
+
+#: templates/search_form.html:64
+msgid "Need an overview?"
+msgstr ""
+
+#: templates/search_form.html:70
+msgid "Latest reports"
+msgstr ""
+
+#: templates/search_form.html:76
+msgid "No known trackers"
+msgstr ""
+
+#: templates/search_form.html:82
+msgid "Most trackers"
+msgstr ""
+
+#: templates/search_form.html:90
 msgid "No results found."
 msgstr ""
