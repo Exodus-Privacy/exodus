@@ -67,7 +67,7 @@ def get_stats(request):
     reports_number = Report.objects.count()
 
     if trackers.count() == 0 or reports_number == 0:
-        raise Http404(_("report does not exist"))
+        raise Http404(_("Tracker does not exist"))
 
     for t in trackers:
         t.count = Report.objects.filter(found_trackers=t.id).count()
