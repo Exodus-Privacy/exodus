@@ -33,7 +33,6 @@ urlpatterns += i18n_patterns(
     url(r'^analysis/', include('analysis_query.urls')),
     url(r'^trackers/', include('trackers.urls')),
     url(r'^reports/', include('reports.urls')),
-    url(r'^search/', include('search.urls')),
     url(r'^$', views.index, name='home'),
     url(r'^info/permissions/$', views.permissions, name='permissions'),
     url(r'^info/trackers/$', views.trackers, name='trackers'),
