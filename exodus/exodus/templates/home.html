@@ -1,3 +1,5 @@
+{% extends "base.html"%}
+{% block content %}
 {% load i18n %}
 <div class="row justify-content-center mb-4">
   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 d-flex align-items-center">
@@ -171,3 +173,4 @@
     get_results(query, 50)
   });
 </script>
+{% endblock %}
