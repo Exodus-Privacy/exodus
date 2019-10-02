@@ -33,7 +33,8 @@ script:
 
 jobs:
   include:
-    - stage: linter
+    - name: "flake8 lint"
+      stage: linter
       services: []
       before_install: []
       python: 3.6
@@ -41,3 +42,19 @@ jobs:
         - pip install flake8
       script:
         - flake8 exodus/
+
+    - name: "Dockerfile lint"
+      stage: linter
+      services: docker
+      before_install: []
+      install: []
+      script:
+        - docker run -i hadolint/hadolint < Dockerfile
+
+    - name: "Docker build test"
+      stage: Test
+      services: docker
+      before_install: []
+      install: []
+      script:
+        - docker build -t exodus .
