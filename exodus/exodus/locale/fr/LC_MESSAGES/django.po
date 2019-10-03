@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 20:49+0200\n"
+"POT-Creation-Date: 2019-10-07 20:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,51 +73,47 @@ msgstr "Analyse des pisteurs : succès"
 msgid "Static analysis complete"
 msgstr "Analyse statique : succès"
 
-#: templates/base.html:36
+#: templates/base.html:35
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:39
+#: templates/base.html:38
 msgid "Reports"
 msgstr "Rapports"
 
-#: templates/base.html:42
-msgid "Applications"
-msgstr "Applications"
-
-#: templates/base.html:45
+#: templates/base.html:41
 msgid "Trackers"
 msgstr "Pisteurs"
 
-#: templates/base.html:48 templates/home.html:53 templates/understand.html:8
+#: templates/base.html:44 templates/home.html:54 templates/understand.html:8
 msgid "Better understand"
 msgstr "Mieux comprendre"
 
-#: templates/base.html:51
+#: templates/base.html:47
 msgid "New analysis"
 msgstr "Nouvelle analyse"
 
-#: templates/base.html:58
+#: templates/base.html:54
 msgid "Website"
 msgstr "Site web"
 
-#: templates/base.html:59
+#: templates/base.html:55
 msgid "Help us!"
 msgstr ""
 
-#: templates/base.html:60
+#: templates/base.html:56
 msgid "Report an issue"
 msgstr "Signaler un problème"
 
-#: templates/base.html:66
+#: templates/base.html:62
 msgid "Admin"
 msgstr ""
 
-#: templates/base.html:69
+#: templates/base.html:65
 msgid "Analyzes"
 msgstr "Analyses"
 
-#: templates/base.html:70
+#: templates/base.html:66
 msgid "Log out"
 msgstr ""
 
@@ -133,19 +129,23 @@ msgstr "Rechercher un rapport"
 msgid "Application name"
 msgstr "Nom de l'application"
 
-#: templates/home.html:28
-msgid "Here you can search for an application using its name or handle"
+#: templates/home.html:29
+msgid "You can search for an application using its name or handle"
 msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
 
-#: templates/home.html:33 templates/home.html:60
+#: templates/home.html:30
+msgid "ex:"
+msgstr "ex :"
+
+#: templates/home.html:34 templates/home.html:63
 msgid "Let's go!"
 msgstr "C'est parti !"
 
-#: templates/home.html:36
+#: templates/home.html:37
 msgid "Results"
 msgstr "Résultats"
 
-#: templates/home.html:45
+#: templates/home.html:46
 msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
@@ -153,7 +153,7 @@ msgstr ""
 "εxodus analyse les applications Android dans le but de <b>lister les "
 "pisteurs embarqués.</b>"
 
-#: templates/home.html:46
+#: templates/home.html:47
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
@@ -162,12 +162,12 @@ msgstr ""
 "à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous "
 "révèlent les ingrédients du gâteau."
 
-#: templates/home.html:47
+#: templates/home.html:48
 msgid "εxodus does not decompile applications, its analysis technic is legal."
 msgstr ""
 "εxodus ne décompile pas les applications, sa technique d’analyse est légale."
 
-#: templates/home.html:54
+#: templates/home.html:55
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
@@ -175,23 +175,23 @@ msgstr ""
 "Qu'est-ce qu'un pisteur ? Et une permission ? Existe-t-il des alternatives "
 "pour se protéger ?"
 
-#: templates/home.html:66
+#: templates/home.html:71
 msgid "Need an overview?"
 msgstr "Besoin d'une vision d'ensemble&nbsp;?"
 
-#: templates/home.html:72
+#: templates/home.html:77
 msgid "Latest reports"
 msgstr "Les derniers rapports"
 
-#: templates/home.html:78
+#: templates/home.html:83
 msgid "No known trackers"
 msgstr "Aucun pisteurs identifiés"
 
-#: templates/home.html:84
+#: templates/home.html:89
 msgid "Most trackers"
 msgstr "Triés par nombre de pisteurs"
 
-#: templates/home.html:92
+#: templates/home.html:97
 msgid "No results found."
 msgstr "Aucun résultat."
 

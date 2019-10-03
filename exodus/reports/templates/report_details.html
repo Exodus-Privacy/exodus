@@ -17,7 +17,7 @@
     <div class="col-xl-2 col-lg-2 col-md-8 col-12 text-lg-left text-center mb-4">
       <img src="/reports/{{ report.application.id }}/icon" class="rounded" width="115px" alt="{{ report.application.handle }} logo">
     </div>
-    <div class="col-xl-6 col-lg-6 col-md-8 col-12 text-center text-lg-left d-flex align-items-center mb-4">
+    <div class="col-xl-6 col-lg-6 col-md-8 col-12 text-center text-lg-left my-auto mb-4">
       <h1 class="main-title">
         {% if report.application.name.strip %}{{ report.application.name }}{% else %}{{ report.application.handle }}{% endif %}
       </h1>
@@ -47,7 +47,10 @@
       {% endif %}
       {% if report.application.creator.strip %}
         {% trans "Created by" %} {{ report.application.creator }}
-        {% if report.application.downloads.strip %}({{ report.application.downloads | cut:' downloads' }} {% trans "downloads" %}){% endif %}
+        <br>
+      {% endif %}
+      {% if report.application.downloads.strip %}
+        {% trans "Downloads:" %} {{ report.application.downloads | cut:' downloads' }}
         <br>
       {% endif %}
       <span class="text-muted">
@@ -119,16 +122,17 @@
             {% if perm.severity == 'Special' or perm.severity == 'Dangerous' %}
               &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg">&nbsp;
             {% endif %}
-            <samp data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name | truncatechars_html:30 }}</samp>
+            <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name | truncatechars_html:30 }}</span>
             {% if perm.label %}
-              <small data-toggle="tooltip" data-placement="top" title="{{ perm.description }}" class="text-capitalize" style="display:block; padding-left:28px"><i>{{ perm.label }}</i></small>
+              <small data-toggle="tooltip" data-placement="top" title="{{ perm.description }}" style="display:block; padding-left:28px"><i>{{ perm.label }}</i></small>
             {% endif %}
           </p>
         {% endfor %}
-        <span class="text-muted font-italic">
-          {% trans "The icon" %} &nbsp;<img src="/static/img/danger.svg">&nbsp; {% trans "indicates a 'Dangerous' or 'Special' level according to" %} <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">{% trans "Google's protection levels" %}</a>.
-        </span>
-        <br>
+        <p>
+          <small class="text-muted font-italic">
+            {% trans "The icon" %} &nbsp;<img src="/static/img/danger.svg">&nbsp; {% trans "indicates a 'Dangerous' or 'Special' level according to" %} <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">{% trans "Google's protection levels" %}</a>.
+          </small>
+        </p>
       {% else %}
         <p>{% trans "This application doesn't require any permissions." %}</p>
       {% endif %}
@@ -181,7 +185,9 @@
     </div>
     <div class="col-md-8 col-12">
       <div class="btn-group">
-        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle"  type="button" id="dropdownApkFingerprint" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "APK fingerprint" %}</button>
+        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle"  type="button" id="dropdownApkFingerprint" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% trans "See APK fingerprint" %}
+        </button>
         <div class="dropdown-menu" aria-labelledby="dropdownApkFingerprint">
           <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">{% trans "Text" %}</a>
           <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetailsJSON" aria-expanded="false" aria-controls="collapseAPKDetailsJSON">JSON</a>

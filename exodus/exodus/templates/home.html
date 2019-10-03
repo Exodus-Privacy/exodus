@@ -1,11 +1,11 @@
 {% extends "base.html"%}
 {% block content %}
 {% load i18n %}
-<div class="row justify-content-center mb-4">
-  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 d-flex align-items-center">
+<div class="row justify-content-center mb-5 mt-5">
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 my-auto">
     <img src="/static/img/logo_purple_small.svg" class="mx-auto d-block img-fluid">
   </div>
-  <div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 text-center">
+  <div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 text-center my-auto">
     <h1 class="main-title">εxodus</h1>
     <h5><b>{% trans "The privacy audit platform for Android applications" %}</b></h5>
   </div>
@@ -16,20 +16,21 @@
     <div class="form-group">
       {% csrf_token %}
       <h4>{% trans "Search a report" %}</h4>
-      <label for="query">{% trans "Application name" %}</label>
+      <label for="query"><b>{% trans "Application name" %}</b></label>
       <div class="input-group input-group-lg mb-3">
-        <input type="text" class="form-control" id="query" aria-describedby="query_help" placeholder="fr.meteo">
+        <input type="text" class="form-control" id="query" aria-describedby="query_help">
         <div class="input-group-append">
           <span class="input-group-text" id="query_help">
             <small><img src="/static/img/search.svg"></img></small>
           </span>
         </div>
       </div>
-      <small class="form-text text-muted text-center mb-4">{% trans "Here you can search for an application using its name or handle" %}
-        <i>i.e.</i> <b>fr.meteo</b>
+      <small class="form-text text-muted mb-4">
+        {% trans "You can search for an application using its name or handle" %}
+        <i>{% trans "ex:" %} <b>fr.meteo</b></i>
       </small>
       <div id="go-div" class="row justify-content-center">
-        <div class="col-6 col-md-4">
+        <div class="col-8 col-sm-7 col-md-6 col-xl-5">
           <button id="go" class="btn btn-secondary btn-block">{% trans "Let's go!" %}</button>
         </div>
       </div>
@@ -48,7 +49,7 @@
   </div>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-4">
   <div class="col-lg-8 col-sm-12">
     <h4>{% trans "Better understand" %}</h4>
     <p>{% trans "What is a tracker? And a permission? Are there any alternatives to protect yourself?" %}</p>
@@ -58,14 +59,14 @@
 <div class="row justify-content-center mb-5">
   <div class="col-lg-8 col-sm-12">
     <div class="row justify-content-center">
-      <div class="col-6 col-md-4 text-center mb-4">
+      <div class="col-8 col-sm-7 col-md-6 col-xl-5 text-center mb-4">
         <a href="{% url 'understand' %}" class="btn btn-secondary btn-block">{% trans "Let's go!" %}</a>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-4">
   <div class="col-lg-8 col-sm-12">
     <h4>{% trans "Need an overview?" %}</h4>
   </div>
@@ -101,7 +102,7 @@
         <div class="col-3 col-md-2">
           <img class="rounded" src="/reports/{{handle}}/latest/icon" width="50px">
         </div>
-        <div class="col-9 col-md-10 text-truncate d-flex align-items-center position-static">
+        <div class="col-9 col-md-10 text-truncate my-auto position-static">
           <a href="/reports/{{handle}}/latest" class="stretched-link report-link">
             {{#if name}}
               {{name}}

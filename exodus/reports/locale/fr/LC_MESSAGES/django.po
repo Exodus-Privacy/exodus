@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 18:14+0200\n"
+"POT-Creation-Date: 2019-10-07 20:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,13 +25,13 @@ msgstr "Envoyez cette URI à Electra pour la finalisation du rapport"
 msgid "Prefix in storage:"
 msgstr "Préfixe de stockage :"
 
-#: templates/report_details.html:31 templates/report_details.html:69
-#: templates/reports_list.html:56
+#: templates/report_details.html:31 templates/report_details.html:72
+#: templates/reports_list.html:61
 msgid "tracker"
 msgstr "pisteur"
 
-#: templates/report_details.html:37 templates/report_details.html:100
-#: templates/reports_list.html:66
+#: templates/report_details.html:37 templates/report_details.html:103
+#: templates/reports_list.html:71
 msgid "permission"
 msgstr "permission"
 
@@ -43,23 +43,23 @@ msgstr "version"
 msgid "Created by"
 msgstr "Créée par"
 
-#: templates/report_details.html:50
-msgid "downloads"
-msgstr "téléchargements"
+#: templates/report_details.html:53
+msgid "Downloads:"
+msgstr "Téléchargements&nbsp;:"
 
-#: templates/report_details.html:54
+#: templates/report_details.html:57
 msgid "This report was created on"
 msgstr "Ce rapport a été créé le"
 
-#: templates/report_details.html:56
+#: templates/report_details.html:59
 msgid "and updated on"
 msgstr "et mis à jour le"
 
-#: templates/report_details.html:61
+#: templates/report_details.html:64
 msgid "See on Google Play"
 msgstr "Voir sur Google Play"
 
-#: templates/report_details.html:75
+#: templates/report_details.html:78
 msgid ""
 "\n"
 "          We have found <b>code signature</b> of the following tracker in "
@@ -81,7 +81,7 @@ msgstr[1] ""
 "cette application&nbsp;:\n"
 "          "
 
-#: templates/report_details.html:86
+#: templates/report_details.html:89
 msgid ""
 "We have not found <b>code signature</b> of any tracker we know in the "
 "application."
@@ -89,13 +89,13 @@ msgstr ""
 "Nous n’avons pas trouvé la <b>signature</b> de pisteurs que nous  "
 "connaissons dans l’application."
 
-#: templates/report_details.html:88 templates/report_details.html:159
+#: templates/report_details.html:91 templates/report_details.html:163
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
 "L’application pourrait contenir un ou plusieurs pisteurs que nous n’avons "
 "pas encore identifiés."
 
-#: templates/report_details.html:91
+#: templates/report_details.html:94
 msgid ""
 "A tracker is a piece of software meant to collect data about you or your "
 "usages."
@@ -103,11 +103,11 @@ msgstr ""
 "Un pisteur est une partie du logiciel dédiée à la collecte de données sur "
 "vous et vos usages."
 
-#: templates/report_details.html:92 templates/report_details.html:136
+#: templates/report_details.html:95 templates/report_details.html:140
 msgid "Learn more"
 msgstr "En savoir plus"
 
-#: templates/report_details.html:106
+#: templates/report_details.html:109
 msgid ""
 "\n"
 "          We have found the following permission in the application:\n"
@@ -127,33 +127,33 @@ msgstr[1] ""
 "application&nbsp;:\n"
 "          "
 
-#: templates/report_details.html:129
+#: templates/report_details.html:133
 msgid "The icon"
 msgstr "L'icône"
 
-#: templates/report_details.html:129
+#: templates/report_details.html:133
 msgid "indicates a 'Dangerous' or 'Special' level according to"
 msgstr "indique un niveau 'Dangereux' ou 'Spécial' d'après les"
 
-#: templates/report_details.html:129
+#: templates/report_details.html:133
 msgid "Google's protection levels"
 msgstr "niveaux de protection de Google"
 
-#: templates/report_details.html:133
+#: templates/report_details.html:137
 msgid "This application doesn't require any permissions."
 msgstr "Cette application ne demande aucun autorisation."
 
-#: templates/report_details.html:135
+#: templates/report_details.html:139
 msgid "Permissions are actions the application can do on your phone."
 msgstr ""
 "Les permissions sont les actions que l’application peut effectuer sur votre "
 "téléphone."
 
-#: templates/report_details.html:142
+#: templates/report_details.html:146
 msgid "What's next?"
 msgstr "Et après ?"
 
-#: templates/report_details.html:143
+#: templates/report_details.html:147
 msgid ""
 "If this application does not sufficiently respect your privacy in your "
 "opinion, some alternatives exist!"
@@ -161,15 +161,15 @@ msgstr ""
 "Si cette application ne respecte pas suffisamment votre vie privée à votre "
 "goût, des alternatives existent&nbsp;!"
 
-#: templates/report_details.html:149
+#: templates/report_details.html:153
 msgid "Read the article"
 msgstr "Lire l'article"
 
-#: templates/report_details.html:154
+#: templates/report_details.html:158
 msgid "Exodus - Question about report"
 msgstr "Exodus - Question à propos d’un rapport"
 
-#: templates/report_details.html:156
+#: templates/report_details.html:160
 msgid ""
 "This report lists trackers signatures found by static analysis in this APK. "
 "This is not a proof of activity of these trackers."
@@ -178,73 +178,76 @@ msgstr ""
 "l’analyse statique de cet APK. Cela ne constitue pas une preuve de "
 "l’activité de ces pisteurs."
 
-#: templates/report_details.html:161
+#: templates/report_details.html:165
 msgid "If you have doubts about this report, contact us at"
 msgstr "Si vous avez des doutes au sujet de ce rapport, contactez-nous à"
 
-#: templates/report_details.html:168
+#: templates/report_details.html:172
 msgid "Signed by"
 msgstr "Signée par"
 
-#: templates/report_details.html:172
+#: templates/report_details.html:176
 msgid "Fingerprint:"
 msgstr "Empreinte :"
 
-#: templates/report_details.html:173
+#: templates/report_details.html:177
 msgid "Issuer:"
 msgstr "Émetteur&nbsp;:"
 
-#: templates/report_details.html:174
+#: templates/report_details.html:178
 msgid "Subject:"
 msgstr "Sujet&nbsp;:"
 
-#: templates/report_details.html:175
+#: templates/report_details.html:179
 msgid "Serial:"
 msgstr "Série&nbsp;:"
 
-#: templates/report_details.html:179
+#: templates/report_details.html:183
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
 msgstr ""
 "Aucune signature trouvée <b>OU</b> certificat x509 non conforme avec la RFC."
 
-#: templates/report_details.html:184 templates/report_details.html:194
-#: templates/report_details.html:218
-msgid "APK fingerprint"
-msgstr "Empreinte de la clé"
+#: templates/report_details.html:189
+msgid "See APK fingerprint"
+msgstr "Voir l'empreinte de la clé"
 
-#: templates/report_details.html:186
+#: templates/report_details.html:192
 msgid "Text"
 msgstr "Texte"
 
-#: templates/report_details.html:199
+#: templates/report_details.html:200 templates/report_details.html:224
+msgid "APK fingerprint"
+msgstr "Empreinte de la clé"
+
+#: templates/report_details.html:205
 msgid "APK checksum:"
 msgstr "Somme de contrôle&nbsp;:"
 
-#: templates/report_details.html:200
+#: templates/report_details.html:206
 msgid "Handle:"
 msgstr "Identifiant&nbsp;:"
 
-#: templates/report_details.html:201
+#: templates/report_details.html:207
 msgid "Name:"
 msgstr "Nom&nbsp;:"
 
-#: templates/report_details.html:202
+#: templates/report_details.html:208
 msgid "UAID:"
 msgstr "UAID&nbsp;:"
 
-#: templates/report_details.html:203
+#: templates/report_details.html:209
 msgid "Version:"
 msgstr "Version&nbsp;:"
 
-#: templates/report_details.html:204
+#: templates/report_details.html:210
 msgid "Version code:"
 msgstr "Code de version&nbsp;:"
 
-#: templates/report_details.html:205
+#: templates/report_details.html:211
 msgid "Icon hash:"
 msgstr "Empreinte de l’icône&nbsp;:"
 
-#: templates/report_details.html:209 templates/report_details.html:225
+#: templates/report_details.html:215 templates/report_details.html:231
 msgid "Close"
 msgstr "Fermer"
 
@@ -252,27 +255,27 @@ msgstr "Fermer"
 msgid "Reports"
 msgstr "Rapports"
 
-#: templates/reports_list.html:14
+#: templates/reports_list.html:17
 msgid "report"
 msgstr "rapport"
 
-#: templates/reports_list.html:15
+#: templates/reports_list.html:18
 msgid "for"
 msgstr "pour"
 
-#: templates/reports_list.html:16
+#: templates/reports_list.html:19
 msgid "application"
 msgstr "application"
 
-#: templates/reports_list.html:23
+#: templates/reports_list.html:26
 msgid "Latest reports"
 msgstr "Les derniers rapports"
 
-#: templates/reports_list.html:24
+#: templates/reports_list.html:27
 msgid "Most trackers"
 msgstr "Triés par nombre de pisteurs"
 
-#: templates/reports_list.html:25
+#: templates/reports_list.html:29
 msgid "No known trackers"
 msgstr "Aucun pisteurs identifiés"
 
