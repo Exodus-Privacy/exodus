@@ -50,7 +50,7 @@ def get_reports(request, handle=None):
         raise Http404(_("reports do not exist"))
     reports_paged = _paginate(request, reports)
 
-    app_count = Application.objects.distinct('name', 'handle').count()
+    app_count = Application.objects.distinct('handle').count()
     return render(
         request, 'reports_list.html',
         {

@@ -10,12 +10,15 @@
             <h1 class="main-title">
                 {% trans "Reports" %}
             </h1>
-            <h5>
-                {{ reports_count }} {% trans "report" %}{{ reports_count | pluralize }}
-                {% trans "for" %}
-                {{ apps_count }} {% trans "application" %}{{ apps_count | pluralize }}
-                {% if handle %}<small>({{ handle }})</small>{% endif %}
-            </h5>
+            <h4>
+                {% if handle %}
+                    {{ handle }}
+                {% else %}
+                    {{ reports_count }} {% trans "report" %}{{ reports_count | pluralize }}
+                    {% trans "for" %}
+                    {{ apps_count }} {% trans "application" %}{{ apps_count | pluralize }}
+                {% endif %}
+            </h4>
         </div>
         <hr>
         {% if not handle %}

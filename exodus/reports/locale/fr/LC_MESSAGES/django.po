@@ -254,7 +254,7 @@ msgstr "Rapports"
 
 #: templates/reports_list.html:14
 msgid "report"
-msgstr "Rapport"
+msgstr "rapport"
 
 #: templates/reports_list.html:15
 msgid "for"
@@ -287,6 +287,3 @@ msgstr "le rapport n’existe pas"
 #: views.py:115
 msgid "App does not exist"
 msgstr "L’application n’existe pas"
-
-#~ msgid "No apps found"
-#~ msgstr "Aucune application trouvée"
