@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.test import TestCase
+from django.test import TestCase, Client
 from unittest.mock import patch, Mock, ANY
 
 from reports.models import Application, Report
@@ -50,3 +50,37 @@ class ReportsIconTests(TestCase):
 
         self.assertTrue(get_object.called)
         self.assertEqual(response.content, b'icon contents')
+
+
+class ReportsViewTests(TestCase):
+    REPORTS_PATH = '/en/reports/'
+
+    def test_should_return_reports_count_with_2_reports(self):
+        report1 = Report(id=1)
+        report2 = Report(id=2)
+
+        report1.save()
+        report2.save()
+
+        c = Client()
+        response = c.get(self.REPORTS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['reports_count'], 2)
+
+    def test_should_return_apps_count_with_2_applications(self):
+        report1 = Report(id=1)
+        report2 = Report(id=2)
+        report1.save()
+        report2.save()
+
+        app1 = Application(id=1, name="App1", report=report1)
+        app2 = Application(id=2, name="App2", report=report2)
+        app1.save()
+        app2.save()
+
+        c = Client()
+        response = c.get(self.REPORTS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['apps_count'], 2)

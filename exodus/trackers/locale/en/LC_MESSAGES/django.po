@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 09:50+0200\n"
+"POT-Creation-Date: 2019-10-06 17:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/stats_details.html:9 templates/trackers_list.html:17
+#: templates/stats_details.html:9 templates/trackers_list.html:13
 msgid "Statistics"
 msgstr ""
 
@@ -63,18 +63,12 @@ msgid "Trackers"
 msgstr ""
 
 #: templates/trackers_list.html:12
-msgid ""
-"\n"
-"        Recognized tracker\n"
-"        "
-msgid_plural ""
-"\n"
-"        Recognized trackers\n"
-"        "
+msgid "known tracker"
+msgid_plural "known trackers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/trackers_list.html:29
+#: templates/trackers_list.html:25
 msgid "No trackers are available"
 msgstr ""
 

@@ -8,9 +8,14 @@
     {% if reports %}
         <div style="text-align:center">
             <h1 class="main-title">
-                {{ count }} {% trans "Report" %}{{ count | pluralize }}
-                {% if handle %}<small>({{ handle }})</small>{% endif %}
+                {% trans "Reports" %}
             </h1>
+            <h5>
+                {{ reports_count }} {% trans "report" %}{{ reports_count | pluralize }}
+                {% trans "for" %}
+                {{ apps_count }} {% trans "application" %}{{ apps_count | pluralize }}
+                {% if handle %}<small>({{ handle }})</small>{% endif %}
+            </h5>
         </div>
         <hr>
         {% if not handle %}
