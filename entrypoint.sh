@@ -4,6 +4,7 @@ EXODUS_HOME="/home/exodus/exodus"
 
 function createDB() {
 	cd ${EXODUS_HOME}/exodus/
+	echo 'CREATE EXTENSION IF NOT EXISTS pg_trgm;' | python3 manage.py dbshell --settings=exodus.settings.docker
 	python3 manage.py makemigrations --settings=exodus.settings.docker
 	python3 manage.py migrate --settings=exodus.settings.docker
 }
