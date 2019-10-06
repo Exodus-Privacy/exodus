@@ -14,9 +14,9 @@
                 {% if handle %}
                     {{ handle }}
                 {% else %}
-                    {{ reports_count }} {% trans "report" %}{{ reports_count | pluralize }}
+                    {{ reports_total_count }} {% trans "report" %}{{ reports_total_count | pluralize }}
                     {% trans "for" %}
-                    {{ apps_count }} {% trans "application" %}{{ apps_count | pluralize }}
+                    {{ apps_total_count }} {% trans "application" %}{{ apps_total_count | pluralize }}
                 {% endif %}
             </h4>
         </div>
@@ -25,7 +25,9 @@
             <select onchange="this.options[this.selectedIndex].value && (window.location = '/reports/' + this.options[this.selectedIndex].value);">
                 <option value=" ">{% trans "Latest reports" %}</option>
                 <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>{% trans "Most trackers" %}</option>
-                <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>{% trans "No known trackers" %}</option>
+                <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
+                    {% trans "No known trackers" %}
+                    {% if filter == 'no_trackers' %} ({{ reports|length }}){% endif %}</option>
             </select>
         {% endif %}
 

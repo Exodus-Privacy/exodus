@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.test import TestCase, Client
+from django.test import TestCase
 from unittest.mock import patch, Mock, ANY
 
 from reports.models import Application, Report
@@ -55,36 +55,51 @@ class ReportsIconTests(TestCase):
 class ReportsViewTests(TestCase):
     REPORTS_PATH = '/en/reports/'
 
-    def test_should_return_reports_count_with_2_reports(self):
+    def test_should_return_reports_total_count_with_2_reports(self):
         Report.objects.create()
         Report.objects.create()
 
-        c = Client()
-        response = c.get(self.REPORTS_PATH)
+        response = self.client.get(self.REPORTS_PATH)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['reports_count'], 2)
+        self.assertEqual(response.context['reports_total_count'], 2)
 
-    def test_should_return_apps_count_with_2_applications(self):
+    def test_should_return_apps_total_count_with_2_applications(self):
         r1 = Report.objects.create()
         r2 = Report.objects.create()
         Application.objects.create(name="App1", report=r1, handle="com.test.track1")
         Application.objects.create(name="App2", report=r2, handle="com.test.track2")
 
-        c = Client()
-        response = c.get(self.REPORTS_PATH)
+        response = self.client.get(self.REPORTS_PATH)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['apps_count'], 2)
+        self.assertEqual(response.context['apps_total_count'], 2)
 
-    def test_should_return_apps_count_with_2_applications_using_same_handle(self):
+    def test_should_return_apps_total_count_with_2_applications_using_same_handle(self):
         r1 = Report.objects.create()
         r2 = Report.objects.create()
         Application.objects.create(name="App1", report=r1, handle="com.test.track")
         Application.objects.create(name="App2", report=r2, handle="com.test.track")
 
-        c = Client()
-        response = c.get(self.REPORTS_PATH)
+        response = self.client.get(self.REPORTS_PATH)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['apps_count'], 1)
+        self.assertEqual(response.context['apps_total_count'], 1)
+
+    def test_should_ensure_reports_total_count_stays_with_filter_most_trackers(self):
+        Report.objects.create()
+        Report.objects.create()
+
+        response = self.client.get(self.REPORTS_PATH + "?filter=most_trackers")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['reports_total_count'], 2)
+
+    def test_should_ensure_reports_total_count_stays_with_filter_no_trackers(self):
+        Report.objects.create()
+        Report.objects.create()
+
+        response = self.client.get(self.REPORTS_PATH + "?filter=no_trackers")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['reports_total_count'], 2)
