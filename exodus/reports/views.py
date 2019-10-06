@@ -83,11 +83,12 @@ def _get_color_class(count):
 
 def detail(request, report_id=None, handle=None):
     try:
+        report = None
         if report_id:
             report = Report.objects.get(pk=report_id)
         elif handle:
-            report = Report.objects.filter(application__handle=handle).order_by('-creation_date')[0]
-        else:
+            report = Report.objects.filter(application__handle=handle).order_by('-creation_date').first()
+        if report is None:
             raise Report.DoesNotExist
     except Report.DoesNotExist:
         raise Http404(_("report does not exist"))
@@ -110,25 +111,32 @@ def refreshdns(request):
         return HttpResponse(status=200)
 
 
-def get_app_icon(request, app_id):
+def get_app_icon(request, app_id=None, handle=None):
+    try:
+        app = None
+        if app_id:
+            app = Application.objects.get(pk=app_id)
+        elif handle:
+            app = Application.objects.filter(handle=handle).order_by('-report__creation_date').first()
+        if app is None:
+            raise Application.DoesNotExist
+    except Application.DoesNotExist:
+        raise Http404(_('App does not exist'))
+
     minioClient = Minio(
         settings.MINIO_URL,
         access_key=settings.MINIO_ACCESS_KEY,
         secret_key=settings.MINIO_SECRET_KEY,
         secure=settings.MINIO_SECURE
     )
-    try:
-        app = Application.objects.get(pk=app_id)
-    except Application.DoesNotExist:
-        raise Http404(_("App does not exist"))
 
     try:
         data = minioClient.get_object(settings.MINIO_BUCKET, app.icon_path)
-        return HttpResponse(data.data, content_type="image/png")
+        return HttpResponse(data.data, content_type='image/png')
     except Exception as err:
         print(err)
-        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'android.jpeg'), "rb") as f:
-            return HttpResponse(f.read(), content_type="image/jpeg")
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'android.jpeg'), 'rb') as f:
+            return HttpResponse(f.read(), content_type='image/jpeg')
 
 
 def by_tracker(request):
