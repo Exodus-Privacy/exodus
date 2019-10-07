@@ -48,27 +48,18 @@ def get_reports(request, handle=None):
                 reports = reports.filter(application__handle=handle)
     except Report.DoesNotExist:
         raise Http404(_("reports do not exist"))
-
     reports_paged = _paginate(request, reports)
+
     return render(
         request, 'reports_list.html',
         {
             'reports': reports_paged,
-            'count': reports.count(),
+            'reports_total_count': Report.objects.count(),
+            'apps_total_count': Application.objects.distinct('handle').count(),
             'filter': filter,
             'handle': handle
         }
     )
-
-
-def get_all_apps(request):
-    try:
-        apps_list = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
-    except Application.DoesNotExist:
-        raise Http404(_("No apps found"))
-
-    apps = _paginate(request, apps_list, 30)
-    return render(request, 'apps_list.html', {'apps': apps, 'count': apps_list.count()})
 
 
 def _get_color_class(count):

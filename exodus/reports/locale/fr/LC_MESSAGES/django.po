@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 09:49+0200\n"
+"POT-Creation-Date: 2019-10-06 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,12 +26,12 @@ msgid "Prefix in storage:"
 msgstr "Préfixe de stockage :"
 
 #: templates/report_details.html:31 templates/report_details.html:69
-#: templates/reports_list.html:51
+#: templates/reports_list.html:56
 msgid "tracker"
 msgstr "pisteur"
 
 #: templates/report_details.html:37 templates/report_details.html:100
-#: templates/reports_list.html:61
+#: templates/reports_list.html:66
 msgid "permission"
 msgstr "permission"
 
@@ -249,18 +249,30 @@ msgid "Close"
 msgstr "Fermer"
 
 #: templates/reports_list.html:11
-msgid "Report"
-msgstr "Rapport"
+msgid "Reports"
+msgstr "Rapports"
 
-#: templates/reports_list.html:18
+#: templates/reports_list.html:14
+msgid "report"
+msgstr "rapport"
+
+#: templates/reports_list.html:15
+msgid "for"
+msgstr "pour"
+
+#: templates/reports_list.html:16
+msgid "application"
+msgstr "application"
+
+#: templates/reports_list.html:23
 msgid "Latest reports"
 msgstr "Les derniers rapports"
 
-#: templates/reports_list.html:19
+#: templates/reports_list.html:24
 msgid "Most trackers"
 msgstr "Triés par nombre de pisteurs"
 
-#: templates/reports_list.html:20
+#: templates/reports_list.html:25
 msgid "No known trackers"
 msgstr "Aucun pisteurs identifiés"
 
@@ -268,14 +280,10 @@ msgstr "Aucun pisteurs identifiés"
 msgid "reports do not exist"
 msgstr "rapports n’existent pas"
 
-#: views.py:68
-msgid "No apps found"
-msgstr "Aucune application trouvée"
-
-#: views.py:93
+#: views.py:85
 msgid "report does not exist"
 msgstr "le rapport n’existe pas"
 
-#: views.py:123
+#: views.py:115
 msgid "App does not exist"
 msgstr "L’application n’existe pas"
