@@ -95,11 +95,12 @@ class TrackersStatsViewTests(TestCase):
         self.assertContains(response, tracker1.name, 1)
         self.assertContains(response, tracker2.name, 1)
         self.assertEqual(response.context['trackers'][0].name, tracker2.name)
-        self.assertEqual(response.context['trackers'][0].count, 2)
-        self.assertEqual(response.context['trackers'][0].score, 66)
+        # Only recent for an application is considered
+        self.assertEqual(response.context['trackers'][0].count, 1)
+        self.assertEqual(response.context['trackers'][0].score, 100)
         self.assertEqual(response.context['trackers'][1].name, tracker1.name)
         self.assertEqual(response.context['trackers'][1].count, 1)
-        self.assertEqual(response.context['trackers'][1].score, 33)
+        self.assertEqual(response.context['trackers'][1].score, 100)
 
     def test_should_not_include_more_than_X_trackers(self):
         tracker_limit = 21
