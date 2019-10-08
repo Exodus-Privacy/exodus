@@ -37,6 +37,24 @@ a.report-link {
   color: #212529;
   font-weight: bold;
 }
+a.section-link, a.section-link:hover {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 992px) {
+  a.section-link:after {
+    content: url(/static/img/arrow-right.svg);
+    transform: rotate(90deg);
+    float: right;
+  }
+}
+a.anchor {
+  display: block;
+  position: relative;
+  top: -4.5rem;
+  visibility: hidden;
+}
 .black {
   color: #212529;
 }

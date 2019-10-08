@@ -27,14 +27,18 @@
   <div class="row justify-content-sm-center">
     <div class="col-md-8 col-lg-4 col-12 mb-4">
       <h3>
-        <span class="badge badge-{{ tracker_class }} reports">{{ report.found_trackers.count }}</span>
-        <b>{% trans "tracker" %}{{ report.found_trackers.count | pluralize }}</b>
+        <a href="#trackers" class="section-link">
+          <span class="badge badge-{{ tracker_class }} reports">{{ report.found_trackers.count }}</span>
+          <b>{% trans "tracker" %}{{ report.found_trackers.count | pluralize }}</b>
+        </a>
       </h3>
     </div>
     <div class="col-md-8 col-lg-4 col-12 mb-4">
       <h3>
-        <span class="badge badge-{{ perm_class }} reports">{{ report.application.permission_set.count }}</span>
-        <b>{% trans "permission" %}{{ report.application.permission_set.count | pluralize }}</b>
+        <a href="#permissions" class="section-link">
+          <span class="badge badge-{{ perm_class }} reports">{{ report.application.permission_set.count }}</span>
+          <b>{% trans "permission" %}{{ report.application.permission_set.count | pluralize }}</b>
+        </a>
       </h3>
     </div>
   </div>
@@ -67,6 +71,7 @@
 
   <div class="row justify-content-sm-center mb-5">
     <div class="col-md-8 col-12">
+      <a class="anchor" id="trackers"></a>
       <h3>
         <span class="badge badge-{{ tracker_class }} reports">{{ report.found_trackers.count }}</span>
         <b>{% trans "tracker" %}{{ report.found_trackers.count | pluralize }}</b>
@@ -98,6 +103,7 @@
 
   <div class="row justify-content-sm-center mb-5">
     <div class="col-md-8 col-12">
+      <a class="anchor" id="permissions"></a>
       <h3>
         <span class="badge badge-{{ perm_class }} reports">{{ report.application.permission_set.count }}</span>
         <b>{% trans "permission" %}{{ report.application.permission_set.count | pluralize }}</b>
