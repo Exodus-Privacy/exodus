@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Max
 from django.http.response import Http404
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
@@ -64,13 +65,18 @@ def get_stats(request):
     NB_OF_TRACKERS_TO_DISPLAY = 21
 
     trackers = Tracker.objects.order_by('name')
-    reports_number = Report.objects.count()
+
+    # Latest report ids for an application
+    application_report_id_map = Report.objects.values('application__handle').annotate(recent_id=Max('id'))
+    report_ids = [k['recent_id'] for k in application_report_id_map]
+
+    reports_number = Report.objects.filter(id__in=report_ids).count()
 
     if trackers.count() == 0 or reports_number == 0:
         raise Http404(_("Tracker does not exist"))
 
     for t in trackers:
-        t.count = Report.objects.filter(found_trackers=t.id).count()
+        t.count = Report.objects.filter(found_trackers=t.id, id__in=report_ids).count()
         t.score = int(100. * t.count / reports_number)
 
     sorted_trackers = sorted(trackers, key=lambda i: i.count, reverse=True)
