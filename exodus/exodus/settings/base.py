@@ -6,7 +6,6 @@ BASE_DIR = os.path.dirname(DIR)
 
 INSTALLED_APPS = [
     'analysis_query.apps.AnalysisQueryConfig',
-    'search.apps.SearchConfig',
     'trackers.apps.TrackersConfig',
     'trackers.templatetags',
     'reports.apps.ReportsConfig',

@@ -8,16 +8,26 @@
     {% if reports %}
         <div style="text-align:center">
             <h1 class="main-title">
-                {{ count }} {% trans "Report" %}{{ count | pluralize }}
-                {% if handle %}<small>({{ handle }})</small>{% endif %}
+                {% trans "Reports" %}
             </h1>
+            <h4>
+                {% if handle %}
+                    {{ handle }}
+                {% else %}
+                    {{ reports_total_count }} {% trans "report" %}{{ reports_total_count | pluralize }}
+                    {% trans "for" %}
+                    {{ apps_total_count }} {% trans "application" %}{{ apps_total_count | pluralize }}
+                {% endif %}
+            </h4>
         </div>
         <hr>
         {% if not handle %}
             <select onchange="this.options[this.selectedIndex].value && (window.location = '/reports/' + this.options[this.selectedIndex].value);">
                 <option value=" ">{% trans "Latest reports" %}</option>
                 <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>{% trans "Most trackers" %}</option>
-                <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>{% trans "No known trackers" %}</option>
+                <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
+                    {% trans "No known trackers" %}
+                    {% if filter == 'no_trackers' %} ({{ reports|length }}){% endif %}</option>
             </select>
         {% endif %}
 
@@ -25,7 +35,7 @@
         {% for report in reports %}
             <br>
             <div class="row position-relative">
-              <div class="col-3 col-sm-2 col-md-2 d-flex align-items-center">
+              <div class="col-3 col-sm-2 col-md-2 my-auto">
                 <img data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="50px" class="rounded" alt="{{app.handle}}">
               </div>
               <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">

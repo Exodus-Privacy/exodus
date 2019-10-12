@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-30 09:56+0200\n"
+"POT-Creation-Date: 2019-10-07 20:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,52 +72,118 @@ msgstr ""
 msgid "Static analysis complete"
 msgstr ""
 
-#: templates/base.html:36
+#: templates/base.html:35
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:39
+#: templates/base.html:38
 msgid "Reports"
 msgstr ""
 
-#: templates/base.html:42
-msgid "Applications"
-msgstr ""
-
-#: templates/base.html:45
+#: templates/base.html:41
 msgid "Trackers"
 msgstr ""
 
-#: templates/base.html:48 templates/understand.html:8
+#: templates/base.html:44 templates/home.html:54 templates/understand.html:8
 msgid "Better understand"
 msgstr ""
 
-#: templates/base.html:51
+#: templates/base.html:47
 msgid "New analysis"
 msgstr ""
 
-#: templates/base.html:58
+#: templates/base.html:54
 msgid "Website"
 msgstr ""
 
-#: templates/base.html:59
+#: templates/base.html:55
 msgid "Help us!"
 msgstr ""
 
-#: templates/base.html:60
+#: templates/base.html:56
 msgid "Report an issue"
 msgstr ""
 
-#: templates/base.html:66
+#: templates/base.html:62
 msgid "Admin"
 msgstr ""
 
-#: templates/base.html:69
+#: templates/base.html:65
 msgid "Analyzes"
 msgstr ""
 
-#: templates/base.html:70
+#: templates/base.html:66
 msgid "Log out"
+msgstr ""
+
+#: templates/home.html:10
+msgid "The privacy audit platform for Android applications"
+msgstr ""
+
+#: templates/home.html:18
+msgid "Search a report"
+msgstr ""
+
+#: templates/home.html:19
+msgid "Application name"
+msgstr ""
+
+#: templates/home.html:29
+msgid "You can search for an application using its name or handle"
+msgstr ""
+
+#: templates/home.html:30
+msgid "ex:"
+msgstr ""
+
+#: templates/home.html:34 templates/home.html:63
+msgid "Let's go!"
+msgstr ""
+
+#: templates/home.html:37
+msgid "Results"
+msgstr ""
+
+#: templates/home.html:46
+msgid ""
+"εxodus analyzes Android applications in order to <b>list the embedded "
+"trackers.</b>"
+msgstr ""
+
+#: templates/home.html:47
+msgid ""
+"A tracker is a piece of software <b>meant to collect data about you or your "
+"usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr ""
+
+#: templates/home.html:48
+msgid "εxodus does not decompile applications, its analysis technic is legal."
+msgstr ""
+
+#: templates/home.html:55
+msgid ""
+"What is a tracker? And a permission? Are there any alternatives to protect "
+"yourself?"
+msgstr ""
+
+#: templates/home.html:71
+msgid "Need an overview?"
+msgstr ""
+
+#: templates/home.html:77
+msgid "Latest reports"
+msgstr ""
+
+#: templates/home.html:83
+msgid "No known trackers"
+msgstr ""
+
+#: templates/home.html:89
+msgid "Most trackers"
+msgstr ""
+
+#: templates/home.html:97
+msgid "No results found."
 msgstr ""
 
 #: templates/next.html:8 templates/understand.html:44

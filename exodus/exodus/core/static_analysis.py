@@ -117,9 +117,12 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
                     stderr=subprocess.STDOUT,
                     timeout=240  # Timeout of 4 minutes
                 )
-                logging.info(output.decode("utf-8"))
-                if "[ERROR]" in str(output):
-                    raise Exception("Error while downloading apk file")
+                output_str = output.decode('utf-8')
+                logging.info(output_str)
+                if '[ERROR]' in output_str:
+                    filtered = output_str.replace('[ERROR] cache file does not exists or is corrupted', '')
+                    if '[ERROR]' in filtered:
+                        raise RuntimeError('Error while downloading apk file')
 
                 apk = Path(apk_tmp)
                 if apk.is_file():

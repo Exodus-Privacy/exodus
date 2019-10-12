@@ -43,6 +43,12 @@ a.report-link {
 h4 {
   font-weight: bold;
 }
+input#query {
+  border-right: none
+}
+#query_help {
+  background-color: transparent
+}
 
 @media print {
   .alert-heading .btn-secondary {

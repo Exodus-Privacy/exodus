@@ -9,12 +9,8 @@
       </h1>
       <h4>
         {{ trackers.count }}
-        {% blocktrans count counter=trackers.count %}
-        Recognized tracker
-        {% plural %}
-        Recognized trackers
-        {% endblocktrans %}
-        - <a href="{% url 'trackers:get_stats' %}">{% trans "Statistics" %}</a>
+        {% blocktrans count counter=trackers.count %}known tracker{% plural %}known trackers{% endblocktrans %}
+         - <a href="{% url 'trackers:get_stats' %}">{% trans "Statistics" %}</a>
       </h4>
     </div>
   </div>
