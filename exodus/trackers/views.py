@@ -30,15 +30,12 @@ def detail(request, tracker_id):
         tracker.code_signature = tracker.code_signature.replace("|", " | ")
 
         # Returns reports in reverse chronological order
-        all_reports = Report.objects.order_by('-creation_date').filter(found_trackers=tracker_id)
+        # all_reports = Report.objects.order_by('-creation_date').filter(found_trackers=tracker_id)
+        app_tuples = Application.objects.values('handle').annotate(recent_id=Max('id'))
+        application_ids = [i['recent_id'] for i in app_tuples]
+        report_ids = Application.objects.filter(id__in=application_ids).values_list('report_id', flat=True)
         # List of only latest report for an application
-        reports_list = []
-        application_map = {}
-        for report in all_reports:
-            app_handle = report.application.handle
-            if app_handle not in application_map:
-                application_map[app_handle] = True
-                reports_list.append(report)
+        reports_list = Report.objects.filter(id__in=report_ids, found_trackers=tracker_id)
 
     except Tracker.DoesNotExist:
 

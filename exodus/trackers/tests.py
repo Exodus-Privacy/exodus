@@ -201,27 +201,12 @@ class TrackerDetailTestCases(TestCase):
     TRACKER_DETAIL_PATH = "/en/trackers/{}/"
 
     def test_track_detail_app_multiple_reports(self):
-        tracker1 = Tracker(
-            id=1,
-            name='Teemo',
-        )
-        tracker1.save()
         tracker2 = Tracker(
             id=2,
             name='Exodus Super Tracker',
         )
         tracker2.save()
-        application_handle1 = "com.handle.one"
         application_handle2 = "com.handle.two"
-        report1 = Report()
-        report1.save()
-        application1 = Application(
-            handle=application_handle1,
-            report=report1
-        )
-        application1.save()
-        report1.found_trackers = [tracker1.id]
-        report1.save()
         report2 = Report()
         report2.save()
         application2 = Application(
@@ -250,3 +235,38 @@ class TrackerDetailTestCases(TestCase):
         self.assertEqual(len(response.context['reports']), 1)
         self.assertEqual(response.context['reports'][0].application.handle, application_handle2)
         self.assertEqual(response.context['reports'][0], report3)
+
+    def test_track_detail_app_removed_tracker(self):
+        tracker1 = Tracker(
+            id=1,
+            name='Teemo',
+        )
+        tracker1.save()
+        application_handle1 = "com.handle.one"
+        report1 = Report()
+        report1.save()
+        application1 = Application(
+            handle=application_handle1,
+            report=report1
+        )
+        application1.save()
+        report1.found_trackers = [tracker1.id]
+        report1.save()
+
+        report2 = Report()
+        report2.save()
+        application2 = Application(
+            handle=application_handle1,
+            report=report2
+        )
+        application2.save()
+        # Removing trackers in the version of the app
+        report2.found_trackers = []
+        report2.save()
+
+        c = Client()
+        url = self.TRACKER_DETAIL_PATH.format(tracker1.id)
+        response = c.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['tracker'].id, tracker1.id)
+        self.assertEqual(len(response.context['reports']), 0)
