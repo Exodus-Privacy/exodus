@@ -21,13 +21,25 @@ def index(request):
 
 
 def detail(request, tracker_id):
-    reports_number = Report.objects.count()
+    # Count of applications(similar to getting count of one report per application)
+    reports_number = Application.objects.distinct('handle').count()
     try:
         tracker = Tracker.objects.get(pk=tracker_id)
         # Add spaces aroung pipes for better rendering of signatures
         tracker.network_signature = tracker.network_signature.replace("|", " | ")
         tracker.code_signature = tracker.code_signature.replace("|", " | ")
-        reports_list = Report.objects.order_by('-creation_date').filter(found_trackers=tracker_id)
+
+        # Returns reports in reverse chronological order
+        all_reports = Report.objects.order_by('-creation_date').filter(found_trackers=tracker_id)
+        # List of only latest report for an application
+        reports_list = []
+        application_map = {}
+        for report in all_reports:
+            app_handle = report.application.handle
+            if app_handle not in application_map:
+                application_map[app_handle] = True
+                reports_list.append(report)
+
     except Tracker.DoesNotExist:
 
         raise Http404(_("Tracker does not exist"))
@@ -42,7 +54,7 @@ def detail(request, tracker_id):
     except EmptyPage:
         reports = paginator.page(paginator.num_pages)
 
-    count = reports_list.count()
+    count = len(reports_list)
     score = int(100. * count / reports_number)
     if score >= 50:
         tracker_class = "danger"
