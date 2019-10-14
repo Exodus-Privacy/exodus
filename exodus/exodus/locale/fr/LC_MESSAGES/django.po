@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-07 20:11+0200\n"
+"POT-Creation-Date: 2019-10-14 20:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -453,6 +453,22 @@ msgstr ""
 "lineageos.org/'>Lineage OS</a> est un système d'exploitation basé sur "
 "Android, utilisable sans les services Google. Il est possible de l'installer "
 "sur son téléphone, à condition d'avoir un mobile compatible."
+
+#: templates/paginator.html:6 templates/paginator.html:13
+msgid "First"
+msgstr "Premier"
+
+#: templates/paginator.html:9 templates/paginator.html:16
+msgid "Previous"
+msgstr "Précédent"
+
+#: templates/paginator.html:34 templates/paginator.html:41
+msgid "Next"
+msgstr "Suivant"
+
+#: templates/paginator.html:37 templates/paginator.html:44
+msgid "Last"
+msgstr "Dernier"
 
 #: templates/permissions.html:8 templates/understand.html:28
 msgid "Permissions"
