@@ -380,7 +380,7 @@ msgstr ""
 
 #: templates/next.html:95
 msgid "Remain curious!"
-msgstr "Rester curieux.se !"
+msgstr "Rester curieux⋅se !"
 
 #: templates/next.html:97
 msgid ""
