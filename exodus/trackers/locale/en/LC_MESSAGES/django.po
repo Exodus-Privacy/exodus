@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-06 17:51+0200\n"
+"POT-Creation-Date: 2019-10-14 22:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: templates/stats_details.html:20 templates/tracker_details.html:15
 #: templates/tracker_details.html:40
-msgid "report"
+msgid "application"
 msgstr ""
 
 #: templates/tracker_details.html:15
@@ -72,6 +72,6 @@ msgstr[1] ""
 msgid "No trackers are available"
 msgstr ""
 
-#: views.py:18 views.py:32 views.py:70 views.py:99
+#: views.py:19 views.py:41 views.py:84 views.py:113
 msgid "Tracker does not exist"
 msgstr ""
