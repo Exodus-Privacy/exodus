@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 09:47+0200\n"
+"POT-Creation-Date: 2019-10-19 21:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,63 +38,63 @@ msgstr ""
 msgid "You need to be registered"
 msgstr ""
 
-#: templates/query_submit.html:10
-msgid "Analyze an application"
+#: templates/query_submit.html:9
+msgid "New analysis"
 msgstr ""
 
-#: templates/query_submit.html:11
-msgid "Free application only"
+#: templates/query_submit.html:31
+msgid "Google Play URL of the application"
 msgstr ""
 
-#: templates/query_submit.html:24
-msgid "You can find the handle in the Google Play URL of the application"
+#: templates/query_submit.html:41
+msgid "Free applications only. Works also with the application handle."
 msgstr ""
 
-#: templates/query_submit.html:33
+#: templates/query_submit.html:49
 msgid "Perform analysis"
 msgstr ""
 
-#: templates/query_submit.html:40
+#: templates/query_submit.html:56
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
 
-#: templates/query_submit.html:53 templates/query_wait.html:28
+#: templates/query_submit.html:69 templates/query_wait.html:37
 msgid "is a non-profit organization which provides this service for free."
 msgstr ""
 
-#: templates/query_submit.html:55 templates/query_wait.html:30
+#: templates/query_submit.html:71 templates/query_wait.html:39
 msgid "Help us!"
 msgstr ""
 
-#: templates/query_submit.html:97
+#: templates/query_submit.html:113
 msgid "This application has already been analyzed!"
 msgstr ""
 
-#: templates/query_submit.html:103
+#: templates/query_submit.html:119
 msgid "analyzed on"
 msgstr ""
 
-#: templates/query_submit.html:103
+#: templates/query_submit.html:119
 msgid "Go to the latest report"
 msgstr ""
 
-#: templates/query_submit.html:107
+#: templates/query_submit.html:123
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."
 msgstr ""
 
 #: templates/query_wait.html:9
-msgid "is processing your request"
+msgid "Analysis in progress..."
 msgstr ""
 
-#: templates/query_wait.html:14
+#: templates/query_wait.html:23
 msgid "See the report"
 msgstr ""
 
-#: templates/query_wait.html:17
+#: templates/query_wait.html:26
 msgid "Will refresh automatically every 10 seconds."
 msgstr ""
 
