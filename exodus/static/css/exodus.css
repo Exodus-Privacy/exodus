@@ -43,10 +43,10 @@ a.report-link {
 h4 {
   font-weight: bold;
 }
-input#query {
+input#query, input#handle {
   border-right: none
 }
-#query_help {
+#query_help, #handle_help {
   background-color: transparent
 }
 

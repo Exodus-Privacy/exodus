@@ -51,6 +51,7 @@ def json(request, r_id):
     except AnalysisRequest.DoesNotExist:
         raise Http404(_("AnalysisRequest does not exist"))
     r.bucket = ''
+    r.description = _(r.description)
     return JsonResponse(model_to_dict(r), safe=False)
 
 

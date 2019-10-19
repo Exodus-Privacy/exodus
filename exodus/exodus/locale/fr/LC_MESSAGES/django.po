@@ -39,7 +39,7 @@ msgstr "Décoder l’APK : succès"
 
 #: core/apk.py:86
 msgid "Unable to compute the class list"
-msgstr ""
+msgstr "Impossible de calculer la liste de classe"
 
 #: core/apk.py:90
 msgid "List embedded classes: success"
@@ -71,7 +71,7 @@ msgstr "Analyse des pisteurs : succès"
 
 #: core/apk.py:212
 msgid "Static analysis complete"
-msgstr "Analyse statique : succès"
+msgstr "Analyse statique terminée"
 
 #: templates/base.html:36
 msgid "Home"

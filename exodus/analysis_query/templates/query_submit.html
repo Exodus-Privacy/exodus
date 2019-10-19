@@ -1,60 +1,76 @@
 {% extends "base.html"%}
 {% load i18n %}
+{% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
-<div class="row justify-content-md-center">
-    <div class="col-lg-8 col-sm-10 col-centered">
-        <form method='post' enctype='multipart/form-data' action="{% url 'analysis:submit' %}">
-            <div class="form-group jumbotron">
-                {% csrf_token %}
-                <h2 class="text-center">{% trans "Analyze an application" %}</h2>
-                <h5 class="text-center">{% trans "Free application only" %}</h5>
-                {% if form.errors %}
-                {% for field in form %}
-                {% for error in field.errors %}
-                <div class="alert alert-danger small">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endfor %}
-                {% endif %}
-                <input type="text" class="form-control text-center" id="handle" name="handle" aria-describedby="handle_help"
-                       placeholder="fr.meteo">
-                       <small id="handle_help" class="form-text text-muted text-center">
-                           {% trans "You can find the handle in the Google Play URL of the application" %}
-                           <i>i.e.</i> <br> <code>https://play.google.com/store/apps/details?id=<b>fr.meteo</b></code>
-                </small>
-                <br>
-
-                <div id="reports" style="display: none" class="alert alert-info">
-                </div>
-
-                <p class="text-center">
-                    <button type='submit' onclick="show_spinner()" class="btn btn-lg btn-primary">{% trans "Perform analysis" %}</button>
-                </p>
-                <br>
-                <br>
-                <div id="loading" class="text-center" style="display:none;">
-                    <img style="width:200px;" src="/static/img/loading.gif" alt="">
-                    <div class="alert alert-light" role="alert">
-                        {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 text-center mb-4">
+    <h1 class="main-title">
+      {% trans "New analysis" %}
+    </h1>
+  </div>
 </div>
 
-<div class="row justify-content-md-center">
-    <div class="col-lg-8 col-sm-10 col-centered">
-        <div class="text-center alert alert-warning">
-            <p>
-                <a href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/" target="_blank">Exodus Privacy</a>
-                {% trans "is a non-profit organization which provides this service for free." %}
-            </p>
-            <a class="btn btn-info" href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/page/contribute/" target="_blank">{% trans "Help us!" %}</a>
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12">
+    <p class="text-center mb-5">
+      <img src="{% static 'img/analysis_new.png' %}" width=120px>
+    </p>
+    <form method='post' enctype='multipart/form-data' action="{% url 'analysis:submit' %}">
+      <div class="form-group">
+        {% csrf_token %}
+        {% if form.errors %}
+          {% for field in form %}
+            {% for error in field.errors %}
+              <div class="alert alert-danger small">
+                <strong>{{ error|escape }}</strong>
+              </div>
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+        <label for="handle"><b>{% trans "Google Play URL of the application" %}</b></label>
+        <div class="input-group input-group-lg mb-3">
+          <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help">
+          <div class="input-group-append">
+            <span class="input-group-text" id="handle_help">
+              <small><img src="/static/img/search.svg"></img></small>
+            </span>
+          </div>
         </div>
+        <p class="form-text text-muted mb-4">
+          {% trans "Free applications only. Works also with the application handle." %}
+        </p>
+
+        <div id="reports" style="display: none" class="alert alert-info">
+        </div>
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-8 col-sm-7 col-md-6 col-xl-5">
+            <button type='submit' onclick="show_spinner()" class="btn btn-secondary btn-block">{% trans "Perform analysis" %}</button>
+          </div>
+        </div>
+
+        <div id="loading" class="text-center" style="display:none;">
+          <img style="width:200px;" src="/static/img/loading.gif" alt="">
+          <div class="alert alert-light" role="alert">
+            {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row justify-content-sm-center mt-4">
+  <div class="col-md-8 col-12 col-centered">
+    <div class="text-center alert alert-warning">
+      <p>
+        <a href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/" target="_blank" rel="noreferrer">Exodus Privacy</a>
+        {% trans "is a non-profit organization which provides this service for free." %}
+      </p>
+      <a class="btn btn-info" href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
     </div>
+  </div>
 </div>
 {% endblock %}
 
