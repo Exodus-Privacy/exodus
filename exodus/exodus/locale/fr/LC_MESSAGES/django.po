@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 20:27+0200\n"
+"POT-Creation-Date: 2019-10-19 14:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,47 +73,39 @@ msgstr "Analyse des pisteurs : succès"
 msgid "Static analysis complete"
 msgstr "Analyse statique : succès"
 
-#: templates/base.html:35
+#: templates/base.html:36
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:38
+#: templates/base.html:39
 msgid "Reports"
 msgstr "Rapports"
 
-#: templates/base.html:41
+#: templates/base.html:42
 msgid "Trackers"
 msgstr "Pisteurs"
 
-#: templates/base.html:44 templates/home.html:54 templates/understand.html:8
-msgid "Better understand"
-msgstr "Mieux comprendre"
-
-#: templates/base.html:47
+#: templates/base.html:45
 msgid "New analysis"
 msgstr "Nouvelle analyse"
 
-#: templates/base.html:54
-msgid "Website"
-msgstr "Site web"
+#: templates/base.html:48 templates/home.html:54 templates/understand.html:8
+msgid "Better understand"
+msgstr "Mieux comprendre"
 
-#: templates/base.html:55
-msgid "Help us!"
-msgstr ""
+#: templates/base.html:51 templates/organization.html:8
+msgid "The organization"
+msgstr "L'association"
 
 #: templates/base.html:56
-msgid "Report an issue"
-msgstr "Signaler un problème"
-
-#: templates/base.html:62
 msgid "Admin"
 msgstr ""
 
-#: templates/base.html:65
+#: templates/base.html:59
 msgid "Analyzes"
 msgstr "Analyses"
 
-#: templates/base.html:66
+#: templates/base.html:60
 msgid "Log out"
 msgstr ""
 
@@ -453,6 +445,52 @@ msgstr ""
 "lineageos.org/'>Lineage OS</a> est un système d'exploitation basé sur "
 "Android, utilisable sans les services Google. Il est possible de l'installer "
 "sur son téléphone, à condition d'avoir un mobile compatible."
+
+#: templates/organization.html:21
+msgid ""
+"Exodus Privacy is a non-profit organization led by hacktivists. Its purpose "
+"is to help people get a better understanding of the Android applications "
+"tracking issues."
+msgstr ""
+"Exodus Privacy est une association à but non-lucratif, régie par la loi de "
+"1901.  Le but de cette organisation  animée par des hacktivistes est de "
+"permettre une meilleure compréhension des enjeux liés au pistage par le "
+"biais des applications Android."
+
+#: templates/organization.html:24
+msgid "Discover Exodus Privacy"
+msgstr "Découvrez Exodus Privacy"
+
+#: templates/organization.html:28
+msgid "Help us!"
+msgstr "Aidez-nous !"
+
+#: templates/organization.html:30
+msgid ""
+"Exodus Privacy is an organization managed by volunteers. Whether you would "
+"like to draw, translate, code or create any kind of content, feel free: we "
+"welcome any help."
+msgstr ""
+"Exodus Privacy est une association gérée par des bénévoles. Que vous ayez "
+"envie de dessiner, traduire, coder ou  créer des contenus, n'hésitez pas : "
+"toute aide est la bienvenue !"
+
+#: templates/organization.html:33
+msgid "How to contribute?"
+msgstr "Comment contribuer ?"
+
+#: templates/organization.html:37
+msgid "Contact us"
+msgstr "Nous contacter"
+
+#: templates/organization.html:44
+msgid "Contact us!"
+msgstr "Contactez-nous !"
+
+#: templates/organization.html:49 templates/organization.html:56
+#: templates/organization.html:61
+msgid "Follow us!"
+msgstr "Suivez-nous !"
 
 #: templates/paginator.html:6 templates/paginator.html:13
 msgid "First"
