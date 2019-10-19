@@ -30,6 +30,7 @@
         {% url 'trackers:index' as trackers_url %}
         {% url 'analysis:submit' as submit_url %}
         {% url 'understand' as understand %}
+        {% url 'organization' as organization %}
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item {% if request.path == home %}active{% endif %}">
             <a class="nav-link " href="{{ home }}">{% trans "Home" %}</a>
@@ -40,21 +41,14 @@
           <li class="nav-item {% if request.path == trackers_url %}active{% endif %}">
             <a class="nav-link " href="{{ trackers_url }}">{% trans "Trackers" %}</a>
           </li>
-          <li class="nav-item {% if request.path == understand %}active{% endif %}">
-            <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
-          </li>
           <li class="nav-item {% if request.path == submit_url %}active{% endif %}">
             <a class="nav-link " href="{{ submit_url }}">{% trans "New analysis" %}</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="EPDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Exodus Privacy
-            </a>
-            <div class="dropdown-menu" aria-labelledby="EPDropdown">
-              <a class="dropdown-item" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE }}" target="_blank" rel="noreferrer">{% trans "Website" %}</a>
-              <a class="dropdown-item" href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE}}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
-              <a class="dropdown-item" href="https://github.com/Exodus-Privacy/exodus/issues" target="_blank" rel="noreferrer">{% trans "Report an issue" %}</a>
-            </div>
+          <li class="nav-item {% if request.path == understand %}active{% endif %}">
+            <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
+          </li>
+          <li class="nav-item {% if request.path == organization %}active{% endif %}">
+            <a class="nav-link " href="{{ organization }}">{% trans "The organization" %}</a>
           </li>
           {% if request.user.is_superuser %}
             <li class="nav-item dropdown">

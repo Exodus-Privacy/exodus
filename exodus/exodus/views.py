@@ -24,5 +24,9 @@ def understand(request):
     return render(request, 'understand.html')
 
 
+def organization(request):
+    return render(request, 'organization.html')
+
+
 def page_not_found(request):
     return render(request, '404.html')
