@@ -54,6 +54,7 @@ def get_reports(request, handle=None):
         request, 'reports_list.html',
         {
             'reports': reports_paged,
+            'reports_count': reports.count(),
             'reports_total_count': Report.objects.count(),
             'apps_total_count': Application.objects.distinct('handle').count(),
             'filter': filter,
