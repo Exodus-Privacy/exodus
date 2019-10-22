@@ -62,7 +62,7 @@ passlib==1.7.1
 pathtools==0.1.2
 pexpect==4.7.0
 pickleshare==0.7.5
-Pillow==5.0.0
+Pillow==6.2.0
 pip-review==1.0
 prompt-toolkit==2.0.9
 protobuf==3.5.2.post1
