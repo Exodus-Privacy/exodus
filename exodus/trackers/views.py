@@ -34,7 +34,7 @@ def detail(request, tracker_id):
         application_ids = [i['recent_id'] for i in app_tuples]
         report_ids = Application.objects.filter(id__in=application_ids).values_list('report_id', flat=True)
         # List of only latest report for an application
-        reports_list = Report.objects.filter(id__in=report_ids, found_trackers=tracker_id)
+        reports_list = Report.objects.filter(id__in=report_ids, found_trackers=tracker_id).order_by('creation_date')
 
     except Tracker.DoesNotExist:
 
