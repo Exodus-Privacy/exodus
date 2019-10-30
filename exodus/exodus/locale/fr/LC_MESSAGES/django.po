@@ -556,10 +556,11 @@ msgstr "Ai-je la main sur les permissions ?"
 #: templates/permissions.html:34
 msgid ""
 "Depending on your smartphone and operating system, it is possible to "
-"restrain some of these permissions."
+"restrain some of these permissions by going into your phone's settings."
 msgstr ""
 "Suivant le modèle de téléphone et son système d'exploitation, il est "
-"possible de restreindre certaines permissions."
+"possible de restreindre certaines permissions en allant dans les paramètres "
+"de son téléphone."
 
 #: templates/trackers.html:8 templates/understand.html:18
 msgid "Trackers "
@@ -581,8 +582,8 @@ msgstr "Qu'est ce qu'un pisteur ?"
 
 #: templates/trackers.html:22 templates/trackers.html:31
 #: templates/trackers.html:60
-msgid "Video"
-msgstr "Vidéo"
+msgid "See the video"
+msgstr "Voir la vidéo"
 
 #: templates/trackers.html:25
 msgid ""
