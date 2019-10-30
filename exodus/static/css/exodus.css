@@ -67,6 +67,9 @@ input#query, input#handle {
 #query_help, #handle_help {
   background-color: transparent
 }
+ul.spaced-list > li{
+  margin-bottom: 10px;
+}
 
 @media print {
   .alert-heading .btn-secondary {

@@ -46,7 +46,8 @@
   <div class="row justify-content-sm-center mb-5">
     <div class="col-md-8 col-12">
       {% if report.application.version.strip %}
-        {% trans "version" %} <b><a href="/reports/search/{{ report.application.handle }}">{{ report.application.version }}</a></b>
+        {% trans "Version" %} {{ report.application.version }} -
+        <a href="/reports/search/{{ report.application.handle }}">{% trans "see other versions" %}</a>
         <br>
       {% endif %}
       {% if report.application.creator.strip %}
@@ -58,13 +59,13 @@
         <br>
       {% endif %}
       <span class="text-muted">
-        {% trans "This report was created on" %} {{ report.creation_date }}
+        {% trans "Report created on" %} {{ report.creation_date }}
         {% if report.creation_date.date != report.updated_at.date %}
           {% trans "and updated on" %} {{ report.updated_at }}
         {% endif %}
       </span>
     </div>
-    <div class="col-md-8 col-12 text-right">
+    <div class="col-md-8 col-12 text-right mt-2">
       <a class="link main-link" target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">{% trans "See on Google Play" %}</a>
     </div>
   </div>
