@@ -18,12 +18,12 @@
       <h4>{% trans "Search a report" %}</h4>
       <label for="query"><b>{% trans "Application name" %}</b></label>
       <div class="input-group input-group-lg mb-3">
-        <input type="text" class="form-control" id="query" aria-describedby="query_help">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
           <span class="input-group-text" id="query_help">
             <small><img src="/static/img/search.svg"></img></small>
           </span>
         </div>
+        <input type="text" class="form-control" id="query" aria-describedby="query_help">
       </div>
       <small class="form-text text-muted mb-4">
         {% trans "You can search for an application using its name or handle" %}
@@ -31,7 +31,7 @@
       </small>
       <div id="go-div" class="row justify-content-center">
         <div class="col-8 col-sm-7 col-md-6 col-xl-5">
-          <button id="go" class="btn btn-secondary btn-block">{% trans "Let's go!" %}</button>
+          <button id="go" class="btn btn-primary btn-block">{% trans "Let's go!" %}</button>
         </div>
       </div>
       <h4 style="display: none" id="results-title">{% trans "Results" %}</h4>
@@ -60,7 +60,7 @@
   <div class="col-lg-8 col-sm-12">
     <div class="row justify-content-center">
       <div class="col-8 col-sm-7 col-md-6 col-xl-5 text-center mb-4">
-        <a href="{% url 'understand' %}" class="btn btn-secondary btn-block">{% trans "Let's go!" %}</a>
+        <a href="{% url 'understand' %}" class="btn btn-primary btn-block">{% trans "Let's go!" %}</a>
       </div>
     </div>
   </div>

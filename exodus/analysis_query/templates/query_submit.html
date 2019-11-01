@@ -30,12 +30,12 @@
         {% endif %}
         <label for="handle"><b>{% trans "Google Play URL of the application" %}</b></label>
         <div class="input-group input-group-lg mb-3">
-          <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help">
-          <div class="input-group-append">
+          <div class="input-group-prepend">
             <span class="input-group-text" id="handle_help">
               <small><img src="/static/img/search.svg"></img></small>
             </span>
           </div>
+          <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help">
         </div>
         <p class="form-text text-muted mb-4">
           {% trans "Free applications only. Works also with the application handle." %}
@@ -46,7 +46,7 @@
 
         <div class="row justify-content-center mb-5">
           <div class="col-8 col-sm-7 col-md-6 col-xl-5">
-            <button type='submit' onclick="show_spinner()" class="btn btn-secondary btn-block">{% trans "Perform analysis" %}</button>
+            <button type='submit' onclick="show_spinner()" class="btn btn-primary btn-block">{% trans "Perform analysis" %}</button>
           </div>
         </div>
 
@@ -61,14 +61,14 @@
   </div>
 </div>
 
-<div class="row justify-content-sm-center mt-4">
+<div class="row justify-content-sm-center mt-5">
   <div class="col-md-8 col-12 col-centered">
-    <div class="text-center alert alert-secondary">
+    <div class="text-center alert alert-light">
       <p>
         <a href="{% url 'organization' %}">Exodus Privacy</a>
         {% trans "is a non-profit organization which provides this service for free." %}
       </p>
-      <a class="btn btn-info" href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+      <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{{ LANGUAGE_CODE }}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
     </div>
   </div>
 </div>

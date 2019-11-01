@@ -19,7 +19,7 @@
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 mb-4">
     {% trans "Present in:" %} <b>{{ count }} {% trans "application" %}{{ count|pluralize }}</b>
-    <span class="badge badge-{{ tracker_class }}">{{ score }} %</span>
+    <span class="badge badge-pill badge-{{ tracker_class }}">{{ score }} %</span>
   </div>
   <div class="col-md-8 col-12 mb-4 text-right">
     <a class="link main-link" target="_blank" rel="noreferrer" href="{{ tracker.website }}">{% trans "Tracker web page" %}</a>
