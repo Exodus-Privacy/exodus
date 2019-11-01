@@ -28,6 +28,12 @@ a.main-link {
   color: #684971;
   font-weight:bold;
 }
+a.link, a.page-link, a.nav-link, a.navbar-brand, a.btn, a.report-link, a.main-link, a.dropdown-item {
+  text-decoration: none; !important
+}
+a:hover {
+  text-decoration: underline; !important
+}
 a.link:after {
   content: url(/static/img/arrow-right.svg);
   padding-left: 10px;
@@ -62,13 +68,18 @@ h4 {
   font-weight: bold;
 }
 input#query, input#handle {
-  border-right: none
+  border-left: none
 }
 #query_help, #handle_help {
   background-color: transparent
 }
 ul.spaced-list > li{
   margin-bottom: 10px;
+}
+select.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: auto;
 }
 
 @media print {

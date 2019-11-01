@@ -28,7 +28,7 @@
     <div class="col-md-8 col-lg-4 col-12 mb-4">
       <h3>
         <a href="#trackers" class="section-link">
-          <span class="badge badge-{{ tracker_class }} reports">{{ report.found_trackers.count }}</span>
+          <span class="badge badge-pill badge-{{ tracker_class }} reports">{{ report.found_trackers.count }}</span>
           <b>{% trans "tracker" %}{{ report.found_trackers.count | pluralize }}</b>
         </a>
       </h3>
@@ -36,7 +36,7 @@
     <div class="col-md-8 col-lg-4 col-12 mb-4">
       <h3>
         <a href="#permissions" class="section-link">
-          <span class="badge badge-{{ perm_class }} reports">{{ report.application.permission_set.count }}</span>
+          <span class="badge badge-pill badge-{{ perm_class }} reports">{{ report.application.permission_set.count }}</span>
           <b>{% trans "permission" %}{{ report.application.permission_set.count | pluralize }}</b>
         </a>
       </h3>
@@ -74,7 +74,7 @@
     <div class="col-md-8 col-12">
       <a class="anchor" id="trackers"></a>
       <h3>
-        <span class="badge badge-{{ tracker_class }} reports">{{ report.found_trackers.count }}</span>
+        <span class="badge badge-pill badge-{{ tracker_class }} reports">{{ report.found_trackers.count }}</span>
         <b>{% trans "tracker" %}{{ report.found_trackers.count | pluralize }}</b>
       </h3>
     </div>
@@ -106,7 +106,7 @@
     <div class="col-md-8 col-12">
       <a class="anchor" id="permissions"></a>
       <h3>
-        <span class="badge badge-{{ perm_class }} reports">{{ report.application.permission_set.count }}</span>
+        <span class="badge badge-pill badge-{{ perm_class }} reports">{{ report.application.permission_set.count }}</span>
         <b>{% trans "permission" %}{{ report.application.permission_set.count | pluralize }}</b>
       </h3>
     </div>
@@ -157,7 +157,7 @@
 
   <div class="row justify-content-center mb-5">
     <div class="col-md-3 col-6 text-center">
-      <a href="{% url 'next' %}" class="btn btn-secondary btn-block">{% trans "Read the article" %}</a>
+      <a href="{% url 'next' %}" class="btn btn-primary btn-block">{% trans "Read the article" %}</a>
     </div>
   </div>
 
@@ -192,7 +192,7 @@
     </div>
     <div class="col-md-8 col-12">
       <div class="btn-group">
-        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle"  type="button" id="dropdownApkFingerprint" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownApkFingerprint" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {% trans "See APK fingerprint" %}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownApkFingerprint">
