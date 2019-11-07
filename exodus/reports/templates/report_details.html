@@ -119,7 +119,7 @@
           {% endblocktrans %}
         </p>
         {% for perm in report.application.permissions %}
-          <p>
+          <p class="text-truncate">
             {% if perm.group_icon %}
               {% autoescape off %}{{ perm.group_icon }}{% endautoescape %}
             {% else %}
@@ -128,7 +128,7 @@
             {% if perm.severity == 'Special' or perm.severity == 'Dangerous' %}
               &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg">&nbsp;
             {% endif %}
-            <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name | truncatechars_html:30 }}</span>
+            <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name }}</span>
             {% if perm.label %}
               <small data-toggle="tooltip" data-placement="top" title="{{ perm.description }}" style="display:block; padding-left:28px"><i>{{ perm.label }}</i></small>
             {% endif %}
