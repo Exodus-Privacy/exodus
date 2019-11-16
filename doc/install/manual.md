@@ -108,7 +108,7 @@ You have to activate the virtual venv and `cd` into the same directory as `manag
 source venv/bin/activate
 cd exodus
 
-export DJANGO_SETTINGS_MODULE=exodus.settings.dev; python manage.py celery worker -A exodus.core -l info
+export DJANGO_SETTINGS_MODULE=exodus.settings.dev; celery worker -A exodus.core -l info
 ```
 Now, the εxodus worker is waiting for tasks.
 
