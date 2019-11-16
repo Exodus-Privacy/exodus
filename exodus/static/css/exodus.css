@@ -16,6 +16,9 @@ li.nav-item.active > a {
   font-weight: bold;
   text-decoration: underline;
 }
+li.nav-item > a {
+   color: #fff !important;
+}
 nav.navbar {
   font-size: 1rem !important;
 }
@@ -29,10 +32,10 @@ a.main-link {
   font-weight:bold;
 }
 a.link, a.page-link, a.nav-link, a.navbar-brand, a.btn, a.report-link, a.main-link, a.dropdown-item {
-  text-decoration: none; !important
+  text-decoration: none;
 }
 a:hover {
-  text-decoration: underline; !important
+  text-decoration: underline;
 }
 a.link:after {
   content: url(/static/img/arrow-right.svg);
