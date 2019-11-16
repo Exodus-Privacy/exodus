@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top mb-4">
       <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">
-          <img src="/static/img/logo_purple_small.png" width="40" height="40" class="d-inline-block align-top">
+          <img src="/static/img/logo_purple_small.png" width="40" height="40" class="d-inline-block align-top" alt="exodus logo">
           <span class="h2">εxodus</span> <span class="small">v1.9</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,26 +33,26 @@
           {% url 'understand' as understand %}
           {% url 'organization' as organization %}
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item mr-lg-1 ml-lg-1 {% if request.path == home %}active{% endif %}">
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == home %}active{% endif %}">
               <a class="nav-link " href="{{ home }}">{% trans "Home" %}</a>
             </li>
-            <li class="nav-item mr-lg-1 ml-lg-1 {% if request.path == reports_url %}active{% endif %}">
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == reports_url %}active{% endif %}">
               <a class="nav-link " href="{{ reports_url }}">{% trans "Reports" %}</a>
             </li>
-            <li class="nav-item mr-lg-1 ml-lg-1 {% if request.path == trackers_url %}active{% endif %}">
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == trackers_url %}active{% endif %}">
               <a class="nav-link " href="{{ trackers_url }}">{% trans "Trackers" %}</a>
             </li>
-            <li class="nav-item mr-lg-1 ml-lg-1 {% if request.path == submit_url %}active{% endif %}">
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == submit_url %}active{% endif %}">
               <a class="nav-link " href="{{ submit_url }}">{% trans "New analysis" %}</a>
             </li>
-            <li class="nav-item mr-lg-1 ml-lg-1 {% if request.path == understand %}active{% endif %}">
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == understand %}active{% endif %}">
               <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
             </li>
-            <li class="nav-item mr-lg-1 ml-lg-1 {% if request.path == organization %}active{% endif %}">
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == organization %}active{% endif %}">
               <a class="nav-link " href="{{ organization }}">{% trans "The organization" %}</a>
             </li>
             {% if request.user.is_superuser %}
-              <li class="nav-item mr-lg-1 ml-lg-1 dropdown">
+              <li class="nav-item mr-xl-1 ml-xl-1 dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {% trans "Admin" %}
                 </a>
@@ -64,6 +64,7 @@
             {% endif %}
           </ul>
           <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
+            <img class="mr-3 mr-lg-2 mr-xl-3" alt="language selector" src="{% static 'img/langue.svg' %}">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
             <select class="custom-select custom-select-sm" name="language" onchange='if(this.value !=  "{{ LANGUAGE_CODE }}") { this.form.submit(); }'>
