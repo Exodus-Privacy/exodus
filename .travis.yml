@@ -11,8 +11,8 @@ dist: xenial
 language: python
 
 python:
-  - 3.5
   - 3.6
+  - 3.7
 
 services:
   - postgresql
@@ -37,7 +37,7 @@ jobs:
       stage: linter
       services: []
       before_install: []
-      python: 3.6
+      python: 3.7
       install:
         - pip install flake8
       script:
