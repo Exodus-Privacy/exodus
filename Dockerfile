@@ -1,8 +1,8 @@
-FROM python:3.5-stretch
+FROM python:3.7-buster
 LABEL maintainer="Codimp"
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y dexdump=7.0.0* postgresql-client-9.6=9.6.15* && \
+    apt-get install --no-install-recommends -y dexdump=8.1.0* postgresql-client-11=11.5* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -11,7 +11,7 @@ RUN pip3 install -r /opt/requirements.txt
 
 RUN useradd -ms /bin/bash exodus
 
-RUN mkdir -p /home/exodus/.config/gplaycli && cp /usr/local/lib/python3.5/site-packages/root/.config/gplaycli/gplaycli.conf /home/exodus/.config/gplaycli/gplaycli.conf
+RUN mkdir -p /home/exodus/.config/gplaycli && cp /usr/local/lib/python3.7/site-packages/root/.config/gplaycli/gplaycli.conf /home/exodus/.config/gplaycli/gplaycli.conf
 
 COPY ./ /home/exodus/exodus
 
