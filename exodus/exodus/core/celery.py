@@ -6,10 +6,11 @@ from django.conf import settings
 
 app = Celery(
     'exodus',
-    backend='amqp://',
+    backend='rpc://',
     include=['exodus.core.apk', 'exodus.core.dns', 'exodus.core.http'],
     broker=settings.CELERY_BROKER_URL
 )
 
+app.config_from_object('django.conf:settings')
 if __name__ == '__main__':
     app.start()
