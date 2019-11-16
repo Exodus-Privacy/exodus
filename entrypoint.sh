@@ -16,11 +16,11 @@ function createUser() {
 
 function startWorker() {
 	cd ${EXODUS_HOME}/exodus/
-	export DJANGO_SETTINGS_MODULE=exodus.settings.docker; python3 manage.py celery worker -A exodus.core -l info
+	export DJANGO_SETTINGS_MODULE=exodus.settings.docker; celery worker -A exodus.core -l info
 }
 
 function startFrontend() {
-	cp /usr/local/lib/python3.5/site-packages/root/.config/gplaycli/gplaycli.conf /home/exodus/.config/gplaycli/gplaycli.conf
+	cp /usr/local/lib/python3.7/site-packages/root/.config/gplaycli/gplaycli.conf /home/exodus/.config/gplaycli/gplaycli.conf
 	cd ${EXODUS_HOME}/exodus/
 	python3 manage.py runserver --settings=exodus.settings.docker 0.0.0.0:8000
 }
