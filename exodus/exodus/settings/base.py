@@ -101,7 +101,7 @@ EX_APK_FS_ROOT = os.path.join(EX_FS_ROOT, "apks")
 EX_NET_FS_ROOT = os.path.join(EX_FS_ROOT, "net")
 # Celery
 CELERY_RESULT_BACKEND = 'rpc://'
-CELERY_ACCEPT_CONTENT = ['json']
+CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_TASK_SERIALIZER = 'pickle'
 
 EX_PAGINATOR_COUNT = 25
