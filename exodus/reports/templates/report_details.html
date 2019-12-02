@@ -129,7 +129,7 @@
             {% if perm.severity == 'Special' or perm.severity == 'Dangerous' %}
               &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg">&nbsp;
             {% endif %}
-            <span>{{ perm.short_name }}</span>
+            <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name }}</span>
             {% if perm.label %}
               <small style="display:block; padding-left:28px"><i>{{ perm.label }}</i></small>
             {% endif %}
