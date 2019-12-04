@@ -5,8 +5,6 @@ from rest_framework.authtoken import views as rest_framework_views
 urlpatterns = [
     url(r'^report/(?P<r_id>[0-9]+)/$', views.get_report_infos),
     url(r'^apk/(?P<r_id>[0-9]+)/$', views.get_apk),
-    url(r'^pcap/(?P<r_id>[0-9]+)/$', views.upload_pcap),
-    url(r'^flow/(?P<r_id>[0-9]+)/$', views.upload_flow),
     url(r'^reports$', views.get_all_reports),  # deprecated
     url(r'^applications$', views.get_all_applications),
     url(r'^trackers$', views.get_all_trackers),
