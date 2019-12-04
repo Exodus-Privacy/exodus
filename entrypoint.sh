@@ -16,7 +16,7 @@ function createUser() {
 
 function startWorker() {
 	cd ${EXODUS_HOME}/exodus/
-	export DJANGO_SETTINGS_MODULE=exodus.settings.docker; celery worker -A exodus.core -l info
+	export DJANGO_SETTINGS_MODULE=exodus.settings.docker; celery worker --beat -A exodus.core -l debug -S django
 }
 
 function startFrontend() {
