@@ -1,34 +1,29 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.test import TestCase
+from rest_framework.test import APITestCase
+from django.contrib.auth.models import User
 
-from rest_framework.test import APIClient
-
-from reports.models import Application, Report
+from reports.models import Application, Report, Permission, Apk, Tracker
 
 
-class RestfulApiGetAllApplicationsTests(TestCase):
+class RestfulApiGetAllApplicationsTests(APITestCase):
 
     def test_returns_empty_json_when_no_applications(self):
-        client = APIClient()
-        response = client.get('/api/applications')
+        response = self.client.get('/api/applications')
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['applications'], [])
 
     def test_returns_applications_with_report_last_update(self):
-        report = Report()
-        report.save()
-        application = Application(
+        report = Report.objects.create()
+        application = Application.objects.create(
             name='app_name',
             handle='handle',
             report=report
         )
-        application.save()
 
-        client = APIClient()
-        response = client.get('/api/applications')
+        response = self.client.get('/api/applications')
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, application.name, 1)
@@ -42,3 +37,62 @@ class RestfulApiGetAllApplicationsTests(TestCase):
             response_application['report_updated_at'],
             report_updated_at.timestamp()
         )
+
+
+class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
+
+    HANDLE = 'com.example'
+    HANDLE_DETAILS_PATH = '/api/search/{}/details'.format(HANDLE)
+
+    def force_autentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_empty_json_when_no_app(self):
+        self.force_autentication()
+        response = self.client.get(self.HANDLE_DETAILS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), [])
+
+    def test_returns_detailed_json_when_one_app(self):
+        tracker = Tracker.objects.create(name='Teemo')
+        report = Report.objects.create()
+        report.found_trackers = [tracker.id]
+        app = Application.objects.create(
+            name='app_name',
+            handle=self.HANDLE,
+            report=report
+        )
+        Apk.objects.create(
+            application=app,
+            name="app_name",
+            sum="app_checksum"
+        )
+        Permission.objects.create(
+            application=app,
+            name="AREBELONGTOUS"
+        )
+        Permission.objects.create(
+            application=app,
+            name="ALLYOURBASE"
+        )
+
+        expected_data = {
+            'apk_hash': 'app_checksum',
+            'app_name': 'app_name',
+            'handle': self.HANDLE,
+            'report': report.id,
+            'trackers': [tracker.id],
+            'permissions': ["ALLYOURBASE", "AREBELONGTOUS"],
+        }
+
+        self.force_autentication()
+        response = self.client.get(self.HANDLE_DETAILS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.json()), 1)
+
+        returned_report = response.json()[0]
+        for key, value in expected_data.items():
+            self.assertEqual(returned_report[key], value)
