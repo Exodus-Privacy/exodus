@@ -26,6 +26,7 @@ Django~=1.11.26
 django-celery-beat==1.5.0
 django-eventlog==1.1
 django-filter==1.1.0
+django-minio-storage==0.3.4
 djangorestframework==3.9.4
 EditorConfig==0.12.1
 enum34==1.1.6

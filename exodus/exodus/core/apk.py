@@ -5,6 +5,7 @@ import logging
 import os
 import tempfile
 
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 from analysis_query.models import AnalysisRequest
@@ -55,14 +56,20 @@ def start_static_analysis(analysis):
     request.save()
     storage_helper = RemoteStorageHelper(analysis.bucket)
 
-    # Download APK and put it on Minio storage
-    dl_r = download_apk(storage_helper, request.handle, analysis.tmp_dir, analysis.apk_name, analysis.apk_tmp)
-    if not dl_r:
-        msg = _('Unable to download the APK')
-        exit_code = save_error(storage_helper, analysis, request, msg)
-        return exit_code
+    if request.apk:
+        with open(analysis.apk_tmp, 'wb') as out:
+            out.write(request.apk.read())
+        storage_helper.put_file(analysis.apk_tmp, analysis.apk_name)
+        request.apk.delete()
+    else:
+        # Download APK and put it on Minio storage
+        dl_r = download_apk(storage_helper, request.handle, analysis.tmp_dir, analysis.apk_name, analysis.apk_tmp)
+        if not dl_r:
+            msg = _('Unable to download the APK')
+            exit_code = save_error(storage_helper, analysis, request, msg)
+            return exit_code
 
-    change_description(request, _('Download APK: success'))
+        change_description(request, _('Download APK: success'))
 
     # Decode the APK file
     try:
@@ -130,7 +137,7 @@ def start_static_analysis(analysis):
             raise Exception('Unable to compute the Universal Application ID')
 
         icon_file, icon_phash = static_analysis.get_icon_and_phash(storage_helper, analysis.icon_name)
-        if len(str(icon_phash)) < 16:
+        if len(str(icon_phash)) < 16 and not request.apk:
             raise Exception('Unable to compute the icon perceptual hash')
     except Exception as e:
         logging.info(e)
