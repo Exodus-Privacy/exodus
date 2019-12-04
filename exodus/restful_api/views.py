@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import tempfile
-
 from django.conf import settings
 from django.db.models import Q
 from django.http import Http404
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from exodus.core.dns import analyze_dns
-from exodus.core.http import analyze_http
 from minio import Minio
-from minio.error import ResponseError
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.parsers import JSONParser
@@ -67,73 +62,6 @@ def get_apk(request, r_id):
             return HttpResponse(status=500)
 
 
-@csrf_exempt
-@api_view(['POST'])
-@authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
-def upload_pcap(request, r_id):
-    try:
-        up_file = request.FILES['file']
-        report = Report.objects.get(pk=r_id)
-        pcap_name = '%s_%s.pcap' % (report.bucket, report.application.handle)
-        minio_client = Minio(
-            settings.MINIO_URL,
-            access_key=settings.MINIO_ACCESS_KEY,
-            secret_key=settings.MINIO_SECRET_KEY,
-            secure=settings.MINIO_SECURE
-        )
-        try:
-            with tempfile.NamedTemporaryFile(delete=True) as fp:
-                for chunk in up_file.chunks():
-                    fp.write(chunk)
-                print(minio_client.fput_object(settings.MINIO_BUCKET, pcap_name, fp.name))
-                fp.close()
-        except ResponseError as err:
-            print(err)
-            return HttpResponse(status=500)
-        report.pcap_file = pcap_name
-        report.save()
-        analyze_dns.delay(r_id)
-        analyze_http.delay(r_id)
-    except Exception as e:
-        print(e)
-        return HttpResponse(status=500)
-    return HttpResponse(status=200)
-
-
-@csrf_exempt
-@api_view(['POST'])
-@authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
-def upload_flow(request, r_id):
-    try:
-        up_file = request.FILES['file']
-        report = Report.objects.get(pk=r_id)
-        flow_name = '%s_%s.flow' % (report.bucket, report.application.handle)
-        minio_client = Minio(
-            settings.MINIO_URL,
-            access_key=settings.MINIO_ACCESS_KEY,
-            secret_key=settings.MINIO_SECRET_KEY,
-            secure=settings.MINIO_SECURE
-        )
-        try:
-            with tempfile.NamedTemporaryFile(delete=True) as fp:
-                for chunk in up_file.chunks():
-                    fp.write(chunk)
-                print(minio_client.fput_object(settings.MINIO_BUCKET, flow_name, fp.name))
-                fp.close()
-        except ResponseError as err:
-            print(err)
-            return HttpResponse(status=500)
-        report.flow_file = flow_name
-        report.save()
-        # TODO do analysis
-    except Exception as e:
-        print(e)
-        return HttpResponse(status=500)
-    return HttpResponse(status=200)
-
-
 def create_reports_list(report_list):
     applications = {}
     for report in report_list:
@@ -174,8 +102,8 @@ def create_tracker_list():
 
 @csrf_exempt
 @api_view(['GET'])
-@authentication_classes(())
-@permission_classes(())
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
 def get_all_reports(request):
     if request.method == 'GET':
         report_list = Report.objects.order_by('-creation_date')[:500]
@@ -201,10 +129,8 @@ def get_all_trackers(request):
 
 @csrf_exempt
 @api_view(['GET'])
-@authentication_classes(())
-@permission_classes(())
-# @authentication_classes((TokenAuthentication,))
-# @permission_classes((IsAuthenticated,))
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
 def get_all_applications(request):
     if request.method == 'GET':
         try:
@@ -230,8 +156,8 @@ def search_strict_handle(request, handle):
 
 @csrf_exempt
 @api_view(['GET'])
-@authentication_classes(())
-@permission_classes(())
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
 def get_report_details(request, r_id):
     if request.method == 'GET':
         try:
