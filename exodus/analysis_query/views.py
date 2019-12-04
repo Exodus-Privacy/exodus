@@ -6,7 +6,6 @@ import string
 
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.http.response import Http404

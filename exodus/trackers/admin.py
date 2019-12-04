@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.contrib import admin
-from .models import Tracker, DetectionRule
+from .models import Tracker
 
 if not settings.TRACKERS_AUTO_UPDATE:
     @admin.register(Tracker)

@@ -71,4 +71,3 @@ class AnalysisRequest(models.Model):
 @receiver(pre_delete, sender=AnalysisRequest)
 def analysis_request_delete(sender, instance, **kwargs):
     instance.apk.delete(False)
-
