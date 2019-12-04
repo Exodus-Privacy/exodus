@@ -67,7 +67,8 @@
     <div class="col-md-8 col-12 text-right mt-2">
       <a class="link main-link" target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">{% trans "See on Google Play" %}</a>
       {% if request.user.is_superuser %}
-        <br><a class="link main-link" href="{% url 'admin:reports_report_delete' report.id %}">{% trans "Delete this report" %}</a>
+        <br>
+        <a class="link main-link" href="{% url 'admin:reports_report_delete' report.id %}">{% trans "Delete this report" %}</a>
       {% endif %}
     </div>
   </div>
