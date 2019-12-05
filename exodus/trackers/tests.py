@@ -11,8 +11,7 @@ class TrackersStatsViewTests(TestCase):
     STATS_PATH = '/en/trackers/stats/'
 
     def test_should_raise_404_if_no_report(self):
-        tracker = Tracker(name='Teemo')
-        tracker.save()
+        Tracker.objects.create(name='Teemo')
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -20,8 +19,7 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_should_raise_404_if_no_tracker(self):
-        report = Report()
-        report.save()
+        Report.objects.create()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -29,10 +27,8 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_should_return_stats_with_1_tracker_not_found(self):
-        tracker = Tracker(name='Teemo')
-        tracker.save()
-        report = Report()
-        report.save()
+        tracker = Tracker.objects.create(name='Teemo')
+        Report.objects.create()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -44,13 +40,11 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.context['trackers'][0].score, 0)
 
     def test_should_return_stats_with_1_tracker_found(self):
-        tracker = Tracker(
+        tracker = Tracker.objects.create(
             id=1,
             name='Teemo',
         )
-        tracker.save()
-        report = Report()
-        report.save()
+        report = Report.objects.create()
         report.found_trackers = [tracker.id]
         report.save()
 
@@ -64,44 +58,36 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.context['trackers'][0].score, 100)
 
     def test_should_return_stats_with_single_report_one_application(self):
-        tracker1 = Tracker(
+        tracker1 = Tracker.objects.create(
             id=1,
             name='Teemo',
         )
-        tracker1.save()
-        tracker2 = Tracker(
+        tracker2 = Tracker.objects.create(
             id=2,
             name='Exodus Super Tracker',
         )
-        tracker2.save()
         application_handle = "com.exodus.one"
-        report1 = Report()
+        report1 = Report.objects.create()
+        report1.found_trackers = [tracker2.id]
         report1.save()
-        application1 = Application(
+        Application.objects.create(
             handle=application_handle,
             report=report1
         )
-        application1.save()
-        report1.found_trackers = [tracker2.id]
-        report1.save()
-        report2 = Report()
+        report2 = Report.objects.create()
+        report2.found_trackers = []
         report2.save()
-        application2 = Application(
+        Application.objects.create(
             handle=application_handle,
             report=report2
         )
-        application2.save()
-        report2.found_trackers = []
-        report2.save()
-        report3 = Report()
+        report3 = Report.objects.create()
+        report3.found_trackers = [tracker1.id, tracker2.id]
         report3.save()
-        application3 = Application(
+        Application.objects.create(
             handle=application_handle,
             report=report3
         )
-        application3.save()
-        report3.found_trackers = [tracker1.id, tracker2.id]
-        report3.save()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -118,45 +104,37 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.context['trackers'][1].score, 100)
 
     def test_should_return_stats_with_multiple_reports_multiple_application(self):
-        tracker1 = Tracker(
+        tracker1 = Tracker.objects.create(
             id=1,
             name='Teemo',
         )
-        tracker1.save()
-        tracker2 = Tracker(
+        tracker2 = Tracker.objects.create(
             id=2,
             name='Exodus Super Tracker',
         )
-        tracker2.save()
         application_handle1 = "com.handle.one"
         application_handle2 = "com.handle.two"
-        report1 = Report()
+        report1 = Report.objects.create()
+        report1.found_trackers = [tracker2.id]
         report1.save()
-        application1 = Application(
+        Application.objects.create(
             handle=application_handle1,
             report=report1
         )
-        application1.save()
-        report1.found_trackers = [tracker2.id]
-        report1.save()
-        report2 = Report()
+        report2 = Report.objects.create()
+        report2.found_trackers = []
         report2.save()
-        application2 = Application(
+        Application.objects.create(
             handle=application_handle2,
             report=report2
         )
-        application2.save()
-        report2.found_trackers = []
-        report2.save()
-        report3 = Report()
+        report3 = Report.objects.create()
+        report3.found_trackers = [tracker1.id, tracker2.id]
         report3.save()
-        application3 = Application(
+        Application.objects.create(
             handle=application_handle2,
             report=report3
         )
-        application3.save()
-        report3.found_trackers = [tracker1.id, tracker2.id]
-        report3.save()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -175,16 +153,13 @@ class TrackersStatsViewTests(TestCase):
     def test_should_not_include_more_than_X_trackers(self):
         tracker_limit = 21
         for x in range(0, tracker_limit):
-            tracker = Tracker(name='Tracker{}.'.format(x))
-            tracker.save()
+            Tracker.objects.create(name='Tracker{}.'.format(x))
 
-        extra_tracker = Tracker(name='Exodus Super Tracker')
-        extra_tracker.save()
+        extra_tracker = Tracker.objects.create(name='Exodus Super Tracker')
 
         first_trackers = Tracker.objects.exclude(name=extra_tracker.name)
 
-        report = Report()
-        report.save()
+        report = Report.objects.create()
         report.found_trackers = [t.id for t in first_trackers]
         report.save()
 
@@ -201,30 +176,25 @@ class TrackerDetailTestCases(TestCase):
     TRACKER_DETAIL_PATH = "/en/trackers/{}/"
 
     def test_track_detail_app_multiple_reports(self):
-        tracker2 = Tracker(
+        tracker2 = Tracker.objects.create(
             id=2,
             name='Exodus Super Tracker',
         )
-        tracker2.save()
         application_handle2 = "com.handle.two"
-        report2 = Report()
+        report2 = Report.objects.create()
+        report2.found_trackers = [tracker2.id]
         report2.save()
-        application2 = Application(
+        Application.objects.create(
             handle=application_handle2,
             report=report2
         )
-        application2.save()
-        report2.found_trackers = [tracker2.id]
-        report2.save()
-        report3 = Report()
+        report3 = Report.objects.create()
+        report3.found_trackers = [tracker2.id]
         report3.save()
-        application3 = Application(
+        Application.objects.create(
             handle=application_handle2,
             report=report3
         )
-        application3.save()
-        report3.found_trackers = [tracker2.id]
-        report3.save()
 
         c = Client()
         url = self.TRACKER_DETAIL_PATH.format(tracker2.id)
@@ -237,32 +207,27 @@ class TrackerDetailTestCases(TestCase):
         self.assertEqual(response.context['reports'][0], report3)
 
     def test_track_detail_app_removed_tracker(self):
-        tracker1 = Tracker(
+        tracker1 = Tracker.objects.create(
             id=1,
             name='Teemo',
         )
-        tracker1.save()
         application_handle1 = "com.handle.one"
-        report1 = Report()
+        report1 = Report.objects.create()
+        report1.found_trackers = [tracker1.id]
         report1.save()
-        application1 = Application(
+        Application.objects.create(
             handle=application_handle1,
             report=report1
         )
-        application1.save()
-        report1.found_trackers = [tracker1.id]
-        report1.save()
 
-        report2 = Report()
-        report2.save()
-        application2 = Application(
-            handle=application_handle1,
-            report=report2
-        )
-        application2.save()
+        report2 = Report.objects.create()
         # Removing trackers in the version of the app
         report2.found_trackers = []
         report2.save()
+        Application.objects.create(
+            handle=application_handle1,
+            report=report2
+        )
 
         c = Client()
         url = self.TRACKER_DETAIL_PATH.format(tracker1.id)
