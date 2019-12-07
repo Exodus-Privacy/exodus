@@ -60,4 +60,4 @@ class AnalysisRequestListView(ListView):
     context_object_name = 'queries'
 
     def get_queryset(self):
-        return AnalysisRequest.objects.order_by('-uploaded_at')
+        return AnalysisRequest.objects.order_by('-uploaded_at')[:200]
