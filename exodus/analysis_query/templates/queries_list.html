@@ -2,18 +2,39 @@
 {% load i18n %}
 {% block content %}
 <div class="row justify-content-md-center">
-    <div class="col-lg-8 col-centered">
-        {% if request.user.is_superuser %}
-        <ul>
-            {% for q in queries %}
-            <li>{{ q.id }} - {{ q.handle }} - {{ q.uploaded_at }}</li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <div class="alert alert-danger small">
-            <strong>{% trans "You need to be registered" %}.</strong>
-        </div>
-        {% endif %}
-    </div>
+  <div class="col-lg-10 col-centered">
+    {% if request.user.is_superuser %}
+      <table class="table table-hover">
+        {% for q in queries %}
+          <tr>
+            <td>
+              <a href="{% url 'analysis:wait' q.id %}">{{ q.id }}</a>
+            </td>
+            <td>
+              <a target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ q.handle }}">{{ q.handle | truncatechars_html:40 }}</a>
+            </td>
+            <td>
+              {{ q.uploaded_at }}
+            </td>
+            <td>
+              {% if q.processed %}
+                {% if q.in_error %}
+                  <span class="text-danger" data-toggle="tooltip" title="{{ q.description }}">error</span>
+                {% else %}
+                  <span class="text-success">complete</span>
+                {% endif %}
+              {% else %}
+                <span class="text-warning">in progress</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <div class="alert alert-danger small">
+        <strong>{% trans "You need to be registered" %}.</strong>
+      </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
