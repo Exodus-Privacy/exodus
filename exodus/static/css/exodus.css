@@ -73,6 +73,15 @@ h4 {
 input#query, input#handle {
   border-left: none;
 }
+input#query:focus, input#handle:focus {
+  box-shadow: unset;
+}
+div.input-group:focus-within * {
+  border-color: #a888b2;
+}
+div.input-group:focus-within {
+  box-shadow: 0 0 0 .2rem rgba(104,73,113,.25);
+}
 #query_help, #handle_help {
   background-color: transparent;
 }
