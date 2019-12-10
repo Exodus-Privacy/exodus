@@ -51,9 +51,9 @@
         </div>
 
         {% if upload_allowed %}
-        <p class="text-right">
-          <a class="link main-link" href="{% url 'analysis:upload' %}">{% trans "I prefer to upload an application." %}</a>
-        </p>
+          <p class="text-right">
+            <a class="link main-link" href="{% url 'analysis:upload' %}">{% trans "I prefer to upload an application" %}</a>
+          </p>
         {% endif %}
 
         <div id="loading" class="text-center" style="display:none;">

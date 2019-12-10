@@ -23,8 +23,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, '..', 'static'), )
 
 CELERY_BROKER_URL = 'amqp://guest@amqp//'
 BROKER_URL = CELERY_BROKER_URL
-MINIO_URL = 'minio:9000'
-MINIO_ACCESS_KEY = 'exodusexodus'
-MINIO_SECRET_KEY = 'exodusexodus'
-MINIO_SECURE = False
-MINIO_BUCKET = 'exodus'
+MINIO_STORAGE_ENDPOINT = 'minio:9000'
+MINIO_STORAGE_ACCESS_KEY = 'exodusexodus'
+MINIO_STORAGE_SECRET_KEY = 'exodusexodus'
+MINIO_STORAGE_USE_HTTPS = False
+MINIO_STORAGE_MEDIA_BUCKET_NAME = 'exodus'

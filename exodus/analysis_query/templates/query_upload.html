@@ -84,50 +84,6 @@ var show_spinner=function(){
     s.style.display = "block"
   }
 }
-jQuery("#handle").on("input", function() {
-    // Extract handle from Google Play url
-    const regex = /id=((?:\w+\.)+\w+)/gmi;
-    const handle = jQuery.trim(jQuery(this).val())
-    jQuery("#reports").hide()
-    if(handle.startsWith("https://play.google.com")){
-        match = regex.exec(handle)
-        while (match != null) {
-          if(match[1]){
-            jQuery(this).val(match[1])
-          }
-          return
-        }
-    } else {
-        const regex_pk = /^((?:\w+\.)+\w+)$/gmi;
-        if(regex_pk.test(handle)){
-            // TODO: Use an API endpoint which returns the latest report
-            jQuery.get("/api/search/"+handle, function(rq){
-                if(rq[handle]){
-                    jQuery("#reports").html('')
-                    jQuery("#reports").show()
-
-                    var p = document.createElement('p')
-                    var name = handle
-                    if(rq[handle].name != '') {
-                        name = rq[handle].name
-                    }
-                    p.innerHTML = "<b>{% trans  'This application has already been analyzed!' %}</b>"
-                    jQuery("#reports").append(p)
-
-                    latest_report = rq[handle].reports.shift()
-                    var report_date = latest_report.creation_date.substring(0, 10)
-                    var p2 = document.createElement('p')
-                    p2.innerHTML = name + ' - {% trans "analyzed on" %} '+report_date+' - <a href="/reports/'+latest_report.id+'/">{% trans "Go to the latest report" %}</a>'
-                    jQuery("#reports").append(p2)
-
-                    var p3 = document.createElement('p')
-                    p3.innerHTML = "{% trans 'If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis.' %}"
-                    jQuery("#reports").append(p3)
-                }
-            })
-        }
-    }
-});
 $(function() {
   $(document).on('change', ':file', function() {
     var input = $(this),
@@ -136,14 +92,12 @@ $(function() {
     $("#handle")[0].value = ""
   });
 
-
   $(document).ready( function() {
       $(':file').on('fileselect', function(event, label) {
           var input = $(this).parents('.input-group').find(':text')
           input.val(label)
       });
   });
-
 });
 </script>
 {% endblock %}

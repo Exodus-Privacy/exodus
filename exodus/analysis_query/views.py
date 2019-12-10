@@ -26,10 +26,9 @@ def upload_file(request):
     if request.method == 'POST' and settings.ALLOW_APK_UPLOAD:
         form = UploadRequestForm(request.POST, request.FILES)
         if form.is_valid():
-            randhex = str(random_word(60))
             req = form.save()
             req.handle = 'from_upload'
-            req.bucket = randhex
+            req.bucket = str(random_word(60))
             req.description = _('Your request will be handled soon')
             req.save()
 
@@ -75,8 +74,6 @@ def json(request, r_id):
         r = AnalysisRequest.objects.get(pk=r_id)
     except AnalysisRequest.DoesNotExist:
         raise Http404(_("AnalysisRequest does not exist"))
-    r.bucket = ''
-    r.description = _(r.description)
 
     obj = {
         'description': _(r.description),

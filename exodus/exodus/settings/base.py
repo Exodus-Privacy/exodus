@@ -117,7 +117,7 @@ EX_PAGINATOR_COUNT = 25
 LOCALE_PATHS = (os.path.join(DIR, '../locale'),)
 
 TRACKERS_AUTO_UPDATE = False
-TRACKERS_AUTO_UPDATE_TIME = 24*60*60.0  # time in seconds
+TRACKERS_AUTO_UPDATE_TIME = 4 * 24 * 60 * 60.0  # time in seconds
 TRACKERS_AUTO_UPDATE_FROM = 'https://reports.exodus-privacy.eu.org/api/trackers'
 
 # Minio file storage configuration
