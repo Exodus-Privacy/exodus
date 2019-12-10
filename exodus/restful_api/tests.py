@@ -1,23 +1,28 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.test import TestCase
+from django.contrib.auth.models import User
 
-from rest_framework.test import APIClient
+from rest_framework.test import APITestCase
 
 from reports.models import Application, Report
 
 
-class RestfulApiGetAllApplicationsTests(TestCase):
+class RestfulApiGetAllApplicationsTests(APITestCase):
+
+    def force_authentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
 
     def test_returns_empty_json_when_no_applications(self):
-        client = APIClient()
-        response = client.get('/api/applications')
+        self.force_authentication()
+        response = self.client.get('/api/applications')
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['applications'], [])
 
     def test_returns_applications_with_report_last_update(self):
+        self.force_authentication()
         report = Report()
         report.save()
         application = Application(
@@ -27,8 +32,7 @@ class RestfulApiGetAllApplicationsTests(TestCase):
         )
         application.save()
 
-        client = APIClient()
-        response = client.get('/api/applications')
+        response = self.client.get('/api/applications')
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, application.name, 1)
