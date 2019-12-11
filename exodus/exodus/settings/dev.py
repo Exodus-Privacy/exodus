@@ -37,8 +37,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, '..', 'static'), )
 
 CELERY_BROKER_URL = 'amqp://guest@localhost//'
 BROKER_URL = CELERY_BROKER_URL
-MINIO_URL = '127.0.0.1:9000'
-MINIO_ACCESS_KEY = 'exodusexodus'
-MINIO_SECRET_KEY = 'exodusexodus'
-MINIO_SECURE = False
-MINIO_BUCKET = 'exodus'
+MINIO_STORAGE_ENDPOINT = '127.0.0.1:9000'
+MINIO_STORAGE_ACCESS_KEY = 'exodusexodus'
+MINIO_STORAGE_SECRET_KEY = 'exodusexodus'
+
+ALLOW_APK_UPLOAD = True
+
+TRACKERS_AUTO_UPDATE = True
