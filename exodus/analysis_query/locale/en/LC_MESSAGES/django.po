@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-19 21:40+0200\n"
+"POT-Creation-Date: 2019-12-11 14:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,92 +16,119 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:28
+#: analysis_query/models.py:30
 #, python-format
 msgid "%s is not a valid application handle"
 msgstr ""
 
-#: models.py:34
+#: analysis_query/models.py:36
 #, python-format
 msgid "%s application not found on Google Play"
 msgstr ""
 
-#: models.py:41
+#: analysis_query/models.py:43
 msgid "This application is being analyzed."
 msgstr ""
 
-#: models.py:46
+#: analysis_query/models.py:48
 msgid "Too much pending requests, please retry later"
 msgstr ""
 
-#: templates/queries_list.html:14
+#: analysis_query/models.py:56
+msgid "Unsupported file extension"
+msgstr ""
+
+#: analysis_query/templates/queries_list.html:14
 msgid "You need to be registered"
 msgstr ""
 
-#: templates/query_submit.html:9
+#: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_upload.html:9
 msgid "New analysis"
 msgstr ""
 
-#: templates/query_submit.html:31
+#: analysis_query/templates/query_submit.html:31
 msgid "Google Play URL of the application"
 msgstr ""
 
-#: templates/query_submit.html:41
+#: analysis_query/templates/query_submit.html:41
 msgid "Free applications only. Works also with the application handle."
 msgstr ""
 
-#: templates/query_submit.html:49
+#: analysis_query/templates/query_submit.html:49
+#: analysis_query/templates/query_upload.html:50
 msgid "Perform analysis"
 msgstr ""
 
-#: templates/query_submit.html:56
+#: analysis_query/templates/query_submit.html:55
+msgid "I prefer to upload an application"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:62
+#: analysis_query/templates/query_upload.html:57
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
 
-#: templates/query_submit.html:69 templates/query_wait.html:37
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:70
+#: analysis_query/templates/query_wait.html:39
 msgid "is a non-profit organization which provides this service for free."
 msgstr ""
 
-#: templates/query_submit.html:71 templates/query_wait.html:39
+#: analysis_query/templates/query_submit.html:77
+#: analysis_query/templates/query_upload.html:72
+#: analysis_query/templates/query_wait.html:41
 msgid "Help us!"
 msgstr ""
 
-#: templates/query_submit.html:113
+#: analysis_query/templates/query_submit.html:119
 msgid "This application has already been analyzed!"
 msgstr ""
 
-#: templates/query_submit.html:119
+#: analysis_query/templates/query_submit.html:125
 msgid "analyzed on"
 msgstr ""
 
-#: templates/query_submit.html:119
+#: analysis_query/templates/query_submit.html:125
 msgid "Go to the latest report"
 msgstr ""
 
-#: templates/query_submit.html:123
+#: analysis_query/templates/query_submit.html:129
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."
 msgstr ""
 
-#: templates/query_wait.html:9
+#: analysis_query/templates/query_upload.html:32
+msgid "Upload an application"
+msgstr ""
+
+#: analysis_query/templates/query_upload.html:36
+msgid "Browse file"
+msgstr ""
+
+#: analysis_query/templates/query_upload.html:42
+msgid "Only works with APK files."
+msgstr ""
+
+#: analysis_query/templates/query_wait.html:9
 msgid "Analysis in progress..."
 msgstr ""
 
-#: templates/query_wait.html:23
+#: analysis_query/templates/query_wait.html:24
 msgid "See the report"
 msgstr ""
 
-#: templates/query_wait.html:26
+#: analysis_query/templates/query_wait.html:28
 msgid "Will refresh automatically every 10 seconds."
 msgstr ""
 
-#: views.py:31
+#: analysis_query/views.py:32 analysis_query/views.py:55
 msgid "Your request will be handled soon"
 msgstr ""
 
-#: views.py:44 views.py:52
+#: analysis_query/views.py:68 analysis_query/views.py:76
 msgid "AnalysisRequest does not exist"
 msgstr ""

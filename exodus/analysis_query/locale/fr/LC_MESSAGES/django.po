@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-19 21:40+0200\n"
+"POT-Creation-Date: 2019-12-11 14:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,47 +17,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: models.py:28
+#: analysis_query/models.py:30
 #, python-format
 msgid "%s is not a valid application handle"
 msgstr "%s n’est pas un identifiant d’application valide"
 
-#: models.py:34
+#: analysis_query/models.py:36
 #, python-format
 msgid "%s application not found on Google Play"
 msgstr "%s application introuvable sur Google Play"
 
-#: models.py:41
+#: analysis_query/models.py:43
 msgid "This application is being analyzed."
 msgstr "Cette application est en cours d’analyse."
 
-#: models.py:46
+#: analysis_query/models.py:48
 msgid "Too much pending requests, please retry later"
 msgstr "Trop de requêtes en attente, veuillez réessayer plus tard"
 
-#: templates/queries_list.html:14
+#: analysis_query/models.py:56
+msgid "Unsupported file extension"
+msgstr "Ce type de fichier n'est pas supporté"
+
+#: analysis_query/templates/queries_list.html:14
 msgid "You need to be registered"
 msgstr "Vous devez être connecté.e"
 
-#: templates/query_submit.html:9
+#: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_upload.html:9
 msgid "New analysis"
 msgstr "Nouvelle analyse"
 
-#: templates/query_submit.html:31
+#: analysis_query/templates/query_submit.html:31
 msgid "Google Play URL of the application"
 msgstr "Lien Google Play de l'application"
 
-#: templates/query_submit.html:41
+#: analysis_query/templates/query_submit.html:41
 msgid "Free applications only. Works also with the application handle."
 msgstr ""
 "Applications gratuites uniquement. Fonctionne aussi avec l'identifiant de "
 "l'application."
 
-#: templates/query_submit.html:49
+#: analysis_query/templates/query_submit.html:49
+#: analysis_query/templates/query_upload.html:50
 msgid "Perform analysis"
 msgstr "Commencer l’analyse"
 
-#: templates/query_submit.html:56
+#: analysis_query/templates/query_submit.html:55
+msgid "I prefer to upload an application"
+msgstr "Je préfère téléverser une application"
+
+#: analysis_query/templates/query_submit.html:62
+#: analysis_query/templates/query_upload.html:57
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
@@ -65,28 +76,32 @@ msgstr ""
 "L’analyse peut prendre du temps, vous serez automatiquement redirigé.e vers "
 "le rapport"
 
-#: templates/query_submit.html:69 templates/query_wait.html:37
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:70
+#: analysis_query/templates/query_wait.html:39
 msgid "is a non-profit organization which provides this service for free."
 msgstr ""
 "est un organisme à but non lucratif qui fournit ce service gratuitement."
 
-#: templates/query_submit.html:71 templates/query_wait.html:39
+#: analysis_query/templates/query_submit.html:77
+#: analysis_query/templates/query_upload.html:72
+#: analysis_query/templates/query_wait.html:41
 msgid "Help us!"
 msgstr "Aidez-nous !"
 
-#: templates/query_submit.html:113
+#: analysis_query/templates/query_submit.html:119
 msgid "This application has already been analyzed!"
 msgstr "Cette application a déjà été analysée !"
 
-#: templates/query_submit.html:119
+#: analysis_query/templates/query_submit.html:125
 msgid "analyzed on"
 msgstr "analysée le"
 
-#: templates/query_submit.html:119
+#: analysis_query/templates/query_submit.html:125
 msgid "Go to the latest report"
 msgstr "Accéder au dernier rapport"
 
-#: templates/query_submit.html:123
+#: analysis_query/templates/query_submit.html:129
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."
@@ -94,22 +109,34 @@ msgstr ""
 "Si vous pensez qu’εxodus n’a pas encore analysé la dernière version de cette "
 "application, n’hésitez pas à soumettre l’analyse."
 
-#: templates/query_wait.html:9
+#: analysis_query/templates/query_upload.html:32
+msgid "Upload an application"
+msgstr "Téléverser une application"
+
+#: analysis_query/templates/query_upload.html:36
+msgid "Browse file"
+msgstr "Sélectionner un fichier"
+
+#: analysis_query/templates/query_upload.html:42
+msgid "Only works with APK files."
+msgstr "Supporte uniquement les fichiers APK"
+
+#: analysis_query/templates/query_wait.html:9
 msgid "Analysis in progress..."
 msgstr "Analyse en cours..."
 
-#: templates/query_wait.html:23
+#: analysis_query/templates/query_wait.html:24
 msgid "See the report"
 msgstr "Voir le rapport"
 
-#: templates/query_wait.html:26
+#: analysis_query/templates/query_wait.html:28
 msgid "Will refresh automatically every 10 seconds."
 msgstr "La page se rafraîchira automatiquement toutes les 10 secondes."
 
-#: views.py:31
+#: analysis_query/views.py:32 analysis_query/views.py:55
 msgid "Your request will be handled soon"
 msgstr "Votre demande sera bientôt traitée"
 
-#: views.py:44 views.py:52
+#: analysis_query/views.py:68 analysis_query/views.py:76
 msgid "AnalysisRequest does not exist"
 msgstr "La demande d’analyse n’existe pas"
