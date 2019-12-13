@@ -7,7 +7,7 @@ from django.conf import settings
 app = Celery(
     'exodus',
     backend='rpc://',
-    include=['exodus.core.apk', 'trackers.tasks', 'analysis_query.tasks'],
+    include=['exodus.core.apk', 'trackers.tasks', 'analysis_query.tasks', 'reports.tasks'],
     broker=settings.CELERY_BROKER_URL
 )
 
