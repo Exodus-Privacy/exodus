@@ -30,8 +30,11 @@ class RemoteStorageHelper():
         if prefix is None:
             prefix = self.prefix
         try:
-            objects = self.minio_client.list_objects(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME,
-                                                     prefix=self.prefix, recursive=True)
+            objects = self.minio_client.list_objects(
+                settings.MINIO_STORAGE_MEDIA_BUCKET_NAME,
+                prefix=prefix,
+                recursive=True
+            )
             for obj in objects:
                 self.minio_client.remove_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, obj.object_name)
         except ResponseError as err:
