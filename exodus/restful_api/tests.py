@@ -5,10 +5,8 @@ from django.contrib.auth.models import User
 
 from rest_framework.test import APITestCase
 
-from reports.models import Application, Report
-
-from exodus.reports.models import Permission, Apk
-from exodus.trackers.models import Tracker
+from reports.models import Application, Report, Permission, Apk
+from trackers.models import Tracker
 
 
 class RestfulApiGetAllApplicationsTests(APITestCase):
@@ -32,7 +30,6 @@ class RestfulApiGetAllApplicationsTests(APITestCase):
             handle='handle',
             report=report
         )
-        application.save()
 
         response = self.client.get('/api/applications')
 
