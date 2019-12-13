@@ -7,8 +7,8 @@ from rest_framework.test import APITestCase
 
 from reports.models import Application, Report
 
-from exodus.reports.models import Permission, Apk
-from exodus.trackers.models import Tracker
+from reports.models import Permission, Apk
+from trackers.models import Tracker
 
 
 class RestfulApiGetAllApplicationsTests(APITestCase):
