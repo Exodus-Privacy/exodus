@@ -7,11 +7,14 @@ from django.conf import settings
 app = Celery(
     'exodus',
     backend='rpc://',
-    include=['exodus.core.apk', 'trackers.tasks'],
+    include=['exodus.core.apk', 'trackers.tasks', 'analysis_query.tasks'],
     broker=settings.CELERY_BROKER_URL
 )
 
-app.conf.beat_schedule = {}
+app.conf.beat_schedule = {'auto_cleanup_analysis_requests': {
+    'task': 'analysis_query.tasks.auto_cleanup_analysis_requests',
+    'schedule': settings.ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME
+}}
 
 if settings.TRACKERS_AUTO_UPDATE:
     app.conf.beat_schedule['auto_update_trackers'] = {
