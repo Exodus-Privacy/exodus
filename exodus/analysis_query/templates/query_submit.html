@@ -84,7 +84,7 @@
 <script>
 // Spinner
 var show_spinner=function(){
-  s = document.getElementById("loading")
+  var s = document.getElementById("loading")
   if(s != undefined){
     s.style.display = "block"
   }
@@ -95,7 +95,7 @@ jQuery("#handle").on("input", function() {
     const handle = jQuery.trim(jQuery(this).val())
     jQuery("#reports").hide()
     if(handle.startsWith("https://play.google.com")){
-        match = regex.exec(handle)
+        var match = regex.exec(handle)
         while (match != null) {
           if(match[1]){
             jQuery(this).val(match[1])
@@ -119,7 +119,7 @@ jQuery("#handle").on("input", function() {
                     p.innerHTML = "<b>{% trans  'This application has already been analyzed!' %}</b>"
                     jQuery("#reports").append(p)
 
-                    latest_report = rq[handle].reports.shift()
+                    var latest_report = rq[handle].reports.shift()
                     var report_date = latest_report.creation_date.substring(0, 10)
                     var p2 = document.createElement('p')
                     p2.innerHTML = name + ' - {% trans "analyzed on" %} '+report_date+' - <a href="/reports/'+latest_report.id+'/">{% trans "Go to the latest report" %}</a>'
