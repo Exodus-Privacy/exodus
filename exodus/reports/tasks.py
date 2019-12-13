@@ -4,7 +4,6 @@ import tempfile
 
 from celery import shared_task
 from eventlog.events import EventGroup
-from minio import ResponseError
 
 from exodus.core.static_analysis import StaticAnalysis
 from exodus.core.storage import RemoteStorageHelper
@@ -43,8 +42,9 @@ def recompute_all_reports():
             clist_tmp = os.path.join(tmpdir, report.class_list_file)
             try:
                 storage_helper.get_file(report.class_list_file, clist_tmp)
-            except ResponseError:
-                ev.error('Unable to clist file', initiator=__name__)
+            except Exception:
+                ev.error('Unable to get clist file', initiator=__name__)
+                continue
 
             trackers = static_analysis.detect_trackers(clist_tmp)
             if report.found_trackers.count() != len(trackers):
