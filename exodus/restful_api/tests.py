@@ -1,27 +1,39 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from rest_framework.test import APITestCase
 from django.contrib.auth.models import User
 
-from reports.models import Application, Report, Permission, Apk, Tracker
+from rest_framework.test import APITestCase
+
+from reports.models import Application, Report
+
+from exodus.reports.models import Permission, Apk
+from exodus.trackers.models import Tracker
 
 
 class RestfulApiGetAllApplicationsTests(APITestCase):
 
+    def force_authentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
     def test_returns_empty_json_when_no_applications(self):
+        self.force_authentication()
         response = self.client.get('/api/applications')
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['applications'], [])
 
     def test_returns_applications_with_report_last_update(self):
-        report = Report.objects.create()
-        application = Application.objects.create(
+        self.force_authentication()
+        report = Report()
+        report.save()
+        application = Application(
             name='app_name',
             handle='handle',
             report=report
         )
+        application.save()
 
         response = self.client.get('/api/applications')
 
@@ -44,12 +56,12 @@ class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
     HANDLE = 'com.example'
     HANDLE_DETAILS_PATH = '/api/search/{}/details'.format(HANDLE)
 
-    def force_autentication(self):
+    def force_authentication(self):
         user = User.objects.create_user('username', 'Pas$w0rd')
         self.client.force_authenticate(user)
 
     def test_returns_empty_json_when_no_app(self):
-        self.force_autentication()
+        self.force_authentication()
         response = self.client.get(self.HANDLE_DETAILS_PATH)
 
         self.assertEqual(response.status_code, 200)
@@ -87,7 +99,7 @@ class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
             'permissions': ["ALLYOURBASE", "AREBELONGTOUS"],
         }
 
-        self.force_autentication()
+        self.force_authentication()
         response = self.client.get(self.HANDLE_DETAILS_PATH)
 
         self.assertEqual(response.status_code, 200)
