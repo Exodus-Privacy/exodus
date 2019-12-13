@@ -7,9 +7,18 @@ from django.conf import settings
 app = Celery(
     'exodus',
     backend='rpc://',
-    include=['exodus.core.apk', 'exodus.core.dns', 'exodus.core.http'],
+    include=['exodus.core.apk', 'trackers.tasks'],
     broker=settings.CELERY_BROKER_URL
 )
+
+app.conf.beat_schedule = {}
+
+if settings.TRACKERS_AUTO_UPDATE:
+    app.conf.beat_schedule['auto_update_trackers'] = {
+        'task': 'trackers.tasks.auto_update_trackers',
+        'schedule': settings.TRACKERS_AUTO_UPDATE_TIME
+    }
+
 
 app.config_from_object('django.conf:settings')
 if __name__ == '__main__':

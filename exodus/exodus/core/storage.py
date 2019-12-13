@@ -7,13 +7,13 @@ from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyEx
 class RemoteStorageHelper():
     def __init__(self, prefix):
         self.prefix = prefix
-        self.minio_client = Minio(settings.MINIO_URL,
-                                  access_key=settings.MINIO_ACCESS_KEY,
-                                  secret_key=settings.MINIO_SECRET_KEY,
-                                  secure=settings.MINIO_SECURE)
+        self.minio_client = Minio(settings.MINIO_STORAGE_ENDPOINT,
+                                  access_key=settings.MINIO_STORAGE_ACCESS_KEY,
+                                  secret_key=settings.MINIO_STORAGE_SECRET_KEY,
+                                  secure=settings.MINIO_STORAGE_USE_HTTPS)
         # Create Minio storage if needed
         try:
-            self.minio_client.make_bucket(settings.MINIO_BUCKET, location="")
+            self.minio_client.make_bucket(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, location="")
         except BucketAlreadyOwnedByYou:
             pass
         except BucketAlreadyExists:
@@ -30,9 +30,10 @@ class RemoteStorageHelper():
         if prefix is None:
             prefix = self.prefix
         try:
-            objects = self.minio_client.list_objects(settings.MINIO_BUCKET, prefix=self.prefix, recursive=True)
+            objects = self.minio_client.list_objects(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME,
+                                                     prefix=self.prefix, recursive=True)
             for obj in objects:
-                self.minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
+                self.minio_client.remove_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, obj.object_name)
         except ResponseError as err:
             logging.info(err)
 
@@ -42,7 +43,7 @@ class RemoteStorageHelper():
         :param local_path: local file to upload
         :param remote_name: file name in Minio storage
         """
-        self.minio_client.fput_object(settings.MINIO_BUCKET, remote_name, local_path)
+        self.minio_client.fput_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, remote_name, local_path)
 
     def get_file(self, remote_name, local_path):
         """
@@ -51,7 +52,7 @@ class RemoteStorageHelper():
         :param local_path: local destination file
         :return:
         """
-        data = self.minio_client.get_object(settings.MINIO_BUCKET, remote_name)
+        data = self.minio_client.get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, remote_name)
         with open(local_path, 'wb') as file_data:
             for d in data.stream(32 * 1024):
                 file_data.write(d)
@@ -70,7 +71,7 @@ class RemoteStorageHelper():
             with tempfile.NamedTemporaryFile(delete=True) as fp:
                 fp.write(f.read())
                 try:
-                    self.minio_client.fput_object(settings.MINIO_BUCKET, remote_name, fp.name)
+                    self.minio_client.fput_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, remote_name, fp.name)
                 except ResponseError as err:
                     logging.info(err)
                     return ''

@@ -17,6 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    'django_celery_beat',
+    'minio_storage',
+    'eventlog.apps.EventLogConfig',
     'rest_framework',
     'rest_framework.authtoken'
 ]
@@ -27,6 +30,11 @@ LANGUAGES = [
 ]
 
 DEFAULT_LANGUAGE = 1
+
+FILE_UPLOAD_HANDLERS = [
+    'django.core.files.uploadhandler.MemoryFileUploadHandler',
+    'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -107,3 +115,19 @@ CELERY_TASK_SERIALIZER = 'pickle'
 EX_PAGINATOR_COUNT = 25
 
 LOCALE_PATHS = (os.path.join(DIR, '../locale'),)
+
+TRACKERS_AUTO_UPDATE = False
+TRACKERS_AUTO_UPDATE_TIME = 4 * 24 * 60 * 60.0  # time in seconds
+TRACKERS_AUTO_UPDATE_FROM = 'https://reports.exodus-privacy.eu.org/api/trackers'
+
+# Minio file storage configuration
+DEFAULT_FILE_STORAGE = 'minio_storage.storage.MinioMediaStorage'
+MINIO_STORAGE_ENDPOINT = '127.0.0.1:9000'
+MINIO_STORAGE_ACCESS_KEY = 'access_key'
+MINIO_STORAGE_SECRET_KEY = 'secret_key'
+MINIO_STORAGE_USE_HTTPS = False
+MINIO_STORAGE_MEDIA_BUCKET_NAME = 'exodus'
+MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
+
+# Analysis configuration
+ALLOW_APK_UPLOAD = False

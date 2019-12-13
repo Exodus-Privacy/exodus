@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-19 14:32+0200\n"
+"POT-Creation-Date: 2019-12-11 14:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,127 +17,128 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: core/apk.py:54
+#: exodus/core/apk.py:54
 msgid "Your request is running"
 msgstr "Votre requête est en cours d’exécution"
 
-#: core/apk.py:61
+#: exodus/core/apk.py:67
 msgid "Unable to download the APK"
 msgstr "Impossible de télécharger l’APK"
 
-#: core/apk.py:65
+#: exodus/core/apk.py:71
 msgid "Download APK: success"
 msgstr "Télécharger l’APK : succès"
 
-#: core/apk.py:73
+#: exodus/core/apk.py:79
 msgid "Unable to decode the APK"
 msgstr "Impossible de décoder l’APK"
 
-#: core/apk.py:77
+#: exodus/core/apk.py:83
 msgid "Decode APK: success"
 msgstr "Décoder l’APK : succès"
 
-#: core/apk.py:86
+#: exodus/core/apk.py:92
 msgid "Unable to compute the class list"
 msgstr "Impossible de calculer la liste de classe"
 
-#: core/apk.py:90
+#: exodus/core/apk.py:96
 msgid "List embedded classes: success"
 msgstr "Lister les classes embarquées : succès"
 
-#: core/apk.py:109
+#: exodus/core/apk.py:115
 msgid "A report already exists for this application version"
 msgstr "Un rapport existe déjà pour cette version de l’application"
 
-#: core/apk.py:120
+#: exodus/core/apk.py:126
 msgid "Unable to get certificates"
 msgstr "Impossible de récupérer les certificats"
 
-#: core/apk.py:137
+#: exodus/core/apk.py:143
 msgid "Unable to compute APK fingerprint"
 msgstr "Impossible de calculer l'empreinte de l'APK"
 
-#: core/apk.py:146
+#: exodus/core/apk.py:152
 msgid "Unable to get application details from Google Play"
 msgstr "Impossible de récupérer les détails depuis le Google Play"
 
-#: core/apk.py:150
+#: exodus/core/apk.py:156
 msgid "Get application details: success"
 msgstr "Récupérer les détails de l’application : succès"
 
-#: core/apk.py:155
+#: exodus/core/apk.py:161
 msgid "Tracker analysis: success"
 msgstr "Analyse des pisteurs : succès"
 
-#: core/apk.py:212
+#: exodus/core/apk.py:218
 msgid "Static analysis complete"
 msgstr "Analyse statique terminée"
 
-#: templates/base.html:36
+#: exodus/templates/base.html:37
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:39
+#: exodus/templates/base.html:40
 msgid "Reports"
 msgstr "Rapports"
 
-#: templates/base.html:42
+#: exodus/templates/base.html:43
 msgid "Trackers"
 msgstr "Pisteurs"
 
-#: templates/base.html:45
+#: exodus/templates/base.html:46
 msgid "New analysis"
 msgstr "Nouvelle analyse"
 
-#: templates/base.html:48 templates/home.html:54 templates/understand.html:8
+#: exodus/templates/base.html:49 exodus/templates/home.html:54
+#: exodus/templates/understand.html:8
 msgid "Better understand"
 msgstr "Mieux comprendre"
 
-#: templates/base.html:51 templates/organization.html:8
+#: exodus/templates/base.html:52 exodus/templates/organization.html:8
 msgid "The organization"
 msgstr "L'association"
 
-#: templates/base.html:56
+#: exodus/templates/base.html:57
 msgid "Admin"
 msgstr ""
 
-#: templates/base.html:59
+#: exodus/templates/base.html:60
 msgid "Analyzes"
 msgstr "Analyses"
 
-#: templates/base.html:60
+#: exodus/templates/base.html:61
 msgid "Log out"
 msgstr ""
 
-#: templates/home.html:10
+#: exodus/templates/home.html:10
 msgid "The privacy audit platform for Android applications"
 msgstr "La plateforme d'audit de la vie privée des applications Android"
 
-#: templates/home.html:18
+#: exodus/templates/home.html:18
 msgid "Search a report"
 msgstr "Rechercher un rapport"
 
-#: templates/home.html:19
+#: exodus/templates/home.html:19
 msgid "Application name"
 msgstr "Nom de l'application"
 
-#: templates/home.html:29
+#: exodus/templates/home.html:29
 msgid "You can search for an application using its name or handle"
 msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
 
-#: templates/home.html:30
+#: exodus/templates/home.html:30
 msgid "ex:"
 msgstr "ex :"
 
-#: templates/home.html:34 templates/home.html:63
+#: exodus/templates/home.html:34 exodus/templates/home.html:63
 msgid "Let's go!"
 msgstr "C'est parti !"
 
-#: templates/home.html:37
+#: exodus/templates/home.html:37
 msgid "Results"
 msgstr "Résultats"
 
-#: templates/home.html:46
+#: exodus/templates/home.html:46
 msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
@@ -145,7 +146,7 @@ msgstr ""
 "εxodus analyse les applications Android dans le but de <b>lister les "
 "pisteurs embarqués.</b>"
 
-#: templates/home.html:47
+#: exodus/templates/home.html:47
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
@@ -154,12 +155,15 @@ msgstr ""
 "à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous "
 "révèlent les ingrédients du gâteau."
 
-#: templates/home.html:48
-msgid "εxodus does not decompile applications, its analysis technic is legal."
+#: exodus/templates/home.html:48
+#, fuzzy
+#| msgid ""
+#| "εxodus does not decompile applications, its analysis technic is legal."
+msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 "εxodus ne décompile pas les applications, sa technique d’analyse est légale."
 
-#: templates/home.html:55
+#: exodus/templates/home.html:55
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
@@ -167,31 +171,31 @@ msgstr ""
 "Qu'est-ce qu'un pisteur ? Et une permission ? Existe-t-il des alternatives "
 "pour se protéger ?"
 
-#: templates/home.html:71
+#: exodus/templates/home.html:71
 msgid "Need an overview?"
 msgstr "Besoin d'une vision d'ensemble&nbsp;?"
 
-#: templates/home.html:77
+#: exodus/templates/home.html:77
 msgid "Latest reports"
 msgstr "Les derniers rapports"
 
-#: templates/home.html:83
+#: exodus/templates/home.html:83
 msgid "No known trackers"
 msgstr "Aucun pisteurs identifiés"
 
-#: templates/home.html:89
+#: exodus/templates/home.html:89
 msgid "Most trackers"
 msgstr "Triés par nombre de pisteurs"
 
-#: templates/home.html:97
+#: exodus/templates/home.html:97
 msgid "No results found."
 msgstr "Aucun résultat."
 
-#: templates/next.html:8 templates/understand.html:44
+#: exodus/templates/next.html:8 exodus/templates/understand.html:44
 msgid "What's next?"
 msgstr "Et après ?"
 
-#: templates/next.html:16
+#: exodus/templates/next.html:16
 msgid ""
 "We know it is not easy to find alternatives in order to escape trackers "
 "within our apps. We prepared a list of tools and things you can do to better "
@@ -202,11 +206,11 @@ msgstr ""
 "une liste de quelques outils et pratiques destinés à mieux maîtriser votre "
 "intimité sur mobile !"
 
-#: templates/next.html:20
+#: exodus/templates/next.html:20
 msgid "Consider how you use applications"
 msgstr "Réfléchir à ses propres usages"
 
-#: templates/next.html:22
+#: exodus/templates/next.html:22
 msgid ""
 "When you wish to install an application or when an application asks for "
 "personal information, ask yourself the following questions:"
@@ -214,20 +218,20 @@ msgstr ""
 "Quand vous souhaitez installer une application ou quand une application vous "
 "demande des éléments personnels, posez-vous les questions suivantes :"
 
-#: templates/next.html:25
+#: exodus/templates/next.html:25
 msgid "how many trackers does it contain and what permissions does it ask for?"
 msgstr ""
 "combien contient-elle de pisteurs et quelles autorisations sont demandées ?"
 
-#: templates/next.html:26
+#: exodus/templates/next.html:26
 msgid "do I want or need to install it?"
 msgstr "ai-je envie ou besoin de l'installer ?"
 
-#: templates/next.html:27
+#: exodus/templates/next.html:27
 msgid "do I want or need to give it what it asks me?"
 msgstr "ai-je envie ou besoin de lui donner ce qu'elle me demande ?"
 
-#: templates/next.html:30
+#: exodus/templates/next.html:30
 msgid ""
 "It is up to you to decide but by taking into consideration your daily use, "
 "you can have a better control over your digital identity."
@@ -236,7 +240,7 @@ msgstr ""
 "quotidien, vous pouvez avoir une meilleure maîtrise de notre identité "
 "numérique."
 
-#: templates/next.html:33
+#: exodus/templates/next.html:33
 msgid ""
 "You could also contact the people who offer you the application if you "
 "consider it to be too intrusive and ask them some explanations on the "
@@ -246,11 +250,11 @@ msgstr ""
 "vous considérez que celle-ci est trop intrusive, et lui demander des "
 "explications sur la présence de pisteurs et la demande de permissions."
 
-#: templates/next.html:37
+#: exodus/templates/next.html:37
 msgid "Favour free software"
 msgstr "Privilégier des applis libres"
 
-#: templates/next.html:39
+#: exodus/templates/next.html:39
 msgid ""
 "What is called 'free' software is software whose code (i.e. its recipe, or "
 "list of instructions) can be changed, copied, verified... and is thus "
@@ -262,7 +266,7 @@ msgstr ""
 "transparentes. Il existe peut-être une application libre pour remplacer, "
 "dans vos usages, une application qui ne respecterai pas votre vie privée."
 
-#: templates/next.html:47
+#: exodus/templates/next.html:47
 msgid ""
 "If you are an Android user, you can install <a target='_blank' "
 "rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free "
@@ -280,11 +284,11 @@ msgstr ""
 "a> en cas de besoin. Attention cependant, certaines applications de F-Droid "
 "ne sont pas traduites dans toutes les langues."
 
-#: templates/next.html:51
+#: exodus/templates/next.html:51
 msgid "Use the mobile website instead of the application"
 msgstr "Utiliser le site mobile à la place de l'application"
 
-#: templates/next.html:53
+#: exodus/templates/next.html:53
 msgid ""
 "On a mobile device you don't necessary have to use applications: you can use "
 "mobile websites instead. One advantage in favour of the latter is the "
@@ -296,7 +300,7 @@ msgstr ""
 "de pouvoir ajouter des extensions sur les navigateurs, comme vous pouvez le "
 "faire sur un ordinateur (par exemple uBlock Origin)."
 
-#: templates/next.html:64
+#: exodus/templates/next.html:64
 msgid ""
 "If you want a browser experience that is more respectful of your privacy, "
 "you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo "
@@ -305,7 +309,7 @@ msgstr ""
 "Pour une navigation plus respectueuse de vos données personnelles, il existe "
 "certains navigateurs comme Firefox ou DuckDuckgo Privacy Browser."
 
-#: templates/next.html:67
+#: exodus/templates/next.html:67
 msgid ""
 "These browsers allow you to add your favorite websites on your home screen "
 "easily, just as an app (but lighter)."
@@ -313,11 +317,11 @@ msgstr ""
 "Ces navigateurs permettent d'ajouter vos sites préférés sur votre écran "
 "d'accueil facilement, comme une application (en plus léger)."
 
-#: templates/next.html:71
+#: exodus/templates/next.html:71
 msgid "Install an ad blocker"
 msgstr "Installer un bloqueur de publicités"
 
-#: templates/next.html:78
+#: exodus/templates/next.html:78
 msgid ""
 "In all cases, Android smartphones allow you to install ad-blocking "
 "applications such as <a target='_blank' rel='noreferrer' href='https://"
@@ -330,17 +334,17 @@ msgstr ""
 "sur F-droid (cf. paragraphe précédent) ou depuis leur site internet. Cette "
 "application est en Français et est facile d'utilisation."
 
-#: templates/next.html:82
+#: exodus/templates/next.html:82
 msgid "Discover alternatives"
 msgstr "Découvrir des alternatives"
 
-#: templates/next.html:84
+#: exodus/templates/next.html:84
 msgid "For broader recommendations, here are some resources you can dig in:"
 msgstr ""
 "Pour des recommandations plus larges, voici quelques ressources en français "
 "dans lesquelles vous pouvez piocher :"
 
-#: templates/next.html:85
+#: exodus/templates/next.html:85
 msgid ""
 "\n"
 "      <ul>\n"
@@ -370,11 +374,11 @@ msgstr ""
 "      </ul>\n"
 "      "
 
-#: templates/next.html:95
+#: exodus/templates/next.html:95
 msgid "Remain curious!"
 msgstr "Rester curieux⋅se !"
 
-#: templates/next.html:97
+#: exodus/templates/next.html:97
 msgid ""
 "In this area, what is true today may not necessarily be true tomorrow: tools "
 "might come and go, application policies can change, security breaches can be "
@@ -384,7 +388,7 @@ msgstr ""
 "des outils peuvent apparaître, disparaître, les politiques des applications "
 "peuvent changer, une faille de sécurité peut être annoncée..."
 
-#: templates/next.html:100
+#: exodus/templates/next.html:100
 msgid ""
 "To this effect, you can attend workshops held by associations such as <a "
 "target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/"
@@ -398,14 +402,14 @@ msgstr ""
 "<a target='_blank' rel='noreferrer' href='https://www.ffdn.org/'>fournisseur "
 "d'accès à Internet associatif</a> le plus près de chez vous."
 
-#: templates/next.html:103
+#: exodus/templates/next.html:103
 msgid ""
 "To stay up to date on these topics, you can find useful resources there:"
 msgstr ""
 "Pour organiser une veille sur ces sujets, voici quelques ressources "
 "intéressantes :"
 
-#: templates/next.html:104
+#: exodus/templates/next.html:104
 msgid ""
 "\n"
 "      <ul>\n"
@@ -430,11 +434,11 @@ msgstr ""
 "      </ul>\n"
 "      "
 
-#: templates/next.html:113
+#: exodus/templates/next.html:113
 msgid "For advanced users"
 msgstr "Pour utilisateur⋅ice avancé⋅e :"
 
-#: templates/next.html:115
+#: exodus/templates/next.html:115
 msgid ""
 "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://"
 "lineageos.org/'>Lineage OS</a> is an operating system based on Android; it "
@@ -446,7 +450,7 @@ msgstr ""
 "Android, utilisable sans les services Google. Il est possible de l'installer "
 "sur son téléphone, à condition d'avoir un mobile compatible."
 
-#: templates/organization.html:21
+#: exodus/templates/organization.html:19
 msgid ""
 "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose "
 "is to help people get a better understanding of the Android applications "
@@ -457,15 +461,15 @@ msgstr ""
 "permettre une meilleure compréhension des enjeux liés au pistage par le "
 "biais des applications Android."
 
-#: templates/organization.html:24
+#: exodus/templates/organization.html:22
 msgid "Discover Exodus Privacy"
 msgstr "Découvrez Exodus Privacy"
 
-#: templates/organization.html:28
+#: exodus/templates/organization.html:26
 msgid "Help us!"
 msgstr "Aidez-nous !"
 
-#: templates/organization.html:30
+#: exodus/templates/organization.html:28
 msgid ""
 "Exodus Privacy is an organization managed by volunteers. Whether you would "
 "like to draw, translate, code or create any kind of content, feel free: we "
@@ -475,54 +479,54 @@ msgstr ""
 "envie de dessiner, traduire, coder ou  créer des contenus, n'hésitez pas : "
 "toute aide est la bienvenue !"
 
-#: templates/organization.html:33
+#: exodus/templates/organization.html:31
 msgid "How to contribute?"
 msgstr "Comment contribuer ?"
 
-#: templates/organization.html:37
+#: exodus/templates/organization.html:35
 msgid "Contact us"
 msgstr "Nous contacter"
 
-#: templates/organization.html:44
+#: exodus/templates/organization.html:42
 msgid "Contact us!"
 msgstr "Contactez-nous !"
 
-#: templates/organization.html:49 templates/organization.html:56
-#: templates/organization.html:61
+#: exodus/templates/organization.html:47 exodus/templates/organization.html:54
+#: exodus/templates/organization.html:59
 msgid "Follow us!"
 msgstr "Suivez-nous !"
 
-#: templates/paginator.html:6 templates/paginator.html:13
+#: exodus/templates/paginator.html:6 exodus/templates/paginator.html:13
 msgid "First"
 msgstr "Premier"
 
-#: templates/paginator.html:9 templates/paginator.html:16
+#: exodus/templates/paginator.html:9 exodus/templates/paginator.html:16
 msgid "Previous"
 msgstr "Précédent"
 
-#: templates/paginator.html:34 templates/paginator.html:41
+#: exodus/templates/paginator.html:34 exodus/templates/paginator.html:41
 msgid "Next"
 msgstr "Suivant"
 
-#: templates/paginator.html:37 templates/paginator.html:44
+#: exodus/templates/paginator.html:37 exodus/templates/paginator.html:44
 msgid "Last"
 msgstr "Dernier"
 
-#: templates/permissions.html:8 templates/understand.html:28
+#: exodus/templates/permissions.html:8 exodus/templates/understand.html:28
 msgid "Permissions"
 msgstr "Les permissions"
 
-#: templates/permissions.html:16
+#: exodus/templates/permissions.html:16
 msgid "Permissions are access rights an app asks to access on your phone."
 msgstr ""
 "Les permissions sont les droits d'accès qu'une application va demander à "
 "votre téléphone."
 
-#: templates/permissions.html:20
+#: exodus/templates/permissions.html:20
 msgid "What type of permissions?"
 msgstr "Quel type de permissions ?"
 
-#: templates/permissions.html:22
+#: exodus/templates/permissions.html:22
 msgid ""
 "They can concern various features or pieces of information, such as access "
 "to your geolocation, your contacts, your files, your microphone, vibrate "
@@ -535,11 +539,11 @@ msgstr ""
 "vous permettent, application par application, de savoir quelles "
 "autorisations sont demandées."
 
-#: templates/permissions.html:26
+#: exodus/templates/permissions.html:26
 msgid "Why are some permissions indicated as dangerous?"
 msgstr "Pourquoi certaines permissions sont indiquées comme dangereuses ?"
 
-#: templates/permissions.html:28
+#: exodus/templates/permissions.html:28
 msgid ""
 "Google defines <a target='_blank' rel='noreferrer' href='https://developer."
 "android.com/guide/topics/permissions/overview'>danger levels for "
@@ -549,11 +553,11 @@ msgstr ""
 "android.com/guide/topics/permissions/overview'>un niveau de dangerosité des "
 "permissions</a> que nous indiquons dans nos rapports."
 
-#: templates/permissions.html:32
+#: exodus/templates/permissions.html:32
 msgid "Do I have control over these permissions?"
 msgstr "Ai-je la main sur les permissions ?"
 
-#: templates/permissions.html:34
+#: exodus/templates/permissions.html:34
 msgid ""
 "Depending on your smartphone and operating system, it is possible to "
 "restrain some of these permissions by going into your phone's settings."
@@ -562,11 +566,11 @@ msgstr ""
 "possible de restreindre certaines permissions en allant dans les paramètres "
 "de son téléphone."
 
-#: templates/trackers.html:8 templates/understand.html:18
+#: exodus/templates/trackers.html:8 exodus/templates/understand.html:18
 msgid "Trackers "
 msgstr "Les pisteurs "
 
-#: templates/trackers.html:16
+#: exodus/templates/trackers.html:16
 msgid ""
 "This page is mostly a rework of <a target='_blank' rel='noreferrer' "
 "href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, "
@@ -576,16 +580,16 @@ msgstr ""
 "rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>cet "
 "article</a>, publié sous licence  CC-BY-NC."
 
-#: templates/trackers.html:20
+#: exodus/templates/trackers.html:20
 msgid "What is a tracker?"
 msgstr "Qu'est ce qu'un pisteur ?"
 
-#: templates/trackers.html:22 templates/trackers.html:31
-#: templates/trackers.html:60
+#: exodus/templates/trackers.html:22 exodus/templates/trackers.html:31
+#: exodus/templates/trackers.html:60
 msgid "See the video"
 msgstr "Voir la vidéo"
 
-#: templates/trackers.html:25
+#: exodus/templates/trackers.html:25
 msgid ""
 "A tracker is a piece of software whose task is to gather information on the "
 "person using the application, on how they use it, or on the smartphone being "
@@ -603,11 +607,11 @@ msgstr ""
 "pisteurs dits open source dont le code de ceux-ci est disponible et "
 "consultable par quiconque."
 
-#: templates/trackers.html:29
+#: exodus/templates/trackers.html:29
 msgid "Are all trackers created equal?"
 msgstr "Tous les pisteurs sont-ils égaux ?"
 
-#: templates/trackers.html:34
+#: exodus/templates/trackers.html:34
 msgid ""
 "No, all trackers do not have the same function and they can present "
 "different levels of (privacy) intrusion."
@@ -615,7 +619,7 @@ msgstr ""
 "Non, tous les pisteurs ne font pas le même métier et ne représentent pas le "
 "même degré d'intrusion."
 
-#: templates/trackers.html:38
+#: exodus/templates/trackers.html:38
 msgid ""
 "<b>Crash reporters:</b> these trackers specialize in reporting application "
 "crashes. In other terms, their goal is to notify application developers that "
@@ -629,7 +633,7 @@ msgstr ""
 "l'application permettront à cette personne de pouvoir corriger le "
 "dysfonctionnement."
 
-#: templates/trackers.html:41
+#: exodus/templates/trackers.html:41
 msgid ""
 "<b>Analytics:</b> these trackers are meant to collect data usage and allow "
 "the developer to have better knowledge of their audience (for instance, to "
@@ -641,7 +645,7 @@ msgstr ""
 "mieux connaître son audience (par exemple savoir sur quelle page vous êtes "
 "allés, combien de temps vous restez sur telle ou telle partie de la page)."
 
-#: templates/trackers.html:44
+#: exodus/templates/trackers.html:44
 msgid ""
 "<b>Profiling:</b> these trackers' goal is to gather as much information as "
 "possible on the application user in order to build a virtual profile. To "
@@ -654,7 +658,7 @@ msgstr ""
 "exemple, s'intéresser à l'historique de navigation ou encore à la liste des "
 "applications installées, etc."
 
-#: templates/trackers.html:47
+#: exodus/templates/trackers.html:47
 msgid ""
 "<b>Identification:</b> these trackers are responsible for determining your "
 "digital identity. This identity may refer to an official identity or to "
@@ -667,7 +671,7 @@ msgstr ""
 "L'objectif sera, par exemple, de pouvoir corréler les activités en ligne et "
 "hors ligne d'une personne."
 
-#: templates/trackers.html:50
+#: exodus/templates/trackers.html:50
 msgid ""
 "<b>Ads:</b> these trackers aim to identify the application user in order to "
 "serve them targeted ads. This is only possible and relevant if the user "
@@ -682,7 +686,7 @@ msgstr ""
 "de monétiser son application, c'est-à-dire de gagner de l'argent grâce à la "
 "publicité."
 
-#: templates/trackers.html:53
+#: exodus/templates/trackers.html:53
 msgid ""
 "<b>Location:</b> these trackers are designed to determine the geographical "
 "location of the mobile device. In order to do so, this type of tracker takes "
@@ -696,11 +700,11 @@ msgstr ""
 "environnantes, des réseaux wi-fi environnants, des balises Bluetooth "
 "environnantes ou encore de sons particuliers émis par des hauts-parleurs."
 
-#: templates/trackers.html:58
+#: exodus/templates/trackers.html:58
 msgid "Who puts these trackers in?"
 msgstr "Qui ajoute ces pisteurs ?"
 
-#: templates/trackers.html:63
+#: exodus/templates/trackers.html:63
 msgid ""
 "To answer these questions we must first understand how applications are "
 "made; there are 2 possible scenarios:"
@@ -708,7 +712,7 @@ msgstr ""
 "Pour répondre à cette question, il faut d'abord cerner comment sont "
 "fabriquées les applications, distinguons 2 cas."
 
-#: templates/trackers.html:66
+#: exodus/templates/trackers.html:66
 msgid ""
 "In the first case the organization that owns the product subcontracts the "
 "application development to a third party company. The contract specifies "
@@ -728,7 +732,7 @@ msgstr ""
 "embarqueront ces pisteurs sans même que cela soit explicité dans le contrat "
 "de prestation."
 
-#: templates/trackers.html:69
+#: exodus/templates/trackers.html:69
 msgid ""
 "In the second case the organization that owns the product develops the "
 "application in-house. In that case, their own employees are in charge of "
@@ -738,22 +742,22 @@ msgstr ""
 "même son application. Ainsi, ce sont des personnes employées par cette "
 "société qui sont en charge d'inclure ou non certains pisteurs."
 
-#: templates/understand.html:20
+#: exodus/templates/understand.html:20
 msgid "Know more about trackers and their impact on privacy"
 msgstr "En savoir plus sur les pisteurs et leur impact sur votre vie privée"
 
-#: templates/understand.html:22 templates/understand.html:32
-#: templates/understand.html:48
+#: exodus/templates/understand.html:22 exodus/templates/understand.html:32
+#: exodus/templates/understand.html:48
 msgid "Read the article"
 msgstr "Lire l'article"
 
-#: templates/understand.html:30
+#: exodus/templates/understand.html:30
 msgid "What is permission and what are the privacy issues?"
 msgstr ""
 "Qu'est-ce qu'une permission et quels problèmes posent-elles pour la vie "
 "privée ?"
 
-#: templates/understand.html:46
+#: exodus/templates/understand.html:46
 msgid ""
 "A list of tools and things you can do to better manage your privacy on your "
 "smartphone"

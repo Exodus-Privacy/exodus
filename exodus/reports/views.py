@@ -116,14 +116,14 @@ def get_app_icon(request, app_id=None, handle=None):
         raise Http404(_('App does not exist'))
 
     minioClient = Minio(
-        settings.MINIO_URL,
-        access_key=settings.MINIO_ACCESS_KEY,
-        secret_key=settings.MINIO_SECRET_KEY,
-        secure=settings.MINIO_SECURE
+        settings.MINIO_STORAGE_ENDPOINT,
+        access_key=settings.MINIO_STORAGE_ACCESS_KEY,
+        secret_key=settings.MINIO_STORAGE_SECRET_KEY,
+        secure=settings.MINIO_STORAGE_USE_HTTPS
     )
 
     try:
-        data = minioClient.get_object(settings.MINIO_BUCKET, app.icon_path)
+        data = minioClient.get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, app.icon_path)
         return HttpResponse(data.data, content_type='image/png')
     except Exception as err:
         print(err)

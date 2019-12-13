@@ -236,14 +236,16 @@ class UDPPayload(models.Model):
 
 @receiver(post_delete, sender=Report, dispatch_uid='report_delete_signal')
 def remove_report_files(sender, instance, using, **kwargs):
-    minio_client = Minio(settings.MINIO_URL,
-                         access_key=settings.MINIO_ACCESS_KEY,
-                         secret_key=settings.MINIO_SECRET_KEY,
-                         secure=settings.MINIO_SECURE)
+    minio_client = Minio(settings.MINIO_STORAGE_ENDPOINT,
+                         access_key=settings.MINIO_STORAGE_ACCESS_KEY,
+                         secret_key=settings.MINIO_STORAGE_SECRET_KEY,
+                         secure=settings.MINIO_STORAGE_USE_HTTPS)
     try:
-        objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=instance.bucket, recursive=True)
+        objects = minio_client.list_objects(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME,
+                                            prefix=instance.bucket,
+                                            recursive=True)
         for obj in objects:
-            minio_client.remove_object(settings.MINIO_BUCKET, obj.object_name)
+            minio_client.remove_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, obj.object_name)
     except ResponseError as err:
         print(err)
     except NoSuchBucket as err:

@@ -50,14 +50,15 @@ def detail(request, tracker_id):
     except EmptyPage:
         reports = paginator.page(paginator.num_pages)
 
+    tracker_class = "info"
     count = len(reports_list)
-    score = int(100. * count / reports_number)
-    if score >= 50:
-        tracker_class = "danger"
-    elif score >= 33:
-        tracker_class = "warning"
-    else:
-        tracker_class = "info"
+    score = 0
+    if reports_number > 0:
+        score = int(100. * count / reports_number)
+        if score >= 50:
+            tracker_class = "danger"
+        elif score >= 33:
+            tracker_class = "warning"
 
     data_to_render = {
         'tracker': tracker,
