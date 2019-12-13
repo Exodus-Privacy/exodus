@@ -4,6 +4,7 @@ from celery import shared_task
 from django.conf import settings
 from eventlog.events import EventGroup
 
+from reports.tasks import recompute_all_reports
 from trackers.models import Tracker
 
 
@@ -51,6 +52,9 @@ def auto_update_trackers():
             logger.info('Tracker {} has been added.'.format(tracker['name']))
         else:
             logger.info('Tracker {} has been updated.'.format(tracker['name']))
+
+    if updated_code_signatures > 0:
+        recompute_all_reports.delay()
 
     ev.info('{} code signatures updated.'.format(updated_code_signatures), initiator=__name__)
 
