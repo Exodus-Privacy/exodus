@@ -190,50 +190,6 @@ class Permission(models.Model):
         return icon
 
 
-class NetworkAnalysis(models.Model):
-    report = models.ForeignKey(Report, on_delete=models.CASCADE)
-
-
-class DNSQuery(models.Model):
-    network_analysis = models.ForeignKey(NetworkAnalysis, on_delete=models.CASCADE)
-    hostname = models.CharField(max_length=200)
-    ip = models.CharField(max_length=200)
-    is_tracker = models.BooleanField(default=False)
-
-
-class HTTPAnalysis(models.Model):
-    network_analysis = models.ForeignKey(NetworkAnalysis, on_delete=models.CASCADE)
-
-
-class HTTPPayload(models.Model):
-    http_analysis = models.ForeignKey(HTTPAnalysis, on_delete=models.CASCADE)
-    destination_uri = models.CharField(max_length=2000)
-    payload = models.CharField(max_length=20000)
-    layer = models.CharField(max_length=50)
-
-
-class HTTPSAnalysis(models.Model):
-    network_analysis = models.ForeignKey(NetworkAnalysis, on_delete=models.CASCADE)
-
-
-class HTTPSPayload(models.Model):
-    https_analysis = models.ForeignKey(HTTPSAnalysis, on_delete=models.CASCADE)
-    destination_uri = models.CharField(max_length=2000)
-    payload = models.CharField(max_length=20000)
-    layer = models.CharField(max_length=50)
-
-
-class UDPAnalysis(models.Model):
-    network_analysis = models.ForeignKey(NetworkAnalysis, on_delete=models.CASCADE)
-
-
-class UDPPayload(models.Model):
-    udp_analysis = models.ForeignKey(UDPAnalysis, on_delete=models.CASCADE)
-    destination_uri = models.CharField(max_length=200)
-    payload = models.CharField(max_length=20000)
-    layer = models.CharField(max_length=50)
-
-
 @receiver(post_delete, sender=Report, dispatch_uid='report_delete_signal')
 def remove_report_files(sender, instance, using, **kwargs):
     minio_client = Minio(settings.MINIO_STORAGE_ENDPOINT,
