@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 import os
-import sys
 
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -14,10 +13,6 @@ from django.utils.translation import gettext_lazy as _
 from minio import Minio
 
 from reports.models import Report, Application
-
-# Workaround to avoid issue with DB migrations
-if 'makemigrations' not in sys.argv and 'migrate' not in sys.argv:
-    from .forms import TrackerForm
 
 
 def _paginate(request, data, per_page=settings.EX_PAGINATOR_COUNT):
@@ -122,23 +117,3 @@ def get_app_icon(request, app_id=None, handle=None):
         print(err)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'android.jpeg'), 'rb') as f:
             return HttpResponse(f.read(), content_type='image/jpeg')
-
-
-def by_tracker(request):
-    if request.method == 'POST':
-        form = TrackerForm(request.POST)
-        if form.is_valid():
-            trackers_id = form.cleaned_data.get('trackers')
-            try:
-                reports_list = Report.objects.order_by('-creation_date')
-                for id in trackers_id:
-                    reports_list = reports_list.filter(found_trackers=id)
-            except Report.DoesNotExist:
-                raise Http404("No reports found")
-
-            return render(request, 'reports_by_tracker.html', {'reports': reports_list})
-
-    else:
-        form = TrackerForm()
-
-    return render(request, 'search_trackers.html', {'form': form})
