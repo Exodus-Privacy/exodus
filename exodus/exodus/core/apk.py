@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 from analysis_query.models import AnalysisRequest
 from exodus.core.storage import RemoteStorageHelper
-from reports.models import Certificate, Report, Application, Apk, Permission, NetworkAnalysis
+from reports.models import Certificate, Report, Application, Apk, Permission
 from .celery import app
 from .static_analysis import download_apk, clear_analysis_files, StaticAnalysis
 
@@ -167,9 +167,6 @@ def start_static_analysis(analysis):
         class_list_file=analysis.class_list_file
     )
     report.save()
-
-    net_analysis = NetworkAnalysis(report=report)
-    net_analysis.save()
 
     app = Application(
         report=report,

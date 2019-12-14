@@ -13,7 +13,6 @@ from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from minio import Minio
 
-from exodus.core.dns import refresh_dns
 from reports.models import Report, Application
 
 # Workaround to avoid issue with DB migrations
@@ -95,12 +94,6 @@ def detail(request, report_id=None, handle=None):
             'perm_class': perm_class
         }
     )
-
-
-def refreshdns(request):
-    if request.method == 'GET':
-        refresh_dns.delay()
-        return HttpResponse(status=200)
 
 
 def get_app_icon(request, app_id=None, handle=None):
