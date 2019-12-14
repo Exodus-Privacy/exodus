@@ -88,14 +88,15 @@ def create_reports_list(report_list):
 def create_tracker_list():
     trackers = {}
     for t in Tracker.objects.order_by('id'):
-        tracker = {}
-        tracker['id'] = t.id
-        tracker['name'] = t.name
-        tracker['description'] = t.description
-        tracker['creation_date'] = t.creation_date
-        tracker['code_signature'] = t.code_signature
-        tracker['network_signature'] = t.network_signature
-        tracker['website'] = t.website
+        tracker = {
+            'id': t.id,
+            'name': t.name,
+            'description': t.description,
+            'creation_date': t.creation_date,
+            'code_signature': t.code_signature,
+            'network_signature': t.network_signature,
+            'website': t.website
+        }
         trackers[t.id] = tracker
     return trackers
 

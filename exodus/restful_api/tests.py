@@ -9,6 +9,12 @@ from reports.models import Application, Report, Permission, Apk
 from trackers.models import Tracker
 
 
+DUMMY_HANDLE = 'com.example'
+API_HANDLE_DETAILS_PATH = '/api/search/{}/details'.format(DUMMY_HANDLE)
+API_TRACKERS_PATH = '/api/trackers'
+API_APPLICATIONS_PATH = '/api/applications'
+
+
 class RestfulApiGetAllApplicationsTests(APITestCase):
 
     def force_authentication(self):
@@ -17,7 +23,7 @@ class RestfulApiGetAllApplicationsTests(APITestCase):
 
     def test_returns_empty_json_when_no_applications(self):
         self.force_authentication()
-        response = self.client.get('/api/applications')
+        response = self.client.get(API_APPLICATIONS_PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['applications'], [])
@@ -31,7 +37,7 @@ class RestfulApiGetAllApplicationsTests(APITestCase):
             report=report
         )
 
-        response = self.client.get('/api/applications')
+        response = self.client.get(API_APPLICATIONS_PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, application.name, 1)
@@ -49,16 +55,13 @@ class RestfulApiGetAllApplicationsTests(APITestCase):
 
 class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
 
-    HANDLE = 'com.example'
-    HANDLE_DETAILS_PATH = '/api/search/{}/details'.format(HANDLE)
-
     def force_authentication(self):
         user = User.objects.create_user('username', 'Pas$w0rd')
         self.client.force_authenticate(user)
 
     def test_returns_empty_json_when_no_app(self):
         self.force_authentication()
-        response = self.client.get(self.HANDLE_DETAILS_PATH)
+        response = self.client.get(API_HANDLE_DETAILS_PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), [])
@@ -69,7 +72,7 @@ class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
         report.found_trackers = [tracker.id]
         app = Application.objects.create(
             name='app_name',
-            handle=self.HANDLE,
+            handle=DUMMY_HANDLE,
             report=report
         )
         Apk.objects.create(
@@ -89,14 +92,14 @@ class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
         expected_data = {
             'apk_hash': 'app_checksum',
             'app_name': 'app_name',
-            'handle': self.HANDLE,
+            'handle': DUMMY_HANDLE,
             'report': report.id,
             'trackers': [tracker.id],
             'permissions': ["ALLYOURBASE", "AREBELONGTOUS"],
         }
 
         self.force_authentication()
-        response = self.client.get(self.HANDLE_DETAILS_PATH)
+        response = self.client.get(API_HANDLE_DETAILS_PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json()), 1)
@@ -104,3 +107,38 @@ class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
         returned_report = response.json()[0]
         for key, value in expected_data.items():
             self.assertEqual(returned_report[key], value)
+
+
+class RestfulApiGetAllTrackersTests(APITestCase):
+
+    def test_returns_empty_json_when_no_trackers(self):
+        response = self.client.get(API_TRACKERS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['trackers'], {})
+
+    def test_returns_one_tracker(self):
+        tracker = Tracker.objects.create(
+            name='Teemo',
+            description='bad tracker',
+            code_signature='com.teemo',
+            network_signature='teemo.com',
+            website='https://www.teemo.com'
+        )
+
+        expected_json = {
+            str(tracker.id): {
+                'id': tracker.id,
+                'name': tracker.name,
+                'description': tracker.description,
+                'creation_date': tracker.creation_date.strftime("%Y-%m-%d"),
+                'code_signature': tracker.code_signature,
+                'network_signature': tracker.network_signature,
+                'website': tracker.website
+            }
+        }
+
+        response = self.client.get(API_TRACKERS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['trackers'], expected_json)
