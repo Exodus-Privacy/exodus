@@ -14,7 +14,6 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from reports.models import Application, Report
 from trackers.models import Tracker
-from restful_api.models import ReportInfos
 from restful_api.serializers import ApplicationSerializer, TrackerSerializer,\
     ReportInfosSerializer, ReportSerializer, SearchQuerySerializer
 
@@ -25,16 +24,21 @@ from restful_api.serializers import ApplicationSerializer, TrackerSerializer,\
 @permission_classes((IsAuthenticated,))
 def get_report_infos(request, r_id):
     if request.method == 'GET':
-        report = Report.objects.get(pk=r_id)
-        infos = ReportInfos()
-        infos.creation_date = report.creation_date
-        infos.report_id = report.id
-        infos.handle = report.application.handle
+        try:
+            report = Report.objects.get(pk=r_id)
+        except Report.DoesNotExist:
+            raise Http404('No report found')
+
+        obj = {
+            'creation_date': report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+            'report_id': report.id,
+            'handle': report.application.handle,
+            'apk_dl_link': '',
+        }
         if request.user.is_staff:
-            infos.apk_dl_link = '/api/apk/%s/' % report.id
-        infos.pcap_upload_link = '/api/pcap/%s/' % report.id
-        infos.flow_upload_link = '/api/flow/%s/' % report.id
-        serializer = ReportInfosSerializer(infos, many=False)
+            obj.apk_dl_link = '/api/apk/{}/'.format(report.id)
+
+        serializer = ReportInfosSerializer(obj, many=False)
         return JsonResponse(serializer.data, safe=True)
 
 
@@ -44,7 +48,11 @@ def get_report_infos(request, r_id):
 @permission_classes((IsAuthenticated, IsAdminUser))
 def get_apk(request, r_id):
     if request.method == 'GET':
-        report = Report.objects.get(pk=r_id)
+        try:
+            report = Report.objects.get(pk=r_id)
+        except Report.DoesNotExist:
+            raise Http404('No report found')
+
         apk_path = report.apk_file
 
         minioClient = Minio(
@@ -62,18 +70,18 @@ def get_apk(request, r_id):
             return HttpResponse(status=500)
 
 
-def create_reports_list(report_list):
-    applications = {}
+def _get_reports_list(report_list):
+    reports = {}
     for report in report_list:
-        if report.application.handle not in applications:
-            applications[report.application.handle] = {}
-        application = applications[report.application.handle]
-        application['name'] = report.application.name
-        application['creator'] = report.application.creator
-        if 'reports' not in application:
-            application['reports'] = []
+        if report.application.handle not in reports:
+            reports[report.application.handle] = {}
+        app = reports[report.application.handle]
+        app['name'] = report.application.name
+        app['creator'] = report.application.creator
+        if 'reports' not in app:
+            app['reports'] = []
 
-        application['reports'].append({
+        app['reports'].append({
             'id': report.id,
             'creation_date': report.creation_date,
             'updated_at': report.updated_at,
@@ -82,10 +90,10 @@ def create_reports_list(report_list):
             'downloads': report.application.downloads,
             'trackers': [t.id for t in report.found_trackers.all()],
         })
-    return applications
+    return reports
 
 
-def create_tracker_list():
+def _get_tracker_list():
     trackers = {}
     for t in Tracker.objects.order_by('id'):
         tracker = {
@@ -108,8 +116,8 @@ def create_tracker_list():
 def get_all_reports(request):
     if request.method == 'GET':
         report_list = Report.objects.order_by('-creation_date')[:500]
-        applications = create_reports_list(report_list)
-        trackers = create_tracker_list()
+        applications = _get_reports_list(report_list)
+        trackers = _get_tracker_list()
         return JsonResponse(
             {
                 'applications': applications,
@@ -124,7 +132,7 @@ def get_all_reports(request):
 @permission_classes(())
 def get_all_trackers(request):
     if request.method == 'GET':
-        trackers = create_tracker_list()
+        trackers = _get_tracker_list()
         return JsonResponse({'trackers': trackers})
 
 
@@ -152,7 +160,7 @@ def search_strict_handle(request, handle):
             reports = Report.objects.filter(application__handle=handle).order_by('-creation_date')
         except Report.DoesNotExist:
             return JsonResponse({}, safe=True)
-        return JsonResponse(create_reports_list(reports))
+        return JsonResponse(_get_reports_list(reports))
 
 
 @csrf_exempt

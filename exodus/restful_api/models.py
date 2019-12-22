@@ -14,15 +14,6 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
         Token.objects.create(user=instance)
 
 
-class ReportInfos(models.Model):
-    creation_date = models.DateTimeField()
-    report_id = models.IntegerField()
-    handle = models.CharField(max_length=500)
-    apk_dl_link = models.CharField(max_length=500)
-    pcap_upload_link = models.CharField(max_length=500)
-    flow_upload_link = models.CharField(max_length=500)
-
-
 class SearchQuery(models.Model):
     type = models.CharField(max_length=50)
     query = models.CharField(max_length=500)
