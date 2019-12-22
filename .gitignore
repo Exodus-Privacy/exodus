@@ -4,3 +4,5 @@
 venv/
 data/
 .idea
+exodus/django
+exodus/celerybeat-schedule
