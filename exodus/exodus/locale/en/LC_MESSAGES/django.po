@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-11 14:05+0000\n"
+"POT-Creation-Date: 2019-12-22 19:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Tracker analysis: success"
 msgstr ""
 
-#: exodus/core/apk.py:218
+#: exodus/core/apk.py:215
 msgid "Static analysis complete"
 msgstr ""
 
@@ -102,10 +102,14 @@ msgid "Admin"
 msgstr ""
 
 #: exodus/templates/base.html:60
-msgid "Analyzes"
+msgid "Index"
 msgstr ""
 
 #: exodus/templates/base.html:61
+msgid "Analyzes"
+msgstr ""
+
+#: exodus/templates/base.html:62
 msgid "Log out"
 msgstr ""
 
