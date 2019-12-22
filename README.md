@@ -18,7 +18,7 @@ You have 3 different ways of setting up your development environment:
 
 - [Manual](doc/install/manual.md)
 - [Docker](doc/install/docker.md)
-- [Vagrant](doc/install/vagrant.md)
+- [Vagrant](doc/install/vagrant.md) (Deprecated)
 
 ### Analyzing an application
 
