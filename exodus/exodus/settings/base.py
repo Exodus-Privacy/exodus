@@ -120,7 +120,7 @@ TRACKERS_AUTO_UPDATE = False
 TRACKERS_AUTO_UPDATE_TIME = 4 * 24 * 60 * 60.0  # time in seconds
 TRACKERS_AUTO_UPDATE_FROM = 'https://reports.exodus-privacy.eu.org/api/trackers'
 
-ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME = 60 * 60.0  # time in seconds
+ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME = 24 * 60 * 60.0  # time in seconds
 ANALYSIS_REQUESTS_KEEP_DURATION = 4  # time in days
 
 # Minio file storage configuration
