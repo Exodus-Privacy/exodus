@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-15 11:21+0200\n"
+"POT-Creation-Date: 2019-12-22 19:36+0000\n"
 "PO-Revision-Date: 2019-05-12 16:17+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: none\n"
@@ -19,326 +19,358 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 3.6.1\n"
 
-#: reports/templates/report_details.html:9
-msgid "Provide this URI to Electra for report completion:"
-msgstr ""
-
-#: reports/templates/report_details.html:14
+#: reports/templates/report_details.html:10
 msgid "Prefix in storage:"
 msgstr ""
 
 #: reports/templates/report_details.html:31
-#: reports/templates/reports_list.html:35
+#: reports/templates/report_details.html:82
+#: reports/templates/reports_list.html:61
 msgid "tracker"
 msgstr "المتعقب"
 
-#: reports/templates/report_details.html:41
-#: reports/templates/reports_list.html:40
+#: reports/templates/report_details.html:39
+#: reports/templates/report_details.html:114
+#: reports/templates/reports_list.html:71
 msgid "permission"
 msgstr "التصريحات"
 
-#: reports/templates/report_details.html:64
-msgid "Other versions"
-msgstr "الإصدارت الأخرى"
-
-#: reports/templates/report_details.html:65
-msgid "On Google Play"
-msgstr "على متجر غوغل للتطبيقات"
-
-#: reports/templates/report_details.html:67
-#: reports/templates/report_details.html:78
-#: reports/templates/report_details.html:105
-msgid "APK fingerprint"
-msgstr "بصمة ملف APK"
-
-#: reports/templates/report_details.html:69
-msgid "Text"
-msgstr "نص"
-
-#: reports/templates/report_details.html:85
-msgid "APK checksum"
-msgstr ""
-
-#: reports/templates/report_details.html:86
-msgid "Handle"
-msgstr "المعرّف"
-
-#: reports/templates/report_details.html:87
-msgid "Name"
-msgstr "الاسم"
-
-#: reports/templates/report_details.html:88
-msgid "UAID"
-msgstr ""
-
-#: reports/templates/report_details.html:89
+#: reports/templates/report_details.html:48
 msgid "Version"
 msgstr "الإصدار"
 
-#: reports/templates/report_details.html:90
-msgid "Version code"
-msgstr "رمز النسخة"
+#: reports/templates/report_details.html:49
+#, fuzzy
+#| msgid "Other versions"
+msgid "see other versions"
+msgstr "الإصدارت الأخرى"
 
-#: reports/templates/report_details.html:91
-msgid "Icon hash"
+#: reports/templates/report_details.html:53
+msgid "Created by"
 msgstr ""
 
-#: reports/templates/report_details.html:95
-#: reports/templates/report_details.html:114
-msgid "Close"
-msgstr "إغلاق"
-
-#: reports/templates/report_details.html:121
-msgid "This report was automatically issued on"
-msgstr "صدر هذا التقرير تلقائيا في"
-
-#: reports/templates/report_details.html:122
-msgid "This report was automatically updated on"
-msgstr "تم استحداث  هذا التقرير آليا في"
-
-#: reports/templates/report_details.html:129
-msgid "Signed by:"
-msgstr "مُوقَّع مِن طرف:"
-
-#: reports/templates/report_details.html:135
-msgid "Fingerprint:"
-msgstr "البصمة:"
-
-#: reports/templates/report_details.html:136
-msgid "Issuer"
-msgstr "المصدر"
-
-#: reports/templates/report_details.html:137
-msgid "Subject"
-msgstr "العنوان"
-
-#: reports/templates/report_details.html:138
-msgid "Serial"
-msgstr "الرقم التسلسلي"
-
-#: reports/templates/report_details.html:142
-msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
-msgstr ""
-
-#: reports/templates/report_details.html:152
-msgid "Tracker"
-msgstr "المتعقِّب"
-
-#: reports/templates/report_details.html:157
-#: reports/templates/report_details.html:159
-msgid "We have found"
-msgstr "لقد عثرنا على"
-
-#: reports/templates/report_details.html:157
-msgid "of this tracker in the application:"
-msgstr "لهذا المتعقّب على التطبيق:"
-
-#: reports/templates/report_details.html:159
-msgid "of these trackers in the application:"
-msgstr "لهؤلاء المتعقبون على التطبيق:"
-
-#: reports/templates/report_details.html:169
-msgid ""
-"A tracker is a piece of software meant to collect data about you or your "
-"usages. We do not guarantee the exhaustiveness of this list."
-msgstr ""
-
-#: reports/templates/report_details.html:172
-msgid ""
-"Here is the list of trackers signatures found by static analysis in this "
-"APK. This is not a proof of activity of these trackers."
-msgstr ""
-
-#: reports/templates/report_details.html:173
-msgid "The application could contain tracker(s) we do not know yet."
-msgstr "يمكن أن يحتوي التطبيق على متعقب (متتبع) نحن نجهله الآن."
-
-#: reports/templates/report_details.html:175
-msgid "If you have doubts about this report, contact us"
-msgstr "إذا كان لديك شكوك حول هذا التقرير ، اتصل بنا"
-
-#: reports/templates/report_details.html:176
-msgid "Exodus - Question about report"
-msgstr "Exodus - سؤال عن التقرير"
-
-#: reports/templates/report_details.html:179
-msgid ""
-"We have not found <b>code signature</b> of any tracker we know in the "
-"application. The application could contain tracker(s) we do not know yet."
-msgstr ""
-
-#: reports/templates/report_details.html:187
-msgid "Permission"
-msgstr "التصريح"
-
-#: reports/templates/report_details.html:192
-msgid "We have found this permission in the application:"
-msgstr "لقد عثرنا على هذا التصريح في التطبيق:"
-
-#: reports/templates/report_details.html:194
-msgid "We have found these permissions in the application:"
-msgstr "لقد عثرنا على هذه التصاريح في التطبيق:"
-
-#: reports/templates/report_details.html:203
-msgid "Dangerous"
-msgstr "خطير"
-
-#: reports/templates/report_details.html:205
-msgid "Normal"
-msgstr "عادي"
-
-#: reports/templates/report_details.html:210
-msgid "Permissions are actions the application can do on your phone"
-msgstr "نعني بالتصريحات الإجراءات التي يمكن أن يقوم بها التطبيق على هاتفك"
-
-#: reports/templates/report_details.html:212
-msgid "This application doesn't require any permissions."
-msgstr "هذا التطبيق لا يتطلب أية صلاحيات."
-
-#: reports/templates/report_details.html:224
-msgid ""
-"\n"
-"                                    DNS query\n"
-"                                    "
-msgid_plural ""
-"\n"
-"                                    DNS queries\n"
-"                                    "
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
-
-#: reports/templates/report_details.html:233
-msgid ""
-"During the execution, the application has requested this domain resolution:"
-msgstr ""
-
-#: reports/templates/report_details.html:235
-msgid ""
-"During the execution, the application has requested these domain resolutions:"
-msgstr ""
-
-#: reports/templates/report_details.html:246
-msgid "Potential tracker"
-msgstr "متعقِّب محتمَل"
-
-#: reports/templates/report_details.html:254
-msgid ""
-"A DNS resolution can confirm that a tracker was looking for the IP address "
-"of its associated server."
-msgstr ""
-
-#: reports/templates/report_details.html:273
-msgid "Details"
-msgstr "التفاصيل"
-
-#: reports/templates/report_details.html:274
-msgid "Sent data to"
-msgstr ""
-
-#: reports/templates/reports_list.html:11
-msgid ""
-"\n"
-"                Available report\n"
-"                "
-msgid_plural ""
-"\n"
-"                Available reports\n"
-"                "
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
-
-#: reports/templates/stats_details.html:5
-msgid "Statistics"
-msgstr "الإحصائيات"
-
-#: reports/templates/stats_details.html:11
-msgid "Most frequent trackers"
-msgstr "أكثر المتعقبين شيوعًا"
-
-#: reports/views.py:23
-msgid "reports do not exist"
-msgstr "التقارير غير موجودة"
-
-#: reports/views.py:30
-msgid "No apps found"
-msgstr "لا توجد هناك تطبيقات"
-
-#: reports/views.py:38
-msgid "No reports found"
-msgstr "ليس هناك تقارير"
-
-#: reports/views.py:46
-msgid "report does not exist"
-msgstr "التقرير غير موجود"
-
-#: reports/views.py:64
-msgid "App does not exist"
-msgstr "التطبيق غير موجود"
-
-#: reports/views.py:81
-msgid "NetworkAnalysis do not exist"
-msgstr "التحليل الشبكي غير متوفر"
-
-#: reports/templates/report_details.html:55
-msgid "Version:"
-msgstr "الإصدار:"
-
-#: reports/templates/report_details.html:58
-msgid "Creator:"
-msgstr "المطوّر:"
-
-#: reports/templates/report_details.html:61
+#: reports/templates/report_details.html:57
 msgid "Downloads:"
 msgstr "التنزيلات:"
 
-#: reports/templates/report_details.html:85
-msgid "APK checksum:"
-msgstr "المجموع الاختباري للمراقبة:"
+#: reports/templates/report_details.html:61
+msgid "Report created on"
+msgstr ""
 
-#: reports/templates/report_details.html:86
-msgid "Handle:"
-msgstr "المُعرِّف:"
+#: reports/templates/report_details.html:63
+msgid "and updated on"
+msgstr ""
 
-#: reports/templates/report_details.html:87
-msgid "Name:"
-msgstr "الاسم:"
+#: reports/templates/report_details.html:69
+msgid "Delete this report"
+msgstr ""
 
-#: reports/templates/report_details.html:90
-msgid "Version code:"
-msgstr "رمز الإصدار:"
+#: reports/templates/report_details.html:73
+#, fuzzy
+#| msgid "On Google Play"
+msgid "See on Google Play"
+msgstr "على متجر غوغل للتطبيقات"
 
-#: reports/templates/report_details.html:91
-msgid "Icon hash:"
-msgstr "بصمة الأيقونة:"
+#: reports/templates/report_details.html:88
+msgid ""
+"\n"
+"          We have found <b>code signature</b> of the following tracker in "
+"the application:\n"
+"          "
+msgid_plural ""
+"\n"
+"          We have found <b>code signature</b> of the following trackers in "
+"the application:\n"
+"          "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: reports/templates/report_details.html:136
-msgid "Issuer:"
-msgstr "صادر مِن:"
+#: reports/templates/report_details.html:99
+#, fuzzy
+#| msgid "We have found these permissions in the application:"
+msgid ""
+"We have not found <b>code signature</b> of any tracker we know in the "
+"application."
+msgstr "لقد عثرنا على هذه التصاريح في التطبيق:"
 
-#: reports/templates/report_details.html:137
-msgid "Subject:"
-msgstr "العنوان:"
+#: reports/templates/report_details.html:101
+#: reports/templates/report_details.html:174
+msgid "The application could contain tracker(s) we do not know yet."
+msgstr "يمكن أن يحتوي التطبيق على متعقب (متتبع) نحن نجهله الآن."
 
-#: reports/templates/report_details.html:138
-msgid "Serial:"
-msgstr "الرقم التسلسلي:"
+#: reports/templates/report_details.html:104
+msgid ""
+"A tracker is a piece of software meant to collect data about you or your "
+"usages."
+msgstr ""
 
-#: reports/templates/report_details.html:175
+#: reports/templates/report_details.html:105
+#: reports/templates/report_details.html:151
+msgid "Learn more"
+msgstr ""
+
+#: reports/templates/report_details.html:120
+#, fuzzy
+#| msgid "We have found this permission in the application:"
+msgid ""
+"\n"
+"          We have found the following permission in the application:\n"
+"          "
+msgid_plural ""
+"\n"
+"          We have found the following permissions in the application:\n"
+"          "
+msgstr[0] "لقد عثرنا على هذا التصريح في التطبيق:"
+msgstr[1] "لقد عثرنا على هذا التصريح في التطبيق:"
+msgstr[2] "لقد عثرنا على هذا التصريح في التطبيق:"
+msgstr[3] "لقد عثرنا على هذا التصريح في التطبيق:"
+msgstr[4] "لقد عثرنا على هذا التصريح في التطبيق:"
+msgstr[5] "لقد عثرنا على هذا التصريح في التطبيق:"
+
+#: reports/templates/report_details.html:144
+msgid "The icon"
+msgstr ""
+
+#: reports/templates/report_details.html:144
+msgid "indicates a 'Dangerous' or 'Special' level according to"
+msgstr ""
+
+#: reports/templates/report_details.html:144
+msgid "Google's protection levels"
+msgstr ""
+
+#: reports/templates/report_details.html:148
+msgid "This application doesn't require any permissions."
+msgstr "هذا التطبيق لا يتطلب أية صلاحيات."
+
+#: reports/templates/report_details.html:150
+#, fuzzy
+#| msgid "Permissions are actions the application can do on your phone"
+msgid "Permissions are actions the application can do on your phone."
+msgstr "نعني بالتصريحات الإجراءات التي يمكن أن يقوم بها التطبيق على هاتفك"
+
+#: reports/templates/report_details.html:157
+msgid "What's next?"
+msgstr ""
+
+#: reports/templates/report_details.html:158
+msgid ""
+"If this application does not sufficiently respect your privacy in your "
+"opinion, some alternatives exist!"
+msgstr ""
+
+#: reports/templates/report_details.html:164
+msgid "Read the article"
+msgstr ""
+
+#: reports/templates/report_details.html:169
+msgid "Exodus - Question about report"
+msgstr "Exodus - سؤال عن التقرير"
+
+#: reports/templates/report_details.html:171
+msgid ""
+"This report lists trackers signatures found by static analysis in this APK. "
+"This is not a proof of activity of these trackers."
+msgstr ""
+
+#: reports/templates/report_details.html:176
 msgid "If you have doubts about this report, contact us at"
 msgstr "إذا كان لديك تحفّظات حول هذا التقرير ، يرجى الاتصال بنا على"
 
-#: reports/templates/reports_list.html:11
-msgid "Report"
+#: reports/templates/report_details.html:183
+#, fuzzy
+#| msgid "Signed by:"
+msgid "Signed by"
+msgstr "مُوقَّع مِن طرف:"
+
+#: reports/templates/report_details.html:187
+msgid "Fingerprint:"
+msgstr "البصمة:"
+
+#: reports/templates/report_details.html:188
+msgid "Issuer:"
+msgstr "صادر مِن:"
+
+#: reports/templates/report_details.html:189
+msgid "Subject:"
+msgstr "العنوان:"
+
+#: reports/templates/report_details.html:190
+msgid "Serial:"
+msgstr "الرقم التسلسلي:"
+
+#: reports/templates/report_details.html:194
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr ""
+
+#: reports/templates/report_details.html:200
+#, fuzzy
+#| msgid "APK fingerprint"
+msgid "See APK fingerprint"
+msgstr "بصمة ملف APK"
+
+#: reports/templates/report_details.html:203
+msgid "Text"
+msgstr "نص"
+
+#: reports/templates/report_details.html:211
+#: reports/templates/report_details.html:235
+msgid "APK fingerprint"
+msgstr "بصمة ملف APK"
+
+#: reports/templates/report_details.html:216
+msgid "APK checksum:"
+msgstr "المجموع الاختباري للمراقبة:"
+
+#: reports/templates/report_details.html:217
+msgid "Handle:"
+msgstr "المُعرِّف:"
+
+#: reports/templates/report_details.html:218
+msgid "Name:"
+msgstr "الاسم:"
+
+#: reports/templates/report_details.html:219
+msgid "UAID:"
+msgstr ""
+
+#: reports/templates/report_details.html:220
+msgid "Version:"
+msgstr "الإصدار:"
+
+#: reports/templates/report_details.html:221
+msgid "Version code:"
+msgstr "رمز الإصدار:"
+
+#: reports/templates/report_details.html:222
+msgid "Icon hash:"
+msgstr "بصمة الأيقونة:"
+
+#: reports/templates/report_details.html:226
+#: reports/templates/report_details.html:242
+msgid "Close"
+msgstr "إغلاق"
+
+#: reports/templates/reports_list.html:10
+#, fuzzy
+#| msgid "Report"
+msgid "Reports"
 msgstr "التقرير"
 
-#: reports/templates/stats_details.html:21
-msgid "found in"
-msgstr "وُجِد في"
+#: reports/templates/reports_list.html:16
+#, fuzzy
+#| msgid "Report"
+msgid "report"
+msgstr "التقرير"
+
+#: reports/templates/reports_list.html:17
+msgid "for"
+msgstr ""
+
+#: reports/templates/reports_list.html:18
+msgid "application"
+msgstr ""
+
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr ""
+
+#: reports/templates/reports_list.html:26
+#, fuzzy
+#| msgid "Most frequent trackers"
+msgid "Most trackers"
+msgstr "أكثر المتعقبين شيوعًا"
+
+#: reports/templates/reports_list.html:28
+#, fuzzy
+#| msgid "Most frequent trackers"
+msgid "No known trackers"
+msgstr "أكثر المتعقبين شيوعًا"
+
+#: reports/views.py:44
+msgid "reports do not exist"
+msgstr "التقارير غير موجودة"
+
+#: reports/views.py:80
+msgid "report does not exist"
+msgstr "التقرير غير موجود"
+
+#: reports/views.py:104
+msgid "App does not exist"
+msgstr "التطبيق غير موجود"
+
+#~ msgid "Handle"
+#~ msgstr "المعرّف"
+
+#~ msgid "Name"
+#~ msgstr "الاسم"
+
+#~ msgid "Version code"
+#~ msgstr "رمز النسخة"
+
+#~ msgid "This report was automatically issued on"
+#~ msgstr "صدر هذا التقرير تلقائيا في"
+
+#~ msgid "This report was automatically updated on"
+#~ msgstr "تم استحداث  هذا التقرير آليا في"
+
+#~ msgid "Issuer"
+#~ msgstr "المصدر"
+
+#~ msgid "Subject"
+#~ msgstr "العنوان"
+
+#~ msgid "Serial"
+#~ msgstr "الرقم التسلسلي"
+
+#~ msgid "Tracker"
+#~ msgstr "المتعقِّب"
+
+#~ msgid "We have found"
+#~ msgstr "لقد عثرنا على"
+
+#~ msgid "of this tracker in the application:"
+#~ msgstr "لهذا المتعقّب على التطبيق:"
+
+#~ msgid "of these trackers in the application:"
+#~ msgstr "لهؤلاء المتعقبون على التطبيق:"
+
+#~ msgid "If you have doubts about this report, contact us"
+#~ msgstr "إذا كان لديك شكوك حول هذا التقرير ، اتصل بنا"
+
+#~ msgid "Permission"
+#~ msgstr "التصريح"
+
+#~ msgid "Dangerous"
+#~ msgstr "خطير"
+
+#~ msgid "Normal"
+#~ msgstr "عادي"
+
+#~ msgid "Potential tracker"
+#~ msgstr "متعقِّب محتمَل"
+
+#~ msgid "Details"
+#~ msgstr "التفاصيل"
+
+#~ msgid "Statistics"
+#~ msgstr "الإحصائيات"
+
+#~ msgid "No apps found"
+#~ msgstr "لا توجد هناك تطبيقات"
+
+#~ msgid "No reports found"
+#~ msgstr "ليس هناك تقارير"
+
+#~ msgid "NetworkAnalysis do not exist"
+#~ msgstr "التحليل الشبكي غير متوفر"
+
+#~ msgid "Creator:"
+#~ msgstr "المطوّر:"
+
+#~ msgid "found in"
+#~ msgstr "وُجِد في"

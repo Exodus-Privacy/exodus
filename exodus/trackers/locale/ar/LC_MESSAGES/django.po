@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-15 11:21+0200\n"
+"POT-Creation-Date: 2019-12-22 19:36+0000\n"
 "PO-Revision-Date: 2019-05-12 16:19+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: none\n"
@@ -19,51 +19,58 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 3.6.1\n"
 
-#: trackers/templates/tracker_details.html:14
-msgid "Go to the tracker web page."
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr ""
+
+#: trackers/templates/stats_details.html:10
+msgid "Most frequent trackers"
+msgstr ""
+
+#: trackers/templates/stats_details.html:20
+msgid "found in"
+msgstr ""
+
+#: trackers/templates/stats_details.html:20
+#: trackers/templates/tracker_details.html:21
+#: trackers/templates/tracker_details.html:46
+msgid "application"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:21
+msgid "Present in:"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:25
+#, fuzzy
+#| msgid "Go to the tracker web page."
+msgid "Tracker web page"
 msgstr "الذهاب إلى صفحة المتعقّب"
 
-#: trackers/templates/tracker_details.html:16
+#: trackers/templates/tracker_details.html:37
 msgid "Detection rules"
 msgstr "قواعد الكشف"
 
-#: trackers/templates/tracker_details.html:19
+#: trackers/templates/tracker_details.html:38
 msgid "Code detection rule:"
 msgstr "قاعدة الكشف (الشفرة):"
 
-#: trackers/templates/tracker_details.html:21
-msgid "Code signature:"
-msgstr "رمز التوقيع:"
-
-#: trackers/templates/tracker_details.html:23
+#: trackers/templates/tracker_details.html:40
 msgid "Network detection rule:"
 msgstr "قاعدة الكشف (الشبكة):"
 
-#: trackers/templates/tracker_details.html:36
-msgid ""
-"\n"
-"                      Available report for this tracker\n"
-"                      "
-msgid_plural ""
-"\n"
-"                      Available reports for this tracker\n"
-"                      "
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+#: trackers/templates/tracker_details.html:46
+msgid "Present in"
+msgstr ""
 
-#: trackers/templates/trackers_list.html:10
-msgid ""
-"\n"
-"                        Recognized tracker\n"
-"                        "
-msgid_plural ""
-"\n"
-"                        Recognized trackers\n"
-"                        "
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
@@ -75,14 +82,16 @@ msgstr[5] ""
 msgid "No trackers are available"
 msgstr "ليس هناك أي متعقِّب"
 
-#: trackers/views.py:15
-msgid "trackers does not exist"
-msgstr "المتتبعون غير موجودين"
-
-#: trackers/views.py:24 trackers/views.py:45
-msgid "tracker does not exist"
-msgstr "المتعقب غير موجود"
-
-#: trackers/views.py:24 trackers/views.py:45
+#: trackers/views.py:19 trackers/views.py:41 trackers/views.py:85
+#: trackers/views.py:114
 msgid "Tracker does not exist"
 msgstr "لم يتم العثور على أي متعقّب"
+
+#~ msgid "Code signature:"
+#~ msgstr "رمز التوقيع:"
+
+#~ msgid "trackers does not exist"
+#~ msgstr "المتتبعون غير موجودين"
+
+#~ msgid "tracker does not exist"
+#~ msgstr "المتعقب غير موجود"

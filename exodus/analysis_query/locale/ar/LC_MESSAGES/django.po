@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-23 21:48+0200\n"
+"POT-Creation-Date: 2019-12-22 19:36+0000\n"
 "PO-Revision-Date: 2019-05-12 15:54+0000\n"
 "Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
 "Language-Team: none\n"
@@ -19,133 +19,187 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 3.6.1\n"
 
-#: models.py:16
+#: analysis_query/models.py:30
 #, python-format
 msgid "%s is not a valid application handle"
 msgstr "%s ليس بمُعرّف تطبيق صحيح"
 
-#: models.py:20
+#: analysis_query/models.py:36
 #, python-format
 msgid "%s application not found on Google Play"
 msgstr "التطبيق %s لا يوجد على متجر غوغل للتطبيقات"
 
-#: models.py:24
+#: analysis_query/models.py:43
 msgid "This application is being analyzed."
 msgstr "جارٍ تحليل هذا التطبيق."
 
-#: models.py:27
+#: analysis_query/models.py:48
 msgid "Too much pending requests, please retry later"
 msgstr "هناك الكثير من الطلبات المعلقة ، الرجاء أعادة المحاولة لاحقا"
 
-#: templates/queries_list.html:14
+#: analysis_query/models.py:56
+msgid "Unsupported file extension"
+msgstr ""
+
+#: analysis_query/templates/queries_list.html:35
 msgid "You need to be registered"
 msgstr "يجب عليك تسجيل حساب"
 
-#: templates/query_submit.html:9
-msgid "Analyze an application"
-msgstr "فحص تطبيق"
+#: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_upload.html:9
+#, fuzzy
+#| msgid "Perform analysis"
+msgid "New analysis"
+msgstr "إجراء فحص"
 
-#: templates/query_submit.html:10
-msgid "Free application only"
-msgstr "التطبيقات المجانية فقط"
-
-#: templates/query_submit.html:23
-msgid "You can find the handle in the Google Play URL of the application"
+#: analysis_query/templates/query_submit.html:31
+#, fuzzy
+#| msgid "You can find the handle in the Google Play URL of the application"
+msgid "Google Play URL of the application"
 msgstr "يمكنك العثور على معرّف التطبيق في عنوان رابط متجر جوجل"
 
-#: templates/query_submit.html:32
+#: analysis_query/templates/query_submit.html:41
+msgid "Free applications only. Works also with the application handle."
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:49
+#: analysis_query/templates/query_upload.html:50
 msgid "Perform analysis"
 msgstr "إجراء فحص"
 
-#: templates/query_submit.html:39
+#: analysis_query/templates/query_submit.html:55
+msgid "I prefer to upload an application"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:62
+#: analysis_query/templates/query_upload.html:57
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
 
-#: templates/query_submit.html:52
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:70
+#: analysis_query/templates/query_wait.html:39
 msgid "is a non-profit organization which provides this service for free."
 msgstr "هي منظمة غير ربحية تقدم هذه الخدمة مجانا."
 
-#: templates/query_submit.html:54 templates/query_wait.html:25
+#: analysis_query/templates/query_submit.html:77
+#: analysis_query/templates/query_upload.html:72
+#: analysis_query/templates/query_wait.html:41
 msgid "Help us!"
 msgstr "ساعدنا!"
 
-#: templates/query_submit.html:94
-msgid " report(s) found for"
-msgstr " تقرير وُجِد لـ"
+#: analysis_query/templates/query_submit.html:121
+#, fuzzy
+#| msgid "This application is being analyzed."
+msgid "This application has already been analyzed!"
+msgstr "جارٍ تحليل هذا التطبيق."
 
-#: templates/query_submit.html:100
-msgid "Go to the report"
+#: analysis_query/templates/query_submit.html:127
+msgid "analyzed on"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:127
+#, fuzzy
+#| msgid "Go to the report"
+msgid "Go to the latest report"
 msgstr "الانتقال إلى التقرير"
 
-#: templates/query_submit.html:106
+#: analysis_query/templates/query_submit.html:131
+#, fuzzy
+#| msgid ""
+#| "If you think εxodus has not yet analyzed the latest version of this "
+#| "application feel-free to submit the analysis."
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
-"application feel-free to submit the analysis."
+"application, feel free to submit the analysis."
 msgstr ""
 "إذا كنت تعتقد أ نّ εxodus لم يقم بعد بتحليل أحدث نسخة من هذا التطبيق ، لا "
 "تتردد في طلب التحليل."
 
-#: templates/query_wait.html:8
-msgid "is processing your request"
-msgstr "يعالج طلبك"
+#: analysis_query/templates/query_upload.html:32
+#, fuzzy
+#| msgid "Analyze an application"
+msgid "Upload an application"
+msgstr "فحص تطبيق"
 
-#: templates/query_wait.html:13
+#: analysis_query/templates/query_upload.html:36
+msgid "Browse file"
+msgstr ""
+
+#: analysis_query/templates/query_upload.html:42
+msgid "Only works with APK files."
+msgstr ""
+
+#: analysis_query/templates/query_wait.html:9
+msgid "Analysis in progress..."
+msgstr ""
+
+#: analysis_query/templates/query_wait.html:24
 msgid "See the report"
 msgstr "عرض التقرير"
 
-#: templates/query_wait.html:16
+#: analysis_query/templates/query_wait.html:28
 msgid "Will refresh automatically every 10 seconds."
 msgstr "ستنتعش تلقائيا كل 10 ثواني."
 
-#: views.py:31
+#: analysis_query/views.py:32 analysis_query/views.py:55
 msgid "Your request will be handled soon"
 msgstr "سيتم التعامل مع طلبك قريبا"
 
-#: views.py:44 views.py:52
+#: analysis_query/views.py:68 analysis_query/views.py:76
 msgid "AnalysisRequest does not exist"
 msgstr "طلب التحليل غير موجود"
 
+#~ msgid "Free application only"
+#~ msgstr "التطبيقات المجانية فقط"
+
+#~ msgid " report(s) found for"
+#~ msgstr " تقرير وُجِد لـ"
+
+#~ msgid "is processing your request"
+#~ msgstr "يعالج طلبك"
+
 # TRANSLATIONS FOR EXODUS MODULE
-msgid "Website"
-msgstr "موقع الويب"
+#~ msgid "Website"
+#~ msgstr "موقع الويب"
 
-msgid "List"
-msgstr "القائمة"
+#~ msgid "List"
+#~ msgstr "القائمة"
 
-msgid "Statistics"
-msgstr "الإحصائيات"
+#~ msgid "Statistics"
+#~ msgstr "الإحصائيات"
 
-msgid "Submit"
-msgstr "أرسل"
+#~ msgid "Submit"
+#~ msgstr "أرسل"
 
-msgid "Report an issue"
-msgstr "الإبلاغ عن مشكلة"
+#~ msgid "Report an issue"
+#~ msgstr "الإبلاغ عن مشكلة"
 
-msgid "Reports"
-msgstr "التقارير"
+#~ msgid "Reports"
+#~ msgstr "التقارير"
 
-msgid "Latest reports"
-msgstr "آخِر التقارير"
+#~ msgid "Latest reports"
+#~ msgstr "آخِر التقارير"
 
-msgid "Most trackers"
-msgstr "مرتبة حسب عدد المتعقبين"
+#~ msgid "Most trackers"
+#~ msgstr "مرتبة حسب عدد المتعقبين"
 
-msgid "No known trackers"
-msgstr "لم يتم التعرف على أي متعقب"
+#~ msgid "No known trackers"
+#~ msgstr "لم يتم التعرف على أي متعقب"
 
-msgid "Search by tracker"
-msgstr "البحث حسب المتعقب"
+#~ msgid "Search by tracker"
+#~ msgstr "البحث حسب المتعقب"
 
-msgid "All applications"
-msgstr "كافة التطبيقات"
+#~ msgid "All applications"
+#~ msgstr "كافة التطبيقات"
 
-msgid "Search"
-msgstr "البحث"
+#~ msgid "Search"
+#~ msgstr "البحث"
 
-msgid "Trackers"
-msgstr "المُتعقّبون"
+#~ msgid "Trackers"
+#~ msgstr "المُتعقّبون"
 
-msgid "Analysis"
-msgstr "تحليل"
+#~ msgid "Analysis"
+#~ msgstr "تحليل"
