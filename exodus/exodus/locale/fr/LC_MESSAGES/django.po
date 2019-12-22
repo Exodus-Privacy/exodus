@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-11 14:05+0000\n"
+"POT-Creation-Date: 2019-12-22 19:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "Récupérer les détails de l’application : succès"
 msgid "Tracker analysis: success"
 msgstr "Analyse des pisteurs : succès"
 
-#: exodus/core/apk.py:218
+#: exodus/core/apk.py:215
 msgid "Static analysis complete"
 msgstr "Analyse statique terminée"
 
@@ -103,12 +103,16 @@ msgid "Admin"
 msgstr ""
 
 #: exodus/templates/base.html:60
+msgid "Index"
+msgstr "Index"
+
+#: exodus/templates/base.html:61
 msgid "Analyzes"
 msgstr "Analyses"
 
-#: exodus/templates/base.html:61
+#: exodus/templates/base.html:62
 msgid "Log out"
-msgstr ""
+msgstr "Déconnexion"
 
 #: exodus/templates/home.html:10
 msgid "The privacy audit platform for Android applications"
@@ -156,9 +160,6 @@ msgstr ""
 "révèlent les ingrédients du gâteau."
 
 #: exodus/templates/home.html:48
-#, fuzzy
-#| msgid ""
-#| "εxodus does not decompile applications, its analysis technic is legal."
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 "εxodus ne décompile pas les applications, sa technique d’analyse est légale."

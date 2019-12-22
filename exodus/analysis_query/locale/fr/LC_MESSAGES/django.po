@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-11 14:05+0000\n"
+"POT-Creation-Date: 2019-12-22 19:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Trop de requêtes en attente, veuillez réessayer plus tard"
 msgid "Unsupported file extension"
 msgstr "Ce type de fichier n'est pas supporté"
 
-#: analysis_query/templates/queries_list.html:14
+#: analysis_query/templates/queries_list.html:35
 msgid "You need to be registered"
 msgstr "Vous devez être connecté.e"
 
