@@ -144,8 +144,8 @@ def get_all_applications(request):
 
 @csrf_exempt
 @api_view(['GET'])
-@authentication_classes(())
-@permission_classes(())
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
 def search_strict_handle(request, handle):
     if request.method == 'GET':
         try:
