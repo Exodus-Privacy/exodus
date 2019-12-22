@@ -35,7 +35,7 @@
               <small><img src="/static/img/search.svg"></small>
             </span>
           </div>
-          <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help">
+          <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help" required>
         </div>
         <p class="form-text text-muted mb-4">
           {% trans "Free applications only. Works also with the application handle." %}
@@ -84,9 +84,11 @@
 <script>
 // Spinner
 var show_spinner=function(){
-  var s = document.getElementById("loading")
-  if(s != undefined){
-    s.style.display = "block"
+  if( $("#handle").val() ) {
+    var s = document.getElementById("loading")
+    if(s != undefined){
+      s.style.display = "block"
+    }
   }
 }
 jQuery("#handle").on("input", function() {
