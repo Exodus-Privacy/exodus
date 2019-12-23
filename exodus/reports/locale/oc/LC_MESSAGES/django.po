@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-22 10:25+0000\n"
+"POT-Creation-Date: 2019-12-23 08:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,293 +14,266 @@ msgstr ""
 "X-Pootle-Path: /oc/reports/django.po\n"
 "X-Pootle-Revision: 679\n"
 
-#: reports/templates/report_details.html:9
-msgid "Provide this URI to Electra for report completion:"
-msgstr "Enviar aquesta URI a Electra per la finalizacion del rapòrt"
-
-#: reports/templates/report_details.html:14
+#: reports/templates/report_details.html:10
 msgid "Prefix in storage:"
 msgstr "Prefixe d’emmagazinament : "
 
 #: reports/templates/report_details.html:31
-#: reports/templates/reports_list.html:35
+#: reports/templates/report_details.html:82
+#: reports/templates/reports_list.html:61
 msgid "tracker"
 msgstr "traçador"
 
-#: reports/templates/report_details.html:41
-#: reports/templates/reports_list.html:40
+#: reports/templates/report_details.html:39
+#: reports/templates/report_details.html:114
+#: reports/templates/reports_list.html:71
 msgid "permission"
 msgstr "autorizacions"
 
-#: reports/templates/report_details.html:64
-msgid "Other versions"
-msgstr "Autras versions"
-
-#: reports/templates/report_details.html:65
-msgid "On Google Play"
-msgstr "Sus Google Play"
-
-#: reports/templates/report_details.html:67
-#: reports/templates/report_details.html:78
-#: reports/templates/report_details.html:105
-msgid "APK fingerprint"
-msgstr "Emprenta de la clau"
-
-#: reports/templates/report_details.html:69
-msgid "Text"
-msgstr "Tèxte"
-
-#: reports/templates/report_details.html:85
-msgid "APK checksum"
-msgstr "Sòma de verificacion"
-
-#: reports/templates/report_details.html:86
-msgid "Handle"
-msgstr "Identificant"
-
-#: reports/templates/report_details.html:87
-msgid "Name"
-msgstr "Nom"
-
-#: reports/templates/report_details.html:88
-msgid "UAID"
-msgstr "UAID"
-
-#: reports/templates/report_details.html:89
+#: reports/templates/report_details.html:48
 msgid "Version"
 msgstr "Version"
 
-#: reports/templates/report_details.html:90
-msgid "Version code"
-msgstr "Version còdi"
-
-#: reports/templates/report_details.html:91
-msgid "Icon hash"
-msgstr "Hash de l’icòna"
-
-#: reports/templates/report_details.html:95
-#: reports/templates/report_details.html:114
-msgid "Close"
-msgstr "Tampar"
-
-#: reports/templates/report_details.html:121
-msgid "This report was automatically issued on"
-msgstr "Aqueste rapòrt foguèt automaticament creat lo"
-
-#: reports/templates/report_details.html:122
-msgid "This report was automatically updated on"
-msgstr "Aqueste rapòrt foguèt automaticament actualizat lo"
-
-#: reports/templates/report_details.html:129
-msgid "Signed by:"
-msgstr "Signat per :"
-
-#: reports/templates/report_details.html:135
-msgid "Fingerprint:"
-msgstr "Emprenta :"
-
-#: reports/templates/report_details.html:136
-msgid "Issuer"
-msgstr "Emissor"
-
-#: reports/templates/report_details.html:137
-msgid "Subject"
-msgstr "Subjècte"
-
-#: reports/templates/report_details.html:138
-msgid "Serial"
-msgstr "Numèro de seria"
-
-#: reports/templates/report_details.html:142
-msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+#: reports/templates/report_details.html:49
+msgid "see other versions"
 msgstr ""
-"Cap de signatura pas trobada <b>O</b> certificat x509 pas confòrme amb la "
-"RFC."
 
-#: reports/templates/report_details.html:152
-msgid "Tracker"
-msgstr "Traçador"
+#: reports/templates/report_details.html:53
+msgid "Created by"
+msgstr ""
 
-#: reports/templates/report_details.html:157
-#: reports/templates/report_details.html:159
-msgid "We have found"
-msgstr "Avèm trobat"
+#: reports/templates/report_details.html:57
+msgid "Downloads:"
+msgstr ""
 
-#: reports/templates/report_details.html:157
-msgid "of this tracker in the application:"
-msgstr "d’aqueste traçador dins l’aplicacion :"
+#: reports/templates/report_details.html:61
+msgid "Report created on"
+msgstr ""
 
-#: reports/templates/report_details.html:159
-msgid "of these trackers in the application:"
-msgstr "d’aquestes traçadors dins l’aplicacion :"
+#: reports/templates/report_details.html:63
+msgid "and updated on"
+msgstr ""
 
-#: reports/templates/report_details.html:169
+#: reports/templates/report_details.html:69
+msgid "Delete this report"
+msgstr ""
+
+#: reports/templates/report_details.html:73
+msgid "See on Google Play"
+msgstr ""
+
+#: reports/templates/report_details.html:88
 msgid ""
-"A tracker is a piece of software meant to collect data about you or your "
-"usages. We do not guarantee the exhaustiveness of this list."
-msgstr ""
-"Un traçador es una part d’un logicial dedicat a la reculhida de donadas vos "
-"tòcan e vòstres usatges. Asseguram pas que la lista siá exaustiva."
+"\n"
+"          We have found <b>code signature</b> of the following tracker in "
+"the application:\n"
+"          "
+msgid_plural ""
+"\n"
+"          We have found <b>code signature</b> of the following trackers in "
+"the application:\n"
+"          "
+msgstr[0] ""
+msgstr[1] ""
 
-#: reports/templates/report_details.html:172
+#: reports/templates/report_details.html:99
 msgid ""
-"Here is the list of trackers signatures found by static analysis in this "
-"APK. This is not a proof of activity of these trackers."
+"We have not found <b>code signature</b> of any tracker we know in the "
+"application."
 msgstr ""
-"Vaquí la lista de las signaturas dels traçadors qu’avèm trobats pendent l’"
-"analisi estatica d’aqueste APK. Es pas una pròva d’activitat d’aquestes "
-"traçadors."
+"Avèm pas trobat cap de <b>còdi signatura</b> de traçadors que coneissèm dins "
+"l’aplicacion."
 
-#: reports/templates/report_details.html:173
+#: reports/templates/report_details.html:101
+#: reports/templates/report_details.html:174
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
 "L’aplicacion poiriá contenir un o mai traçadors qu’avèm pas encara "
 "identificats."
 
-#: reports/templates/report_details.html:175
-msgid "If you have doubts about this report, contact us"
-msgstr "S’avètz de dobtes tocant aqueste rapòrt, contactatz-nos"
-
-#: reports/templates/report_details.html:176
-msgid "Exodus - Question about report"
-msgstr "Exodus - Question tocant un rapòrt"
-
-#: reports/templates/report_details.html:179
+#: reports/templates/report_details.html:104
 msgid ""
-"We have not found <b>code signature</b> of any tracker we know in the "
-"application. The application could contain tracker(s) we do not know yet."
+"A tracker is a piece of software meant to collect data about you or your "
+"usages."
 msgstr ""
-"Avèm pas trobat cap de <b>còdi signatura</b> de traçadors que coneissèm dins "
-"l’aplicacion. L’aplicacion poiriá contenir de traçadors que coneissèm pas "
-"encara."
+"Un traçador es una part d’un logicial dedicat a la reculhida de donadas vos "
+"tòcan e vòstres usatges."
 
-#: reports/templates/report_details.html:187
-msgid "Permission"
-msgstr "Autorizacions"
-
-#: reports/templates/report_details.html:192
-msgid "We have found this permission in the application:"
-msgstr "Avèm trobat aquesta autorizacion dins l’aplicacion :"
-
-#: reports/templates/report_details.html:194
-msgid "We have found these permissions in the application:"
-msgstr "Avèm trobat aquestas autorizacions dins l’aplicacion :"
-
-#: reports/templates/report_details.html:203
-msgid "Dangerous"
-msgstr "Perilhós"
-
-#: reports/templates/report_details.html:205
-msgid "Normal"
-msgstr "Normal"
-
-#: reports/templates/report_details.html:210
-msgid "Permissions are actions the application can do on your phone"
+#: reports/templates/report_details.html:105
+#: reports/templates/report_details.html:151
+msgid "Learn more"
 msgstr ""
-"Las autorizacions son las accions que l’aplicacion pòt realizar a vòstre "
-"telefòn"
 
-#: reports/templates/report_details.html:212
+#: reports/templates/report_details.html:120
+msgid ""
+"\n"
+"          We have found the following permission in the application:\n"
+"          "
+msgid_plural ""
+"\n"
+"          We have found the following permissions in the application:\n"
+"          "
+msgstr[0] ""
+msgstr[1] ""
+
+#: reports/templates/report_details.html:144
+msgid "The icon"
+msgstr ""
+
+#: reports/templates/report_details.html:144
+msgid "indicates a 'Dangerous' or 'Special' level according to"
+msgstr ""
+
+#: reports/templates/report_details.html:144
+msgid "Google's protection levels"
+msgstr ""
+
+#: reports/templates/report_details.html:148
 msgid "This application doesn't require any permissions."
 msgstr "Aquesta aplicacion demanda pas cap d’autorizacion."
 
-#: reports/templates/report_details.html:224
-msgid ""
-"\n"
-"                                    DNS query\n"
-"                                    "
-msgid_plural ""
-"\n"
-"                                    DNS queries\n"
-"                                    "
-msgstr[0] ""
-"\n"
-"                                    requèsta DNS\n"
-"                                    "
-msgstr[1] ""
-"\n"
-"                                    requèstas DNS\n"
-"                                    "
-
-#: reports/templates/report_details.html:233
-msgid ""
-"During the execution, the application has requested this domain resolution:"
+#: reports/templates/report_details.html:150
+msgid "Permissions are actions the application can do on your phone."
 msgstr ""
-"Pendent l’execucion, l’aplicacion a demandat la resolucion d’aqueste domeni :"
+"Las autorizacions son las accions que l’aplicacion pòt realizar a vòstre "
+"telefòn."
 
+#: reports/templates/report_details.html:157
+msgid "What's next?"
+msgstr ""
+
+#: reports/templates/report_details.html:158
+msgid ""
+"If this application does not sufficiently respect your privacy in your "
+"opinion, some alternatives exist!"
+msgstr ""
+
+#: reports/templates/report_details.html:164
+msgid "Read the article"
+msgstr ""
+
+#: reports/templates/report_details.html:169
+msgid "Exodus - Question about report"
+msgstr "Exodus - Question tocant un rapòrt"
+
+#: reports/templates/report_details.html:171
+msgid ""
+"This report lists trackers signatures found by static analysis in this APK. "
+"This is not a proof of activity of these trackers."
+msgstr ""
+
+#: reports/templates/report_details.html:176
+msgid "If you have doubts about this report, contact us at"
+msgstr "S’avètz de dobtes tocant aqueste rapòrt, contactatz-nos"
+
+#: reports/templates/report_details.html:183
+msgid "Signed by"
+msgstr "Signat per"
+
+#: reports/templates/report_details.html:187
+msgid "Fingerprint:"
+msgstr "Emprenta :"
+
+#: reports/templates/report_details.html:188
+msgid "Issuer:"
+msgstr "Emissor :"
+
+#: reports/templates/report_details.html:189
+msgid "Subject:"
+msgstr "Subjècte :"
+
+#: reports/templates/report_details.html:190
+msgid "Serial:"
+msgstr "Numèro de seria :"
+
+#: reports/templates/report_details.html:194
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr ""
+"Cap de signatura pas trobada <b>O</b> certificat x509 pas confòrme amb la "
+"RFC."
+
+#: reports/templates/report_details.html:200
+msgid "See APK fingerprint"
+msgstr ""
+
+#: reports/templates/report_details.html:203
+msgid "Text"
+msgstr "Tèxte"
+
+#: reports/templates/report_details.html:211
 #: reports/templates/report_details.html:235
-msgid ""
-"During the execution, the application has requested these domain resolutions:"
+msgid "APK fingerprint"
+msgstr "Emprenta de la clau"
+
+#: reports/templates/report_details.html:216
+msgid "APK checksum:"
+msgstr "Sòma de verificacion :"
+
+#: reports/templates/report_details.html:217
+msgid "Handle:"
+msgstr "Identificant :"
+
+#: reports/templates/report_details.html:218
+msgid "Name:"
+msgstr "Nom :"
+
+#: reports/templates/report_details.html:219
+msgid "UAID:"
+msgstr "UAID :"
+
+#: reports/templates/report_details.html:220
+msgid "Version:"
+msgstr "Version :"
+
+#: reports/templates/report_details.html:221
+msgid "Version code:"
+msgstr "Version còdi :"
+
+#: reports/templates/report_details.html:222
+msgid "Icon hash:"
+msgstr "Hash de l’icòna :"
+
+#: reports/templates/report_details.html:226
+#: reports/templates/report_details.html:242
+msgid "Close"
+msgstr "Tampar"
+
+#: reports/templates/reports_list.html:10
+msgid "Reports"
 msgstr ""
-"Pendent l’execucion, l’aplicacion a demandat la resolucion d’aquestes "
-"domenis :"
 
-#: reports/templates/report_details.html:246
-msgid "Potential tracker"
-msgstr "Traçador potencial"
-
-#: reports/templates/report_details.html:254
-msgid ""
-"A DNS resolution can confirm that a tracker was looking for the IP address "
-"of its associated server."
+#: reports/templates/reports_list.html:16
+msgid "report"
 msgstr ""
-"Una resolucion DNS pòt confirmar qu’un traçador voliá una adreça IP d’un de "
-"sos servidors associats."
 
-#: reports/templates/report_details.html:273
-msgid "Details"
-msgstr "Detalhs"
+#: reports/templates/reports_list.html:17
+msgid "for"
+msgstr ""
 
-#: reports/templates/report_details.html:274
-msgid "Sent data to"
-msgstr "Donadas enviadas a"
+#: reports/templates/reports_list.html:18
+msgid "application"
+msgstr ""
 
-#: reports/templates/reports_list.html:11
-msgid ""
-"\n"
-"                Available report\n"
-"                "
-msgid_plural ""
-"\n"
-"                Available reports\n"
-"                "
-msgstr[0] ""
-"\n"
-"                Rapòrt disponible\n"
-"                "
-msgstr[1] ""
-"\n"
-"                Rapòrts disponibles\n"
-"                "
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr ""
 
-#: reports/templates/stats_details.html:5
-msgid "Statistics"
-msgstr "Estatisticas"
+#: reports/templates/reports_list.html:26
+msgid "Most trackers"
+msgstr ""
 
-#: reports/templates/stats_details.html:11
-msgid "Most frequent trackers"
-msgstr "Traçadors mai frequents"
+#: reports/templates/reports_list.html:28
+msgid "No known trackers"
+msgstr ""
 
-#: reports/views.py:23
+#: reports/views.py:44
 msgid "reports do not exist"
 msgstr "los rapòrts existisson pas"
 
-#: reports/views.py:30
-msgid "No apps found"
-msgstr "Cap d’aplicacion pas trobada"
-
-#: reports/views.py:38
-msgid "No reports found"
-msgstr "Cap de rapòrt pas trobat"
-
-#: reports/views.py:46
+#: reports/views.py:80
 msgid "report does not exist"
 msgstr "lo rapòrt existís pas"
 
-#: reports/views.py:64
+#: reports/views.py:104
 msgid "App does not exist"
 msgstr "L’aplicacion existís pas"
-
-#: reports/views.py:81
-msgid "NetworkAnalysis do not exist"
-msgstr "L’analisi ret es pas disponibla"

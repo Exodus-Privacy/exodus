@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-22 10:25+0000\n"
+"POT-Creation-Date: 2019-12-23 08:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,71 +14,64 @@ msgstr ""
 "X-Pootle-Path: /oc/trackers/django.po\n"
 "X-Pootle-Revision: 653\n"
 
-#: trackers/templates/tracker_details.html:14
-msgid "Go to the tracker web page."
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr ""
+
+#: trackers/templates/stats_details.html:10
+msgid "Most frequent trackers"
+msgstr ""
+
+#: trackers/templates/stats_details.html:20
+msgid "found in"
+msgstr ""
+
+#: trackers/templates/stats_details.html:20
+#: trackers/templates/tracker_details.html:21
+#: trackers/templates/tracker_details.html:46
+msgid "application"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:21
+msgid "Present in:"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:25
+msgid "Tracker web page"
 msgstr "Pagina web del traçado"
 
-#: trackers/templates/tracker_details.html:16
+#: trackers/templates/tracker_details.html:37
 msgid "Detection rules"
 msgstr "Règlas de deteccion"
 
-#: trackers/templates/tracker_details.html:19
+#: trackers/templates/tracker_details.html:38
 msgid "Code detection rule:"
 msgstr "Règla de deteccion (còdi) :"
 
-#: trackers/templates/tracker_details.html:21
-msgid "Code signature:"
-msgstr "Signatura :"
-
-#: trackers/templates/tracker_details.html:23
+#: trackers/templates/tracker_details.html:40
 msgid "Network detection rule:"
 msgstr "Règla de deteccion (ret) :"
 
-#: trackers/templates/tracker_details.html:36
-msgid ""
-"\n"
-"                      Available report for this tracker\n"
-"                      "
-msgid_plural ""
-"\n"
-"                      Available reports for this tracker\n"
-"                      "
-msgstr[0] ""
-"\n"
-"                      Rapòrt disponible per aqueste traçador\n"
-"                      "
-msgstr[1] ""
-"\n"
-"                      Rapòrts disponibles per aqueste traçador\n"
-"                      "
+#: trackers/templates/tracker_details.html:46
+msgid "Present in"
+msgstr ""
 
-#: trackers/templates/trackers_list.html:10
-msgid ""
-"\n"
-"                        Recognized tracker\n"
-"                        "
-msgid_plural ""
-"\n"
-"                        Recognized trackers\n"
-"                        "
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
 msgstr[0] ""
-"\n"
-"                         Traçador conegut\n"
-"                         "
 msgstr[1] ""
-"\n"
-"                         Traçadors coneguts\n"
-"                         "
 
 #: trackers/templates/trackers_list.html:25
 msgid "No trackers are available"
 msgstr "Cap de traçador disponible"
 
-#: trackers/views.py:15
-msgid "trackers does not exist"
-msgstr "los traçadors existisson pas"
-
-#: trackers/views.py:24
-#: trackers/views.py:45
-msgid "tracker does not exist"
-msgstr "lo traçador existís pas"
+#: trackers/views.py:19 trackers/views.py:41 trackers/views.py:85
+#: trackers/views.py:114
+msgid "Tracker does not exist"
+msgstr "Lo traçador existís pas"
