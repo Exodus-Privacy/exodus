@@ -1,5 +1,6 @@
 # coding=utf-8
 import os
+import django.conf.locale
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
@@ -27,7 +28,19 @@ INSTALLED_APPS = [
 LANGUAGES = [
     ('fr', 'Français'),
     ('en', 'English'),
+    ('oc', 'Occitan'),
 ]
+
+# Needed because Occitan is not supported by Django
+EXTRA_LANG_INFO = {
+    'oc': {
+        'code': 'oc',
+        'name': 'Occitan',
+    },
+}
+
+LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
+django.conf.locale.LANG_INFO = LANG_INFO
 
 DEFAULT_LANGUAGE = 1
 
