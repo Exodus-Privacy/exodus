@@ -19,7 +19,11 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_should_raise_404_if_no_tracker(self):
-        Report.objects.create()
+        report = Report.objects.create()
+        Application.objects.create(
+            handle="apple_sauce",
+            report=report
+        )
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -28,7 +32,11 @@ class TrackersStatsViewTests(TestCase):
 
     def test_should_return_stats_with_1_tracker_not_found(self):
         tracker = Tracker.objects.create(name='Teemo')
-        Report.objects.create()
+        report = Report.objects.create()
+        Application.objects.create(
+            handle="apple_sauce",
+            report=report
+        )
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -45,8 +53,11 @@ class TrackersStatsViewTests(TestCase):
             name='Teemo',
         )
         report = Report.objects.create()
-        report.found_trackers = [tracker.id]
-        report.save()
+        Application.objects.create(
+            handle="apple_sauce",
+            report=report
+        )
+        report.found_trackers.set([tracker.id])
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -68,22 +79,19 @@ class TrackersStatsViewTests(TestCase):
         )
         application_handle = "com.exodus.one"
         report1 = Report.objects.create()
-        report1.found_trackers = [tracker2.id]
-        report1.save()
+        report1.found_trackers.set([tracker2.id])
         Application.objects.create(
             handle=application_handle,
             report=report1
         )
         report2 = Report.objects.create()
-        report2.found_trackers = []
-        report2.save()
+        report2.found_trackers.set([])
         Application.objects.create(
             handle=application_handle,
             report=report2
         )
         report3 = Report.objects.create()
-        report3.found_trackers = [tracker1.id, tracker2.id]
-        report3.save()
+        report3.found_trackers.set([tracker1.id, tracker2.id])
         Application.objects.create(
             handle=application_handle,
             report=report3
@@ -115,22 +123,19 @@ class TrackersStatsViewTests(TestCase):
         application_handle1 = "com.handle.one"
         application_handle2 = "com.handle.two"
         report1 = Report.objects.create()
-        report1.found_trackers = [tracker2.id]
-        report1.save()
+        report1.found_trackers.set([tracker2.id])
         Application.objects.create(
             handle=application_handle1,
             report=report1
         )
         report2 = Report.objects.create()
-        report2.found_trackers = []
-        report2.save()
+        report2.found_trackers.set([])
         Application.objects.create(
             handle=application_handle2,
             report=report2
         )
         report3 = Report.objects.create()
-        report3.found_trackers = [tracker1.id, tracker2.id]
-        report3.save()
+        report3.found_trackers.set([tracker1.id, tracker2.id])
         Application.objects.create(
             handle=application_handle2,
             report=report3
@@ -160,8 +165,11 @@ class TrackersStatsViewTests(TestCase):
         first_trackers = Tracker.objects.exclude(name=extra_tracker.name)
 
         report = Report.objects.create()
-        report.found_trackers = [t.id for t in first_trackers]
-        report.save()
+        Application.objects.create(
+            handle="apple_sauce",
+            report=report
+        )
+        report.found_trackers.set([t.id for t in first_trackers])
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -182,15 +190,13 @@ class TrackerDetailTestCases(TestCase):
         )
         application_handle2 = "com.handle.two"
         report2 = Report.objects.create()
-        report2.found_trackers = [tracker2.id]
-        report2.save()
+        report2.found_trackers.set([tracker2.id])
         Application.objects.create(
             handle=application_handle2,
             report=report2
         )
         report3 = Report.objects.create()
-        report3.found_trackers = [tracker2.id]
-        report3.save()
+        report3.found_trackers.set([tracker2.id])
         Application.objects.create(
             handle=application_handle2,
             report=report3
@@ -213,8 +219,7 @@ class TrackerDetailTestCases(TestCase):
         )
         application_handle1 = "com.handle.one"
         report1 = Report.objects.create()
-        report1.found_trackers = [tracker1.id]
-        report1.save()
+        report1.found_trackers.set([tracker1.id])
         Application.objects.create(
             handle=application_handle1,
             report=report1
@@ -222,8 +227,7 @@ class TrackerDetailTestCases(TestCase):
 
         report2 = Report.objects.create()
         # Removing trackers in the version of the app
-        report2.found_trackers = []
-        report2.save()
+        report2.found_trackers.set([])
         Application.objects.create(
             handle=application_handle1,
             report=report2
