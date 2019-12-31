@@ -80,7 +80,7 @@ class RestfulApiSearchHandleDetailsTests(APITestCase):
     def test_returns_detailed_json_when_one_app(self):
         tracker = Tracker.objects.create(name='Teemo')
         report = Report.objects.create()
-        report.found_trackers = [tracker.id]
+        report.found_trackers.set([tracker.id])
         app = Application.objects.create(
             name='app_name',
             handle=DUMMY_HANDLE,
@@ -153,7 +153,7 @@ class RestfulApiSearchHandleTests(APITestCase):
     def test_returns_detailed_json_when_one_app(self):
         tracker = Tracker.objects.create(name='Teemo')
         report = Report.objects.create()
-        report.found_trackers = [tracker.id]
+        report.found_trackers.set([tracker.id])
         app = Application.objects.create(
             name='app_name',
             handle=DUMMY_HANDLE,
@@ -334,7 +334,7 @@ class RestfulApiReportDetails(APITestCase):
             website='https://www.teemo.com'
         )
         report = Report.objects.create(id=1234)
-        report.found_trackers = [tracker.id]
+        report.found_trackers.set([tracker.id])
         app = Application.objects.create(
             id=1234,
             name='app_name',

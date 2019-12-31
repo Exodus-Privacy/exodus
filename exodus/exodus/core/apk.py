@@ -209,8 +209,7 @@ def start_static_analysis(analysis):
         )
         p.save(force_insert=True)
 
-    report.found_trackers = trackers
-    report.save()
+    report.found_trackers.set(trackers)
 
     change_description(request, _('Static analysis complete'))
     clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, False)

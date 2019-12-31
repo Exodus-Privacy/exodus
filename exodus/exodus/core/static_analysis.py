@@ -7,11 +7,10 @@ import shlex
 import shutil
 import time
 from pathlib import Path
-from subprocess import TimeoutExpired
+from subprocess import check_output, STDOUT, TimeoutExpired
 from tempfile import NamedTemporaryFile
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
-from future.moves import subprocess
 from minio.error import (ResponseError)
 
 from trackers.models import Tracker
@@ -112,9 +111,9 @@ def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         )
         for i in range(RETRY_PER_DEVICE):
             try:
-                output = subprocess.check_output(
+                output = check_output(
                     shlex.split(cmd),
-                    stderr=subprocess.STDOUT,
+                    stderr=STDOUT,
                     timeout=240  # Timeout of 4 minutes
                 )
                 output_str = output.decode('utf-8')

@@ -101,8 +101,7 @@ class Command(BaseCommand):
                     self.stdout.write(
                         self.style.WARNING(
                             'previous: %s - new: %s trackers' % (report.found_trackers.count(), len(trackers))))
-                    report.found_trackers = trackers
-                    report.save()
+                    report.found_trackers.set(trackers)
                     self.stdout.write(
                         self.style.SUCCESS('Successfully updated trackers list of "%s"' % handle))
 
