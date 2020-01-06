@@ -1,0 +1,178 @@
+{% extends "base/base.html"%}
+{% block content %}
+{% load i18n %}
+{% load static %}
+<div class="row justify-content-center mb-5 mt-5">
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 my-auto">
+    <img src="{% static "men_customization/logo-amal.png" %}" class="mx-auto d-block img-fluid" alt="amal logo">
+  </div>
+  <div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 text-center my-auto">
+    <h1 class="main-title">AMAL</h1>
+    <h5><b>Vos apps mobiles Android à la loupe.</b></h5>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-5">
+  <div class="col-lg-8 col-sm-12">
+    <div class="form-group">
+      {% csrf_token %}
+      <h4>{% trans "Search a report" %}</h4>
+      <label for="query"><b>{% trans "Application name" %}</b></label>
+      <div class="input-group input-group-lg mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="query_help">
+            <small><img src="/static/img/search.svg" alt="search"></small>
+          </span>
+        </div>
+        <input type="text" class="form-control" id="query" aria-describedby="query_help">
+      </div>
+      <small class="form-text text-muted mb-4">
+        {% trans "You can search for an application using its name or handle" %}
+        <i>{% trans "ex:" %} <b>fr.meteo</b></i>
+      </small>
+      <div id="go-div" class="row justify-content-center">
+        <div class="col-8 col-sm-7 col-md-6 col-xl-5">
+          <button id="go" class="btn btn-primary btn-block">{% trans "Let's go!" %}</button>
+        </div>
+      </div>
+      <h4 style="display: none" id="results-title">{% trans "Results" %}</h4>
+      <div id="results" style="display: none">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-5">
+  <div class="col-lg-8 col-sm-12">
+    <p class=mb-4>{% trans "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>" %}</p>
+    <p class="mb-4">{% trans "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake." %}</p>
+    <p>{% trans "εxodus does not decompile applications, its analysis method is legal." %}</p>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-8 col-sm-12">
+    <h4>{% trans "Better understand" %}</h4>
+    <p>{% trans "What is a tracker? And a permission? Are there any alternatives to protect yourself?" %}</p>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-5">
+  <div class="col-lg-8 col-sm-12">
+    <div class="row justify-content-center">
+      <div class="col-8 col-sm-7 col-md-6 col-xl-5 text-center mb-4">
+        <a href="{% url 'understand' %}" class="btn btn-primary btn-block">{% trans "Let's go!" %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-8 col-sm-12">
+    <h4>{% trans "Need an overview?" %}</h4>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:index' %}" class="link main-link">{% trans "Latest reports" %}</a>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:index' %}?filter=no_trackers" class="link main-link">{% trans "No known trackers" %}</a>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:index' %}?filter=most_trackers" class="link main-link">{% trans "Most trackers" %}</a>
+  </div>
+</div>
+
+{% verbatim %}
+<script id="tpl" style="display:none;" type="text/x-handlebars-template">
+  <div class="container">
+    {{#unless results.length}}
+      {% endverbatim %}<h5>{% trans "No results found." %}</h5>{% verbatim %}
+    {{/unless}}
+    {{#each results}}
+      <br>
+      <div class="row position-relative">
+        <div class="col-3 col-md-2">
+          <img class="rounded" src="/reports/{{handle}}/latest/icon" width="50" alt="{{handle}} logo">
+        </div>
+        <div class="col-9 col-md-10 text-truncate my-auto position-static">
+          <a href="/reports/{{handle}}/latest" class="stretched-link report-link">
+            {{#if name}}
+              {{name}}
+            {{else}}
+              {{handle}}
+            {{/if}}
+          </a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</script>
+{% endverbatim %}
+
+<script>
+  const tpl_source = document.getElementById("tpl").innerHTML;
+  const tpl = Handlebars.compile(tpl_source);
+  jQuery(function() {
+    jQuery("#query").focus();
+  });
+  const display_results = function(results) {
+    jQuery("#go-div").hide()
+    jQuery("#results").hide()
+    jQuery("#results-title").hide()
+    jQuery("#results").html("")
+    jQuery("#results").html(tpl(results))
+    jQuery("#results").show()
+    if(results.results.length > 0){
+      jQuery("#results-title").show()
+    }
+  }
+  jQuery.fn.enterKey = function (fnc) {
+    return this.each(function () {
+      $(this).keypress(function (ev) {
+        var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+        if (keycode == '13') {
+          fnc.call(this, ev);
+        }
+      })
+    })
+  }
+  const get_results = function(query, limit) {
+    jQuery.ajax({
+      type: 'POST',
+      url: "/api/search",
+      data: '{"type": "application", "query":"'+query+'", "limit":'+limit+'}',
+      success: display_results,
+      contentType: "application/json",
+      dataType: 'json'
+    })
+  }
+  jQuery("#go").on("click", function() {
+    const query = jQuery.trim(jQuery("#query").val())
+    get_results(query, 50)
+  })
+  jQuery("#query").on("change paste keyup", function() {
+    const query = jQuery.trim(jQuery(this).val())
+    if(query.length >= 5) {
+      get_results(query, 20)
+    }
+    if(query == '') {
+      jQuery("#go-div").show()
+      jQuery("#results").hide()
+      jQuery("#results-title").hide()
+    }
+  });
+  jQuery("#query").enterKey(function() {
+    const query = jQuery.trim(jQuery("#query").val())
+    get_results(query, 50)
+  });
+</script>
+{% endblock %}

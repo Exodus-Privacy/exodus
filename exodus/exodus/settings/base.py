@@ -5,6 +5,7 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
 
 INSTALLED_APPS = [
+    'web',
     'analysis_query.apps.AnalysisQueryConfig',
     'trackers.apps.TrackersConfig',
     'trackers.templatetags',
@@ -21,7 +22,7 @@ INSTALLED_APPS = [
     'minio_storage',
     'eventlog.apps.EventLogConfig',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
 ]
 
 LANGUAGES = [
