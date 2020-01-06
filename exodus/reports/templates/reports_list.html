@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% load i18n %}
 {% block content %}
 {% load static %}
@@ -77,7 +77,7 @@
         {% endfor %}
         </div>
     <div>
-        {% include "paginator.html" %}
+        {% include "base/paginator.html" %}
     </div>
     {% endif %}
     </div>
