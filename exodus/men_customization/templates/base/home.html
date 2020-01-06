@@ -1,13 +1,10 @@
-{% extends "base.html"%}
+{% extends "base/base.html"%}
 {% block content %}
 {% load i18n %}
+{% load static %}
 <div class="row justify-content-center mb-5 mt-5">
-  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 my-auto">
-    <img src="/static/img/logo_purple_small.svg" class="mx-auto d-block img-fluid" alt="exodus logo">
-  </div>
-  <div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 text-center my-auto">
-    <h1 class="main-title">εxodus</h1>
-    <h5><b>{% trans "The privacy audit platform for Android applications" %}</b></h5>
+  <div class="col-8 my-auto">
+    <img src="{% static "men_customization/banner.jpg" %}" width="100%" alt="MEN banner">
   </div>
 </div>
 
@@ -99,26 +96,17 @@
     {{#each results}}
       <br>
       <div class="row position-relative">
-        <div class="col-3 col-sm-2 col-md-2 my-auto">
+        <div class="col-3 col-md-2">
           <img class="rounded" src="/reports/{{handle}}/latest/icon" width="50" alt="{{handle}} logo">
         </div>
-        <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">
-          <div>
-            <a href="/reports/{{handle}}/latest" class="stretched-link report-link">
-              {{#if name}}
-                {{name}}
-              {{else}}
-                {{handle}}
-              {{/if}}
-            </a>
-          </div>
-          <div class="small"><b>{{version}}</b></div>
-          <div>
-            <span class="badge badge-pill badge-{{trackers_class}} reports">{{trackers_count}}</span>
-            {% endverbatim %}{% trans "tracker" %}(s){% verbatim %}
-            <span class="badge badge-pill badge-{{permissions_class}} reports">{{permissions_count}}</span>
-            {% endverbatim %}{% trans "permission" %}(s){% verbatim %}
-          </div>
+        <div class="col-9 col-md-10 text-truncate my-auto position-static">
+          <a href="/reports/{{handle}}/latest" class="stretched-link report-link">
+            {{#if name}}
+              {{name}}
+            {{else}}
+              {{handle}}
+            {{/if}}
+          </a>
         </div>
       </div>
     {{/each}}
@@ -167,16 +155,10 @@
     const query = jQuery.trim(jQuery("#query").val())
     get_results(query, 50)
   })
-
-  var search_timer = 0
-
   jQuery("#query").on("change paste keyup", function() {
-    if (search_timer) {
-      clearTimeout(search_timer)
-    }
     const query = jQuery.trim(jQuery(this).val())
     if(query.length >= 5) {
-      search_timer = setTimeout(function(){ get_results(query, 20); }, 200);
+      get_results(query, 20)
     }
     if(query == '') {
       jQuery("#go-div").show()
