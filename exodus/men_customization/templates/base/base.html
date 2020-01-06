@@ -1,0 +1,123 @@
+{% load i18n %}
+<!doctype html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "men_customization/css/bootstrap.men.css" %}">
+    <link rel="stylesheet" href="{% static "css/exodus.css" %}">
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+    <script src="{% static "js/jquery.min.js" %}" ></script>
+    <script src="{% static "js/popper.min.js" %}" ></script>
+    <script src="{% static "js/bootstrap.min.js" %}" ></script>
+    <script src="{% static "js/handlebars.min.js" %}" ></script>
+
+    <style>
+<!--      .bg-primary  {-->
+<!--        background-color:rgb(0,94,139) !important;-->
+<!--      }-->
+
+<!--      .btn-primary {-->
+<!--        background-color:rgb(0,94,139) !important;-->
+<!--        border-color:rgb(0,94,139) !important;-->
+<!--      }-->
+
+<!--      .page-item.active .page-link {-->
+<!--        background-color:rgb(0,94,139) !important;-->
+<!--        border-color:rgb(0,94,139) !important;-->
+<!--      }-->
+
+      a.main-link {
+        color:rgb(0,94,139) !important;
+      }
+
+      .main-title {
+        color:rgb(0,94,139) !important;
+      }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMAL</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top mb-4" style="">
+      <div class="container">
+        <span class="navbar-brand">
+          <img src="/static/img/logo_purple_small.png" width="40" height="40" class="d-inline-block align-top" alt="amal logo">
+          <span class="h2">AMAL</span> <span class="small"></span>
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          {% url 'home' as home %}
+          {% url 'reports:index' as reports_url %}
+          {% url 'trackers:index' as trackers_url %}
+          {% url 'analysis:submit' as submit_url %}
+          {% url 'understand' as understand %}
+          {% url 'organization' as organization %}
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == home %}active{% endif %}">
+              <a class="nav-link " href="{{ home }}">{% trans "Home" %}</a>
+            </li>
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == reports_url %}active{% endif %}">
+              <a class="nav-link " href="{{ reports_url }}">{% trans "Reports" %}</a>
+            </li>
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == trackers_url %}active{% endif %}">
+              <a class="nav-link " href="{{ trackers_url }}">{% trans "Trackers" %}</a>
+            </li>
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == submit_url %}active{% endif %}">
+              <a class="nav-link " href="{{ submit_url }}">{% trans "New analysis" %}</a>
+            </li>
+            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == understand %}active{% endif %}">
+              <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
+            </li>
+<!--            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == organization %}active{% endif %}">-->
+<!--              <a class="nav-link " href="{{ organization }}">{% trans "The organization" %}</a>-->
+<!--            </li>-->
+            {% if request.user.is_superuser %}
+              <li class="nav-item mr-xl-1 ml-xl-1 dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% trans "Admin" %}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                  <a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Index" %}</a>
+                  <a class="dropdown-item" href="{% url 'analysis:index' %}">{% trans "Analyzes" %}</a>
+                  <a class="dropdown-item" href="{% url 'admin:logout' %}">{% trans "Log out" %}</a>
+                </div>
+              </li>
+            {% endif %}
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
+            <img class="mr-3 mr-lg-2 mr-xl-3" alt="language selector" src="{% static 'img/langue.svg' %}">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select class="custom-select custom-select-sm" name="language" onchange='if(this.value !=  "{{ LANGUAGE_CODE }}") { this.form.submit(); }'>
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                  {{ language.code }}
+                </option>
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>
