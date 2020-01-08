@@ -102,6 +102,13 @@ def start_static_analysis(analysis):
     handle = static_analysis.get_package()
     version = static_analysis.get_version()
     version_code = static_analysis.get_version_code()
+    app_name = static_analysis.get_app_name()
+
+    # TODO: increase character limit in DB (see #300)
+    if len(version) > 50 or len(version_code) > 50 or len(app_name) > 200:
+        msg = _('Unable to create the analysis report')
+        exit_code = save_error(storage_helper, analysis, request, msg)
+        return exit_code
 
     # If a report exists for the same handle, version & version_code, return it
     existing_report = Report.objects.filter(
@@ -173,7 +180,7 @@ def start_static_analysis(analysis):
         handle=handle,
         version=version,
         version_code=version_code,
-        name=static_analysis.get_app_name(),
+        name=app_name,
         icon_phash=icon_phash,
         app_uid=app_uid
     )

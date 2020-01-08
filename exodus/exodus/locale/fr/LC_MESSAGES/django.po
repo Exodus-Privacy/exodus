@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"POT-Creation-Date: 2020-01-08 17:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,31 +45,35 @@ msgstr "Impossible de calculer la liste de classe"
 msgid "List embedded classes: success"
 msgstr "Lister les classes embarquées : succès"
 
-#: exodus/core/apk.py:115
+#: exodus/core/apk.py:109
+msgid "Unable to create the analysis report"
+msgstr "Impossible de créer le rapport d'analyse"
+
+#: exodus/core/apk.py:122
 msgid "A report already exists for this application version"
 msgstr "Un rapport existe déjà pour cette version de l’application"
 
-#: exodus/core/apk.py:126
+#: exodus/core/apk.py:133
 msgid "Unable to get certificates"
 msgstr "Impossible de récupérer les certificats"
 
-#: exodus/core/apk.py:143
+#: exodus/core/apk.py:150
 msgid "Unable to compute APK fingerprint"
 msgstr "Impossible de calculer l'empreinte de l'APK"
 
-#: exodus/core/apk.py:152
+#: exodus/core/apk.py:159
 msgid "Unable to get application details from Google Play"
 msgstr "Impossible de récupérer les détails depuis le Google Play"
 
-#: exodus/core/apk.py:156
+#: exodus/core/apk.py:163
 msgid "Get application details: success"
 msgstr "Récupérer les détails de l’application : succès"
 
-#: exodus/core/apk.py:161
+#: exodus/core/apk.py:168
 msgid "Tracker analysis: success"
 msgstr "Analyse des pisteurs : succès"
 
-#: exodus/core/apk.py:215
+#: exodus/core/apk.py:221
 msgid "Static analysis complete"
 msgstr "Analyse statique terminée"
 
