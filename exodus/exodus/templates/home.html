@@ -158,10 +158,16 @@
     const query = jQuery.trim(jQuery("#query").val())
     get_results(query, 50)
   })
+
+  var search_timer = 0
+
   jQuery("#query").on("change paste keyup", function() {
+    if (search_timer) {
+      clearTimeout(search_timer)
+    }
     const query = jQuery.trim(jQuery(this).val())
     if(query.length >= 5) {
-      get_results(query, 20)
+      search_timer = setTimeout(function(){ get_results(query, 20); }, 200);
     }
     if(query == '') {
       jQuery("#go-div").show()
