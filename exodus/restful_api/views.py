@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
+from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import Q
 from django.http import Http404
 from django.http import HttpResponse, JsonResponse
@@ -177,6 +178,23 @@ def get_report_details(request, r_id):
         return JsonResponse(serializer.data, safe=True)
 
 
+def _get_applications(input, limit):
+    exact_handle_matches = Application.objects.filter(Q(handle=input)).order_by('name', 'handle').distinct('name', 'handle')[:limit]
+    if exact_handle_matches.count() > 0:
+        return exact_handle_matches
+
+    applications = Application.objects.annotate(
+        similarity=TrigramSimilarity('name', input),
+    ).filter(
+        similarity__gt=0.3
+    ).order_by(
+        '-similarity', 'name', 'handle'
+    ).distinct(
+        'similarity', 'name', 'handle'
+    )[:limit]
+    return applications
+
+
 @csrf_exempt
 @api_view(['POST'])
 @authentication_classes(())
@@ -190,10 +208,7 @@ def search(request):
         if len(query.query) >= 3:
             if query.type == 'application':
                 try:
-                    applications = Application.objects.filter(Q(handle=query.query)).order_by('name', 'handle').distinct('name', 'handle')[:limit]
-                    if applications.count() == 0:
-                        applications = Application.objects.filter(
-                            Q(handle__icontains=query.query) | Q(name__trigram_similar=query.query)).order_by('name', 'handle').distinct('name', 'handle')[:limit]
+                    applications = _get_applications(query.query, limit)
                 except Application.DoesNotExist:
                     return JsonResponse([], safe=False)
                 serializer = ApplicationSerializer(applications, many=True)
