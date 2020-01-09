@@ -1,7 +1,7 @@
 import tempfile
 import os
 from django.core.management.base import BaseCommand, CommandError
-from minio.error import ResponseError
+from minio.error import ResponseError, NoSuchKey
 
 from exodus.core.static_analysis import StaticAnalysis
 from exodus.core.storage import RemoteStorageHelper
@@ -56,9 +56,10 @@ class Command(BaseCommand):
         else:
             raise CommandError('Please specify a report id or --all option')
 
+        trackers_changed = 0
         count = 1
         for report in reports:
-            self.stdout.write('Start updating report "%s" - %s/%s' % (report.id, count, len(reports)))
+            self.stdout.write('Start updating report "{}" - {}/{}'.format(report.id, count, len(reports)))
 
             # report.application could fail with malformed reports
             try:
@@ -69,52 +70,54 @@ class Command(BaseCommand):
 
             count += 1
             with tempfile.TemporaryDirectory() as tmpdir:
-                icon_name = '%s_%s.png' % (report.bucket, handle)
-                apk_name = report.apk_file
-                apk_tmp = os.path.join(tmpdir, apk_name)
-
                 storage_helper = RemoteStorageHelper(report.bucket)
 
-                # Refresh clist
-                if options['clist']:
+                if options['clist'] or options['icons']:
+                    apk_name = report.apk_file
+                    apk_tmp = os.path.join(tmpdir, apk_name)
                     try:
                         storage_helper.get_file(apk_name, apk_tmp)
                     except ResponseError:
                         raise CommandError('Unable to get APK')
                     static_analysis = StaticAnalysis(apk_path=apk_tmp)
-                    with tempfile.NamedTemporaryFile(delete=True) as fp:
-                        static_analysis.save_embedded_classes_in_file(fp.name)
-                        storage_helper.put_file(fp.name, report.class_list_file)
-                    self.stdout.write(
-                        self.style.SUCCESS('Successfully updated classes list of "%s"' % handle))
 
-                # Refresh trackers
+                    if options['clist']:
+                        with tempfile.NamedTemporaryFile(delete=True) as fp:
+                            static_analysis.save_embedded_classes_in_file(fp.name)
+                            storage_helper.put_file(fp.name, report.class_list_file)
+                        self.stdout.write(
+                            self.style.SUCCESS('Successfully updated classes list of "{}"'.format(handle)))
+
+                    if options['icons']:
+                        icon_name = '{}_{}.png'.format(report.bucket, handle)
+                        icon_path, _ = static_analysis.get_icon_and_phash(storage_helper, icon_name)
+                        if icon_path != '':
+                            report.application.icon_path = icon_path
+                            report.application.save()
+                            self.stdout.write(
+                                self.style.SUCCESS('Successfully updated icon of "{}"'.format(handle)))
+
                 if options['trackers']:
                     # Download class list file
                     static_analysis = StaticAnalysis(None)
                     clist_tmp = os.path.join(tmpdir, report.class_list_file)
                     try:
                         storage_helper.get_file(report.class_list_file, clist_tmp)
-                    except ResponseError:
-                        raise CommandError('Unable to clist file')
+                    except (ResponseError, NoSuchKey):
+                        raise CommandError('Unable to get clist file')
+
                     trackers = static_analysis.detect_trackers(clist_tmp)
-                    self.stdout.write(
-                        self.style.WARNING(
-                            'previous: %s - new: %s trackers' % (report.found_trackers.count(), len(trackers))))
+                    if report.found_trackers.count() != len(trackers):
+                        trackers_changed += 1
+                        self.stdout.write(
+                            self.style.WARNING(
+                                'Previous: {} - New: {} trackers'.format(report.found_trackers.count(), len(trackers))))
                     report.found_trackers.set(trackers)
                     self.stdout.write(
-                        self.style.SUCCESS('Successfully updated trackers list of "%s"' % handle))
+                        self.style.SUCCESS('Successfully updated trackers list of "{}"'.format(handle)))
 
-                # Refresh icon
-                if options['icons']:
-                    try:
-                        storage_helper.get_file(apk_name, apk_tmp)
-                    except ResponseError:
-                        raise CommandError('Unable to get APK')
-                    static_analysis = StaticAnalysis(apk_path=apk_tmp)
-                    icon_path, _ = static_analysis.get_icon_and_phash(storage_helper, icon_name)
-                    if icon_path != '':
-                        report.application.icon_path = icon_path
-                        report.application.save()
-                        self.stdout.write(
-                            self.style.SUCCESS('Successfully updated icon of "%s"' % report.application.handle))
+            self.stdout.write('=====')
+
+        self.stdout.write(self.style.SUCCESS('Update complete !'))
+        if options['trackers']:
+            self.stdout.write('Reports updated (trackers): {}'.format(trackers_changed))
