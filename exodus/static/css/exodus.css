@@ -93,20 +93,3 @@ select.custom-select {
   -moz-appearance: none;
   width: auto;
 }
-
-@media print {
-  .alert-heading .btn-secondary {
-    /* hide buttons */
-    display: none;
-  }
-
-  .alert .row > .col:nth-last-child(1) {
-    /* put the "Signed by" block below the title block, so the app name itself isn't wrapped */
-    flex-basis: inherit;
-  }
-
-  .navbar-brand object {
-    /* Firefox puts some huge padding around the logo for some reason */
-    max-height: 54px;
-  }
-}
