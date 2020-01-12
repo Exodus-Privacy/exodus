@@ -93,3 +93,6 @@ select.custom-select {
   -moz-appearance: none;
   width: auto;
 }
+ul.navbar-nav {
+  white-space: nowrap;
+}
