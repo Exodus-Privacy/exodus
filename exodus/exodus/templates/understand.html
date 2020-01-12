@@ -15,21 +15,29 @@
     <img class="img-fluid" src="{% static 'img/tracker.svg' %}" alt="trackers">
   </div>
   <div class="col-md-5 col-7">
-    <h4>{% trans "Trackers " %}</h4>
-    <p>
-      {% trans "Know more about trackers and their impact on privacy" %}
-    </p>
-    <a href="{% url 'trackers' %}" class="btn btn-primary btn-block" style="width:150px">{% trans "Read the article" %}</a>
+    <div class="col-12">
+      <h4>{% trans "Trackers " %}</h4>
+      <p>
+        {% trans "Know more about trackers and their impact on privacy" %}
+      </p>
+    </div>
+    <div class="col-lg-6 col-md-8 col-12">
+      <a href="{% url 'trackers' %}" class="btn btn-primary btn-block" style="min-width:150px">{% trans "Read the article" %}</a>
+    </div>
   </div>
 </div>
 
 <div class="row justify-content-sm-center mb-5">
   <div class="col-md-5 col-7">
-    <h4>{% trans "Permissions" %}</h4>
-    <p>
-      {% trans "What is permission and what are the privacy issues?" %}
-    </p>
-    <a href="{% url 'permissions' %}" class="btn btn-primary btn-block" style="width:150px">{% trans "Read the article" %}</a>
+    <div class="col-12">
+      <h4>{% trans "Permissions" %}</h4>
+      <p>
+        {% trans "What is permission and what are the privacy issues?" %}
+      </p>
+    </div>
+    <div class="col-lg-6 col-md-8 col-12">
+      <a href="{% url 'permissions' %}" class="btn btn-primary btn-block" style="min-width:150px">{% trans "Read the article" %}</a>
+    </div>
   </div>
   <div class="col-md-3 col-5 my-auto">
     <img class="img-fluid" src="{% static 'img/permission.svg' %}" alt="permissions">
@@ -41,11 +49,15 @@
     <img class="img-fluid" src="{% static 'img/alternatives.png' %}" alt="alternatives">
   </div>
   <div class="col-md-5 col-7">
-    <h4>{% trans "What's next?" %}</h4>
-    <p>
-      {% trans "A list of tools and things you can do to better manage your privacy on your smartphone" %}
-    </p>
-    <a href="{% url 'next' %}" class="btn btn-primary btn-block" style="width:150px">{% trans "Read the article" %}</a>
+    <div class="col-12">
+      <h4>{% trans "What's next?" %}</h4>
+      <p>
+        {% trans "A list of tools and things you can do to better manage your privacy on your smartphone" %}
+      </p>
+    </div>
+    <div class="col-lg-6 col-md-8 col-12">
+      <a href="{% url 'next' %}" class="btn btn-primary btn-block" style="min-width:150px">{% trans "Read the article" %}</a>
+    </div>
   </div>
 </div>
 {% endblock %}
