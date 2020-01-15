@@ -27,7 +27,9 @@ class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = ['id', 'handle', 'name', 'creator', 'downloads', 'app_uid',
-                  'icon_phash', 'report_updated_at']
+                  'icon_phash', 'report_updated_at', 'permissions_count',
+                  'trackers_count', 'permissions_class', 'trackers_class',
+                  'version']
 
 
 class TrackerSerializer(serializers.ModelSerializer):
