@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"PO-Revision-Date: 2020-01-15 16:43\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /occitan-translation/exodus/trackers/locale/en/LC_MESSAGES/django.po\n"
+
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr ""
+
+#: trackers/templates/stats_details.html:10
+msgid "Most frequent trackers"
+msgstr ""
+
+#: trackers/templates/stats_details.html:20
+msgid "found in"
+msgstr ""
+
+#: trackers/templates/stats_details.html:20
+#: trackers/templates/tracker_details.html:21
+#: trackers/templates/tracker_details.html:46
+msgid "application"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:21
+msgid "Present in:"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:25
+msgid "Tracker web page"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:37
+msgid "Detection rules"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:38
+msgid "Code detection rule:"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:40
+msgid "Network detection rule:"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:46
+msgid "Present in"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: trackers/templates/trackers_list.html:25
+msgid "No trackers are available"
+msgstr ""
+
+#: trackers/views.py:19 trackers/views.py:41 trackers/views.py:85
+#: trackers/views.py:114
+msgid "Tracker does not exist"
+msgstr ""
+
