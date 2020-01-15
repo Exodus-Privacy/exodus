@@ -1,18 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 08:10+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"PO-Revision-Date: 2020-01-15 16:43\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: oc\n"
+"Language-Team: Occitan\n"
+"Language: oc_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"X-Pootle-Path: /oc/exodus/django.po\n"
-"X-Pootle-Revision: 677\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: oc\n"
+"X-Crowdin-File: /occitan-translation/exodus/exodus/locale/en/LC_MESSAGES/django.po\n"
 
 #: exodus/core/apk.py:54
 msgid "Your request is running"
@@ -140,15 +141,11 @@ msgid "Results"
 msgstr ""
 
 #: exodus/templates/home.html:46
-msgid ""
-"εxodus analyzes Android applications in order to <b>list the embedded "
-"trackers.</b>"
+msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
 msgstr ""
 
 #: exodus/templates/home.html:47
-msgid ""
-"A tracker is a piece of software <b>meant to collect data about you or your "
-"usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
 msgstr ""
 
 #: exodus/templates/home.html:48
@@ -156,9 +153,7 @@ msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 
 #: exodus/templates/home.html:55
-msgid ""
-"What is a tracker? And a permission? Are there any alternatives to protect "
-"yourself?"
+msgid "What is a tracker? And a permission? Are there any alternatives to protect yourself?"
 msgstr ""
 
 #: exodus/templates/home.html:71
@@ -186,10 +181,7 @@ msgid "What's next?"
 msgstr ""
 
 #: exodus/templates/next.html:16
-msgid ""
-"We know it is not easy to find alternatives in order to escape trackers "
-"within our apps. We prepared a list of tools and things you can do to better "
-"manage your privacy on your smartphone."
+msgid "We know it is not easy to find alternatives in order to escape trackers within our apps. We prepared a list of tools and things you can do to better manage your privacy on your smartphone."
 msgstr ""
 
 #: exodus/templates/next.html:20
@@ -197,9 +189,7 @@ msgid "Consider how you use applications"
 msgstr ""
 
 #: exodus/templates/next.html:22
-msgid ""
-"When you wish to install an application or when an application asks for "
-"personal information, ask yourself the following questions:"
+msgid "When you wish to install an application or when an application asks for personal information, ask yourself the following questions:"
 msgstr ""
 
 #: exodus/templates/next.html:25
@@ -215,16 +205,11 @@ msgid "do I want or need to give it what it asks me?"
 msgstr ""
 
 #: exodus/templates/next.html:30
-msgid ""
-"It is up to you to decide but by taking into consideration your daily use, "
-"you can have a better control over your digital identity."
+msgid "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity."
 msgstr ""
 
 #: exodus/templates/next.html:33
-msgid ""
-"You could also contact the people who offer you the application if you "
-"consider it to be too intrusive and ask them some explanations on the "
-"presence of trackers and permission requests."
+msgid "You could also contact the people who offer you the application if you consider it to be too intrusive and ask them some explanations on the presence of trackers and permission requests."
 msgstr ""
 
 #: exodus/templates/next.html:37
@@ -232,22 +217,11 @@ msgid "Favour free software"
 msgstr ""
 
 #: exodus/templates/next.html:39
-msgid ""
-"What is called 'free' software is software whose code (i.e. its recipe, or "
-"list of instructions) can be changed, copied, verified... and is thus "
-"transparent. A free software application might exist to replace an app that "
-"you already use but that may not respect your privacy."
+msgid "What is called 'free' software is software whose code (i.e. its recipe, or list of instructions) can be changed, copied, verified... and is thus transparent. A free software application might exist to replace an app that you already use but that may not respect your privacy."
 msgstr ""
 
 #: exodus/templates/next.html:47
-msgid ""
-"If you are an Android user, you can install <a target='_blank' "
-"rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free "
-"software store that can be used instead or in addition to the Google Play "
-"store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' "
-"href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be "
-"aware, however, that some F-Droid applications are not available in all "
-"languages."
+msgid "If you are an Android user, you can install <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free software store that can be used instead or in addition to the Google Play store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be aware, however, that some F-Droid applications are not available in all languages."
 msgstr ""
 
 #: exodus/templates/next.html:51
@@ -255,24 +229,15 @@ msgid "Use the mobile website instead of the application"
 msgstr ""
 
 #: exodus/templates/next.html:53
-msgid ""
-"On a mobile device you don't necessary have to use applications: you can use "
-"mobile websites instead. One advantage in favour of the latter is the "
-"possibility to use  web browser add-ons, in the same way you can do it on "
-"your computer (e.g. uBlock Origin)."
+msgid "On a mobile device you don't necessary have to use applications: you can use mobile websites instead. One advantage in favour of the latter is the possibility to use  web browser add-ons, in the same way you can do it on your computer (e.g. uBlock Origin)."
 msgstr ""
 
 #: exodus/templates/next.html:64
-msgid ""
-"If you want a browser experience that is more respectful of your privacy, "
-"you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo "
-"Privacy Browser."
+msgid "If you want a browser experience that is more respectful of your privacy, you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo Privacy Browser."
 msgstr ""
 
 #: exodus/templates/next.html:67
-msgid ""
-"These browsers allow you to add your favorite websites on your home screen "
-"easily, just as an app (but lighter)."
+msgid "These browsers allow you to add your favorite websites on your home screen easily, just as an app (but lighter)."
 msgstr ""
 
 #: exodus/templates/next.html:71
@@ -280,11 +245,7 @@ msgid "Install an ad blocker"
 msgstr ""
 
 #: exodus/templates/next.html:78
-msgid ""
-"In all cases, Android smartphones allow you to install ad-blocking "
-"applications such as <a target='_blank' rel='noreferrer' href='https://"
-"blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or "
-"from their own website."
+msgid "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or from their own website."
 msgstr ""
 
 #: exodus/templates/next.html:82
@@ -296,15 +257,11 @@ msgid "For broader recommendations, here are some resources you can dig in:"
 msgstr ""
 
 #: exodus/templates/next.html:85
-msgid ""
-"\n"
+msgid "\n"
 "      <ul>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://prism-break."
-"org/categories/android/'>Prism Break</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff."
-"org/'>Surveillance Self-Defense by EFF</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://www."
-"privacytools.io/'>privacytools.io</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.privacytools.io/'>privacytools.io</a></li>\n"
 "      </ul>\n"
 "      "
 msgstr ""
@@ -314,32 +271,22 @@ msgid "Remain curious!"
 msgstr ""
 
 #: exodus/templates/next.html:97
-msgid ""
-"In this area, what is true today may not necessarily be true tomorrow: tools "
-"might come and go, application policies can change, security breaches can be "
-"discovered..."
+msgid "In this area, what is true today may not necessarily be true tomorrow: tools might come and go, application policies can change, security breaches can be discovered..."
 msgstr ""
 
 #: exodus/templates/next.html:100
-msgid ""
-"To this effect, you can attend workshops held by associations such as <a "
-"target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/"
-"CryptoParty'>cryptoparties</a> or other organizations like public libraries."
+msgid "To this effect, you can attend workshops held by associations such as <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> or other organizations like public libraries."
 msgstr ""
 
 #: exodus/templates/next.html:103
-msgid ""
-"To stay up to date on these topics, you can find useful resources there:"
+msgid "To stay up to date on these topics, you can find useful resources there:"
 msgstr ""
 
 #: exodus/templates/next.html:104
-msgid ""
-"\n"
+msgid "\n"
 "      <ul>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/"
-"deeplinks'>EFF blog</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://boingboing."
-"net/'>The 'Boing Boing' blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>\n"
 "      </ul>\n"
 "      "
 msgstr ""
@@ -349,18 +296,11 @@ msgid "For advanced users"
 msgstr ""
 
 #: exodus/templates/next.html:115
-msgid ""
-"If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://"
-"lineageos.org/'>Lineage OS</a> is an operating system based on Android; it "
-"can be used without Google services. It is possible to install it on your "
-"smartphone, provided your device is compatible."
+msgid "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> is an operating system based on Android; it can be used without Google services. It is possible to install it on your smartphone, provided your device is compatible."
 msgstr ""
 
 #: exodus/templates/organization.html:19
-msgid ""
-"Exodus Privacy is a non-profit organization led by hacktivists. Its purpose "
-"is to help people get a better understanding of the Android applications "
-"tracking issues."
+msgid "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues."
 msgstr ""
 
 #: exodus/templates/organization.html:22
@@ -372,10 +312,7 @@ msgid "Help us!"
 msgstr "Ajudatz-nos !"
 
 #: exodus/templates/organization.html:28
-msgid ""
-"Exodus Privacy is an organization managed by volunteers. Whether you would "
-"like to draw, translate, code or create any kind of content, feel free: we "
-"welcome any help."
+msgid "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help."
 msgstr ""
 
 #: exodus/templates/organization.html:31
@@ -424,11 +361,7 @@ msgid "What type of permissions?"
 msgstr ""
 
 #: exodus/templates/permissions.html:22
-msgid ""
-"They can concern various features or pieces of information, such as access "
-"to your geolocation, your contacts, your files, your microphone, vibrate "
-"function, camera and so on. Exodus Privacy analyses allow you to know, on a  "
-"per app basis, which permissions are asked."
+msgid "They can concern various features or pieces of information, such as access to your geolocation, your contacts, your files, your microphone, vibrate function, camera and so on. Exodus Privacy analyses allow you to know, on a  per app basis, which permissions are asked."
 msgstr ""
 
 #: exodus/templates/permissions.html:26
@@ -436,10 +369,7 @@ msgid "Why are some permissions indicated as dangerous?"
 msgstr ""
 
 #: exodus/templates/permissions.html:28
-msgid ""
-"Google defines <a target='_blank' rel='noreferrer' href='https://developer."
-"android.com/guide/topics/permissions/overview'>danger levels for "
-"permissions</a>, which we report in our analyses."
+msgid "Google defines <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>danger levels for permissions</a>, which we report in our analyses."
 msgstr ""
 
 #: exodus/templates/permissions.html:32
@@ -447,9 +377,7 @@ msgid "Do I have control over these permissions?"
 msgstr ""
 
 #: exodus/templates/permissions.html:34
-msgid ""
-"Depending on your smartphone and operating system, it is possible to "
-"restrain some of these permissions by going into your phone's settings."
+msgid "Depending on your smartphone and operating system, it is possible to restrain some of these permissions by going into your phone's settings."
 msgstr ""
 
 #: exodus/templates/trackers.html:8 exodus/templates/understand.html:18
@@ -457,10 +385,7 @@ msgid "Trackers "
 msgstr "Traçadors"
 
 #: exodus/templates/trackers.html:16
-msgid ""
-"This page is mostly a rework of <a target='_blank' rel='noreferrer' "
-"href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, "
-"published under CC-BY-NC license."
+msgid "This page is mostly a rework of <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, published under CC-BY-NC license."
 msgstr ""
 
 #: exodus/templates/trackers.html:20
@@ -473,13 +398,7 @@ msgid "See the video"
 msgstr ""
 
 #: exodus/templates/trackers.html:25
-msgid ""
-"A tracker is a piece of software whose task is to gather information on the "
-"person using the application, on how they use it, or on the smartphone being "
-"used. A tracker is usually distributed by companies as a SDK (Software "
-"Development Kit), a sort of ready-made toolkit, aiming to make it easier for "
-"application developers. To be noted : 'open source' trackers exist, their "
-"code is available and open to everyone."
+msgid "A tracker is a piece of software whose task is to gather information on the person using the application, on how they use it, or on the smartphone being used. A tracker is usually distributed by companies as a SDK (Software Development Kit), a sort of ready-made toolkit, aiming to make it easier for application developers. To be noted : 'open source' trackers exist, their code is available and open to everyone."
 msgstr ""
 
 #: exodus/templates/trackers.html:29
@@ -487,59 +406,31 @@ msgid "Are all trackers created equal?"
 msgstr ""
 
 #: exodus/templates/trackers.html:34
-msgid ""
-"No, all trackers do not have the same function and they can present "
-"different levels of (privacy) intrusion."
+msgid "No, all trackers do not have the same function and they can present different levels of (privacy) intrusion."
 msgstr ""
 
 #: exodus/templates/trackers.html:38
-msgid ""
-"<b>Crash reporters:</b> these trackers specialize in reporting application "
-"crashes. In other terms, their goal is to notify application developers that "
-"an app encountered a problem. As such, information collected at the time the "
-"application crashed will allow the developer to correct the bug."
+msgid "<b>Crash reporters:</b> these trackers specialize in reporting application crashes. In other terms, their goal is to notify application developers that an app encountered a problem. As such, information collected at the time the application crashed will allow the developer to correct the bug."
 msgstr ""
 
 #: exodus/templates/trackers.html:41
-msgid ""
-"<b>Analytics:</b> these trackers are meant to collect data usage and allow "
-"the developer to have better knowledge of their audience (for instance, to "
-"know what page you visited, or how long you remained on a given area of the "
-"page)."
+msgid "<b>Analytics:</b> these trackers are meant to collect data usage and allow the developer to have better knowledge of their audience (for instance, to know what page you visited, or how long you remained on a given area of the page)."
 msgstr ""
 
 #: exodus/templates/trackers.html:44
-msgid ""
-"<b>Profiling:</b> these trackers' goal is to gather as much information as "
-"possible on the application user in order to build a virtual profile. To "
-"this effect, the tracker will for instance focus on the browsing history, or "
-"on the list of installed applications, and so on."
+msgid "<b>Profiling:</b> these trackers' goal is to gather as much information as possible on the application user in order to build a virtual profile. To this effect, the tracker will for instance focus on the browsing history, or on the list of installed applications, and so on."
 msgstr ""
 
 #: exodus/templates/trackers.html:47
-msgid ""
-"<b>Identification:</b> these trackers are responsible for determining your "
-"digital identity. This identity may refer to an official identity or to "
-"abstract identifiers (pseudonym, etc.). The goal will be, for example, to be "
-"able to correlate an individual's online and offline activities."
+msgid "<b>Identification:</b> these trackers are responsible for determining your digital identity. This identity may refer to an official identity or to abstract identifiers (pseudonym, etc.). The goal will be, for example, to be able to correlate an individual's online and offline activities."
 msgstr ""
 
 #: exodus/templates/trackers.html:50
-msgid ""
-"<b>Ads:</b> these trackers aim to identify the application user in order to "
-"serve them targeted ads. This is only possible and relevant if the user "
-"already already has a digital profile established. The goal of the creator "
-"of such a tracker is to monetize their application, i.e. to make money by "
-"means of advertisement."
+msgid "<b>Ads:</b> these trackers aim to identify the application user in order to serve them targeted ads. This is only possible and relevant if the user already already has a digital profile established. The goal of the creator of such a tracker is to monetize their application, i.e. to make money by means of advertisement."
 msgstr ""
 
 #: exodus/templates/trackers.html:53
-msgid ""
-"<b>Location:</b> these trackers are designed to determine the geographical "
-"location of the mobile device. In order to do so, this type of tracker takes "
-"advantage of several sensors: GPS chips, surrounding cellular antennae, wi-"
-"fi networks present in the area, nearby Bluetooth beacons, or even specific "
-"sounds transmitted by loudspeakers."
+msgid "<b>Location:</b> these trackers are designed to determine the geographical location of the mobile device. In order to do so, this type of tracker takes advantage of several sensors: GPS chips, surrounding cellular antennae, wi-fi networks present in the area, nearby Bluetooth beacons, or even specific sounds transmitted by loudspeakers."
 msgstr ""
 
 #: exodus/templates/trackers.html:58
@@ -547,27 +438,15 @@ msgid "Who puts these trackers in?"
 msgstr ""
 
 #: exodus/templates/trackers.html:63
-msgid ""
-"To answer these questions we must first understand how applications are "
-"made; there are 2 possible scenarios:"
+msgid "To answer these questions we must first understand how applications are made; there are 2 possible scenarios:"
 msgstr ""
 
 #: exodus/templates/trackers.html:66
-msgid ""
-"In the first case the organization that owns the product subcontracts the "
-"application development to a third party company. The contract specifies "
-"what the application needs to perform and what technologies are employed to "
-"do so. Sometimes the subcontractor already has an application template that "
-"they re-use for each new application. In such a case all applications that "
-"are developed will include these trackers whether or not they are specified "
-"in the programming contract."
+msgid "In the first case the organization that owns the product subcontracts the application development to a third party company. The contract specifies what the application needs to perform and what technologies are employed to do so. Sometimes the subcontractor already has an application template that they re-use for each new application. In such a case all applications that are developed will include these trackers whether or not they are specified in the programming contract."
 msgstr ""
 
 #: exodus/templates/trackers.html:69
-msgid ""
-"In the second case the organization that owns the product develops the "
-"application in-house. In that case, their own employees are in charge of "
-"deciding whether or not they want to include certain types of trackers."
+msgid "In the second case the organization that owns the product develops the application in-house. In that case, their own employees are in charge of deciding whether or not they want to include certain types of trackers."
 msgstr ""
 
 #: exodus/templates/understand.html:20
@@ -584,7 +463,6 @@ msgid "What is permission and what are the privacy issues?"
 msgstr ""
 
 #: exodus/templates/understand.html:46
-msgid ""
-"A list of tools and things you can do to better manage your privacy on your "
-"smartphone"
+msgid "A list of tools and things you can do to better manage your privacy on your smartphone"
 msgstr ""
+
