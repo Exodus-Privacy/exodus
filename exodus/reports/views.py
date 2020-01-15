@@ -47,16 +47,6 @@ def get_reports(request, handle=None):
     )
 
 
-def _get_color_class(count):
-    if count == 0:
-        color_class = "success"
-    elif count < 5:
-        color_class = "warning"
-    else:
-        color_class = "danger"
-    return color_class
-
-
 def detail(request, report_id=None, handle=None):
     try:
         report = None
@@ -68,17 +58,8 @@ def detail(request, report_id=None, handle=None):
             raise Report.DoesNotExist
     except Report.DoesNotExist:
         raise Http404(_("report does not exist"))
-    tracker_class = _get_color_class(report.found_trackers.count())
-    perm_class = _get_color_class(report.application.permission_set.count())
 
-    return render(
-        request, 'report_details.html',
-        {
-            'report': report,
-            'tracker_class': tracker_class,
-            'perm_class': perm_class
-        }
-    )
+    return render(request, 'report_details.html', {'report': report})
 
 
 def get_app_icon(request, app_id=None, handle=None):
