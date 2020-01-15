@@ -1,18 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 08:10+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"PO-Revision-Date: 2020-01-15 16:43\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: oc\n"
+"Language-Team: Occitan\n"
+"Language: oc_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"X-Pootle-Path: /oc/analysis_query/django.po\n"
-"X-Pootle-Revision: 676\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: oc\n"
+"X-Crowdin-File: /occitan-translation/exodus/analysis_query/locale/en/LC_MESSAGES/django.po\n"
 
 #: analysis_query/models.py:30
 #, python-format
@@ -64,17 +65,14 @@ msgstr ""
 
 #: analysis_query/templates/query_submit.html:62
 #: analysis_query/templates/query_upload.html:57
-msgid ""
-"The analysis could take a long time, you will be automatically redirected to "
-"the report."
+msgid "The analysis could take a long time, you will be automatically redirected to the report."
 msgstr "L’analisi pòt tardar, seretz automaticament mandat al rapòrt"
 
 #: analysis_query/templates/query_submit.html:75
 #: analysis_query/templates/query_upload.html:70
 #: analysis_query/templates/query_wait.html:39
 msgid "is a non-profit organization which provides this service for free."
-msgstr ""
-"es un organisme a sens but lucratiu que fornís aqueste servici gratuitament."
+msgstr "es un organisme a sens but lucratiu que fornís aqueste servici gratuitament."
 
 #: analysis_query/templates/query_submit.html:77
 #: analysis_query/templates/query_upload.html:72
@@ -82,25 +80,21 @@ msgstr ""
 msgid "Help us!"
 msgstr "Ajudatz-nos !"
 
-#: analysis_query/templates/query_submit.html:121
+#: analysis_query/templates/query_submit.html:119
 msgid "This application has already been analyzed!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:127
+#: analysis_query/templates/query_submit.html:125
 msgid "analyzed on"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:127
+#: analysis_query/templates/query_submit.html:125
 msgid "Go to the latest report"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:131
-msgid ""
-"If you think εxodus has not yet analyzed the latest version of this "
-"application, feel free to submit the analysis."
-msgstr ""
-"Se pensatz qu’εxodus pas encara analizat la darrièra version d’aquesta "
-"aplicacion, esitetz pas a sometre l’analisi."
+#: analysis_query/templates/query_submit.html:129
+msgid "If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis."
+msgstr "Se pensatz qu’εxodus pas encara analizat la darrièra version d’aquesta aplicacion, esitetz pas a sometre l’analisi."
 
 #: analysis_query/templates/query_upload.html:32
 msgid "Upload an application"
@@ -133,3 +127,4 @@ msgstr "Vòstra demanda serà lèu tractada"
 #: analysis_query/views.py:68 analysis_query/views.py:76
 msgid "AnalysisRequest does not exist"
 msgstr "La demanda d’analisi existís pas"
+
