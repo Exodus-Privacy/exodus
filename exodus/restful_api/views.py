@@ -180,7 +180,7 @@ def get_report_details(request, r_id):
 
 
 def _get_applications(input, limit):
-    exact_handle_matches = Application.objects.filter(Q(handle=input)).order_by('name', 'handle').distinct('name', 'handle')[:limit]
+    exact_handle_matches = Application.objects.filter(Q(handle=input)).order_by('name', 'handle', '-report__creation_date').distinct('name', 'handle')[:limit]
     if exact_handle_matches.count() > 0:
         return exact_handle_matches
 
@@ -189,7 +189,7 @@ def _get_applications(input, limit):
     ).filter(
         similarity__gt=0.3
     ).order_by(
-        '-similarity', 'name', 'handle'
+        '-similarity', 'name', 'handle', '-report__creation_date'
     ).distinct(
         'similarity', 'name', 'handle'
     )[:limit]
