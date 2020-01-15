@@ -1,18 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 08:10+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"PO-Revision-Date: 2020-01-15 16:44\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: oc\n"
+"Language-Team: Occitan\n"
+"Language: oc_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"X-Pootle-Path: /oc/trackers/django.po\n"
-"X-Pootle-Revision: 653\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: oc\n"
+"X-Crowdin-File: /occitan-translation/exodus/trackers/locale/en/LC_MESSAGES/django.po\n"
 
 #: trackers/templates/stats_details.html:9
 #: trackers/templates/trackers_list.html:13
@@ -75,3 +76,4 @@ msgstr "Cap de traçador disponible"
 #: trackers/views.py:114
 msgid "Tracker does not exist"
 msgstr "Lo traçador existís pas"
+
