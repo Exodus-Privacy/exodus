@@ -45,6 +45,16 @@ class Report(models.Model):
         return self.found_trackers.order_by('name')
 
 
+def _get_color_class(count):
+    if count == 0:
+        color_class = "success"
+    elif count < 5:
+        color_class = "warning"
+    else:
+        color_class = "danger"
+    return color_class
+
+
 class Application(models.Model):
     report = models.OneToOneField(Report, on_delete=models.CASCADE)
     handle = models.CharField(max_length=200)
@@ -59,6 +69,18 @@ class Application(models.Model):
 
     def __str__(self):
         return self.handle
+
+    def trackers_class(self):
+        return _get_color_class(self.trackers_count())
+
+    def permissions_class(self):
+        return _get_color_class(self.permissions_count())
+
+    def trackers_count(self):
+        return len(self.report.found_trackers.all())
+
+    def permissions_count(self):
+        return len(self.permission_set.all())
 
     def permissions(self):
         return self.permission_set.all().order_by('name')
