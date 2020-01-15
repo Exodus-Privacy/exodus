@@ -16,7 +16,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from reports.models import Application, Report
 from trackers.models import Tracker
 from restful_api.serializers import ApplicationSerializer, TrackerSerializer,\
-    ReportInfosSerializer, ReportSerializer, SearchQuerySerializer
+    ReportInfosSerializer, ReportSerializer, SearchQuerySerializer,\
+    SearchApplicationSerializer
 
 
 @csrf_exempt
@@ -211,7 +212,7 @@ def search(request):
                     applications = _get_applications(query.query, limit)
                 except Application.DoesNotExist:
                     return JsonResponse([], safe=False)
-                serializer = ApplicationSerializer(applications, many=True)
+                serializer = SearchApplicationSerializer(applications, many=True)
                 return JsonResponse({'results': serializer.data}, safe=False)
             elif query.type == 'tracker':
                 try:

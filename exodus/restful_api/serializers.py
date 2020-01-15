@@ -27,6 +27,19 @@ class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = ['id', 'handle', 'name', 'creator', 'downloads', 'app_uid',
+                  'icon_phash', 'report_updated_at']
+
+
+class SearchApplicationSerializer(serializers.ModelSerializer):
+    class TimestampField(serializers.Field):
+        def to_representation(self, value):
+            return value.timestamp()
+
+    report_updated_at = TimestampField(source='report.updated_at')
+
+    class Meta:
+        model = Application
+        fields = ['id', 'handle', 'name', 'creator', 'downloads', 'app_uid',
                   'icon_phash', 'report_updated_at', 'permissions_count',
                   'trackers_count', 'permissions_class', 'trackers_class',
                   'version']
