@@ -20,7 +20,6 @@ function startWorker() {
 }
 
 function startFrontend() {
-	cp /usr/local/lib/python3.7/site-packages/root/.config/gplaycli/gplaycli.conf /home/exodus/.config/gplaycli/gplaycli.conf
 	cd ${EXODUS_HOME}/exodus/
 	python3 manage.py runserver --settings=exodus.settings.docker 0.0.0.0:8000
 }
@@ -41,8 +40,13 @@ function init() {
 	startFrontend
 }
 
+function createGplaycliConfiguration() {
+	sed -e "s/GOOGLE_ACCOUNT_USERNAME/${1}/g;s/GOOGLE_ACCOUNT_PASSWORD/${2}/g;s/USE_TOKEN_DISPENSER/${3}/g;s@TOKEN_DISPENSER_URL@${4}@g" /home/exodus/.config/gplaycli/docker.gplaycli.conf > /home/exodus/.config/gplaycli/gplaycli.conf
+}
+
 case "${1}" in
 	"init")
+		createGplaycliConfiguration ${GOOGLE_ACCOUNT_USERNAME} ${GOOGLE_ACCOUNT_PASSWORD} ${USE_TOKEN_DISPENSER} ${TOKEN_DISPENSER_URL}
 		init
 		;;
 	"create-db")

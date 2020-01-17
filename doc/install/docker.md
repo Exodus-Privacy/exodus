@@ -2,13 +2,15 @@
 
 ## Run
 
-```
+Edit `docker-compose.yml` (set a Google account username and password).
+
+```bash
 docker-compose up -d
 docker logs -f exodus
 ```
 
 When everything is up (Docker logs `Exodus is ready.`), launch the worker:
-```
+```bash
 docker exec -it exodus /entrypoint.sh "start-worker"
 ```
 
@@ -23,7 +25,7 @@ Don't forget to rebuild your container if there is any change with `docker-compo
 ## Aliases
 
 You can use the command
-```
+```bash
 docker exec -it exodus /entrypoint.sh "<command>"
 ```
 to make actions, where `<command>` can be:

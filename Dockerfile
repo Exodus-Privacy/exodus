@@ -11,7 +11,8 @@ RUN pip3 install -r /opt/requirements.txt
 
 RUN useradd -ms /bin/bash exodus
 
-RUN mkdir -p /home/exodus/.config/gplaycli && cp /usr/local/lib/python3.7/site-packages/root/.config/gplaycli/gplaycli.conf /home/exodus/.config/gplaycli/gplaycli.conf
+RUN mkdir -p /home/exodus/.config/gplaycli
+COPY ./docker.gplaycli.conf /home/exodus/.config/gplaycli/
 
 COPY ./ /home/exodus/exodus
 
