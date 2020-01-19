@@ -36,7 +36,7 @@ def save_error(storage_helper, analysis, request, msg):
     :param msg: message to set as a description
     """
     clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
-    request.description = _(msg)
+    request.description = msg
     request.in_error = True
     request.processed = True
     request.save()
@@ -62,7 +62,7 @@ def start_static_analysis(analysis):
         # Download APK and put it on Minio storage
         dl_r = download_apk(storage_helper, request.handle, analysis.tmp_dir, analysis.apk_name, analysis.apk_tmp)
         if not dl_r:
-            msg = 'Unable to download the APK'
+            msg = _('Unable to download the APK')
             save_error(storage_helper, analysis, request, msg)
             return EXIT_CODE
 
@@ -74,7 +74,7 @@ def start_static_analysis(analysis):
         static_analysis.load_apk()
     except Exception as e:
         logging.info(e)
-        msg = 'Unable to decode the APK'
+        msg = _('Unable to decode the APK')
         save_error(storage_helper, analysis, request, msg)
         return EXIT_CODE
 
@@ -87,7 +87,7 @@ def start_static_analysis(analysis):
             storage_helper.put_file(fp.name, analysis.class_list_file)
     except Exception as e:
         logging.info(e)
-        msg = 'Unable to compute the class list'
+        msg = _('Unable to compute the class list')
         save_error(storage_helper, analysis, request, msg)
         return EXIT_CODE
 
@@ -104,7 +104,7 @@ def start_static_analysis(analysis):
 
     # TODO: increase character limit in DB (see #300)
     if len(version) > 50 or len(version_code) > 50 or len(app_name) > 200:
-        msg = 'Unable to create the analysis report'
+        msg = _('Unable to create the analysis report')
         save_error(storage_helper, analysis, request, msg)
         return EXIT_CODE
 
@@ -128,7 +128,7 @@ def start_static_analysis(analysis):
         certificates = static_analysis.get_certificates()
     except Exception as e:
         logging.info(e)
-        msg = 'Unable to get certificates'
+        msg = _('Unable to get certificates')
         save_error(storage_helper, analysis, request, msg)
         return EXIT_CODE
 
@@ -145,7 +145,7 @@ def start_static_analysis(analysis):
             raise Exception('Unable to compute the icon perceptual hash')
     except Exception as e:
         logging.info(e)
-        msg = 'Unable to compute APK fingerprint'
+        msg = _('Unable to compute APK fingerprint')
         save_error(storage_helper, analysis, request, msg)
         return EXIT_CODE
 
@@ -154,7 +154,7 @@ def start_static_analysis(analysis):
         app_info = static_analysis.get_app_info()
     except Exception as e:
         logging.info(e)
-        msg = 'Unable to get application details from Google Play'
+        msg = _('Unable to get application details from Google Play')
         save_error(storage_helper, analysis, request, msg)
         return EXIT_CODE
 
