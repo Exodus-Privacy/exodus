@@ -2,6 +2,10 @@
 from __future__ import unicode_literals
 
 from django.test import TestCase, Client
+from django.core.management import call_command
+from django.core.management.base import CommandError
+from unittest.mock import patch
+from io import StringIO
 
 from trackers.models import Tracker
 from trackers.tasks import calculate_trackers_statistics
@@ -239,3 +243,187 @@ class TrackerDetailTestCases(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['tracker'].id, tracker1.id)
         self.assertEqual(len(response.context['reports']), 0)
+
+
+class ImportFromEtipCommandTest(TestCase):
+
+    ETIP_API_BASE_URL = 'https://etip.exodus-privacy.eu.org'
+    ETIP_API_BASE_PATH = '/api/trackers'
+
+    TRACKER_NOT_IN_EXODUS = {
+        'name': 'tracker_1',
+        'code_signature': 'code_1',
+        'description': 'description 1',
+        'network_signature': 'network_1',
+        'website': 'https://website1',
+        'is_in_exodus': False
+    }
+    TRACKER_1 = {
+        'name': 'tracker_1',
+        'code_signature': 'code_1',
+        'description': 'description 1',
+        'network_signature': 'network_1',
+        'website': 'https://website1',
+        'is_in_exodus': True
+    }
+    TRACKER_1_CHANGED = {
+        'name': 'tracker_1',
+        'code_signature': 'new_code_1',
+        'description': 'description 1',
+        'network_signature': 'network_1',
+        'website': 'https://website1',
+        'is_in_exodus': True
+    }
+    TRACKER_2 = {
+        'name': 'tracker_2',
+        'code_signature': 'code_2',
+        'description': 'description 2',
+        'network_signature': 'network_2',
+        'website': 'https://website2',
+        'is_in_exodus': True
+    }
+
+    def test_api_gets_called_correctly(self):
+        fake_token = 'fake_token'
+        with patch('requests.get') as mocked_get:
+            mocked_get.return_value.status_code = 200
+            call_command(
+                'import_from_etip',
+                token=fake_token,
+                stdout=StringIO()
+            )
+        mocked_get.assert_called_with(
+            self.ETIP_API_BASE_URL + self.ETIP_API_BASE_PATH,
+            headers={'Authorization': 'Token {}'.format(fake_token)}
+        )
+
+    def test_api_gets_called_with_provided_url(self):
+        fake_url = 'https://example.com'
+        fake_token = 'fake_token'
+        with patch('requests.get') as mocked_get:
+            mocked_get.return_value.status_code = 200
+            call_command(
+                'import_from_etip',
+                etip_hostname=fake_url,
+                token=fake_token,
+                stdout=StringIO(),
+            )
+        mocked_get.assert_called_with(
+            fake_url + self.ETIP_API_BASE_PATH,
+            headers={'Authorization': 'Token {}'.format(fake_token)}
+        )
+
+    def test_raises_error_when_api_not_200(self):
+        with patch('requests.get') as mocked_get:
+            mocked_get.return_value.status_code = 401
+            with self.assertRaises(CommandError) as e:
+                call_command('import_from_etip', stdout=StringIO())
+        error_msg = str(e.exception)
+        self.assertEqual(error_msg, 'Unexpected status from API: 401')
+
+    def test_raises_error_when_empty_response(self):
+        with patch('requests.get') as mocked_get:
+            mocked_get.return_value.status_code = 200
+            mocked_get.return_value.json.return_value = []
+            with self.assertRaises(CommandError) as e:
+                call_command('import_from_etip', stdout=StringIO())
+        error_msg = str(e.exception)
+        self.assertEqual(error_msg, 'Empty response')
+
+    def _call_command(self, status_code, mocked_json, options=[]):
+        with patch('requests.get') as mocked_get:
+            mocked_get.return_value.status_code = status_code
+            mocked_get.return_value.json.return_value = mocked_json
+            out = StringIO()
+            call_command('import_from_etip', stdout=out, *options)
+        return out
+
+    def _create_tracker(self, tracker_data):
+        Tracker.objects.create(
+            name=tracker_data['name'],
+            code_signature=tracker_data['code_signature'],
+            description=tracker_data['description'],
+            network_signature=tracker_data['network_signature'],
+            website=tracker_data['website'],
+        )
+
+    def test_ignores_trackers_not_in_exodus(self):
+        mocked_json = [self.TRACKER_NOT_IN_EXODUS, self.TRACKER_2]
+
+        out = self._call_command(200, mocked_json)
+
+        self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_2['name']), out.getvalue())
+
+    def test_compares_1_tracker_with_no_changes(self):
+        mocked_json = [self.TRACKER_1]
+        self._create_tracker(self.TRACKER_1)
+
+        out = self._call_command(200, mocked_json)
+
+        self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+
+    def test_compares_1_tracker_with_changes(self):
+        self._create_tracker(self.TRACKER_1)
+        mocked_json = [self.TRACKER_1_CHANGED]
+
+        out = self._call_command(200, mocked_json)
+
+        self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("Updating code signature from '{}' to '{}'".format(self.TRACKER_1['code_signature'], self.TRACKER_1_CHANGED['code_signature']), out.getvalue())
+        self.assertNotIn("Saved changes", out.getvalue())
+
+        tracker = Tracker.objects.get(name=self.TRACKER_1['name'])
+        self.assertEquals(tracker.code_signature, self.TRACKER_1['code_signature'])
+
+    def test_compares_1_tracker_with_changes_and_applies(self):
+        self._create_tracker(self.TRACKER_1)
+        mocked_json = [self.TRACKER_1_CHANGED]
+
+        out = self._call_command(200, mocked_json, ['-a'])
+
+        self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("Updating code signature from '{}' to '{}'".format(self.TRACKER_1['code_signature'], self.TRACKER_1_CHANGED['code_signature']), out.getvalue())
+        self.assertIn("Saved changes", out.getvalue())
+
+        tracker = Tracker.objects.get(name=self.TRACKER_1['name'])
+        self.assertEquals(tracker.code_signature, self.TRACKER_1_CHANGED['code_signature'])
+
+    def test_compares_with_1_new_tracker(self):
+        self._create_tracker(self.TRACKER_1)
+        mocked_json = [
+            self.TRACKER_1,
+            self.TRACKER_2
+        ]
+        out = self._call_command(200, mocked_json)
+
+        self.assertIn("Retrieved 2 trackers from ETIP", out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_2['name']), out.getvalue())
+        self.assertIn("Will create new tracker", out.getvalue())
+
+        with self.assertRaises(Tracker.DoesNotExist):
+            Tracker.objects.get(name=self.TRACKER_2['name'])
+
+    def test_compares_with_1_new_tracker_and_creates(self):
+        self._create_tracker(self.TRACKER_1)
+        mocked_json = [
+            self.TRACKER_1,
+            self.TRACKER_2
+        ]
+        out = self._call_command(200, mocked_json, ['-a'])
+
+        self.assertIn("Retrieved 2 trackers from ETIP", out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("* Checking {}".format(self.TRACKER_2['name']), out.getvalue())
+        self.assertIn("Tracker created", out.getvalue())
+
+        new_tracker = Tracker.objects.get(name=self.TRACKER_2['name'])
+        self.assertEquals(new_tracker.name, self.TRACKER_2['name'])
+        self.assertEquals(new_tracker.code_signature, self.TRACKER_2['code_signature'])
+        self.assertEquals(new_tracker.description, self.TRACKER_2['description'])
+        self.assertEquals(new_tracker.network_signature, self.TRACKER_2['network_signature'])
+        self.assertEquals(new_tracker.website, self.TRACKER_2['website'])
