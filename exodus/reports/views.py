@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import os
 
 from django.conf import settings
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator
 from django.db.models import Count
 from django.http import Http404
 from django.http import HttpResponse
@@ -13,20 +13,6 @@ from django.utils.translation import gettext_lazy as _
 from minio import Minio
 
 from reports.models import Report, Application
-
-
-def _paginate(request, data, per_page=settings.EX_PAGINATOR_COUNT):
-    paginator = Paginator(data, per_page)
-    page = request.GET.get('page')
-
-    try:
-        paginated_data = paginator.page(page)
-    except PageNotAnInteger:
-        paginated_data = paginator.page(1)
-    except EmptyPage:
-        paginated_data = paginator.page(paginator.num_pages)
-
-    return paginated_data
 
 
 def get_reports(request, handle=None):
@@ -42,29 +28,23 @@ def get_reports(request, handle=None):
                 reports = reports.filter(application__handle=handle)
     except Report.DoesNotExist:
         raise Http404(_("reports do not exist"))
-    reports_paged = _paginate(request, reports)
+
+    reports_number = reports.count()
+
+    paginator = Paginator(reports, settings.EX_PAGINATOR_COUNT)
+    reports = paginator.get_page(request.GET.get('page'))
 
     return render(
         request, 'reports_list.html',
         {
-            'reports': reports_paged,
-            'reports_count': reports.count(),
+            'reports': reports,
+            'reports_count': reports_number,
             'reports_total_count': Report.objects.count(),
             'apps_total_count': Application.objects.distinct('handle').count(),
             'filter': filter,
             'handle': handle
         }
     )
-
-
-def _get_color_class(count):
-    if count == 0:
-        color_class = "success"
-    elif count < 5:
-        color_class = "warning"
-    else:
-        color_class = "danger"
-    return color_class
 
 
 def detail(request, report_id=None, handle=None):
@@ -78,17 +58,8 @@ def detail(request, report_id=None, handle=None):
             raise Report.DoesNotExist
     except Report.DoesNotExist:
         raise Http404(_("report does not exist"))
-    tracker_class = _get_color_class(report.found_trackers.count())
-    perm_class = _get_color_class(report.application.permission_set.count())
 
-    return render(
-        request, 'report_details.html',
-        {
-            'report': report,
-            'tracker_class': tracker_class,
-            'perm_class': perm_class
-        }
-    )
+    return render(request, 'report_details.html', {'report': report})
 
 
 def get_app_icon(request, app_id=None, handle=None):

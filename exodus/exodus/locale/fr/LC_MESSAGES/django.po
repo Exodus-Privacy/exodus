@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"POT-Creation-Date: 2020-01-19 09:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: exodus/core/apk.py:54
+#: exodus/core/apk.py:52
 msgid "Your request is running"
 msgstr "Votre requête est en cours d’exécution"
 
-#: exodus/core/apk.py:67
+#: exodus/core/apk.py:65
 msgid "Unable to download the APK"
 msgstr "Impossible de télécharger l’APK"
 
-#: exodus/core/apk.py:71
+#: exodus/core/apk.py:69
 msgid "Download APK: success"
 msgstr "Télécharger l’APK : succès"
 
-#: exodus/core/apk.py:79
+#: exodus/core/apk.py:77
 msgid "Unable to decode the APK"
 msgstr "Impossible de décoder l’APK"
 
-#: exodus/core/apk.py:83
+#: exodus/core/apk.py:81
 msgid "Decode APK: success"
 msgstr "Décoder l’APK : succès"
 
-#: exodus/core/apk.py:92
+#: exodus/core/apk.py:90
 msgid "Unable to compute the class list"
 msgstr "Impossible de calculer la liste de classe"
 
-#: exodus/core/apk.py:96
+#: exodus/core/apk.py:94
 msgid "List embedded classes: success"
 msgstr "Lister les classes embarquées : succès"
 
-#: exodus/core/apk.py:115
+#: exodus/core/apk.py:107
+msgid "Unable to create the analysis report"
+msgstr "Impossible de créer le rapport d'analyse"
+
+#: exodus/core/apk.py:120
 msgid "A report already exists for this application version"
 msgstr "Un rapport existe déjà pour cette version de l’application"
 
-#: exodus/core/apk.py:126
+#: exodus/core/apk.py:131
 msgid "Unable to get certificates"
 msgstr "Impossible de récupérer les certificats"
 
-#: exodus/core/apk.py:143
+#: exodus/core/apk.py:148
 msgid "Unable to compute APK fingerprint"
 msgstr "Impossible de calculer l'empreinte de l'APK"
 
-#: exodus/core/apk.py:152
+#: exodus/core/apk.py:157
 msgid "Unable to get application details from Google Play"
 msgstr "Impossible de récupérer les détails depuis le Google Play"
 
-#: exodus/core/apk.py:156
+#: exodus/core/apk.py:161
 msgid "Get application details: success"
 msgstr "Récupérer les détails de l’application : succès"
 
-#: exodus/core/apk.py:161
+#: exodus/core/apk.py:166
 msgid "Tracker analysis: success"
 msgstr "Analyse des pisteurs : succès"
 
-#: exodus/core/apk.py:215
+#: exodus/core/apk.py:219
 msgid "Static analysis complete"
 msgstr "Analyse statique terminée"
 
@@ -192,7 +196,15 @@ msgstr "Triés par nombre de pisteurs"
 msgid "No results found."
 msgstr "Aucun résultat."
 
-#: exodus/templates/next.html:8 exodus/templates/understand.html:44
+#: exodus/templates/home.html:118
+msgid "tracker"
+msgstr "pisteur"
+
+#: exodus/templates/home.html:120
+msgid "permission"
+msgstr "permission"
+
+#: exodus/templates/next.html:8 exodus/templates/understand.html:53
 msgid "What's next?"
 msgstr "Et après ?"
 
@@ -350,7 +362,7 @@ msgid ""
 "\n"
 "      <ul>\n"
 "        <li><a target='_blank' rel='noreferrer' href='https://prism-break."
-"org/categories/android/'>Prism Break</a></li>\n"
+"org/en/categories/android/'>Prism Break</a></li>\n"
 "        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff."
 "org/'>Surveillance Self-Defense by EFF</a></li>\n"
 "        <li><a target='_blank' rel='noreferrer' href='https://www."
@@ -513,7 +525,7 @@ msgstr "Suivant"
 msgid "Last"
 msgstr "Dernier"
 
-#: exodus/templates/permissions.html:8 exodus/templates/understand.html:28
+#: exodus/templates/permissions.html:8 exodus/templates/understand.html:33
 msgid "Permissions"
 msgstr "Les permissions"
 
@@ -567,7 +579,7 @@ msgstr ""
 "possible de restreindre certaines permissions en allant dans les paramètres "
 "de son téléphone."
 
-#: exodus/templates/trackers.html:8 exodus/templates/understand.html:18
+#: exodus/templates/trackers.html:8 exodus/templates/understand.html:19
 msgid "Trackers "
 msgstr "Les pisteurs "
 
@@ -743,22 +755,22 @@ msgstr ""
 "même son application. Ainsi, ce sont des personnes employées par cette "
 "société qui sont en charge d'inclure ou non certains pisteurs."
 
-#: exodus/templates/understand.html:20
+#: exodus/templates/understand.html:21
 msgid "Know more about trackers and their impact on privacy"
 msgstr "En savoir plus sur les pisteurs et leur impact sur votre vie privée"
 
-#: exodus/templates/understand.html:22 exodus/templates/understand.html:32
-#: exodus/templates/understand.html:48
+#: exodus/templates/understand.html:25 exodus/templates/understand.html:39
+#: exodus/templates/understand.html:59
 msgid "Read the article"
 msgstr "Lire l'article"
 
-#: exodus/templates/understand.html:30
+#: exodus/templates/understand.html:35
 msgid "What is permission and what are the privacy issues?"
 msgstr ""
 "Qu'est-ce qu'une permission et quels problèmes posent-elles pour la vie "
 "privée ?"
 
-#: exodus/templates/understand.html:46
+#: exodus/templates/understand.html:55
 msgid ""
 "A list of tools and things you can do to better manage your privacy on your "
 "smartphone"

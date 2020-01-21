@@ -34,14 +34,12 @@ def save_error(storage_helper, analysis, request, msg):
     :param analysis: a StaticAnalysis instance
     :param request: an AnalysisRequest instance
     :param msg: message to set as a description
-    :return: exit code
     """
     clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
     request.description = msg
     request.in_error = True
     request.processed = True
     request.save()
-    return EXIT_CODE
 
 
 @app.task(ignore_result=True)
@@ -65,8 +63,8 @@ def start_static_analysis(analysis):
         dl_r = download_apk(storage_helper, request.handle, analysis.tmp_dir, analysis.apk_name, analysis.apk_tmp)
         if not dl_r:
             msg = _('Unable to download the APK')
-            exit_code = save_error(storage_helper, analysis, request, msg)
-            return exit_code
+            save_error(storage_helper, analysis, request, msg)
+            return EXIT_CODE
 
         change_description(request, _('Download APK: success'))
 
@@ -77,8 +75,8 @@ def start_static_analysis(analysis):
     except Exception as e:
         logging.info(e)
         msg = _('Unable to decode the APK')
-        exit_code = save_error(storage_helper, analysis, request, msg)
-        return exit_code
+        save_error(storage_helper, analysis, request, msg)
+        return EXIT_CODE
 
     change_description(request, _('Decode APK: success'))
 
@@ -90,8 +88,8 @@ def start_static_analysis(analysis):
     except Exception as e:
         logging.info(e)
         msg = _('Unable to compute the class list')
-        exit_code = save_error(storage_helper, analysis, request, msg)
-        return exit_code
+        save_error(storage_helper, analysis, request, msg)
+        return EXIT_CODE
 
     change_description(request, _('List embedded classes: success'))
 
@@ -102,6 +100,13 @@ def start_static_analysis(analysis):
     handle = static_analysis.get_package()
     version = static_analysis.get_version()
     version_code = static_analysis.get_version_code()
+    app_name = static_analysis.get_app_name()
+
+    # TODO: increase character limit in DB (see #300)
+    if len(version) > 50 or len(version_code) > 50 or len(app_name) > 200:
+        msg = _('Unable to create the analysis report')
+        save_error(storage_helper, analysis, request, msg)
+        return EXIT_CODE
 
     # If a report exists for the same handle, version & version_code, return it
     existing_report = Report.objects.filter(
@@ -124,8 +129,8 @@ def start_static_analysis(analysis):
     except Exception as e:
         logging.info(e)
         msg = _('Unable to get certificates')
-        exit_code = save_error(storage_helper, analysis, request, msg)
-        return exit_code
+        save_error(storage_helper, analysis, request, msg)
+        return EXIT_CODE
 
     # Fingerprint
     try:
@@ -141,8 +146,8 @@ def start_static_analysis(analysis):
     except Exception as e:
         logging.info(e)
         msg = _('Unable to compute APK fingerprint')
-        exit_code = save_error(storage_helper, analysis, request, msg)
-        return exit_code
+        save_error(storage_helper, analysis, request, msg)
+        return EXIT_CODE
 
     # Application details
     try:
@@ -150,8 +155,8 @@ def start_static_analysis(analysis):
     except Exception as e:
         logging.info(e)
         msg = _('Unable to get application details from Google Play')
-        exit_code = save_error(storage_helper, analysis, request, msg)
-        return exit_code
+        save_error(storage_helper, analysis, request, msg)
+        return EXIT_CODE
 
     change_description(request, _('Get application details: success'))
 
@@ -173,7 +178,7 @@ def start_static_analysis(analysis):
         handle=handle,
         version=version,
         version_code=version_code,
-        name=static_analysis.get_app_name(),
+        name=app_name,
         icon_phash=icon_phash,
         app_uid=app_uid
     )
@@ -209,8 +214,7 @@ def start_static_analysis(analysis):
         )
         p.save(force_insert=True)
 
-    report.found_trackers = trackers
-    report.save()
+    report.found_trackers.set(trackers)
 
     change_description(request, _('Static analysis complete'))
     clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, False)

@@ -5,7 +5,7 @@ asn1crypto==1.2.0
 backcall==0.1.0
 beautifulsoup4==4.6.0
 billiard==3.6.1.0
-celery==4.3.0
+celery==4.4.0
 certifi==2019.11.28
 cffi==1.13.2
 chardet==3.0.4
@@ -15,13 +15,13 @@ cryptography==2.6.1
 cycler==0.10.0
 decorator==4.4.1
 dhash==1.3
-Django~=1.11.26
+Django~=2.2.9
 django-celery-beat==1.5.0
 django-eventlog==1.1
-django-minio-storage==0.3.4
-django-timezone-field==3.1
-djangorestframework==3.9.4
-https://github.com/Exodus-Privacy/exodus-core/releases/download/v1.2.0/exodus_core-1.2.0.tar.gz
+django-minio-storage==0.3.5
+django-timezone-field==4.0
+djangorestframework==3.11.0
+exodus-core==1.2.0
 future==0.17.1
 gpapi==0.4.4
 GPlayCli==3.26
@@ -36,7 +36,7 @@ kiwisolver==1.1.0
 kombu==4.6.7
 lxml==4.4.2
 matplotlib==3.1.2
-minio==5.0.5
+minio==5.0.6
 mistune==0.8.1
 more-itertools==8.0.2
 networkx==2.4

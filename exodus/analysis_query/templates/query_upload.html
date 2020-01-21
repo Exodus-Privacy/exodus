@@ -79,9 +79,11 @@
 <script>
 // Spinner
 var show_spinner=function(){
-  s = document.getElementById("loading")
-  if(s != undefined){
-    s.style.display = "block"
+  if( $("#apk_file_name").val() ) {
+    var s = document.getElementById("loading")
+    if(s != undefined){
+      s.style.display = "block"
+    }
   }
 }
 $(function() {

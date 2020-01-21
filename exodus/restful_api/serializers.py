@@ -8,8 +8,6 @@ class ReportInfosSerializer(serializers.Serializer):
     report_id = serializers.IntegerField(read_only=True)
     handle = serializers.CharField(max_length=500)
     apk_dl_link = serializers.CharField(max_length=500)
-    pcap_upload_link = serializers.CharField(max_length=500)
-    flow_upload_link = serializers.CharField(max_length=500)
 
 
 class ReportSerializer(serializers.ModelSerializer):
@@ -30,6 +28,21 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
         fields = ['id', 'handle', 'name', 'creator', 'downloads', 'app_uid',
                   'icon_phash', 'report_updated_at']
+
+
+class SearchApplicationSerializer(serializers.ModelSerializer):
+    class TimestampField(serializers.Field):
+        def to_representation(self, value):
+            return value.timestamp()
+
+    report_updated_at = TimestampField(source='report.updated_at')
+
+    class Meta:
+        model = Application
+        fields = ['id', 'handle', 'name', 'creator', 'downloads', 'app_uid',
+                  'icon_phash', 'report_updated_at', 'permissions_count',
+                  'trackers_count', 'permissions_class', 'trackers_class',
+                  'version']
 
 
 class TrackerSerializer(serializers.ModelSerializer):

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator
 from django.db.models import Max
 from django.http.response import Http404
 from django.shortcuts import render
@@ -41,14 +41,7 @@ def detail(request, tracker_id):
         raise Http404(_("Tracker does not exist"))
 
     paginator = Paginator(reports_list, settings.EX_PAGINATOR_COUNT)
-    page = request.GET.get('page')
-
-    try:
-        reports = paginator.page(page)
-    except PageNotAnInteger:
-        reports = paginator.page(1)
-    except EmptyPage:
-        reports = paginator.page(paginator.num_pages)
+    reports = paginator.get_page(request.GET.get('page'))
 
     tracker_class = "info"
     count = len(reports_list)

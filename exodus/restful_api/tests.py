@@ -8,60 +8,71 @@ from rest_framework.test import APITestCase
 from reports.models import Application, Report, Permission, Apk
 from trackers.models import Tracker
 
-
 DUMMY_HANDLE = 'com.example'
-API_HANDLE_DETAILS_PATH = '/api/search/{}/details'.format(DUMMY_HANDLE)
-API_TRACKERS_PATH = '/api/trackers'
-API_APPLICATIONS_PATH = '/api/applications'
 
 
-class RestfulApiGetAllApplicationsTests(APITestCase):
+class RestfulApiApplicationTests(APITestCase):
+    PATH = '/api/applications'
 
-    def force_authentication(self):
+    def _force_authentication(self):
         user = User.objects.create_user('username', 'Pas$w0rd')
         self.client.force_authenticate(user)
 
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
     def test_returns_empty_json_when_no_applications(self):
-        self.force_authentication()
-        response = self.client.get(API_APPLICATIONS_PATH)
+        self._force_authentication()
+        response = self.client.get(self.PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['applications'], [])
 
     def test_returns_applications_with_report_last_update(self):
-        self.force_authentication()
-        report = Report.objects.create()
+        self._force_authentication()
+        report = Report.objects.create(id=1234)
         application = Application.objects.create(
             name='app_name',
             handle='handle',
             report=report
         )
 
-        response = self.client.get(API_APPLICATIONS_PATH)
+        expected_json = {
+            'applications': [
+                {
+                    'id': application.id,
+                    "handle": application.handle,
+                    "name": application.name,
+                    "creator": "",
+                    "downloads": "",
+                    "app_uid": "",
+                    "icon_phash": "",
+                    "report_updated_at": report.updated_at.timestamp()
+                },
+            ]
+        }
+
+        response = self.client.get(self.PATH)
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, application.name, 1)
-
-        report_updated_at = application.report.updated_at
-        response_application = response.json()['applications'][0]
-
-        self.assertEqual(response_application['name'], application.name)
-        self.assertEqual(response_application['handle'], application.handle)
-        self.assertEqual(
-            response_application['report_updated_at'],
-            report_updated_at.timestamp()
-        )
+        self.assertEqual(response.json(), expected_json)
 
 
-class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
+class RestfulApiSearchHandleDetailsTests(APITestCase):
+    PATH = '/api/search/{}/details'.format(DUMMY_HANDLE)
 
-    def force_authentication(self):
+    def _force_authentication(self):
         user = User.objects.create_user('username', 'Pas$w0rd')
         self.client.force_authenticate(user)
 
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
     def test_returns_empty_json_when_no_app(self):
-        self.force_authentication()
-        response = self.client.get(API_HANDLE_DETAILS_PATH)
+        self._force_authentication()
+        response = self.client.get(self.PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), [])
@@ -69,11 +80,86 @@ class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
     def test_returns_detailed_json_when_one_app(self):
         tracker = Tracker.objects.create(name='Teemo')
         report = Report.objects.create()
-        report.found_trackers = [tracker.id]
+        report.found_trackers.set([tracker.id])
         app = Application.objects.create(
             name='app_name',
             handle=DUMMY_HANDLE,
-            report=report
+            report=report,
+            version="0.1",
+            version_code="01234",
+        )
+        apk = Apk.objects.create(
+            application=app,
+            name="app_name",
+            sum="app_checksum"
+        )
+        Permission.objects.create(
+            application=app,
+            name="AREBELONGTOUS"
+        )
+        Permission.objects.create(
+            application=app,
+            name="ALLYOURBASE"
+        )
+
+        # Not happy with these but report.creation_date doesn't return the correct format
+        creation_date = "{}Z".format(report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
+        updated_at = "{}Z".format(report.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
+
+        expected_json = [
+            {
+                'apk_hash': apk.sum,
+                'app_name': app.name,
+                'handle': app.handle,
+                'report': report.id,
+                'trackers': [tracker.id],
+                'permissions': ["ALLYOURBASE", "AREBELONGTOUS"],
+                'uaid': '',
+                'created': creation_date,
+                'updated': updated_at,
+                'version_code': app.version_code,
+                'version_name': app.version,
+                'icon_hash': '',
+                'downloads': '',
+                'creator': ''
+            }
+        ]
+
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
+
+class RestfulApiSearchHandleTests(APITestCase):
+    PATH = '/api/search/{}'.format(DUMMY_HANDLE)
+
+    def _force_authentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
+    def test_returns_empty_json_when_no_app(self):
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {})
+
+    def test_returns_detailed_json_when_one_app(self):
+        tracker = Tracker.objects.create(name='Teemo')
+        report = Report.objects.create()
+        report.found_trackers.set([tracker.id])
+        app = Application.objects.create(
+            name='app_name',
+            handle=DUMMY_HANDLE,
+            report=report,
+            version="0.1",
+            version_code="01234",
         )
         Apk.objects.create(
             application=app,
@@ -89,30 +175,40 @@ class RestfulApiSearchStrictHandleDetailsTests(APITestCase):
             name="ALLYOURBASE"
         )
 
-        expected_data = {
-            'apk_hash': 'app_checksum',
-            'app_name': 'app_name',
-            'handle': DUMMY_HANDLE,
-            'report': report.id,
-            'trackers': [tracker.id],
-            'permissions': ["ALLYOURBASE", "AREBELONGTOUS"],
+        # Not happy with these but report.creation_date doesn't return the correct format
+        creation_date = "{}Z".format(report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
+        updated_at = "{}Z".format(report.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
+
+        expected_json = {
+            str(app.handle): {
+                'name': app.name,
+                'creator': "",
+                'reports': [
+                    {
+                        "id": report.id,
+                        "updated_at": updated_at,
+                        "creation_date": creation_date,
+                        "version": app.version,
+                        "version_code": app.version_code,
+                        "downloads": "",
+                        "trackers": [tracker.id],
+                    }
+                ]
+            }
         }
 
-        self.force_authentication()
-        response = self.client.get(API_HANDLE_DETAILS_PATH)
+        self._force_authentication()
+        response = self.client.get(self.PATH)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.json()), 1)
-
-        returned_report = response.json()[0]
-        for key, value in expected_data.items():
-            self.assertEqual(returned_report[key], value)
+        self.assertEqual(response.json(), expected_json)
 
 
-class RestfulApiGetAllTrackersTests(APITestCase):
+class RestfulApiTrackersTests(APITestCase):
+    PATH = '/api/trackers'
 
     def test_returns_empty_json_when_no_trackers(self):
-        response = self.client.get(API_TRACKERS_PATH)
+        response = self.client.get(self.PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['trackers'], {})
@@ -138,7 +234,157 @@ class RestfulApiGetAllTrackersTests(APITestCase):
             }
         }
 
-        response = self.client.get(API_TRACKERS_PATH)
+        response = self.client.get(self.PATH)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['trackers'], expected_json)
+
+
+class RestfulApiReportTests(APITestCase):
+    PATH = '/api/report/1234/'
+
+    def _force_authentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
+    def test_returns_one_report_infos(self):
+        self._force_authentication()
+        report = Report.objects.create(id=1234)
+        app = Application.objects.create(
+            name='app_name',
+            handle=DUMMY_HANDLE,
+            report=report
+        )
+
+        response = self.client.get(self.PATH)
+        expected_json = {
+            "creation_date": report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+            "report_id": report.id,
+            "handle": app.handle,
+            "apk_dl_link": "",
+        }
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
+    def test_returns_not_found_when_no_report(self):
+        self._force_authentication()
+
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 404)
+
+
+class RestfulApiApkTests(APITestCase):
+    PATH = '/api/apk/1/'
+
+    def _force_authentication(self):
+        user = User.objects.create_user('user', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def _force_admin_authentication(self):
+        user = User.objects.create_superuser('user', 'user@mail', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
+    def test_returns_forbidden_when_no_admin_auth(self):
+        self._force_authentication()
+
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 403)
+
+    def test_returns_not_found_when_no_apk(self):
+        self._force_admin_authentication()
+
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 404)
+
+
+class RestfulApiReportDetails(APITestCase):
+    PATH = '/api/report/1234/details'
+
+    def _force_authentication(self):
+        user = User.objects.create_user('user', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
+    def test_returns_not_found_when_no_report(self):
+        self._force_authentication()
+
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 404)
+
+    def test_returns_detailed_json_when_one_report(self):
+        self._force_authentication()
+
+        tracker = Tracker.objects.create(
+            name='Teemo',
+            description='bad tracker',
+            code_signature='com.teemo',
+            network_signature='teemo.com',
+            website='https://www.teemo.com'
+        )
+        report = Report.objects.create(id=1234)
+        report.found_trackers.set([tracker.id])
+        app = Application.objects.create(
+            id=1234,
+            name='app_name',
+            handle=DUMMY_HANDLE,
+            report=report,
+            version="0.1",
+            version_code="01234",
+        )
+        Apk.objects.create(
+            application=app,
+            name="app_name",
+            sum="app_checksum"
+        )
+        Permission.objects.create(
+            application=app,
+            name="AREBELONGTOUS"
+        )
+        Permission.objects.create(
+            application=app,
+            name="ALLYOURBASE"
+        )
+
+        expected_json = {
+            'creation_date': report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+            'found_trackers': [
+                {
+                    'id': tracker.id,
+                    'name': tracker.name,
+                    'description': tracker.description,
+                    'creation_date': tracker.creation_date.strftime("%Y-%m-%d"),
+                    'code_signature': tracker.code_signature,
+                    'network_signature': tracker.network_signature,
+                    'website': tracker.website
+                },
+            ],
+            'application': {
+                'id': app.id,
+                'handle': app.handle,
+                'name': app.name,
+                'creator': '',
+                'downloads': '',
+                'version': app.version,
+                'version_code': app.version_code,
+                'icon_path': '',
+                'app_uid': '',
+                'icon_phash': '',
+                'report': report.id,
+            }
+        }
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)

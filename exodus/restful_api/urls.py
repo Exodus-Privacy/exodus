@@ -1,16 +1,16 @@
-from django.conf.urls import url
+from django.urls import path
 from restful_api import views
 from rest_framework.authtoken import views as rest_framework_views
 
 urlpatterns = [
-    url(r'^report/(?P<r_id>[0-9]+)/$', views.get_report_infos),
-    url(r'^apk/(?P<r_id>[0-9]+)/$', views.get_apk),
-    url(r'^reports$', views.get_all_reports),  # deprecated
-    url(r'^applications$', views.get_all_applications),
-    url(r'^trackers$', views.get_all_trackers),
-    url(r'^report/(?P<r_id>[0-9]+)/details$', views.get_report_details),
-    url(r'^get_auth_token/$', rest_framework_views.obtain_auth_token, name='get_auth_token'),
-    url(r'^search/(?P<handle>.+)/details$', views.search_strict_handle_details, name='search_strict_handle_details'),
-    url(r'^search/(?P<handle>.+)$', views.search_strict_handle, name='search_strict_handle'),
-    url(r'^search$', views.search, name='search'),
+    path('report/<int:r_id>/', views.get_report_infos),
+    path('apk/<int:r_id>/', views.get_apk),
+    path('reports', views.get_all_reports),  # deprecated
+    path('applications', views.get_all_applications),
+    path('trackers', views.get_all_trackers),
+    path('report/<int:r_id>/details', views.get_report_details),
+    path('get_auth_token/', rest_framework_views.obtain_auth_token, name='get_auth_token'),
+    path('search/<handle>/details', views.search_strict_handle_details, name='search_strict_handle_details'),
+    path('search/<handle>', views.search_strict_handle, name='search_strict_handle'),
+    path('search', views.search, name='search'),
 ]
