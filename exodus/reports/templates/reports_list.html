@@ -13,9 +13,7 @@
           {% if handle %}
             {{ handle }}
           {% else %}
-            {{ reports_total_count }} {% trans "report" %}{{ reports_total_count | pluralize }}
-            {% trans "for" %}
-            {{ apps_total_count }} {% trans "application" %}{{ apps_total_count | pluralize }}
+            {% blocktrans %}{{ reports_total_count }} reports for {{ apps_total_count }} applications{% endblocktrans %}
           {% endif %}
         </h4>
       </div>
@@ -53,11 +51,11 @@
                 <div>
                   {% with nb_trackers=report.found_trackers.count %}
                     <span class="badge badge-pill badge-{{ app.trackers_class }} reports">{{ nb_trackers }}</span>
-                    {% trans "tracker" %}{{ nb_trackers | pluralize }}
+                    {% blocktrans count count=nb_trackers %}tracker{% plural %}trackers{% endblocktrans %}
                   {% endwith %}
-                  {% with nb_perm=app.permission_set.count %}
+                  {% with nb_perm=app.permissions|length %}
                     <span class="badge badge-pill badge-{{ app.permissions_class }} reports">{{ nb_perm }}</span>
-                    {% trans "permission" %}{{ nb_perm | pluralize }}
+                    {% blocktrans count count=nb_perm %}permission{% plural %}permissions{% endblocktrans %}
                   {% endwith %}
                 </div>
               </div>

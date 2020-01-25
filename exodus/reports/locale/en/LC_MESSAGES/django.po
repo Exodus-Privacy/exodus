@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"POT-Creation-Date: 2020-01-25 16:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,15 +23,19 @@ msgstr ""
 
 #: reports/templates/report_details.html:31
 #: reports/templates/report_details.html:82
-#: reports/templates/reports_list.html:61
+#: reports/templates/reports_list.html:54
 msgid "tracker"
-msgstr ""
+msgid_plural "trackers"
+msgstr[0] ""
+msgstr[1] ""
 
 #: reports/templates/report_details.html:39
 #: reports/templates/report_details.html:114
-#: reports/templates/reports_list.html:71
+#: reports/templates/reports_list.html:58
 msgid "permission"
-msgstr ""
+msgid_plural "permissions"
+msgstr[0] ""
+msgstr[1] ""
 
 #: reports/templates/report_details.html:48
 msgid "Version"
@@ -67,15 +71,11 @@ msgstr ""
 
 #: reports/templates/report_details.html:88
 msgid ""
-"\n"
-"          We have found <b>code signature</b> of the following tracker in "
-"the application:\n"
-"          "
+"We have found <b>code signature</b> of the following tracker in the "
+"application:"
 msgid_plural ""
-"\n"
-"          We have found <b>code signature</b> of the following trackers in "
-"the application:\n"
-"          "
+"We have found <b>code signature</b> of the following trackers in the "
+"application:"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -86,7 +86,7 @@ msgid ""
 msgstr ""
 
 #: reports/templates/report_details.html:101
-#: reports/templates/report_details.html:174
+#: reports/templates/report_details.html:176
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
 
@@ -97,137 +97,127 @@ msgid ""
 msgstr ""
 
 #: reports/templates/report_details.html:105
-#: reports/templates/report_details.html:151
+#: reports/templates/report_details.html:153
 msgid "Learn more"
 msgstr ""
 
 #: reports/templates/report_details.html:120
-msgid ""
-"\n"
-"          We have found the following permission in the application:\n"
-"          "
-msgid_plural ""
-"\n"
-"          We have found the following permissions in the application:\n"
-"          "
+msgid "We have found the following permission in the application:"
+msgid_plural "We have found the following permissions in the application:"
 msgstr[0] ""
 msgstr[1] ""
 
 #: reports/templates/report_details.html:144
-msgid "The icon"
-msgstr ""
-
-#: reports/templates/report_details.html:144
-msgid "indicates a 'Dangerous' or 'Special' level according to"
-msgstr ""
-
-#: reports/templates/report_details.html:144
-msgid "Google's protection levels"
-msgstr ""
-
-#: reports/templates/report_details.html:148
-msgid "This application doesn't require any permissions."
+msgid ""
+"The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a "
+"'Dangerous' or 'Special' level according to <a target=\"_blank\" rel="
+"\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/"
+"overview\">Google's protection levels</a>."
 msgstr ""
 
 #: reports/templates/report_details.html:150
+msgid "This application doesn't require any permissions."
+msgstr ""
+
+#: reports/templates/report_details.html:152
 msgid "Permissions are actions the application can do on your phone."
 msgstr ""
 
-#: reports/templates/report_details.html:157
+#: reports/templates/report_details.html:159
 msgid "What's next?"
 msgstr ""
 
-#: reports/templates/report_details.html:158
+#: reports/templates/report_details.html:160
 msgid ""
 "If this application does not sufficiently respect your privacy in your "
 "opinion, some alternatives exist!"
 msgstr ""
 
-#: reports/templates/report_details.html:164
+#: reports/templates/report_details.html:166
 msgid "Read the article"
 msgstr ""
 
-#: reports/templates/report_details.html:169
+#: reports/templates/report_details.html:171
 msgid "Exodus - Question about report"
 msgstr ""
 
-#: reports/templates/report_details.html:171
+#: reports/templates/report_details.html:173
 msgid ""
 "This report lists trackers signatures found by static analysis in this APK. "
 "This is not a proof of activity of these trackers."
 msgstr ""
 
-#: reports/templates/report_details.html:176
+#: reports/templates/report_details.html:178
 msgid "If you have doubts about this report, contact us at"
 msgstr ""
 
-#: reports/templates/report_details.html:183
+#: reports/templates/report_details.html:185
 msgid "Signed by"
 msgstr ""
 
-#: reports/templates/report_details.html:187
+#: reports/templates/report_details.html:189
 msgid "Fingerprint:"
 msgstr ""
 
-#: reports/templates/report_details.html:188
+#: reports/templates/report_details.html:190
 msgid "Issuer:"
 msgstr ""
 
-#: reports/templates/report_details.html:189
+#: reports/templates/report_details.html:191
 msgid "Subject:"
 msgstr ""
 
-#: reports/templates/report_details.html:190
+#: reports/templates/report_details.html:192
 msgid "Serial:"
 msgstr ""
 
-#: reports/templates/report_details.html:194
+#: reports/templates/report_details.html:196
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
 msgstr ""
 
-#: reports/templates/report_details.html:200
+#: reports/templates/report_details.html:202
 msgid "See APK fingerprint"
 msgstr ""
 
-#: reports/templates/report_details.html:203
+#: reports/templates/report_details.html:205
 msgid "Text"
 msgstr ""
 
-#: reports/templates/report_details.html:211
-#: reports/templates/report_details.html:235
+#: reports/templates/report_details.html:213
+#: reports/templates/report_details.html:237
 msgid "APK fingerprint"
 msgstr ""
 
-#: reports/templates/report_details.html:216
+#: reports/templates/report_details.html:218
 msgid "APK checksum:"
 msgstr ""
 
-#: reports/templates/report_details.html:217
+#: reports/templates/report_details.html:219
 msgid "Handle:"
 msgstr ""
 
-#: reports/templates/report_details.html:218
+#: reports/templates/report_details.html:220
 msgid "Name:"
 msgstr ""
 
-#: reports/templates/report_details.html:219
+#: reports/templates/report_details.html:221
 msgid "UAID:"
 msgstr ""
 
-#: reports/templates/report_details.html:220
+#: reports/templates/report_details.html:222
 msgid "Version:"
 msgstr ""
 
-#: reports/templates/report_details.html:221
+#: reports/templates/report_details.html:223
 msgid "Version code:"
 msgstr ""
 
-#: reports/templates/report_details.html:222
+#: reports/templates/report_details.html:224
 msgid "Icon hash:"
 msgstr ""
 
-#: reports/templates/report_details.html:226
-#: reports/templates/report_details.html:242
+#: reports/templates/report_details.html:228
+#: reports/templates/report_details.html:244
 msgid "Close"
 msgstr ""
 
@@ -236,37 +226,26 @@ msgid "Reports"
 msgstr ""
 
 #: reports/templates/reports_list.html:16
-msgid "report"
+#, python-format
+msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
 msgstr ""
 
-#: reports/templates/reports_list.html:17
-msgid "for"
-msgstr ""
-
-#: reports/templates/reports_list.html:18
-msgid "application"
-msgstr ""
-
-#: reports/templates/reports_list.html:25
+#: reports/templates/reports_list.html:23
 msgid "Latest reports"
 msgstr ""
 
-#: reports/templates/reports_list.html:26
+#: reports/templates/reports_list.html:24
 msgid "Most trackers"
 msgstr ""
 
-#: reports/templates/reports_list.html:28
+#: reports/templates/reports_list.html:26
 msgid "No known trackers"
 msgstr ""
 
-#: reports/views.py:44
-msgid "reports do not exist"
+#: reports/views.py:30 reports/views.py:60
+msgid "Report does not exist"
 msgstr ""
 
-#: reports/views.py:80
-msgid "report does not exist"
-msgstr ""
-
-#: reports/views.py:104
+#: reports/views.py:75
 msgid "App does not exist"
 msgstr ""

@@ -18,7 +18,11 @@
 
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 mb-4">
-    {% trans "Present in:" %} <b>{{ count }} {% trans "application" %}{{ count|pluralize }}</b>
+    {% blocktrans trimmed count count=count %}
+    Present in: <b>{{ count }} application</b>
+    {% plural %}
+    Present in: <b>{{ count }} applications</b>
+    {% endblocktrans %}
     <span class="badge badge-pill badge-{{ tracker_class }}">{{ score }} %</span>
   </div>
   <div class="col-md-8 col-12 mb-4 text-right">
@@ -43,7 +47,13 @@
 
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 mb-2">
-    <h2>{% trans "Present in" %} {{ count }} {% trans "application" %}{{ count|pluralize }}</h2>
+    <h2>
+      {% blocktrans trimmed count count=count %}
+      Present in {{ count }} application
+      {% plural %}
+      Present in {{ count }} applications
+      {% endblocktrans %}
+    </h2>
   </div>
 </div>
 

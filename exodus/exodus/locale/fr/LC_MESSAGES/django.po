@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-19 09:20+0000\n"
+"POT-Creation-Date: 2020-01-25 16:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,12 +197,12 @@ msgid "No results found."
 msgstr "Aucun résultat."
 
 #: exodus/templates/home.html:118
-msgid "tracker"
-msgstr "pisteur"
+msgid "tracker(s)"
+msgstr "pisteur(s)"
 
 #: exodus/templates/home.html:120
-msgid "permission"
-msgstr "permission"
+msgid "permission(s)"
+msgstr "permission(s)"
 
 #: exodus/templates/next.html:8 exodus/templates/understand.html:53
 msgid "What's next?"

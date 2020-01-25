@@ -27,7 +27,7 @@ def get_reports(request, handle=None):
             if handle:
                 reports = reports.filter(application__handle=handle)
     except Report.DoesNotExist:
-        raise Http404(_("reports do not exist"))
+        raise Http404(_("Report does not exist"))
 
     reports_number = reports.count()
 
@@ -57,7 +57,7 @@ def detail(request, report_id=None, handle=None):
         if report is None:
             raise Report.DoesNotExist
     except Report.DoesNotExist:
-        raise Http404(_("report does not exist"))
+        raise Http404(_("Report does not exist"))
 
     return render(request, 'report_details.html', {'report': report})
 

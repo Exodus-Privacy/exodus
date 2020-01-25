@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 19:32+0000\n"
+"POT-Creation-Date: 2020-01-25 16:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,19 +83,19 @@ msgstr ""
 msgid "Help us!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:119
+#: analysis_query/templates/query_submit.html:121
 msgid "This application has already been analyzed!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:125
+#: analysis_query/templates/query_submit.html:127
 msgid "analyzed on"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:125
+#: analysis_query/templates/query_submit.html:127
 msgid "Go to the latest report"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:129
+#: analysis_query/templates/query_submit.html:131
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."

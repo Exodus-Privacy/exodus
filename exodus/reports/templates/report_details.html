@@ -28,7 +28,7 @@
       <h3>
         <a href="#trackers" class="section-link">
           <span class="badge badge-pill badge-{{ report.application.trackers_class }} reports">{{ report.found_trackers.count }}</span>
-          <b>{% trans "tracker" %}{{ report.found_trackers.count | pluralize }}</b>
+          <b>{% blocktrans count count=report.found_trackers.count %}tracker{% plural %}trackers{% endblocktrans %}</b>
         </a>
       </h3>
     </div>
@@ -36,7 +36,7 @@
       <h3>
         <a href="#permissions" class="section-link">
           <span class="badge badge-pill badge-{{ report.application.permissions_class }} reports">{{ report.application.permission_set.count }}</span>
-          <b>{% trans "permission" %}{{ report.application.permission_set.count | pluralize }}</b>
+          <b>{% blocktrans count count=report.application.permission_set.count %}permission{% plural %}permissions{% endblocktrans %}</b>
         </a>
       </h3>
     </div>
@@ -79,13 +79,13 @@
       <a class="anchor" id="trackers"></a>
       <h3>
         <span class="badge badge-pill badge-{{ report.application.trackers_class }} reports">{{ report.found_trackers.count }}</span>
-        <b>{% trans "tracker" %}{{ report.found_trackers.count | pluralize }}</b>
+        <b>{% blocktrans count count=report.found_trackers.count %}tracker{% plural %}trackers{% endblocktrans %}</b>
       </h3>
     </div>
     <div class="col-md-8 col-12">
       {% if report.found_trackers.all %}
         <p>
-          {% blocktrans count counter=report.found_trackers.count %}
+          {% blocktrans trimmed count counter=report.found_trackers.count %}
           We have found <b>code signature</b> of the following tracker in the application:
           {% plural %}
           We have found <b>code signature</b> of the following trackers in the application:
@@ -111,13 +111,13 @@
       <a class="anchor" id="permissions"></a>
       <h3>
         <span class="badge badge-pill badge-{{ report.application.permissions_class }} reports">{{ report.application.permission_set.count }}</span>
-        <b>{% trans "permission" %}{{ report.application.permission_set.count | pluralize }}</b>
+        <b>{% blocktrans count count=report.application.permission_set.count %}permission{% plural %}permissions{% endblocktrans %}</b>
       </h3>
     </div>
     <div class="col-md-8 col-12">
       {% if report.application.permission_set.all %}
         <p>
-          {% blocktrans count counter=report.application.permission_set.count %}
+          {% blocktrans trimmed count counter=report.application.permission_set.count %}
           We have found the following permission in the application:
           {% plural %}
           We have found the following permissions in the application:
@@ -141,7 +141,9 @@
         {% endfor %}
         <p>
           <small class="text-muted font-italic">
-            {% trans "The icon" %} &nbsp;<img src="/static/img/danger.svg">&nbsp; {% trans "indicates a 'Dangerous' or 'Special' level according to" %} <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">{% trans "Google's protection levels" %}</a>.
+            {% blocktrans trimmed %}
+            The icon &nbsp;<img src="/static/img/danger.svg">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">Google's protection levels</a>.
+            {% endblocktrans %}
           </small>
         </p>
       {% else %}
