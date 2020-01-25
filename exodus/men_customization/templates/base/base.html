@@ -6,36 +6,13 @@
     {% load static %}
     <link rel="stylesheet" href="{% static "men_customization/css/bootstrap.men.css" %}">
     <link rel="stylesheet" href="{% static "css/exodus.css" %}">
+    <link rel="stylesheet" href="{% static "men_customization/css/men.css" %}">
     <link rel="shortcut icon" href="{% static "men_customization/point-amal.png" %}">
 
     <script src="{% static "js/jquery.min.js" %}" ></script>
     <script src="{% static "js/popper.min.js" %}" ></script>
     <script src="{% static "js/bootstrap.min.js" %}" ></script>
     <script src="{% static "js/handlebars.min.js" %}" ></script>
-
-    <style>
-<!--      .bg-primary  {-->
-<!--        background-color:rgb(0,94,139) !important;-->
-<!--      }-->
-
-<!--      .btn-primary {-->
-<!--        background-color:rgb(0,94,139) !important;-->
-<!--        border-color:rgb(0,94,139) !important;-->
-<!--      }-->
-
-<!--      .page-item.active .page-link {-->
-<!--        background-color:rgb(0,94,139) !important;-->
-<!--        border-color:rgb(0,94,139) !important;-->
-<!--      }-->
-
-      a.main-link {
-        color:rgb(0,94,139) !important;
-      }
-
-      .main-title {
-        color:rgb(0,94,139) !important;
-      }
-    </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMAL</title>
@@ -73,9 +50,6 @@
             <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == understand %}active{% endif %}">
               <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
             </li>
-<!--            <li class="nav-item mr-xl-1 ml-xl-1 {% if request.path == organization %}active{% endif %}">-->
-<!--              <a class="nav-link " href="{{ organization }}">{% trans "The organization" %}</a>-->
-<!--            </li>-->
             {% if request.user.is_superuser %}
               <li class="nav-item mr-xl-1 ml-xl-1 dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
