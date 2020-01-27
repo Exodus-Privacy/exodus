@@ -3,11 +3,20 @@ from reports.models import Report, Application, Tracker
 from .models import SearchQuery
 
 
+class CertificateSerializer(serializers.Serializer):
+    has_expired = serializers.BooleanField()
+    serial_number = serializers.CharField()
+    issuer = serializers.CharField()
+    subject = serializers.CharField()
+    fingerprint = serializers.CharField()
+
+
 class ReportInfosSerializer(serializers.Serializer):
     creation_date = serializers.DateTimeField()
     report_id = serializers.IntegerField(read_only=True)
     handle = serializers.CharField(max_length=500)
     apk_dl_link = serializers.CharField(max_length=500)
+    certificate = CertificateSerializer(required=False)
 
 
 class ReportSerializer(serializers.ModelSerializer):
