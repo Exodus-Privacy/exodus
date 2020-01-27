@@ -13,7 +13,7 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 from rest_framework.parsers import JSONParser
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
-from reports.models import Application, Report
+from reports.models import Application, Report, Certificate
 from trackers.models import Tracker
 from restful_api.serializers import ApplicationSerializer, TrackerSerializer,\
     ReportInfosSerializer, ReportSerializer, SearchQuerySerializer,\
@@ -31,10 +31,16 @@ def get_report_infos(request, r_id):
         except Report.DoesNotExist:
             raise Http404('No report found')
 
+        certificate = None
+        if hasattr(report.application, 'apk'):
+            certificates = Certificate.objects.filter(apk=report.application.apk)
+            certificate = certificates.first()
+
         obj = {
             'creation_date': report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
             'report_id': report.id,
             'handle': report.application.handle,
+            'certificate': certificate,
             'apk_dl_link': '',
         }
         if request.user.is_staff:

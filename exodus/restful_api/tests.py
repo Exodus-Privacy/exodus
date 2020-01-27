@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from rest_framework.test import APITestCase
 
-from reports.models import Application, Report, Permission, Apk
+from reports.models import Application, Report, Permission, Apk, Certificate
 from trackers.models import Tracker
 
 DUMMY_HANDLE = 'com.example'
@@ -266,6 +266,47 @@ class RestfulApiReportTests(APITestCase):
             "report_id": report.id,
             "handle": app.handle,
             "apk_dl_link": "",
+            "certificate": None
+        }
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
+    def test_returns_one_report_infos_with_certificate(self):
+        self._force_authentication()
+        report = Report.objects.create(id=1235)
+        app = Application.objects.create(
+            name='app_name',
+            handle=DUMMY_HANDLE,
+            report=report
+        )
+        apk = Apk.objects.create(
+            application=app,
+            name="app_name",
+            sum="app_checksum"
+        )
+        Certificate.objects.create(
+            apk=apk,
+            has_expired=True,
+            serial_number="1939892502",
+            issuer="Common Name: blokada.org",
+            subject="Common Name: blokada.org",
+            fingerprint="552AFFE3F863569F9ED05125D52991C2744D2BB3"
+        )
+
+        response = self.client.get('/api/report/1235/')
+        expected_json = {
+            "creation_date": report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+            "report_id": report.id,
+            "handle": app.handle,
+            "apk_dl_link": "",
+            "certificate": {
+                "fingerprint": "552AFFE3F863569F9ED05125D52991C2744D2BB3",
+                "has_expired": True,
+                "issuer": "Common Name: blokada.org",
+                "serial_number": "1939892502",
+                "subject": "Common Name: blokada.org"
+            }
         }
 
         self.assertEqual(response.status_code, 200)
