@@ -29,6 +29,7 @@ LANGUAGES = [
     ('de', 'Deutsch'),
     ('fr', 'Français'),
     ('en', 'English'),
+    ('es', 'Español'),
 ]
 
 DEFAULT_LANGUAGE = 1
