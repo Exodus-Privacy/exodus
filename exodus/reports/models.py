@@ -144,13 +144,19 @@ class Permission(models.Model):
         return self.name
 
     def get_permission_details(self):
-        aosp_data = AOSP_PERMISSIONS[translation.get_language()]
+        language = translation.get_language()
+        if language not in AOSP_PERMISSIONS.keys():
+            language = "en"
+        aosp_data = AOSP_PERMISSIONS[language]
         permissions = aosp_data["permissions"]
         perm = permissions.get(self.name, {})
         return perm
 
     def get_group_details(self):
-        aosp_data = AOSP_PERMISSIONS[translation.get_language()]
+        language = translation.get_language()
+        if language not in AOSP_PERMISSIONS.keys():
+            language = "en"
+        aosp_data = AOSP_PERMISSIONS[language]
         groups = aosp_data["groups"]
         group = groups.get(self.group, {})
         return group
