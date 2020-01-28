@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block content %}
 {% load static %}
 <div class="row justify-content-md-center">
@@ -19,7 +20,7 @@
       </div>
       <hr>
       {% if not handle %}
-        <select class="custom-select" onchange="this.options[this.selectedIndex].value && (window.location = '/reports/' + this.options[this.selectedIndex].value);">
+        <select class="custom-select" onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/reports/' + this.options[this.selectedIndex].value);">
           <option value=" ">{% trans "Latest reports" %}</option>
           <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>{% trans "Most trackers" %}</option>
           <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
