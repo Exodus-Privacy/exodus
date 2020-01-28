@@ -1,0 +1,269 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-28 09:11+0000\n"
+"PO-Revision-Date: 2020-01-28 08:52\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: reports.po\n"
+
+#: reports/templates/report_details.html:10
+msgid "Prefix in storage:"
+msgstr "Präfix im Speicher:"
+
+#: reports/templates/report_details.html:31
+#: reports/templates/report_details.html:82
+#: reports/templates/reports_list.html:54
+msgid "tracker"
+msgid_plural "trackers"
+msgstr[0] "Tracker"
+msgstr[1] "Tracker"
+
+#: reports/templates/report_details.html:39
+#: reports/templates/report_details.html:114
+#: reports/templates/reports_list.html:58
+msgid "permission"
+msgid_plural "permissions"
+msgstr[0] "Berechtigung"
+msgstr[1] "Berechtigungen"
+
+#: reports/templates/report_details.html:48
+msgid "Version"
+msgstr "Version"
+
+#: reports/templates/report_details.html:49
+msgid "see other versions"
+msgstr "andere Versionen anzeigen"
+
+#: reports/templates/report_details.html:53
+msgid "Created by"
+msgstr "Erstellt von"
+
+#: reports/templates/report_details.html:57
+msgid "Downloads:"
+msgstr "Downloads:"
+
+#: reports/templates/report_details.html:61
+msgid "Report created on"
+msgstr "Bericht erstellt am"
+
+#: reports/templates/report_details.html:63
+msgid "and updated on"
+msgstr "und zuletzt aktualisiert am"
+
+#: reports/templates/report_details.html:69
+msgid "Delete this report"
+msgstr "Diesen Bericht löschen"
+
+#: reports/templates/report_details.html:73
+msgid "See on Google Play"
+msgstr "Auf Google Play anzeigen"
+
+#: reports/templates/report_details.html:88
+msgid ""
+"We have found <b>code signature</b> of the following tracker in the "
+"application:"
+msgid_plural ""
+"We have found <b>code signature</b> of the following trackers in the "
+"application:"
+msgstr[0] ""
+"Wir haben die <b>Code-Signatur</b> des folgenden Tracker in der App gefunden:"
+msgstr[1] ""
+"Wir haben die <b>Code-Signatur</b> der folgenden Tracker in der Anwendung "
+"gefunden:"
+
+#: reports/templates/report_details.html:99
+msgid ""
+"We have not found <b>code signature</b> of any tracker we know in the "
+"application."
+msgstr ""
+"Wir haben die <b>Code-Signatur</b> des folgenden Tracker nicht in der App "
+"gefunden."
+
+#: reports/templates/report_details.html:101
+#: reports/templates/report_details.html:176
+msgid "The application could contain tracker(s) we do not know yet."
+msgstr "Die Anwendung kann Tracker enthalten, die wir noch nicht kennen."
+
+#: reports/templates/report_details.html:104
+msgid ""
+"A tracker is a piece of software meant to collect data about you or your "
+"usages."
+msgstr ""
+"Ein Tracker ist eine Software zur Erfassung von Daten über Sie oder Ihre "
+"Nutzung."
+
+#: reports/templates/report_details.html:105
+#: reports/templates/report_details.html:153
+msgid "Learn more"
+msgstr "Weitere Informationen"
+
+#: reports/templates/report_details.html:120
+msgid "We have found the following permission in the application:"
+msgid_plural "We have found the following permissions in the application:"
+msgstr[0] "Wir haben die folgende Berechtigung in der Anwendung gefunden:"
+msgstr[1] "Wir haben die folgenden Berechtigungen in der Anwendung gefunden:"
+
+#: reports/templates/report_details.html:144
+msgid ""
+"The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a "
+"'Dangerous' or 'Special' level according to <a target=\"_blank\" rel="
+"\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/"
+"overview\">Google's protection levels</a>."
+msgstr ""
+"Das Symbol &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; zeigt ein "
+"'Gefährliches' oder 'Spezial' Level nach <a target=\"_blank\" rel="
+"\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/"
+"overview\">Googles Schutzniveau</a> an."
+
+#: reports/templates/report_details.html:150
+msgid "This application doesn't require any permissions."
+msgstr "Diese App erfordert keine Berechtigungen."
+
+#: reports/templates/report_details.html:152
+msgid "Permissions are actions the application can do on your phone."
+msgstr ""
+"Berechtigungen sind Aktionen, die die Anwendung auf Ihrem Telefon ausführen "
+"kann."
+
+#: reports/templates/report_details.html:159
+msgid "What's next?"
+msgstr "Wie geht es weiter?"
+
+#: reports/templates/report_details.html:160
+msgid ""
+"If this application does not sufficiently respect your privacy in your "
+"opinion, some alternatives exist!"
+msgstr ""
+"Wenn diese Anwendung Ihre Privatsphäre Ihrer Meinung nach nicht ausreichend "
+"respektiert, gibt es einige Alternativen!"
+
+#: reports/templates/report_details.html:166
+msgid "Read the article"
+msgstr "Den Artikel lesen"
+
+#: reports/templates/report_details.html:171
+msgid "Exodus - Question about report"
+msgstr "Exodus - Frage zum Bericht"
+
+#: reports/templates/report_details.html:173
+msgid ""
+"This report lists trackers signatures found by static analysis in this APK. "
+"This is not a proof of activity of these trackers."
+msgstr ""
+"Dieser Bericht listet Tracker-Signaturen auf, die durch statische Analyse in "
+"dieser APK gefunden wurden. Dies ist kein Beweis für die Aktivität dieser "
+"Tracker."
+
+#: reports/templates/report_details.html:178
+msgid "If you have doubts about this report, contact us at"
+msgstr "Wenn Sie Zweifel an diesem Bericht haben, kontaktieren Sie uns unter"
+
+#: reports/templates/report_details.html:185
+msgid "Signed by"
+msgstr "Signiert von"
+
+#: reports/templates/report_details.html:189
+msgid "Fingerprint:"
+msgstr "Fingerabdruck:"
+
+#: reports/templates/report_details.html:190
+msgid "Issuer:"
+msgstr "Herausgeber:"
+
+#: reports/templates/report_details.html:191
+msgid "Subject:"
+msgstr "Betreff:"
+
+#: reports/templates/report_details.html:192
+msgid "Serial:"
+msgstr "Seriennummer:"
+
+#: reports/templates/report_details.html:196
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr ""
+"Keine Signaturen gefunden <b>ODER</b> x509 Zertifikat entspricht nicht dem "
+"RFC."
+
+#: reports/templates/report_details.html:202
+msgid "See APK fingerprint"
+msgstr "APK-Fingerabdruck anzeigen"
+
+#: reports/templates/report_details.html:205
+msgid "Text"
+msgstr "Text"
+
+#: reports/templates/report_details.html:213
+#: reports/templates/report_details.html:237
+msgid "APK fingerprint"
+msgstr "APK-Fingerabdruck"
+
+#: reports/templates/report_details.html:218
+msgid "APK checksum:"
+msgstr "APK-Prüfsumme:"
+
+#: reports/templates/report_details.html:219
+msgid "Handle:"
+msgstr "Griff:"
+
+#: reports/templates/report_details.html:220
+msgid "Name:"
+msgstr "Name:"
+
+#: reports/templates/report_details.html:221
+msgid "UAID:"
+msgstr "UAID:"
+
+#: reports/templates/report_details.html:222
+msgid "Version:"
+msgstr "Version:"
+
+#: reports/templates/report_details.html:223
+msgid "Version code:"
+msgstr "Versionscode:"
+
+#: reports/templates/report_details.html:224
+msgid "Icon hash:"
+msgstr "Icon-Hash:"
+
+#: reports/templates/report_details.html:228
+#: reports/templates/report_details.html:244
+msgid "Close"
+msgstr "Schließen"
+
+#: reports/templates/reports_list.html:10
+msgid "Reports"
+msgstr "Berichte"
+
+#: reports/templates/reports_list.html:16
+#, python-format
+msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
+msgstr "%(reports_total_count)s Berichte für %(apps_total_count)s Anwendungen"
+
+#: reports/templates/reports_list.html:23
+msgid "Latest reports"
+msgstr "Neueste Berichte"
+
+#: reports/templates/reports_list.html:24
+msgid "Most trackers"
+msgstr "Sortiert nach Anzahl der Tracker"
+
+#: reports/templates/reports_list.html:26
+msgid "No known trackers"
+msgstr "Keine bekannten Tracker"
+
+#: reports/views.py:30 reports/views.py:60
+msgid "Report does not exist"
+msgstr "Bericht existiert nicht"
+
+#: reports/views.py:75
+msgid "App does not exist"
+msgstr "App nicht vorhanden"
