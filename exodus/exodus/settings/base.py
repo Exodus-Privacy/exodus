@@ -26,6 +26,7 @@ INSTALLED_APPS = [
 ]
 
 LANGUAGES = [
+    ('de', 'Deutsch'),
     ('fr', 'Français'),
     ('en', 'English'),
     ('es', 'Español'),
