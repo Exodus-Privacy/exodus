@@ -2,17 +2,15 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import os
-import shlex
 import shutil
-import time
 from pathlib import Path
-from subprocess import check_output, STDOUT, TimeoutExpired
 from tempfile import NamedTemporaryFile
 
-from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
+from django.conf import settings
+from gpapi.googleplay import GooglePlayAPI, RequestError
 from minio.error import (ResponseError)
 
+from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
 from trackers.models import Tracker
 
 
@@ -71,79 +69,58 @@ class StaticAnalysis(CoreSA):
         return info
 
 
-def remove_token():
-    token_path = os.path.join(str(Path.home()), '.cache/gplaycli/token')
-    if os.path.exists(token_path):
-        logging.info("Removing cached token")
-        try:
-            os.remove(token_path)
-        except Exception as e:
-            logging.info("Impossible to remove the token: %s", str(e))
-    else:
-        logging.info("No token found in %s", token_path)
-
-
-def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
+def download_apk(storage, handle, apk_name, apk_tmp):
     """
     Download the APK from Google Play for the given handle.
     :param storage: minio storage helper
     :param handle: application handle to download
-    :param tmp_dir: download destination directory
     :param apk_name: name of the APK in Minio storage
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
     """
     DEVICE_CODE_NAMES = [
+        'default',
         'bacon',
         'hammerhead',
         'manta',
         'cloudbook',
         'bullhead'
     ]
-    RETRY_PER_DEVICE = 3
 
-    refreshed_token = False
     for device in DEVICE_CODE_NAMES:
-        cmd = 'gplaycli -v -a -y -pd {} -dc {} -f {}/'.format(
-            handle,
-            device,
-            tmp_dir
-        )
-        for i in range(RETRY_PER_DEVICE):
+        logging.info("Download with device {}".format(device))
+        try:
+            if device == 'default':
+                api = GooglePlayAPI()
+            else:
+                api = GooglePlayAPI(device_codename=device)
+            api.login(
+                email=settings.GOOGLE_ACCOUNT_USERNAME,
+                password=settings.GOOGLE_ACCOUNT_PASSWORD
+            )
+
+            download = api.download(handle)
+
+            with open(apk_tmp, 'wb') as first:
+                for chunk in download.get('file').get('data'):
+                    first.write(chunk)
+        except RequestError as e:
+            logging.warning(e)
+            continue
+        except Exception as e:
+            logging.error(e)
+            break
+
+        apk = Path(apk_tmp)
+        if apk.is_file():
             try:
-                output = check_output(
-                    shlex.split(cmd),
-                    stderr=STDOUT,
-                    timeout=240  # Timeout of 4 minutes
-                )
-                output_str = output.decode('utf-8')
-                logging.info(output_str)
-                if '[ERROR]' in output_str:
-                    filtered = output_str.replace('[ERROR] cache file does not exists or is corrupted', '')
-                    if '[ERROR]' in filtered:
-                        raise RuntimeError('Error while downloading apk file')
-
-                apk = Path(apk_tmp)
-                if apk.is_file():
-                    try:
-                        storage.put_file(apk_tmp, apk_name)
-                        return True
-                    except ResponseError as err:
-                        logging.info(err)
-                        return False
-
-            except TimeoutExpired:
-                logging.warning("Timeout of gplaycli download command")
+                storage.put_file(apk_tmp, apk_name)
+                return True
+            except ResponseError as err:
+                logging.error(err)
                 return False
-            except Exception as e:
-                logging.info(e)
 
-            logging.info("Could not download with device {}".format(device))
-            if not refreshed_token:
-                remove_token()
-                refreshed_token = True
-            time.sleep(2)
-
+    logging.error("Could not download '{}'".format(handle))
     return False
 
 
