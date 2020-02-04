@@ -1,4 +1,5 @@
-# εxodus [![Build Status](https://travis-ci.org/Exodus-Privacy/exodus.svg?branch=v1)](https://travis-ci.org/Exodus-Privacy/exodus) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/Exodus-Privacy/exodus.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Exodus-Privacy/exodus/context:python)
+# εxodus
+[![Build Status](https://travis-ci.org/Exodus-Privacy/exodus.svg?branch=v1)](https://travis-ci.org/Exodus-Privacy/exodus) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/Exodus-Privacy/exodus.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Exodus-Privacy/exodus/context:python)
 
 **εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be dangerous for user privacy like ads, tracking, analytics, …
 
@@ -19,6 +20,22 @@ You have 3 different ways of setting up your development environment:
 - [Manual](doc/install/manual.md)
 - [Docker](doc/install/docker.md)
 - [Vagrant](doc/install/vagrant.md) (Deprecated)
+
+### Configuring your locale instance
+
+The following options can be configured in `exodus/exodus/settings/`:
+
+| Setting                             | Description                                  | Default         |
+|-------------------------------------|----------------------------------------------|-----------------|
+| EX_PAGINATOR_COUNT                  | Number of elements per page                  | 25              |
+| TRACKERS_AUTO_UPDATE                | Whether to update automatically trackers     | False           |
+| TRACKERS_AUTO_UPDATE_TIME           | Trackers update frequency (in seconds)       | 345600          |
+| TRACKERS_AUTO_UPDATE_FROM           | Exodus instance to update trackers from      | <live instance> |
+| ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME | Requests cleanup frequency (in seconds)      | 86400           |
+| ANALYSIS_REQUESTS_KEEP_DURATION     | Requests keep duration (in days)             | 4               |
+| ALLOW_APK_UPLOAD                    | Whether to allow APK file upload             | False           |
+| GOOGLE_ACCOUNT_USERNAME             | Username for Google account to download apps | /               |
+| GOOGLE_ACCOUNT_PASSWORD             | Password for Google account to download apps | /               |
 
 ### Analyzing an application
 
