@@ -92,7 +92,7 @@ var show_spinner=function(){
   }
 }
 
-// TODO: Use an API endpoint which returns the latest report
+// TODO: Use an API endpoint not blocked and which returns the latest report
 var check_existing_report=function(handle){
   const regex_pk = /^((?:\w+\.)+\w+)$/gmi;
   if(regex_pk.test(handle)){
@@ -133,12 +133,12 @@ jQuery("#handle").on("input", function() {
         while (match != null) {
           if(match[1]){
             jQuery(this).val(match[1])
-            check_existing_report(match[1])
+            // check_existing_report(match[1])
           }
           return
         }
     } else {
-      check_existing_report(handle)
+      // check_existing_report(handle)
     }
 });
 
