@@ -408,7 +408,9 @@ class RestfulApiReportDetails(APITestCase):
                     'creation_date': tracker.creation_date.strftime("%Y-%m-%d"),
                     'code_signature': tracker.code_signature,
                     'network_signature': tracker.network_signature,
-                    'website': tracker.website
+                    'website': tracker.website,
+                    'apps_number': 0,
+                    'apps_percent': 0
                 },
             ],
             'application': {

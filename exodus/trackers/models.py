@@ -13,9 +13,20 @@ class Tracker(models.Model):
     code_signature = models.CharField(max_length=500, default='')
     network_signature = models.CharField(max_length=500, default='')
     website = models.URLField()
+    apps_number = models.IntegerField(default=0)
+    apps_percent = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
+
+    def get_color_class(self):
+        if self.apps_percent >= 50:
+            tracker_class = "danger"
+        elif self.apps_percent >= 33:
+            tracker_class = "warning"
+        else:
+            tracker_class = "info"
+        return tracker_class
 
 
 @python_2_unicode_compatible

@@ -2,9 +2,11 @@ import logging
 
 from celery import shared_task
 from django.conf import settings
+from django.db.models import Max
 from eventlog.events import EventGroup
 
 from reports.tasks import recompute_all_reports
+from reports.models import Report
 from trackers.models import Tracker
 
 
@@ -59,3 +61,27 @@ def auto_update_trackers():
     ev.info('{} code signatures updated.'.format(updated_code_signatures), initiator=__name__)
 
     ev.info('Tracker list has been updated', initiator=__name__)
+
+
+@shared_task
+def calculate_trackers_statistics():
+    ev = EventGroup()
+
+    trackers = Tracker.objects.order_by('name')
+    application_report_id_map = Report.objects.values('application__handle').annotate(recent_id=Max('id'))
+    report_ids = [k['recent_id'] for k in application_report_id_map]
+
+    reports_number = Report.objects.filter(id__in=report_ids).count()
+
+    if trackers.count() == 0 or reports_number == 0:
+        ev.info('No tracker to update', initiator=__name__)
+        return
+
+    ev.info('Starting update of trackers statistics', initiator=__name__)
+
+    for t in trackers:
+        t.apps_number = Report.objects.filter(found_trackers=t.id, id__in=report_ids).count()
+        t.apps_percent = int(100. * t.apps_number / reports_number)
+        t.save()
+
+    ev.info('Trackers statistics have been updated', initiator=__name__)

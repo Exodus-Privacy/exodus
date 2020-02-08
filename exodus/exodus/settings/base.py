@@ -125,6 +125,8 @@ TRACKERS_AUTO_UPDATE_FROM = 'https://reports.exodus-privacy.eu.org/api/trackers'
 ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME = 24 * 60 * 60.0  # time in seconds
 ANALYSIS_REQUESTS_KEEP_DURATION = 4  # time in days
 
+TRACKERS_STATISTICS_AUTO_UPDATE_TIME = 3 * 24 * 60 * 60.0  # time in seconds
+
 # Minio file storage configuration
 DEFAULT_FILE_STORAGE = 'minio_storage.storage.MinioMediaStorage'
 MINIO_STORAGE_ENDPOINT = '127.0.0.1:9000'

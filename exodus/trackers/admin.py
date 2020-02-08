@@ -11,3 +11,4 @@ if not settings.TRACKERS_AUTO_UPDATE:
         date_hierarchy = 'creation_date'
         search_fields = ['name']
         list_display = ('name', 'code_signature', 'website')
+        exclude = ('apps_number', 'apps_percent')
