@@ -11,10 +11,16 @@ app = Celery(
     broker=settings.CELERY_BROKER_URL
 )
 
-app.conf.beat_schedule = {'auto_cleanup_analysis_requests': {
-    'task': 'analysis_query.tasks.auto_cleanup_analysis_requests',
-    'schedule': settings.ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME
-}}
+app.conf.beat_schedule = {
+    'auto_cleanup_analysis_requests': {
+        'task': 'analysis_query.tasks.auto_cleanup_analysis_requests',
+        'schedule': settings.ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME
+    },
+    'calculate_trackers_statistics': {
+        'task': 'trackers.tasks.calculate_trackers_statistics',
+        'schedule': settings.TRACKERS_STATISTICS_AUTO_UPDATE_TIME
+    }
+}
 
 if settings.TRACKERS_AUTO_UPDATE:
     app.conf.beat_schedule['auto_update_trackers'] = {

@@ -4,19 +4,12 @@ from __future__ import unicode_literals
 from django.test import TestCase, Client
 
 from trackers.models import Tracker
+from trackers.tasks import calculate_trackers_statistics
 from reports.models import Application, Report
 
 
 class TrackersStatsViewTests(TestCase):
     STATS_PATH = '/en/trackers/stats/'
-
-    def test_should_raise_404_if_no_report(self):
-        Tracker.objects.create(name='Teemo')
-
-        c = Client()
-        response = c.get(self.STATS_PATH)
-
-        self.assertEqual(response.status_code, 404)
 
     def test_should_raise_404_if_no_tracker(self):
         report = Report.objects.create()
@@ -37,6 +30,7 @@ class TrackersStatsViewTests(TestCase):
             handle="apple_sauce",
             report=report
         )
+        calculate_trackers_statistics()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -44,8 +38,8 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, tracker.name, 1)
         self.assertEqual(response.context['trackers'][0].name, tracker.name)
-        self.assertEqual(response.context['trackers'][0].count, 0)
-        self.assertEqual(response.context['trackers'][0].score, 0)
+        self.assertEqual(response.context['trackers'][0].apps_number, 0)
+        self.assertEqual(response.context['trackers'][0].apps_percent, 0)
 
     def test_should_return_stats_with_1_tracker_found(self):
         tracker = Tracker.objects.create(
@@ -58,6 +52,7 @@ class TrackersStatsViewTests(TestCase):
             report=report
         )
         report.found_trackers.set([tracker.id])
+        calculate_trackers_statistics()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -65,8 +60,8 @@ class TrackersStatsViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, tracker.name, 1)
         self.assertEqual(response.context['trackers'][0].name, tracker.name)
-        self.assertEqual(response.context['trackers'][0].count, 1)
-        self.assertEqual(response.context['trackers'][0].score, 100)
+        self.assertEqual(response.context['trackers'][0].apps_number, 1)
+        self.assertEqual(response.context['trackers'][0].apps_percent, 100)
 
     def test_should_return_stats_with_single_report_one_application(self):
         tracker1 = Tracker.objects.create(
@@ -96,6 +91,7 @@ class TrackersStatsViewTests(TestCase):
             handle=application_handle,
             report=report3
         )
+        calculate_trackers_statistics()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -105,11 +101,11 @@ class TrackersStatsViewTests(TestCase):
         self.assertContains(response, tracker2.name, 1)
         self.assertEqual(response.context['trackers'][0].name, tracker2.name)
         # Only recent for an application is considered
-        self.assertEqual(response.context['trackers'][0].count, 1)
-        self.assertEqual(response.context['trackers'][0].score, 100)
+        self.assertEqual(response.context['trackers'][0].apps_number, 1)
+        self.assertEqual(response.context['trackers'][0].apps_percent, 100)
         self.assertEqual(response.context['trackers'][1].name, tracker1.name)
-        self.assertEqual(response.context['trackers'][1].count, 1)
-        self.assertEqual(response.context['trackers'][1].score, 100)
+        self.assertEqual(response.context['trackers'][1].apps_number, 1)
+        self.assertEqual(response.context['trackers'][1].apps_percent, 100)
 
     def test_should_return_stats_with_multiple_reports_multiple_application(self):
         tracker1 = Tracker.objects.create(
@@ -140,6 +136,7 @@ class TrackersStatsViewTests(TestCase):
             handle=application_handle2,
             report=report3
         )
+        calculate_trackers_statistics()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -149,11 +146,11 @@ class TrackersStatsViewTests(TestCase):
         self.assertContains(response, tracker2.name, 1)
         self.assertEqual(response.context['trackers'][0].name, tracker2.name)
         # Only recent for an application is considered
-        self.assertEqual(response.context['trackers'][0].count, 2)
-        self.assertEqual(response.context['trackers'][0].score, 100)
+        self.assertEqual(response.context['trackers'][0].apps_number, 2)
+        self.assertEqual(response.context['trackers'][0].apps_percent, 100)
         self.assertEqual(response.context['trackers'][1].name, tracker1.name)
-        self.assertEqual(response.context['trackers'][1].count, 1)
-        self.assertEqual(response.context['trackers'][1].score, 50)
+        self.assertEqual(response.context['trackers'][1].apps_number, 1)
+        self.assertEqual(response.context['trackers'][1].apps_percent, 50)
 
     def test_should_not_include_more_than_X_trackers(self):
         tracker_limit = 21
@@ -170,6 +167,7 @@ class TrackersStatsViewTests(TestCase):
             report=report
         )
         report.found_trackers.set([t.id for t in first_trackers])
+        calculate_trackers_statistics()
 
         c = Client()
         response = c.get(self.STATS_PATH)
@@ -201,6 +199,7 @@ class TrackerDetailTestCases(TestCase):
             handle=application_handle2,
             report=report3
         )
+        calculate_trackers_statistics()
 
         c = Client()
         url = self.TRACKER_DETAIL_PATH.format(tracker2.id)
@@ -232,6 +231,7 @@ class TrackerDetailTestCases(TestCase):
             handle=application_handle1,
             report=report2
         )
+        calculate_trackers_statistics()
 
         c = Client()
         url = self.TRACKER_DETAIL_PATH.format(tracker1.id)

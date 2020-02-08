@@ -17,7 +17,7 @@
             <a href="{% url 'trackers:detail' t.id %}">{{ t.name }} </a>
           </td>
           <td class="small text-muted">
-            {% blocktrans trimmed count count=t.count %}
+            {% blocktrans trimmed count count=t.apps_number %}
             found in {{ count }} application
             {% plural %}
             found in {{ count }} applications
@@ -25,13 +25,7 @@
           </td>
           <td style="width:250px">
             <div class="progress">
-              {% if t.score >= 50 %}
-                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
-              {% elif  t.score  >= 33 %}
-                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
-              {% else %}
-                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{ t.score }}%;" aria-valuenow="{{ t.score }}" aria-valuemin="0" aria-valuemax="100">{{ t.score }}%</div>
-              {% endif %}
+              <div class="progress-bar progress-bar-striped bg-{{ t.get_color_class }}" role="progressbar" style="width: {{ t.apps_percent }}%;" aria-valuenow="{{ t.apps_percent }}" aria-valuemin="0" aria-valuemax="100">{{ t.apps_percent }}%</div>
             </div>
           </td>
         </tr>

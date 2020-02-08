@@ -18,12 +18,12 @@
 
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 mb-4">
-    {% blocktrans trimmed count count=count %}
+    {% blocktrans trimmed count count=tracker.apps_number %}
     Present in: <b>{{ count }} application</b>
     {% plural %}
     Present in: <b>{{ count }} applications</b>
     {% endblocktrans %}
-    <span class="badge badge-pill badge-{{ tracker_class }}">{{ score }} %</span>
+    <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
   </div>
   <div class="col-md-8 col-12 mb-4 text-right">
     <a class="link main-link" target="_blank" rel="noreferrer" href="{{ tracker.website }}">{% trans "Tracker web page" %}</a>
@@ -48,7 +48,7 @@
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 mb-2">
     <h2>
-      {% blocktrans trimmed count count=count %}
+      {% blocktrans trimmed count count=tracker.apps_number %}
       Present in {{ count }} application
       {% plural %}
       Present in {{ count }} applications

@@ -57,7 +57,7 @@ class SearchApplicationSerializer(serializers.ModelSerializer):
 class TrackerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tracker
-        fields = '__all__'
+        exclude = ['apps_number', 'apps_percent']
 
 
 class SearchQuerySerializer(serializers.ModelSerializer):

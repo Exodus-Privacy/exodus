@@ -20,45 +20,36 @@ def index(request):
     return render(request, 'trackers_list.html', {'trackers': trackers})
 
 
+# TODO: See if we can find a way to improve performance here
+def _get_reports_with_tracker(tracker_id):
+    """
+    Gets reports with given trackers (only latest reports per app)
+    """
+    # Returns reports in reverse chronological order
+    app_tuples = Application.objects.values('handle').annotate(recent_id=Max('id'))
+    application_ids = [i['recent_id'] for i in app_tuples]
+    report_ids = Application.objects.filter(id__in=application_ids).values_list('report_id', flat=True)
+    # List of only latest report for an application
+    reports_list = Report.objects.filter(id__in=report_ids, found_trackers=tracker_id).order_by('-creation_date')
+    return reports_list
+
+
 def detail(request, tracker_id):
-    # Count of applications(similar to getting count of one report per application)
-    reports_number = Application.objects.distinct('handle').count()
     try:
         tracker = Tracker.objects.get(pk=tracker_id)
         # Add spaces aroung pipes for better rendering of signatures
         tracker.network_signature = tracker.network_signature.replace("|", " | ")
         tracker.code_signature = tracker.code_signature.replace("|", " | ")
-
-        # Returns reports in reverse chronological order
-        app_tuples = Application.objects.values('handle').annotate(recent_id=Max('id'))
-        application_ids = [i['recent_id'] for i in app_tuples]
-        report_ids = Application.objects.filter(id__in=application_ids).values_list('report_id', flat=True)
-        # List of only latest report for an application
-        reports_list = Report.objects.filter(id__in=report_ids, found_trackers=tracker_id).order_by('-creation_date')
-
     except Tracker.DoesNotExist:
-
         raise Http404(_("Tracker does not exist"))
 
+    reports_list = _get_reports_with_tracker(tracker_id)
     paginator = Paginator(reports_list, settings.EX_PAGINATOR_COUNT)
     reports = paginator.get_page(request.GET.get('page'))
-
-    tracker_class = "info"
-    count = len(reports_list)
-    score = 0
-    if reports_number > 0:
-        score = int(100. * count / reports_number)
-        if score >= 50:
-            tracker_class = "danger"
-        elif score >= 33:
-            tracker_class = "warning"
 
     data_to_render = {
         'tracker': tracker,
         'reports': reports,
-        'count': count,
-        'score': score,
-        'tracker_class': tracker_class
     }
     return render(request, 'tracker_details.html', data_to_render)
 
@@ -66,25 +57,11 @@ def detail(request, tracker_id):
 def get_stats(request):
     NB_OF_TRACKERS_TO_DISPLAY = 21
 
-    trackers = Tracker.objects.order_by('name')
-
-    # Latest report ids for an application
-    application_report_id_map = Report.objects.values('application__handle').annotate(recent_id=Max('id'))
-    report_ids = [k['recent_id'] for k in application_report_id_map]
-
-    reports_number = Report.objects.filter(id__in=report_ids).count()
-
-    if trackers.count() == 0 or reports_number == 0:
+    trackers = Tracker.objects.order_by('-apps_number', 'name')[0:NB_OF_TRACKERS_TO_DISPLAY]
+    if trackers.count() == 0:
         raise Http404(_("Tracker does not exist"))
 
-    for t in trackers:
-        t.count = Report.objects.filter(found_trackers=t.id, id__in=report_ids).count()
-        t.score = int(100. * t.count / reports_number)
-
-    sorted_trackers = sorted(trackers, key=lambda i: i.count, reverse=True)
-    sorted_trackers = sorted_trackers[0:NB_OF_TRACKERS_TO_DISPLAY]
-
-    return render(request, 'stats_details.html', {'trackers': sorted_trackers})
+    return render(request, 'stats_details.html', {'trackers': trackers})
 
 
 def graph(request):
