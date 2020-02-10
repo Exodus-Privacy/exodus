@@ -4,5 +4,9 @@
 venv/
 data/
 .idea
+
+# Files related to django-celery-beat
 exodus/django
 exodus/celerybeat-schedule
+celerybeat.pid
+scheduler.sh
