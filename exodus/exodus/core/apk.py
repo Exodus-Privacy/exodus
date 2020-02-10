@@ -60,7 +60,7 @@ def start_static_analysis(analysis):
         request.apk.delete()
     else:
         # Download APK and put it on Minio storage
-        dl_r = download_apk(storage_helper, request.handle, analysis.apk_name, analysis.apk_tmp)
+        dl_r = download_apk(storage_helper, request.handle, analysis.tmp_dir, analysis.apk_name, analysis.apk_tmp)
         if not dl_r:
             msg = _('Unable to download the APK')
             save_error(storage_helper, analysis, request, msg)

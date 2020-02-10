@@ -2,6 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
+import os
 import shutil
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -69,11 +70,12 @@ class StaticAnalysis(CoreSA):
         return info
 
 
-def download_apk(storage, handle, apk_name, apk_tmp):
+def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     """
     Download the APK from Google Play for the given handle.
     :param storage: minio storage helper
     :param handle: application handle to download
+    :param tmp_dir: directory to save the APK in
     :param apk_name: name of the APK in Minio storage
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
@@ -99,6 +101,8 @@ def download_apk(storage, handle, apk_name, apk_tmp):
                 password=settings.GOOGLE_ACCOUNT_PASSWORD
             )
 
+            if not os.path.exists(tmp_dir):
+                os.mkdir(tmp_dir)
             download = api.download(handle)
 
             with open(apk_tmp, 'wb') as first:
