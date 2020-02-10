@@ -21,7 +21,7 @@ You have 3 different ways of setting up your development environment:
 - [Docker](doc/install/docker.md)
 - [Vagrant](doc/install/vagrant.md) (Deprecated)
 
-### Configuring your locale instance
+### Configuring your local instance
 
 The following options can be configured in `exodus/exodus/settings/`:
 

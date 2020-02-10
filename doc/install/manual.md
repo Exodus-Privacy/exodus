@@ -100,6 +100,20 @@ Minio is now listening on `9000` port and the browser interface is available
 at [http://127.0.0.1:9000](http://127.0.0.1:9000). Use `exodusexodus` as both login
 and password.
 
+## 9 - Configure your instance
+
+You can tweak your instance by changing the different settings.
+
+Create the file  `exodus/exodus/settings/custom_dev.py` with the following content:
+```
+from .dev import *
+
+GOOGLE_ACCOUNT_USERNAME = "<a valid google account>"
+GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
+
+# Overwrite any other settings you wish to
+```
+
 ## 9 - Start the εxodus worker
 
 The εxodus handle asynchronous tasks submitted by the front-end.
@@ -108,7 +122,7 @@ You have to activate the virtual venv and `cd` into the same directory as `manag
 source venv/bin/activate
 cd exodus
 
-export DJANGO_SETTINGS_MODULE=exodus.settings.dev; celery worker --beat -A exodus.core -l debug -S django
+export DJANGO_SETTINGS_MODULE=exodus.settings.custom_dev; celery worker --beat -A exodus.core -l debug -S django
 ```
 Now, the εxodus workers are waiting for tasks.
 
@@ -120,7 +134,7 @@ source venv/bin/activate
 mkdir -p $HOME/.config/gplaycli/
 cp venv/lib/python3.5/site-packages/$HOME/.config/gplaycli/gplaycli.conf $HOME/.config/gplaycli/gplaycli.conf
 cd exodus
-python manage.py runserver --settings=exodus.settings.dev
+python manage.py runserver --settings=exodus.settings.custom_dev
 ```
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
@@ -128,6 +142,6 @@ Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following command:
 ```
-python manage.py importtrackers --settings=exodus.settings.dev
+python manage.py importtrackers --settings=exodus.settings.custom_dev
 ```
 Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)

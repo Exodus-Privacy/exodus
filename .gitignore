@@ -10,3 +10,7 @@ exodus/django
 exodus/celerybeat-schedule
 celerybeat.pid
 scheduler.sh
+
+# Settings files
+exodus/exodus/settings/custom_dev.py
+exodus/exodus/settings/production.py
