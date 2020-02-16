@@ -173,6 +173,26 @@ def search_strict_handle(request, handle):
 
 @csrf_exempt
 @api_view(['GET'])
+@authentication_classes(())
+@permission_classes(())
+def search_latest_report(request, handle):
+    if request.method == 'GET':
+        try:
+            report = Report.objects.filter(application__handle=handle).order_by('-creation_date').first()
+            if not report:
+                raise Report.DoesNotExist
+        except Report.DoesNotExist:
+            return JsonResponse({}, safe=True)
+        obj = {
+            'id': report.id,
+            'name': report.application.name,
+            'creation_date': report.creation_date
+        }
+        return JsonResponse(obj)
+
+
+@csrf_exempt
+@api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_report_details(request, r_id):

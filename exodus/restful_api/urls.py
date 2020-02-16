@@ -12,5 +12,6 @@ urlpatterns = [
     path('get_auth_token/', rest_framework_views.obtain_auth_token, name='get_auth_token'),
     path('search/<handle>/details', views.search_strict_handle_details, name='search_strict_handle_details'),
     path('search/<handle>', views.search_strict_handle, name='search_strict_handle'),
+    path('search/<handle>/latest', views.search_latest_report, name='search_latest_report'),
     path('search', views.search, name='search'),
 ]

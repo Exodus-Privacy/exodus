@@ -92,27 +92,25 @@ var show_spinner=function(){
   }
 }
 
-// TODO: Use an API endpoint not blocked and which returns the latest report
 var check_existing_report=function(handle){
   const regex_pk = /^((?:\w+\.)+\w+)$/gmi;
   if(regex_pk.test(handle)){
-      jQuery.get("/api/search/"+handle, function(rq){
-          if(rq[handle]){
+      jQuery.get("/api/search/"+handle+"/latest", function(rq){
+          if(rq.id){
               jQuery("#reports").html('')
               jQuery("#reports").show()
 
               var p = document.createElement('p')
               var name = handle
-              if(rq[handle].name != '') {
-                  name = rq[handle].name
+              if(rq.name != '') {
+                  name = rq.name
               }
               p.innerHTML = "<b>{% trans  'This application has already been analyzed!' %}</b>"
               jQuery("#reports").append(p)
 
-              var latest_report = rq[handle].reports.shift()
-              var report_date = latest_report.creation_date.substring(0, 10)
+              var report_date = rq.creation_date.substring(0, 10)
               var p2 = document.createElement('p')
-              p2.innerHTML = name + ' - {% trans "analyzed on" %} '+report_date+' - <a href="/reports/'+latest_report.id+'/">{% trans "Go to the latest report" %}</a>'
+              p2.innerHTML = name + ' - {% trans "analyzed on" %} '+report_date+' - <a href="/reports/'+rq.id+'/">{% trans "Go to the latest report" %}</a>'
               jQuery("#reports").append(p2)
 
               var p3 = document.createElement('p')
@@ -133,12 +131,12 @@ jQuery("#handle").on("input", function() {
         while (match != null) {
           if(match[1]){
             jQuery(this).val(match[1])
-            // check_existing_report(match[1])
+            check_existing_report(match[1])
           }
           return
         }
     } else {
-      // check_existing_report(handle)
+      check_existing_report(handle)
     }
 });
 

@@ -11,6 +11,11 @@ from trackers.models import Tracker
 DUMMY_HANDLE = 'com.example'
 
 
+def _get_custom_date_format(date):
+    # Not happy with this but creation_date doesn't return the correct format
+    return "{}Z".format(date.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
+
+
 class RestfulApiApplicationTests(APITestCase):
     PATH = '/api/applications'
 
@@ -102,10 +107,6 @@ class RestfulApiSearchHandleDetailsTests(APITestCase):
             name="ALLYOURBASE"
         )
 
-        # Not happy with these but report.creation_date doesn't return the correct format
-        creation_date = "{}Z".format(report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
-        updated_at = "{}Z".format(report.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
-
         expected_json = [
             {
                 'apk_hash': apk.sum,
@@ -115,8 +116,8 @@ class RestfulApiSearchHandleDetailsTests(APITestCase):
                 'trackers': [tracker.id],
                 'permissions': ["ALLYOURBASE", "AREBELONGTOUS"],
                 'uaid': '',
-                'created': creation_date,
-                'updated': updated_at,
+                'created': _get_custom_date_format(report.creation_date),
+                'updated': _get_custom_date_format(report.updated_at),
                 'version_code': app.version_code,
                 'version_name': app.version,
                 'icon_hash': '',
@@ -175,10 +176,6 @@ class RestfulApiSearchHandleTests(APITestCase):
             name="ALLYOURBASE"
         )
 
-        # Not happy with these but report.creation_date doesn't return the correct format
-        creation_date = "{}Z".format(report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
-        updated_at = "{}Z".format(report.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3])
-
         expected_json = {
             str(app.handle): {
                 'name': app.name,
@@ -186,8 +183,8 @@ class RestfulApiSearchHandleTests(APITestCase):
                 'reports': [
                     {
                         "id": report.id,
-                        "updated_at": updated_at,
-                        "creation_date": creation_date,
+                        "updated_at": _get_custom_date_format(report.updated_at),
+                        "creation_date": _get_custom_date_format(report.creation_date),
                         "version": app.version,
                         "version_code": app.version_code,
                         "downloads": "",
@@ -198,6 +195,36 @@ class RestfulApiSearchHandleTests(APITestCase):
         }
 
         self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
+
+class RestfulApiSearchLatestReportTests(APITestCase):
+    PATH = '/api/search/{}/latest'.format(DUMMY_HANDLE)
+
+    def test_returns_empty_json_when_no_app(self):
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {})
+
+    def test_returns_data_when_one_app(self):
+        report = Report.objects.create()
+        Application.objects.create(
+            name='app_name',
+            handle=DUMMY_HANDLE,
+            report=report,
+            version="0.1",
+            version_code="01234",
+        )
+
+        expected_json = {
+            'id': report.id,
+            'name': report.application.name,
+            'creation_date': _get_custom_date_format(report.creation_date)
+        }
         response = self.client.get(self.PATH)
 
         self.assertEqual(response.status_code, 200)
