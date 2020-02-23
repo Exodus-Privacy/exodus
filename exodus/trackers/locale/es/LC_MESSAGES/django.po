@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 13:01+0000\n"
+"POT-Creation-Date: 2020-02-23 08:22+0000\n"
 "PO-Revision-Date: 2020-02-07 12:59\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish\n"
@@ -54,12 +54,9 @@ msgstr "Regla de detección de código:"
 msgid "Network detection rule:"
 msgstr "Regla de detección de red:"
 
-#: trackers/templates/tracker_details.html:51
-#, python-format
-msgid "Present in %(count)s application"
-msgid_plural "Present in %(count)s applications"
-msgstr[0] "Presente en %(count)s aplicación"
-msgstr[1] "Presente en %(count)s aplicaciones"
+#: trackers/templates/tracker_details.html:50
+msgid "Latest reports with this tracker"
+msgstr "Últimos informes con este rastreador"
 
 #: trackers/templates/trackers_list.html:8
 msgid "Trackers"
@@ -75,7 +72,7 @@ msgstr[1] "rastreadores conocidos"
 msgid "No trackers are available"
 msgstr "No hay rastreadores disponibles"
 
-#: trackers/views.py:19 trackers/views.py:41 trackers/views.py:78
-#: trackers/views.py:107
+#: trackers/views.py:17 trackers/views.py:28 trackers/views.py:44
+#: trackers/views.py:66
 msgid "Tracker does not exist"
 msgstr "El rastreador no existe"
