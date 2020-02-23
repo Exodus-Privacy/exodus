@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 16:27+0000\n"
+"POT-Creation-Date: 2020-02-23 08:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr "Préfixe de stockage :"
 
 #: reports/templates/report_details.html:31
 #: reports/templates/report_details.html:82
-#: reports/templates/reports_list.html:54
+#: reports/templates/reports_list.html:55
 msgid "tracker"
 msgid_plural "trackers"
 msgstr[0] "pisteur"
@@ -31,7 +31,7 @@ msgstr[1] "pisteurs"
 
 #: reports/templates/report_details.html:39
 #: reports/templates/report_details.html:114
-#: reports/templates/reports_list.html:58
+#: reports/templates/reports_list.html:59
 msgid "permission"
 msgid_plural "permissions"
 msgstr[0] "permission"
@@ -245,25 +245,25 @@ msgstr "Empreinte de l’icône&nbsp;:"
 msgid "Close"
 msgstr "Fermer"
 
-#: reports/templates/reports_list.html:10
+#: reports/templates/reports_list.html:11
 msgid "Reports"
 msgstr "Rapports"
 
-#: reports/templates/reports_list.html:16
+#: reports/templates/reports_list.html:17
 #, python-format
 msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
 msgstr ""
 "%(reports_total_count)s rapports pour %(apps_total_count)s applications"
 
-#: reports/templates/reports_list.html:23
+#: reports/templates/reports_list.html:24
 msgid "Latest reports"
 msgstr "Les derniers rapports"
 
-#: reports/templates/reports_list.html:24
-msgid "Most trackers"
+#: reports/templates/reports_list.html:25
+msgid "Sorted by number of trackers"
 msgstr "Triés par nombre de pisteurs"
 
-#: reports/templates/reports_list.html:26
+#: reports/templates/reports_list.html:27
 msgid "No known trackers"
 msgstr "Aucun pisteurs identifiés"
 

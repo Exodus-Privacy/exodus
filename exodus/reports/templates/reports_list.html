@@ -22,7 +22,7 @@
       {% if not handle %}
         <select class="custom-select" onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/reports/' + this.options[this.selectedIndex].value);">
           <option value=" ">{% trans "Latest reports" %}</option>
-          <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>{% trans "Most trackers" %}</option>
+          <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>{% trans "Sorted by number of trackers" %}</option>
           <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
             {% trans "No known trackers" %}
             {% if filter == 'no_trackers' %} ({{ reports_count }}){% endif %}

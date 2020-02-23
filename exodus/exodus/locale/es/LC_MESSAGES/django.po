@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-07 13:01+0000\n"
+"POT-Creation-Date: 2020-02-23 08:17+0000\n"
 "PO-Revision-Date: 2020-02-07 12:59\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish\n"
@@ -203,7 +203,7 @@ msgstr "Sin rastreadores conocidos"
 
 #: men_customization/templates/base/home.html:90
 #: web/templates/base/home.html:89
-msgid "Most trackers"
+msgid "Sorted by number of trackers"
 msgstr "Ordenado por cantidad de rastreadores"
 
 #: men_customization/templates/base/home.html:98

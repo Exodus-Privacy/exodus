@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-26 08:35+0000\n"
+"POT-Creation-Date: 2020-02-23 08:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,7 +197,7 @@ msgstr ""
 
 #: men_customization/templates/base/home.html:90
 #: web/templates/base/home.html:89
-msgid "Most trackers"
+msgid "Sorted by number of trackers"
 msgstr ""
 
 #: men_customization/templates/base/home.html:98
