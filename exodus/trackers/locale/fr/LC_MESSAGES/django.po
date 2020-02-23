@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 16:27+0000\n"
+"POT-Creation-Date: 2020-02-23 08:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,12 +56,9 @@ msgstr "Règle de détection (code) :"
 msgid "Network detection rule:"
 msgstr "Règle de détection (réseau) :"
 
-#: trackers/templates/tracker_details.html:51
-#, python-format
-msgid "Present in %(count)s application"
-msgid_plural "Present in %(count)s applications"
-msgstr[0] "Présent dans %(count)s application"
-msgstr[1] "Présent dans %(count)s applications"
+#: trackers/templates/tracker_details.html:50
+msgid "Latest reports with this tracker"
+msgstr "Derniers rapports avec ce pisteur"
 
 #: trackers/templates/trackers_list.html:8
 msgid "Trackers"
@@ -77,7 +74,7 @@ msgstr[1] "pisteurs connus"
 msgid "No trackers are available"
 msgstr "Aucun pisteur disponible"
 
-#: trackers/views.py:19 trackers/views.py:41 trackers/views.py:78
-#: trackers/views.py:107
+#: trackers/views.py:17 trackers/views.py:28 trackers/views.py:44
+#: trackers/views.py:66
 msgid "Tracker does not exist"
 msgstr "Aucun pisteur trouvé"

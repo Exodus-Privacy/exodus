@@ -2,8 +2,6 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.core.paginator import Paginator
-from django.db.models import Max
 from django.http.response import Http404
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
@@ -20,20 +18,6 @@ def index(request):
     return render(request, 'trackers_list.html', {'trackers': trackers})
 
 
-# TODO: See if we can find a way to improve performance here
-def _get_reports_with_tracker(tracker_id):
-    """
-    Gets reports with given trackers (only latest reports per app)
-    """
-    # Returns reports in reverse chronological order
-    app_tuples = Application.objects.values('handle').annotate(recent_id=Max('id'))
-    application_ids = [i['recent_id'] for i in app_tuples]
-    report_ids = Application.objects.filter(id__in=application_ids).values_list('report_id', flat=True)
-    # List of only latest report for an application
-    reports_list = Report.objects.filter(id__in=report_ids, found_trackers=tracker_id).order_by('-creation_date')
-    return reports_list
-
-
 def detail(request, tracker_id):
     try:
         tracker = Tracker.objects.get(pk=tracker_id)
@@ -43,9 +27,7 @@ def detail(request, tracker_id):
     except Tracker.DoesNotExist:
         raise Http404(_("Tracker does not exist"))
 
-    reports_list = _get_reports_with_tracker(tracker_id)
-    paginator = Paginator(reports_list, settings.EX_PAGINATOR_COUNT)
-    reports = paginator.get_page(request.GET.get('page'))
+    reports = Report.objects.filter(found_trackers=tracker_id).order_by('-creation_date')[:settings.EX_PAGINATOR_COUNT]
 
     data_to_render = {
         'tracker': tracker,

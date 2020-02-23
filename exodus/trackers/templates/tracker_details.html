@@ -47,13 +47,7 @@
 
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 mb-2">
-    <h2>
-      {% blocktrans trimmed count count=tracker.apps_number %}
-      Present in {{ count }} application
-      {% plural %}
-      Present in {{ count }} applications
-      {% endblocktrans %}
-    </h2>
+    <h2>{% trans "Latest reports with this tracker" %}</h2>
   </div>
 </div>
 
@@ -78,10 +72,4 @@
   </div>
   {% endwith %}
 {% endfor %}
-
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12">
-    {% include "base/paginator.html" %}
-  </div>
-</div>
 {% endblock %}

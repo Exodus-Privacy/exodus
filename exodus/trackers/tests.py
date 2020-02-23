@@ -211,9 +211,11 @@ class TrackerDetailTestCases(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['tracker'].id, tracker2.id)
-        self.assertEqual(len(response.context['reports']), 1)
+        self.assertEqual(len(response.context['reports']), 2)
         self.assertEqual(response.context['reports'][0].application.handle, application_handle2)
         self.assertEqual(response.context['reports'][0], report3)
+        self.assertEqual(response.context['reports'][1].application.handle, application_handle2)
+        self.assertEqual(response.context['reports'][1], report2)
 
     def test_track_detail_app_removed_tracker(self):
         tracker1 = Tracker.objects.create(
@@ -242,7 +244,9 @@ class TrackerDetailTestCases(TestCase):
         response = c.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['tracker'].id, tracker1.id)
-        self.assertEqual(len(response.context['reports']), 0)
+        self.assertEqual(len(response.context['reports']), 1)
+        self.assertEqual(response.context['reports'][0].application.handle, application_handle1)
+        self.assertEqual(response.context['reports'][0], report1)
 
 
 class ImportFromEtipCommandTest(TestCase):
