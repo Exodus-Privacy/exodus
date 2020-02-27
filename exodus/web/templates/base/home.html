@@ -176,6 +176,17 @@
     }
     const query = jQuery.trim(jQuery(this).val())
     if(query.length >= 5) {
+      // Extract handle from Google Play url
+      const regex = /id=((?:\w+\.)+\w+)/gmi;
+      if(query.startsWith("https://play.google.com")){
+          var match = regex.exec(query)
+          while (match != null) {
+            if(match[1]){
+              jQuery(this).val(match[1])
+            }
+            return
+          }
+      }
       search_timer = setTimeout(function(){ get_results(query, 20); }, 200);
     }
     if(query == '') {
