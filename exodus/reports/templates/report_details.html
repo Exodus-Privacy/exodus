@@ -168,7 +168,6 @@
   </div>
 
   <div class="row justify-content-sm-center mb-5">
-    {% trans "Exodus - Question about report" as mail_subject %}
     <div class="col-md-8 col-12">
       {% trans "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers." %}
       <br>
@@ -176,7 +175,7 @@
       {% trans "The application could contain tracker(s) we do not know yet." %}
       <br>
       {% trans "If you have doubts about this report, contact us at" %}
-      <a href="mailto:contact@exodus-privacy.eu.org?subject={{ mail_subject}} {{report.id}}">contact@exodus-privacy.eu.org</a>.
+      <a href="mailto:contact@exodus-privacy.eu.org?subject=Exodus - Question about report {{report.id}}">contact@exodus-privacy.eu.org</a>.
     </div>
   </div>
 

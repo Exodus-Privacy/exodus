@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 08:17+0000\n"
+"POT-Creation-Date: 2020-03-29 08:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgstr ""
 "connaissons dans l’application."
 
 #: reports/templates/report_details.html:101
-#: reports/templates/report_details.html:176
+#: reports/templates/report_details.html:175
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
 "L’application pourrait contenir un ou plusieurs pisteurs que nous n’avons "
@@ -157,11 +157,7 @@ msgstr ""
 msgid "Read the article"
 msgstr "Lire l'article"
 
-#: reports/templates/report_details.html:171
-msgid "Exodus - Question about report"
-msgstr "Exodus - Question à propos d’un rapport"
-
-#: reports/templates/report_details.html:173
+#: reports/templates/report_details.html:172
 msgid ""
 "This report lists trackers signatures found by static analysis in this APK. "
 "This is not a proof of activity of these trackers."
@@ -170,78 +166,78 @@ msgstr ""
 "l’analyse statique de cet APK. Cela ne constitue pas une preuve de "
 "l’activité de ces pisteurs."
 
-#: reports/templates/report_details.html:178
+#: reports/templates/report_details.html:177
 msgid "If you have doubts about this report, contact us at"
 msgstr "Si vous avez des doutes au sujet de ce rapport, contactez-nous à"
 
-#: reports/templates/report_details.html:185
+#: reports/templates/report_details.html:184
 msgid "Signed by"
 msgstr "Signée par"
 
-#: reports/templates/report_details.html:189
+#: reports/templates/report_details.html:188
 msgid "Fingerprint:"
 msgstr "Empreinte :"
 
-#: reports/templates/report_details.html:190
+#: reports/templates/report_details.html:189
 msgid "Issuer:"
 msgstr "Émetteur&nbsp;:"
 
-#: reports/templates/report_details.html:191
+#: reports/templates/report_details.html:190
 msgid "Subject:"
 msgstr "Sujet&nbsp;:"
 
-#: reports/templates/report_details.html:192
+#: reports/templates/report_details.html:191
 msgid "Serial:"
 msgstr "Série&nbsp;:"
 
-#: reports/templates/report_details.html:196
+#: reports/templates/report_details.html:195
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
 msgstr ""
 "Aucune signature trouvée <b>OU</b> certificat x509 non conforme avec la RFC."
 
-#: reports/templates/report_details.html:202
+#: reports/templates/report_details.html:201
 msgid "See APK fingerprint"
 msgstr "Voir l'empreinte de la clé"
 
-#: reports/templates/report_details.html:205
+#: reports/templates/report_details.html:204
 msgid "Text"
 msgstr "Texte"
 
-#: reports/templates/report_details.html:213
-#: reports/templates/report_details.html:237
+#: reports/templates/report_details.html:212
+#: reports/templates/report_details.html:236
 msgid "APK fingerprint"
 msgstr "Empreinte de la clé"
 
-#: reports/templates/report_details.html:218
+#: reports/templates/report_details.html:217
 msgid "APK checksum:"
 msgstr "Somme de contrôle&nbsp;:"
 
-#: reports/templates/report_details.html:219
+#: reports/templates/report_details.html:218
 msgid "Handle:"
 msgstr "Identifiant&nbsp;:"
 
-#: reports/templates/report_details.html:220
+#: reports/templates/report_details.html:219
 msgid "Name:"
 msgstr "Nom&nbsp;:"
 
-#: reports/templates/report_details.html:221
+#: reports/templates/report_details.html:220
 msgid "UAID:"
 msgstr "UAID&nbsp;:"
 
-#: reports/templates/report_details.html:222
+#: reports/templates/report_details.html:221
 msgid "Version:"
 msgstr "Version&nbsp;:"
 
-#: reports/templates/report_details.html:223
+#: reports/templates/report_details.html:222
 msgid "Version code:"
 msgstr "Code de version&nbsp;:"
 
-#: reports/templates/report_details.html:224
+#: reports/templates/report_details.html:223
 msgid "Icon hash:"
 msgstr "Empreinte de l’icône&nbsp;:"
 
-#: reports/templates/report_details.html:228
-#: reports/templates/report_details.html:244
+#: reports/templates/report_details.html:227
+#: reports/templates/report_details.html:243
 msgid "Close"
 msgstr "Fermer"
 

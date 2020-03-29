@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 08:17+0000\n"
+"POT-Creation-Date: 2020-03-29 08:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,7 +86,7 @@ msgid ""
 msgstr ""
 
 #: reports/templates/report_details.html:101
-#: reports/templates/report_details.html:176
+#: reports/templates/report_details.html:175
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr ""
 
@@ -137,87 +137,83 @@ msgstr ""
 msgid "Read the article"
 msgstr ""
 
-#: reports/templates/report_details.html:171
-msgid "Exodus - Question about report"
-msgstr ""
-
-#: reports/templates/report_details.html:173
+#: reports/templates/report_details.html:172
 msgid ""
 "This report lists trackers signatures found by static analysis in this APK. "
 "This is not a proof of activity of these trackers."
 msgstr ""
 
-#: reports/templates/report_details.html:178
+#: reports/templates/report_details.html:177
 msgid "If you have doubts about this report, contact us at"
 msgstr ""
 
-#: reports/templates/report_details.html:185
+#: reports/templates/report_details.html:184
 msgid "Signed by"
 msgstr ""
 
-#: reports/templates/report_details.html:189
+#: reports/templates/report_details.html:188
 msgid "Fingerprint:"
 msgstr ""
 
-#: reports/templates/report_details.html:190
+#: reports/templates/report_details.html:189
 msgid "Issuer:"
 msgstr ""
 
-#: reports/templates/report_details.html:191
+#: reports/templates/report_details.html:190
 msgid "Subject:"
 msgstr ""
 
-#: reports/templates/report_details.html:192
+#: reports/templates/report_details.html:191
 msgid "Serial:"
 msgstr ""
 
-#: reports/templates/report_details.html:196
+#: reports/templates/report_details.html:195
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
 msgstr ""
 
-#: reports/templates/report_details.html:202
+#: reports/templates/report_details.html:201
 msgid "See APK fingerprint"
 msgstr ""
 
-#: reports/templates/report_details.html:205
+#: reports/templates/report_details.html:204
 msgid "Text"
 msgstr ""
 
-#: reports/templates/report_details.html:213
-#: reports/templates/report_details.html:237
+#: reports/templates/report_details.html:212
+#: reports/templates/report_details.html:236
 msgid "APK fingerprint"
 msgstr ""
 
-#: reports/templates/report_details.html:218
+#: reports/templates/report_details.html:217
 msgid "APK checksum:"
 msgstr ""
 
-#: reports/templates/report_details.html:219
+#: reports/templates/report_details.html:218
 msgid "Handle:"
 msgstr ""
 
-#: reports/templates/report_details.html:220
+#: reports/templates/report_details.html:219
 msgid "Name:"
 msgstr ""
 
-#: reports/templates/report_details.html:221
+#: reports/templates/report_details.html:220
 msgid "UAID:"
 msgstr ""
 
-#: reports/templates/report_details.html:222
+#: reports/templates/report_details.html:221
 msgid "Version:"
 msgstr ""
 
-#: reports/templates/report_details.html:223
+#: reports/templates/report_details.html:222
 msgid "Version code:"
 msgstr ""
 
-#: reports/templates/report_details.html:224
+#: reports/templates/report_details.html:223
 msgid "Icon hash:"
 msgstr ""
 
-#: reports/templates/report_details.html:228
-#: reports/templates/report_details.html:244
+#: reports/templates/report_details.html:227
+#: reports/templates/report_details.html:243
 msgid "Close"
 msgstr ""
 
