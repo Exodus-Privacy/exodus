@@ -19,7 +19,7 @@
       {% trans "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues." %}
     </p>
     <p class="text-center mb-4 mt-4">
-      <a href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE }}" target="_blank" rel="noreferrer" class="btn btn-primary" style="width:300px">{% trans "Discover Exodus Privacy" %}</a>
+      <a href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% endif %}" target="_blank" rel="noreferrer" class="btn btn-primary" style="width:300px">{% trans "Discover Exodus Privacy" %}</a>
     </p>
   </div>
   <div class="col-md-8 col-12 mb-5 mt-4">
@@ -28,7 +28,7 @@
       {% trans "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help." %}
     </p>
     <p class="text-center mt-4">
-      <a href="https://exodus-privacy.eu.org/{{LANGUAGE_CODE}}/page/contribute/" target="_blank" rel="noreferrer" class="btn btn-outline-primary" style="width:300px">{% trans "How to contribute?" %}</a>
+      <a href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer" class="btn btn-outline-primary" style="width:300px">{% trans "How to contribute?" %}</a>
     </p>
   </div>
   <div class="col-md-8 col-12 mt-4 mb-4">
