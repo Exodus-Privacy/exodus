@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-29 08:29+0000\n"
+"PO-Revision-Date: 2020-03-29 08:26\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: trackers.po\n"
+
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr "Statistiche"
+
+#: trackers/templates/stats_details.html:10
+msgid "Most frequent trackers"
+msgstr "I tracker più comuni"
+
+#: trackers/templates/stats_details.html:20
+#, python-format
+msgid "found in %(count)s application"
+msgid_plural "found in %(count)s applications"
+msgstr[0] "trovato in %(count)s applicazione"
+msgstr[1] "trovato in %(count)s applicazioni"
+
+#: trackers/templates/tracker_details.html:21
+#, python-format
+msgid "Present in: <b>%(count)s application</b>"
+msgid_plural "Present in: <b>%(count)s applications</b>"
+msgstr[0] "Presente in: <b>%(count)s applicazione</b>"
+msgstr[1] "Presente in: <b>%(count)s applicazioni</b>"
+
+#: trackers/templates/tracker_details.html:29
+msgid "Tracker web page"
+msgstr "Pagina web del tracker"
+
+#: trackers/templates/tracker_details.html:41
+msgid "Detection rules"
+msgstr "Regole di rilevamento"
+
+#: trackers/templates/tracker_details.html:42
+msgid "Code detection rule:"
+msgstr "Regola di rilevamento (codice):"
+
+#: trackers/templates/tracker_details.html:44
+msgid "Network detection rule:"
+msgstr "Regola di rilevamento (rete):"
+
+#: trackers/templates/tracker_details.html:50
+msgid "Latest reports with this tracker"
+msgstr "Ultimi report con questo tracker"
+
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr "Tracker"
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
+msgstr[0] "tracker noto"
+msgstr[1] "tracker noti"
+
+#: trackers/templates/trackers_list.html:25
+msgid "No trackers are available"
+msgstr "Nessun tracker disponibile"
+
+#: trackers/views.py:17 trackers/views.py:28 trackers/views.py:44
+#: trackers/views.py:66
+msgid "Tracker does not exist"
+msgstr "Il tracker non esiste"

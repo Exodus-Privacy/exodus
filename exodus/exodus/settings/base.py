@@ -26,9 +26,10 @@ INSTALLED_APPS = [
 ]
 
 LANGUAGES = [
-    ('fr', 'Français'),
     ('en', 'English'),
     ('es', 'Español'),
+    ('fr', 'Français'),
+    ('it', 'Italiano'),
 ]
 
 DEFAULT_LANGUAGE = 1
