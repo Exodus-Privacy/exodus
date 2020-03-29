@@ -110,7 +110,7 @@ var check_existing_report=function(handle){
 
               var report_date = rq.creation_date.substring(0, 10)
               var p2 = document.createElement('p')
-              p2.innerHTML = name + ' - {% trans "analyzed on" %} '+report_date+' - <a href="/reports/'+rq.id+'/">{% trans "Go to the latest report" %}</a>'
+              p2.innerHTML = name + " - {% trans 'analyzed on' %} " + report_date + " - <a href='/reports/" + rq.id + "/'>{% trans 'Go to the latest report' %}</a>"
               jQuery("#reports").append(p2)
 
               var p3 = document.createElement('p')
