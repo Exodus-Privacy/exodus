@@ -92,6 +92,11 @@ var show_spinner=function(){
   }
 }
 
+// dirty hack to get correct report url dynamically
+var get_report_reverse_url=function(id){
+    return "{% url 'reports:detail' report_id='112233' %}".replace("112233", id)
+}
+
 var check_existing_report=function(handle){
   const regex_pk = /^((?:\w+\.)+\w+)$/gmi;
   if(regex_pk.test(handle)){
@@ -110,7 +115,8 @@ var check_existing_report=function(handle){
 
               var report_date = rq.creation_date.substring(0, 10)
               var p2 = document.createElement('p')
-              p2.innerHTML = name + " - {% trans 'analyzed on' %} " + report_date + " - <a href='/reports/" + rq.id + "/'>{% trans 'Go to the latest report' %}</a>"
+              var report_url = get_report_reverse_url(rq.id)
+              p2.innerHTML = name + " - {% trans 'analyzed on' %} " + report_date + " - <a href='" + report_url + "'>{% trans 'Go to the latest report' %}</a>"
               jQuery("#reports").append(p2)
 
               var p3 = document.createElement('p')
