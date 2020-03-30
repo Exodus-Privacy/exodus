@@ -5,11 +5,12 @@ import random
 import string
 
 from django.conf import settings
-from django.utils.translation import gettext_lazy as _
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.http.response import Http404
 from django.shortcuts import render
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView, ListView
 
 from exodus.core.apk import StaticAnalysisParameters, start_static_analysis
@@ -34,7 +35,8 @@ def upload_file(request):
 
             static = StaticAnalysisParameters(req)
             start_static_analysis.delay(static)
-            return HttpResponseRedirect('/analysis/%s' % req.id)
+            return HttpResponseRedirect(reverse('analysis:wait', args=[req.id]))
+
     else:
         form = UploadRequestForm()
     return render(request, 'query_upload.html', {'form': form})
@@ -58,7 +60,7 @@ class AnalysisRequestView(FormView):
         static = StaticAnalysisParameters(analysis_q)
         start_static_analysis.delay(static)
 
-        return HttpResponseRedirect('/analysis/%s' % analysis_q.id)
+        return HttpResponseRedirect(reverse('analysis:wait', args=[analysis_q.id]))
 
 
 def wait(request, r_id):
