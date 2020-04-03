@@ -16,7 +16,7 @@
     <p class="text-center mb-5">
       <img src="{% static 'img/analysis_new.png' %}" width="120">
     </p>
-    <form method="post" enctype="multipart/form-data" action="{% url 'analysis:submit' %}">
+    <form method="post" enctype="multipart/form-data" action="{% if LANGUAGE_CODE in 'fr,en' %}{% url 'analysis:submit' %}{% else %}/en/analysis/submit/{% endif %}">
       <div class="form-group">
         {% csrf_token %}
         {% if form.errors %}
