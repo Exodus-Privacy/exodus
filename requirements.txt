@@ -21,7 +21,7 @@ django-eventlog==1.1
 django-minio-storage==0.3.5
 django-timezone-field==4.0
 djangorestframework==3.11.0
-exodus-core==1.2.0
+exodus-core==1.2.1
 future==0.17.1
 gpapi==0.4.4
 GPlayCli==3.26
@@ -44,7 +44,7 @@ numpy==1.17.4
 parso==0.5.1
 pexpect==4.7.0
 pickleshare==0.7.5
-Pillow==6.2.0
+Pillow==6.2.2
 prompt-toolkit==2.0.10
 protobuf==3.11.0
 psycopg2==2.7.3.2
