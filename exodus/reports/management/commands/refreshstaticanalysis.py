@@ -113,6 +113,7 @@ class Command(BaseCommand):
                             self.style.WARNING(
                                 'Previous: {} - New: {} trackers'.format(report.found_trackers.count(), len(trackers))))
                     report.found_trackers.set(trackers)
+                    report.save()
                     self.stdout.write(
                         self.style.SUCCESS('Successfully updated trackers list of "{}"'.format(handle)))
 
