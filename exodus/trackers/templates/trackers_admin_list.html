@@ -1,0 +1,29 @@
+{% extends "base/base.html"%}
+{% load i18n %}
+{% block content %}
+<div class="row justify-content-md-center">
+  <div class="col col-lg-10 col-centered">
+    {% if request.user.is_superuser %}
+    <table class="table table-hover">
+      {% for tracker in trackers %}
+      <tr>
+        <td>
+          <a href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a>
+        </td>
+        <td>
+          {{ tracker.code_signature | default:"NC" | truncatechars:55 }}
+        </td>
+        <td>
+          {{ tracker.apps_number }}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <div class="alert alert-danger small">
+      <strong>{% trans "You need to be registered" %}.</strong>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

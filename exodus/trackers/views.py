@@ -5,6 +5,7 @@ from django.conf import settings
 from django.http.response import Http404
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import ListView
 
 from reports.models import Application, Report
 from trackers.models import Tracker
@@ -65,3 +66,11 @@ def graph(request):
     except Tracker.DoesNotExist:
         raise Http404(_("Tracker does not exist"))
     return render(request, 'trackers_graph.html', {'g': g})
+
+
+class TrackersListView(ListView):
+    template_name = 'trackers_admin_list.html'
+    context_object_name = 'trackers'
+
+    def get_queryset(self):
+        return Tracker.objects.order_by('-apps_number')
