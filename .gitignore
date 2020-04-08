@@ -4,6 +4,7 @@
 venv/
 data/
 .idea
+.vscode
 
 # Files related to django-celery-beat
 exodus/django
