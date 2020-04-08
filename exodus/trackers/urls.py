@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:tracker_id>/', views.detail, name='detail'),
     path('stats/', views.get_stats, name='get_stats'),
     path('graph/', views.graph, name='graph'),
+    path('details/', views.TrackersListView.as_view(), name='all_details'),
 ]
