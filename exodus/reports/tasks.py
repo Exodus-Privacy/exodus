@@ -51,4 +51,5 @@ def recompute_all_reports():
                 ev.warning('previous: %s - new: %s trackers' % (report.found_trackers.count(), len(trackers)),
                            initiator=__name__)
             report.found_trackers.set(trackers)
+            report.save()
             ev.info('Successfully updated trackers list of "{}"'.format(handle), initiator=__name__)
