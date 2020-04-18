@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 08:22+0000\n"
+"POT-Creation-Date: 2020-04-18 18:25+0000\n"
 "PO-Revision-Date: 2020-02-07 12:59\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish\n"
@@ -25,6 +25,7 @@ msgid "Most frequent trackers"
 msgstr "Rastreadores más frecuentes"
 
 #: trackers/templates/stats_details.html:20
+#: trackers/templates/trackers_list.html:41
 #, python-format
 msgid "found in %(count)s application"
 msgid_plural "found in %(count)s applications"
@@ -58,6 +59,10 @@ msgstr "Regla de detección de red:"
 msgid "Latest reports with this tracker"
 msgstr "Últimos informes con este rastreador"
 
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr "Necesitas estar registrado"
+
 #: trackers/templates/trackers_list.html:8
 msgid "Trackers"
 msgstr "Rastreadores"
@@ -68,11 +73,23 @@ msgid_plural "known trackers"
 msgstr[0] "rastreador conocido"
 msgstr[1] "rastreadores conocidos"
 
-#: trackers/templates/trackers_list.html:25
+#: trackers/templates/trackers_list.html:20
+msgid "Sorted by"
+msgstr "Ordenados por"
+
+#: trackers/templates/trackers_list.html:24
+msgid "Alphabetical order"
+msgstr "Orden alfabético"
+
+#: trackers/templates/trackers_list.html:27
+msgid "Number of applications"
+msgstr "Número de aplicaciones"
+
+#: trackers/templates/trackers_list.html:52
 msgid "No trackers are available"
 msgstr "No hay rastreadores disponibles"
 
-#: trackers/views.py:17 trackers/views.py:28 trackers/views.py:44
-#: trackers/views.py:66
+#: trackers/views.py:22 trackers/views.py:33 trackers/views.py:49
+#: trackers/views.py:71
 msgid "Tracker does not exist"
 msgstr "El rastreador no existe"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-29 08:22+0000\n"
+"POT-Creation-Date: 2020-04-18 18:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: reports/templates/report_details.html:31
 #: reports/templates/report_details.html:82
-#: reports/templates/reports_list.html:55
+#: reports/templates/reports_list.html:58
 msgid "tracker"
 msgid_plural "trackers"
 msgstr[0] ""
@@ -31,7 +31,7 @@ msgstr[1] ""
 
 #: reports/templates/report_details.html:39
 #: reports/templates/report_details.html:114
-#: reports/templates/reports_list.html:59
+#: reports/templates/reports_list.html:64
 msgid "permission"
 msgid_plural "permissions"
 msgstr[0] ""
@@ -217,8 +217,72 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: reports/templates/reports_home.html:10
 #: reports/templates/reports_list.html:11
 msgid "Reports"
+msgstr ""
+
+#: reports/templates/reports_home.html:20
+msgid "Search a report"
+msgstr ""
+
+#: reports/templates/reports_home.html:21
+msgid "Application name"
+msgstr ""
+
+#: reports/templates/reports_home.html:31
+msgid "You can search for an application using its name or handle"
+msgstr ""
+
+#: reports/templates/reports_home.html:32
+msgid "ex:"
+msgstr ""
+
+#: reports/templates/reports_home.html:36
+msgid "Let's go!"
+msgstr ""
+
+#: reports/templates/reports_home.html:39
+msgid "Results"
+msgstr ""
+
+#: reports/templates/reports_home.html:48
+msgid "Looking for an application we don't know yet?"
+msgstr ""
+
+#: reports/templates/reports_home.html:56
+msgid "Perform a new analysis"
+msgstr ""
+
+#: reports/templates/reports_home.html:64
+msgid "Need an overview?"
+msgstr ""
+
+#: reports/templates/reports_home.html:70
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr ""
+
+#: reports/templates/reports_home.html:76
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr ""
+
+#: reports/templates/reports_home.html:83
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr ""
+
+#: reports/templates/reports_home.html:91
+msgid "No results found."
+msgstr ""
+
+#: reports/templates/reports_home.html:113
+msgid "tracker(s)"
+msgstr ""
+
+#: reports/templates/reports_home.html:117
+msgid "permission(s)"
 msgstr ""
 
 #: reports/templates/reports_list.html:17
@@ -226,22 +290,10 @@ msgstr ""
 msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
 msgstr ""
 
-#: reports/templates/reports_list.html:24
-msgid "Latest reports"
-msgstr ""
-
-#: reports/templates/reports_list.html:25
-msgid "Sorted by number of trackers"
-msgstr ""
-
-#: reports/templates/reports_list.html:27
-msgid "No known trackers"
-msgstr ""
-
-#: reports/views.py:30 reports/views.py:60
+#: reports/views.py:34 reports/views.py:64
 msgid "Report does not exist"
 msgstr ""
 
-#: reports/views.py:75
+#: reports/views.py:79
 msgid "App does not exist"
 msgstr ""

@@ -53,7 +53,7 @@ class ReportsIconTests(TestCase):
 
 
 class ReportsViewTests(TestCase):
-    REPORTS_PATH = '/en/reports/'
+    REPORTS_PATH = '/en/reports/list/'
 
     def test_should_return_reports_total_count_with_2_reports(self):
         Report.objects.create()

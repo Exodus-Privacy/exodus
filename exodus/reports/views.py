@@ -15,6 +15,10 @@ from minio import Minio
 from reports.models import Report, Application
 
 
+def index(request):
+    return render(request, 'reports_home.html')
+
+
 def get_reports(request, handle=None):
     filter = request.GET.get('filter', None)
     try:

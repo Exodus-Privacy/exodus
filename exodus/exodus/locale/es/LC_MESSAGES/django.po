@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 08:17+0000\n"
+"POT-Creation-Date: 2020-04-18 18:25+0000\n"
 "PO-Revision-Date: 2020-02-07 12:59\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish\n"
@@ -75,50 +75,45 @@ msgstr "Análisis de rastreador: éxito"
 msgid "Static analysis complete"
 msgstr "Análisis estático completado"
 
-#: men_customization/templates/base/base.html:39
-#: web/templates/base/base.html:37
+#: men_customization/templates/base/base.html:38
+#: web/templates/base/base.html:40
 msgid "Home"
 msgstr "Inicio"
 
-#: men_customization/templates/base/base.html:42
-#: web/templates/base/base.html:40
+#: men_customization/templates/base/base.html:41
+#: web/templates/base/base.html:43
 msgid "Reports"
 msgstr "Informes"
 
-#: men_customization/templates/base/base.html:45
-#: web/templates/base/base.html:43
+#: men_customization/templates/base/base.html:44
+#: web/templates/base/base.html:46 web/templates/base/base.html:63
 msgid "Trackers"
 msgstr "Rastreadores"
 
-#: men_customization/templates/base/base.html:48
-#: web/templates/base/base.html:46
-msgid "New analysis"
-msgstr "Nuevo análisis"
-
-#: men_customization/templates/base/base.html:51
-#: men_customization/templates/base/home.html:55
-#: web/templates/base/base.html:49 web/templates/base/home.html:54
+#: men_customization/templates/base/base.html:47
+#: men_customization/templates/base/home.html:57
+#: web/templates/base/base.html:49 web/templates/base/home.html:56
 #: web/templates/base/understand.html:8
 msgid "Better understand"
 msgstr "Entender mejor"
 
-#: men_customization/templates/base/base.html:56
-#: web/templates/base/base.html:57
+#: men_customization/templates/base/base.html:52
+#: web/templates/base/base.html:58
 msgid "Admin"
 msgstr "Admin"
 
-#: men_customization/templates/base/base.html:59
-#: web/templates/base/base.html:60
+#: men_customization/templates/base/base.html:55
+#: web/templates/base/base.html:61
 msgid "Index"
 msgstr "Índice"
 
-#: men_customization/templates/base/base.html:60
-#: web/templates/base/base.html:61
+#: men_customization/templates/base/base.html:56
+#: web/templates/base/base.html:62
 msgid "Analyzes"
 msgstr "Analiza"
 
-#: men_customization/templates/base/base.html:61
-#: web/templates/base/base.html:62
+#: men_customization/templates/base/base.html:57
+#: web/templates/base/base.html:64
 msgid "Log out"
 msgstr "Cerrar sesión"
 
@@ -143,8 +138,8 @@ msgid "ex:"
 msgstr "ej:"
 
 #: men_customization/templates/base/home.html:35
-#: men_customization/templates/base/home.html:64
-#: web/templates/base/home.html:34 web/templates/base/home.html:63
+#: men_customization/templates/base/home.html:66
+#: web/templates/base/home.html:34 web/templates/base/home.html:65
 msgid "Let's go!"
 msgstr "¡Vamos!"
 
@@ -162,8 +157,8 @@ msgstr ""
 "εxodus analiza las aplicaciones Android para <b>listar los rastreadores "
 "integrados.</b>"
 
-#: men_customization/templates/base/home.html:48
-#: web/templates/base/home.html:47
+#: men_customization/templates/base/home.html:49
+#: web/templates/base/home.html:48
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
@@ -172,13 +167,13 @@ msgstr ""
 "ti o tus usos.</b> Así que, los informes εxodus te dicen cuáles son los "
 "ingredientes del pastel."
 
-#: men_customization/templates/base/home.html:49
-#: web/templates/base/home.html:48
+#: men_customization/templates/base/home.html:51
+#: web/templates/base/home.html:50
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr "εxodus no descompila aplicaciones, su método de análisis es legal."
 
-#: men_customization/templates/base/home.html:56
-#: web/templates/base/home.html:55
+#: men_customization/templates/base/home.html:58
+#: web/templates/base/home.html:57
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
@@ -186,30 +181,40 @@ msgstr ""
 "¿Qué es un rastreador? ¿Y un permiso? ¿Hay alternativas para protegerte a ti "
 "mismo?"
 
-#: men_customization/templates/base/home.html:72
-#: web/templates/base/home.html:71
+#: men_customization/templates/base/home.html:74
+#: web/templates/base/home.html:73
 msgid "Need an overview?"
 msgstr "¿Necesitas una vista general?"
 
-#: men_customization/templates/base/home.html:78
-#: web/templates/base/home.html:77
+#: men_customization/templates/base/home.html:80
+#: web/templates/base/home.html:79
 msgid "Latest reports"
 msgstr "Últimos informes"
 
-#: men_customization/templates/base/home.html:84
-#: web/templates/base/home.html:83
+#: men_customization/templates/base/home.html:86
+#: web/templates/base/home.html:85
 msgid "No known trackers"
 msgstr "Sin rastreadores conocidos"
 
-#: men_customization/templates/base/home.html:90
-#: web/templates/base/home.html:89
+#: men_customization/templates/base/home.html:92
+#: web/templates/base/home.html:91
 msgid "Sorted by number of trackers"
 msgstr "Ordenado por cantidad de rastreadores"
 
-#: men_customization/templates/base/home.html:98
-#: web/templates/base/home.html:97
+#: men_customization/templates/base/home.html:100
+#: web/templates/base/home.html:99
 msgid "No results found."
 msgstr "No se han encontrado resultados."
+
+#: men_customization/templates/base/home.html:122
+#: web/templates/base/home.html:121
+msgid "tracker(s)"
+msgstr "rastreador(es)"
+
+#: men_customization/templates/base/home.html:126
+#: web/templates/base/home.html:125
+msgid "permission(s)"
+msgstr "permiso(s)"
 
 #: web/templates/base/base.html:52 web/templates/base/organization.html:8
 msgid "The organization"
@@ -218,14 +223,6 @@ msgstr "La organización"
 #: web/templates/base/home.html:10
 msgid "The privacy audit platform for Android applications"
 msgstr "La plataforma de auditoría de privacidad para aplicaciones Android"
-
-#: web/templates/base/home.html:118
-msgid "tracker(s)"
-msgstr "rastreador(es)"
-
-#: web/templates/base/home.html:120
-msgid "permission(s)"
-msgstr "permiso(s)"
 
 #: web/templates/base/next.html:8 web/templates/base/understand.html:53
 msgid "What's next?"
