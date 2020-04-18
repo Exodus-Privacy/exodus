@@ -45,7 +45,9 @@
 <div class="row justify-content-center mb-5">
   <div class="col-lg-8 col-sm-12">
     <p class=mb-4>{% trans "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>" %}</p>
-    <p class="mb-4">{% trans "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake." %}</p>
+    <p class="mb-4">
+      {% trans "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake." %}
+    </p>
     <p>{% trans "εxodus does not decompile applications, its analysis method is legal." %}</p>
   </div>
 </div>
@@ -75,19 +77,19 @@
 
 <div class="row justify-content-center mb-4">
   <div class="col-lg-6 col-sm-8 text-right">
-    <a href="{% url 'reports:index' %}" class="link main-link">{% trans "Latest reports" %}</a>
+    <a href="{% url 'reports:list' %}" class="link main-link">{% trans "Latest reports" %}</a>
   </div>
 </div>
 
 <div class="row justify-content-center mb-4">
   <div class="col-lg-6 col-sm-8 text-right">
-    <a href="{% url 'reports:index' %}?filter=no_trackers" class="link main-link">{% trans "No known trackers" %}</a>
+    <a href="{% url 'reports:list' %}?filter=no_trackers" class="link main-link">{% trans "No known trackers" %}</a>
   </div>
 </div>
 
 <div class="row justify-content-center mb-4">
   <div class="col-lg-6 col-sm-8 text-right">
-    <a href="{% url 'reports:index' %}?filter=most_trackers" class="link main-link">{% trans "Sorted by number of trackers" %}</a>
+    <a href="{% url 'reports:list' %}?filter=most_trackers" class="link main-link">{% trans "Sorted by number of trackers" %}</a>
   </div>
 </div>
 
@@ -100,17 +102,30 @@
     {{#each results}}
       <br>
       <div class="row position-relative">
-        <div class="col-3 col-md-2">
+        <div class="col-3 col-sm-2 col-md-2 my-auto">
           <img class="rounded" src="/reports/{{handle}}/latest/icon" width="50" alt="{{handle}} logo">
         </div>
-        <div class="col-9 col-md-10 text-truncate my-auto position-static">
-          <a href="/reports/{{handle}}/latest" class="stretched-link report-link">
-            {{#if name}}
-              {{name}}
-            {{else}}
-              {{handle}}
-            {{/if}}
-          </a>
+        <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">
+          <div>
+            <a href="/reports/{{handle}}/latest" class="stretched-link report-link">
+              {{#if name}}
+                {{name}}
+              {{else}}
+                {{handle}}
+              {{/if}}
+            </a>
+          </div>
+          <div class="small"><b>{{version}}</b></div>
+          <div>
+            <span class="mr-lg-4 mr-2">
+              <span class="badge badge-pill badge-{{trackers_class}} reports">{{trackers_count}}</span>
+              {% endverbatim %}{% trans "tracker(s)" %}{% verbatim %}
+            </span>
+            <span>
+              <span class="badge badge-pill badge-{{permissions_class}} reports">{{permissions_count}}</span>
+              {% endverbatim %}{% trans "permission(s)" %}{% verbatim %}
+            </span>
+          </div>
         </div>
       </div>
     {{/each}}
@@ -121,17 +136,17 @@
 <script>
   const tpl_source = document.getElementById("tpl").innerHTML;
   const tpl = Handlebars.compile(tpl_source);
-  jQuery(function() {
+  jQuery(function () {
     jQuery("#query").focus();
   });
-  const display_results = function(results) {
+  const display_results = function (results) {
     jQuery("#go-div").hide()
     jQuery("#results").hide()
     jQuery("#results-title").hide()
     jQuery("#results").html("")
     jQuery("#results").html(tpl(results))
     jQuery("#results").show()
-    if(results.results.length > 0){
+    if (results.results.length > 0) {
       jQuery("#results-title").show()
     }
   }
@@ -145,32 +160,49 @@
       })
     })
   }
-  const get_results = function(query, limit) {
+  const get_results = function (query, limit) {
     jQuery.ajax({
       type: 'POST',
       url: "/api/search",
-      data: '{"type": "application", "query":"'+query+'", "limit":'+limit+'}',
+      data: '{"type": "application", "query":"' + query + '", "limit":' + limit + '}',
       success: display_results,
       contentType: "application/json",
       dataType: 'json'
     })
   }
-  jQuery("#go").on("click", function() {
+  jQuery("#go").on("click", function () {
     const query = jQuery.trim(jQuery("#query").val())
     get_results(query, 50)
   })
-  jQuery("#query").on("change paste keyup", function() {
-    const query = jQuery.trim(jQuery(this).val())
-    if(query.length >= 5) {
-      get_results(query, 20)
+
+  var search_timer = 0
+
+  jQuery("#query").on("change paste keyup", function () {
+    if (search_timer) {
+      clearTimeout(search_timer)
     }
-    if(query == '') {
+    const query = jQuery.trim(jQuery(this).val())
+    if (query.length >= 5) {
+      // Extract handle from Google Play url
+      const regex = /id=((?:\w+\.)+\w+)/gmi;
+      if (query.startsWith("https://play.google.com")) {
+        var match = regex.exec(query)
+        while (match != null) {
+          if (match[1]) {
+            jQuery(this).val(match[1])
+          }
+          return
+        }
+      }
+      search_timer = setTimeout(function () { get_results(query, 20); }, 200);
+    }
+    if (query == '') {
       jQuery("#go-div").show()
       jQuery("#results").hide()
       jQuery("#results-title").hide()
     }
   });
-  jQuery("#query").enterKey(function() {
+  jQuery("#query").enterKey(function () {
     const query = jQuery.trim(jQuery("#query").val())
     get_results(query, 50)
   });

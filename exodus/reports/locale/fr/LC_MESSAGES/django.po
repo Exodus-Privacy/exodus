@@ -1,21 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-29 08:22+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2020-04-18 18:25+0000\n"
+"PO-Revision-Date: 2020-04-18 17:10\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: reports.po\n"
 
 #: reports/templates/report_details.html:10
 msgid "Prefix in storage:"
@@ -23,7 +21,7 @@ msgstr "Préfixe de stockage :"
 
 #: reports/templates/report_details.html:31
 #: reports/templates/report_details.html:82
-#: reports/templates/reports_list.html:55
+#: reports/templates/reports_list.html:58
 msgid "tracker"
 msgid_plural "trackers"
 msgstr[0] "pisteur"
@@ -31,7 +29,7 @@ msgstr[1] "pisteurs"
 
 #: reports/templates/report_details.html:39
 #: reports/templates/report_details.html:114
-#: reports/templates/reports_list.html:59
+#: reports/templates/reports_list.html:64
 msgid "permission"
 msgid_plural "permissions"
 msgstr[0] "permission"
@@ -241,9 +239,73 @@ msgstr "Empreinte de l’icône&nbsp;:"
 msgid "Close"
 msgstr "Fermer"
 
+#: reports/templates/reports_home.html:10
 #: reports/templates/reports_list.html:11
 msgid "Reports"
 msgstr "Rapports"
+
+#: reports/templates/reports_home.html:20
+msgid "Search a report"
+msgstr "Rechercher un rapport"
+
+#: reports/templates/reports_home.html:21
+msgid "Application name"
+msgstr "Nom de l'application"
+
+#: reports/templates/reports_home.html:31
+msgid "You can search for an application using its name or handle"
+msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
+
+#: reports/templates/reports_home.html:32
+msgid "ex:"
+msgstr "ex :"
+
+#: reports/templates/reports_home.html:36
+msgid "Let's go!"
+msgstr "C'est parti !"
+
+#: reports/templates/reports_home.html:39
+msgid "Results"
+msgstr "Résultats"
+
+#: reports/templates/reports_home.html:48
+msgid "Looking for an application we don't know yet?"
+msgstr "A la recherche d'une application que nous ne connaissons pas encore ?"
+
+#: reports/templates/reports_home.html:56
+msgid "Perform a new analysis"
+msgstr "Effectuer une nouvelle analyse"
+
+#: reports/templates/reports_home.html:64
+msgid "Need an overview?"
+msgstr "Besoin d'une vision d'ensemble&nbsp;?"
+
+#: reports/templates/reports_home.html:70
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr "Les derniers rapports"
+
+#: reports/templates/reports_home.html:76
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr "Aucun pisteurs identifiés"
+
+#: reports/templates/reports_home.html:83
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr "Triés par nombre de pisteurs"
+
+#: reports/templates/reports_home.html:91
+msgid "No results found."
+msgstr "Aucun résultat."
+
+#: reports/templates/reports_home.html:113
+msgid "tracker(s)"
+msgstr "pisteur(s)"
+
+#: reports/templates/reports_home.html:117
+msgid "permission(s)"
+msgstr "permission(s)"
 
 #: reports/templates/reports_list.html:17
 #, python-format
@@ -251,22 +313,10 @@ msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
 msgstr ""
 "%(reports_total_count)s rapports pour %(apps_total_count)s applications"
 
-#: reports/templates/reports_list.html:24
-msgid "Latest reports"
-msgstr "Les derniers rapports"
-
-#: reports/templates/reports_list.html:25
-msgid "Sorted by number of trackers"
-msgstr "Triés par nombre de pisteurs"
-
-#: reports/templates/reports_list.html:27
-msgid "No known trackers"
-msgstr "Aucun pisteurs identifiés"
-
-#: reports/views.py:30 reports/views.py:60
+#: reports/views.py:34 reports/views.py:64
 msgid "Report does not exist"
 msgstr "Le rapport n’existe pas"
 
-#: reports/views.py:75
+#: reports/views.py:79
 msgid "App does not exist"
 msgstr "L’application n’existe pas"

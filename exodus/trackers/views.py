@@ -12,11 +12,15 @@ from trackers.models import Tracker
 
 
 def index(request):
+    filter = request.GET.get('filter', None)
     try:
-        trackers = Tracker.objects.order_by('name')
+        if filter == 'apps':
+            trackers = Tracker.objects.order_by('-apps_number')
+        else:
+            trackers = Tracker.objects.order_by('name')
     except Tracker.DoesNotExist:
         raise Http404(_("Tracker does not exist"))
-    return render(request, 'trackers_list.html', {'trackers': trackers})
+    return render(request, 'trackers_list.html', {'trackers': trackers, 'filter': filter})
 
 
 def detail(request, tracker_id):

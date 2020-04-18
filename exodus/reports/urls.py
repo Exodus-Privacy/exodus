@@ -5,7 +5,8 @@ from . import views
 
 app_name = 'reports'
 urlpatterns = [
-    path('', views.get_reports, name='index'),
+    path('', views.index, name='index'),
+    path('list/', views.get_reports, name='list'),
     path('<int:report_id>/', views.detail, name='detail'),
     path('<int:app_id>/icon/', views.get_app_icon, name='icon'),
     path('stats/', RedirectView.as_view(pattern_name='trackers:get_stats', permanent=False)),

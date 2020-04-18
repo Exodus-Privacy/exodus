@@ -1,13 +1,15 @@
-{% extends "base/base.html"%}
-{% block content %}
+{% extends "base/base.html" %}
 {% load i18n %}
-<div class="row justify-content-center mb-5 mt-5">
-  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4 my-auto">
-    <img src="/static/img/logo_purple_small.svg" class="mx-auto d-block img-fluid" alt="exodus logo">
-  </div>
-  <div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 text-center my-auto">
-    <h1 class="main-title">εxodus</h1>
-    <h5><b>{% trans "The privacy audit platform for Android applications" %}</b></h5>
+{% get_current_language as LANGUAGE_CODE %}
+{% block content %}
+{% load static %}
+<div class="row justify-content-md-center">
+  <div class="col-lg-8 col-centered">
+    <div style="text-align:center">
+      <h1 class="main-title">
+        {% trans "Reports" %}
+      </h1>
+    </div>
   </div>
 </div>
 
@@ -41,20 +43,9 @@
   </div>
 </div>
 
-<div class="row justify-content-center mb-5">
+<div class="row justify-content-center mb-2">
   <div class="col-lg-8 col-sm-12">
-    <p class=mb-4>{% trans "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>" %}</p>
-    <p class="mb-4">
-      {% trans "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake." %}
-    </p>
-    <p>{% trans "εxodus does not decompile applications, its analysis method is legal." %}</p>
-  </div>
-</div>
-
-<div class="row justify-content-center mb-4">
-  <div class="col-lg-8 col-sm-12">
-    <h4>{% trans "Better understand" %}</h4>
-    <p>{% trans "What is a tracker? And a permission? Are there any alternatives to protect yourself?" %}</p>
+    <p>{% trans "Looking for an application we don't know yet?" %}</p>
   </div>
 </div>
 
@@ -62,7 +53,7 @@
   <div class="col-lg-8 col-sm-12">
     <div class="row justify-content-center">
       <div class="col-8 col-sm-7 col-md-6 col-xl-5 text-center mb-4">
-        <a href="{% url 'understand' %}" class="btn btn-primary btn-block">{% trans "Let's go!" %}</a>
+        <a href="{% url 'analysis:submit' %}" class="btn btn-primary btn-block">{% trans "Perform a new analysis" %}</a>
       </div>
     </div>
   </div>
@@ -88,7 +79,8 @@
 
 <div class="row justify-content-center mb-4">
   <div class="col-lg-6 col-sm-8 text-right">
-    <a href="{% url 'reports:list' %}?filter=most_trackers" class="link main-link">{% trans "Sorted by number of trackers" %}</a>
+    <a href="{% url 'reports:list' %}?filter=most_trackers"
+      class="link main-link">{% trans "Sorted by number of trackers" %}</a>
   </div>
 </div>
 

@@ -2,26 +2,53 @@
 {% load i18n %}
 {% block content %}
 {% if trackers %}
-  <div class="row justify-content-sm-center">
-    <div class="col-md-8 col-12 text-center mb-4">
-      <h1 class="main-title">
-        {% trans "Trackers" %}
-      </h1>
-      <h4>
-        {{ trackers.count }}
-        {% blocktrans count counter=trackers.count %}known tracker{% plural %}known trackers{% endblocktrans %}
-         - <a href="{% url 'trackers:get_stats' %}">{% trans "Statistics" %}</a>
-      </h4>
-    </div>
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 text-center mb-4">
+    <h1 class="main-title">
+      {% trans "Trackers" %}
+    </h1>
+    <h4>
+      {{ trackers.count }}
+      {% blocktrans count counter=trackers.count %}known tracker{% plural %}known trackers{% endblocktrans %}
+      - <a href="{% url 'trackers:get_stats' %}">{% trans "Statistics" %}</a>
+    </h4>
   </div>
-  <div class="row justify-content-sm-center">
-    <div class="col-md-8 col-12">
-      {% for tracker in trackers %}
-        <p><a class="link black" href="{% url 'trackers:detail' tracker.id %}">{{ tracker.name }}</a></p>
-      {% endfor %}
-    </div>
+</div>
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12">
+    <p>
+      {% trans "Sorted by" %}&nbsp;
+      <select class="custom-select"
+        onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/trackers/' + this.options[this.selectedIndex].value);">
+        <option value=" ">
+          {% trans "Alphabetical order" %}
+        </option>
+        <option value="?filter=apps" {% if filter == 'apps' %}selected{% endif %}>
+          {% trans "Number of applications" %}
+        </option>
+      </select>
+    </p>
+
+    {% for tracker in trackers %}
+    <p class="mb-0">
+      <a class="link black" href="{% url 'trackers:detail' tracker.id %}">
+        {{ tracker.name }}&nbsp;
+        <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
+      </a>
+    </p>
+    <p class="mb-4">
+      <span class="small text-muted">
+        {% blocktrans trimmed count count=tracker.apps_number %}
+        found in {{ count }} application
+        {% plural %}
+        found in {{ count }} applications
+        {% endblocktrans %}
+      </span>
+    </p>
+    {% endfor %}
   </div>
+</div>
 {% else %}
-    <p>{% trans "No trackers are available" %}.</p>
+<p>{% trans "No trackers are available" %}.</p>
 {% endif %}
 {% endblock %}

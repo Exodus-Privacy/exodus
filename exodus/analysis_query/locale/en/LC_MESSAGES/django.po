@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-29 08:22+0000\n"
+"POT-Creation-Date: 2020-04-18 18:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,19 +83,19 @@ msgstr ""
 msgid "Help us!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:108
+#: analysis_query/templates/query_submit.html:113
 msgid "This application has already been analyzed!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:113
+#: analysis_query/templates/query_submit.html:119
 msgid "analyzed on"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:113
+#: analysis_query/templates/query_submit.html:119
 msgid "Go to the latest report"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:117
+#: analysis_query/templates/query_submit.html:123
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."
@@ -125,10 +125,10 @@ msgstr ""
 msgid "Will refresh automatically every 10 seconds."
 msgstr ""
 
-#: analysis_query/views.py:32 analysis_query/views.py:55
+#: analysis_query/views.py:33 analysis_query/views.py:57
 msgid "Your request will be handled soon"
 msgstr ""
 
-#: analysis_query/views.py:68 analysis_query/views.py:76
+#: analysis_query/views.py:70 analysis_query/views.py:78
 msgid "AnalysisRequest does not exist"
 msgstr ""
