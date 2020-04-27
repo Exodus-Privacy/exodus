@@ -2,7 +2,7 @@ FROM python:3.7-buster
 LABEL maintainer="Codimp"
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y dexdump=8.1.0* postgresql-client-11=11* && \
+    apt-get install --no-install-recommends -y dexdump=8.1.0* postgresql-client-11=11* gettext=0.* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
