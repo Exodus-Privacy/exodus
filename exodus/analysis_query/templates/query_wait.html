@@ -61,7 +61,7 @@
       if(rq.processed){
         jQuery("#snake").hide()
         jQuery("#refresh").hide()
-        jQuery("#main-title").text("{% trans "Analysis done!" %}")
+        jQuery("#main-title").text("{% trans 'Analysis done!' %}")
         jQuery("#completed").show()
         if(!rq.in_error){
           jQuery("#report").children(":first").attr("href", "/reports/"+rq.report_id+"/")
