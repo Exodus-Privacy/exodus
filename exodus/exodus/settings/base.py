@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
 
+CSRF_COOKIE_SECURE = True
+
 ROOT_URLCONF = 'exodus.urls'
 
 TEMPLATES = [
