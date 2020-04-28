@@ -5,6 +5,8 @@ services:
     build: ./
     container_name: exodus
     image: exodus
+    volumes:
+      - ./exodus:/exodus/exodus:rw,cached
     depends_on:
       - minio
       - db
