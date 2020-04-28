@@ -43,8 +43,10 @@ You can use the command
 docker exec -it exodus /entrypoint.sh "<command>"
 ```
 to make actions, where `<command>` can be:
+- `compile-messages`: Compile the translation messages
 - `create-db`: Create the database and apply migrations
 - `create-user`: Create a Django user
+- `make-messages`: Create the extracted translation messages
 - `import-trackers`: Import all trackers from the main exodus instance
 - `start-frontend`: Start the web server
 - `start-worker`: Start the exodus worker

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-18 18:25+0000\n"
+"POT-Creation-Date: 2020-04-27 16:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,6 +132,10 @@ msgstr "Voir le rapport"
 #: analysis_query/templates/query_wait.html:28
 msgid "Will refresh automatically every 10 seconds."
 msgstr "La page se rafraîchira automatiquement toutes les 10 secondes."
+
+#: analysis_query/templates/query_wait.html:64
+msgid "Analysis done!"
+msgstr "Analyse terminée !"
 
 #: analysis_query/views.py:33 analysis_query/views.py:57
 msgid "Your request will be handled soon"

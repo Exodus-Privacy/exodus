@@ -5,7 +5,7 @@
 {% block content %}
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 text-center mb-4">
-    <h1 class="main-title">
+    <h1 id="main-title" class="main-title">
       {% trans "Analysis in progress..." %}
     </h1>
   </div>
@@ -61,6 +61,7 @@
       if(rq.processed){
         jQuery("#snake").hide()
         jQuery("#refresh").hide()
+        jQuery("#main-title").text("{% trans 'Analysis done!' %}")
         jQuery("#completed").show()
         if(!rq.in_error){
           jQuery("#report").children(":first").attr("href", "/reports/"+rq.report_id+"/")

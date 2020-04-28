@@ -29,6 +29,16 @@ function importTrackers() {
 	python3 manage.py importtrackers --settings=exodus.settings.docker
 }
 
+function makeMessages() {
+	cd ${EXODUS_HOME}/exodus/
+	python3 manage.py makemessages --settings=exodus.settings.docker
+}
+
+function compileMessages() {
+	cd ${EXODUS_HOME}/exodus/
+	python3 manage.py compilemessages --settings=exodus.settings.docker
+}
+
 function init() {
 	while ! pg_isready -h db -p 5432 > /dev/null 2> /dev/null; do
 		echo "Connecting to db (postgresql) Failed: Waiting ..."
@@ -64,5 +74,10 @@ case "${1}" in
 	"import-trackers")
 		importTrackers
 		;;
+	"make-messages")
+		makeMessages
+		;;
+	"compile-messages")
+		compileMessages
+		;;
 esac
-
