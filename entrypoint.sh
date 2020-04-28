@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXODUS_HOME="/home/exodus/exodus"
+EXODUS_HOME="/exodus"
 
 function createDB() {
 	cd ${EXODUS_HOME}/exodus/
