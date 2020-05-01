@@ -21,6 +21,10 @@ You have different ways of setting up your development environment (via Docker o
 
 Check the [FAQ](doc/faq.md) if you encounter any problem or need an extended documentation about εxodus.
 
+## Contributing
+
+If you want to contribute to this project, you can refer to [this documentation](CONTRIBUTING.md).
+
 ## API documentation
 
 You can find the εxodus API documentation [here](doc/api.md).
