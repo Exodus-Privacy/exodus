@@ -44,7 +44,7 @@ def get_report_infos(request, r_id):
             'apk_dl_link': '',
         }
         if request.user.is_staff:
-            obj.apk_dl_link = '/api/apk/{}/'.format(report.id)
+            obj['apk_dl_link'] = '/api/apk/{}/'.format(report.id)
 
         serializer = ReportInfosSerializer(obj, many=False)
         return JsonResponse(serializer.data, safe=True)
@@ -64,13 +64,13 @@ def get_apk(request, r_id):
         apk_path = report.apk_file
 
         minioClient = Minio(
-            settings.MINIO_URL,
-            access_key=settings.MINIO_ACCESS_KEY,
-            secret_key=settings.MINIO_SECRET_KEY,
-            secure=settings.MINIO_SECURE
+            settings.MINIO_STORAGE_ENDPOINT,
+            access_key=settings.MINIO_STORAGE_ACCESS_KEY,
+            secret_key=settings.MINIO_STORAGE_SECRET_KEY,
+            secure=settings.MINIO_STORAGE_USE_HTTPS
         )
         try:
-            data = minioClient.get_object(settings.MINIO_BUCKET, apk_path)
+            data = minioClient.get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, apk_path)
             return HttpResponse(
                 data.data, content_type=data.getheader('Content-Type'))
         except Exception as err:
