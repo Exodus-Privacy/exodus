@@ -1,0 +1,142 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-04 17:31+0000\n"
+"PO-Revision-Date: 2020-05-04 16:38\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek\n"
+"Language: el_GR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: el\n"
+"X-Crowdin-File: analysis_query.po\n"
+
+#: analysis_query/models.py:30
+#, python-format
+msgid "%s is not a valid application handle"
+msgstr "%s δεν είναι έγκυρο handle εφαρμογής"
+
+#: analysis_query/models.py:36
+#, python-format
+msgid "%s application not found on Google Play"
+msgstr "%s η εφαρμογή δεν βρέθηκε στο Google Play"
+
+#: analysis_query/models.py:43
+msgid "This application is being analyzed."
+msgstr "Αυτή η εφαρμογή αναλύεται."
+
+#: analysis_query/models.py:48
+msgid "Too much pending requests, please retry later"
+msgstr "Πάρα πολλά αιτήματα που εκκρεμούν, δοκιμάστε ξανά αργότερα"
+
+#: analysis_query/models.py:56
+msgid "Unsupported file extension"
+msgstr "Μη υποστηριζόμενη επέκταση αρχείου"
+
+#: analysis_query/templates/queries_list.html:35
+msgid "You need to be registered"
+msgstr "Πρέπει να έχετε εγγραφεί"
+
+#: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_upload.html:9
+msgid "New analysis"
+msgstr "Νέα ανάλυση"
+
+#: analysis_query/templates/query_submit.html:31
+msgid "Google Play URL of the application"
+msgstr "Διεύθυνση URL της εφαρμογής Google Play"
+
+#: analysis_query/templates/query_submit.html:41
+msgid "Free applications only. Works also with the application handle."
+msgstr "Μόνο δωρεάν εφαρμογές. Λειτουργεί επίσης με το handle της εφαρμογής."
+
+#: analysis_query/templates/query_submit.html:49
+#: analysis_query/templates/query_upload.html:50
+msgid "Perform analysis"
+msgstr "Εκτελέστε ανάλυση"
+
+#: analysis_query/templates/query_submit.html:55
+msgid "I prefer to upload an application"
+msgstr "Προτιμώ να μεταφορτώσω μια εφαρμογή"
+
+#: analysis_query/templates/query_submit.html:62
+#: analysis_query/templates/query_upload.html:57
+msgid ""
+"The analysis could take a long time, you will be automatically redirected to "
+"the report."
+msgstr ""
+"Η ανάλυση μπορεί να διαρκέσει πολύ, θα ανακατευθυνθείτε αυτόματα στην "
+"αναφορά."
+
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:70
+#: analysis_query/templates/query_wait.html:39
+msgid "is a non-profit organization which provides this service for free."
+msgstr ""
+"είναι ένας μη κερδοσκοπικός οργανισμός που παρέχει αυτήν την υπηρεσία δωρεάν."
+
+#: analysis_query/templates/query_submit.html:77
+#: analysis_query/templates/query_upload.html:72
+#: analysis_query/templates/query_wait.html:41
+msgid "Help us!"
+msgstr "Βοηθήστε μας!"
+
+#: analysis_query/templates/query_submit.html:113
+msgid "This application has already been analyzed!"
+msgstr "Αυτή η εφαρμογή έχει ήδη αναλυθεί!"
+
+#: analysis_query/templates/query_submit.html:119
+msgid "analyzed on"
+msgstr "αναλύθηκε στις"
+
+#: analysis_query/templates/query_submit.html:119
+msgid "Go to the latest report"
+msgstr "Μεταβείτε στην πιο πρόσφατη αναφορά"
+
+#: analysis_query/templates/query_submit.html:123
+msgid ""
+"If you think εxodus has not yet analyzed the latest version of this "
+"application, feel free to submit the analysis."
+msgstr ""
+"Εάν πιστεύετε ότι η εxodus δεν έχει ακόμη αναλύσει την τελευταία έκδοση "
+"αυτής της εφαρμογής, μη διστάσετε να υποβάλετε την ανάλυση."
+
+#: analysis_query/templates/query_upload.html:32
+msgid "Upload an application"
+msgstr "Μεταφορτώστε μια εφαρμογή"
+
+#: analysis_query/templates/query_upload.html:36
+msgid "Browse file"
+msgstr "Αναζήτηση αρχείου"
+
+#: analysis_query/templates/query_upload.html:42
+msgid "Only works with APK files."
+msgstr "Λειτουργεί μόνο με αρχεία APK."
+
+#: analysis_query/templates/query_wait.html:9
+msgid "Analysis in progress..."
+msgstr "Ανάλυση σε εξέλιξη..."
+
+#: analysis_query/templates/query_wait.html:24
+msgid "See the report"
+msgstr "Δείτε την αναφορά"
+
+#: analysis_query/templates/query_wait.html:28
+msgid "Will refresh automatically every 10 seconds."
+msgstr "Θα ανανεώνεται αυτόματα κάθε 10 δευτερόλεπτα."
+
+#: analysis_query/templates/query_wait.html:64
+msgid "Analysis done!"
+msgstr "Η ανάλυση τελείωσε!"
+
+#: analysis_query/views.py:33 analysis_query/views.py:57
+msgid "Your request will be handled soon"
+msgstr "Το αίτημα σας θα ελεγχθεί σύντομα"
+
+#: analysis_query/views.py:70 analysis_query/views.py:78
+msgid "AnalysisRequest does not exist"
+msgstr "Το AnalysisRequest δεν υπάρχει"
