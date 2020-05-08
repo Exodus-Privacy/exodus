@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 16:24+0000\n"
+"POT-Creation-Date: 2020-05-08 15:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,8 +92,8 @@ msgid "Trackers"
 msgstr ""
 
 #: men_customization/templates/base/base.html:47
-#: men_customization/templates/base/home.html:57
-#: web/templates/base/base.html:49 web/templates/base/home.html:56
+#: men_customization/templates/base/home.html:71
+#: web/templates/base/base.html:49 web/templates/base/home.html:70
 #: web/templates/base/understand.html:8
 msgid "Better understand"
 msgstr ""
@@ -118,19 +118,20 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: men_customization/templates/base/home.html:19
-#: web/templates/base/home.html:18
+#: men_customization/templates/base/home.html:18
+#: web/templates/base/home.html:17
 msgid "Search a report"
 msgstr ""
 
-#: men_customization/templates/base/home.html:20
-#: web/templates/base/home.html:19
+#: men_customization/templates/base/home.html:19
+#: web/templates/base/home.html:18
 msgid "Application name"
 msgstr ""
 
-#: men_customization/templates/base/home.html:30
-#: web/templates/base/home.html:29
-msgid "You can search for an application using its name or handle"
+#: men_customization/templates/base/home.html:29
+#: web/templates/base/home.html:28
+msgid ""
+"You can search for an application using its name, handle or Google Play URL"
 msgstr ""
 
 #: men_customization/templates/base/home.html:31
@@ -138,75 +139,95 @@ msgstr ""
 msgid "ex:"
 msgstr ""
 
-#: men_customization/templates/base/home.html:35
-#: men_customization/templates/base/home.html:66
-#: web/templates/base/home.html:34 web/templates/base/home.html:65
+#: men_customization/templates/base/home.html:31
+#: web/templates/base/home.html:30
+msgid "or"
+msgstr ""
+
+#: men_customization/templates/base/home.html:36
+#: web/templates/base/home.html:35
+msgid "Cannot find the application? Search it in Google Play:"
+msgstr ""
+
+#: men_customization/templates/base/home.html:39
+#: web/templates/base/home.html:38
+msgid "Search in Google Play"
+msgstr ""
+
+#: men_customization/templates/base/home.html:42
+#: web/templates/base/home.html:41
+msgid "Submit"
+msgstr ""
+
+#: men_customization/templates/base/home.html:49
+#: men_customization/templates/base/home.html:80
+#: web/templates/base/home.html:48 web/templates/base/home.html:79
 msgid "Let's go!"
 msgstr ""
 
-#: men_customization/templates/base/home.html:38
-#: web/templates/base/home.html:37
+#: men_customization/templates/base/home.html:52
+#: web/templates/base/home.html:51
 msgid "Results"
 msgstr ""
 
-#: men_customization/templates/base/home.html:47
-#: web/templates/base/home.html:46
+#: men_customization/templates/base/home.html:61
+#: web/templates/base/home.html:60
 msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
 msgstr ""
 
-#: men_customization/templates/base/home.html:49
-#: web/templates/base/home.html:48
+#: men_customization/templates/base/home.html:63
+#: web/templates/base/home.html:62
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
 msgstr ""
 
-#: men_customization/templates/base/home.html:51
-#: web/templates/base/home.html:50
+#: men_customization/templates/base/home.html:65
+#: web/templates/base/home.html:64
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 
-#: men_customization/templates/base/home.html:58
-#: web/templates/base/home.html:57
+#: men_customization/templates/base/home.html:72
+#: web/templates/base/home.html:71
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
 msgstr ""
 
-#: men_customization/templates/base/home.html:74
-#: web/templates/base/home.html:73
+#: men_customization/templates/base/home.html:88
+#: web/templates/base/home.html:87
 msgid "Need an overview?"
 msgstr ""
 
-#: men_customization/templates/base/home.html:80
-#: web/templates/base/home.html:79
+#: men_customization/templates/base/home.html:94
+#: web/templates/base/home.html:93
 msgid "Latest reports"
-msgstr ""
-
-#: men_customization/templates/base/home.html:86
-#: web/templates/base/home.html:85
-msgid "No known trackers"
-msgstr ""
-
-#: men_customization/templates/base/home.html:92
-#: web/templates/base/home.html:91
-msgid "Sorted by number of trackers"
 msgstr ""
 
 #: men_customization/templates/base/home.html:100
 #: web/templates/base/home.html:99
+msgid "No known trackers"
+msgstr ""
+
+#: men_customization/templates/base/home.html:106
+#: web/templates/base/home.html:105
+msgid "Sorted by number of trackers"
+msgstr ""
+
+#: men_customization/templates/base/home.html:114
+#: web/templates/base/home.html:113
 msgid "No results found."
 msgstr ""
 
-#: men_customization/templates/base/home.html:122
-#: web/templates/base/home.html:121
+#: men_customization/templates/base/home.html:136
+#: web/templates/base/home.html:135
 msgid "tracker(s)"
 msgstr ""
 
-#: men_customization/templates/base/home.html:126
-#: web/templates/base/home.html:125
+#: men_customization/templates/base/home.html:140
+#: web/templates/base/home.html:139
 msgid "permission(s)"
 msgstr ""
 
