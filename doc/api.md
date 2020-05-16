@@ -41,33 +41,67 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
 
 ## Get all analyzed applications
 
+### With full details
+
 `GET` https://reports.exodus-privacy.eu.org/api/applications returns `JSON`
 ```
 {
   "applications": [
     {
+      "id": 1,
       "handle": "com.johnson.nett",
       "name": "Calendrier des r\\u00e8gles NETT \\u00ae",
       "creator": "JOHNSON & JOHNSON SANTE BEAUTE FRANCE",
       "downloads": "50,000+ downloads",
       "app_uid": "C585E0D6274EDA2FA159542E305D2C61963BA8CC",
-      "icon_phash": "103278408296944969572136665785814778239"
+      "icon_phash": "103278408296944969572136665785814778239",
+      "report_updated_at": 1568136675.813601
     },
     {
+      "id": 2,
       "handle": "cdiscount.mobile",
       "name": "Cdiscount : N'\\u00e9conomisez pas votre plaisir",
       "creator": "Cdiscount",
       "downloads": "1,000,000+ downloads",
       "app_uid": "9F4CCA45C68B96EACD9D012F0902F406126FF660",
-      "icon_phash": "320076679825009360506916699520458898952"
+      "icon_phash": "320076679825009360506916699520458898952",
+      "report_updated_at": 1575063216.526062
     },
     {
+      "id": 3,
       "handle": "ch.hug_ge.emoteo",
       "name": "Emoteo",
       "creator": "HUG H\\u00f4pitaux universitaires de Gen\\u00e8ve",
       "downloads": "1,000+ downloads",
       "app_uid": "22ECA4EC976CC4FB11C6A0A24B2A90769E5F1A64",
-      "icon_phash": "216013393868481183094163051465356731136"
+      "icon_phash": "216013393868481183094163051465356731136",
+      "report_updated_at": 1587278984.683278
+    },
+    [edited]
+  ]
+}
+```
+
+### With limited details
+
+`GET` https://reports.exodus-privacy.eu.org/api/applications?option=short returns `JSON`
+```
+{
+  "applications": [
+    {
+      "id": 1,
+      "handle": "com.johnson.nett",
+      "app_uid": "C585E0D6274EDA2FA159542E305D2C61963BA8CC"
+    },
+    {
+      "id": 2,
+      "handle": "cdiscount.mobile",
+      "app_uid": "9F4CCA45C68B96EACD9D012F0902F406126FF660"
+    },
+    {
+      "id": 3,
+      "handle": "ch.hug_ge.emoteo",
+      "app_uid": "22ECA4EC976CC4FB11C6A0A24B2A90769E5F1A64"
     },
     [edited]
   ]

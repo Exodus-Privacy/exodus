@@ -46,7 +46,7 @@ class RestfulApiApplicationTests(APITestCase):
         expected_json = {
             'applications': [
                 {
-                    'id': application.id,
+                    "id": application.id,
                     "handle": application.handle,
                     "name": application.name,
                     "creator": "",
@@ -59,6 +59,30 @@ class RestfulApiApplicationTests(APITestCase):
         }
 
         response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
+    def test_returns_applications_with_option_short(self):
+        self._force_authentication()
+        report = Report.objects.create(id=1234)
+        application = Application.objects.create(
+            name='app_name',
+            handle='handle',
+            report=report
+        )
+
+        expected_json = {
+            'applications': [
+                {
+                    "id": application.id,
+                    "handle": application.handle,
+                    "app_uid": "",
+                },
+            ]
+        }
+
+        response = self.client.get(self.PATH + '?option=short')
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), expected_json)
