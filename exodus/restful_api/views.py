@@ -17,7 +17,7 @@ from reports.models import Application, Report, Certificate
 from trackers.models import Tracker
 from restful_api.serializers import ApplicationSerializer, TrackerSerializer,\
     ReportInfosSerializer, ReportSerializer, SearchQuerySerializer,\
-    SearchApplicationSerializer
+    SearchApplicationSerializer, ApplicationShortSerializer
 
 
 @csrf_exempt
@@ -152,7 +152,10 @@ def get_all_applications(request):
     if request.method == 'GET':
         try:
             applications = Application.objects.order_by('name', 'handle').distinct('name', 'handle')
-            serializer = ApplicationSerializer(applications, many=True)
+            if request.GET.get('option', 'full') == 'short':
+                serializer = ApplicationShortSerializer(applications, many=True)
+            else:
+                serializer = ApplicationSerializer(applications, many=True)
             return JsonResponse({'applications': serializer.data}, safe=False)
         except Application.DoesNotExist:
             return JsonResponse({}, safe=True)

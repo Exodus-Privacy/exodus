@@ -26,6 +26,12 @@ class ReportSerializer(serializers.ModelSerializer):
         depth = 1
 
 
+class ApplicationShortSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = ['id', 'handle', 'app_uid']
+
+
 class ApplicationSerializer(serializers.ModelSerializer):
     class TimestampField(serializers.Field):
         def to_representation(self, value):
