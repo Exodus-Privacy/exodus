@@ -96,3 +96,12 @@ select.custom-select {
 ul.navbar-nav {
   white-space: nowrap;
 }
+
+.bg-alert {
+  background-color: darkorange !important;
+}
+
+.badge-alert {
+  color: #fff;
+  background-color: darkorange;
+}
