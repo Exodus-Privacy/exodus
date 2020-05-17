@@ -23,6 +23,8 @@ class Tracker(models.Model):
         if self.apps_percent >= 50:
             tracker_class = "danger"
         elif self.apps_percent >= 33:
+            tracker_class = "alert"
+        elif self.apps_percent >= 20:
             tracker_class = "warning"
         else:
             tracker_class = "info"
