@@ -30,19 +30,9 @@
         <br>
         <i>{% trans "ex:" %} <b>Meteo France</b> {% trans "or" %} <b>fr.meteo</b> {% trans "or" %} <b>https://play.google.com/store/apps/details?id=fr.meteo</b></i>
         <br>
-        <form action="https://play.google.com/store/search" target="_blank">
-          <div class="form-row align-items-end">
-            <div class="col-12 col-md-auto">
-              <label for="google-play-search">{% trans "Cannot find the application? Search it in Google Play:" %}</label>
-            </div>
-            <div class="col-auto">
-              <input type="text" class="form-control form-control-sm" id="google-play-search" name="q" placeholder="{% trans 'Search in Google Play' %}">
-            </div>
-            <div class="col">
-              <button type="submit" class="btn btn-outline-secondary btn-sm">{% trans "Submit" %}</button>
-            </div>
-          </div>
-        </form>
+        {% blocktrans trimmed with url='<a href="https://play.google.com/store/apps" target="_blank">Google Play</a>' %}
+        Cannot find the application? Search it in {{ url }}.
+        {% endblocktrans %}
       </small>
       <div id="go-div" class="row justify-content-center">
         <div class="col-8 col-sm-7 col-md-6 col-xl-5">

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-04 17:31+0000\n"
+"POT-Creation-Date: 2020-05-20 12:35+0000\n"
 "PO-Revision-Date: 2020-05-04 16:38\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Greek\n"
@@ -91,8 +91,8 @@ msgid "Trackers"
 msgstr "Trackers"
 
 #: men_customization/templates/base/base.html:47
-#: men_customization/templates/base/home.html:71
-#: web/templates/base/base.html:49 web/templates/base/home.html:70
+#: men_customization/templates/base/home.html:61
+#: web/templates/base/base.html:49 web/templates/base/home.html:60
 #: web/templates/base/understand.html:8
 msgid "Better understand"
 msgstr "Καλύτερη Κατανόηση"
@@ -132,7 +132,8 @@ msgstr "Όνομα εφαρμογής"
 msgid ""
 "You can search for an application using its name, handle or Google Play URL"
 msgstr ""
-"Μπορείτε να αναζητήσετε μια εφαρμογή, χρησιμοποιώντας το όνομα, το handle ή τη διεύθυνση URL του Google Play"
+"Μπορείτε να αναζητήσετε μια εφαρμογή, χρησιμοποιώντας το όνομα, το handle ή "
+"τη διεύθυνση URL του Google Play"
 
 #: men_customization/templates/base/home.html:31
 #: web/templates/base/home.html:30
@@ -144,34 +145,24 @@ msgstr "παράδειγμα:"
 msgid "or"
 msgstr "ή"
 
-#: men_customization/templates/base/home.html:36
-#: web/templates/base/home.html:35
-msgid "Cannot find the application? Search it in Google Play:"
-msgstr "Δεν μπορείτε να βρείτε την εφαρμογή; Αναζητήστε το στο Google Play:"
+#: men_customization/templates/base/home.html:33
+#: web/templates/base/home.html:32
+msgid "Cannot find the application? Search it in %(url)s."
+msgstr "Δεν μπορείτε να βρείτε την εφαρμογή; Αναζητήστε το στο %(url)s."
 
 #: men_customization/templates/base/home.html:39
-#: web/templates/base/home.html:38
-msgid "Search in Google Play"
-msgstr "Αναζήτηση στο Google Play"
-
-#: men_customization/templates/base/home.html:42
-#: web/templates/base/home.html:41
-msgid "Submit"
-msgstr "υποβάλλουν"
-
-#: men_customization/templates/base/home.html:49
-#: men_customization/templates/base/home.html:80
-#: web/templates/base/home.html:48 web/templates/base/home.html:79
+#: men_customization/templates/base/home.html:70
+#: web/templates/base/home.html:38 web/templates/base/home.html:69
 msgid "Let's go!"
 msgstr "Πάμε!"
 
-#: men_customization/templates/base/home.html:52
-#: web/templates/base/home.html:51
+#: men_customization/templates/base/home.html:42
+#: web/templates/base/home.html:41
 msgid "Results"
 msgstr "Αποτελέσματα"
 
-#: men_customization/templates/base/home.html:61
-#: web/templates/base/home.html:60
+#: men_customization/templates/base/home.html:51
+#: web/templates/base/home.html:50
 msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
@@ -179,8 +170,8 @@ msgstr ""
 "Το εxodus αναλύει εφαρμογές Android για να <b>απαριθμήσει τα ενσωματωμένα "
 "trackers.</b>"
 
-#: men_customization/templates/base/home.html:63
-#: web/templates/base/home.html:62
+#: men_customization/templates/base/home.html:53
+#: web/templates/base/home.html:52
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
@@ -189,15 +180,15 @@ msgstr ""
 "δεδομένων σχετικά με εσάς ή τις χρήσεις που κάνετε.</b> Έτσι, οι αναφορές "
 "εxodus σας λένε ποια είναι τα συστατικά του κέικ."
 
-#: men_customization/templates/base/home.html:65
-#: web/templates/base/home.html:64
+#: men_customization/templates/base/home.html:55
+#: web/templates/base/home.html:54
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 "Το εxodus δεν κάνει decompile τις εφαρμογές, η μέθοδος της ανάλυσης είναι "
 "νόμιμη."
 
-#: men_customization/templates/base/home.html:72
-#: web/templates/base/home.html:71
+#: men_customization/templates/base/home.html:62
+#: web/templates/base/home.html:61
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
@@ -205,38 +196,38 @@ msgstr ""
 "Τι είναι το tracker; Και η άδεια; Υπάρχουν εναλλακτικές λύσεις για να "
 "προστατευτείτε;"
 
-#: men_customization/templates/base/home.html:88
-#: web/templates/base/home.html:87
+#: men_customization/templates/base/home.html:78
+#: web/templates/base/home.html:77
 msgid "Need an overview?"
 msgstr "Χρειάζεστε μια επισκόπηση;"
 
-#: men_customization/templates/base/home.html:94
-#: web/templates/base/home.html:93
+#: men_customization/templates/base/home.html:84
+#: web/templates/base/home.html:83
 msgid "Latest reports"
 msgstr "Τελευταίες αναφορές"
 
-#: men_customization/templates/base/home.html:100
-#: web/templates/base/home.html:99
+#: men_customization/templates/base/home.html:90
+#: web/templates/base/home.html:89
 msgid "No known trackers"
 msgstr "Δεν υπάρχουν γνωστά trackers"
 
-#: men_customization/templates/base/home.html:106
-#: web/templates/base/home.html:105
+#: men_customization/templates/base/home.html:96
+#: web/templates/base/home.html:95
 msgid "Sorted by number of trackers"
 msgstr "Ταξινόμηση κατά αριθμό trackers"
 
-#: men_customization/templates/base/home.html:114
-#: web/templates/base/home.html:113
+#: men_customization/templates/base/home.html:104
+#: web/templates/base/home.html:103
 msgid "No results found."
 msgstr "Δεν βρέθηκαν αποτελέσματα."
 
-#: men_customization/templates/base/home.html:136
-#: web/templates/base/home.html:135
+#: men_customization/templates/base/home.html:126
+#: web/templates/base/home.html:125
 msgid "tracker(s)"
 msgstr "tracker(s)"
 
-#: men_customization/templates/base/home.html:140
-#: web/templates/base/home.html:139
+#: men_customization/templates/base/home.html:130
+#: web/templates/base/home.html:129
 msgid "permission(s)"
 msgstr "άδεια(ες)"
 
