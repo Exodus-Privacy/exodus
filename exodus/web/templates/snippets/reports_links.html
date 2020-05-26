@@ -1,0 +1,25 @@
+{% load i18n %}
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-8 col-sm-12">
+    <h4>{% trans "Need an overview?" %}</h4>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:list' %}" class="link main-link">{% trans "Latest reports" %}</a>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:list' %}?filter=no_trackers" class="link main-link">{% trans "No known trackers" %}</a>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-4">
+  <div class="col-lg-6 col-sm-8 text-right">
+    <a href="{% url 'reports:list' %}?filter=most_trackers"
+      class="link main-link">{% trans "Sorted by number of trackers" %}</a>
+  </div>
+</div>

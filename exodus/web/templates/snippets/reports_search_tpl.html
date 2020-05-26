@@ -1,0 +1,115 @@
+{% load i18n %}
+{% verbatim %}
+<script id="tpl" style="display:none;" type="text/x-handlebars-template">
+  <div class="container">
+    {{#unless results.length}}
+      {% endverbatim %}<h5>{% trans "No results found." %}</h5>{% verbatim %}
+    {{/unless}}
+    {{#each results}}
+      <br>
+      <div class="row position-relative">
+        <div class="col-3 col-sm-2 col-md-2 my-auto">
+          <img class="rounded" src="/reports/{{handle}}/latest/icon" width="50" alt="{{handle}} logo">
+        </div>
+        <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">
+          <div>
+            <a href="/reports/{{handle}}/latest" class="stretched-link report-link">
+              {{#if name}}
+                {{name}}
+              {{else}}
+                {{handle}}
+              {{/if}}
+            </a>
+          </div>
+          <div class="small"><b>{{version}}</b></div>
+          <div>
+            <span class="mr-lg-4 mr-2">
+              <span class="badge badge-pill badge-{{trackers_class}} reports">{{trackers_count}}</span>
+              {% endverbatim %}{% trans "tracker(s)" %}{% verbatim %}
+            </span>
+            <span>
+              <span class="badge badge-pill badge-{{permissions_class}} reports">{{permissions_count}}</span>
+              {% endverbatim %}{% trans "permission(s)" %}{% verbatim %}
+            </span>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</script>
+{% endverbatim %}
+
+<script>
+  const tpl_source = document.getElementById("tpl").innerHTML;
+  const tpl = Handlebars.compile(tpl_source);
+  jQuery(function () {
+    jQuery("#query").focus();
+  });
+  const display_results = function (results) {
+    jQuery("#go-div").hide()
+    jQuery("#results").hide()
+    jQuery("#results-title").hide()
+    jQuery("#results").html("")
+    jQuery("#results").html(tpl(results))
+    jQuery("#results").show()
+    if (results.results.length > 0) {
+      jQuery("#results-title").show()
+    }
+  }
+  jQuery.fn.enterKey = function (fnc) {
+    return this.each(function () {
+      $(this).keypress(function (ev) {
+        var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+        if (keycode == '13') {
+          fnc.call(this, ev);
+        }
+      })
+    })
+  }
+  const get_results = function (query, limit) {
+    jQuery.ajax({
+      type: 'POST',
+      url: "/api/search",
+      data: '{"type": "application", "query":"' + query + '", "limit":' + limit + '}',
+      success: display_results,
+      contentType: "application/json",
+      dataType: 'json'
+    })
+  }
+  jQuery("#go").on("click", function () {
+    const query = jQuery.trim(jQuery("#query").val())
+    get_results(query, 50)
+  })
+
+  var search_timer = 0
+
+  jQuery("#query").on("change paste keyup", function () {
+    if (search_timer) {
+      clearTimeout(search_timer)
+    }
+    const query = jQuery.trim(jQuery(this).val())
+    if (query.length >= 5) {
+      // Extract handle from Google Play url
+      const regex = /id=((?:\w+\.)+\w+)/gmi;
+      if (query.startsWith("https://play.google.com")) {
+        var match = regex.exec(query)
+        while (match != null) {
+          if (match[1]) {
+            jQuery(this).val(match[1])
+          }
+          return
+        }
+      }
+      search_timer = setTimeout(function () { get_results(query, 20); }, 200);
+    }
+    if (query == '') {
+      jQuery("#go-div").show()
+      jQuery("#results").hide()
+      jQuery("#results-title").hide()
+    }
+  });
+  jQuery("#query").enterKey(function () {
+    const query = jQuery.trim(jQuery("#query").val())
+    get_results(query, 50)
+  });
+</script>
