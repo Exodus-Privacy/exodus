@@ -26,8 +26,13 @@
         <input type="text" class="form-control" id="query" aria-describedby="query_help">
       </div>
       <small class="form-text text-muted mb-4">
-        {% trans "You can search for an application using its name or handle" %}
-        <i>{% trans "ex:" %} <b>fr.meteo</b></i>
+        {% trans "You can search for an application using its name, handle or Google Play URL" %}
+        <br>
+        <i>{% trans "ex:" %} <b>Meteo France</b> {% trans "or" %} <b>fr.meteo</b> {% trans "or" %} <b>https://play.google.com/store/apps/details?id=fr.meteo</b></i>
+        <br>
+        {% blocktrans trimmed with url='<a href="https://play.google.com/store/apps" target="_blank">Google Play</a>' %}
+        Cannot find the application? Search it in {{ url }}.
+        {% endblocktrans %}
       </small>
       <div id="go-div" class="row justify-content-center">
         <div class="col-8 col-sm-7 col-md-6 col-xl-5">
