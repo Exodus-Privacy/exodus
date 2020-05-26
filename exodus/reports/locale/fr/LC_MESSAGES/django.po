@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 16:24+0000\n"
+"POT-Creation-Date: 2020-05-26 20:17+0000\n"
 "PO-Revision-Date: 2020-04-18 17:10\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French\n"
@@ -245,73 +245,30 @@ msgid "Reports"
 msgstr "Rapports"
 
 #: reports/templates/reports_home.html:20
-msgid "Search a report"
-msgstr "Rechercher un rapport"
-
-#: reports/templates/reports_home.html:21
-msgid "Application name"
-msgstr "Nom de l'application"
-
-#: reports/templates/reports_home.html:31
-msgid "You can search for an application using its name or handle"
-msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
-
-#: reports/templates/reports_home.html:32
-msgid "ex:"
-msgstr "ex :"
-
-#: reports/templates/reports_home.html:36
-msgid "Let's go!"
-msgstr "C'est parti !"
-
-#: reports/templates/reports_home.html:39
-msgid "Results"
-msgstr "Résultats"
-
-#: reports/templates/reports_home.html:48
 msgid "Looking for an application we don't know yet?"
 msgstr "A la recherche d'une application que nous ne connaissons pas encore ?"
 
-#: reports/templates/reports_home.html:56
+#: reports/templates/reports_home.html:28
 msgid "Perform a new analysis"
 msgstr "Effectuer une nouvelle analyse"
-
-#: reports/templates/reports_home.html:64
-msgid "Need an overview?"
-msgstr "Besoin d'une vision d'ensemble&nbsp;?"
-
-#: reports/templates/reports_home.html:70
-#: reports/templates/reports_list.html:25
-msgid "Latest reports"
-msgstr "Les derniers rapports"
-
-#: reports/templates/reports_home.html:76
-#: reports/templates/reports_list.html:29
-msgid "No known trackers"
-msgstr "Aucun pisteurs identifiés"
-
-#: reports/templates/reports_home.html:83
-#: reports/templates/reports_list.html:27
-msgid "Sorted by number of trackers"
-msgstr "Triés par nombre de pisteurs"
-
-#: reports/templates/reports_home.html:91
-msgid "No results found."
-msgstr "Aucun résultat."
-
-#: reports/templates/reports_home.html:113
-msgid "tracker(s)"
-msgstr "pisteur(s)"
-
-#: reports/templates/reports_home.html:117
-msgid "permission(s)"
-msgstr "permission(s)"
 
 #: reports/templates/reports_list.html:17
 #, python-format
 msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
 msgstr ""
 "%(reports_total_count)s rapports pour %(apps_total_count)s applications"
+
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr "Les derniers rapports"
+
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr "Triés par nombre de pisteurs"
+
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr "Aucun pisteurs identifiés"
 
 #: reports/views.py:34 reports/views.py:64
 msgid "Report does not exist"
