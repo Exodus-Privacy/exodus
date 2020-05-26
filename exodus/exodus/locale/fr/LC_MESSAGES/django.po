@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 12:35+0000\n"
+"POT-Creation-Date: 2020-04-27 16:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,8 +93,8 @@ msgid "Trackers"
 msgstr "Pisteurs"
 
 #: men_customization/templates/base/base.html:47
-#: men_customization/templates/base/home.html:61
-#: web/templates/base/base.html:49 web/templates/base/home.html:60
+#: men_customization/templates/base/home.html:57
+#: web/templates/base/base.html:49 web/templates/base/home.html:56
 #: web/templates/base/understand.html:8
 msgid "Better understand"
 msgstr "Mieux comprendre"
@@ -119,52 +119,39 @@ msgstr "Analyses"
 msgid "Log out"
 msgstr "Déconnexion"
 
-#: men_customization/templates/base/home.html:18
-#: web/templates/base/home.html:17
+#: men_customization/templates/base/home.html:19
+#: web/templates/base/home.html:18
 msgid "Search a report"
 msgstr "Rechercher un rapport"
 
-#: men_customization/templates/base/home.html:19
-#: web/templates/base/home.html:18
+#: men_customization/templates/base/home.html:20
+#: web/templates/base/home.html:19
 msgid "Application name"
 msgstr "Nom de l'application"
 
-#: men_customization/templates/base/home.html:29
-#: web/templates/base/home.html:28
-msgid ""
-"You can search for an application using its name, handle or Google Play URL"
-msgstr ""
-"Vous pouvez rechercher une application par son nom, son identifiant ou son "
-"URL Google Play"
+#: men_customization/templates/base/home.html:30
+#: web/templates/base/home.html:29
+msgid "You can search for an application using its name or handle"
+msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
 
 #: men_customization/templates/base/home.html:31
 #: web/templates/base/home.html:30
 msgid "ex:"
 msgstr "ex :"
 
-#: men_customization/templates/base/home.html:31
-#: web/templates/base/home.html:30
-msgid "or"
-msgstr "ou"
-
-#: men_customization/templates/base/home.html:33
-#: web/templates/base/home.html:32
-msgid "Cannot find the application? Search it in %(url)s."
-msgstr "Vous ne trouvez pas l'application ? Cherchez-la dans %(url)s."
-
-#: men_customization/templates/base/home.html:39
-#: men_customization/templates/base/home.html:70
-#: web/templates/base/home.html:38 web/templates/base/home.html:69
+#: men_customization/templates/base/home.html:35
+#: men_customization/templates/base/home.html:66
+#: web/templates/base/home.html:34 web/templates/base/home.html:65
 msgid "Let's go!"
 msgstr "C'est parti !"
 
-#: men_customization/templates/base/home.html:42
-#: web/templates/base/home.html:41
+#: men_customization/templates/base/home.html:38
+#: web/templates/base/home.html:37
 msgid "Results"
 msgstr "Résultats"
 
-#: men_customization/templates/base/home.html:51
-#: web/templates/base/home.html:50
+#: men_customization/templates/base/home.html:47
+#: web/templates/base/home.html:46
 msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
@@ -172,8 +159,8 @@ msgstr ""
 "εxodus analyse les applications Android dans le but de <b>lister les "
 "pisteurs embarqués.</b>"
 
-#: men_customization/templates/base/home.html:53
-#: web/templates/base/home.html:52
+#: men_customization/templates/base/home.html:49
+#: web/templates/base/home.html:48
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
@@ -182,14 +169,14 @@ msgstr ""
 "à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous "
 "révèlent les ingrédients du gâteau."
 
-#: men_customization/templates/base/home.html:55
-#: web/templates/base/home.html:54
+#: men_customization/templates/base/home.html:51
+#: web/templates/base/home.html:50
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 "εxodus ne décompile pas les applications, sa technique d’analyse est légale."
 
-#: men_customization/templates/base/home.html:62
-#: web/templates/base/home.html:61
+#: men_customization/templates/base/home.html:58
+#: web/templates/base/home.html:57
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
@@ -197,38 +184,38 @@ msgstr ""
 "Qu'est-ce qu'un pisteur ? Et une permission ? Existe-t-il des alternatives "
 "pour se protéger ?"
 
-#: men_customization/templates/base/home.html:78
-#: web/templates/base/home.html:77
+#: men_customization/templates/base/home.html:74
+#: web/templates/base/home.html:73
 msgid "Need an overview?"
 msgstr "Besoin d'une vision d'ensemble&nbsp;?"
 
-#: men_customization/templates/base/home.html:84
-#: web/templates/base/home.html:83
+#: men_customization/templates/base/home.html:80
+#: web/templates/base/home.html:79
 msgid "Latest reports"
 msgstr "Les derniers rapports"
 
-#: men_customization/templates/base/home.html:90
-#: web/templates/base/home.html:89
+#: men_customization/templates/base/home.html:86
+#: web/templates/base/home.html:85
 msgid "No known trackers"
 msgstr "Aucun pisteurs identifiés"
 
-#: men_customization/templates/base/home.html:96
-#: web/templates/base/home.html:95
+#: men_customization/templates/base/home.html:92
+#: web/templates/base/home.html:91
 msgid "Sorted by number of trackers"
 msgstr "Triés par nombre de pisteurs"
 
-#: men_customization/templates/base/home.html:104
-#: web/templates/base/home.html:103
+#: men_customization/templates/base/home.html:100
+#: web/templates/base/home.html:99
 msgid "No results found."
 msgstr "Aucun résultat."
 
-#: men_customization/templates/base/home.html:126
-#: web/templates/base/home.html:125
+#: men_customization/templates/base/home.html:122
+#: web/templates/base/home.html:121
 msgid "tracker(s)"
 msgstr "pisteur(s)"
 
-#: men_customization/templates/base/home.html:130
-#: web/templates/base/home.html:129
+#: men_customization/templates/base/home.html:126
+#: web/templates/base/home.html:125
 msgid "permission(s)"
 msgstr "permission(s)"
 
