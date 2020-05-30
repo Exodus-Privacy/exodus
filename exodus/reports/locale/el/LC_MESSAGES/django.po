@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-04 17:31+0000\n"
+"POT-Creation-Date: 2020-05-26 20:17+0000\n"
 "PO-Revision-Date: 2020-05-04 16:38\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Greek\n"
@@ -240,74 +240,30 @@ msgstr "Κλείσιμο"
 msgid "Reports"
 msgstr "Αναφορές"
 
-#: reports/templates/reports_home.html:19
-msgid "Search a report"
-msgstr "Αναζητήστε μια αναφορά"
-
 #: reports/templates/reports_home.html:20
-msgid "Application name"
-msgstr "Όνομα εφαρμογής"
-
-#: reports/templates/reports_home.html:30
-msgid "You can search for an application using its name or handle"
-msgstr ""
-"Μπορείτε να αναζητήσετε μια εφαρμογή, χρησιμοποιώντας το όνομα ή το handle"
-
-#: reports/templates/reports_home.html:31
-msgid "ex:"
-msgstr "ex:"
-
-#: reports/templates/reports_home.html:35
-msgid "Let's go!"
-msgstr "Πάμε!"
-
-#: reports/templates/reports_home.html:38
-msgid "Results"
-msgstr "Αποτελέσματα"
-
-#: reports/templates/reports_home.html:47
 msgid "Looking for an application we don't know yet?"
 msgstr "Ψάχνετε για μια εφαρμογή που δεν γνωρίζουμε ακόμα;"
 
-#: reports/templates/reports_home.html:55
+#: reports/templates/reports_home.html:28
 msgid "Perform a new analysis"
 msgstr "Εκτελέστε μια νέα ανάλυση"
-
-#: reports/templates/reports_home.html:63
-msgid "Need an overview?"
-msgstr "Χρειάζεστε μια επισκόπηση;"
-
-#: reports/templates/reports_home.html:69
-#: reports/templates/reports_list.html:25
-msgid "Latest reports"
-msgstr "Τελευταίες αναφορές"
-
-#: reports/templates/reports_home.html:75
-#: reports/templates/reports_list.html:29
-msgid "No known trackers"
-msgstr "Δεν υπάρχουν γνωστά trackers"
-
-#: reports/templates/reports_home.html:82
-#: reports/templates/reports_list.html:27
-msgid "Sorted by number of trackers"
-msgstr "Ταξινόμηση κατά αριθμό trackers"
-
-#: reports/templates/reports_home.html:90
-msgid "No results found."
-msgstr "Δεν βρέθηκαν αποτελέσματα."
-
-#: reports/templates/reports_home.html:112
-msgid "tracker(s)"
-msgstr "tracker(s)"
-
-#: reports/templates/reports_home.html:116
-msgid "permission(s)"
-msgstr "άδεια(ες)"
 
 #: reports/templates/reports_list.html:17
 #, python-format
 msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
 msgstr "%(reports_total_count)s αναφορές για %(apps_total_count)s εφαρμογές"
+
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr "Τελευταίες αναφορές"
+
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr "Ταξινόμηση κατά αριθμό trackers"
+
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr "Δεν υπάρχουν γνωστά trackers"
 
 #: reports/views.py:34 reports/views.py:64
 msgid "Report does not exist"

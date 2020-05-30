@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 16:24+0000\n"
-"PO-Revision-Date: 2020-03-29 08:26\n"
+"POT-Creation-Date: 2020-05-30 06:22+0000\n"
+"PO-Revision-Date: 2020-05-30 06:17\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -91,8 +91,8 @@ msgid "Trackers"
 msgstr "Tracker"
 
 #: men_customization/templates/base/base.html:47
-#: men_customization/templates/base/home.html:57
-#: web/templates/base/base.html:49 web/templates/base/home.html:56
+#: men_customization/templates/base/home.html:29
+#: web/templates/base/base.html:49 web/templates/base/home.html:28
 #: web/templates/base/understand.html:8
 msgid "Better understand"
 msgstr "Comprensione migliore"
@@ -119,37 +119,6 @@ msgstr "Logout"
 
 #: men_customization/templates/base/home.html:19
 #: web/templates/base/home.html:18
-msgid "Search a report"
-msgstr "Cerca un report"
-
-#: men_customization/templates/base/home.html:20
-#: web/templates/base/home.html:19
-msgid "Application name"
-msgstr "Nome applicazione"
-
-#: men_customization/templates/base/home.html:30
-#: web/templates/base/home.html:29
-msgid "You can search for an application using its name or handle"
-msgstr "Puoi cercare un'applicazione usando il suo nome"
-
-#: men_customization/templates/base/home.html:31
-#: web/templates/base/home.html:30
-msgid "ex:"
-msgstr "ex:"
-
-#: men_customization/templates/base/home.html:35
-#: men_customization/templates/base/home.html:66
-#: web/templates/base/home.html:34 web/templates/base/home.html:65
-msgid "Let's go!"
-msgstr "Andiamo!"
-
-#: men_customization/templates/base/home.html:38
-#: web/templates/base/home.html:37
-msgid "Results"
-msgstr "Risultati"
-
-#: men_customization/templates/base/home.html:47
-#: web/templates/base/home.html:46
 msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
@@ -157,8 +126,8 @@ msgstr ""
 "εxodus analizza le applicazioni Android al fine di <b>elencare i tracker "
 "incorporati.</b>"
 
-#: men_customization/templates/base/home.html:49
-#: web/templates/base/home.html:48
+#: men_customization/templates/base/home.html:21
+#: web/templates/base/home.html:20
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
@@ -167,54 +136,25 @@ msgstr ""
 "sugli utilizzi che fai di un'applicazione.</b> Quindi, i report di εxodus ti "
 "dicono quali sono gli ingredienti della torta."
 
-#: men_customization/templates/base/home.html:51
-#: web/templates/base/home.html:50
+#: men_customization/templates/base/home.html:23
+#: web/templates/base/home.html:22
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 "εxodus non decompila le applicazioni, il suo metodo di analisi è legale."
 
-#: men_customization/templates/base/home.html:58
-#: web/templates/base/home.html:57
+#: men_customization/templates/base/home.html:30
+#: web/templates/base/home.html:29
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
 msgstr ""
 "Cos'è un tracker? E un permesso? Ci sono delle alternative per proteggerti?"
 
-#: men_customization/templates/base/home.html:74
-#: web/templates/base/home.html:73
-msgid "Need an overview?"
-msgstr "Hai bisogno di una panoramica?"
-
-#: men_customization/templates/base/home.html:80
-#: web/templates/base/home.html:79
-msgid "Latest reports"
-msgstr "Ultimi report"
-
-#: men_customization/templates/base/home.html:86
-#: web/templates/base/home.html:85
-msgid "No known trackers"
-msgstr "Nessun tracker noto"
-
-#: men_customization/templates/base/home.html:92
-#: web/templates/base/home.html:91
-msgid "Sorted by number of trackers"
-msgstr "Ordinato per numero di tracker"
-
-#: men_customization/templates/base/home.html:100
-#: web/templates/base/home.html:99
-msgid "No results found."
-msgstr "Nessun risultato trovato."
-
-#: men_customization/templates/base/home.html:122
-#: web/templates/base/home.html:121
-msgid "tracker(s)"
-msgstr "tracker"
-
-#: men_customization/templates/base/home.html:126
-#: web/templates/base/home.html:125
-msgid "permission(s)"
-msgstr "permesso(i)"
+#: men_customization/templates/base/home.html:38
+#: web/templates/base/home.html:37
+#: web/templates/snippets/reports_search.html:27
+msgid "Let's go!"
+msgstr "Andiamo!"
 
 #: web/templates/base/base.html:52 web/templates/base/organization.html:8
 msgid "The organization"
@@ -512,22 +452,6 @@ msgstr "Contattaci!"
 msgid "Follow us!"
 msgstr "Seguiteci!"
 
-#: web/templates/base/paginator.html:6 web/templates/base/paginator.html:13
-msgid "First"
-msgstr "Primo"
-
-#: web/templates/base/paginator.html:9 web/templates/base/paginator.html:16
-msgid "Previous"
-msgstr "Precedente"
-
-#: web/templates/base/paginator.html:34 web/templates/base/paginator.html:41
-msgid "Next"
-msgstr "Prossimo"
-
-#: web/templates/base/paginator.html:37 web/templates/base/paginator.html:44
-msgid "Last"
-msgstr "Ultimo"
-
 #: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
 msgid "Permissions"
 msgstr "Permessi"
@@ -774,3 +698,83 @@ msgid ""
 msgstr ""
 "Un elenco di strumenti e cose che puoi fare per gestire al meglio la tua "
 "privacy sul tuo smartphone"
+
+#: web/templates/snippets/paginator.html:6
+#: web/templates/snippets/paginator.html:13
+msgid "First"
+msgstr "Primo"
+
+#: web/templates/snippets/paginator.html:9
+#: web/templates/snippets/paginator.html:16
+msgid "Previous"
+msgstr "Precedente"
+
+#: web/templates/snippets/paginator.html:34
+#: web/templates/snippets/paginator.html:41
+msgid "Next"
+msgstr "Prossimo"
+
+#: web/templates/snippets/paginator.html:37
+#: web/templates/snippets/paginator.html:44
+msgid "Last"
+msgstr "Ultimo"
+
+#: web/templates/snippets/reports_links.html:4
+msgid "Need an overview?"
+msgstr "Hai bisogno di una panoramica?"
+
+#: web/templates/snippets/reports_links.html:10
+msgid "Latest reports"
+msgstr "Ultimi report"
+
+#: web/templates/snippets/reports_links.html:16
+msgid "No known trackers"
+msgstr "Nessun tracker noto"
+
+#: web/templates/snippets/reports_links.html:23
+msgid "Sorted by number of trackers"
+msgstr "Ordinato per numero di tracker"
+
+#: web/templates/snippets/reports_search.html:5
+msgid "Search a report"
+msgstr "Cerca un report"
+
+#: web/templates/snippets/reports_search.html:6
+msgid "Application name"
+msgstr "Nome applicazione"
+
+#: web/templates/snippets/reports_search.html:16
+msgid ""
+"You can search for an application using its name, handle or Google Play URL"
+msgstr ""
+"È possibile cercare un'applicazione utilizzando il suo nome, handle o Google "
+"Play URL"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "ex:"
+msgstr "ex:"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "or"
+msgstr "o"
+
+#: web/templates/snippets/reports_search.html:21
+#, python-format
+msgid "Cannot find the application? Search it in %(url)s."
+msgstr "Impossibile trovare l'applicazione? Cercarla in %(url)s."
+
+#: web/templates/snippets/reports_search.html:30
+msgid "Results"
+msgstr "Risultati"
+
+#: web/templates/snippets/reports_search_tpl.html:6
+msgid "No results found."
+msgstr "Nessun risultato trovato."
+
+#: web/templates/snippets/reports_search_tpl.html:28
+msgid "tracker(s)"
+msgstr "tracker"
+
+#: web/templates/snippets/reports_search_tpl.html:32
+msgid "permission(s)"
+msgstr "permesso(i)"

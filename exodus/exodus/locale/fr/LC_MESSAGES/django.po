@@ -1,21 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 16:24+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2020-05-30 06:22+0000\n"
+"PO-Revision-Date: 2020-05-30 06:17\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: exodus.po\n"
 
 #: exodus/core/apk.py:52
 msgid "Your request is running"
@@ -80,7 +78,7 @@ msgstr "Analyse statique terminée"
 #: men_customization/templates/base/base.html:38
 #: web/templates/base/base.html:40
 msgid "Home"
-msgstr ""
+msgstr "Accueil"
 
 #: men_customization/templates/base/base.html:41
 #: web/templates/base/base.html:43
@@ -93,8 +91,8 @@ msgid "Trackers"
 msgstr "Pisteurs"
 
 #: men_customization/templates/base/base.html:47
-#: men_customization/templates/base/home.html:57
-#: web/templates/base/base.html:49 web/templates/base/home.html:56
+#: men_customization/templates/base/home.html:29
+#: web/templates/base/base.html:49 web/templates/base/home.html:28
 #: web/templates/base/understand.html:8
 msgid "Better understand"
 msgstr "Mieux comprendre"
@@ -102,7 +100,7 @@ msgstr "Mieux comprendre"
 #: men_customization/templates/base/base.html:52
 #: web/templates/base/base.html:58
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: men_customization/templates/base/base.html:55
 #: web/templates/base/base.html:61
@@ -121,37 +119,6 @@ msgstr "Déconnexion"
 
 #: men_customization/templates/base/home.html:19
 #: web/templates/base/home.html:18
-msgid "Search a report"
-msgstr "Rechercher un rapport"
-
-#: men_customization/templates/base/home.html:20
-#: web/templates/base/home.html:19
-msgid "Application name"
-msgstr "Nom de l'application"
-
-#: men_customization/templates/base/home.html:30
-#: web/templates/base/home.html:29
-msgid "You can search for an application using its name or handle"
-msgstr "Vous pouvez rechercher une application par son nom ou son identifiant"
-
-#: men_customization/templates/base/home.html:31
-#: web/templates/base/home.html:30
-msgid "ex:"
-msgstr "ex :"
-
-#: men_customization/templates/base/home.html:35
-#: men_customization/templates/base/home.html:66
-#: web/templates/base/home.html:34 web/templates/base/home.html:65
-msgid "Let's go!"
-msgstr "C'est parti !"
-
-#: men_customization/templates/base/home.html:38
-#: web/templates/base/home.html:37
-msgid "Results"
-msgstr "Résultats"
-
-#: men_customization/templates/base/home.html:47
-#: web/templates/base/home.html:46
 msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
@@ -159,8 +126,8 @@ msgstr ""
 "εxodus analyse les applications Android dans le but de <b>lister les "
 "pisteurs embarqués.</b>"
 
-#: men_customization/templates/base/home.html:49
-#: web/templates/base/home.html:48
+#: men_customization/templates/base/home.html:21
+#: web/templates/base/home.html:20
 msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
@@ -169,14 +136,14 @@ msgstr ""
 "à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous "
 "révèlent les ingrédients du gâteau."
 
-#: men_customization/templates/base/home.html:51
-#: web/templates/base/home.html:50
+#: men_customization/templates/base/home.html:23
+#: web/templates/base/home.html:22
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr ""
 "εxodus ne décompile pas les applications, sa technique d’analyse est légale."
 
-#: men_customization/templates/base/home.html:58
-#: web/templates/base/home.html:57
+#: men_customization/templates/base/home.html:30
+#: web/templates/base/home.html:29
 msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
@@ -184,40 +151,11 @@ msgstr ""
 "Qu'est-ce qu'un pisteur ? Et une permission ? Existe-t-il des alternatives "
 "pour se protéger ?"
 
-#: men_customization/templates/base/home.html:74
-#: web/templates/base/home.html:73
-msgid "Need an overview?"
-msgstr "Besoin d'une vision d'ensemble&nbsp;?"
-
-#: men_customization/templates/base/home.html:80
-#: web/templates/base/home.html:79
-msgid "Latest reports"
-msgstr "Les derniers rapports"
-
-#: men_customization/templates/base/home.html:86
-#: web/templates/base/home.html:85
-msgid "No known trackers"
-msgstr "Aucun pisteurs identifiés"
-
-#: men_customization/templates/base/home.html:92
-#: web/templates/base/home.html:91
-msgid "Sorted by number of trackers"
-msgstr "Triés par nombre de pisteurs"
-
-#: men_customization/templates/base/home.html:100
-#: web/templates/base/home.html:99
-msgid "No results found."
-msgstr "Aucun résultat."
-
-#: men_customization/templates/base/home.html:122
-#: web/templates/base/home.html:121
-msgid "tracker(s)"
-msgstr "pisteur(s)"
-
-#: men_customization/templates/base/home.html:126
-#: web/templates/base/home.html:125
-msgid "permission(s)"
-msgstr "permission(s)"
+#: men_customization/templates/base/home.html:38
+#: web/templates/base/home.html:37
+#: web/templates/snippets/reports_search.html:27
+msgid "Let's go!"
+msgstr "C'est parti !"
 
 #: web/templates/base/base.html:52 web/templates/base/organization.html:8
 msgid "The organization"
@@ -533,22 +471,6 @@ msgstr "Contactez-nous !"
 msgid "Follow us!"
 msgstr "Suivez-nous !"
 
-#: web/templates/base/paginator.html:6 web/templates/base/paginator.html:13
-msgid "First"
-msgstr "Premier"
-
-#: web/templates/base/paginator.html:9 web/templates/base/paginator.html:16
-msgid "Previous"
-msgstr "Précédent"
-
-#: web/templates/base/paginator.html:34 web/templates/base/paginator.html:41
-msgid "Next"
-msgstr "Suivant"
-
-#: web/templates/base/paginator.html:37 web/templates/base/paginator.html:44
-msgid "Last"
-msgstr "Dernier"
-
 #: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
 msgid "Permissions"
 msgstr "Les permissions"
@@ -801,3 +723,83 @@ msgid ""
 msgstr ""
 "Une liste de quelques outils et pratiques destinés à mieux maîtriser votre "
 "intimité sur mobile"
+
+#: web/templates/snippets/paginator.html:6
+#: web/templates/snippets/paginator.html:13
+msgid "First"
+msgstr "Premier"
+
+#: web/templates/snippets/paginator.html:9
+#: web/templates/snippets/paginator.html:16
+msgid "Previous"
+msgstr "Précédent"
+
+#: web/templates/snippets/paginator.html:34
+#: web/templates/snippets/paginator.html:41
+msgid "Next"
+msgstr "Suivant"
+
+#: web/templates/snippets/paginator.html:37
+#: web/templates/snippets/paginator.html:44
+msgid "Last"
+msgstr "Dernier"
+
+#: web/templates/snippets/reports_links.html:4
+msgid "Need an overview?"
+msgstr "Besoin d'une vision d'ensemble&nbsp;?"
+
+#: web/templates/snippets/reports_links.html:10
+msgid "Latest reports"
+msgstr "Les derniers rapports"
+
+#: web/templates/snippets/reports_links.html:16
+msgid "No known trackers"
+msgstr "Aucun pisteurs identifiés"
+
+#: web/templates/snippets/reports_links.html:23
+msgid "Sorted by number of trackers"
+msgstr "Triés par nombre de pisteurs"
+
+#: web/templates/snippets/reports_search.html:5
+msgid "Search a report"
+msgstr "Rechercher un rapport"
+
+#: web/templates/snippets/reports_search.html:6
+msgid "Application name"
+msgstr "Nom de l'application"
+
+#: web/templates/snippets/reports_search.html:16
+msgid ""
+"You can search for an application using its name, handle or Google Play URL"
+msgstr ""
+"Vous pouvez rechercher une application en utilisant son nom, son identifiant "
+"ou son URL Google Play"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "ex:"
+msgstr "ex :"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "or"
+msgstr "ou"
+
+#: web/templates/snippets/reports_search.html:21
+#, python-format
+msgid "Cannot find the application? Search it in %(url)s."
+msgstr "Impossible de trouver l'application ? Recherchez-la sur %(url)s."
+
+#: web/templates/snippets/reports_search.html:30
+msgid "Results"
+msgstr "Résultats"
+
+#: web/templates/snippets/reports_search_tpl.html:6
+msgid "No results found."
+msgstr "Aucun résultat."
+
+#: web/templates/snippets/reports_search_tpl.html:28
+msgid "tracker(s)"
+msgstr "pisteur(s)"
+
+#: web/templates/snippets/reports_search_tpl.html:32
+msgid "permission(s)"
+msgstr "permission(s)"
