@@ -90,9 +90,9 @@ class Command(BaseCommand):
 
                     if options['icons']:
                         icon_name = '{}_{}.png'.format(report.bucket, handle)
-                        icon_path, _ = static_analysis.get_icon_and_phash(storage_helper, icon_name)
-                        if icon_path != '':
-                            report.application.icon_path = icon_path
+                        icon_phash = static_analysis.get_icon_and_phash(storage_helper, icon_name)
+                        if icon_phash:
+                            report.application.icon_path = icon_name
                             report.application.save()
                             self.stdout.write(
                                 self.style.SUCCESS('Successfully updated icon of "{}"'.format(handle)))

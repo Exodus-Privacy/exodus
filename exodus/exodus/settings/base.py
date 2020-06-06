@@ -130,6 +130,10 @@ ANALYSIS_REQUESTS_KEEP_DURATION = 4  # time in days
 
 TRACKERS_STATISTICS_AUTO_UPDATE_TIME = 3 * 24 * 60 * 60.0  # time in seconds
 
+# see https://gitlab.com/fdroid/mirror-monitor
+FDROID_MIRROR = 'https://f-droid.org/repo'
+FDROID_INDEX_UPDATE_TIME = 24 * 60 * 60.0  # time in seconds
+
 ETIP_HOSTNAME = 'https://etip.exodus-privacy.eu.org'
 
 # Minio file storage configuration

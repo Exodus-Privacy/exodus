@@ -49,6 +49,10 @@
         <a href="/reports/search/{{ report.application.handle }}">{% trans "see other versions" %}</a>
         <br>
       {% endif %}
+      {% if report.application.source %}
+        {% trans "Source:" %} {{ report.application.source }}
+        <br>
+      {% endif %}
       {% if report.application.creator.strip %}
         {% trans "Created by" %} {{ report.application.creator }}
         <br>
@@ -70,7 +74,11 @@
       </div>
     {% endif %}
     <div class="col-md-8 col-12 text-right mt-2">
-      <a class="link main-link" target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">{% trans "See on Google Play" %}</a>
+      {% if report.application.source and report.application.source == 'fdroid' %}
+        <a class="link main-link" target="_blank" rel="noreferrer" href="https://f-droid.org/packages/{{ report.application.handle }}">{% trans "See on F-Droid" %}</a>
+      {% else %}
+        <a class="link main-link" target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">{% trans "See on Google Play" %}</a>
+      {% endif %}
     </div>
   </div>
 

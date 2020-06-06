@@ -27,15 +27,15 @@ def change_description(request, msg):
     request.save()
 
 
-def save_error(storage_helper, analysis, request, msg):
+def save_error(storage_helper, params, request, msg):
     """
     Utility function to clear files and update analysis request object
     :param storage_helper: minio storage helper
-    :param analysis: a StaticAnalysis instance
+    :param params: a StaticAnalysisParams instance
     :param request: an AnalysisRequest instance
     :param msg: message to set as a description
     """
-    clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+    clear_analysis_files(storage_helper, params.tmp_dir, params.bucket, True)
     request.description = msg
     request.in_error = True
     request.processed = True
@@ -43,39 +43,40 @@ def save_error(storage_helper, analysis, request, msg):
 
 
 @app.task(ignore_result=True)
-def start_static_analysis(analysis):
+def start_static_analysis(params):
     """
     Compute the entire static analysis
-    :param analysis: a StaticAnalysis instance
+    :param params: a StaticAnalysisParameters instance
     """
-    request = AnalysisRequest.objects.get(pk=analysis.query.id)
+    request = AnalysisRequest.objects.get(pk=params.query.id)
     request.description = _('Your request is running')
     request.save()
-    storage_helper = RemoteStorageHelper(analysis.bucket)
+    storage_helper = RemoteStorageHelper(params.bucket)
 
     if request.apk:
-        with open(analysis.apk_tmp, 'wb') as out:
+        with open(params.apk_tmp, 'wb') as out:
             out.write(request.apk.read())
-        storage_helper.put_file(analysis.apk_tmp, analysis.apk_name)
+        storage_helper.put_file(params.apk_tmp, params.apk_name)
         request.apk.delete()
     else:
         # Download APK and put it on Minio storage
-        dl_r = download_apk(storage_helper, request.handle, analysis.tmp_dir, analysis.apk_name, analysis.apk_tmp)
+        dl_r = download_apk(storage_helper, request.handle, params.tmp_dir, params.apk_name, params.apk_tmp, params.source)
         if not dl_r:
+            logging.error("Could not download '{}'".format(request.handle))
             msg = _('Unable to download the APK')
-            save_error(storage_helper, analysis, request, msg)
+            save_error(storage_helper, params, request, msg)
             return EXIT_CODE
 
         change_description(request, _('Download APK: success'))
 
     # Decode the APK file
     try:
-        static_analysis = StaticAnalysis(analysis.apk_tmp)
+        static_analysis = StaticAnalysis(params.apk_tmp)
         static_analysis.load_apk()
     except Exception as e:
         logging.info(e)
         msg = _('Unable to decode the APK')
-        save_error(storage_helper, analysis, request, msg)
+        save_error(storage_helper, params, request, msg)
         return EXIT_CODE
 
     change_description(request, _('Decode APK: success'))
@@ -84,11 +85,11 @@ def start_static_analysis(analysis):
     try:
         with tempfile.NamedTemporaryFile(delete=True) as fp:
             static_analysis.save_embedded_classes_in_file(fp.name)
-            storage_helper.put_file(fp.name, analysis.class_list_file)
+            storage_helper.put_file(fp.name, params.class_list_file)
     except Exception as e:
         logging.info(e)
         msg = _('Unable to compute the class list')
-        save_error(storage_helper, analysis, request, msg)
+        save_error(storage_helper, params, request, msg)
         return EXIT_CODE
 
     change_description(request, _('List embedded classes: success'))
@@ -105,18 +106,19 @@ def start_static_analysis(analysis):
     # TODO: increase character limit in DB (see #300)
     if len(version) > 50 or len(version_code) > 50 or len(app_name) > 200:
         msg = _('Unable to create the analysis report')
-        save_error(storage_helper, analysis, request, msg)
+        save_error(storage_helper, params, request, msg)
         return EXIT_CODE
 
     # If a report exists for the same handle, version & version_code, return it
     existing_report = Report.objects.filter(
         application__handle=handle,
+        application__source=params.source,
         application__version=version,
         application__version_code=version_code
     ).order_by('-creation_date').first()
 
     if existing_report is not None:
-        clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, True)
+        clear_analysis_files(storage_helper, params.tmp_dir, params.bucket, True)
         request.description = _('A report already exists for this application version')
         request.processed = True
         request.report_id = existing_report.id
@@ -129,7 +131,7 @@ def start_static_analysis(analysis):
     except Exception as e:
         logging.info(e)
         msg = _('Unable to get certificates')
-        save_error(storage_helper, analysis, request, msg)
+        save_error(storage_helper, params, request, msg)
         return EXIT_CODE
 
     # Fingerprint
@@ -140,13 +142,13 @@ def start_static_analysis(analysis):
         if len(app_uid) < 16:
             raise Exception('Unable to compute the Universal Application ID')
 
-        icon_file, icon_phash = static_analysis.get_icon_and_phash(storage_helper, analysis.icon_name)
+        icon_phash = static_analysis.get_icon_and_phash(storage_helper, params.icon_name, params.source)
         if len(str(icon_phash)) < 16 and not request.apk:
             raise Exception('Unable to compute the icon perceptual hash')
     except Exception as e:
         logging.info(e)
         msg = _('Unable to compute APK fingerprint')
-        save_error(storage_helper, analysis, request, msg)
+        save_error(storage_helper, params, request, msg)
         return EXIT_CODE
 
     # Application details
@@ -155,7 +157,7 @@ def start_static_analysis(analysis):
     except Exception as e:
         logging.info(e)
         msg = _('Unable to get application details from Google Play')
-        save_error(storage_helper, analysis, request, msg)
+        save_error(storage_helper, params, request, msg)
         return EXIT_CODE
 
     change_description(request, _('Get application details: success'))
@@ -166,10 +168,10 @@ def start_static_analysis(analysis):
     change_description(request, _('Tracker analysis: success'))
 
     report = Report(
-        apk_file=analysis.apk_name,
+        apk_file=params.apk_name,
         storage_path='',
         bucket=request.bucket,
-        class_list_file=analysis.class_list_file
+        class_list_file=params.class_list_file
     )
     report.save()
 
@@ -180,19 +182,19 @@ def start_static_analysis(analysis):
         version_code=version_code,
         name=app_name,
         icon_phash=icon_phash,
-        app_uid=app_uid
+        app_uid=app_uid,
+        source=params.source,
+        icon_path=params.icon_name,
     )
     if app_info is not None:
         app.name = app_info['title']
         app.creator = app_info['creator']
         app.downloads = app_info['downloads']
-    if icon_file != '':
-        app.icon_path = analysis.icon_name
     app.save(force_insert=True)
 
     apk = Apk(
         application=app,
-        name=analysis.apk_name,
+        name=params.apk_name,
         sum=shasum
     )
     apk.save(force_insert=True)
@@ -217,7 +219,7 @@ def start_static_analysis(analysis):
     report.found_trackers.set(trackers)
 
     change_description(request, _('Static analysis complete'))
-    clear_analysis_files(storage_helper, analysis.tmp_dir, analysis.bucket, False)
+    clear_analysis_files(storage_helper, params.tmp_dir, params.bucket, False)
     request.processed = True
     request.report_id = report.id
     request.save()
@@ -236,3 +238,4 @@ class StaticAnalysisParameters:
         self.apk_name = '%s_%s.apk' % (self.bucket, self.query.handle)
         self.icon_name = '%s_%s.png' % (self.bucket, self.query.handle)
         self.class_list_file = '%s_%s.clist' % (self.bucket, self.query.handle)
+        self.source = analysis_query.source if analysis_query.source else 'google'

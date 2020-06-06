@@ -51,9 +51,9 @@ class Command(BaseCommand):
                 except ResponseError:
                     raise CommandError('Unable to get APK')
                 static_analysis = StaticAnalysis(apk_path=apk_tmp)
-                icon_path, icon_phash = static_analysis.get_icon_and_phash(storage_helper, icon_name)
-                if icon_path != '':
-                    report.application.icon_path = icon_path
+                icon_phash = static_analysis.get_icon_and_phash(storage_helper, icon_name)
+                if icon_phash:
+                    report.application.icon_path = icon_name
                     report.application.save()
                     self.stdout.write(self.style.SUCCESS('Successfully updated icon'))
                 try:

@@ -67,7 +67,7 @@
         {% endif %}
       </a>
     </div>
-    <div class="small"><b>{{ app.version }}</b></div>
+    <div class="small"><b>{{ app.version }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
   </div>
 </div>
 {% endwith %}

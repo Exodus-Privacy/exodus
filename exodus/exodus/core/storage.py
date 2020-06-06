@@ -5,8 +5,9 @@ from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyEx
 
 
 class RemoteStorageHelper():
-    def __init__(self, prefix):
-        self.prefix = prefix
+    def __init__(self, prefix=''):
+        if prefix:
+            self.prefix = prefix
         self.minio_client = Minio(settings.MINIO_STORAGE_ENDPOINT,
                                   access_key=settings.MINIO_STORAGE_ACCESS_KEY,
                                   secret_key=settings.MINIO_STORAGE_SECRET_KEY,

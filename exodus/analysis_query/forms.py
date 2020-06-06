@@ -7,7 +7,7 @@ from .models import AnalysisRequest
 class AnalysisRequestForm(forms.ModelForm):
     class Meta:
         model = AnalysisRequest
-        fields = ('handle', )
+        fields = ('handle', 'source')
 
 
 class UploadRequestForm(forms.ModelForm):

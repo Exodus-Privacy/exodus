@@ -29,12 +29,13 @@ def upload_file(request):
         if form.is_valid():
             req = form.save()
             req.handle = 'from_upload'
+            req.source = 'apk'
             req.bucket = str(random_word(60))
             req.description = _('Your request will be handled soon')
             req.save()
 
-            static = StaticAnalysisParameters(req)
-            start_static_analysis.delay(static)
+            params = StaticAnalysisParameters(req)
+            start_static_analysis.delay(params)
             return HttpResponseRedirect(reverse('analysis:wait', args=[req.id]))
 
     else:
@@ -53,14 +54,18 @@ class AnalysisRequestView(FormView):
 
     def form_valid(self, form):
         randhex = str(random_word(60))
-        analysis_q = AnalysisRequest(handle=form.cleaned_data['handle'], bucket=randhex)
-        analysis_q.description = _('Your request will be handled soon')
-        analysis_q.save()
+        req = AnalysisRequest(
+            handle=form.cleaned_data['handle'],
+            source=form.cleaned_data['source'],
+            bucket=randhex,
+            description=_('Your request will be handled soon')
+        )
+        req.save()
 
-        static = StaticAnalysisParameters(analysis_q)
-        start_static_analysis.delay(static)
+        params = StaticAnalysisParameters(req)
+        start_static_analysis.delay(params)
 
-        return HttpResponseRedirect(reverse('analysis:wait', args=[analysis_q.id]))
+        return HttpResponseRedirect(reverse('analysis:wait', args=[req.id]))
 
 
 def wait(request, r_id):

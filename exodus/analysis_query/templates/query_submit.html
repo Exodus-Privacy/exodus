@@ -28,7 +28,7 @@
             {% endfor %}
           {% endfor %}
         {% endif %}
-        <label for="handle"><b>{% trans "Google Play URL of the application" %}</b></label>
+        <label for="handle"><b>{% trans "URL of the application" %}</b></label>
         <div class="input-group input-group-lg mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="handle_help">
@@ -36,6 +36,15 @@
             </span>
           </div>
           <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help" required>
+        </div>
+        <label for="source" class="col-form-label"><b>{% trans "Source:" %}</b> </label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="source" id="sourceGoogle" value="google" checked>
+          <label class="form-check-label" for="sourceGoogle">Google Play</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="source" id="sourceFdroid" value="fdroid">
+          <label class="form-check-label" for="sourceFdroid">F-Droid</label>
         </div>
         <p class="form-text text-muted mb-4">
           {% trans "Free applications only. Works also with the application handle." %}
@@ -132,15 +141,27 @@ var check_existing_report=function(handle){
 
 }
 jQuery("#handle").on("input", function() {
-    // Extract handle from Google Play url
-    const regex = /id=((?:\w+\.)+\w+)/gmi;
+    // Extract handle from Google Play or F-Droid url
+    const gplay_regex = /id=((?:\w+\.)+\w+)/gmi;
+    const fdroid_regex = /packages\/((?:\w+\.)+\w+)/gmi;
     const handle = jQuery.trim(jQuery(this).val())
     jQuery("#reports").hide()
     if(handle.startsWith("https://play.google.com")){
-        var match = regex.exec(handle)
+        var match = gplay_regex.exec(handle)
         while (match != null) {
           if(match[1]){
-            jQuery(this).val(match[1])
+            $(this).val(match[1])
+            $('#sourceGoogle')[0].checked = true;
+            check_existing_report(match[1])
+          }
+          return
+        }
+    } else if (handle.startsWith("https://f-droid.org/")){
+        var match = fdroid_regex.exec(handle)
+        while (match != null) {
+          if(match[1]){
+            $(this).val(match[1])
+            $('#sourceFdroid')[0].checked = true;
             check_existing_report(match[1])
           }
           return

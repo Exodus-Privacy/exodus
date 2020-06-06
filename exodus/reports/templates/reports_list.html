@@ -50,7 +50,7 @@
               {% endif %}
             </a>
           </div>
-          <div class="small"><b>{{ app.version|truncatechars_html:20 }}</b></div>
+          <div class="small"><b>{{ app.version|truncatechars_html:20 }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
           <div>
             {% with nb_trackers=report.found_trackers.count %}
             <span class="mr-lg-4 mr-2">

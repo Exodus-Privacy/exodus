@@ -89,10 +89,19 @@
     }
     const query = jQuery.trim(jQuery(this).val())
     if (query.length >= 5) {
-      // Extract handle from Google Play url
-      const regex = /id=((?:\w+\.)+\w+)/gmi;
+      // Extract handle from Google Play or F-Droid url
+      const gplay_regex = /id=((?:\w+\.)+\w+)/gmi;
+      const fdroid_regex = /packages\/((?:\w+\.)+\w+)/gmi;
       if (query.startsWith("https://play.google.com")) {
-        var match = regex.exec(query)
+        var match = gplay_regex.exec(query)
+        while (match != null) {
+          if (match[1]) {
+            jQuery(this).val(match[1])
+          }
+          return
+        }
+      } else if (query.startsWith("https://f-droid.org/")) {
+        var match = fdroid_regex.exec(query)
         while (match != null) {
           if (match[1]) {
             jQuery(this).val(match[1])
@@ -100,6 +109,7 @@
           return
         }
       }
+
       search_timer = setTimeout(function () { get_results(query, 20); }, 200);
     }
     if (query == '') {

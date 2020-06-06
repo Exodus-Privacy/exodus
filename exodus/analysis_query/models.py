@@ -12,28 +12,39 @@ from django.utils.translation import gettext_lazy as _
 
 MAX_QUERIES = 19
 PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id='
+FDROID_URL = 'https://f-droid.org/packages/'
 FAKE_UA_HEADER = {
     'User-Agent':
     'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101 Firefox/64.0'
 }
 
 
+def _is_app_in_store(handle, store_url):
+    r = requests.get(
+        '{}{}'.format(store_url, handle),
+        headers=FAKE_UA_HEADER
+    )
+    return r.status_code != 404
+
+
 def validate_handle(handle):
     """
     Validate the given handle
-    Check regex, play store url, duplicate queries & total pending queries
+    Check regex, store urls, duplicate queries & total pending queries
     :param handle: application handle to validate
-    :raise ValidatioError: if any of the checks fails
+    :raise ValidationError: if any of the checks fails
     """
     package_reg = re.compile(r'^(\w+\.)+\w+$')
     if package_reg.match(handle) is None:
         error_msg = _(u'%s is not a valid application handle') % handle
         raise ValidationError(error_msg)
 
-    r = requests.get('%s%s' % (PLAY_STORE_URL, handle), headers=FAKE_UA_HEADER)
-    if r.status_code == 404:
-        raise ValidationError(
-            _(u'%s application not found on Google Play') % handle)
+    found_on_gplay = _is_app_in_store(handle, PLAY_STORE_URL)
+    if not found_on_gplay:
+        found_on_fdroid = _is_app_in_store(handle, FDROID_URL)
+        if not found_on_fdroid:
+            raise ValidationError(
+                _("The application '{}' cannot be found".format(handle)))
 
     duplicate_queries = AnalysisRequest.objects.filter(
         processed=False,
@@ -65,6 +76,7 @@ class AnalysisRequest(models.Model):
     in_error = models.BooleanField(default=False)
     report_id = models.CharField(max_length=200, default='')
     apk = models.FileField(blank=False, validators=[validate_file_extension])
+    source = models.CharField(max_length=50, default='')
 
 
 @receiver(pre_delete, sender=AnalysisRequest)
