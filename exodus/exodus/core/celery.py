@@ -19,6 +19,10 @@ app.conf.beat_schedule = {
     'calculate_trackers_statistics': {
         'task': 'trackers.tasks.calculate_trackers_statistics',
         'schedule': settings.TRACKERS_STATISTICS_AUTO_UPDATE_TIME
+    },
+    'update_fdroid_data': {
+        'task': 'reports.tasks.update_fdroid_data',
+        'schedule': settings.FDROID_INDEX_UPDATE_TIME
     }
 }
 

@@ -434,6 +434,7 @@ class RestfulApiReportDetails(APITestCase):
             report=report,
             version="0.1",
             version_code="01234",
+            source='google'
         )
         Apk.objects.create(
             application=app,
@@ -476,6 +477,7 @@ class RestfulApiReportDetails(APITestCase):
                 'app_uid': '',
                 'icon_phash': '',
                 'report': report.id,
+                'source': app.source,
             }
         }
         response = self.client.get(self.PATH)

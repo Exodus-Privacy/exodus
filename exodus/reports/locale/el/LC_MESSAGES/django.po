@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 20:17+0000\n"
-"PO-Revision-Date: 2020-05-04 16:38\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-06-28 09:05+0000\n"
+"PO-Revision-Date: 2020-06-28 09:02\n"
+"Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
 "MIME-Version: 1.0\n"
@@ -12,15 +12,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
 "X-Crowdin-Language: el\n"
 "X-Crowdin-File: reports.po\n"
+"X-Crowdin-File-ID: 51\n"
 
 #: reports/templates/report_details.html:10
 msgid "Prefix in storage:"
 msgstr "Πρόθεμα στο χώρο αποθήκευσης:"
 
 #: reports/templates/report_details.html:31
-#: reports/templates/report_details.html:82
+#: reports/templates/report_details.html:90
 #: reports/templates/reports_list.html:58
 msgid "tracker"
 msgid_plural "trackers"
@@ -28,7 +30,7 @@ msgstr[0] "tracker"
 msgstr[1] "trackers"
 
 #: reports/templates/report_details.html:39
-#: reports/templates/report_details.html:114
+#: reports/templates/report_details.html:122
 #: reports/templates/reports_list.html:64
 msgid "permission"
 msgid_plural "permissions"
@@ -44,30 +46,38 @@ msgid "see other versions"
 msgstr "δείτε άλλες εκδόσεις"
 
 #: reports/templates/report_details.html:53
+msgid "Source:"
+msgstr "Πηγή:"
+
+#: reports/templates/report_details.html:57
 msgid "Created by"
 msgstr "Δημιουργήθηκε από"
 
-#: reports/templates/report_details.html:57
+#: reports/templates/report_details.html:61
 msgid "Downloads:"
 msgstr "Λήψεις:"
 
-#: reports/templates/report_details.html:61
+#: reports/templates/report_details.html:65
 msgid "Report created on"
 msgstr "Η αναφορά δημιουργήθηκε στις"
 
-#: reports/templates/report_details.html:63
+#: reports/templates/report_details.html:67
 msgid "and updated on"
 msgstr "και ενημερώθηκε στις"
 
-#: reports/templates/report_details.html:69
+#: reports/templates/report_details.html:73
 msgid "Delete this report"
 msgstr "Διαγραφή αυτής της αναφοράς"
 
-#: reports/templates/report_details.html:73
+#: reports/templates/report_details.html:78
+msgid "See on F-Droid"
+msgstr "Δείτε στο F-Droid"
+
+#: reports/templates/report_details.html:80
 msgid "See on Google Play"
 msgstr "Δείτε στο Google Play"
 
-#: reports/templates/report_details.html:88
+#: reports/templates/report_details.html:96
 msgid ""
 "We have found <b>code signature</b> of the following tracker in the "
 "application:"
@@ -79,7 +89,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Εχουμε βρει <b>υπογραφές κώδικα</b> των παρακάτω trackers στην εφαρμογή:"
 
-#: reports/templates/report_details.html:99
+#: reports/templates/report_details.html:107
 msgid ""
 "We have not found <b>code signature</b> of any tracker we know in the "
 "application."
@@ -87,12 +97,12 @@ msgstr ""
 "Δεν έχουμε βρει <b>υπογραφή κώδικα</b> σε κάποιο tracker που γνωρίζουμε στην "
 "εφαρμογή."
 
-#: reports/templates/report_details.html:101
-#: reports/templates/report_details.html:175
+#: reports/templates/report_details.html:109
+#: reports/templates/report_details.html:183
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr "Η εφαρμογή μπορεί να περιέχει tracker(s) που δεν γνωρίζουμε ακόμα."
 
-#: reports/templates/report_details.html:104
+#: reports/templates/report_details.html:112
 msgid ""
 "A tracker is a piece of software meant to collect data about you or your "
 "usages."
@@ -100,18 +110,18 @@ msgstr ""
 "Το tracker είναι ένα λογισμικό, που προορίζεται για τη συλλογή δεδομένων, "
 "σχετικά με εσάς ή την χρήση που κάνετε."
 
-#: reports/templates/report_details.html:105
-#: reports/templates/report_details.html:153
+#: reports/templates/report_details.html:113
+#: reports/templates/report_details.html:161
 msgid "Learn more"
 msgstr "Μάθετε περισσότερα"
 
-#: reports/templates/report_details.html:120
+#: reports/templates/report_details.html:128
 msgid "We have found the following permission in the application:"
 msgid_plural "We have found the following permissions in the application:"
 msgstr[0] "Βρήκαμε την ακόλουθη άδεια στην εφαρμογή:"
 msgstr[1] "Βρήκαμε τα ακόλουθα δικαιώματα στην εφαρμογή:"
 
-#: reports/templates/report_details.html:144
+#: reports/templates/report_details.html:152
 msgid ""
 "The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a "
 "'Dangerous' or 'Special' level according to <a target=\"_blank\" rel="
@@ -123,21 +133,21 @@ msgstr ""
 "\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/"
 "overview\">Επίπεδα προστασίας της Google</a>."
 
-#: reports/templates/report_details.html:150
+#: reports/templates/report_details.html:158
 msgid "This application doesn't require any permissions."
 msgstr "Αυτή η εφαρμογή δεν απαιτεί δικαιώματα."
 
-#: reports/templates/report_details.html:152
+#: reports/templates/report_details.html:160
 msgid "Permissions are actions the application can do on your phone."
 msgstr ""
 "Τα δικαιώματα ή άδειες, είναι οι ενέργειες που μπορεί να κάνει η εφαρμογή "
 "στο τηλέφωνο σας."
 
-#: reports/templates/report_details.html:159
+#: reports/templates/report_details.html:167
 msgid "What's next?"
 msgstr "Τι θα ακολουθήσει;"
 
-#: reports/templates/report_details.html:160
+#: reports/templates/report_details.html:168
 msgid ""
 "If this application does not sufficiently respect your privacy in your "
 "opinion, some alternatives exist!"
@@ -145,11 +155,11 @@ msgstr ""
 "Εάν αυτή η εφαρμογή δεν σέβεται επαρκώς το απόρρητο κατά τη γνώμη σας, "
 "υπάρχουν ορισμένες εναλλακτικές λύσεις!"
 
-#: reports/templates/report_details.html:166
+#: reports/templates/report_details.html:174
 msgid "Read the article"
 msgstr "Διαβάστε το άρθρο"
 
-#: reports/templates/report_details.html:172
+#: reports/templates/report_details.html:180
 msgid ""
 "This report lists trackers signatures found by static analysis in this APK. "
 "This is not a proof of activity of these trackers."
@@ -158,80 +168,80 @@ msgstr ""
 "στατική ανάλυση σε αυτό το APK. Αυτό δεν αποτελεί απόδειξη της "
 "δραστηριότητας αυτών των trackers."
 
-#: reports/templates/report_details.html:177
+#: reports/templates/report_details.html:185
 msgid "If you have doubts about this report, contact us at"
 msgstr ""
 "Εάν έχετε αμφιβολίες σχετικά με αυτήν την αναφορά, επικοινωνήστε μαζί μας στο"
 
-#: reports/templates/report_details.html:184
+#: reports/templates/report_details.html:192
 msgid "Signed by"
 msgstr "Υπογράφηκε από"
 
-#: reports/templates/report_details.html:188
+#: reports/templates/report_details.html:196
 msgid "Fingerprint:"
 msgstr "Δακτυλικό αποτύπωμα:"
 
-#: reports/templates/report_details.html:189
+#: reports/templates/report_details.html:197
 msgid "Issuer:"
 msgstr "Εκδότης:"
 
-#: reports/templates/report_details.html:190
+#: reports/templates/report_details.html:198
 msgid "Subject:"
 msgstr "Θέμα:"
 
-#: reports/templates/report_details.html:191
+#: reports/templates/report_details.html:199
 msgid "Serial:"
 msgstr "Σειριακός:"
 
-#: reports/templates/report_details.html:195
+#: reports/templates/report_details.html:203
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
 msgstr ""
 "Δεν βρέθηκαν υπογραφές <b>Η</b> το πιστοποιητικό x509 δεν συμμορφώνεται με "
 "το RFC."
 
-#: reports/templates/report_details.html:201
+#: reports/templates/report_details.html:209
 msgid "See APK fingerprint"
 msgstr "Δείτε το δακτυλικό αποτύπωμα APK"
 
-#: reports/templates/report_details.html:204
+#: reports/templates/report_details.html:212
 msgid "Text"
 msgstr "Κείμενο"
 
-#: reports/templates/report_details.html:212
-#: reports/templates/report_details.html:236
+#: reports/templates/report_details.html:220
+#: reports/templates/report_details.html:244
 msgid "APK fingerprint"
 msgstr "Δακτυλικό αποτύπωμα APK"
 
-#: reports/templates/report_details.html:217
+#: reports/templates/report_details.html:225
 msgid "APK checksum:"
 msgstr "Έλεγχος APK:"
 
-#: reports/templates/report_details.html:218
+#: reports/templates/report_details.html:226
 msgid "Handle:"
 msgstr "Handle:"
 
-#: reports/templates/report_details.html:219
+#: reports/templates/report_details.html:227
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: reports/templates/report_details.html:220
+#: reports/templates/report_details.html:228
 msgid "UAID:"
 msgstr "UAID:"
 
-#: reports/templates/report_details.html:221
+#: reports/templates/report_details.html:229
 msgid "Version:"
 msgstr "Έκδοση:"
 
-#: reports/templates/report_details.html:222
+#: reports/templates/report_details.html:230
 msgid "Version code:"
 msgstr "Κωδικός έκδοσης:"
 
-#: reports/templates/report_details.html:223
+#: reports/templates/report_details.html:231
 msgid "Icon hash:"
 msgstr "Hash εικονιδίου:"
 
-#: reports/templates/report_details.html:227
-#: reports/templates/report_details.html:243
+#: reports/templates/report_details.html:235
+#: reports/templates/report_details.html:251
 msgid "Close"
 msgstr "Κλείσιμο"
 

@@ -66,6 +66,7 @@ class Application(models.Model):
     icon_path = models.CharField(max_length=500, default='')
     app_uid = models.CharField(max_length=128, default='')
     icon_phash = models.CharField(max_length=128, default='')
+    source = models.CharField(max_length=50, default='')
 
     def __str__(self):
         return self.handle
