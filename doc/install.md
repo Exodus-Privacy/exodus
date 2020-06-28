@@ -28,6 +28,11 @@ When everything is up (Docker logs `Exodus is ready.`), launch the worker:
 docker exec -it exodus /entrypoint.sh "start-worker"
 ```
 
+Then, force a first download of the F-Droid index, the worker **must be** running (with previous command) to do this:
+```bash
+docker exec -it exodus /entrypoint.sh "refresh-fdroid-index"
+```
+
 The exodus container automatically:
 - Create the database
 - Make migration
@@ -50,6 +55,7 @@ to make actions, where `<command>` can be:
 - `import-trackers`: Import all trackers from the main exodus instance
 - `start-frontend`: Start the web server
 - `start-worker`: Start the exodus worker
+- `refresh-fdroid-index`: Refresh F-Droid index file
 
 ### Manual setup
 
@@ -198,6 +204,13 @@ Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` f
 python manage.py importtrackers --settings=exodus.settings.custom_dev
 ```
 Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
+
+#### 13 - Get the F-droid index data
+
+An initial F-droid index manual download may be required:
+```
+python manage.py refresh_fdroid_index --settings=exodus.settings.custom_dev
+```
 
 ## Configuring your local instance
 

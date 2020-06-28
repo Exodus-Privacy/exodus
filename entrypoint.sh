@@ -39,6 +39,11 @@ function compileMessages() {
 	python3 manage.py compilemessages --settings=exodus.settings.docker
 }
 
+function refreshFdroidIndex() {
+	cd ${EXODUS_HOME}/exodus/
+	python3 manage.py refresh_fdroid_index --settings=exodus.settings.docker
+}
+
 function init() {
 	while ! pg_isready -h db -p 5432 > /dev/null 2> /dev/null; do
 		echo "Connecting to db (postgresql) Failed: Waiting ..."
@@ -73,6 +78,9 @@ case "${1}" in
 		;;
 	"import-trackers")
 		importTrackers
+		;;
+	"refresh-fdroid-index")
+		refreshFdroidIndex
 		;;
 	"make-messages")
 		makeMessages
