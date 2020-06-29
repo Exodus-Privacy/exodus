@@ -11,7 +11,11 @@
               <a href="{% url 'analysis:wait' q.id %}">{{ q.id }}</a>
             </td>
             <td>
-              <a target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ q.handle }}">{{ q.handle | truncatechars_html:40 }}</a>
+              {% if q.source == 'fdroid' %}
+                <a target="_blank" rel="noreferrer" href="https://f-droid.org/packages/{{ q.handle }}">{{ q.handle | truncatechars_html:40 }}</a>
+              {% else %}
+                <a target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ q.handle }}">{{ q.handle | truncatechars_html:40 }}</a>
+              {% endif %}
             </td>
             <td>
               {{ q.source }}
