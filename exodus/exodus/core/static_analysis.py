@@ -83,6 +83,7 @@ class StaticAnalysis(CoreSA):
 
 def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp, source="google"):
     ret = False
+    logging.info("Will download {}".format(handle))
     if source == "google":
         logging.info("Download from gplay")
         ret = download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp)
