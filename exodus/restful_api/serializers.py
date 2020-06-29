@@ -29,7 +29,7 @@ class ReportSerializer(serializers.ModelSerializer):
 class ApplicationShortSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ['id', 'handle', 'app_uid']
+        fields = ['id', 'handle', 'app_uid', 'source']
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
@@ -42,7 +42,7 @@ class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = ['id', 'handle', 'name', 'creator', 'downloads', 'app_uid',
-                  'icon_phash', 'report_updated_at']
+                  'source', 'icon_phash', 'report_updated_at']
 
 
 class SearchApplicationSerializer(serializers.ModelSerializer):

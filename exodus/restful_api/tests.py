@@ -40,6 +40,7 @@ class RestfulApiApplicationTests(APITestCase):
         application = Application.objects.create(
             name='app_name',
             handle='handle',
+            source='google',
             report=report
         )
 
@@ -52,6 +53,7 @@ class RestfulApiApplicationTests(APITestCase):
                     "creator": "",
                     "downloads": "",
                     "app_uid": "",
+                    "source": application.source,
                     "icon_phash": "",
                     "report_updated_at": report.updated_at.timestamp()
                 },
@@ -69,6 +71,7 @@ class RestfulApiApplicationTests(APITestCase):
         application = Application.objects.create(
             name='app_name',
             handle='handle',
+            source='google',
             report=report
         )
 
@@ -78,7 +81,55 @@ class RestfulApiApplicationTests(APITestCase):
                     "id": application.id,
                     "handle": application.handle,
                     "app_uid": "",
+                    "source": application.source
                 },
+            ]
+        }
+
+        response = self.client.get(self.PATH + '?option=short')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
+    def test_returns_applications_with_multiple_versions(self):
+        self._force_authentication()
+        google_app_report = Report.objects.create(id=1234)
+        google_app = Application.objects.create(
+            name='app_name',
+            handle='handle',
+            source='google',
+            report=google_app_report
+        )
+        same_google_app_report = Report.objects.create(id=1235)
+        Application.objects.create(
+            name='app_name',
+            handle='handle',
+            source='google',
+            report=same_google_app_report
+        )
+        fdroid_app_report = Report.objects.create(id=1236)
+        fdroid_app = Application.objects.create(
+            name='app_name',
+            handle='handle',
+            source='fdroid',
+            report=fdroid_app_report
+        )
+        self.maxDiff = None
+
+        expected_json = {
+            'applications': [
+                {
+                    "id": google_app.id,
+                    "handle": google_app.handle,
+                    "app_uid": "",
+                    "source": google_app.source
+                },
+                {
+                    "id": fdroid_app.id,
+                    "handle": fdroid_app.handle,
+                    "app_uid": "",
+                    "source": fdroid_app.source
+                }
             ]
         }
 

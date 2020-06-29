@@ -54,6 +54,7 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
       "creator": "JOHNSON & JOHNSON SANTE BEAUTE FRANCE",
       "downloads": "50,000+ downloads",
       "app_uid": "C585E0D6274EDA2FA159542E305D2C61963BA8CC",
+      "source": "google",
       "icon_phash": "103278408296944969572136665785814778239",
       "report_updated_at": 1568136675.813601
     },
@@ -64,6 +65,7 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
       "creator": "Cdiscount",
       "downloads": "1,000,000+ downloads",
       "app_uid": "9F4CCA45C68B96EACD9D012F0902F406126FF660",
+      "source": "google",
       "icon_phash": "320076679825009360506916699520458898952",
       "report_updated_at": 1575063216.526062
     },
@@ -74,6 +76,7 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
       "creator": "HUG H\\u00f4pitaux universitaires de Gen\\u00e8ve",
       "downloads": "1,000+ downloads",
       "app_uid": "22ECA4EC976CC4FB11C6A0A24B2A90769E5F1A64",
+      "source": "google",
       "icon_phash": "216013393868481183094163051465356731136",
       "report_updated_at": 1587278984.683278
     },
@@ -91,17 +94,20 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
     {
       "id": 1,
       "handle": "com.johnson.nett",
-      "app_uid": "C585E0D6274EDA2FA159542E305D2C61963BA8CC"
+      "app_uid": "C585E0D6274EDA2FA159542E305D2C61963BA8CC",
+      "source": "google"
     },
     {
       "id": 2,
       "handle": "cdiscount.mobile",
-      "app_uid": "9F4CCA45C68B96EACD9D012F0902F406126FF660"
+      "app_uid": "9F4CCA45C68B96EACD9D012F0902F406126FF660",
+      "source": "google"
     },
     {
       "id": 3,
       "handle": "ch.hug_ge.emoteo",
-      "app_uid": "22ECA4EC976CC4FB11C6A0A24B2A90769E5F1A64"
+      "app_uid": "22ECA4EC976CC4FB11C6A0A24B2A90769E5F1A64",
+      "source": "google"
     },
     [edited]
   ]
