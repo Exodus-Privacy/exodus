@@ -90,6 +90,47 @@
     {% block content %}
     {% endblock %}
   </div>
+  <div class="footer-wrapper bg-primary mt-5">
+    <footer role="contentinfo" class="footer container">
+      <div class="row justify-content-center">
+        <div class="col-sm-5 col-12 mt-4 mb-4">
+          <p style="color: #fff" class="mb-4">
+            <b><a href="{% url 'organization' %}" style="color: #fff">Exodus Privacy</a></b>
+            {% trans "is a non-profit organization which provides this service for free." %}
+          </p>
+          <p class="text-center">
+            <a class="btn btn-outline-primary" style="background-color: #fff;"
+              href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/"
+              target="_blank" rel="noreferrer">{% trans "Help us!" %}
+            </a>
+          </p>
+        </div>
+        <div class="col-12 d-md-none" style="color: #fff;">
+          <hr style="border-top: 2px solid white; width: 75%">
+        </div>
+        <div class="col-sm-5 col-12 mt-4 mb-4">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2">
+              <a class="nav-link " href="{{ home }}">{% trans "Home" %}</a>
+            </li>
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2">
+              <a class="nav-link " href="{{ reports_url }}">{% trans "Reports" %}</a>
+            </li>
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2">
+              <a class="nav-link " href="{{ trackers_url }}">{% trans "Trackers" %}</a>
+            </li>
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2">
+              <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
+            </li>
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2">
+              <a class="nav-link " href="{{ organization }}">{% trans "The organization" %}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+
   <script>
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
