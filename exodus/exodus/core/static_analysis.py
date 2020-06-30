@@ -165,21 +165,22 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :return: True if succeed, False otherwise
     """
     DEVICE_CODE_NAMES = [
-        'default',
-        'bacon',
-        'hammerhead',
-        'manta',
-        'cloudbook',
-        'bullhead'
+        'walleye',  # Google Pixel 2 (2017)
+        't00q',  # Asus Zenfone 4 (2017)
+        'bullhead',  # Nexus 5X (2015)
+        'bacon',  # OnePlus One (2014)
+        'manta',  # Nexus 10 (2012)
+        'cloudbook',  # Acer Aspire One Cloudbook (2015)
+        'hero2lte',  # Samsung Galaxy S7 Edge (2016)
+        'gtp7510',  # Samsung Galaxy Tab 10.1 (2011)
+        'sloane',  # Amazon Fire TV 2 (2018?)
+        'BRAVIA_ATV2'  # Sony Bravia 4K GB (2016)
     ]
 
     for device in DEVICE_CODE_NAMES:
         logging.info("Download with device {}".format(device))
         try:
-            if device == 'default':
-                api = GooglePlayAPI()
-            else:
-                api = GooglePlayAPI(device_codename=device)
+            api = GooglePlayAPI(device_codename=device)
             api.login(
                 email=settings.GOOGLE_ACCOUNT_USERNAME,
                 password=settings.GOOGLE_ACCOUNT_PASSWORD
