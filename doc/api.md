@@ -130,6 +130,7 @@ Replace `com.app.handle` with the application handle.
                 "creation_date": "2017-12-28T01:17:50.605Z",
                 "version_code": "41",
                 "version": "3.0.1",
+                "source": "google",
                 "id": 57
             }
         ],
@@ -148,6 +149,7 @@ Replace `com.app.handle` with the application handle.
   "apk_hash": "a0725666e702b76653dc600430a7e87ecee9e9e7c07c02a88391bcbf60adb652",
   "downloads": "",
   "version_code": "137",
+  "source": "google",
   "report": 380,
   "created": "2017-11-24T17:06:54.048Z",
   "trackers": [],
