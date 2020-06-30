@@ -167,6 +167,7 @@ class RestfulApiSearchHandleDetailsTests(APITestCase):
             report=report,
             version="0.1",
             version_code="01234",
+            source="google"
         )
         apk = Apk.objects.create(
             application=app,
@@ -195,6 +196,7 @@ class RestfulApiSearchHandleDetailsTests(APITestCase):
                 'updated': _get_custom_date_format(report.updated_at),
                 'version_code': app.version_code,
                 'version_name': app.version,
+                'source': app.source,
                 'icon_hash': '',
                 'downloads': '',
                 'creator': ''
@@ -236,6 +238,7 @@ class RestfulApiSearchHandleTests(APITestCase):
             report=report,
             version="0.1",
             version_code="01234",
+            source="google"
         )
         Apk.objects.create(
             application=app,
@@ -262,6 +265,7 @@ class RestfulApiSearchHandleTests(APITestCase):
                         "creation_date": _get_custom_date_format(report.creation_date),
                         "version": app.version,
                         "version_code": app.version_code,
+                        "source": app.source,
                         "downloads": "",
                         "trackers": [tracker.id],
                     }

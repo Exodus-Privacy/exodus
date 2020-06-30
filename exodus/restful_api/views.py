@@ -95,6 +95,7 @@ def _get_reports_list(report_list):
             'updated_at': report.updated_at,
             'version': report.application.version,
             'version_code': report.application.version_code,
+            'source': report.application.source,
             'downloads': report.application.downloads,
             'trackers': [t.id for t in report.found_trackers.all()],
         })
@@ -263,22 +264,24 @@ def search_strict_handle_details(request, handle):
         try:
             reports = Report.objects.filter(application__handle=handle)
             details = []
-            for r in reports:
+            for report in reports:
+                app = report.application
                 details.append({
-                    'handle': r.application.handle,
-                    'app_name': r.application.name,
-                    'uaid': r.application.app_uid,
-                    'version_name': r.application.version,
-                    'version_code': r.application.version_code,
-                    'icon_hash': r.application.icon_phash,
-                    'apk_hash': r.application.apk.sum,
-                    'created': r.creation_date,
-                    'updated': r.updated_at,
-                    'report': r.id,
-                    'creator': r.application.creator,
-                    'downloads': r.application.downloads,
-                    'trackers': [t.id for t in r.found_trackers.all()],
-                    'permissions': [p.name for p in r.application.permission_set.all()]
+                    'handle': app.handle,
+                    'app_name': app.name,
+                    'uaid': app.app_uid,
+                    'version_name': app.version,
+                    'version_code': app.version_code,
+                    'source': app.source,
+                    'icon_hash': app.icon_phash,
+                    'apk_hash': app.apk.sum,
+                    'created': report.creation_date,
+                    'updated': report.updated_at,
+                    'report': report.id,
+                    'creator': app.creator,
+                    'downloads': app.downloads,
+                    'trackers': [t.id for t in report.found_trackers.all()],
+                    'permissions': [p.name for p in app.permission_set.all()]
                 })
         except Report.DoesNotExist:
             return JsonResponse({}, safe=True)
