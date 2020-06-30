@@ -139,7 +139,7 @@ class Certificate(models.Model):
 
 class Permission(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=300)
 
     def __str__(self):
         return self.name
