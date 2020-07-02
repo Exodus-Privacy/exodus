@@ -50,7 +50,14 @@
         <br>
       {% endif %}
       {% if report.application.source %}
-        {% trans "Source:" %} {{ report.application.source }}
+        {% trans "Source:" %}
+        {% if report.application.source == 'google' %}
+          Google Play
+        {% elif report.application.source == 'fdroid' %}
+          F-Droid
+        {% else %}
+          {{ report.application.source }}
+        {% endif %}
         <br>
       {% endif %}
       {% if report.application.creator.strip %}
