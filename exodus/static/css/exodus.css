@@ -105,3 +105,9 @@ ul.navbar-nav {
   color: #fff;
   background-color: darkorange;
 }
+
+.badge-outline-primary {
+  border: 1px solid #684971;
+  color: #684971;
+  background-color: transparent;
+}

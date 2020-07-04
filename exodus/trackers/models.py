@@ -2,10 +2,15 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 
 
-@python_2_unicode_compatible
+class TrackerCategory(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Tracker(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
@@ -13,6 +18,7 @@ class Tracker(models.Model):
     code_signature = models.CharField(max_length=500, blank=True, default='')
     network_signature = models.CharField(max_length=500, blank=True, default='')
     website = models.URLField()
+    category = models.ManyToManyField(TrackerCategory, blank=True)
     apps_number = models.IntegerField(default=0)
     apps_percent = models.IntegerField(default=0)
 
@@ -31,7 +37,6 @@ class Tracker(models.Model):
         return tracker_class
 
 
-@python_2_unicode_compatible
 class DetectionRule(models.Model):
     tracker = models.ForeignKey(Tracker, on_delete=models.CASCADE)
     pattern = models.CharField(max_length=500)

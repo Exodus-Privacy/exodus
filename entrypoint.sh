@@ -26,6 +26,7 @@ function startFrontend() {
 
 function importTrackers() {
 	cd ${EXODUS_HOME}/exodus/
+	python3 manage.py import_categories --settings=exodus.settings.docker
 	python3 manage.py importtrackers --settings=exodus.settings.docker
 }
 

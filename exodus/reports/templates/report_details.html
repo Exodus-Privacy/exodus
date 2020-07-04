@@ -108,7 +108,12 @@
           {% endblocktrans %}
         </p>
         {% for t in report.trackers %}
-          <p><a class="link black" href="{% url 'trackers:detail' t.id %}">{{ t.name }}</a></p>
+          <p class="mb-0"><a class="link black" href="{% url 'trackers:detail' t.id %}">{{ t.name }}</a></p>
+          <p>
+            {% for c in t.category.all %}
+              <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
+            {% endfor %}
+          </p>
         {% endfor %}
       {% else %}
         <p>

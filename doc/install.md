@@ -173,7 +173,7 @@ GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
 # Overwrite any other settings you wish to
 ```
 
-#### 10 - Start the εxodus worker
+#### 10 - Start the εxodus worker and scheduler
 
 The εxodus handle asynchronous tasks submitted by the front-end.
 You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
@@ -183,7 +183,7 @@ cd exodus
 
 export DJANGO_SETTINGS_MODULE=exodus.settings.custom_dev; celery worker --beat -A exodus.core -l debug -S django
 ```
-Now, the εxodus workers are waiting for tasks.
+Now, the εxodus worker and scheduler are waiting for tasks.
 
 #### 11 - Start the εxodus front-end
 
@@ -199,8 +199,9 @@ Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 #### 12 - Import the trackers definitions
 
-Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following command:
+Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following commands:
 ```
+python manage.py import_categories --settings=exodus.settings.custom_dev
 python manage.py importtrackers --settings=exodus.settings.custom_dev
 ```
 Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)

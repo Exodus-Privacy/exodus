@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 import requests
 
-from trackers.models import Tracker
+from trackers.models import Tracker, TrackerCategory
 
 ETIP_API_DEFAULT_HOSTNAME = settings.ETIP_HOSTNAME
 ETIP_API_PATH = '/api/trackers'
@@ -95,6 +95,15 @@ class Command(BaseCommand):
                 if existing_tracker.description != etip_tracker['description']:
                     self.stdout.write(self.style.WARNING("Updating description from '{}' to '{}'".format(existing_tracker.description, etip_tracker['description'])))
                     existing_tracker.description = etip_tracker['description']
+                    changes = True
+
+                existing_categories = [c.name for c in existing_tracker.category.order_by('name')]
+                etip_categories = [c.get('name') for c in etip_tracker['category']]
+                if existing_categories != etip_categories:
+                    self.stdout.write(self.style.WARNING("Updating category from '{}' to '{}'".format(', '.join(existing_categories), ', '.join(etip_categories))))
+                    if apply:
+                        categories = [TrackerCategory.objects.get(name=c) for c in etip_categories]
+                        existing_tracker.category.set(categories)
                     changes = True
 
                 if apply and changes:
