@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from reports.models import Report, Application, Tracker
+from reports.models import Report, Application
+from trackers.models import Tracker, TrackerCategory
 from .models import SearchQuery
 
 
@@ -19,7 +20,23 @@ class ReportInfosSerializer(serializers.Serializer):
     certificate = CertificateSerializer(required=False)
 
 
+class TrackerCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TrackerCategory
+        fields = ('name', )
+
+
+class TrackerSerializerWithCategories(serializers.ModelSerializer):
+    category = TrackerCategorySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Tracker
+        exclude = []
+
+
 class ReportSerializer(serializers.ModelSerializer):
+    found_trackers = TrackerSerializerWithCategories(many=True, read_only=True)
+
     class Meta:
         model = Report
         fields = ['creation_date', 'found_trackers', 'application']

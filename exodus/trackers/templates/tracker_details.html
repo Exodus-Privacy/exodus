@@ -13,6 +13,9 @@
     <h1 class="main-title">
       {{ tracker.name }}
     </h1>
+    {% for c in tracker.category.all %}
+      <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
+    {% endfor %}
   </div>
 </div>
 

@@ -36,7 +36,7 @@
         <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
       </a>
     </p>
-    <p class="mb-4">
+    <p class="mb-0">
       <span class="small text-muted">
         {% blocktrans trimmed count count=tracker.apps_number %}
         found in {{ count }} application
@@ -44,6 +44,11 @@
         found in {{ count }} applications
         {% endblocktrans %}
       </span>
+    </p>
+    <p class="mb-4">
+      {% for c in tracker.category.all %}
+      <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
+      {% endfor %}
     </p>
     {% endfor %}
   </div>

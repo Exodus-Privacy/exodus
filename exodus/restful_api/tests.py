@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from rest_framework.test import APITestCase
 
 from reports.models import Application, Report, Permission, Apk, Certificate
-from trackers.models import Tracker
+from trackers.models import Tracker, TrackerCategory
 
 DUMMY_HANDLE = 'com.example'
 
@@ -473,6 +473,7 @@ class RestfulApiReportDetails(APITestCase):
     def test_returns_detailed_json_when_one_report(self):
         self._force_authentication()
 
+        category = TrackerCategory.objects.create(name='Analytics')
         tracker = Tracker.objects.create(
             name='Teemo',
             description='bad tracker',
@@ -480,6 +481,7 @@ class RestfulApiReportDetails(APITestCase):
             network_signature='teemo.com',
             website='https://www.teemo.com'
         )
+        tracker.category.set([category])
         report = Report.objects.create(id=1234)
         report.found_trackers.set([tracker.id])
         app = Application.objects.create(
@@ -515,6 +517,7 @@ class RestfulApiReportDetails(APITestCase):
                     'creation_date': tracker.creation_date.strftime("%Y-%m-%d"),
                     'code_signature': tracker.code_signature,
                     'network_signature': tracker.network_signature,
+                    'category': [{'name': category.name}],
                     'website': tracker.website,
                     'apps_number': 0,
                     'apps_percent': 0
