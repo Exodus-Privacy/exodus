@@ -77,6 +77,7 @@
     </div>
     {% if request.user.is_superuser %}
       <div class="col-md-8 col-12 mt-2">
+        <a type="button" class="btn btn-secondary" href="{% url 'analysis:submit' %}#{{ report.application.handle }}">{% trans "New analysis" %}</a>
         <a type="button" class="btn btn-danger" href="{% url 'admin:reports_report_delete' report.id %}">{% trans "Delete this report" %}</a>
       </div>
     {% endif %}

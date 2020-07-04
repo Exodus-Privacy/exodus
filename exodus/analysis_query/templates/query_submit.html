@@ -171,5 +171,11 @@ jQuery("#handle").on("input", function() {
     }
 });
 
+var given_handle = window.location.hash.substr(1); // substr(1) removes the #
+if (given_handle) {
+  jQuery("#handle").val(given_handle)
+  check_existing_report(given_handle)
+}
+
 </script>
 {% endblock %}
