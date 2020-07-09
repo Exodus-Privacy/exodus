@@ -68,7 +68,8 @@ def calculate_trackers_statistics():
     ev = EventGroup()
 
     trackers = Tracker.objects.order_by('name')
-    application_report_id_map = Report.objects.values('application__handle').annotate(recent_id=Max('id'))
+    google_app_reports = Report.objects.filter(application__source='google')
+    application_report_id_map = google_app_reports.values('application__handle').annotate(recent_id=Max('id'))
     report_ids = [k['recent_id'] for k in application_report_id_map]
 
     reports_number = Report.objects.filter(id__in=report_ids).count()

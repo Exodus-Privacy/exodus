@@ -7,7 +7,13 @@
     <div class="col-lg-8">
       <div style="text-align:center">
         <h1 class="main-title">{% trans "Statistics" %}</h1>
-        <h4>{% trans "Most frequent trackers" %}</h4>
+        <span class="d-none d-md-block">
+          <h4>{% trans "Most frequent trackers" %} - Google Play</h4>
+        </span>
+        <span class="d-md-none">
+          <h4>{% trans "Most frequent trackers" %}</h4>
+          <h5>(Google Play)</h5>
+        </span>
       </div>
       <hr>
       <table style="margin: auto">
