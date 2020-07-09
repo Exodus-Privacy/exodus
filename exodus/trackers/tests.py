@@ -19,6 +19,7 @@ class TrackersStatsViewTests(TestCase):
         report = Report.objects.create()
         Application.objects.create(
             handle="apple_sauce",
+            source="google",
             report=report
         )
 
@@ -32,6 +33,7 @@ class TrackersStatsViewTests(TestCase):
         report = Report.objects.create()
         Application.objects.create(
             handle="apple_sauce",
+            source="google",
             report=report
         )
         calculate_trackers_statistics()
@@ -53,6 +55,7 @@ class TrackersStatsViewTests(TestCase):
         report = Report.objects.create()
         Application.objects.create(
             handle="apple_sauce",
+            source="google",
             report=report
         )
         report.found_trackers.set([tracker.id])
@@ -81,18 +84,21 @@ class TrackersStatsViewTests(TestCase):
         report1.found_trackers.set([tracker2.id])
         Application.objects.create(
             handle=application_handle,
+            source="google",
             report=report1
         )
         report2 = Report.objects.create()
         report2.found_trackers.set([])
         Application.objects.create(
             handle=application_handle,
+            source="google",
             report=report2
         )
         report3 = Report.objects.create()
         report3.found_trackers.set([tracker1.id, tracker2.id])
         Application.objects.create(
             handle=application_handle,
+            source="google",
             report=report3
         )
         calculate_trackers_statistics()
@@ -126,18 +132,21 @@ class TrackersStatsViewTests(TestCase):
         report1.found_trackers.set([tracker2.id])
         Application.objects.create(
             handle=application_handle1,
+            source="google",
             report=report1
         )
         report2 = Report.objects.create()
         report2.found_trackers.set([])
         Application.objects.create(
             handle=application_handle2,
+            source="google",
             report=report2
         )
         report3 = Report.objects.create()
         report3.found_trackers.set([tracker1.id, tracker2.id])
         Application.objects.create(
             handle=application_handle2,
+            source="google",
             report=report3
         )
         calculate_trackers_statistics()
@@ -168,6 +177,7 @@ class TrackersStatsViewTests(TestCase):
         report = Report.objects.create()
         Application.objects.create(
             handle="apple_sauce",
+            source="google",
             report=report
         )
         report.found_trackers.set([t.id for t in first_trackers])
