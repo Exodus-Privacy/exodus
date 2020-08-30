@@ -14,12 +14,30 @@ You have different ways of setting up your development environment:
 
 ### Docker setup
 
-#### Run
+#### Requirements
 
-Edit `docker-compose.yml` (set a Google account username and password).
+* docker
+* docker-compose
+
+#### Prepare your settings
+
+You can tweak your instance by changing [some settings](#configuring-your-local-instance).
+
+Create the file  `exodus/exodus/settings/custom_docker.py` with the following content:
+```
+from .docker import *
+
+GOOGLE_ACCOUNT_USERNAME = "<a valid google account>"
+GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
+
+# Overwrite any other settings you wish to
+```
+
+#### Run
 
 ```bash
 docker-compose up -d
+# Once exodus started, you can check its logs
 docker logs -f exodus
 ```
 
@@ -28,10 +46,11 @@ When everything is up (Docker logs `Exodus is ready.`), launch the worker:
 docker exec -it exodus /entrypoint.sh "start-worker"
 ```
 
-Then, force a first download of the F-Droid index, the worker **must be** running (with previous command) to do this:
+Then, you may have to force a first download of the F-Droid index:
 ```bash
 docker exec -it exodus /entrypoint.sh "refresh-fdroid-index"
 ```
+**The worker must be running** (previous command) to do this.
 
 The exodus container automatically:
 - Create the database
