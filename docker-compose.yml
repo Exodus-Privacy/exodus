@@ -13,11 +13,6 @@ services:
       - amqp
     ports:
       - "80:8000"
-    environment:
-      GOOGLE_ACCOUNT_USERNAME: "CHANGE-ME"
-      GOOGLE_ACCOUNT_PASSWORD: "CHANGE-ME"
-      TOKEN_DISPENSER_URL: "https://matlink.fr/token/email/gsfid"
-      USE_TOKEN_DISPENSER: "False"
     networks:
       - backend
 

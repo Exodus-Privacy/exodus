@@ -9,10 +9,6 @@ RUN apt-get update && \
 COPY ./requirements.txt /opt/requirements.txt
 RUN pip3 install -r /opt/requirements.txt
 
-RUN mkdir -p /home/exodus/.config/gplaycli
-COPY ./docker.gplaycli.* /home/exodus/.config/gplaycli/
-RUN patch /usr/local/lib/python3.7/site-packages/gplaycli/gplaycli.py /home/exodus/.config/gplaycli/docker.gplaycli.patch
-
 COPY ./ /exodus
 
 WORKDIR /exodus/exodus
