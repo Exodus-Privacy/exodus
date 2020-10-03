@@ -38,9 +38,9 @@ def auto_update_trackers():
         for _, tracker in trackers['trackers'].items():
             obj, created = Tracker.objects.update_or_create(
                 id=tracker['id'],
-                name=tracker['name'],
-                website=tracker['website'],
                 defaults={
+                    'name': tracker['name'],
+                    'website': tracker['website'],
                     'description': tracker['description'],
                     'creation_date': tracker['creation_date'],
                     'network_signature': tracker['network_signature']
