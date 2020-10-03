@@ -54,6 +54,9 @@ def start_static_analysis(params):
     storage_helper = RemoteStorageHelper(params.bucket)
 
     if request.apk:
+        if not os.path.exists(params.tmp_dir):
+            os.mkdir(params.tmp_dir)
+
         with open(params.apk_tmp, 'wb') as out:
             out.write(request.apk.read())
         storage_helper.put_file(params.apk_tmp, params.apk_name)
