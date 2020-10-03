@@ -34,29 +34,33 @@ def auto_update_trackers():
 
     updated_code_signatures = 0
 
-    for _, tracker in trackers['trackers'].items():
-        obj, created = Tracker.objects.update_or_create(
-            id=tracker['id'],
-            name=tracker['name'],
-            website=tracker['website'],
-            defaults={
-                'description': tracker['description'],
-                'creation_date': tracker['creation_date'],
-                'network_signature': tracker['network_signature']
-            }
-        )
-        if obj.code_signature != tracker['code_signature']:
-            obj.code_signature = tracker['code_signature']
-            obj.save()
-            updated_code_signatures += 1
+    try:
+        for _, tracker in trackers['trackers'].items():
+            obj, created = Tracker.objects.update_or_create(
+                id=tracker['id'],
+                name=tracker['name'],
+                website=tracker['website'],
+                defaults={
+                    'description': tracker['description'],
+                    'creation_date': tracker['creation_date'],
+                    'network_signature': tracker['network_signature']
+                }
+            )
+            if obj.code_signature != tracker['code_signature']:
+                obj.code_signature = tracker['code_signature']
+                obj.save()
+                updated_code_signatures += 1
 
-        if created:
-            logger.info('Tracker {} has been added.'.format(tracker['name']))
-        else:
-            logger.info('Tracker {} has been updated.'.format(tracker['name']))
+            if created:
+                ev.info('Tracker {} has been added.'.format(tracker['name']))
+            else:
+                ev.info('Tracker {} has been updated.'.format(tracker['name']))
 
-    if updated_code_signatures > 0:
-        recompute_all_reports.delay()
+        if updated_code_signatures > 0:
+            recompute_all_reports.delay()
+    except Exception as e:
+        ev.error(e, initiator=__name__)
+        return
 
     ev.info('{} code signatures updated.'.format(updated_code_signatures), initiator=__name__)
 
