@@ -116,6 +116,7 @@ ul.navbar-nav {
   height: 20px;
   vertical-align: text-bottom;
   margin-left: 0.5rem;
+  transition: all .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .btn-outline-primary:hover .ext_icon_purple {
