@@ -69,7 +69,7 @@
         <a href="{% url 'organization' %}">Exodus Privacy</a>
         {% trans "is a non-profit organization which provides this service for free." %}
       </p>
-      <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+      <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}<img src={% static 'img/ext_purple.svg' %} class="ext_icon ext_icon_purple"></a>
     </div>
   </div>
 </div>
