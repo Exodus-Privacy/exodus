@@ -111,3 +111,13 @@ ul.navbar-nav {
   color: #684971;
   background-color: transparent;
 }
+
+.ext_icon {
+  height: 20px;
+  vertical-align: text-bottom;
+  margin-left: 0.5rem;
+}
+
+.btn-outline-primary:hover .ext_icon_purple {
+  filter: invert(92%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(120%) contrast(108%);
+}
