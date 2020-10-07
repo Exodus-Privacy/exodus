@@ -49,7 +49,7 @@ jobs:
       before_install: []
       install: []
       script:
-        - docker run -i hadolint/hadolint < Dockerfile
+        - docker run -i hadolint/hadolint < docker/Dockerfile
 
     - name: "Docker build test"
       stage: Test
@@ -57,4 +57,4 @@ jobs:
       before_install: []
       install: []
       script:
-        - docker build -t exodus .
+        - docker build -t exodus . --file ./docker/Dockerfile
