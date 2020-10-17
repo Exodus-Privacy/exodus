@@ -6,7 +6,7 @@ default_secret_key = '9b80473f1b0c7d9f1859cfa754e40e26'
 SECRET_KEY = os.environ.get('EXODUS_SECRET_KEY', default_secret_key)
 
 DEBUG = True
-ALLOWED_HOSTS = [u'localhost', u'127.0.0.1']
+ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
