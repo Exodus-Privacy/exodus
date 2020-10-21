@@ -195,8 +195,7 @@
       <br>
       {% trans "The application could contain tracker(s) we do not know yet." %}
       <br>
-      {% trans "If you have doubts about this report, contact us at" %}
-      <a href="mailto:contact@exodus-privacy.eu.org?subject=Exodus - Question about report {{report.id}}">contact@exodus-privacy.eu.org</a>.
+      {% trans "If you have doubts about this report" %}, <a href="{% url 'organization' %}">{% trans "contact us" %}</a>.
     </div>
   </div>
 
