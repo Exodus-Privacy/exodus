@@ -28,3 +28,6 @@ google_password = os.environ.get('EXODUS_GOOGLE_PASSWORD')
 if google_username and google_password:
     GOOGLE_ACCOUNT_USERNAME = google_username
     GOOGLE_ACCOUNT_PASSWORD = google_password
+
+if os.environ.get('EXODUS_CSRF_COOKIE_SECURE') == "False":
+    CSRF_COOKIE_SECURE = False
