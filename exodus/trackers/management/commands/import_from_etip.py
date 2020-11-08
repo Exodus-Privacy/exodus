@@ -34,6 +34,20 @@ class Command(BaseCommand):
             default=False,
             help='Wether to apply changes'
         )
+        parser.add_argument(
+            '-q',
+            '--quiet',
+            action='store_true',
+            default=False,
+            help='Wether to hide the list of trackers'
+        )
+        parser.add_argument(
+            '-d',
+            '--skip-description',
+            action='store_true',
+            default=False,
+            help='Wether to hide description diff'
+        )
 
     def get_trackers_from_etip(self, etip_base_url, auth_token):
         headers = {'Authorization': 'Token {}'.format(auth_token)}
@@ -52,12 +66,12 @@ class Command(BaseCommand):
                 exodus_trackers.append(tracker)
         return exodus_trackers
 
-    def compare_trackers(self, etip_trackers, apply):
+    def compare_trackers(self, etip_trackers, apply, quiet, skip_description):
         exodus_trackers = Tracker.objects.all()
         for etip_tracker in etip_trackers:
-            self.stdout.write('* Checking {}'.format(etip_tracker['name']))
             changes = False
             new_tracker = False
+            logs = []
 
             try:
                 existing_tracker = exodus_trackers.get(name=etip_tracker['name'])
@@ -65,6 +79,7 @@ class Command(BaseCommand):
                 new_tracker = True
 
             if new_tracker:
+                self.stdout.write('* Checked {}'.format(etip_tracker['name']))
                 if apply:
                     Tracker.objects.create(
                         name=etip_tracker['name'],
@@ -78,33 +93,44 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.WARNING('Will create new tracker'))
             else:
                 if existing_tracker.code_signature != etip_tracker['code_signature']:
-                    self.stdout.write(self.style.WARNING("Updating code signature from '{}' to '{}'".format(existing_tracker.code_signature, etip_tracker['code_signature'])))
+                    logs.append("Updating code signature from '{}' to '{}'".format(existing_tracker.code_signature, etip_tracker['code_signature']))
                     existing_tracker.code_signature = etip_tracker['code_signature']
                     changes = True
 
                 if existing_tracker.network_signature != etip_tracker['network_signature']:
-                    self.stdout.write(self.style.WARNING("Updating network signature from '{}' to '{}'".format(existing_tracker.network_signature, etip_tracker['network_signature'])))
+                    logs.append("Updating network signature from '{}' to '{}'".format(existing_tracker.network_signature, etip_tracker['network_signature']))
                     existing_tracker.network_signature = etip_tracker['network_signature']
                     changes = True
 
                 if existing_tracker.website != etip_tracker['website']:
-                    self.stdout.write(self.style.WARNING("Updating website from '{}' to '{}'".format(existing_tracker.website, etip_tracker['website'])))
+                    logs.append("Updating website from '{}' to '{}'".format(existing_tracker.website, etip_tracker['website']))
                     existing_tracker.website = etip_tracker['website']
                     changes = True
 
                 if existing_tracker.description != etip_tracker['description']:
-                    self.stdout.write(self.style.WARNING("Updating description from '{}' to '{}'".format(existing_tracker.description, etip_tracker['description'])))
+                    if skip_description:
+                        logs.append("Updating description")
+                    else:
+                        logs.append("Updating description from '{}' to '{}'".format(existing_tracker.description, etip_tracker['description']))
                     existing_tracker.description = etip_tracker['description']
                     changes = True
 
                 existing_categories = [c.name for c in existing_tracker.category.order_by('name')]
                 etip_categories = [c.get('name') for c in etip_tracker['category']]
                 if existing_categories != etip_categories:
-                    self.stdout.write(self.style.WARNING("Updating category from '{}' to '{}'".format(', '.join(existing_categories), ', '.join(etip_categories))))
+                    logs.append("Updating category from '{}' to '{}'".format(', '.join(existing_categories), ', '.join(etip_categories)))
                     if apply:
                         categories = [TrackerCategory.objects.get(name=c) for c in etip_categories]
                         existing_tracker.category.set(categories)
                     changes = True
+
+                if changes:
+                    self.stdout.write('* Checked {}'.format(etip_tracker['name']))
+                    for log in logs:
+                        self.stdout.write(self.style.WARNING(log))
+                else:
+                    if not quiet:
+                        self.stdout.write('* Checked {}'.format(etip_tracker['name']))
 
                 if apply and changes:
                     existing_tracker.save()
@@ -119,4 +145,4 @@ class Command(BaseCommand):
         if not options['apply']:
             self.stdout.write(self.style.WARNING('Running in check mode, will not apply changes'))
 
-        self.compare_trackers(etip_trackers, options['apply'])
+        self.compare_trackers(etip_trackers, options['apply'], options['quiet'], options['skip_description'])
