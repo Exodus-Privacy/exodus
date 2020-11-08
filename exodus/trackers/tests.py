@@ -371,7 +371,7 @@ class ImportFromEtipCommandTest(TestCase):
         out = self._call_command(200, mocked_json)
 
         self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_2['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_2['name']), out.getvalue())
 
     def test_compares_1_tracker_with_no_changes(self):
         mocked_json = [self.TRACKER_1]
@@ -380,7 +380,7 @@ class ImportFromEtipCommandTest(TestCase):
         out = self._call_command(200, mocked_json)
 
         self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_1['name']), out.getvalue())
 
     def test_compares_1_tracker_with_changes(self):
         self._create_tracker(self.TRACKER_1)
@@ -389,7 +389,7 @@ class ImportFromEtipCommandTest(TestCase):
         out = self._call_command(200, mocked_json)
 
         self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_1['name']), out.getvalue())
         self.assertIn("Updating code signature from '{}' to '{}'".format(self.TRACKER_1['code_signature'], self.TRACKER_1_CHANGED['code_signature']), out.getvalue())
         self.assertNotIn("Saved changes", out.getvalue())
 
@@ -403,7 +403,7 @@ class ImportFromEtipCommandTest(TestCase):
         out = self._call_command(200, mocked_json, ['-a'])
 
         self.assertIn("Retrieved 1 trackers from ETIP", out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_1['name']), out.getvalue())
         self.assertIn("Updating code signature from '{}' to '{}'".format(self.TRACKER_1['code_signature'], self.TRACKER_1_CHANGED['code_signature']), out.getvalue())
         self.assertIn("Saved changes", out.getvalue())
 
@@ -419,8 +419,8 @@ class ImportFromEtipCommandTest(TestCase):
         out = self._call_command(200, mocked_json)
 
         self.assertIn("Retrieved 2 trackers from ETIP", out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_2['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_2['name']), out.getvalue())
         self.assertIn("Will create new tracker", out.getvalue())
 
         with self.assertRaises(Tracker.DoesNotExist):
@@ -435,8 +435,8 @@ class ImportFromEtipCommandTest(TestCase):
         out = self._call_command(200, mocked_json, ['-a'])
 
         self.assertIn("Retrieved 2 trackers from ETIP", out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_1['name']), out.getvalue())
-        self.assertIn("* Checking {}".format(self.TRACKER_2['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_1['name']), out.getvalue())
+        self.assertIn("* Checked {}".format(self.TRACKER_2['name']), out.getvalue())
         self.assertIn("Tracker created", out.getvalue())
 
         new_tracker = Tracker.objects.get(name=self.TRACKER_2['name'])
