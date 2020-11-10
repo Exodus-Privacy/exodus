@@ -17,6 +17,26 @@ If you wish to help us identify new trackers, you can request an ETIP account by
 
 You have different ways of setting up your development environment (via Docker or manually), everything is explained [here](doc/install.md).
 
+### Main commands available
+
+All the following commands can be called from commandline using `python3 manage.py <command>`
+
+#### Reports
+
+ * `refresh_apk_certificates`: Refreshes all APK certificates informations.
+ * `refresh_apk_signature`: Refreshes all APK signatures.
+ * `refresh_app_info`: Refreshes the given application informations.
+ * `refresh_fdroid_index`: Refreshes the F-Droid local index.
+ * `refresh_icons`: Refreshes the given report icon.
+ * `refresh_static_analysis`: Refreshes all the reports.
+
+#### Trackers
+
+ * `import_categories`: Import given categories to the database
+ * `import_from_etip`: Import data from ETIP database
+ * `import_trackers`: Import trackers from exodus official database
+
+
 ### FAQ
 
 Check the [FAQ](doc/faq.md) if you encounter any problem or need an extended documentation about εxodus.
