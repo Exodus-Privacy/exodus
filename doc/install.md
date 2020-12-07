@@ -24,6 +24,7 @@ You have different ways of setting up your development environment:
 You can tweak your instance by changing [some settings](#configuring-your-local-instance).
 
 Create the file  `exodus/exodus/settings/custom_docker.py` with the following content:
+
 ```
 from .docker import *
 
@@ -81,14 +82,19 @@ to make actions, where `<command>` can be:
 #### 1 - Install system dependencies
 
 ```
-sudo apt install git virtualenv postgresql-9.6 rabbitmq-server tshark aapt build-essential libssl-dev dexdump libffi-dev python3-dev openjdk-8-jre libxml2-dev libxslt1-dev
+sudo apt install git virtualenv postgresql-NN postgresql-server-dev-NN rabbitmq-server tshark aapt build-essential libssl-dev dexdump libffi-dev python3-dev openjdk-8-jre libxml2-dev libxslt1-dev
 ```
+> `NN` is the smallest available `postgresql-server` version.
 
 #### 2 - Clone the project
 
 ```
 git clone https://github.com/Exodus-Privacy/exodus.git
 ```
+
+> Since now, the comand start `PWD` is your cloned directory. For example, if
+> you clone in your $HOME directory, the $HOME/exodus is implicite and we
+> suppose all the commands will start from this path
 
 #### 3 - Create database and user
 
@@ -183,6 +189,7 @@ and password.
 You can tweak your instance by changing [some settings](#configuring-your-local-instance).
 
 Create the file  `exodus/exodus/settings/custom_dev.py` with the following content:
+
 ```
 from .dev import *
 
@@ -210,11 +217,13 @@ You have to activate the virtual venv and `cd` into the same directory as `manag
 ```
 source venv/bin/activate
 mkdir -p $HOME/.config/gplaycli/
-cp venv/lib/python3.5/site-packages/$HOME/.config/gplaycli/gplaycli.conf $HOME/.config/gplaycli/gplaycli.conf
+cp venv/lib/python3.7/site-packages/$HOME/.config/gplaycli/gplaycli.conf $HOME/.config/gplaycli/gplaycli.conf
 cd exodus
 python manage.py runserver --settings=exodus.settings.custom_dev
 ```
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+> **Pay attention to the `python` version.**
 
 #### 12 - Import the trackers definitions
 
@@ -252,3 +261,150 @@ The following options can be configured in `exodus/exodus/settings/`:
 
 Browse to [the analysis submission page](http://127.0.0.1:8000/analysis/submit/) and start a new analysis (ex: `fr.meteo`).
 When the analysis is finished, compare the results with the same report from [the official instance](https://reports.exodus-privacy.eu.org).
+
+## Optional
+
+> Those instruction a purelly optional and are here to help you to use your
+> instance from another computer of your network
+
+### Start `django` with `supervisord`
+
+`supervisord` is a small that can launch and supervise (relaumch for exemple)
+some process without the need to right `systemd` or `init.d` script.
+
+
+#### Install `supervisord`
+
+Very simple:
+
+```
+apt install supervisord
+```
+
+#### Configure `supervisord`
+
+The main configuration file is `/etc/supervisro/supervisor.conf` but we don't
+need to change anything in this file.
+
+We going to create a specific file for `django` in the
+`/etc/supervisor/conf.d/` folder. I name mine `django.conf`:
+
+```
+[program:django]
+command=<git_clone_folder>/exodus/exodus/venv/bin/python /home/jacques/exodus/exodus/manage.py runserver --settings=exodus.settings.custom_dev
+autostart=true
+autorestart=true
+startretries=3
+exitcodes=0,1,2
+stopsignal=QUIT
+stdout_logfile=/var/log/supervisor/supervisor_django_access.log
+stderr_logfile=/var/log/supervisor/supervisor_django_error.log
+user=<exiting_user>
+```
+
+* the `<git_clone_folder>` is the path where you first cloned the `εxodus`
+    repository;
+* the `<exiting_user>` is a real user, may be the one who cloned the repository.
+
+#### Start `supervisord`
+
+Once again very simple:
+```
+systemctl start supervisord
+```
+
+### Check
+
+Whith the command `supervisorctl` you can check the state of your supervised
+process:
+
+```
+sudo supervisorctl
+[sudo] password for exodus:
+django                           RUNNING   pid 14966, uptime 0:00:05
+```
+
+> Please have a look to the `supervisord` and `supervisorctl` man pages
+
+
+#### `workers` and `schedulers`
+
+From your cloned folder, find the `worker.sh` shell script and copy it with
+another name:
+
+```
+cd exodus
+cp worker.sh worker_dev.sh
+```
+
+And edit the `worker_dev.sh` to add the argument `--detach` to the long command
+line:
+
+```
+/home/jacques/exodus/exodus/venv/bin/python /home/jacques/exodus/exodus/venv/bin/celery worker -A exodus.core -l info --detach
+```
+
+And that it. Just launch this script when you want to user `workers` and
+`schedulers`.
+
+#### Confiure `NGINX`
+
+In order to access to your development instance from any computer of your
+network you need to install a `proxy`, for example with the `nginx` web server.
+
+After install it, check that the main configuration file
+(`/etc/nginx/nginx.conf`) contain the line:
+
+```
+include conf.d/*.conf
+```
+
+If the directory `conf.d` does not exist, create it:
+
+```
+mkdir /etc/nginx/conf.d
+```
+
+And inside this folder add a configuration file like this one:
+
+```
+server {
+  listen 80;
+  listen [::]:80;
+  server_name dev-exodus;
+
+  access_log /var/log/nginx/exodus-access.log combined;
+  error_log /var/log/nginx/exodus-error.log;
+
+  location / {
+    proxy_pass http://localhost:8000;
+    proxy_set_header Host   $host;
+    proxy_set_header X-Real-IP  $remote_addr;
+    proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+    proxy_set_header HTTP_X_FORWARDED_PROTO $scheme;
+    proxy_set_header X-Forwarded-Vy $server_addr:$server_port;
+  }
+}
+```
+
+> `dev-exodus` is the name of the server and must be known by the other network
+> machines
+
+
+Be sure to start `nginx` at start-up
+
+```
+systemctl enable nginx
+```
+
+and start it
+
+```
+systemctl statt nginx
+```
+
+You should access to to your instance from any computer of your network that can
+resolve `dev-exodus`.
+
+---
+_εxodus developer instance installation rev 0.2 2020-12-07_
