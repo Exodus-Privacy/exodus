@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   && rm -rf /var/lib/apt/lists/*
 
 COPY ./requirements.txt /opt/requirements.txt
-RUN pip3 install -r /opt/requirements.txt
+RUN pip3 install --no-cache-dir -r /opt/requirements.txt
 
 COPY ./ /exodus
 
