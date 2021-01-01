@@ -49,7 +49,7 @@ jobs:
       before_install: []
       install: []
       script:
-        - docker run -i hadolint/hadolint < docker/Dockerfile
+        - docker run -i hadolint/hadolint:v1.19.0-45-gef91156-alpine < docker/Dockerfile
 
     - name: "Docker build test"
       stage: Test
