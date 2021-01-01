@@ -47,6 +47,27 @@ When everything is up (Docker logs `Exodus is ready.`), launch the worker:
 docker exec -it exodus /entrypoint.sh "start-worker"
 ```
 
+#### Google authorisation
+
+In the work console, you should see an this error:
+
+```
+'Security check is needed, try to visit https://accounts.google.com/b/0/DisplayUnlockCaptcha to unlock, or setup an app-specific password'
+```
+
+To solve that you must:
+- stop the worker;
+- login to Gmail with the account define in
+    `exodus/exodus/settings/custom_docker.py`;
+- open another tab in your brower and go to: https://accounts.google.com/b/0/DisplayUnlockCaptcha
+- click on the authorize button;
+- relaunch the worker.
+
+> Once it's ok, look at the `docker exec` command help to see how to launch
+> worker in background.
+
+#### F-Droid
+
 Then, you may have to force a first download of the F-Droid index:
 ```bash
 docker exec -it exodus /entrypoint.sh "refresh-fdroid-index"
