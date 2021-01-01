@@ -1,89 +1,80 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block content %}
 {% load static %}
 <div class="row justify-content-md-center">
-    <div class="col-lg-6 col-centered">
+  <div class="col-lg-8 col-centered">
     {% if reports %}
-    <div class="alert bg-light">
-        <div class="alert-heading">
-            <h4><span class="badge badge-info">{{ count }}</span> available report{{ count|pluralize }}</h4>
-        </div>
-        <hr>
-        <table style="margin: auto; border:none" class="table table-hover table-responsive">
-        {% for report in reports %}
-            <tr class="d-flex">
-                <td class="col-md-6 text-truncate">
-                    <a href="{% url 'reports:detail' report.id %}">
-                        <img  data-toggle="tooltip" title="{{ app.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
-                        {% if report.application.name.strip %}
-                            <b>{{ report.application.name }}</b>
-                        {% else %}
-                            <b>{{ report.application.handle }}</b>
-                        {% endif %}
-                    </a>
-                </td>
-                <td class="col-md-4 text-truncate">
-                    <span>
-                        {% with nb_trackers=report.found_trackers.count %}
-                            {% if nb_trackers == 0 %}
-                                <span class="badge badge-success reports">{{ nb_trackers }}</span>
-                            {% elif nb_trackers < 5 %}
-                                <span class="badge badge-warning reports">{{ nb_trackers }}</span>
-                            {% else %}
-                                <span class="badge badge-danger reports">{{ nb_trackers }}</span>
-                            {% endif %}
-                            tracker{{ nb_trackers|pluralize }}
-                        {% endwith %}
-                    </span>
-                    <br>
-                    <span>
-                        {% with nb_perm=report.application.permission_set.count %}
-                            {% if nb_perm == 0 %}
-                                <span class="badge badge-success reports">{{ nb_perm }}</span>
-                            {% elif nb_perm < 5 %}
-                                <span class="badge badge-warning reports">{{ nb_perm }}</span>
-                            {% else %}
-                                <span class="badge badge-danger reports">{{ nb_perm }}</span>
-                            {% endif %}
-                            permission{{ nb_perm|pluralize }}
-                        {% endwith %}
-                    </span>
-                </td>
-                <td class="col-md-2 text-truncate">
-                     <span class="small"><b>{{ report.application.version|truncatechars_html:8 }}</b></span>
-                </td>
-            </tr>
-        {% endfor %}
-        </table>
+    <div style="text-align:center">
+      <h1 class="main-title">
+        {% trans "Reports" %}
+      </h1>
+      <h4>
+        {% if handle %}
+        {{ handle }}
+        {% else %}
+        {% blocktrans %}{{ reports_total_count }} reports for {{ apps_total_count }} applications{% endblocktrans %}
+        {% endif %}
+      </h4>
     </div>
+    <hr>
+    {% if not handle %}
+    <select class="custom-select"
+      onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/reports/list' + this.options[this.selectedIndex].value);">
+      <option value=" ">{% trans "Latest reports" %}</option>
+      <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>
+        {% trans "Sorted by number of trackers" %}</option>
+      <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
+        {% trans "No known trackers" %}
+        {% if filter == 'no_trackers' %} ({{ reports_count }}){% endif %}
+      </option>
+    </select>
+    {% endif %}
+
+    <div class="container mb-4">
+      {% for report in reports %}
+      {% with report.application as app %}
+      <br>
+      <div class="row position-relative">
+        <div class="col-3 col-sm-2 col-md-2 my-auto">
+          <img src="/reports/{{ app.id }}/icon" width="50" class="rounded" alt="{{ app.handle }}">
+        </div>
+        <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">
+          <div>
+            <a href="{% url 'reports:detail' report.id %}" class="stretched-link report-link">
+              {% if app.name.strip %}
+              {{ app.name }}
+              {% else %}
+              {{ app.handle }}
+              {% endif %}
+            </a>
+          </div>
+          <div class="small"><b>{{ app.version|truncatechars_html:20 }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
+          <div>
+            {% with nb_trackers=report.found_trackers.count %}
+            <span class="mr-lg-4 mr-2">
+              <span class="badge badge-pill badge-{{ app.trackers_class }} reports">{{ nb_trackers }}</span>
+              {% blocktrans count count=nb_trackers %}tracker{% plural %}trackers{% endblocktrans %}
+            </span>
+            {% endwith %}
+            {% with nb_perm=app.permissions|length %}
+            <span>
+              <span class="badge badge-pill badge-{{ app.permissions_class }} reports">{{ nb_perm }}</span>
+              {% blocktrans count count=nb_perm %}permission{% plural %}permissions{% endblocktrans %}
+            </span>
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+      {% endwith %}
+      {% endfor %}
+    </div>
+
     <div>
-        <ul class="pagination pagination-sm justify-content-center">
-            {% if reports.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{ reports.previous_page_number }}">Previous</a></li>
-            {% else %}
-            <li class="page-item disabled"><a class="page-link" href="#">First</a></li>
-            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-            {% endif %}
-            {% for i in reports.paginator.page_range %}
-                {% if i > reports.number|add:'-5' and i < reports.number|add:'5' %}
-                    {% if i == reports.number %}
-                    <li class="page-item active"> <a class="page-link" href="?page={{ i }}">{{ i }}</a> </li>
-                    {% else %}
-                    <li class="page-item"> <a class="page-link" href="?page={{ i }}">{{ i }}</a> </li>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-            {% if reports.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{ reports.next_page_number }}">&nbsp&nbspNext&nbsp&nbsp</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{ reports.paginator.num_pages }}">Last&nbsp</a></li>
-            {% else %}
-            <li class="page-item disabled"><a class="page-link" href="#">&nbsp&nbspNext&nbsp&nbsp</a></li>
-            <li class="page-item disabled"><a class="page-link" href="">Last&nbsp</a></li>
-            {% endif %}
-        </ul>
+      {% include "snippets/paginator.html" %}
     </div>
     {% endif %}
-    </div>
+  </div>
 </div>
 {% endblock %}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="28px" viewBox="0 0 33 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>icone/eye</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17.09,20.89 C20.8786734,20.89 25.0368652,17.3798828 23.95,14.03 C22.9411621,10.3735352 20.1015625,12.3629939 19.543457,11.7470703 C19.9997559,9.28051758 19.0297096,7.96929744 17.09,7.17 C14.2717285,7.60327148 10.23,10.2413266 10.23,14.03 C10.23,17.8186734 13.3013266,20.89 17.09,20.89 Z M32.62,13.53 C29.25,7.3 23.34,3.53 16.8,3.53 C10.26,3.53 4.34,7.3 1,13.53 L0.72,14 L0.98,14.48 C4.35,20.71 10.26,24.48 16.8,24.48 C23.34,24.48 29.26,20.76 32.62,14.48 L32.88,14 L32.62,13.53 Z M16.8,22.43 C11.17,22.43 6,19.29 3,14 C6,8.71 11.17,5.57 16.8,5.57 C22.43,5.57 27.54,8.72 30.59,14 C27.54,19.29 22.42,22.43 16.8,22.43 Z" id="path-1"></path>
+    </defs>
+    <g id="icone/eye" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#684971" xlink:href="#path-1"></use>
+    </g>
+</svg>

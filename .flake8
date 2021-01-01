@@ -1,0 +1,3 @@
+[flake8]
+exclude = ./exodus/manage.py, ./exodus/*/migrations, ./exodus/*/settings
+ignore = E501

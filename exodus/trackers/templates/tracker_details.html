@@ -1,90 +1,78 @@
-{% extends "base.html" %}
-{% load markdown %} 
-
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load markdown %}
 {% block content %}
-    <div class="row justify-content-md-center">
-        <div class="col-lg-6 col-sm-12">
-        {% if tracker %}
-            <div class="alert bg-light">
-                <div class="alert-heading">
-                    <h1>{{tracker.name}}</h1>
-                </div>
-                <p>
-                    <a href="{{tracker.website}}"> Go to the tracker web page.</a>
-                </p>
-                <h3>Detection rules</h3>
-                <ul>
-                    {% if tracker.code_signature|length > 3 %}
-                        <li>Code detection rule: <code>{{tracker.code_signature}}</code></li>
-                    {% else %}
-                        <li>Code signature: <code>unknown</code></li>
-                    {% endif %}
-                    <li>Network detection rule: <code>{{tracker.network_signature}}</code></li>
-                </ul>
-            </div>
-            <div class="alert bg-light">
-                <div class="">
-                    {{tracker.description|markdown|safe}}
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-            <div class="alert alert-warning">
-              <div class="alert-heading">
-                <h4><span class="badge badge-info">{{ reports.count}}</span> Available report{{ reports.count|pluralize }} for this tracker</h4>
-              </div>
-              <table style="margin: auto; border:none" class="table table-hover">
-                {% for report in reports %}
-                <tr>
-                  <td>
-                    <a href="{% url 'reports:detail' report.id %}">
-                      <img  data-toggle="tooltip" title="{{ report.application.handle }}" src="/reports/{{report.application.id}}/icon" width="30px" class="figure-img img-fluid rounded" alt="{{app.handle}}">
-                      {% if report.application.name.strip %}
-                      <b>{{ report.application.name }}</b>
-                      {% else %}
-                      <b>{{ report.application.handle }}</b>
-                      {% endif %}
-                    </a>
-                  </td>
-                  <td>
-                    <span class="small"><b>{{ report.application.version }}</b></span>
-                  </td>
-                  <td>
-                    <span class="small"><b>{{ report.creation_date }}</b></span>
-                  </td>
-                </tr>
-                {% endfor %}
-            </table>
-            <div>
-                <ul class="pagination pagination-sm justify-content-center">
-                    {% if reports.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{ reports.previous_page_number }}">Previous</a></li>
-                    {% else %}
-                    <li class="page-item disabled"><a class="page-link" href="#">First</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                    {% endif %}
-                    {% for i in reports.paginator.page_range %}
-                    {% if i > reports.number|add:'-5' and i < reports.number|add:'5' %}
-                    {% if i == reports.number %}
-                    <li class="page-item active"> <a class="page-link" href="?page={{ i }}">{{ i }}</a> </li>
-                    {% else %}
-                    <li class="page-item"> <a class="page-link" href="?page={{ i }}">{{ i }}</a> </li>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                    {% if reports.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{ reports.next_page_number }}">&nbsp&nbspNext&nbsp&nbsp</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{ reports.paginator.num_pages }}">Last&nbsp</a></li>
-                    {% else %}
-                    <li class="page-item disabled"><a class="page-link" href="#">&nbsp&nbspNext&nbsp&nbsp</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="">Last&nbsp</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+<style>
+  h2 {
+    margin: 1.5rem 0 1rem 0;
+  }
+</style>
 
-            </div>
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 text-center mb-4">
+    <h1 class="main-title">
+      {{ tracker.name }}
+    </h1>
+    {% for c in tracker.category.all %}
+      <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 mb-4">
+    {% blocktrans trimmed count count=tracker.apps_number %}
+    Present in: <b>{{ count }} application</b>
+    {% plural %}
+    Present in: <b>{{ count }} applications</b>
+    {% endblocktrans %}
+    <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
+  </div>
+  <div class="col-md-8 col-12 mb-4 text-right">
+    <a class="link main-link" target="_blank" rel="noreferrer" href="{{ tracker.website }}">{% trans "Tracker web page" %}</a>
+  </div>
+</div>
+
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 mb-4">
+    {{ tracker.description | markdown | safe }}
+  </div>
+</div>
+
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 mb-5">
+    <h2>{% trans "Detection rules" %}</h2>
+    {% trans "Code detection rule:" %} <code>{{ tracker.code_signature | default:"NC" }}</code>
+    <br>
+    {% trans "Network detection rule:" %} <code>{{ tracker.network_signature | default:"NC" }}</code>
+  </div>
+</div>
+
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 mb-2">
+    <h2>{% trans "Latest reports with this tracker" %}</h2>
+  </div>
+</div>
+
+{% for report in reports %}
+{% with report.application as app %}
+<div class="row justify-content-sm-center position-relative mb-2">
+  <div class="col-md-1 col-2 my-auto">
+    <img src="/reports/{{ app.id }}/icon" width="50" class="rounded" alt="{{ app.handle }}">
+  </div>
+  <div class="col-md-7 col-8 text-truncate position-static">
+    <div>
+      <a href="{% url 'reports:detail' report.id %}" class="stretched-link report-link">
+        {% if app.name.strip %}
+        {{ app.name }}
+        {% else %}
+        {{ app.handle }}
         {% endif %}
-        </div>
+      </a>
     </div>
+    <div class="small"><b>{{ app.version }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
+  </div>
+</div>
+{% endwith %}
+{% endfor %}
 {% endblock %}

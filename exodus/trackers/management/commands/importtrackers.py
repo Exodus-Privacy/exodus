@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from trackers.models import Tracker
 import json
 
+
 class Command(BaseCommand):
     help = 'Import trackers from exodus'
 
@@ -13,8 +14,8 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        if (Tracker.objects.all()[:1].count() > 0):
-            raise CommandError('Your trakers table in not empty, please truncate its before the import')
+        if Tracker.objects.all()[:1].count() > 0:
+            raise CommandError('Your trackers table in not empty, please truncate its before the import')
 
         json_str = self.read_file(options['filename']).decode('utf-8')
         trackers = json.loads(json_str)

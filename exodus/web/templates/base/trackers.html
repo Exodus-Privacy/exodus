@@ -1,0 +1,73 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 text-center mb-4">
+    <h1 class="main-title">
+      {% trans "Trackers " %}
+    </h1>
+  </div>
+</div>
+
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 mb-4">
+    <p>
+      {% trans "This page is mostly a rework of <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, published under CC-BY-NC license." %}
+    </p>
+  </div>
+  <div class="col-md-8 col-12 mb-4">
+    <h4>{% trans "What is a tracker?" %}</h4>
+    <p>
+      <a target='_blank' rel='noreferrer' href='https://www.youtube.com/watch?v=sv_xF2KIJZE'>{% trans "See the video" %}</a>
+    <p>
+    <p>
+      {% trans "A tracker is a piece of software whose task is to gather information on the person using the application, on how they use it, or on the smartphone being used. A tracker is usually distributed by companies as a SDK (Software Development Kit), a sort of ready-made toolkit, aiming to make it easier for application developers. To be noted : 'open source' trackers exist, their code is available and open to everyone." %}
+    </p>
+  </div>
+  <div class="col-md-8 col-12 mb-4">
+    <h4>{% trans "Are all trackers created equal?" %}</h4>
+    <p>
+      <a target='_blank' rel='noreferrer' href='https://www.youtube.com/watch?v=yMj3pmnElVQ'>{% trans "See the video" %}</a>
+    <p>
+    <p>
+      {% trans "No, all trackers do not have the same function and they can present different levels of (privacy) intrusion." %}
+    </p>
+    <ul class="spaced-list">
+      <li>
+        {% trans "<b>Crash reporters:</b> these trackers specialize in reporting application crashes. In other terms, their goal is to notify application developers that an app encountered a problem. As such, information collected at the time the application crashed will allow the developer to correct the bug." %}
+      </li>
+      <li>
+        {% trans "<b>Analytics:</b> these trackers are meant to collect data usage and allow the developer to have better knowledge of their audience (for instance, to know what page you visited, or how long you remained on a given area of the page)." %}
+      </li>
+      <li>
+        {% trans "<b>Profiling:</b> these trackers' goal is to gather as much information as possible on the application user in order to build a virtual profile. To this effect, the tracker will for instance focus on the browsing history, or on the list of installed applications, and so on." %}
+      </li>
+      <li>
+        {% trans "<b>Identification:</b> these trackers are responsible for determining your digital identity. This identity may refer to an official identity or to abstract identifiers (pseudonym, etc.). The goal will be, for example, to be able to correlate an individual's online and offline activities." %}
+      </li>
+      <li>
+        {% trans "<b>Ads:</b> these trackers aim to identify the application user in order to serve them targeted ads. This is only possible and relevant if the user already already has a digital profile established. The goal of the creator of such a tracker is to monetize their application, i.e. to make money by means of advertisement." %}
+      </li>
+      <li>
+        {% trans "<b>Location:</b> these trackers are designed to determine the geographical location of the mobile device. In order to do so, this type of tracker takes advantage of several sensors: GPS chips, surrounding cellular antennae, wi-fi networks present in the area, nearby Bluetooth beacons, or even specific sounds transmitted by loudspeakers." %}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8 col-12 mb-4">
+    <h4>{% trans "Who puts these trackers in?" %}</h4>
+    <p>
+      <a target='_blank' rel='noreferrer' href='https://www.youtube.com/watch?v=BaKS064_t0I'>{% trans "See the video" %}</a>
+    <p>
+    <p>
+      {% trans "To answer these questions we must first understand how applications are made; there are 2 possible scenarios:" %}
+    </p>
+    <p>
+      {% trans "In the first case the organization that owns the product subcontracts the application development to a third party company. The contract specifies what the application needs to perform and what technologies are employed to do so. Sometimes the subcontractor already has an application template that they re-use for each new application. In such a case all applications that are developed will include these trackers whether or not they are specified in the programming contract." %}
+    </p>
+    <p>
+      {% trans "In the second case the organization that owns the product develops the application in-house. In that case, their own employees are in charge of deciding whether or not they want to include certain types of trackers." %}
+    </p>
+  </div>
+</div>
+{% endblock %}

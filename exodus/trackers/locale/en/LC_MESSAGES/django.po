@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-27 16:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr ""
+
+#: trackers/templates/stats_details.html:10
+msgid "Most frequent trackers"
+msgstr ""
+
+#: trackers/templates/stats_details.html:20
+#: trackers/templates/trackers_list.html:41
+#, python-format
+msgid "found in %(count)s application"
+msgid_plural "found in %(count)s applications"
+msgstr[0] ""
+msgstr[1] ""
+
+#: trackers/templates/tracker_details.html:21
+#, python-format
+msgid "Present in: <b>%(count)s application</b>"
+msgid_plural "Present in: <b>%(count)s applications</b>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: trackers/templates/tracker_details.html:29
+msgid "Tracker web page"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:41
+msgid "Detection rules"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:42
+msgid "Code detection rule:"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:44
+msgid "Network detection rule:"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:50
+msgid "Latest reports with this tracker"
+msgstr ""
+
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: trackers/templates/trackers_list.html:20
+msgid "Sorted by"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:24
+msgid "Alphabetical order"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:27
+msgid "Number of applications"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:52
+msgid "No trackers are available"
+msgstr ""
+
+#: trackers/views.py:22 trackers/views.py:33 trackers/views.py:49
+#: trackers/views.py:71
+msgid "Tracker does not exist"
+msgstr ""

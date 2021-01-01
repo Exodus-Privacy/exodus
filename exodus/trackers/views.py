@@ -1,39 +1,54 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.http.response import Http404
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import ListView
 
-from reports.models import *
+from reports.models import Application, Report
+from trackers.models import Tracker
 
 
 def index(request):
+    filter = request.GET.get('filter', None)
     try:
-        trackers = Tracker.objects.order_by('name')
+        if filter == 'apps':
+            trackers = Tracker.objects.order_by('-apps_number')
+        else:
+            trackers = Tracker.objects.order_by('name')
     except Tracker.DoesNotExist:
-        raise Http404("trackers does not exist")
-    return render(request, 'trackers_list.html', {'trackers': trackers})
+        raise Http404(_("Tracker does not exist"))
+    return render(request, 'trackers_list.html', {'trackers': trackers, 'filter': filter})
 
 
 def detail(request, tracker_id):
     try:
-        tracker = Tracker.objects.get(pk = tracker_id)
-        reports_list = Report.objects.order_by('-creation_date').filter(found_trackers = tracker_id)
+        tracker = Tracker.objects.get(pk=tracker_id)
+        # Add spaces aroung pipes for better rendering of signatures
+        tracker.network_signature = tracker.network_signature.replace("|", " | ")
+        tracker.code_signature = tracker.code_signature.replace("|", " | ")
     except Tracker.DoesNotExist:
-        raise Http404("tracker does not exist")
+        raise Http404(_("Tracker does not exist"))
 
-    paginator = Paginator(reports_list, settings.EX_PAGINATOR_COUNT)
-    page = request.GET.get('page')
+    reports = Report.objects.filter(found_trackers=tracker_id).order_by('-creation_date')[:settings.EX_PAGINATOR_COUNT]
 
-    try:
-        reports = paginator.page(page)
-    except PageNotAnInteger:
-        reports = paginator.page(1)
-    except EmptyPage:
-        reports = paginator.page(paginator.num_pages)
+    data_to_render = {
+        'tracker': tracker,
+        'reports': reports,
+    }
+    return render(request, 'tracker_details.html', data_to_render)
 
-    return render(request, 'tracker_details.html', {'tracker': tracker, 'reports': reports})
+
+def get_stats(request):
+    NB_OF_TRACKERS_TO_DISPLAY = 21
+
+    trackers = Tracker.objects.order_by('-apps_number', 'name')[0:NB_OF_TRACKERS_TO_DISPLAY]
+    if trackers.count() == 0:
+        raise Http404(_("Tracker does not exist"))
+
+    return render(request, 'stats_details.html', {'trackers': trackers})
 
 
 def graph(request):
@@ -53,5 +68,13 @@ def graph(request):
 
         g += "<br>}"
     except Tracker.DoesNotExist:
-        raise Http404("tracker does not exist")
+        raise Http404(_("Tracker does not exist"))
     return render(request, 'trackers_graph.html', {'g': g})
+
+
+class TrackersListView(ListView):
+    template_name = 'trackers_admin_list.html'
+    context_object_name = 'trackers'
+
+    def get_queryset(self):
+        return Tracker.objects.order_by('-apps_number')

@@ -1,10 +1,12 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 app_name = 'trackers'
 urlpatterns = [
-    url(r'^$', views.index, name = 'index'),
-    url(r'^graph$', views.graph, name = 'graph'),
-    url(r'^(?P<tracker_id>[0-9]+)/$', views.detail, name = 'detail'),
+    path('', views.index, name='index'),
+    path('<int:tracker_id>/', views.detail, name='detail'),
+    path('stats/', views.get_stats, name='get_stats'),
+    path('graph/', views.graph, name='graph'),
+    path('details/', views.TrackersListView.as_view(), name='all_details'),
 ]

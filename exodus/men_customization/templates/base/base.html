@@ -1,0 +1,93 @@
+{% load i18n %}
+<!doctype html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "men_customization/css/bootstrap.men.css" %}">
+    <link rel="stylesheet" href="{% static "css/exodus.css" %}">
+    <link rel="stylesheet" href="{% static "men_customization/css/men.css" %}">
+    <link rel="shortcut icon" href="{% static "men_customization/point-amal.png" %}">
+
+    <script src="{% static "js/jquery.min.js" %}" ></script>
+    <script src="{% static "js/popper.min.js" %}" ></script>
+    <script src="{% static "js/bootstrap.min.js" %}" ></script>
+    <script src="{% static "js/handlebars.min.js" %}" ></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMAL</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top mb-4" style="">
+      <div class="container">
+        <a class="navbar-brand" data-toggle="tooltip" href="{% url 'home' %}">
+          <img src="{% static "men_customization/banner.jpg" %}" height="40" class="d-inline-block align-top" alt="amal logo">
+          <span class="h2">AMAL</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          {% url 'home' as home %}
+          {% url 'reports:index' as reports_url %}
+          {% url 'trackers:index' as trackers_url %}
+          {% url 'understand' as understand %}
+          {% url 'organization' as organization %}
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2 {% if request.path == home %}active{% endif %}">
+              <a class="nav-link " href="{{ home }}">{% trans "Home" %}</a>
+            </li>
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2 {% if request.path == reports_url %}active{% endif %}">
+              <a class="nav-link " href="{{ reports_url }}">{% trans "Reports" %}</a>
+            </li>
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2 {% if request.path == trackers_url %}active{% endif %}">
+              <a class="nav-link " href="{{ trackers_url }}">{% trans "Trackers" %}</a>
+            </li>
+            <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2 {% if request.path == understand %}active{% endif %}">
+              <a class="nav-link " href="{{ understand }}">{% trans "Better understand" %}</a>
+            </li>
+            {% if request.user.is_superuser %}
+              <li class="nav-item mr-xl-3 ml-xl-3 mr-lg-2 ml-lg-2 dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% trans "Admin" %}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                  <a class="dropdown-item" href="{% url 'admin:index' %}">{% trans "Index" %}</a>
+                  <a class="dropdown-item" href="{% url 'analysis:index' %}">{% trans "Analyzes" %}</a>
+                  <a class="dropdown-item text-danger" href="{% url 'admin:logout' %}">{% trans "Log out" %}</a>
+                </div>
+              </li>
+            {% endif %}
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
+            <img class="mr-3 mr-lg-2 mr-xl-3" alt="language selector" src="{% static 'img/langue.svg' %}">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.get_full_path | slice:'3:' }}">
+            <select class="custom-select custom-select-sm" name="language" onchange='if(this.value !=  "{{ LANGUAGE_CODE }}") { this.form.submit(); }'>
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                  {{ language.code }}
+                </option>
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>

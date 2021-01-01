@@ -3,3 +3,16 @@
 /storage/
 venv/
 data/
+.idea
+.vscode
+
+# Files related to django-celery-beat
+exodus/django
+exodus/celerybeat-schedule
+celerybeat.pid
+scheduler.sh
+
+# Settings files
+exodus/exodus/settings/custom_dev.py
+exodus/exodus/settings/custom_docker.py
+exodus/exodus/settings/production.py

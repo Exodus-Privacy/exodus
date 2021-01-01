@@ -1,63 +1,81 @@
-{% extends "base.html"%}
+{% extends "base/base.html"%}
+{% load i18n %}
+{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block content %}
-<div class="row justify-content-md-center">
-    <div class="col-lg-4 col-centered">
-        <div class="jumbotron">
-            <div id="loading" class="text-center" style="">
-                <h2>εxodus is processing your request</h2>
-                <br>
-                <div id="description" class="alert alert-info" role="alert">
-                    {{ request.description }}
-                </div>
-                <a id="report" style="display:none" href="#" class="btn btn-lg btn-success">See the report</a>
-                <img id="snake" style="display:none" style="width:200px;" src="/static/img/loading.gif" alt="">
-                <div class="text-muted small">
-                    Will refresh automatically every 10 seconds.
-                </div>
-            </div>
-            <hr>
-            <div class="text-center alert alert-warning">
-                <p>
-                <a href="https://exodus-privacy.eu.org/" target="_blank">Exodus Privacy</a> is a non-profit
-                organization which provides this service for free.
-                </p>
-                <a class="btn btn-info" href="https://exodus-privacy.eu.org/#help" target="_blank">Help us!</a>
-            </div>
-        </div>
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 text-center mb-4">
+    <h1 id="main-title" class="main-title">
+      {% trans "Analysis in progress..." %}
+    </h1>
+  </div>
+</div>
+
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 col-centered mb-4">
+    <div id="loading" class="text-center" style="">
+      <div id="description" class="alert alert-info" role="alert">
+        {% trans request.description %}
+      </div>
+      <p id="completed" style="display:none" class="text-center mt-5">
+        <img src="{% static 'img/analysis_completed.png' %}" width="120">
+      </p>
+      <p id="report" style="display:none" class="mt-4">
+        <a href="#" class="btn btn-primary">{% trans "See the report" %}</a>
+      </p>
+      <img id="snake" style="display:none" style="width:200px;" src="/static/img/loading.gif" alt="">
+      <div id="refresh" class="text-muted small">
+        {% trans "Will refresh automatically every 10 seconds." %}
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="row justify-content-md-center mt-5">
+  <div class="col-lg-8 col-sm-10 col-centered">
+    <div class="text-center alert alert-light">
+      <p>
+        <a href="{% url 'organization' %}">Exodus Privacy</a>
+        {% trans "is a non-profit organization which provides this service for free." %}
+      </p>
+      <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+    </div>
+  </div>
 </div>
 {% endblock %}
 
 
 {% block scripts %}
 <script>
-const refresh = function(){
-      console.log("Refresh")
+  const refresh = function(){
+    console.log("Refresh")
 
-      jQuery.get("/analysis/{{request.id}}/json", function(rq){
-            jQuery("#description").removeClass("alert-danger alert-info")
-            jQuery("#description").html(rq.description)
-            if(rq.in_error){
-                jQuery("#description").addClass("alert-danger")
-            } else {
-                jQuery("#description").addClass("alert-info")
-            }
-            if(rq.processed){
-                jQuery("#snake").hide()
-                if(!rq.in_error){
-                    jQuery("#report").attr("href", "/reports/"+rq.report_id+"/")
-                    jQuery("#report").show()
-                }
-            } else {
-                jQuery("#snake").show()
-                jQuery("#report").hide()
-                setTimeout(function () {
-                    refresh()
-                }, 10 * 1000);
-            }
-      })
-}
-refresh()
-
+    jQuery.get("/analysis/{{request.id}}/json", function(rq){
+      jQuery("#description").removeClass("alert-danger alert-info")
+      jQuery("#description").html(rq.description)
+      if(rq.in_error){
+        jQuery("#description").addClass("alert-danger")
+      } else {
+        jQuery("#description").addClass("alert-info")
+      }
+      if(rq.processed){
+        jQuery("#snake").hide()
+        jQuery("#refresh").hide()
+        jQuery("#main-title").text("{% trans 'Analysis done!' %}")
+        jQuery("#completed").show()
+        if(!rq.in_error){
+          jQuery("#report").children(":first").attr("href", "/reports/"+rq.report_id+"/")
+          jQuery("#report").show()
+        }
+      } else {
+        jQuery("#snake").show()
+        jQuery("#report").hide()
+        setTimeout(function () {
+          refresh()
+        }, 10 * 1000);
+      }
+    })
+  }
+  refresh()
 </script>
 {% endblock %}

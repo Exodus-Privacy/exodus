@@ -1,0 +1,47 @@
+{% load i18n %}
+{% load url_replace %}
+<ul class="pagination pagination-sm justify-content-center">
+  {% if reports.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?{% url_replace request 'page' 1 %}">{% trans "First" %}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?{% url_replace request 'page' reports.previous_page_number %}">{% trans "Previous" %}</a>
+    </li>
+  {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#">{% trans "First" %}</a>
+    </li>
+    <li class="page-item disabled">
+      <a class="page-link" href="#">{% trans "Previous" %}</a>
+    </li>
+  {% endif %}
+  {% for i in reports.paginator.page_range %}
+    {% if i > reports.number|add:'-5' and i < reports.number|add:'5' %}
+      {% if i == reports.number %}
+        <li class="page-item active">
+          <a class="page-link" href="?{% url_replace request 'page' i %}">{{ i }}</a>
+        </li>
+      {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?{% url_replace request 'page' i %}">{{ i }}</a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% if reports.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?{% url_replace request 'page' reports.next_page_number %}">{% trans "Next" %}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?{% url_replace request 'page' reports.paginator.num_pages %}">{% trans "Last" %}</a>
+    </li>
+  {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#">{% trans "Next" %}</a>
+    </li>
+    <li class="page-item disabled">
+      <a class="page-link" href="#">{% trans "Last" %}</a>
+    </li>
+  {% endif %}
+</ul>

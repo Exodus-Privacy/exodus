@@ -1,0 +1,786 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-30 06:22+0000\n"
+"PO-Revision-Date: 2020-05-30 06:17\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek\n"
+"Language: el_GR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Language: el\n"
+"X-Crowdin-File: exodus.po\n"
+
+#: exodus/core/apk.py:52
+msgid "Your request is running"
+msgstr "Το αίτημα σας εκτελείται"
+
+#: exodus/core/apk.py:65
+msgid "Unable to download the APK"
+msgstr "Δεν είναι δυνατή η λήψη του APK"
+
+#: exodus/core/apk.py:69
+msgid "Download APK: success"
+msgstr "Λήψη APK: επιτυχία"
+
+#: exodus/core/apk.py:77
+msgid "Unable to decode the APK"
+msgstr "Δεν είναι δυνατή η αποκωδικοποίηση του APK"
+
+#: exodus/core/apk.py:81
+msgid "Decode APK: success"
+msgstr "Αποκωδικοποίηση APK: επιτυχία"
+
+#: exodus/core/apk.py:90
+msgid "Unable to compute the class list"
+msgstr "Δεν είναι δυνατός ο υπολογισμός της λίστας τάξεων"
+
+#: exodus/core/apk.py:94
+msgid "List embedded classes: success"
+msgstr "Λίστα ενσωματωμένων τάξεων: επιτυχία"
+
+#: exodus/core/apk.py:107
+msgid "Unable to create the analysis report"
+msgstr "Δεν είναι δυνατή η δημιουργία της αναφοράς ανάλυσης"
+
+#: exodus/core/apk.py:120
+msgid "A report already exists for this application version"
+msgstr "Υπάρχει ήδη μια αναφορά για αυτήν την έκδοση εφαρμογής"
+
+#: exodus/core/apk.py:131
+msgid "Unable to get certificates"
+msgstr "Δεν είναι δυνατή η λήψη πιστοποιητικών"
+
+#: exodus/core/apk.py:148
+msgid "Unable to compute APK fingerprint"
+msgstr "Δεν είναι δυνατός ο υπολογισμός του δακτυλικού αποτυπώματος APK"
+
+#: exodus/core/apk.py:157
+msgid "Unable to get application details from Google Play"
+msgstr "Δεν είναι δυνατή η λήψη λεπτομερειών εφαρμογής από το Google Play"
+
+#: exodus/core/apk.py:161
+msgid "Get application details: success"
+msgstr "Λήψη λεπτομερειών εφαρμογής: επιτυχία"
+
+#: exodus/core/apk.py:166
+msgid "Tracker analysis: success"
+msgstr "Ανάλυση tracker: επιτυχία"
+
+#: exodus/core/apk.py:219
+msgid "Static analysis complete"
+msgstr "Η στατική ανάλυση ολοκληρώθηκε"
+
+#: men_customization/templates/base/base.html:38
+#: web/templates/base/base.html:40
+msgid "Home"
+msgstr "Αρχική"
+
+#: men_customization/templates/base/base.html:41
+#: web/templates/base/base.html:43
+msgid "Reports"
+msgstr "Αναφορές"
+
+#: men_customization/templates/base/base.html:44
+#: web/templates/base/base.html:46 web/templates/base/base.html:63
+msgid "Trackers"
+msgstr "Trackers"
+
+#: men_customization/templates/base/base.html:47
+#: men_customization/templates/base/home.html:29
+#: web/templates/base/base.html:49 web/templates/base/home.html:28
+#: web/templates/base/understand.html:8
+msgid "Better understand"
+msgstr "Καλύτερη Κατανόηση"
+
+#: men_customization/templates/base/base.html:52
+#: web/templates/base/base.html:58
+msgid "Admin"
+msgstr "Διαχειριστής"
+
+#: men_customization/templates/base/base.html:55
+#: web/templates/base/base.html:61
+msgid "Index"
+msgstr "Ευρετήριο"
+
+#: men_customization/templates/base/base.html:56
+#: web/templates/base/base.html:62
+msgid "Analyzes"
+msgstr "Αναλύσεις"
+
+#: men_customization/templates/base/base.html:57
+#: web/templates/base/base.html:64
+msgid "Log out"
+msgstr "Αποσύνδεση"
+
+#: men_customization/templates/base/home.html:19
+#: web/templates/base/home.html:18
+msgid ""
+"εxodus analyzes Android applications in order to <b>list the embedded "
+"trackers.</b>"
+msgstr ""
+"Το εxodus αναλύει εφαρμογές Android για να <b>απαριθμήσει τα ενσωματωμένα "
+"trackers.</b>"
+
+#: men_customization/templates/base/home.html:21
+#: web/templates/base/home.html:20
+msgid ""
+"A tracker is a piece of software <b>meant to collect data about you or your "
+"usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr ""
+"Ένα tracker, είναι ένα κομμάτι λογισμικού <b>προορίζονται για τη συλλογή "
+"δεδομένων σχετικά με εσάς ή τις χρήσεις που κάνετε.</b> Έτσι, οι αναφορές "
+"εxodus σας λένε ποια είναι τα συστατικά του κέικ."
+
+#: men_customization/templates/base/home.html:23
+#: web/templates/base/home.html:22
+msgid "εxodus does not decompile applications, its analysis method is legal."
+msgstr ""
+"Το εxodus δεν κάνει decompile τις εφαρμογές, η μέθοδος της ανάλυσης είναι "
+"νόμιμη."
+
+#: men_customization/templates/base/home.html:30
+#: web/templates/base/home.html:29
+msgid ""
+"What is a tracker? And a permission? Are there any alternatives to protect "
+"yourself?"
+msgstr ""
+"Τι είναι το tracker; Και η άδεια; Υπάρχουν εναλλακτικές λύσεις για να "
+"προστατευτείτε;"
+
+#: men_customization/templates/base/home.html:38
+#: web/templates/base/home.html:37
+#: web/templates/snippets/reports_search.html:27
+msgid "Let's go!"
+msgstr "Πάμε!"
+
+#: web/templates/base/base.html:52 web/templates/base/organization.html:8
+msgid "The organization"
+msgstr "Ο οργανισμός"
+
+#: web/templates/base/home.html:10
+msgid "The privacy audit platform for Android applications"
+msgstr "Η πλατφόρμα ελέγχου απορρήτου για εφαρμογές Android"
+
+#: web/templates/base/next.html:8 web/templates/base/understand.html:53
+msgid "What's next?"
+msgstr "Τι θα ακολουθήσει;"
+
+#: web/templates/base/next.html:16
+msgid ""
+"We know it is not easy to find alternatives in order to escape trackers "
+"within our apps. We prepared a list of tools and things you can do to better "
+"manage your privacy on your smartphone."
+msgstr ""
+"Γνωρίζουμε ότι δεν είναι εύκολο να βρούμε εναλλακτικές λύσεις για να "
+"ξεφύγουμε από τα tracker στις εφαρμογές μας. Ετοιμάσαμε μια λίστα εργαλείων "
+"και πραγμάτων που μπορείτε να κάνετε για να διαχειριστείτε καλύτερα το "
+"απόρρητό στο smartphone σας."
+
+#: web/templates/base/next.html:20
+msgid "Consider how you use applications"
+msgstr "Σκεφτείτε πώς χρησιμοποιείτε εφαρμογές"
+
+#: web/templates/base/next.html:22
+msgid ""
+"When you wish to install an application or when an application asks for "
+"personal information, ask yourself the following questions:"
+msgstr ""
+"Όταν επιθυμείτε να εγκαταστήσετε μια εφαρμογή ή όταν μια εφαρμογή ζητά "
+"προσωπικά στοιχεία, ρωτήστε τον εαυτό σας τις ακόλουθες ερωτήσεις:"
+
+#: web/templates/base/next.html:25
+msgid "how many trackers does it contain and what permissions does it ask for?"
+msgstr "πόσα trackers περιέχει και τι δικαιώματα ζητάει;"
+
+#: web/templates/base/next.html:26
+msgid "do I want or need to install it?"
+msgstr "θέλω ή πρέπει να το εγκαταστήσω;"
+
+#: web/templates/base/next.html:27
+msgid "do I want or need to give it what it asks me?"
+msgstr "θέλω ή πρέπει να του δώσω αυτά που ζητάει;"
+
+#: web/templates/base/next.html:30
+msgid ""
+"It is up to you to decide but by taking into consideration your daily use, "
+"you can have a better control over your digital identity."
+msgstr ""
+"Εσείς πρέπει να αποφασίσετε, αλλά λαμβάνοντας υπόψη την καθημερινή σας "
+"χρήση, μπορείτε να έχετε καλύτερο έλεγχο της ψηφιακής σας ταυτότητας."
+
+#: web/templates/base/next.html:33
+msgid ""
+"You could also contact the people who offer you the application if you "
+"consider it to be too intrusive and ask them some explanations on the "
+"presence of trackers and permission requests."
+msgstr ""
+"Θα μπορούσατε επίσης να επικοινωνήσετε με τα άτομα που σας προσφέρουν την "
+"εφαρμογή, εάν το θεωρείτε υπερβολικά ενοχλητικό και να τους ζητήσετε κάποιες "
+"εξηγήσεις σχετικά με την παρουσία trackers και αιτημάτων άδειας."
+
+#: web/templates/base/next.html:37
+msgid "Favour free software"
+msgstr "Προτιμήστε το δωρεάν λογισμικό"
+
+#: web/templates/base/next.html:39
+msgid ""
+"What is called 'free' software is software whose code (i.e. its recipe, or "
+"list of instructions) can be changed, copied, verified... and is thus "
+"transparent. A free software application might exist to replace an app that "
+"you already use but that may not respect your privacy."
+msgstr ""
+"Αυτό που ονομάζεται «ελεύθερο» λογισμικό είναι λογισμικό του οποίου ο "
+"κώδικας (δηλ. Η συνταγή του ή ο κατάλογος οδηγιών) μπορεί να αλλάξει, να "
+"αντιγραφεί, να επαληθευτεί ... και επομένως να έχει διαφάνεια. Ενδέχεται να "
+"υπάρχει εφαρμογή δωρεάν λογισμικού για την αντικατάσταση μιας εφαρμογής που "
+"χρησιμοποιείτε ήδη, αλλά μπορεί να μην σέβεται το απόρρητo σας."
+
+#: web/templates/base/next.html:47
+msgid ""
+"If you are an Android user, you can install <a target='_blank' "
+"rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free "
+"software store that can be used instead or in addition to the Google Play "
+"store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' "
+"href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be "
+"aware, however, that some F-Droid applications are not available in all "
+"languages."
+msgstr ""
+"Εάν είστε χρήστης Android, μπορείτε να εγκαταστήσετε το <a target='_blank' "
+"rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. Είναι ένα "
+"κατάστημα δωρεάν λογισμικού που μπορεί να χρησιμοποιηθεί αντ 'αυτού ή "
+"επιπλέον του Google Play store. Μην διστάσετε να ανατρέξετε στο <a "
+"target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid "
+"documentation</a> αν χρειαστεί. Λάβετε υπόψη, ωστόσο, ότι ορισμένες "
+"εφαρμογές F-Droid δεν είναι διαθέσιμες σε όλες τις γλώσσες."
+
+#: web/templates/base/next.html:51
+msgid "Use the mobile website instead of the application"
+msgstr "Χρησιμοποιήστε τον ιστότοπο για κινητά αντί για την εφαρμογή"
+
+#: web/templates/base/next.html:53
+msgid ""
+"On a mobile device you don't necessary have to use applications: you can use "
+"mobile websites instead. One advantage in favour of the latter is the "
+"possibility to use  web browser add-ons, in the same way you can do it on "
+"your computer (e.g. uBlock Origin)."
+msgstr ""
+"Σε μια κινητή συσκευή δεν χρειάζεται να χρησιμοποιείτε εφαρμογές: μπορείτε "
+"να χρησιμοποιείτε τις ιστοσελίδες για κινητά. Ένα πλεονέκτημα υπέρ αυτού "
+"είναι η δυνατότητα χρήσης πρόσθετων στο προγράμμα περιήγησης ιστού, με τον "
+"ίδιο τρόπο που μπορείτε να το κάνετε στον υπολογιστή σας (π.χ. uBlock "
+"Origin)."
+
+#: web/templates/base/next.html:64
+msgid ""
+"If you want a browser experience that is more respectful of your privacy, "
+"you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo "
+"Privacy Browser."
+msgstr ""
+"Εάν θέλετε μια εμπειρία Browser που να σέβεται περισσότερο το απόρρητο σας, "
+"μπορείτε να χρησιμοποιήσετε εναλλακτικά προγράμματα περιήγησης, όπως το "
+"Mozilla Firefox ή τον απόρρητο Browser DuckDuckGo."
+
+#: web/templates/base/next.html:67
+msgid ""
+"These browsers allow you to add your favorite websites on your home screen "
+"easily, just as an app (but lighter)."
+msgstr ""
+"Αυτά τα προγράμματα περιήγησης σας επιτρέπουν να προσθέσετε τις αγαπημένες "
+"σας ιστοσελίδες, στην αρχική οθόνη, εύκολα, όπως μια εφαρμογή (αλλά "
+"ελαφρύτερο)."
+
+#: web/templates/base/next.html:71
+msgid "Install an ad blocker"
+msgstr "Εγκαταστήστε ένα ad blocker"
+
+#: web/templates/base/next.html:78
+msgid ""
+"In all cases, Android smartphones allow you to install ad-blocking "
+"applications such as <a target='_blank' rel='noreferrer' href='https://"
+"blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or "
+"from their own website."
+msgstr ""
+"Σε όλες τις περιπτώσεις, τα Android smartphone, σας επιτρέπουν να "
+"εγκαταστήσετε εφαρμογές αποκλεισμού διαφημίσεων όπως το <a target='_blank' "
+"rel='noreferrer' href='https://blokada.org/'>Blokada</a>. Μπορείτε να το "
+"εγκαταστήσετε από το F-Droid (δείτε παραπάνω) ή απο την ιστοσελίδα τους."
+
+#: web/templates/base/next.html:82
+msgid "Discover alternatives"
+msgstr "Ανακαλύψτε εναλλακτικές λύσεις"
+
+#: web/templates/base/next.html:84
+msgid "For broader recommendations, here are some resources you can dig in:"
+msgstr ""
+"Για ευρύτερες προτάσεις, ακολουθούν ορισμένες πηγές που μπορείτε να ψάξετε:"
+
+#: web/templates/base/next.html:85
+msgid ""
+"\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://prism-break."
+"org/en/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff."
+"org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www."
+"privacytools.io/'>privacytools.io</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr ""
+"\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://prism-break."
+"org/en/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff."
+"org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www."
+"privacytools.io/'>privacytools.io</a></li>\n"
+"      </ul>\n"
+"      "
+
+#: web/templates/base/next.html:95
+msgid "Remain curious!"
+msgstr "Παραμείνετε περίεργοι!"
+
+#: web/templates/base/next.html:97
+msgid ""
+"In this area, what is true today may not necessarily be true tomorrow: tools "
+"might come and go, application policies can change, security breaches can be "
+"discovered..."
+msgstr ""
+"Σε αυτόν τον τομέα, αυτό που ισχύει σήμερα μπορεί να μην ισχύει απαραίτητα "
+"και αύριο: εργαλεία μπορεί να έρθουν και να φύγουν, οι πολιτικές εφαρμογών "
+"μπορούν να αλλάξουν, να εντοπιστούν παραβιάσεις ασφάλειας..."
+
+#: web/templates/base/next.html:100
+msgid ""
+"To this effect, you can attend workshops held by associations such as <a "
+"target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/"
+"CryptoParty'>cryptoparties</a> or other organizations like public libraries."
+msgstr ""
+"Για το σκοπό αυτό, μπορείτε να παρακολουθήσετε workshops που διοργανώνονται "
+"από ενώσεις όπως <a target='_blank' rel='noreferrer' href='https://en."
+"wikipedia.org/wiki/CryptoParty'>cryptoparties</a> ή άλλους οργανισμούς όπως "
+"οι δημόσιες βιβλιοθήκες."
+
+#: web/templates/base/next.html:103
+msgid ""
+"To stay up to date on these topics, you can find useful resources there:"
+msgstr ""
+"Για να παραμείνετε ενημερωμένοι σχετικά με αυτά τα θέματα, μπορείτε να "
+"βρείτε χρήσιμες πηγές εκεί:"
+
+#: web/templates/base/next.html:104
+msgid ""
+"\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/"
+"deeplinks'>EFF blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing."
+"net/'>The 'Boing Boing' blog</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr ""
+"\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/"
+"deeplinks'>EFF blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing."
+"net/'>The 'Boing Boing' blog</a></li>\n"
+"      </ul>\n"
+"      "
+
+#: web/templates/base/next.html:113
+msgid "For advanced users"
+msgstr "Για προχωρημένους χρήστες"
+
+#: web/templates/base/next.html:115
+msgid ""
+"If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://"
+"lineageos.org/'>Lineage OS</a> is an operating system based on Android; it "
+"can be used without Google services. It is possible to install it on your "
+"smartphone, provided your device is compatible."
+msgstr ""
+"Αν σας αρέσει, το <a target='_blank' rel='noreferrer' href='https://"
+"lineageos.org/'>Lineage OS</a>είναι ένα λειτουργικό σύστημα που βασίζεται "
+"στο Android. Μπορεί να χρησιμοποιηθεί χωρίς υπηρεσίες Google. Μπορείτε να το "
+"εγκαταστήσετε στο smartphone σας, υπό την προϋπόθεση ότι η συσκευή σας είναι "
+"συμβατή."
+
+#: web/templates/base/organization.html:19
+msgid ""
+"Exodus Privacy is a non-profit organization led by hacktivists. Its purpose "
+"is to help people get a better understanding of the Android applications "
+"tracking issues."
+msgstr ""
+"Το Exodus Privacy είναι ένας μη κερδοσκοπικός οργανισμός με επικεφαλής τους "
+"hacktivists. Σκοπός του είναι να βοηθήσει τους ανθρώπους να κατανοήσουν "
+"καλύτερα τα ζητήματα παρακολούθησης των εφαρμογών Android."
+
+#: web/templates/base/organization.html:22
+msgid "Discover Exodus Privacy"
+msgstr "Ανακαλύψτε το Exodus Privacy"
+
+#: web/templates/base/organization.html:26
+msgid "Help us!"
+msgstr "Βοηθήστε μας!"
+
+#: web/templates/base/organization.html:28
+msgid ""
+"Exodus Privacy is an organization managed by volunteers. Whether you would "
+"like to draw, translate, code or create any kind of content, feel free: we "
+"welcome any help."
+msgstr ""
+"Το Exodus Privacy είναι ένας οργανισμός που διαχειρίζεται απο εθελοντές. "
+"Είτε θέλετε να σχεδιάσετε, να μεταφράσετε, να γράψετε κώδικα ή να "
+"δημιουργήσετε οποιοδήποτε είδος περιεχομένου, μη διστάσετε: είμαστε "
+"ευπρόσδεκτοι για οποιαδήποτε βοήθεια."
+
+#: web/templates/base/organization.html:31
+msgid "How to contribute?"
+msgstr "Πώς να συνεισφέρετε;"
+
+#: web/templates/base/organization.html:35
+msgid "Contact us"
+msgstr "Επικοινωνήστε μαζί μας"
+
+#: web/templates/base/organization.html:42
+msgid "Contact us!"
+msgstr "Επικοινωνήστε μαζί μας!"
+
+#: web/templates/base/organization.html:47
+#: web/templates/base/organization.html:54
+#: web/templates/base/organization.html:59
+msgid "Follow us!"
+msgstr "Aκολουθήστε μας!"
+
+#: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
+msgid "Permissions"
+msgstr "Δικαιώματα"
+
+#: web/templates/base/permissions.html:16
+msgid "Permissions are access rights an app asks to access on your phone."
+msgstr ""
+"Τα δικαιώματα είναι άδειες πρόσβασης που ζητά μια εφαρμογή για πρόσβαση στο "
+"τηλέφωνο σας."
+
+#: web/templates/base/permissions.html:20
+msgid "What type of permissions?"
+msgstr "Τι είδους δικαιώματα;"
+
+#: web/templates/base/permissions.html:22
+msgid ""
+"They can concern various features or pieces of information, such as access "
+"to your geolocation, your contacts, your files, your microphone, vibrate "
+"function, camera and so on. Exodus Privacy analyses allow you to know, on a  "
+"per app basis, which permissions are asked."
+msgstr ""
+"Μπορεί να αφορά διάφορες λειτουργίες ή πληροφορίες, όπως πρόσβαση στη "
+"τοποθεσία σας, τις επαφές σας, τα αρχεία σας, το μικρόφωνο σας, τη "
+"λειτουργία δόνησης, την κάμερα και ούτω καθεξής. Οι αναλύσεις Exodus Privacy "
+"σας επιτρέπουν να γνωρίζετε, ανά εφαρμογή, ποια δικαιώματα απαιτούνται."
+
+#: web/templates/base/permissions.html:26
+msgid "Why are some permissions indicated as dangerous?"
+msgstr "Γιατί ορισμένα δικαιώματα αναφέρονται ως επικίνδυνα;"
+
+#: web/templates/base/permissions.html:28
+msgid ""
+"Google defines <a target='_blank' rel='noreferrer' href='https://developer."
+"android.com/guide/topics/permissions/overview'>danger levels for "
+"permissions</a>, which we report in our analyses."
+msgstr ""
+"Το Google ορίζει <a target='_blank' rel='noreferrer' href='https://developer."
+"android.com/guide/topics/permissions/overview'>επίπεδα κινδύνου για τα "
+"δικαιώματα</a>, που αναφέρουμε στις αναλύσεις μας."
+
+#: web/templates/base/permissions.html:32
+msgid "Do I have control over these permissions?"
+msgstr "Έχω έλεγχο επί αυτών των αδειών;"
+
+#: web/templates/base/permissions.html:34
+msgid ""
+"Depending on your smartphone and operating system, it is possible to "
+"restrain some of these permissions by going into your phone's settings."
+msgstr ""
+"Ανάλογα με το smartphone και το λειτουργικό σας σύστημα, μπορείτε να "
+"περιορίσετε ορισμένα από αυτά τα δικαιώματα μεταβαίνοντας στις ρυθμίσεις του "
+"τηλεφώνου σας."
+
+#: web/templates/base/trackers.html:8 web/templates/base/understand.html:19
+msgid "Trackers "
+msgstr "Trackers "
+
+#: web/templates/base/trackers.html:16
+msgid ""
+"This page is mostly a rework of <a target='_blank' rel='noreferrer' "
+"href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, "
+"published under CC-BY-NC license."
+msgstr ""
+"Αυτή η σελίδα είναι ως επί το πλείστον επανεξέταση του <a target='_blank' "
+"rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>αυτό το "
+"άρθρο</a>, δημοσιεύεται με άδεια CC-BY-NC."
+
+#: web/templates/base/trackers.html:20
+msgid "What is a tracker?"
+msgstr "Τι είναι το tracker;"
+
+#: web/templates/base/trackers.html:22 web/templates/base/trackers.html:31
+#: web/templates/base/trackers.html:60
+msgid "See the video"
+msgstr "Δείτε το βίντεο"
+
+#: web/templates/base/trackers.html:25
+msgid ""
+"A tracker is a piece of software whose task is to gather information on the "
+"person using the application, on how they use it, or on the smartphone being "
+"used. A tracker is usually distributed by companies as a SDK (Software "
+"Development Kit), a sort of ready-made toolkit, aiming to make it easier for "
+"application developers. To be noted : 'open source' trackers exist, their "
+"code is available and open to everyone."
+msgstr ""
+"Το Tracker, είναι ένα κομμάτι λογισμικού, του οποίου η αποστολή είναι να "
+"συλλέγει πληροφορίες σχετικά με το άτομο που χρησιμοποιεί την εφαρμογή, τον "
+"τρόπο με τον οποίο τη χρησιμοποιεί ή για το smartphone που χρησιμοποιείται. "
+"Ένα tracker διανέμεται συνήθως από εταιρείες ως SDK (Software Development "
+"Kit), ένα είδος έτοιμου κιτ εργαλείων, με στόχο να διευκολύνει τους "
+"προγραμματιστές των εφαρμογών. Πρέπει να σημειωθεί: υπάρχουν trackers "
+"«ανοιχτού κώδικα», ο κώδικας τους είναι διαθέσιμος και ανοιχτός σε όλους."
+
+#: web/templates/base/trackers.html:29
+msgid "Are all trackers created equal?"
+msgstr "Είναι όλοι οι ιχνηλάτες που δημιουργούνται ίσοι;"
+
+#: web/templates/base/trackers.html:34
+msgid ""
+"No, all trackers do not have the same function and they can present "
+"different levels of (privacy) intrusion."
+msgstr ""
+"Όχι, όλοι οι ιχνηλάτες δεν έχουν την ίδια λειτουργία και μπορούν να "
+"παρουσιάσουν διαφορετικά επίπεδα εισβολής ιδιωτικότητας."
+
+#: web/templates/base/trackers.html:38
+msgid ""
+"<b>Crash reporters:</b> these trackers specialize in reporting application "
+"crashes. In other terms, their goal is to notify application developers that "
+"an app encountered a problem. As such, information collected at the time the "
+"application crashed will allow the developer to correct the bug."
+msgstr ""
+"<b>Αναφορές Σφαλμάτων:</b>αυτοί οι trackers ειδικεύονται στην αναφορά "
+"σφαλμάτων εφαρμογής. Με άλλα λόγια, στόχος τους είναι να ενημερώσουν τους "
+"προγραμματιστές ότι μια εφαρμογή αντιμετώπισε πρόβλημα. Ως εκ τούτου, οι "
+"πληροφορίες που συλλέγονται κατά τον χρόνο διακοπής της εφαρμογής, θα "
+"επιτρέψουν στον προγραμματιστή να διορθώσει το σφάλμα."
+
+#: web/templates/base/trackers.html:41
+msgid ""
+"<b>Analytics:</b> these trackers are meant to collect data usage and allow "
+"the developer to have better knowledge of their audience (for instance, to "
+"know what page you visited, or how long you remained on a given area of the "
+"page)."
+msgstr ""
+"<b>Analytics:</b> Αυτά τα trackers προορίζονται για συλλογή χρήσης δεδομένων "
+"και να επιτρέψουν στον προγραμματιστή ώστε να έχει καλύτερη γνώση του κοινού "
+"του (για παράδειγμα, να γνωρίζει ποια σελίδα επισκεφτήκατε ή πόση ώρα "
+"παρέμεινε σε μια συγκεκριμένη περιοχή της σελίδας)."
+
+#: web/templates/base/trackers.html:44
+msgid ""
+"<b>Profiling:</b> these trackers' goal is to gather as much information as "
+"possible on the application user in order to build a virtual profile. To "
+"this effect, the tracker will for instance focus on the browsing history, or "
+"on the list of installed applications, and so on."
+msgstr ""
+"<b>Profiling:</b> Ο στόχος αυτών των trackers είναι να συγκεντρώσει όσο το "
+"δυνατόν περισσότερες πληροφορίες απο τον χρήστη της εφαρμογής, προκειμένου "
+"να δημιουργήσει ένα εικονικό προφίλ. Για το σκοπό αυτό, το tracker για "
+"παράδειγμα, θα επικεντρωθεί στο ιστορικό περιήγησης ή στη λίστα των "
+"εγκατεστημένων εφαρμογών και ούτω καθεξής."
+
+#: web/templates/base/trackers.html:47
+msgid ""
+"<b>Identification:</b> these trackers are responsible for determining your "
+"digital identity. This identity may refer to an official identity or to "
+"abstract identifiers (pseudonym, etc.). The goal will be, for example, to be "
+"able to correlate an individual's online and offline activities."
+msgstr ""
+"<b>Ταυτοποίηση:</b> αυτά τα trackers είναι υπεύθυνα για τον προσδιορισμό της "
+"ψηφιακής σας ταυτότητας. Αυτή η ταυτότητα μπορεί να αναφέρεται σε μια "
+"επίσημη ταυτότητα ή σε αφηρημένα αναγνωριστικά (ψευδώνυμο κ.λπ.). Ο στόχος "
+"θα είναι, για παράδειγμα, να συσχετίσει τις δραστηριότητες ενός ατόμου τόσο "
+"στο διαδίκτυο όσο και εκτός διαδικτύου."
+
+#: web/templates/base/trackers.html:50
+msgid ""
+"<b>Ads:</b> these trackers aim to identify the application user in order to "
+"serve them targeted ads. This is only possible and relevant if the user "
+"already already has a digital profile established. The goal of the creator "
+"of such a tracker is to monetize their application, i.e. to make money by "
+"means of advertisement."
+msgstr ""
+"<b>Διαφημίσεις:</b> Αυτά τα trackers στοχεύουν να ταυτοποιηθεί ο χρήστης της "
+"εφαρμογής, ώστε να του προβάλλει στοχευμένες διαφημίσεις. Αυτό είναι δυνατό "
+"μόνο εάν ο χρήστης διαθέτει ήδη ψηφιακό προφίλ. Ο στόχος του δημιουργού ενός "
+"τέτοιου tracker είναι να δημιουργήσει έσοδα από την εφαρμογή του, δηλαδή να "
+"κερδίσει χρήματα μέσω της διαφήμισης."
+
+#: web/templates/base/trackers.html:53
+msgid ""
+"<b>Location:</b> these trackers are designed to determine the geographical "
+"location of the mobile device. In order to do so, this type of tracker takes "
+"advantage of several sensors: GPS chips, surrounding cellular antennae, wi-"
+"fi networks present in the area, nearby Bluetooth beacons, or even specific "
+"sounds transmitted by loudspeakers."
+msgstr ""
+"<b>Τοποθεσία:</b> Αυτοί οι ιχνηλάτες έχουν σχεδιαστεί για να προσδιορίζουν "
+"τη γεωγραφική θέση του κινητού σας. Για να το κάνει αυτό, αυτός ο τύπος "
+"tracker εκμεταλλεύεται πολλούς αισθητήρες: τσιπάκι GPS, περιβάλλοντες "
+"κυψέλλες και κεραίες, δίκτυα Wi-Fi που υπάρχουν στην περιοχή, κοντινά σήματα "
+"Bluetooth ή ακόμη και συγκεκριμένους ήχους που μεταδίδονται από ηχεία."
+
+#: web/templates/base/trackers.html:58
+msgid "Who puts these trackers in?"
+msgstr "Ποιος βάζει αυτούς τους ιχνηλάτες;"
+
+#: web/templates/base/trackers.html:63
+msgid ""
+"To answer these questions we must first understand how applications are "
+"made; there are 2 possible scenarios:"
+msgstr ""
+"Για να απαντήσουμε σε αυτές τις ερωτήσεις πρέπει πρώτα να κατανοήσουμε τον "
+"τρόπο υποβολής των αιτήσεων. υπάρχουν 2 πιθανά σενάρια:"
+
+#: web/templates/base/trackers.html:66
+msgid ""
+"In the first case the organization that owns the product subcontracts the "
+"application development to a third party company. The contract specifies "
+"what the application needs to perform and what technologies are employed to "
+"do so. Sometimes the subcontractor already has an application template that "
+"they re-use for each new application. In such a case all applications that "
+"are developed will include these trackers whether or not they are specified "
+"in the programming contract."
+msgstr ""
+"Στην πρώτη περίπτωση, ο οργανισμός που κατέχει το προϊόν αναθέτει "
+"υπεργολαβικά την ανάπτυξη εφαρμογών σε τρίτη εταιρεία. Η σύμβαση καθορίζει "
+"τι πρέπει να εκτελέσει η εφαρμογή και ποιες τεχνολογίες χρησιμοποιούνται για "
+"να το κάνουν. Μερικές φορές ο υπεργολάβος έχει ήδη ένα πρότυπο εφαρμογής το "
+"οποίο επαναχρησιμοποιεί για κάθε νέα εφαρμογή. Σε μια τέτοια περίπτωση όλες "
+"οι εφαρμογές που έχουν αναπτυχθεί θα περιλαμβάνουν αυτά τα tracker, "
+"ανεξάρτητα από το αν καθορίζονται ή όχι στη σύμβαση προγραμματισμού."
+
+#: web/templates/base/trackers.html:69
+msgid ""
+"In the second case the organization that owns the product develops the "
+"application in-house. In that case, their own employees are in charge of "
+"deciding whether or not they want to include certain types of trackers."
+msgstr ""
+"Στη δεύτερη περίπτωση, ο οργανισμός που κατέχει το προϊόν αναπτύσσει την "
+"εφαρμογή εσωτερικά. Σε αυτήν την περίπτωση, οι δικοί τους υπάλληλοι είναι "
+"υπεύθυνοι για να αποφασίσουν εάν θέλουν να συμπεριλάβουν συγκεκριμένους "
+"τύπους trackers."
+
+#: web/templates/base/understand.html:21
+msgid "Know more about trackers and their impact on privacy"
+msgstr "Μάθετε περισσότερα για τα trackers και το αντίκτυπο τους στο απόρρητο"
+
+#: web/templates/base/understand.html:25 web/templates/base/understand.html:39
+#: web/templates/base/understand.html:59
+msgid "Read the article"
+msgstr "Διαβάστε το άρθρο"
+
+#: web/templates/base/understand.html:35
+msgid "What is permission and what are the privacy issues?"
+msgstr "Τι είναι η άδεια / δικαιώματα και ποια είναι τα ζητήματα απορρήτου;"
+
+#: web/templates/base/understand.html:55
+msgid ""
+"A list of tools and things you can do to better manage your privacy on your "
+"smartphone"
+msgstr ""
+"Μια λίστα με εργαλεία και πράγματα που μπορείτε να κάνετε για να "
+"διαχειριστείτε καλύτερα το απόρρητό στο smartphone σας"
+
+#: web/templates/snippets/paginator.html:6
+#: web/templates/snippets/paginator.html:13
+msgid "First"
+msgstr "Πρώτη"
+
+#: web/templates/snippets/paginator.html:9
+#: web/templates/snippets/paginator.html:16
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: web/templates/snippets/paginator.html:34
+#: web/templates/snippets/paginator.html:41
+msgid "Next"
+msgstr "Επόμενο"
+
+#: web/templates/snippets/paginator.html:37
+#: web/templates/snippets/paginator.html:44
+msgid "Last"
+msgstr "Τελευταίο"
+
+#: web/templates/snippets/reports_links.html:4
+msgid "Need an overview?"
+msgstr "Χρειάζεστε μια επισκόπηση;"
+
+#: web/templates/snippets/reports_links.html:10
+msgid "Latest reports"
+msgstr "Τελευταίες αναφορές"
+
+#: web/templates/snippets/reports_links.html:16
+msgid "No known trackers"
+msgstr "Δεν υπάρχουν γνωστά trackers"
+
+#: web/templates/snippets/reports_links.html:23
+msgid "Sorted by number of trackers"
+msgstr "Ταξινόμηση κατά αριθμό trackers"
+
+#: web/templates/snippets/reports_search.html:5
+msgid "Search a report"
+msgstr "Αναζητήστε μια αναφορά"
+
+#: web/templates/snippets/reports_search.html:6
+msgid "Application name"
+msgstr "Όνομα εφαρμογής"
+
+#: web/templates/snippets/reports_search.html:16
+msgid ""
+"You can search for an application using its name, handle or Google Play URL"
+msgstr ""
+"Μπορείτε να αναζητήσετε μια εφαρμογή χρησιμοποιώντας το όνομα, το handle ή "
+"τη διεύθυνση URL του Google Play"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "ex:"
+msgstr "ex:"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "or"
+msgstr "ή"
+
+#: web/templates/snippets/reports_search.html:21
+#, python-format
+msgid "Cannot find the application? Search it in %(url)s."
+msgstr "Δεν μπορείτε να βρείτε την εφαρμογή; Αναζητήστε το %(url)s."
+
+#: web/templates/snippets/reports_search.html:30
+msgid "Results"
+msgstr "Αποτελέσματα"
+
+#: web/templates/snippets/reports_search_tpl.html:6
+msgid "No results found."
+msgstr "Δεν βρέθηκαν αποτελέσματα."
+
+#: web/templates/snippets/reports_search_tpl.html:28
+msgid "tracker(s)"
+msgstr "tracker(s)"
+
+#: web/templates/snippets/reports_search_tpl.html:32
+msgid "permission(s)"
+msgstr "άδεια(ες)"

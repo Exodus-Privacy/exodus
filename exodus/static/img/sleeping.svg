@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="28px" viewBox="0 0 32 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>icone/sleeping</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M26.2,23.72 C20.8495889,23.6596064 16.1775523,20.0838374 14.7216335,14.934969 C13.2657147,9.78610053 15.3734639,4.29324671 19.9,1.44 C18.7863614,1.1505062 17.6406478,1.00267219 16.49,1 C8.7580135,1 2.49,7.2680135 2.49,15 C2.49,22.7319865 8.7580135,29 16.49,29 C20.7524124,28.9961526 24.7745696,27.0256646 27.39,23.66 C26.9946085,23.7001809 26.5974278,23.7202068 26.2,23.72 L26.2,23.72 Z" id="path-1"></path>
+    </defs>
+    <g id="icone/sleeping" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <rect id="Rectangle" fill="#343A40" mask="url(#mask-2)" x="0" y="0" width="36" height="36"></rect>
+    </g>
+</svg>

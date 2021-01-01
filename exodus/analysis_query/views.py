@@ -4,53 +4,93 @@ from __future__ import unicode_literals
 import random
 import string
 
-from django.forms.models import model_to_dict
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.http.response import Http404
 from django.shortcuts import render
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView, ListView
 
-from exodus.core.apk import *
-from .forms import AnalysisRequestForm
+from exodus.core.apk import StaticAnalysisParameters, start_static_analysis
+
+from .forms import AnalysisRequestForm, UploadRequestForm
 from .models import AnalysisRequest
 
 
-def randomword(length):
-    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+def random_word(length):
+    return ''.join(random.choice(string.ascii_lowercase) for _ in range(length))
+
+
+def upload_file(request):
+    if request.method == 'POST' and settings.ALLOW_APK_UPLOAD:
+        form = UploadRequestForm(request.POST, request.FILES)
+        if form.is_valid():
+            req = form.save()
+            req.handle = 'from_upload'
+            req.source = 'apk'
+            req.bucket = str(random_word(60))
+            req.description = _('Your request will be handled soon')
+            req.save()
+
+            params = StaticAnalysisParameters(req)
+            start_static_analysis.delay(params)
+            return HttpResponseRedirect(reverse('analysis:wait', args=[req.id]))
+
+    else:
+        form = UploadRequestForm()
+    return render(request, 'query_upload.html', {'form': form})
 
 
 class AnalysisRequestView(FormView):
     template_name = 'query_submit.html'
     form_class = AnalysisRequestForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['upload_allowed'] = settings.ALLOW_APK_UPLOAD
+        return context
+
     def form_valid(self, form):
-        randhex = str(randomword(60))
-        analysis_q = AnalysisRequest(handle = form.cleaned_data['handle'], bucket = randhex)
-        analysis_q.description = 'Your request will be handled soon'
-        analysis_q.save()
+        randhex = str(random_word(60))
+        req = AnalysisRequest(
+            handle=form.cleaned_data['handle'],
+            source=form.cleaned_data['source'],
+            bucket=randhex,
+            description=_('Your request will be handled soon')
+        )
+        req.save()
 
-        static = StaticAnalysisParameters(analysis_q)
-        start_static_analysis.delay(static)
+        params = StaticAnalysisParameters(req)
+        start_static_analysis.delay(params)
 
-        return HttpResponseRedirect('/analysis/%s' % analysis_q.id)
+        return HttpResponseRedirect(reverse('analysis:wait', args=[req.id]))
 
 
 def wait(request, r_id):
     try:
-        r = AnalysisRequest.objects.get(pk = r_id)
+        r = AnalysisRequest.objects.get(pk=r_id)
     except AnalysisRequest.DoesNotExist:
-        raise Http404("AnalysisRequest does not exist")
+        raise Http404(_("AnalysisRequest does not exist"))
     return render(request, 'query_wait.html', {'request': r})
 
 
 def json(request, r_id):
     try:
-        r = AnalysisRequest.objects.get(pk = r_id)
+        r = AnalysisRequest.objects.get(pk=r_id)
     except AnalysisRequest.DoesNotExist:
-        raise Http404("AnalysisRequest does not exist")
-    r.bucket = ''
-    return JsonResponse(model_to_dict(r), safe = False)
+        raise Http404(_("AnalysisRequest does not exist"))
+
+    obj = {
+        'description': _(r.description),
+        'bucket': '',
+        'processed': r.processed,
+        'in_error': r.in_error,
+        'report_id': r.report_id,
+    }
+
+    return JsonResponse(obj, safe=False)
 
 
 class AnalysisRequestListView(ListView):
@@ -58,4 +98,4 @@ class AnalysisRequestListView(ListView):
     context_object_name = 'queries'
 
     def get_queryset(self):
-        return AnalysisRequest.objects.order_by('-uploaded_at')
+        return AnalysisRequest.objects.order_by('-uploaded_at')[:200]

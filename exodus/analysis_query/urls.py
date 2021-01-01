@@ -1,11 +1,15 @@
-from django.conf.urls import url
+from django.conf import settings
+from django.urls import path
 
 from . import views
 
 app_name = 'analysis'
 urlpatterns = [
-    url(r'^$', views.AnalysisRequestListView.as_view(), name = 'index'),
-    url(r'^submit/$', views.AnalysisRequestView.as_view(), name = 'submit'),
-    url(r'^(?P<r_id>[0-9]+)$', views.wait, name = 'wait'),
-    url(r'^(?P<r_id>[0-9]+)/json$', views.json, name = 'json'),
+    path('', views.AnalysisRequestListView.as_view(), name='index'),
+    path('submit/', views.AnalysisRequestView.as_view(), name='submit'),
+    path('<int:r_id>/', views.wait, name='wait'),
+    path('<int:r_id>/json/', views.json, name='json'),
 ]
+
+if settings.ALLOW_APK_UPLOAD:
+    urlpatterns.append(path('upload/', views.upload_file, name='upload'))

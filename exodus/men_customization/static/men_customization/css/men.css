@@ -1,0 +1,11 @@
+a.main-link {
+  color:rgb(0,94,139) !important;
+}
+
+h1.main-title {
+  color:rgb(0,94,139) !important;
+}
+
+a.link:after {
+  content: url(/static/img/arrow-right-blue.svg) !important;
+}

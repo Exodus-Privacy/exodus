@@ -1,6 +1,113 @@
-body {
-    font-size: 0.9rem;
-}
 .badge.reports {
-    width: 20px;
+    min-width: 22px;
+}
+tr.permission_line {
+    height:51px;
+    overflow:hidden;
+}
+tr.permission_line > td {
+    vertical-align:middle;
+}
+td.report {
+    border: 0px;
+    vertical-align: middle;
+}
+li.nav-item.active > a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+li.nav-item > a {
+   color: #fff !important;
+}
+nav.navbar {
+  font-size: 1rem !important;
+}
+h1.main-title {
+  color: #684971;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+a.main-link {
+  color: #684971;
+  font-weight:bold;
+}
+a.link, a.page-link, a.nav-link, a.navbar-brand, a.btn, a.report-link, a.main-link, a.dropdown-item {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a.link:after {
+  content: url(/static/img/arrow-right.svg);
+  padding-left: 10px;
+  vertical-align: -10%;
+}
+a.report-link {
+  color: #212529;
+  font-weight: bold;
+}
+a.section-link, a.section-link:hover {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 992px) {
+  a.section-link:after {
+    content: url(/static/img/arrow-right.svg);
+    transform: rotate(90deg);
+    float: right;
+  }
+}
+a.anchor {
+  display: block;
+  position: relative;
+  top: -4.5rem;
+  visibility: hidden;
+}
+.black {
+  color: #212529;
+}
+h4 {
+  font-weight: bold;
+}
+input#query, input#handle {
+  border-left: none;
+}
+input#query:focus, input#handle:focus {
+  box-shadow: unset;
+}
+div.input-group:focus-within * {
+  border-color: #a888b2;
+}
+div.input-group:focus-within {
+  box-shadow: 0 0 0 .2rem rgba(104,73,113,.25);
+}
+#query_help, #handle_help {
+  background-color: transparent;
+}
+ul.spaced-list > li{
+  margin-bottom: 10px;
+}
+select.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: auto;
+}
+ul.navbar-nav {
+  white-space: nowrap;
+}
+
+.bg-alert {
+  background-color: darkorange !important;
+}
+
+.badge-alert {
+  color: #fff;
+  background-color: darkorange;
+}
+
+.badge-outline-primary {
+  border: 1px solid #684971;
+  color: #684971;
+  background-color: transparent;
 }

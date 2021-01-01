@@ -1,7 +1,0 @@
-[Unit]
-Description=Minio server
-
-[Service]
-User=vagrant
-Group=vagrant
-ExecStart=/home/vagrant/minio server /vagrant/storage
