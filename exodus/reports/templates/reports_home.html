@@ -15,22 +15,6 @@
 
 {% include "snippets/reports_search.html" %}
 
-<div class="row justify-content-center mb-2">
-  <div class="col-lg-8 col-sm-12">
-    <p>{% trans "Looking for an application we don't know yet?" %}</p>
-  </div>
-</div>
-
-<div class="row justify-content-center mb-5">
-  <div class="col-lg-8 col-sm-12">
-    <div class="row justify-content-center">
-      <div class="col-8 col-sm-7 col-md-6 col-xl-5 text-center mb-4">
-        <a href="{% url 'analysis:submit' %}" class="btn btn-primary btn-block">{% trans "Perform a new analysis" %}</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 {% include "snippets/reports_links.html" %}
 
 {% include "snippets/reports_search_tpl.html" %}
