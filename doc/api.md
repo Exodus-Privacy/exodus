@@ -32,7 +32,8 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
             "code_signature": "com.facebook.places",
             "creation_date": "2017-12-05",
             "website": "https://developers.facebook.com/docs/android",
-            "description": ""
+            "description": "",
+            "categories": ['Analytics', 'Ads']
         },
         [edited]
     }

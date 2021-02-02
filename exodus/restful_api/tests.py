@@ -336,7 +336,39 @@ class RestfulApiTrackersTests(APITestCase):
                 'creation_date': tracker.creation_date.strftime("%Y-%m-%d"),
                 'code_signature': tracker.code_signature,
                 'network_signature': tracker.network_signature,
-                'website': tracker.website
+                'website': tracker.website,
+                'categories': []
+            }
+        }
+
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['trackers'], expected_json)
+
+    def test_returns_one_tracker_with_categories(self):
+        tracker = Tracker.objects.create(
+            name='Teemo',
+            description='bad tracker',
+            code_signature='com.teemo',
+            network_signature='teemo.com',
+            website='https://www.teemo.com'
+        )
+        category1 = TrackerCategory.objects.create(name='Analytics')
+        category2 = TrackerCategory.objects.create(name='Ads')
+
+        tracker.category.set([category1, category2])
+
+        expected_json = {
+            str(tracker.id): {
+                'id': tracker.id,
+                'name': tracker.name,
+                'description': tracker.description,
+                'creation_date': tracker.creation_date.strftime("%Y-%m-%d"),
+                'code_signature': tracker.code_signature,
+                'network_signature': tracker.network_signature,
+                'website': tracker.website,
+                'categories': ['Analytics', 'Ads']
             }
         }
 
