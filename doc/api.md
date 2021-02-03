@@ -4,9 +4,14 @@
 
 > **This API is provided as is and Exodus Privacy or its members could not be responsive in any case.**
 
-## API key
+## Authorization
 
-**In order to use this REST API, you have to request an API key**. To do so, please send an email specifying:
+**In order to use this REST API, you have to request an API key**.
+
+### Request an API key
+
+To do so, please send an email specifying:
+
 * a username
 * an email address (in order to tell you if something wrong has been done with your key)
 * a short description of your project
@@ -16,14 +21,22 @@ Send your request to [bureau@exodus-privacy.eu.org](mailto:bureau@exodus-privacy
 ### How to use it?
 
 For clients to authenticate, the API key should be included in the `Authorization` HTTP header. The key should be prefixed by the string literal "Token", with whitespace separating the two strings. For example:
-```
+
+```sh
 Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
 ```
 
-## Get the list of trackers
+## API endpoints
 
-`GET` https://reports.exodus-privacy.eu.org/api/trackers returns `JSON`
-```
+The API is served by the URL <https://reports.exodus-privacy.eu.org/>
+
+### Trackers
+
+#### Get the list of trackers
+
+`GET /api/trackers` returns `JSON`
+
+```json
 {
     "trackers": {
         "69": {
@@ -40,12 +53,13 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
 }
 ```
 
-## Get all analyzed applications
+### Applications
 
-### With full details
+#### Get all analyzed applications with full details
 
-`GET` https://reports.exodus-privacy.eu.org/api/applications returns `JSON`
-```
+`GET /api/applications` returns `JSON`
+
+```json
 {
   "applications": [
     {
@@ -86,10 +100,11 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
 }
 ```
 
-### With limited details
+#### Get all analyzed applications with limited details
 
-`GET` https://reports.exodus-privacy.eu.org/api/applications?option=short returns `JSON`
-```
+`GET /api/applications?option=short` returns `JSON`
+
+```json
 {
   "applications": [
     {
@@ -115,11 +130,14 @@ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
 }
 ```
 
-## Get reports of a specific application
+### Reports
 
-`GET` https://reports.exodus-privacy.eu.org/api/search/com.app.handle returns `JSON`
+#### Get reports of a specific application
+
+`GET /api/search/com.app.handle` returns `JSON`
 Replace `com.app.handle` with the application handle.
-```
+
+```json
 {
     "app.greyshirts.firewall": {
         "name": "NoRoot Firewall",
@@ -139,11 +157,13 @@ Replace `com.app.handle` with the application handle.
     }
 }
 ```
-## Get flatten detailed reports for a given handle
 
-`GET` https://reports.exodus-privacy.eu.org/api/search/com.app.handle/details returns `JSON`
+#### Get flatten detailed reports for a given handle
+
+`GET /api/search/com.app.handle/details` returns `JSON`
 Replace `com.app.handle` with the application handle.
-```
+
+```json
 [{
   "uaid": "A3509D616FEEF571171CFF5FA2C5E52AB14B0F2E",
   "updated": "2018-08-16T16:53:11.575Z",
