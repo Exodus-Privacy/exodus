@@ -3,94 +3,96 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-06 09:57+0000\n"
-"PO-Revision-Date: 2020-02-07 12:59\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Spanish\n"
-"Language: es_ES\n"
+"PO-Revision-Date: 2021-03-06 09:27\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: exodus-privacy\n"
-"X-Crowdin-Language: es-ES\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: de\n"
 "X-Crowdin-File: trackers.po\n"
+"X-Crowdin-File-ID: 53\n"
 
 #: trackers/templates/stats_details.html:9
 #: trackers/templates/trackers_list.html:13
 msgid "Statistics"
-msgstr "Estadísticas"
+msgstr "Statistik"
 
 #: trackers/templates/stats_details.html:11
 #: trackers/templates/stats_details.html:14
 msgid "Most frequent trackers"
-msgstr "Rastreadores más frecuentes"
+msgstr "Häufigste Tracker"
 
 #: trackers/templates/stats_details.html:26
 #: trackers/templates/trackers_list.html:41
 #, python-format
 msgid "found in %(count)s application"
 msgid_plural "found in %(count)s applications"
-msgstr[0] "encontrado en %(count)s aplicación"
-msgstr[1] "encontrado en %(count)s aplicaciones"
+msgstr[0] "in %(count)s App gefunden"
+msgstr[1] "in %(count)s Apps gefunden"
 
 #: trackers/templates/tracker_details.html:24
 #, python-format
 msgid "Present in: <b>%(count)s application</b>"
 msgid_plural "Present in: <b>%(count)s applications</b>"
-msgstr[0] "Presente en: <b>%(count)s aplicación</b>"
-msgstr[1] "Presente en: <b>%(count)s aplicaciones</b>"
+msgstr[0] "Vorhanden in <b>%(count)s App</b>"
+msgstr[1] "Vorhanden in <b>%(count)s Apps</b>"
 
 #: trackers/templates/tracker_details.html:32
 msgid "Tracker web page"
-msgstr "Página web del rastreador"
+msgstr "Tracker-Webseite"
 
 #: trackers/templates/tracker_details.html:44
 msgid "Detection rules"
-msgstr "Reglas de detección"
+msgstr "Erkennungsregeln"
 
 #: trackers/templates/tracker_details.html:45
 msgid "Code detection rule:"
-msgstr "Regla de detección de código:"
+msgstr "Code-Erkennungsregel:"
 
 #: trackers/templates/tracker_details.html:47
 msgid "Network detection rule:"
-msgstr "Regla de detección de red:"
+msgstr "Netzwerkerkennungsregel:"
 
 #: trackers/templates/tracker_details.html:53
 msgid "Latest reports with this tracker"
-msgstr "Últimos informes con este rastreador"
+msgstr "Neueste Berichte mit diesem Tracker"
 
 #: trackers/templates/trackers_admin_list.html:24
 msgid "You need to be registered"
-msgstr "Necesitas estar registrado"
+msgstr "Sie müssen registriert sein"
 
 #: trackers/templates/trackers_list.html:8
 msgid "Trackers"
-msgstr "Rastreadores"
+msgstr "Tracker"
 
 #: trackers/templates/trackers_list.html:12
 msgid "known tracker"
 msgid_plural "known trackers"
-msgstr[0] "rastreador conocido"
-msgstr[1] "rastreadores conocidos"
+msgstr[0] "bekannter Tracker"
+msgstr[1] "bekannte Tracker"
 
 #: trackers/templates/trackers_list.html:20
 msgid "Sorted by"
-msgstr "Ordenados por"
+msgstr "Sortiert nach"
 
 #: trackers/templates/trackers_list.html:24
 msgid "Alphabetical order"
-msgstr "Orden alfabético"
+msgstr "Alphabetische Reihenfolge"
 
 #: trackers/templates/trackers_list.html:27
 msgid "Number of applications"
-msgstr "Número de aplicaciones"
+msgstr "Anzahl der Anwendungen"
 
 #: trackers/templates/trackers_list.html:57
 msgid "No trackers are available"
-msgstr "No hay rastreadores disponibles"
+msgstr "Keine Tracker verfügbar"
 
 #: trackers/views.py:22 trackers/views.py:33 trackers/views.py:49
 #: trackers/views.py:71
 msgid "Tracker does not exist"
-msgstr "El rastreador no existe"
+msgstr "Tracker existiert nicht"

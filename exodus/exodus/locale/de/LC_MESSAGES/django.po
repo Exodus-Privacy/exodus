@@ -3,99 +3,101 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-06 09:57+0000\n"
-"PO-Revision-Date: 2020-05-30 06:17\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: French\n"
-"Language: fr_FR\n"
+"PO-Revision-Date: 2021-03-06 09:27\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: exodus-privacy\n"
-"X-Crowdin-Language: fr\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: de\n"
 "X-Crowdin-File: exodus.po\n"
+"X-Crowdin-File-ID: 47\n"
 
 #: exodus/core/apk.py:52
 msgid "Your request is running"
-msgstr "Votre requête est en cours d’exécution"
+msgstr "Ihre Anfrage läuft"
 
 #: exodus/core/apk.py:69
 msgid "Unable to download the APK"
-msgstr "Impossible de télécharger l’APK"
+msgstr "APK kann nicht heruntergeladen werden"
 
 #: exodus/core/apk.py:73
 msgid "Download APK: success"
-msgstr "Télécharger l’APK : succès"
+msgstr "APK herunterladen: erfolgreich"
 
 #: exodus/core/apk.py:81
 msgid "Unable to decode the APK"
-msgstr "Impossible de décoder l’APK"
+msgstr "APK kann nicht gelesen werden"
 
 #: exodus/core/apk.py:85
 msgid "Decode APK: success"
-msgstr "Décoder l’APK : succès"
+msgstr "APK lesen: Erfolg"
 
 #: exodus/core/apk.py:94
 msgid "Unable to compute the class list"
-msgstr "Impossible de calculer la liste de classe"
+msgstr "Die Liste der Klassen kann nicht berechnet werden"
 
 #: exodus/core/apk.py:98
 msgid "List embedded classes: success"
-msgstr "Lister les classes embarquées : succès"
+msgstr "Eingebettete Klassen auflisten: Erfolg"
 
 #: exodus/core/apk.py:111
 msgid "Unable to create the analysis report"
-msgstr "Impossible de créer le rapport d'analyse"
+msgstr "Der Analysebericht konnte nicht erstellt werden"
 
 #: exodus/core/apk.py:125
 msgid "A report already exists for this application version"
-msgstr "Un rapport existe déjà pour cette version de l’application"
+msgstr "Für diese Anwendungsversion existiert bereits ein Bericht"
 
 #: exodus/core/apk.py:136
 msgid "Unable to get certificates"
-msgstr "Impossible de récupérer les certificats"
+msgstr "Zertifikate konnten nicht geladen werden"
 
 #: exodus/core/apk.py:153
 msgid "Unable to compute APK fingerprint"
-msgstr "Impossible de calculer l'empreinte de l'APK"
+msgstr "APK-Fingerabdruck kann nicht berechnet werden"
 
 #: exodus/core/apk.py:162
 msgid "Unable to get application details from Google Play"
-msgstr "Impossible de récupérer les détails depuis le Google Play"
+msgstr "Anwendungsdetails konnten nicht von Google Play abgerufen werden"
 
 #: exodus/core/apk.py:166
 msgid "Get application details: success"
-msgstr "Récupérer les détails de l’application : succès"
+msgstr "Details der Anwendung laden: Erfolg"
 
 #: exodus/core/apk.py:171
 msgid "Tracker analysis: success"
-msgstr "Analyse des pisteurs : succès"
+msgstr "Tracker-Analyse: Erfolg"
 
 #: exodus/core/apk.py:224
 msgid "Static analysis complete"
-msgstr "Analyse statique terminée"
+msgstr "Statische Analyse abgeschlossen"
 
 #: men_customization/templates/base/base.html:38
 #: web/templates/base/base.html:40
 msgid "Home"
-msgstr "Accueil"
+msgstr "Home"
 
 #: men_customization/templates/base/base.html:41
 #: web/templates/base/base.html:43
 msgid "Reports"
-msgstr "Rapports"
+msgstr "Berichte"
 
 #: men_customization/templates/base/base.html:44
 #: web/templates/base/base.html:46 web/templates/base/base.html:63
 msgid "Trackers"
-msgstr "Pisteurs"
+msgstr "Tracker"
 
 #: men_customization/templates/base/base.html:47
 #: men_customization/templates/base/home.html:29
 #: web/templates/base/base.html:49 web/templates/base/home.html:28
 #: web/templates/base/understand.html:8
 msgid "Better understand"
-msgstr "Mieux comprendre"
+msgstr "Mehr verstehen"
 
 #: men_customization/templates/base/base.html:52
 #: web/templates/base/base.html:58
@@ -110,12 +112,12 @@ msgstr "Index"
 #: men_customization/templates/base/base.html:56
 #: web/templates/base/base.html:62
 msgid "Analyzes"
-msgstr "Analyses"
+msgstr "Analysen"
 
 #: men_customization/templates/base/base.html:57
 #: web/templates/base/base.html:64
 msgid "Log out"
-msgstr "Déconnexion"
+msgstr "Abmelden"
 
 #: men_customization/templates/base/home.html:19
 #: web/templates/base/home.html:18
@@ -123,8 +125,8 @@ msgid ""
 "εxodus analyzes Android applications in order to <b>list the embedded "
 "trackers.</b>"
 msgstr ""
-"εxodus analyse les applications Android dans le but de <b>lister les "
-"pisteurs embarqués.</b>"
+"εxodus analysiert Android-Anwendungen, um <b>eingebettete Tracker "
+"aufzulisten.</b>"
 
 #: men_customization/templates/base/home.html:21
 #: web/templates/base/home.html:20
@@ -132,15 +134,14 @@ msgid ""
 "A tracker is a piece of software <b>meant to collect data about you or your "
 "usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
 msgstr ""
-"Un pisteur est un bout de logiciel <b>dont le but est la collecte de données "
-"à propos de vous et de vos usages.</b> Ainsi, les rapports d’εxodus vous "
-"révèlent les ingrédients du gâteau."
+"Ein Tracker ist ein Softwarebestandteil, <b>der Daten über Sie oder Ihre "
+"Nutzung erfassen soll.</b> εxodus-Berichte zeigen Ihnen somit einzelne "
+"Bestandteile der Anwendungen auf."
 
 #: men_customization/templates/base/home.html:23
 #: web/templates/base/home.html:22
 msgid "εxodus does not decompile applications, its analysis method is legal."
-msgstr ""
-"εxodus ne décompile pas les applications, sa technique d’analyse est légale."
+msgstr "εxodus dekompiliert Anwendungen nicht, die Analysemethode ist legal."
 
 #: men_customization/templates/base/home.html:30
 #: web/templates/base/home.html:29
@@ -148,26 +149,26 @@ msgid ""
 "What is a tracker? And a permission? Are there any alternatives to protect "
 "yourself?"
 msgstr ""
-"Qu'est-ce qu'un pisteur ? Et une permission ? Existe-t-il des alternatives "
-"pour se protéger ?"
+"Was ist ein Tracker? Und was eine Berechtigung? Gibt es Alternativen, um "
+"sich zu schützen?"
 
 #: men_customization/templates/base/home.html:38
 #: web/templates/base/home.html:37
 #: web/templates/snippets/reports_search.html:27
 msgid "Let's go!"
-msgstr "C'est parti !"
+msgstr "Los geht’s!"
 
 #: web/templates/base/base.html:52 web/templates/base/organization.html:8
 msgid "The organization"
-msgstr "L'association"
+msgstr "Die Organisation"
 
 #: web/templates/base/home.html:10
 msgid "The privacy audit platform for Android applications"
-msgstr "La plateforme d'audit de la vie privée des applications Android"
+msgstr "Die Datenschutz-Audit-Plattform für Android-Anwendungen"
 
 #: web/templates/base/next.html:8 web/templates/base/understand.html:53
 msgid "What's next?"
-msgstr "Et après ?"
+msgstr "Wie geht es weiter?"
 
 #: web/templates/base/next.html:16
 msgid ""
@@ -175,44 +176,43 @@ msgid ""
 "within our apps. We prepared a list of tools and things you can do to better "
 "manage your privacy on your smartphone."
 msgstr ""
-"Nous savons qu'il n'est pas facile de trouver des alternatives afin "
-"d'échapper aux pisteurs dans nos applications. Nous vous avons donc préparé "
-"une liste de quelques outils et pratiques destinés à mieux maîtriser votre "
-"intimité sur mobile !"
+"Wir wissen, dass es nicht einfach ist, Alternativen zu finden, um Trackern "
+"in Apps zu entkommen. Wir haben eine Liste von Tools und Dingen vorbereitet, "
+"die Sie tun können, um Ihre Privatsphäre auf Ihrem Smartphone besser "
+"verwalten zu können."
 
 #: web/templates/base/next.html:20
 msgid "Consider how you use applications"
-msgstr "Réfléchir à ses propres usages"
+msgstr "Überlegen Sie, wie Sie die Anwendungen verwenden"
 
 #: web/templates/base/next.html:22
 msgid ""
 "When you wish to install an application or when an application asks for "
 "personal information, ask yourself the following questions:"
 msgstr ""
-"Quand vous souhaitez installer une application ou quand une application vous "
-"demande des éléments personnels, posez-vous les questions suivantes :"
+"Wenn Sie eine Anwendung installieren möchten oder wenn eine Anwendung "
+"persönliche Informationen verlangt, stellen Sie sich folgende Fragen:"
 
 #: web/templates/base/next.html:25
 msgid "how many trackers does it contain and what permissions does it ask for?"
-msgstr ""
-"combien contient-elle de pisteurs et quelles autorisations sont demandées ?"
+msgstr "Wie viele Tracker enthält sie und welche Berechtigungen verlangt sie?"
 
 #: web/templates/base/next.html:26
 msgid "do I want or need to install it?"
-msgstr "ai-je envie ou besoin de l'installer ?"
+msgstr "Muss oder möchte ich sie installieren?"
 
 #: web/templates/base/next.html:27
 msgid "do I want or need to give it what it asks me?"
-msgstr "ai-je envie ou besoin de lui donner ce qu'elle me demande ?"
+msgstr "Muss oder möchte ich ihr die Daten geben?"
 
 #: web/templates/base/next.html:30
 msgid ""
 "It is up to you to decide but by taking into consideration your daily use, "
 "you can have a better control over your digital identity."
 msgstr ""
-"C'est à vous de décider, mais en réfléchissant ainsi à vos usages au "
-"quotidien, vous pouvez avoir une meilleure maîtrise de notre identité "
-"numérique."
+"Die Entscheidung liegt bei Ihnen, aber unter Berücksichtigung Ihres "
+"täglichen Gebrauchs können Sie eine bessere Kontrolle über Ihre digitale "
+"Identität haben."
 
 #: web/templates/base/next.html:33
 msgid ""
@@ -220,13 +220,13 @@ msgid ""
 "consider it to be too intrusive and ask them some explanations on the "
 "presence of trackers and permission requests."
 msgstr ""
-"Vous pouvez aussi contacter la personne qui vous propose l'application si "
-"vous considérez que celle-ci est trop intrusive, et lui demander des "
-"explications sur la présence de pisteurs et la demande de permissions."
+"Sie können sich auch an die Personen wenden, die die Anwendung anbieten, "
+"wenn Sie sie für zu aufdringlich halten und sie um einige Erklärungen über "
+"das Vorhandensein von Trackern und Berechtigungen fragen."
 
 #: web/templates/base/next.html:37
 msgid "Favour free software"
-msgstr "Privilégier des applis libres"
+msgstr "Bevorzuge Freie Software"
 
 #: web/templates/base/next.html:39
 msgid ""
@@ -235,10 +235,11 @@ msgid ""
 "transparent. A free software application might exist to replace an app that "
 "you already use but that may not respect your privacy."
 msgstr ""
-"Les applications dites « libres » sont des programmes dont le code (c'est-à-"
-"dire la recette de cuisine) est modifiable, copiable, vérifiable… et donc "
-"transparentes. Il existe peut-être une application libre pour remplacer, "
-"dans vos usages, une application qui ne respecterai pas votre vie privée."
+"Was als 'freie' Software bezeichnet wird, ist Software, deren Code (d.h. ihr "
+"Konzept oder eine Liste von Anweisungen) geändert, kopiert, überprüft werden "
+"kann... und ist somit transparent. Eine freie Software-Anwendung könnte "
+"existieren, um eine App zu ersetzen, die Sie bereits verwenden, aber Ihre "
+"Privatsphäre möglicherweise nicht respektiert."
 
 #: web/templates/base/next.html:47
 msgid ""
@@ -250,17 +251,17 @@ msgid ""
 "aware, however, that some F-Droid applications are not available in all "
 "languages."
 msgstr ""
-"Si vous utilisez Android, vous pouvez installer <a target='_blank' "
-"rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. C'est un magasin "
-"d'applications libres, que vous pouvez utiliser à la place ou en complément "
-"du Google Play store. N'hésitez pas à vous référer à la <a target='_blank' "
-"rel='noreferrer' href='https://f-droid.org/docs/'>documentation de F-Droid</"
-"a> en cas de besoin. Attention cependant, certaines applications de F-Droid "
-"ne sont pas traduites dans toutes les langues."
+"Wenn Sie ein Android-Nutzer sind, können Sie <a target='_blank' "
+"rel='noreferrer' href='https://f-droid.org/'>F-Droid</a> installieren. Es "
+"ist ein kostenloser Software-Store, der anstatt des oder zusätzlich zum "
+"Google Play Store verwendet werden kann. Zögern Sie nicht, sich bei Bedarf "
+"auf die <a target='_blank' rel='noreferrer' href='https://f-droid.org/"
+"docs/'>F-Droid Dokumentation</a> zu beziehen. Beachten Sie jedoch, dass "
+"einige F-Droid-Anwendungen nicht in allen Sprachen verfügbar sind."
 
 #: web/templates/base/next.html:51
 msgid "Use the mobile website instead of the application"
-msgstr "Utiliser le site mobile à la place de l'application"
+msgstr "Verwenden Sie die mobile Website statt der Anwendung"
 
 #: web/templates/base/next.html:53
 msgid ""
@@ -269,10 +270,10 @@ msgid ""
 "possibility to use  web browser add-ons, in the same way you can do it on "
 "your computer (e.g. uBlock Origin)."
 msgstr ""
-"Sur mobile, vous n'êtes pas toujours obligé·e·s d'utiliser les applications "
-"et vous pouvez privilégier les sites mobile. L'avantage de ces derniers est "
-"de pouvoir ajouter des extensions sur les navigateurs, comme vous pouvez le "
-"faire sur un ordinateur (par exemple uBlock Origin)."
+"Auf einem mobilen Gerät müssen Sie keine Apps verwenden: Sie können "
+"stattdessen mobile Websites verwenden. Ein Vorteil für letztere ist die "
+"Möglichkeit, Web-Browser Add-ons zu verwenden, auf die gleiche Weise wie Sie "
+"es auf Ihrem Computer tun (z.B. uBlock Origin)."
 
 #: web/templates/base/next.html:64
 msgid ""
@@ -280,20 +281,21 @@ msgid ""
 "you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo "
 "Privacy Browser."
 msgstr ""
-"Pour une navigation plus respectueuse de vos données personnelles, il existe "
-"certains navigateurs comme Firefox ou DuckDuckgo Privacy Browser."
+"Wenn Sie eine Browser-Erfahrung wünschen, die Ihre Privatsphäre besser "
+"respektiert, können Sie alternative Browser wie Mozilla Firefox oder den "
+"DuckDuckGo Privacy Browser verwenden."
 
 #: web/templates/base/next.html:67
 msgid ""
 "These browsers allow you to add your favorite websites on your home screen "
 "easily, just as an app (but lighter)."
 msgstr ""
-"Ces navigateurs permettent d'ajouter vos sites préférés sur votre écran "
-"d'accueil facilement, comme une application (en plus léger)."
+"Diese Browser erlauben es Ihnen, Ihre Lieblings-Websites einfach auf Ihrem "
+"Startbildschirm hinzuzufügen, genauso wie eine App (aber sparsamer)."
 
 #: web/templates/base/next.html:71
 msgid "Install an ad blocker"
-msgstr "Installer un bloqueur de publicités"
+msgstr "Einen Werbeblocker installieren"
 
 #: web/templates/base/next.html:78
 msgid ""
@@ -302,21 +304,20 @@ msgid ""
 "blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or "
 "from their own website."
 msgstr ""
-"Dans tous les cas, sur un téléphone Android, vous pouvez installer "
-"l'application bloqueuse de pubs <a target='_blank' rel='noreferrer' "
-"href='https://blokada.org/'>Blokada</a>. Pour cela, vous pouvez la trouver "
-"sur F-droid (cf. paragraphe précédent) ou depuis leur site internet. Cette "
-"application est en Français et est facile d'utilisation."
+"In allen Fällen erlauben Android Smartphones die Installation von "
+"Werbeblocker Anwendungen wie <a target='_blank' rel='noreferrer' "
+"href='https://blokada.org/'>Blokada</a>. Sie können diese von F-Droid (siehe "
+"oben) oder von ihrer jeweiligen Website installieren."
 
 #: web/templates/base/next.html:82
 msgid "Discover alternatives"
-msgstr "Découvrir des alternatives"
+msgstr "Alternativen entdecken"
 
 #: web/templates/base/next.html:84
 msgid "For broader recommendations, here are some resources you can dig in:"
 msgstr ""
-"Pour des recommandations plus larges, voici quelques ressources en français "
-"dans lesquelles vous pouvez piocher :"
+"Für weitere Empfehlungen gibt es hier einige Ressourcen, die Sie sich "
+"ansehen können:"
 
 #: web/templates/base/next.html:85
 msgid ""
@@ -334,23 +335,17 @@ msgstr ""
 "\n"
 "      <ul>\n"
 "        <li><a target='_blank' rel='noreferrer' href='https://prism-break."
-"org/fr/categories/android/'>Prism Break</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://liberons-nous."
-"cemea.asso.fr/2019/08/29/liberez-votre-smartphone-android/'>Le Guide des "
-"CEMEA</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://linc.cnil.fr/"
-"une-cartographie-des-outils-et-pratiques-de-protection-de-la-vie-privee'>La "
-"cartographie du LINC</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://framalibre."
-"org/'>Framalibre, qui recense nombre d'applications libres</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://bloquelapub."
-"net/'>Bloque la pub</a></li>\n"
+"org/de/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff."
+"org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://privacytools."
+"it-sec.rocks/'>privacytools.io</a></li>\n"
 "      </ul>\n"
 "      "
 
 #: web/templates/base/next.html:95
 msgid "Remain curious!"
-msgstr "Rester curieux⋅se !"
+msgstr "Bleib neugierig!"
 
 #: web/templates/base/next.html:97
 msgid ""
@@ -358,9 +353,9 @@ msgid ""
 "might come and go, application policies can change, security breaches can be "
 "discovered..."
 msgstr ""
-"Sur ce sujet, ce qui est vrai aujourd'hui ne le sera plus forcément demain : "
-"des outils peuvent apparaître, disparaître, les politiques des applications "
-"peuvent changer, une faille de sécurité peut être annoncée..."
+"In diesem Bereich mag das, was heute gilt, morgen vielleicht nicht mehr "
+"unbedingt wahr sein: Tools können kommen und gehen Anwendungsrichtlinien "
+"können sich ändern, Sicherheitslücken können entdeckt werden..."
 
 #: web/templates/base/next.html:100
 msgid ""
@@ -368,20 +363,17 @@ msgid ""
 "target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/"
 "CryptoParty'>cryptoparties</a> or other organizations like public libraries."
 msgstr ""
-"Pour cela, vous pouvez vous rendre à des ateliers de pratique, proposés par "
-"des associations comme les cafés vie privée ou bien des structures comme les "
-"médiathèques. Ce type de rendez-vous est souvent recensé sur <a "
-"target='_blank' rel='noreferrer' href='https://www.agendadulibre."
-"org/'>l'agenda du libre</a>, mais n'hésitez pas à vous renseigner auprès du "
-"<a target='_blank' rel='noreferrer' href='https://www.ffdn.org/'>fournisseur "
-"d'accès à Internet associatif</a> le plus près de chez vous."
+"Zu diesem Zweck können Sie Workshops von Verbänden wie <a target='_blank' "
+"rel='noreferrer' href='https://de.wikipedia.org/wiki/"
+"CryptoParty'>CryptoPartys</a> oder anderen Organisationen wie öffentlichen "
+"Bibliotheken besuchen."
 
 #: web/templates/base/next.html:103
 msgid ""
 "To stay up to date on these topics, you can find useful resources there:"
 msgstr ""
-"Pour organiser une veille sur ces sujets, voici quelques ressources "
-"intéressantes :"
+"Um über diese Themen auf dem Laufenden zu bleiben, finden Sie hier nützliche "
+"Ressourcen:"
 
 #: web/templates/base/next.html:104
 msgid ""
@@ -396,21 +388,16 @@ msgid ""
 msgstr ""
 "\n"
 "      <ul>\n"
-"        <li>Le blog de Framasoft, et notamment la revue de presse "
-"hebdomadaire <a target='_blank' rel='noreferrer' href='https://framablog.org/"
-"category/internet-et-societe/libre-veille/'>Khrys'presso</a></li>\n"
-"        <li>La liste de diffusion <a target='_blank' rel='noreferrer' "
-"href='https://groupes.renater.fr/sympa/info/cryptobib'>Cryptobib</a> plutôt "
-"destinée à des bibliothécaires, mais pas que !</li>\n"
-"        <li>Les publications du <a target='_blank' rel='noreferrer' "
-"href='https://linc.cnil.fr'>Laboratoire d'Innovation Numérique de la CNIL</"
-"a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/"
+"deeplinks'>EFF Blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing."
+"net/'>Der 'Boing Boing' Blog</a></li>\n"
 "      </ul>\n"
 "      "
 
 #: web/templates/base/next.html:113
 msgid "For advanced users"
-msgstr "Pour utilisateur⋅ice avancé⋅e :"
+msgstr "Für erfahrene Benutzer"
 
 #: web/templates/base/next.html:115
 msgid ""
@@ -419,10 +406,11 @@ msgid ""
 "can be used without Google services. It is possible to install it on your "
 "smartphone, provided your device is compatible."
 msgstr ""
-"Si vous aimez bidouiller, <a target='_blank' rel='noreferrer' href='https://"
-"lineageos.org/'>Lineage OS</a> est un système d'exploitation basé sur "
-"Android, utilisable sans les services Google. Il est possible de l'installer "
-"sur son téléphone, à condition d'avoir un mobile compatible."
+"Wenn Sie Interesse am Optimieren haben: <a target='_blank' rel='noreferrer' "
+"href='https://lineageos.org/'>Lineage OS</a> ist ein Betriebssystem "
+"basierend auf Android; es kann ohne Google-Dienste verwendet werden. Sie "
+"können es auf Ihrem Smartphone zu installieren, sofern Ihr Gerät kompatibel "
+"ist."
 
 #: web/templates/base/organization.html:19
 msgid ""
@@ -430,18 +418,17 @@ msgid ""
 "is to help people get a better understanding of the Android applications "
 "tracking issues."
 msgstr ""
-"Exodus Privacy est une association à but non-lucratif, régie par la loi de "
-"1901.  Le but de cette organisation  animée par des hacktivistes est de "
-"permettre une meilleure compréhension des enjeux liés au pistage par le "
-"biais des applications Android."
+"Exodus Privacy ist eine gemeinnützige Organisation, die von Hacktivisten "
+"geleitet wird. Ihr Zweck ist es, Menschen zu helfen, ein besseres "
+"Verständnis der Tracking-Probleme in Android Anwendungen zu erhalten."
 
 #: web/templates/base/organization.html:22
 msgid "Discover Exodus Privacy"
-msgstr "Découvrez Exodus Privacy"
+msgstr "Exodus Privacy entdecken"
 
 #: web/templates/base/organization.html:26
 msgid "Help us!"
-msgstr "Aidez-nous !"
+msgstr "Hilf uns!"
 
 #: web/templates/base/organization.html:28
 msgid ""
@@ -449,41 +436,41 @@ msgid ""
 "like to draw, translate, code or create any kind of content, feel free: we "
 "welcome any help."
 msgstr ""
-"Exodus Privacy est une association gérée par des bénévoles. Que vous ayez "
-"envie de dessiner, traduire, coder ou  créer des contenus, n'hésitez pas : "
-"toute aide est la bienvenue !"
+"Exodus Privacy ist eine Organisation, die von Freiwilligen verwaltet wird. "
+"Egal, ob Sie Inhalte zeichnen, übersetzen, programmieren oder erstellen "
+"möchten, wir freuen uns über jede Hilfe."
 
 #: web/templates/base/organization.html:31
 msgid "How to contribute?"
-msgstr "Comment contribuer ?"
+msgstr "Wie kann ich etwas beitragen?"
 
 #: web/templates/base/organization.html:35
 msgid "Contact us"
-msgstr "Nous contacter"
+msgstr "Kontakt"
 
 #: web/templates/base/organization.html:42
 msgid "Contact us!"
-msgstr "Contactez-nous !"
+msgstr "Kontaktieren Sie uns!"
 
 #: web/templates/base/organization.html:47
 #: web/templates/base/organization.html:54
 #: web/templates/base/organization.html:59
 msgid "Follow us!"
-msgstr "Suivez-nous !"
+msgstr "Folgen Sie uns!"
 
 #: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
 msgid "Permissions"
-msgstr "Les permissions"
+msgstr "Berechtigungen"
 
 #: web/templates/base/permissions.html:16
 msgid "Permissions are access rights an app asks to access on your phone."
 msgstr ""
-"Les permissions sont les droits d'accès qu'une application va demander à "
-"votre téléphone."
+"Berechtigungen sind Zugriffsrechte, nach denen eine App fragt, um auf Ihr "
+"Telefon zuzugreifen."
 
 #: web/templates/base/permissions.html:20
 msgid "What type of permissions?"
-msgstr "Quel type de permissions ?"
+msgstr "Welche Art von Berechtigungen?"
 
 #: web/templates/base/permissions.html:22
 msgid ""
@@ -492,15 +479,14 @@ msgid ""
 "function, camera and so on. Exodus Privacy analyses allow you to know, on a  "
 "per app basis, which permissions are asked."
 msgstr ""
-"Elles peuvent concerner des fonctionnalités ou des informations diverses, "
-"comme l'accès à votre géolocalisation, à vos contacts, vos fichiers, votre "
-"micro, votre vibreur, votre appareil photo... Les analyses d'Exodus Privacy "
-"vous permettent, application par application, de savoir quelles "
-"autorisations sont demandées."
+"Sie können verschiedene Merkmale oder Informationen betreffen, wie den "
+"Zugriff auf Ihren Standort, Ihre Kontakte, Ihre Dateien, Ihr Mikrofon, "
+"Vibrationsfunktion, Kamera usw. Exodus Datenschutzanalysen erlauben Ihnen, "
+"für jede App zu wissen, welche Berechtigungen angefragt werden."
 
 #: web/templates/base/permissions.html:26
 msgid "Why are some permissions indicated as dangerous?"
-msgstr "Pourquoi certaines permissions sont indiquées comme dangereuses ?"
+msgstr "Warum werden einige Berechtigungen als gefährlich angezeigt?"
 
 #: web/templates/base/permissions.html:28
 msgid ""
@@ -508,26 +494,26 @@ msgid ""
 "android.com/guide/topics/permissions/overview'>danger levels for "
 "permissions</a>, which we report in our analyses."
 msgstr ""
-"Google définit <a target='_blank' rel='noreferrer' href='https://developer."
-"android.com/guide/topics/permissions/overview'>un niveau de dangerosité des "
-"permissions</a> que nous indiquons dans nos rapports."
+"Google definiert <a target='_blank' rel='noreferrer' href='https://developer."
+"android.com/guide/topics/permissions/overview'>Gefahrenstufen für "
+"Berechtigungen</a>, die wir in unseren Analysen melden."
 
 #: web/templates/base/permissions.html:32
 msgid "Do I have control over these permissions?"
-msgstr "Ai-je la main sur les permissions ?"
+msgstr "Habe ich Kontrolle über diese Berechtigungen?"
 
 #: web/templates/base/permissions.html:34
 msgid ""
 "Depending on your smartphone and operating system, it is possible to "
 "restrain some of these permissions by going into your phone's settings."
 msgstr ""
-"Suivant le modèle de téléphone et son système d'exploitation, il est "
-"possible de restreindre certaines permissions en allant dans les paramètres "
-"de son téléphone."
+"Abhängig von Ihrem Smartphone und Betriebssystem ist es möglich, einige "
+"dieser Berechtigungen einzuschränken, indem Sie in die Einstellungen Ihres "
+"Telefons gehen."
 
 #: web/templates/base/trackers.html:8 web/templates/base/understand.html:19
 msgid "Trackers "
-msgstr "Les pisteurs "
+msgstr "Tracker "
 
 #: web/templates/base/trackers.html:16
 msgid ""
@@ -535,18 +521,18 @@ msgid ""
 "href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, "
 "published under CC-BY-NC license."
 msgstr ""
-"Cette page est en grande partie une reprise de <a target='_blank' "
-"rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>cet "
-"article</a>, publié sous licence  CC-BY-NC."
+"Diese Seite ist hauptsächlich eine Überarbeitung <a target='_blank' "
+"rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>dieses "
+"Artikels</a>, veröffentlicht unter der CC-BY-NC-Lizenz."
 
 #: web/templates/base/trackers.html:20
 msgid "What is a tracker?"
-msgstr "Qu'est ce qu'un pisteur ?"
+msgstr "Was ist ein Tracker?"
 
 #: web/templates/base/trackers.html:22 web/templates/base/trackers.html:31
 #: web/templates/base/trackers.html:60
 msgid "See the video"
-msgstr "Voir la vidéo"
+msgstr "Video ansehen"
 
 #: web/templates/base/trackers.html:25
 msgid ""
@@ -557,26 +543,25 @@ msgid ""
 "application developers. To be noted : 'open source' trackers exist, their "
 "code is available and open to everyone."
 msgstr ""
-"Un pisteur est un « morceau » de logiciel en charge de collecter des "
-"informations sur la personne qui utilise une application, ou bien sur les "
-"usages ou l'environnement de cette personne. Un pisteur est très souvent "
-"distribué par une société sous la forme de SDK (Software Development Kit), "
-"une sorte de boîte à outils prête à l'emploi et destinée à faciliter la "
-"tâche des personnes développant des applications. Notons qu'il existe des "
-"pisteurs dits open source dont le code de ceux-ci est disponible et "
-"consultable par quiconque."
+"Ein Tracker ist eine Software, deren Aufgabe es ist, Informationen über die "
+"Nutzer der App zu sammeln, wie die App verwendet wird, oder über das "
+"Smartphone, auf dem sie verwendet wird. Ein Tracker wird normalerweise von "
+"Unternehmen als SDK (Software Development Kit) vertrieben, eine Art fertiges "
+"Toolkit, das darauf abzielt, es für Anwendungsentwickler einfacher zu "
+"machen. „Open Source“-Tracker existieren allerdings auch, ihr Code ist "
+"verfügbar und für jedermann zugänglich."
 
 #: web/templates/base/trackers.html:29
 msgid "Are all trackers created equal?"
-msgstr "Tous les pisteurs sont-ils égaux ?"
+msgstr "Sind alle Tracker gleich?"
 
 #: web/templates/base/trackers.html:34
 msgid ""
 "No, all trackers do not have the same function and they can present "
 "different levels of (privacy) intrusion."
 msgstr ""
-"Non, tous les pisteurs ne font pas le même métier et ne représentent pas le "
-"même degré d'intrusion."
+"Nein, nicht alle Tracker haben die gleiche Funktionen und sie können "
+"verschiedene Ebenen des Eingriffs (in die Privatsphäre) darstellen."
 
 #: web/templates/base/trackers.html:38
 msgid ""
@@ -585,12 +570,12 @@ msgid ""
 "an app encountered a problem. As such, information collected at the time the "
 "application crashed will allow the developer to correct the bug."
 msgstr ""
-"<b>Crash reporting :</b> ces pisteurs sont spécialisés dans la gestion des « "
-"plantages » des applications. En d'autres mots, l'objectif est de notifier "
-"la personne développant une application que celle-ci a présenté un "
-"dysfonctionnement. Ainsi, les informations collectées lors du crash de "
-"l'application permettront à cette personne de pouvoir corriger le "
-"dysfonctionnement."
+"<b>Absturzmelder:</b> diese Tracker spezialisieren sich auf das Melden von "
+"Abstürzen von Anwendungen. Mit anderen Worten, ihr Ziel ist es, die "
+"Entwickler von Anwendungen darüber zu informieren, dass in einer App ein "
+"Problem aufgetreten ist. Daher werden Informationen, die zum Zeitpunkt des "
+"Absturzes der Anwendung gesammelt wurden, es dem Entwickler ermöglichen, den "
+"Fehler zu korrigieren."
 
 #: web/templates/base/trackers.html:41
 msgid ""
@@ -599,10 +584,10 @@ msgid ""
 "know what page you visited, or how long you remained on a given area of the "
 "page)."
 msgstr ""
-"<b>Analytics :</b> ces pisteurs sont prévus pour collecter des données "
-"d'usage et ainsi permettre à la personne développant une application de "
-"mieux connaître son audience (par exemple savoir sur quelle page vous êtes "
-"allés, combien de temps vous restez sur telle ou telle partie de la page)."
+"<b>Analytics:</b> diese Tracker sind dazu gedacht, Daten zu sammeln und es "
+"dem Entwickler zu ermöglichen, ein besseres Wissen über die Anwender zu "
+"erhalten (zum Beispiel um zu wissen, welche Seite Sie besucht haben oder wie "
+"lange Sie auf einem bestimmten Bereich der Seite geblieben sind)."
 
 #: web/templates/base/trackers.html:44
 msgid ""
@@ -611,11 +596,11 @@ msgid ""
 "this effect, the tracker will for instance focus on the browsing history, or "
 "on the list of installed applications, and so on."
 msgstr ""
-"<b>Profiling :</b> ces pisteurs ont vocation à récupérer un maximum "
-"d'informations sur la personne qui utilise une application afin d'en "
-"construire un profil virtuel. Pour ce faire, ce type de pisteur va, par "
-"exemple, s'intéresser à l'historique de navigation ou encore à la liste des "
-"applications installées, etc."
+"<b>Profiling:</b> Ziel dieser Tracker ist es, möglichst viele Informationen "
+"über den Anwender zu sammeln, um ein virtuelles Profil zu erstellen. Zu "
+"diesem Zweck konzentriert sich der Tracker beispielsweise auf den "
+"Browserverlauf oder auf die Liste der installierten Anwendungen und so "
+"weiter."
 
 #: web/templates/base/trackers.html:47
 msgid ""
@@ -624,11 +609,11 @@ msgid ""
 "abstract identifiers (pseudonym, etc.). The goal will be, for example, to be "
 "able to correlate an individual's online and offline activities."
 msgstr ""
-"<b>Identification :</b> ces pisteurs se chargent de déterminer votre "
-"identité numérique. Cette identité peut faire référence à une identité "
-"officielle ou bien à des identifiants abstraits (pseudonyme, etc). "
-"L'objectif sera, par exemple, de pouvoir corréler les activités en ligne et "
-"hors ligne d'une personne."
+"<b>Identifikation:</b> diese Tracker sind für die Bestimmung Ihrer digitalen "
+"Identität verantwortlich. Diese Identität kann sich auf eine offizielle "
+"Identität oder auf abstrakte Identifikatoren (Pseudonym usw.) beziehen. Ziel "
+"wird es sein, zum Beispiel in der Lage zu sein, die Online- und Offline-"
+"Aktivitäten einer Person miteinander in Verbindung zu bringen."
 
 #: web/templates/base/trackers.html:50
 msgid ""
@@ -638,12 +623,11 @@ msgid ""
 "of such a tracker is to monetize their application, i.e. to make money by "
 "means of advertisement."
 msgstr ""
-"<b>Ads :</b> ces pisteurs ont pour but de d'identifier la personne qui "
-"utilise une application afin de lui présenter de la publicité ciblée. Cela "
-"n'est rendu possible et pertinent que si cette personne dispose déjà d'un "
-"profil virtuel. L'objectif pour la personne incluant ce type de pisteur est "
-"de monétiser son application, c'est-à-dire de gagner de l'argent grâce à la "
-"publicité."
+"<b>Werbung:</b> diese Tracker zielen darauf ab, den Anwender zu "
+"identifizieren, um ihnen angepasste Werbung zu liefern. Dies ist nur möglich "
+"und relevant, wenn der Nutzer bereits über ein digitales Profil verfügt. Das "
+"Ziel des Erstellers eines solchen Trackers ist es, seine Anwendung zu "
+"monetarisieren, z.B. durch Werbung Geld zu verdienen."
 
 #: web/templates/base/trackers.html:53
 msgid ""
@@ -653,23 +637,23 @@ msgid ""
 "fi networks present in the area, nearby Bluetooth beacons, or even specific "
 "sounds transmitted by loudspeakers."
 msgstr ""
-"<b>Location :</b> ces pisteurs sont en charge de déterminer la position "
-"géographique d'un mobile. Pour ce faire, ce type de pisteur peut tirer "
-"profit de plusieurs capteurs : de la puce GPS, des antennes GSM "
-"environnantes, des réseaux wi-fi environnants, des balises Bluetooth "
-"environnantes ou encore de sons particuliers émis par des hauts-parleurs."
+"<b>Standort:</b> diese Tracker sind so konzipiert, dass sie den "
+"geografischen Standort des mobilen Gerätes bestimmen. Um dies zu tun, nutzen "
+"diese Tracker mehrere Sensoren: GPS-Chips, Mobilfunkantennen in der Nähe, "
+"WLAN-Netzwerke in der Umgebung, Bluetoothgeräte in der Nähe, oder sogar "
+"spezielle Sounds, die von Lautsprechern übertragen werden."
 
 #: web/templates/base/trackers.html:58
 msgid "Who puts these trackers in?"
-msgstr "Qui ajoute ces pisteurs ?"
+msgstr "Wer baut diese Tracker ein?"
 
 #: web/templates/base/trackers.html:63
 msgid ""
 "To answer these questions we must first understand how applications are "
 "made; there are 2 possible scenarios:"
 msgstr ""
-"Pour répondre à cette question, il faut d'abord cerner comment sont "
-"fabriquées les applications, distinguons 2 cas."
+"Um diese Fragen zu beantworten, müssen wir zunächst verstehen, wie Apps "
+"gebaut werden; es gibt zwei mögliche Szenarien:"
 
 #: web/templates/base/trackers.html:66
 msgid ""
@@ -681,15 +665,13 @@ msgid ""
 "are developed will include these trackers whether or not they are specified "
 "in the programming contract."
 msgstr ""
-"Dans le premier cas, la société propriétaire sous-traite le développement de "
-"son application à une société tierce. Dans le contrat de prestation est "
-"défini ce que doit faire l'application et ce qu'elle doit mettre en œuvre "
-"comme technologies. Parfois, la société sous-traitante dispose d'un modèle "
-"d'application qu'elle réutilise pour chaque application. Il s'avère que "
-"certaines de ces sociétés intègrent, par défaut, certains pisteurs dans leur "
-"modèle d'application. Ainsi, toutes les applications qu'elles développeront "
-"embarqueront ces pisteurs sans même que cela soit explicité dans le contrat "
-"de prestation."
+"Im ersten Fall beauftragt die Organisation, der die Anwendung gehört, ein "
+"Drittunternehmen die Anwendung zu entwickeln. Der Vertrag der beiden legt "
+"fest, was die Anwendung zu leisten hat und welche Technologien dafür "
+"eingesetzt werden. Manchmal hat der Subunternehmer bereits eine "
+"Anwendungsvorlage, die er für jede neue Anwendung wiederverwendet. In einem "
+"solchen Fall werden alle entwickelten Anwendungen diese Tracker "
+"einschließen, unabhängig davon, ob sie im Vertrag angegeben sind oder nicht."
 
 #: web/templates/base/trackers.html:69
 msgid ""
@@ -697,117 +679,116 @@ msgid ""
 "application in-house. In that case, their own employees are in charge of "
 "deciding whether or not they want to include certain types of trackers."
 msgstr ""
-"Dans le second cas, la société propriétaire d'une application développe elle-"
-"même son application. Ainsi, ce sont des personnes employées par cette "
-"société qui sont en charge d'inclure ou non certains pisteurs."
+"Im zweiten Fall entwickelt die Organisation, die das Produkt besitzt, die "
+"Anwendung im Haus. In diesem Fall sind ihre eigenen Mitarbeiter dafür "
+"verantwortlich, zu entscheiden, ob sie bestimmte Arten von Trackern "
+"einbeziehen wollen oder nicht."
 
 #: web/templates/base/understand.html:21
 msgid "Know more about trackers and their impact on privacy"
-msgstr "En savoir plus sur les pisteurs et leur impact sur votre vie privée"
+msgstr "Erfahre mehr über Tracker und deren Auswirkungen auf die Privatsphäre"
 
 #: web/templates/base/understand.html:25 web/templates/base/understand.html:39
 #: web/templates/base/understand.html:59
 msgid "Read the article"
-msgstr "Lire l'article"
+msgstr "Artikel lesen"
 
 #: web/templates/base/understand.html:35
 msgid "What is permission and what are the privacy issues?"
-msgstr ""
-"Qu'est-ce qu'une permission et quels problèmes posent-elles pour la vie "
-"privée ?"
+msgstr "Was sind Berechtigungen und was sind ihre Datenschutzprobleme?"
 
 #: web/templates/base/understand.html:55
 msgid ""
 "A list of tools and things you can do to better manage your privacy on your "
 "smartphone"
 msgstr ""
-"Une liste de quelques outils et pratiques destinés à mieux maîtriser votre "
-"intimité sur mobile"
+"Eine Liste der Werkzeuge und Dinge, die Sie tun können, um Ihre Privatsphäre "
+"auf Ihrem Smartphone besser zu verwalten"
 
 #: web/templates/snippets/paginator.html:6
 #: web/templates/snippets/paginator.html:13
 msgid "First"
-msgstr "Premier"
+msgstr "Erste"
 
 #: web/templates/snippets/paginator.html:9
 #: web/templates/snippets/paginator.html:16
 msgid "Previous"
-msgstr "Précédent"
+msgstr "Zurück"
 
 #: web/templates/snippets/paginator.html:34
 #: web/templates/snippets/paginator.html:41
 msgid "Next"
-msgstr "Suivant"
+msgstr "Weiter"
 
 #: web/templates/snippets/paginator.html:37
 #: web/templates/snippets/paginator.html:44
 msgid "Last"
-msgstr "Dernier"
+msgstr "Letzte"
 
 #: web/templates/snippets/reports_links.html:4
 msgid "Need an overview?"
-msgstr "Besoin d'une vision d'ensemble&nbsp;?"
+msgstr "Brauchen Sie eine Übersicht?"
 
 #: web/templates/snippets/reports_links.html:10
 msgid "Latest reports"
-msgstr "Les derniers rapports"
+msgstr "Neueste Berichte"
 
 #: web/templates/snippets/reports_links.html:16
 msgid "No known trackers"
-msgstr "Aucun pisteurs identifiés"
+msgstr "Keine bekannten Tracker"
 
 #: web/templates/snippets/reports_links.html:23
 msgid "Sorted by number of trackers"
-msgstr "Triés par nombre de pisteurs"
+msgstr "Sortiert nach Anzahl der Tracker"
 
 #: web/templates/snippets/reports_search.html:5
 msgid "Search a report"
-msgstr "Rechercher un rapport"
+msgstr "Einen Bericht suchen"
 
 #: web/templates/snippets/reports_search.html:6
 msgid "Application name"
-msgstr "Nom de l'application"
+msgstr "Name der Anwendung"
 
 #: web/templates/snippets/reports_search.html:16
 msgid ""
 "You can search for an application using its name, handle or Google Play URL"
 msgstr ""
-"Vous pouvez rechercher une application en utilisant son nom, son identifiant "
-"ou son URL Google Play"
+"Sie können nach einer Anwendung mit ihrem Namen, Handle oder ihrer Google "
+"Play-URL suchen"
 
 #: web/templates/snippets/reports_search.html:18
 msgid "ex:"
-msgstr "ex :"
+msgstr "z. B.:"
 
 #: web/templates/snippets/reports_search.html:18
 msgid "or"
-msgstr "ou"
+msgstr "oder"
 
 #: web/templates/snippets/reports_search.html:21
 #, python-format
 msgid "Cannot find the application? Search it in %(url)s."
-msgstr "Impossible de trouver l'application ? Recherchez-la sur %(url)s."
+msgstr "Sie können die Anwendung nicht finden? Suchen Sie sie unter %(url)s."
 
 #: web/templates/snippets/reports_search.html:30
 msgid "Results"
-msgstr "Résultats"
+msgstr "Ergebnisse"
 
 #: web/templates/snippets/reports_search.html:39
 msgid "Looking for an application we don't know yet?"
-msgstr "A la recherche d'une application que nous ne connaissons pas encore ?"
+msgstr "Suchen Sie nach einer Anwendung, die wir noch nicht kennen?"
 
 #: web/templates/snippets/reports_search.html:47
 msgid "Perform a new analysis"
-msgstr "Effectuer une nouvelle analyse"
+msgstr "Eine neue Analyse durchführen"
 
 #: web/templates/snippets/reports_search_tpl.html:6
 msgid "No results found."
-msgstr "Aucun résultat."
+msgstr "Keine Ergebnisse gefunden."
 
 #: web/templates/snippets/reports_search_tpl.html:28
 msgid "tracker(s)"
-msgstr "pisteur(s)"
+msgstr "Tracker"
 
 #: web/templates/snippets/reports_search_tpl.html:32
 msgid "permission(s)"
-msgstr "permission(s)"
+msgstr "Berechtigung(en)"
