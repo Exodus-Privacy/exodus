@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-28 09:05+0000\n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
 "PO-Revision-Date: 2020-06-28 09:02\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -38,7 +38,7 @@ msgstr "Demasiadas solicitudes pendientes, vuelva a intentarlo más tarde"
 msgid "Unsupported file extension"
 msgstr "Extensión de archivo no soportada"
 
-#: analysis_query/templates/queries_list.html:38
+#: analysis_query/templates/queries_list.html:42
 msgid "You need to be registered"
 msgstr "Necesitas estar registrado"
 

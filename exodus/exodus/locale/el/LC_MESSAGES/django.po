@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-30 06:22+0000\n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
 "PO-Revision-Date: 2020-05-30 06:17\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Greek\n"
@@ -19,59 +19,59 @@ msgstr ""
 msgid "Your request is running"
 msgstr "Το αίτημα σας εκτελείται"
 
-#: exodus/core/apk.py:65
+#: exodus/core/apk.py:69
 msgid "Unable to download the APK"
 msgstr "Δεν είναι δυνατή η λήψη του APK"
 
-#: exodus/core/apk.py:69
+#: exodus/core/apk.py:73
 msgid "Download APK: success"
 msgstr "Λήψη APK: επιτυχία"
 
-#: exodus/core/apk.py:77
+#: exodus/core/apk.py:81
 msgid "Unable to decode the APK"
 msgstr "Δεν είναι δυνατή η αποκωδικοποίηση του APK"
 
-#: exodus/core/apk.py:81
+#: exodus/core/apk.py:85
 msgid "Decode APK: success"
 msgstr "Αποκωδικοποίηση APK: επιτυχία"
 
-#: exodus/core/apk.py:90
+#: exodus/core/apk.py:94
 msgid "Unable to compute the class list"
 msgstr "Δεν είναι δυνατός ο υπολογισμός της λίστας τάξεων"
 
-#: exodus/core/apk.py:94
+#: exodus/core/apk.py:98
 msgid "List embedded classes: success"
 msgstr "Λίστα ενσωματωμένων τάξεων: επιτυχία"
 
-#: exodus/core/apk.py:107
+#: exodus/core/apk.py:111
 msgid "Unable to create the analysis report"
 msgstr "Δεν είναι δυνατή η δημιουργία της αναφοράς ανάλυσης"
 
-#: exodus/core/apk.py:120
+#: exodus/core/apk.py:125
 msgid "A report already exists for this application version"
 msgstr "Υπάρχει ήδη μια αναφορά για αυτήν την έκδοση εφαρμογής"
 
-#: exodus/core/apk.py:131
+#: exodus/core/apk.py:136
 msgid "Unable to get certificates"
 msgstr "Δεν είναι δυνατή η λήψη πιστοποιητικών"
 
-#: exodus/core/apk.py:148
+#: exodus/core/apk.py:153
 msgid "Unable to compute APK fingerprint"
 msgstr "Δεν είναι δυνατός ο υπολογισμός του δακτυλικού αποτυπώματος APK"
 
-#: exodus/core/apk.py:157
+#: exodus/core/apk.py:162
 msgid "Unable to get application details from Google Play"
 msgstr "Δεν είναι δυνατή η λήψη λεπτομερειών εφαρμογής από το Google Play"
 
-#: exodus/core/apk.py:161
+#: exodus/core/apk.py:166
 msgid "Get application details: success"
 msgstr "Λήψη λεπτομερειών εφαρμογής: επιτυχία"
 
-#: exodus/core/apk.py:166
+#: exodus/core/apk.py:171
 msgid "Tracker analysis: success"
 msgstr "Ανάλυση tracker: επιτυχία"
 
-#: exodus/core/apk.py:219
+#: exodus/core/apk.py:224
 msgid "Static analysis complete"
 msgstr "Η στατική ανάλυση ολοκληρώθηκε"
 
@@ -772,6 +772,14 @@ msgstr "Δεν μπορείτε να βρείτε την εφαρμογή; Αν�
 #: web/templates/snippets/reports_search.html:30
 msgid "Results"
 msgstr "Αποτελέσματα"
+
+#: web/templates/snippets/reports_search.html:39
+msgid "Looking for an application we don't know yet?"
+msgstr "Ψάχνετε για μια εφαρμογή που δεν γνωρίζουμε ακόμα;"
+
+#: web/templates/snippets/reports_search.html:47
+msgid "Perform a new analysis"
+msgstr "Εκτελέστε μια νέα ανάλυση"
 
 #: web/templates/snippets/reports_search_tpl.html:6
 msgid "No results found."

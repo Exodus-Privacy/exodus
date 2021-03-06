@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 16:24+0000\n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
 "PO-Revision-Date: 2020-03-29 08:26\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Italian\n"
@@ -20,11 +20,12 @@ msgstr ""
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: trackers/templates/stats_details.html:10
+#: trackers/templates/stats_details.html:11
+#: trackers/templates/stats_details.html:14
 msgid "Most frequent trackers"
 msgstr "I tracker più comuni"
 
-#: trackers/templates/stats_details.html:20
+#: trackers/templates/stats_details.html:26
 #: trackers/templates/trackers_list.html:41
 #, python-format
 msgid "found in %(count)s application"
@@ -32,30 +33,30 @@ msgid_plural "found in %(count)s applications"
 msgstr[0] "trovato in %(count)s applicazione"
 msgstr[1] "trovato in %(count)s applicazioni"
 
-#: trackers/templates/tracker_details.html:21
+#: trackers/templates/tracker_details.html:24
 #, python-format
 msgid "Present in: <b>%(count)s application</b>"
 msgid_plural "Present in: <b>%(count)s applications</b>"
 msgstr[0] "Presente in: <b>%(count)s applicazione</b>"
 msgstr[1] "Presente in: <b>%(count)s applicazioni</b>"
 
-#: trackers/templates/tracker_details.html:29
+#: trackers/templates/tracker_details.html:32
 msgid "Tracker web page"
 msgstr "Pagina web del tracker"
 
-#: trackers/templates/tracker_details.html:41
+#: trackers/templates/tracker_details.html:44
 msgid "Detection rules"
 msgstr "Regole di rilevamento"
 
-#: trackers/templates/tracker_details.html:42
+#: trackers/templates/tracker_details.html:45
 msgid "Code detection rule:"
 msgstr "Regola di rilevamento (codice):"
 
-#: trackers/templates/tracker_details.html:44
+#: trackers/templates/tracker_details.html:47
 msgid "Network detection rule:"
 msgstr "Regola di rilevamento (rete):"
 
-#: trackers/templates/tracker_details.html:50
+#: trackers/templates/tracker_details.html:53
 msgid "Latest reports with this tracker"
 msgstr "Ultimi report con questo tracker"
 
@@ -85,7 +86,7 @@ msgstr "Ordine alfabetico"
 msgid "Number of applications"
 msgstr "Numero di applicazioni"
 
-#: trackers/templates/trackers_list.html:52
+#: trackers/templates/trackers_list.html:57
 msgid "No trackers are available"
 msgstr "Nessun tracker disponibile"
 

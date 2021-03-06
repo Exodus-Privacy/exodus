@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 20:15+0000\n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
 "PO-Revision-Date: 2020-06-28 09:02\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
@@ -64,6 +64,10 @@ msgstr "Informe creado el"
 #: reports/templates/report_details.html:74
 msgid "and updated on"
 msgstr "y actualizado el"
+
+#: reports/templates/report_details.html:80
+msgid "New analysis"
+msgstr "Nuevo análisis"
 
 #: reports/templates/report_details.html:81
 msgid "Delete this report"
@@ -250,14 +254,6 @@ msgstr "Cerrar"
 #: reports/templates/reports_list.html:11
 msgid "Reports"
 msgstr "Informes"
-
-#: reports/templates/reports_home.html:20
-msgid "Looking for an application we don't know yet?"
-msgstr "Buscando una aplicación que aún no conocemos?"
-
-#: reports/templates/reports_home.html:28
-msgid "Perform a new analysis"
-msgstr "Realizar un nuevo análisis"
 
 #: reports/templates/reports_list.html:17
 #, python-format
