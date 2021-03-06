@@ -1,0 +1,98 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-06 09:42+0000\n"
+"PO-Revision-Date: 2021-03-06 09:27\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: trackers.po\n"
+"X-Crowdin-File-ID: 53\n"
+
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr "Statistik"
+
+#: trackers/templates/stats_details.html:11
+#: trackers/templates/stats_details.html:14
+msgid "Most frequent trackers"
+msgstr "Häufigste Tracker"
+
+#: trackers/templates/stats_details.html:26
+#: trackers/templates/trackers_list.html:41
+#, python-format
+msgid "found in %(count)s application"
+msgid_plural "found in %(count)s applications"
+msgstr[0] "in %(count)s App gefunden"
+msgstr[1] "in %(count)s Apps gefunden"
+
+#: trackers/templates/tracker_details.html:24
+#, python-format
+msgid "Present in: <b>%(count)s application</b>"
+msgid_plural "Present in: <b>%(count)s applications</b>"
+msgstr[0] "Vorhanden in <b>%(count)s App</b>"
+msgstr[1] "Vorhanden in <b>%(count)s Apps</b>"
+
+#: trackers/templates/tracker_details.html:32
+msgid "Tracker web page"
+msgstr "Tracker-Webseite"
+
+#: trackers/templates/tracker_details.html:44
+msgid "Detection rules"
+msgstr "Erkennungsregeln"
+
+#: trackers/templates/tracker_details.html:45
+msgid "Code detection rule:"
+msgstr "Code-Erkennungsregel:"
+
+#: trackers/templates/tracker_details.html:47
+msgid "Network detection rule:"
+msgstr "Netzwerkerkennungsregel:"
+
+#: trackers/templates/tracker_details.html:53
+msgid "Latest reports with this tracker"
+msgstr "Neueste Berichte mit diesem Tracker"
+
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr "Sie müssen registriert sein"
+
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr "Tracker"
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
+msgstr[0] "bekannter Tracker"
+msgstr[1] "bekannte Tracker"
+
+#: trackers/templates/trackers_list.html:20
+msgid "Sorted by"
+msgstr "Sortiert nach"
+
+#: trackers/templates/trackers_list.html:24
+msgid "Alphabetical order"
+msgstr "Alphabetische Reihenfolge"
+
+#: trackers/templates/trackers_list.html:27
+msgid "Number of applications"
+msgstr "Anzahl der Anwendungen"
+
+#: trackers/templates/trackers_list.html:57
+msgid "No trackers are available"
+msgstr "Keine Tracker verfügbar"
+
+#: trackers/views.py:22 trackers/views.py:33 trackers/views.py:49
+#: trackers/views.py:71
+msgid "Tracker does not exist"
+msgstr "Tracker existiert nicht"
