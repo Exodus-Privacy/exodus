@@ -18,7 +18,7 @@ If you wish to help us identify new trackers, you can request an ETIP account by
 
 You have different ways of setting up your development environment (via Docker or manually), everything is explained [here](doc/install.md).
 
-## Continuous Integration
+### Continuous Integration
 
 If you are looking for adding εxodus into your CI pipelines, take a look at [εxodus-standalone](https://github.com/Exodus-Privacy/exodus-standalone).
 
