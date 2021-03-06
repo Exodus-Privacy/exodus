@@ -1,4 +1,5 @@
 # εxodus
+
 [![Build Status](https://travis-ci.org/Exodus-Privacy/exodus.svg?branch=v1)](https://travis-ci.org/Exodus-Privacy/exodus) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/Exodus-Privacy/exodus.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Exodus-Privacy/exodus/context:python)
 
 **εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be dangerous for user privacy like ads, tracking, analytics, …
@@ -16,6 +17,10 @@ If you wish to help us identify new trackers, you can request an ETIP account by
 ### Installing your local instance
 
 You have different ways of setting up your development environment (via Docker or manually), everything is explained [here](doc/install.md).
+
+## Continuous Integration
+
+If you are looking for adding εxodus into your CI pipelines, take a look at [εxodus-standalone](https://github.com/Exodus-Privacy/exodus-standalone).
 
 ### FAQ
 
