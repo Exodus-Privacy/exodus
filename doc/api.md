@@ -4,6 +4,10 @@
 
 > **This API is provided as is and Exodus Privacy or its members could not be responsive in any case.**
 
+This API is limited to 30 requests/second (with a 50 requests burst).
+
+:warning: If the previous limit is exceeded too many times, we will ban the originating IP address for a specific period of time.
+
 ## Authorization
 
 **In order to use this REST API, you have to request an API key**.
@@ -15,6 +19,7 @@ To do so, please send an email specifying:
 * a username
 * an email address (in order to tell you if something wrong has been done with your key)
 * a short description of your project
+* if you need more than 30 requests/second rate
 
 Send your request to [bureau@exodus-privacy.eu.org](mailto:bureau@exodus-privacy.eu.org). Then, you will receive your API key.
 
