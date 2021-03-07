@@ -11,7 +11,7 @@ from analysis_query.models import AnalysisRequest
 from exodus.core.storage import RemoteStorageHelper
 from reports.models import Certificate, Report, Application, Apk, Permission
 from .celery import app
-from .static_analysis import download_apk, clear_analysis_files, StaticAnalysis
+from .static_analysis import download_apk, is_paid_app, clear_analysis_files, StaticAnalysis
 
 EXIT_CODE = -1
 
@@ -62,6 +62,12 @@ def start_static_analysis(params):
         storage_helper.put_file(params.apk_tmp, params.apk_name)
         request.apk.delete()
     else:
+        if params.source == "google":
+            if is_paid_app(request.handle):
+                msg = _('εxodus cannot scan paid applications')
+                save_error(storage_helper, params, request, msg)
+                return EXIT_CODE
+
         # Download APK and put it on Minio storage
         dl_r = download_apk(storage_helper, request.handle, params.tmp_dir, params.apk_name, params.apk_tmp, params.source)
         if not dl_r:

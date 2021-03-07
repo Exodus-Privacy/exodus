@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 09:57+0000\n"
+"POT-Creation-Date: 2021-03-07 09:11+0000\n"
 "PO-Revision-Date: 2020-05-30 06:17\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Italian\n"
@@ -19,59 +19,63 @@ msgstr ""
 msgid "Your request is running"
 msgstr "La tua richiesta è in esecuzione"
 
-#: exodus/core/apk.py:69
+#: exodus/core/apk.py:67
+msgid "εxodus cannot scan paid applications"
+msgstr "εxodus non può scansionare le applicazioni a pagamento"
+
+#: exodus/core/apk.py:75
 msgid "Unable to download the APK"
 msgstr "Impossibile scaricare il file APK"
 
-#: exodus/core/apk.py:73
+#: exodus/core/apk.py:79
 msgid "Download APK: success"
 msgstr "Download del file APK: riuscito"
 
-#: exodus/core/apk.py:81
+#: exodus/core/apk.py:87
 msgid "Unable to decode the APK"
 msgstr "Inpossibile decodificare il file APK"
 
-#: exodus/core/apk.py:85
+#: exodus/core/apk.py:91
 msgid "Decode APK: success"
 msgstr "Decodifica del file APK: Riuscita"
 
-#: exodus/core/apk.py:94
+#: exodus/core/apk.py:100
 msgid "Unable to compute the class list"
 msgstr "Impossibile computare la lista delle classi"
 
-#: exodus/core/apk.py:98
+#: exodus/core/apk.py:104
 msgid "List embedded classes: success"
 msgstr "Elenco delle classi incorporate: Riuscito"
 
-#: exodus/core/apk.py:111
+#: exodus/core/apk.py:117
 msgid "Unable to create the analysis report"
 msgstr "Impossibile creare un report delle analisi"
 
-#: exodus/core/apk.py:125
+#: exodus/core/apk.py:131
 msgid "A report already exists for this application version"
 msgstr "Esiste già un report per questa versione dell'applicazione"
 
-#: exodus/core/apk.py:136
+#: exodus/core/apk.py:142
 msgid "Unable to get certificates"
 msgstr "Impossibile ottenere i certificati"
 
-#: exodus/core/apk.py:153
+#: exodus/core/apk.py:159
 msgid "Unable to compute APK fingerprint"
 msgstr "Impossibile rilevare l'impronta digitale dell'APK"
 
-#: exodus/core/apk.py:162
+#: exodus/core/apk.py:168
 msgid "Unable to get application details from Google Play"
 msgstr "Impossibile ottenere i dettagli dell'applicazione da Google Play"
 
-#: exodus/core/apk.py:166
+#: exodus/core/apk.py:172
 msgid "Get application details: success"
 msgstr "Ottenimento dettagli applicazione: Riuscito"
 
-#: exodus/core/apk.py:171
+#: exodus/core/apk.py:177
 msgid "Tracker analysis: success"
 msgstr "Analisi Tracker: Riuscito"
 
-#: exodus/core/apk.py:224
+#: exodus/core/apk.py:230
 msgid "Static analysis complete"
 msgstr "Analisi statica completata"
 

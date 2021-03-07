@@ -11,6 +11,7 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 from django.conf import settings
+from google_play_scraper import app as google_app
 from gpapi.googleplay import GooglePlayAPI, RequestError
 from minio.error import (ResponseError)
 
@@ -79,6 +80,20 @@ class StaticAnalysis(CoreSA):
             'rating': 'unknown',
         }
         return info
+
+
+def is_paid_app(handle):
+    try:
+        google_play_data = google_app(
+            handle,
+            lang='en',  # defaults to 'en'
+            country='us'  # defaults to 'us'
+        )
+        return (google_play_data.get('free') is not True)
+    except Exception as e:
+        logging.warning("Impossible to get Google Play data")
+        logging.warning(e)
+        return False
 
 
 def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp, source="google"):
