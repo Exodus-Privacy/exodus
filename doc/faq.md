@@ -28,7 +28,7 @@ Finding a tracker signature into an application does not prove that the tracker 
 
 ### How to import trackers definitions?
 
-```
+```bash
 python manage.py importtrackers --settings=exodus.settings.dev
 ```
 
@@ -48,31 +48,31 @@ The `--clist` option is useful if you change the way you extract Java classes fr
 
 #### Refresh all reports
 
-```
+```bash
 python manage.py refreshstaticanalysis --all --trackers --settings=exodus.settings.dev
 ```
 
 #### Refresh only reports `2` and `4`
 
-```
+```bash
 python manage.py refreshstaticanalysis 2 4 --trackers --settings=exodus.settings.dev
 ```
 
 ### How to dump reports?
 
-```
+```bash
 python manage.py dumpdata --exclude=auth --exclude=contenttypes --exclude=authtoken --exclude=analysis_query --exclude=sessions --exclude=admin --settings=exodus.settings.production > /tmp/dump.json
 ```
 
 ### How to dump trackers?
 
-```
+```bash
 (venv) python manage.py dumpdata trackers --settings=exodus.settings.production > /tmp/trackers.json
 ```
 
 ### How to count how many apps have been analysed and reports generated?
 
-```
+```bash
 (venv) ~/exodus$ cd exodus/
 (venv) ~/exodus/exodus$ python manage.py shell  --settings=exodus.settings.production
 Python 3.5.3 (default, Jan 19 2017, 14:11:04)
@@ -86,33 +86,4 @@ Out[2]: 34844
 
 In [3]: Report.objects.all().count()
 Out[3]: 38394
-```
-
-## Known possible issues
-
-### GPlaycli refuses to download APK
-
-It is probably a configuration issue. First of all, check the file `$HOME/.config/gplaycli/gplaycli.conf`, it should contain `android_ID=3d716411bf8bc802`
-
- If the issue remains, fill:
-
-- `gmail_address`
-- `gmail_password`
-
-with a real Google Account :-(
-
-If the file `$HOME/.config/gplaycli/gplaycli.conf` does not exist, create it and put that into:
-
-```
-[Credentials]
-gmail_address=
-gmail_password=
-#keyring_service=gplaycli
-android_ID=3d716411bf8bc802
-language=en_US
-token=True
-token_url=https://matlink.fr/token/email/gsfid
-
-[Cache]
-token=~/.cache/gplaycli/token
 ```
