@@ -175,14 +175,12 @@ msgstr ""
 "Tracker."
 
 #: reports/templates/report_details.html:198
-#, fuzzy
-#| msgid "If you have doubts about this report, contact us at"
 msgid "If you have doubts about this report"
-msgstr "Wenn Sie Zweifel an diesem Bericht haben, kontaktieren Sie uns unter"
+msgstr "Wenn Sie Zweifel an diesem Bericht haben"
 
 #: reports/templates/report_details.html:198
 msgid "contact us"
-msgstr ""
+msgstr "kontaktieren Sie uns"
 
 #: reports/templates/report_details.html:204
 msgid "Signed by"
