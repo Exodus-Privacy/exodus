@@ -224,8 +224,6 @@ You have to activate the virtual venv and `cd` into the same directory as `manag
 
 ```bash
 source venv/bin/activate
-mkdir -p $HOME/.config/gplaycli/
-cp venv/lib/python3.5/site-packages/$HOME/.config/gplaycli/gplaycli.conf $HOME/.config/gplaycli/gplaycli.conf
 cd exodus
 python manage.py runserver --settings=exodus.settings.custom_dev
 ```
