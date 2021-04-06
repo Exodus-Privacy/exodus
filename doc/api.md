@@ -170,20 +170,40 @@ Replace `com.app.handle` with the application handle.
 
 ```json
 [{
+  "handle": "org.smssecure.smssecure",
+  "app_name": "",
   "uaid": "A3509D616FEEF571171CFF5FA2C5E52AB14B0F2E",
-  "updated": "2018-08-16T16:53:11.575Z",
-  "apk_hash": "a0725666e702b76653dc600430a7e87ecee9e9e7c07c02a88391bcbf60adb652",
-  "downloads": "",
+  "version_name": "0.15.8",
   "version_code": "137",
   "source": "google",
-  "report": 380,
-  "created": "2017-11-24T17:06:54.048Z",
-  "trackers": [],
-  "app_name": "",
   "icon_hash": "133488413146636779444378132657184449536",
+  "apk_hash": "a0725666e702b76653dc600430a7e87ecee9e9e7c07c02a88391bcbf60adb652",
+  "created": "2017-11-24T17:06:54.048Z",
+  "updated": "2021-03-13T15:56:54.357Z",
+  "report": 380,
   "creator": "",
-  "version_name": "0.15.8",
-  "handle": "org.smssecure.smssecure"
+  "downloads": "",
+  "trackers": [],
+  "permissions": [
+    "org.smssecure.smssecure.ACCESS_SECRETS",
+    "android.permission.READ_PROFILE",
+    "android.permission.WRITE_PROFILE",
+    "android.permission.READ_CONTACTS",
+    "android.permission.WRITE_CONTACTS",
+    "android.permission.RECEIVE_SMS",
+    "android.permission.RECEIVE_MMS",
+    "android.permission.READ_SMS",
+    "android.permission.SEND_SMS",
+    "android.permission.WRITE_SMS",
+    "android.permission.VIBRATE",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.CHANGE_NETWORK_STATE",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.WAKE_LOCK",
+    "android.permission.INTERNET",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.READ_EXTERNAL_STORAGE"
+  ]
 },
 ...]
 ```
