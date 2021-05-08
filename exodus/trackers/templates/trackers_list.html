@@ -15,44 +15,71 @@
   </div>
 </div>
 <div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12">
-    <p>
-      {% trans "Sorted by" %}&nbsp;
-      <select class="custom-select"
-        onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/trackers/' + this.options[this.selectedIndex].value);">
-        <option value=" ">
-          {% trans "Alphabetical order" %}
-        </option>
-        <option value="?filter=apps" {% if filter == 'apps' %}selected{% endif %}>
-          {% trans "Number of applications" %}
-        </option>
-      </select>
-    </p>
+  <div class="col-xl-4 col-lg-5 col-md-8 col-12 mb-2">
+    {% trans "Sorted by" %}&nbsp;
+    <select class="custom-select"
+    onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/trackers/' + this.options[this.selectedIndex].value);">
+      <option value=" ">
+        {% trans "Alphabetical order" %}
+      </option>
+      <option value="?filter=apps" {% if filter == 'apps' %}selected{% endif %}>
+        {% trans "Number of applications" %}
+      </option>
+    </select>
+  </div>
 
+  <div class="col-xl-4 col-lg-3 col-md-8 col-12 mb-4">
+    <input class="form-control" type="text" id="name-input" onkeyup="filterByName()" placeholder="{% trans "Search by name" %}">
+  </div>
+
+  <div class="col-md-8 col-12">
     {% for tracker in trackers %}
-    <p class="mb-0">
-      <a class="link black" href="{% url 'trackers:detail' tracker.id %}">
-        {{ tracker.name }}&nbsp;
-        <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
-      </a>
-    </p>
-    <p class="mb-0">
-      <span class="small text-muted">
-        {% blocktrans trimmed count count=tracker.apps_number %}
-        found in {{ count }} application
-        {% plural %}
-        found in {{ count }} applications
-        {% endblocktrans %}
-      </span>
-    </p>
-    <p class="mb-4">
-      {% for c in tracker.category.all %}
-      <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
-      {% endfor %}
-    </p>
+    <div class="trackers">
+      <p class="mb-0">
+        <a class="link black" href="{% url 'trackers:detail' tracker.id %}">
+          {{ tracker.name }}&nbsp;
+          <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
+        </a>
+      </p>
+      <p class="mb-0">
+        <span class="small text-muted">
+          {% blocktrans trimmed count count=tracker.apps_number %}
+          found in {{ count }} application
+          {% plural %}
+          found in {{ count }} applications
+          {% endblocktrans %}
+        </span>
+      </p>
+      <p class="mb-4">
+        {% for c in tracker.category.all %}
+        <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
+        {% endfor %}
+      </p>
+    </div>
     {% endfor %}
   </div>
 </div>
+
+<script>
+  function filterByName() {
+    var input, filter, tracker, a, i, txtValue;
+    input = document.getElementById('name-input');
+    filter = input.value.toUpperCase();
+    trackers = document.getElementsByClassName('trackers')
+
+    for (i = 0; i < trackers.length; i++) {
+      a = trackers[i].getElementsByTagName("p")[0].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        trackers[i].style.display = "";
+      } else {
+        trackers[i].style.display = "none";
+      }
+    }
+  }
+
+  filterByName()
+</script>
 {% else %}
 <p>{% trans "No trackers are available" %}.</p>
 {% endif %}
