@@ -1,0 +1,48 @@
+{% extends "base/base.html"%}
+{% load i18n %}
+{% block content %}
+<div class="row justify-content-md-center">
+  <div class="col col-lg-10 col-centered">
+    {% if request.user.is_superuser %}
+    <h2>New API key</h2>
+    {% if api_key %}
+    <div class="alert alert-success">
+      <strong>Success!</strong> New API key: {{ api_key }}
+    </div>
+    {% endif %}
+    {% if error %}
+    <div class="alert alert-danger">
+      <strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="type" class="form-control" name="username" id="username" placeholder="Enter username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+      </div>
+      <div class="form-group">
+        <label for="first-name">First name</label>
+        <input type="type" class="form-control" name="first-name" id="first-name" placeholder="Enter first name" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last name</label>
+        <input type="type" class="form-control" name="last-name" id="last-name" placeholder="Enter last name" required>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Create new API key</button>
+    </form>
+    <div class="mt-4">
+      <a target="_blank" href="{% url 'admin:authtoken_token_changelist' %}">See existing API keys</a>
+    </div>
+    {% else %}
+    <div class="alert alert-danger small">
+      <strong>{% trans "You need to be registered" %}.</strong>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
