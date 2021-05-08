@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 09:57+0000\n"
+"POT-Creation-Date: 2021-05-08 11:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgid "Most frequent trackers"
 msgstr ""
 
 #: trackers/templates/stats_details.html:26
-#: trackers/templates/trackers_list.html:41
+#: trackers/templates/trackers_list.html:46
 #, python-format
 msgid "found in %(count)s application"
 msgid_plural "found in %(count)s applications"
@@ -76,19 +76,23 @@ msgid_plural "known trackers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: trackers/templates/trackers_list.html:20
+#: trackers/templates/trackers_list.html:19
 msgid "Sorted by"
 msgstr ""
 
-#: trackers/templates/trackers_list.html:24
+#: trackers/templates/trackers_list.html:23
 msgid "Alphabetical order"
 msgstr ""
 
-#: trackers/templates/trackers_list.html:27
+#: trackers/templates/trackers_list.html:26
 msgid "Number of applications"
 msgstr ""
 
-#: trackers/templates/trackers_list.html:57
+#: trackers/templates/trackers_list.html:32
+msgid "Search by name"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:84
 msgid "No trackers are available"
 msgstr ""
 
