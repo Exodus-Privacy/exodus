@@ -18,7 +18,7 @@
         <i>{% trans "ex:" %} <b>Meteo France</b> {% trans "or" %} <b>fr.meteo</b> {% trans "or" %}
           <b>https://play.google.com/store/apps/details?id=fr.meteo</b></i>
         <br>
-        {% blocktrans trimmed with url='<a href="https://play.google.com/store/apps" target="_blank">Google Play</a>' %}
+        {% blocktrans trimmed with url='<a target="_blank" rel="noreferrer" href="https://play.google.com/store/apps">Google Play</a>' %}
         Cannot find the application? Search it in {{ url }}.
         {% endblocktrans %}
       </small>
