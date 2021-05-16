@@ -39,19 +39,19 @@ GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
 ```bash
 docker-compose up -d
 # Once exodus started, you can check its logs
-docker logs -f exodus
+docker-compose logs -f exodus
 ```
 
 When everything is up (Docker logs `Exodus is ready.`), launch the worker:
 
 ```bash
-docker exec -it exodus /entrypoint.sh "start-worker"
+docker-compose exec exodus /entrypoint.sh start-worker
 ```
 
 Then, you may have to force a first download of the F-Droid index:
 
 ```bash
-docker exec -it exodus /entrypoint.sh "refresh-fdroid-index"
+docker-compose exec exodus /entrypoint.sh refresh-fdroid-index
 ```
 
 **The worker must be running** (previous command) to do this.
@@ -63,14 +63,15 @@ The exodus container automatically:
 - Import trackers from the main instance
 - Start the frontend of exodus
 
-Don't forget to rebuild your container if there is any change with `docker-compose build`.
+Don't forget to rebuild your image and refresh your container container if there is any
+change with `docker-compose up -d --build`.
 
 #### Aliases
 
 You can use the command
 
 ```bash
-docker exec -it exodus /entrypoint.sh "<command>"
+docker-compose exec exodus /entrypoint.sh "<command>"
 ```
 
 to make actions, where `<command>` can be:
