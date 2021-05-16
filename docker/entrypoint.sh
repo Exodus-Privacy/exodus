@@ -1,5 +1,8 @@
 #!/bin/bash
 
+declare -r pyexe=python3
+declare -r pymanage="$pyexe manage.py"
+
 declare -Ar commandList=(
 	[compile-messages]=compileMessages
 	[create-db]=createDb
@@ -62,38 +65,39 @@ function getSettings() {
 }
 
 function createDB() {
-    echo 'CREATE EXTENSION IF NOT EXISTS pg_trgm;' | python3 manage.py dbshell
-    python3 manage.py makemigrations
-    python3 manage.py migrate
+	echo 'CREATE EXTENSION IF NOT EXISTS pg_trgm;' | $pymanage dbshell
+	$pymanage makemigrations
+	$pymanage migrate
 }
 
 function createUser() {
-    python3 manage.py createsuperuser
+	$pymanage createsuperuser
 }
 
 function startWorker() {
-    export C_FORCE_ROOT=1; exec celery worker --beat -A exodus.core -l info -S django
+	export C_FORCE_ROOT=1
+	exec celery worker --beat -A exodus.core -l info -S django
 }
 
 function startFrontend() {
-    exec python3 manage.py runserver 0.0.0.0:8000
+	exec $pymanage runserver 0.0.0.0:8000
 }
 
 function importTrackers() {
-    python3 manage.py import_categories
-    python3 manage.py importtrackers
+	$pymanage import_categories
+	$pymanage importtrackers
 }
 
 function makeMessages() {
-    python3 manage.py makemessages
+	$pymanage makemessages
 }
 
 function compileMessages() {
-    python3 manage.py compilemessages
+	$pymanage compilemessages
 }
 
 function refreshFdroidIndex() {
-    python3 manage.py refresh_fdroid_index
+	$pymanage refresh_fdroid_index
 }
 
 function init_db() {
