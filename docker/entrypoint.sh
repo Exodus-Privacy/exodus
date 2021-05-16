@@ -1,5 +1,58 @@
 #!/bin/bash
 
+declare -Ar commandList=(
+	[compile-messages]=compileMessages
+	[create-db]=createDb
+	[create-user]=createUser
+	[import-trackers]=importTrackers
+	[init]=init
+	[make-messages]=makeMessages
+	[refresh-fdroid-index]=refreshFdroidIndex
+	[start-frontend]=startFrontEnd
+	[start-worker]=startWorker
+)
+
+declare -Ar commandHelpList=(
+	[compile-messages]='compile translation messages'
+	[create-db]='create database if required and attend to migrations'
+	[create-user]='actually create a super user if not created yet'
+	[import-trackers]='import trackers from the official exodus instance'
+	[init]='Initialize database and launch Exodus'
+	[make-messages]='extract translation messages'
+	[refresh-fdroid-index]='fetch F-Droids list of packages'
+	[start-frontend]='lauch the local front end'
+	[start-worker]='start the exodus worker'
+)
+
+function main()
+{
+	getSettings
+	if [ -z "$1" ]
+	then
+		usage "$0"
+	elif [ -n "${commandList[$1]}" ]
+	then
+		"${commandList[$1]}"
+	else
+		exec "$@"
+	fi
+}
+
+function usage()
+{
+	cat <<- EOS
+		$1: prepare and lauch exodus
+
+	EOS
+
+	for cmd in "${!commandHelpList[@]}"
+	do
+		cat <<- EOS
+			$cmd: ${commandHelpList[$cmd]}
+		EOS
+	done
+}
+
 function getSettings() {
     if [ -f "/exodus/exodus/exodus/settings/custom_docker.py" ]; then
         export DJANGO_SETTINGS_MODULE=exodus.settings.custom_docker
@@ -58,34 +111,4 @@ function init() {
     startFrontend
 }
 
-getSettings
-
-case "${1}" in
-    "init")
-        init
-        ;;
-    "create-db")
-        createDB
-        ;;
-    "create-user")
-        createUser
-        ;;
-    "start-worker")
-        startWorker
-        ;;
-    "start-frontend")
-        startFrontend
-        ;;
-    "import-trackers")
-        importTrackers
-        ;;
-    "refresh-fdroid-index")
-        refreshFdroidIndex
-        ;;
-    "make-messages")
-        makeMessages
-        ;;
-    "compile-messages")
-        compileMessages
-        ;;
-esac
+main "$@"
