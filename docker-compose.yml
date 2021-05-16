@@ -11,6 +11,7 @@ services:
       - minio
       - db
       - amqp
+    env_file: .env
     ports:
       - "80:8000"
     networks:

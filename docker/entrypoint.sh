@@ -97,13 +97,13 @@ function refreshFdroidIndex() {
 }
 
 function init_db() {
-    while ! pg_isready -h db -p 5432 > /dev/null 2> /dev/null; do
-        echo "Connecting to db (postgresql) Failed: Waiting ..."
-        sleep 1
-    done
-    createDB
-    importTrackers
-    echo "Exodus DB is ready."
+	while ! pg_isready -h db -U exodus -p 5432 > /dev/null 2> /dev/null; do
+		echo "Connecting to db (postgresql) Failed: Waiting ..."
+		sleep 1
+	done
+	createDB
+	importTrackers
+	echo "Exodus DB is ready."
 }
 
 function init() {
