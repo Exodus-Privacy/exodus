@@ -2,6 +2,7 @@
 
 declare -r pyexe=python3
 declare -r pymanage="$pyexe manage.py"
+declare -r custom_docker_settings="/exodus/exodus/exodus/settings/custom_docker.py"
 
 declare -Ar commandList=(
 	[compile-messages]=compileMessages
@@ -30,6 +31,7 @@ declare -Ar commandHelpList=(
 function main()
 {
 	getSettings
+
 	if [ -z "$1" ]
 	then
 		usage "$0"
@@ -57,10 +59,20 @@ function usage()
 }
 
 function getSettings() {
-    if [ -f "/exodus/exodus/exodus/settings/custom_docker.py" ]; then
+    if [ -f "$custom_docker_settings" ]; then
         export DJANGO_SETTINGS_MODULE=exodus.settings.custom_docker
     else
         export DJANGO_SETTINGS_MODULE=exodus.settings.docker
+		cat <<- EOS
+		File ${custom_docker_settings} doesn't exist, you might want to create it:
+
+			from .docker import *
+
+			DEBUG=True
+			GOOGLE_ACCOUNT_USERNAME = "<a valid google account>"
+			GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
+			SECRET_KEY = "<a unique secret for Django>"
+		EOS
     fi
 }
 
