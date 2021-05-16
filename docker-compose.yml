@@ -27,10 +27,31 @@ services:
     volumes:
       - db:/var/lib/postgresql/data/pgdata
 
-  exodus:
+  exodus-front:
     build:
       context: ./
       dockerfile: ./docker/Dockerfile
+    depends_on:
+      - minio
+      - db
+      - amqp
+      - exodus-worker
+    env_file: .env
+    networks:
+      backend:
+        aliases:
+            - exodus
+    ports:
+      - "80:8000"
+    user: ${uid?'echo uid=$(id -u) >> .env'}
+    volumes:
+      - ./exodus:/exodus/exodus:rw,cached
+
+  exodus-worker:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    command: [ "start-worker" ]
     depends_on:
       - minio
       - db
@@ -39,9 +60,7 @@ services:
     networks:
       backend:
         aliases:
-            - exodus
-    ports:
-      - "80:8000"
+            - exodus-worker
     user: ${uid?'echo uid=$(id -u) >> .env'}
     volumes:
       - ./exodus:/exodus/exodus:rw,cached
