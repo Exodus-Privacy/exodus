@@ -1,6 +1,6 @@
 # εxodus
 
-[![Build Status](https://travis-ci.org/Exodus-Privacy/exodus.svg?branch=v1)](https://travis-ci.org/Exodus-Privacy/exodus) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/Exodus-Privacy/exodus.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Exodus-Privacy/exodus/context:python)
+[![Build Status](https://github.com/Exodus-Privacy/exodus/actions/workflows/main.yml/badge.svg?branch=v1)](https://github.com/Exodus-Privacy/exodus/actions/workflows/main.yml) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/Exodus-Privacy/exodus.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Exodus-Privacy/exodus/context:python)
 
 **εxodus** is a privacy auditing platform for Android applications. It detects behaviors which can be dangerous for user privacy like ads, tracking, analytics, …
 
