@@ -9,4 +9,5 @@ urlpatterns = [
     path('stats/', views.get_stats, name='get_stats'),
     path('graph/', views.graph, name='graph'),
     path('details/', views.TrackersListView.as_view(), name='all_details'),
+    path('api_key/', views.new_api_key, name='new_api_key'),
 ]

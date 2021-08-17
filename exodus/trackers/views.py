@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import random
+import string
 
 from django.conf import settings
+from django.contrib.auth.models import User, Group
 from django.http.response import Http404
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView
 
 from reports.models import Application, Report
+from rest_framework.authtoken.models import Token
 from trackers.models import Tracker
 
 
@@ -70,6 +74,32 @@ def graph(request):
     except Tracker.DoesNotExist:
         raise Http404(_("Tracker does not exist"))
     return render(request, 'trackers_graph.html', {'g': g})
+
+
+def new_api_key(request):
+    data = {}
+    if request.method == 'POST':
+        try:
+            password = ''.join(random.choice(string.ascii_lowercase) for i in range(24))
+
+            new_user = User.objects.create_user(
+                username=request.POST.get('username'),
+                password=password,
+                email=request.POST.get('email'),
+                first_name=request.POST.get('first-name'),
+                last_name=request.POST.get('last-name')
+            )
+
+            third_parties_group = Group.objects.get(name='third-parties')
+            third_parties_group.user_set.add(new_user)
+
+            api_key = Token.objects.get(user=new_user)
+
+            data['api_key'] = api_key
+        except Exception as e:
+            data['error'] = e
+
+    return render(request, 'new_api_key.html', data)
 
 
 class TrackersListView(ListView):
