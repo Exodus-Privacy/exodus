@@ -21,7 +21,7 @@ To do so, please send an email specifying:
 * a short description of your project
 * if you need more than 30 requests/second rate
 
-Send your request to [bureau@exodus-privacy.eu.org](mailto:bureau@exodus-privacy.eu.org). Then, you will receive your API key.
+Send your request to [api@exodus-privacy.eu.org](mailto:api@exodus-privacy.eu.org). Then, you will receive your API key.
 
 ### How to use it?
 
