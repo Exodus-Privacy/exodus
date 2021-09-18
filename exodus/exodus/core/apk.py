@@ -64,6 +64,7 @@ def start_static_analysis(params):
     else:
         if params.source == "google":
             if is_paid_app(request.handle):
+                logging.warn("'{}' is a paid application".format(request.handle))
                 msg = _('εxodus cannot scan paid applications')
                 save_error(storage_helper, params, request, msg)
                 return EXIT_CODE

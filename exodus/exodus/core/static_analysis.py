@@ -89,7 +89,7 @@ def is_paid_app(handle):
             lang='en',  # defaults to 'en'
             country='us'  # defaults to 'us'
         )
-        return (google_play_data.get('free') is not True)
+        return (google_play_data.get('free') is False)
     except Exception as e:
         logging.warning("Impossible to get Google Play data")
         logging.warning(e)
