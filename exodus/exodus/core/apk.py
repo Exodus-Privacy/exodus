@@ -114,7 +114,8 @@ def start_static_analysis(params):
     app_name = static_analysis.get_app_name()
 
     # TODO: increase character limit in DB (see #300)
-    if len(version) > 50 or len(version_code) > 50 or len(app_name) > 200:
+    if not version or not version_code or not app_name or \
+            len(version) > 50 or len(version_code) > 50 or len(app_name) > 200:
         msg = _('Unable to create the analysis report')
         save_error(storage_helper, params, request, msg)
         return EXIT_CODE
