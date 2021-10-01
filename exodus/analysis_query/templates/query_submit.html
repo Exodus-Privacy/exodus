@@ -16,6 +16,11 @@
     <p class="text-center mb-5">
       <img src="{% static 'img/analysis_new.png' %}" width="120">
     </p>
+    {% if submissions_disabled %}
+    <div class="text-center alert alert-danger">
+      <b>{% trans "It is currently impossible to submit new analysis. Sorry for the inconvenience!" %}</b>
+    </div>
+    {% else %}
     <form method="post" enctype="multipart/form-data" action="{% if LANGUAGE_CODE in 'fr,en' %}{% url 'analysis:submit' %}{% else %}/en/analysis/submit/{% endif %}">
       <div class="form-group">
         {% csrf_token %}
@@ -77,6 +82,7 @@
         </div>
       </div>
     </form>
+    {% endif %}
   </div>
 </div>
 

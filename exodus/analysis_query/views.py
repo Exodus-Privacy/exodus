@@ -50,6 +50,7 @@ class AnalysisRequestView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['upload_allowed'] = settings.ALLOW_APK_UPLOAD
+        context['submissions_disabled'] = settings.DISABLE_SUBMISSIONS
         return context
 
     def form_valid(self, form):
