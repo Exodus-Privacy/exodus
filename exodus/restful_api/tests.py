@@ -114,7 +114,6 @@ class RestfulApiApplicationTests(APITestCase):
             source='fdroid',
             report=fdroid_app_report
         )
-        self.maxDiff = None
 
         expected_json = {
             'applications': [
