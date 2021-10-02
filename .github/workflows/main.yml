@@ -59,3 +59,12 @@ jobs:
           python manage.py test
         env:
           DJANGO_SETTINGS_MODULE: exodus.settings.dev
+
+      - name: Build Container
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: exodus
+          tags: v1 ${{ github.sha }}
+          containerfiles: |
+            ./docker/Dockerfile
