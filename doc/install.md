@@ -118,6 +118,15 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+#### 4b - Patch gpapi
+
+```bash
+# See https://github.com/NoMore201/googleplay-api/pull/145
+cp gpapi/googleplay.py venv/lib/python3/site-packages/gpapi/googleplay.py
+# See https://github.com/NoMore201/googleplay-api/pull/153
+cp gpapi/config.py venv/lib/python3/site-packages/gpapi/config.py
+```
+
 #### 5 - Create the DB schema
 
 ```bash
