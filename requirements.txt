@@ -47,7 +47,7 @@ pexpect==4.7.0
 pickleshare==0.7.5
 Pillow==6.2.2
 prompt-toolkit==2.0.10
-protobuf==3.11.0
+protobuf==3.18.1
 psycopg2==2.7.3.2
 ptyprocess==0.6.0
 pyaxmlparser==0.3.26
@@ -62,7 +62,7 @@ requests==2.26.0
 six==1.15.0
 sqlparse==0.3.0
 traitlets==4.3.2
-urllib3==1.24.2
+urllib3==1.26.7
 vine==1.3.0
 wcwidth==0.1.7
 zipp==0.6.0
