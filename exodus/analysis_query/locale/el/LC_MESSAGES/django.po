@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 09:57+0000\n"
+"POT-Creation-Date: 2021-10-01 10:56+0000\n"
 "PO-Revision-Date: 2020-06-28 09:02\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
@@ -47,28 +47,34 @@ msgstr "Πρέπει να έχετε εγγραφεί"
 msgid "New analysis"
 msgstr "Νέα ανάλυση"
 
-#: analysis_query/templates/query_submit.html:31
+#: analysis_query/templates/query_submit.html:21
+msgid ""
+"It is currently impossible to submit new analysis. Sorry for the "
+"inconvenience!"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:36
 msgid "URL of the application"
 msgstr "Διεύθυνση URL της εφαρμογής"
 
-#: analysis_query/templates/query_submit.html:40
+#: analysis_query/templates/query_submit.html:45
 msgid "Source:"
 msgstr "Πηγή:"
 
-#: analysis_query/templates/query_submit.html:50
+#: analysis_query/templates/query_submit.html:55
 msgid "Free applications only. Works also with the application handle."
 msgstr "Μόνο δωρεάν εφαρμογές. Λειτουργεί επίσης με το handle της εφαρμογής."
 
-#: analysis_query/templates/query_submit.html:62
+#: analysis_query/templates/query_submit.html:67
 #: analysis_query/templates/query_upload.html:50
 msgid "Perform analysis"
 msgstr "Εκτελέστε ανάλυση"
 
-#: analysis_query/templates/query_submit.html:68
+#: analysis_query/templates/query_submit.html:73
 msgid "I prefer to upload an application"
 msgstr "Προτιμώ να μεταφορτώσω μια εφαρμογή"
 
-#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_submit.html:80
 #: analysis_query/templates/query_upload.html:57
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
@@ -77,32 +83,32 @@ msgstr ""
 "Η ανάλυση μπορεί να διαρκέσει πολύ, θα ανακατευθυνθείτε αυτόματα στην "
 "αναφορά."
 
-#: analysis_query/templates/query_submit.html:88
+#: analysis_query/templates/query_submit.html:94
 #: analysis_query/templates/query_upload.html:70
 #: analysis_query/templates/query_wait.html:39
 msgid "is a non-profit organization which provides this service for free."
 msgstr ""
 "είναι ένας μη κερδοσκοπικός οργανισμός που παρέχει αυτήν την υπηρεσία δωρεάν."
 
-#: analysis_query/templates/query_submit.html:90
+#: analysis_query/templates/query_submit.html:96
 #: analysis_query/templates/query_upload.html:72
 #: analysis_query/templates/query_wait.html:41
 msgid "Help us!"
 msgstr "Βοηθήστε μας!"
 
-#: analysis_query/templates/query_submit.html:126
+#: analysis_query/templates/query_submit.html:132
 msgid "This application has already been analyzed!"
 msgstr "Αυτή η εφαρμογή έχει ήδη αναλυθεί!"
 
-#: analysis_query/templates/query_submit.html:132
+#: analysis_query/templates/query_submit.html:138
 msgid "analyzed on"
 msgstr "αναλύθηκε στις"
 
-#: analysis_query/templates/query_submit.html:132
+#: analysis_query/templates/query_submit.html:138
 msgid "Go to the latest report"
 msgstr "Μεταβείτε στην πιο πρόσφατη αναφορά"
 
-#: analysis_query/templates/query_submit.html:136
+#: analysis_query/templates/query_submit.html:142
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."
@@ -138,10 +144,10 @@ msgstr "Θα ανανεώνεται αυτόματα κάθε 10 δευτερό�
 msgid "Analysis done!"
 msgstr "Η ανάλυση τελείωσε!"
 
-#: analysis_query/views.py:34 analysis_query/views.py:61
+#: analysis_query/views.py:34 analysis_query/views.py:62
 msgid "Your request will be handled soon"
 msgstr "Το αίτημα σας θα ελεγχθεί σύντομα"
 
-#: analysis_query/views.py:75 analysis_query/views.py:83
+#: analysis_query/views.py:76 analysis_query/views.py:84
 msgid "AnalysisRequest does not exist"
 msgstr "Το AnalysisRequest δεν υπάρχει"
