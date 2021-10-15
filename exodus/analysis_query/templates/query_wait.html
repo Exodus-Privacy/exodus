@@ -15,7 +15,7 @@
   <div class="col-md-8 col-12 col-centered mb-4">
     <div id="loading" class="text-center" style="">
       <div id="description" class="alert alert-info" role="alert">
-        {% trans request.description %}
+        {% trans analysis.description %}
       </div>
       <p id="completed" style="display:none" class="text-center mt-5">
         <img src="{% static 'img/analysis_completed.png' %}" width="120">
@@ -50,7 +50,7 @@
   const refresh = function(){
     console.log("Refresh")
 
-    jQuery.get("/analysis/{{request.id}}/json", function(rq){
+    jQuery.get("/analysis/{{analysis.id}}/json", function(rq){
       jQuery("#description").removeClass("alert-danger alert-info")
       jQuery("#description").html(rq.description)
       if(rq.in_error){
