@@ -71,10 +71,10 @@ class AnalysisRequestView(FormView):
 
 def wait(request, r_id):
     try:
-        r = AnalysisRequest.objects.get(pk=r_id)
+        analysis = AnalysisRequest.objects.get(pk=r_id)
     except AnalysisRequest.DoesNotExist:
         raise Http404(_("AnalysisRequest does not exist"))
-    return render(request, 'query_wait.html', {'request': r})
+    return render(request, 'query_wait.html', {'analysis': analysis})
 
 
 def json(request, r_id):
