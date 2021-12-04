@@ -22,6 +22,7 @@ EXIT_CODE_CREATE_REPORT = -6
 EXIT_CODE_GET_CERTFICATES = -7
 EXIT_CODE_COMPUTE_APK_FINGERPRINT = -8
 
+
 def change_description(request, msg):
     """
     Utility function to change the description message of the analysis request
