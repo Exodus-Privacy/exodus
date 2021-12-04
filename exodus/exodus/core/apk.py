@@ -13,7 +13,14 @@ from reports.models import Certificate, Report, Application, Apk, Permission
 from .celery import app
 from .static_analysis import download_apk, is_paid_app, clear_analysis_files, StaticAnalysis
 
-
+EXIT_CODE_PAID_APP = -1
+EXIT_CODE_DOWNLOAD_APK = -2
+EXIT_CODE_GET_DETAILS_APP = -3
+EXIT_CODE_DECODE_APK = -4
+EXIT_CODE_COMPUTE_CLASS_LIST = -5
+EXIT_CODE_CREATE_REPORT = -6
+EXIT_CODE_GET_CERTFICATES = -7
+EXIT_CODE_COMPUTE_APK_FINGERPRINT = -8
 
 def change_description(request, msg):
     """
@@ -66,7 +73,7 @@ def start_static_analysis(params):
                 logging.warn("'{}' is a paid application".format(request.handle))
                 msg = _('εxodus cannot scan paid applications')
                 save_error(storage_helper, params, request, msg)
-                return -1
+                return EXIT_CODE_PAID_APP
 
         # Download APK and put it on Minio storage
         dl_r = download_apk(storage_helper, request.handle, params.tmp_dir, params.apk_name, params.apk_tmp, params.source)
@@ -74,7 +81,7 @@ def start_static_analysis(params):
             logging.error("Could not download '{}'".format(request.handle))
             msg = _('Unable to download the APK')
             save_error(storage_helper, params, request, msg)
-            return -2
+            return EXIT_CODE_DOWNLOAD_APK
 
         change_description(request, _('Download APK: success'))
 
@@ -86,7 +93,7 @@ def start_static_analysis(params):
         logging.info(e)
         msg = _('Unable to decode the APK')
         save_error(storage_helper, params, request, msg)
-        return -4
+        return EXIT_CODE_DECODE_APK
 
     change_description(request, _('Decode APK: success'))
 
@@ -99,7 +106,7 @@ def start_static_analysis(params):
         logging.info(e)
         msg = _('Unable to compute the class list')
         save_error(storage_helper, params, request, msg)
-        return -5
+        return EXIT_CODE_COMPUTE_CLASS_LIST
 
     change_description(request, _('List embedded classes: success'))
 
@@ -117,7 +124,7 @@ def start_static_analysis(params):
             len(version) > 50 or len(version_code) > 50 or len(app_name) > 200:
         msg = _('Unable to create the analysis report')
         save_error(storage_helper, params, request, msg)
-        return -6
+        return EXIT_CODE_CREATE_REPORT
 
     # If a report exists for the same handle, version & version_code, return it
     existing_report = Report.objects.filter(
@@ -142,7 +149,7 @@ def start_static_analysis(params):
         logging.info(e)
         msg = _('Unable to get certificates')
         save_error(storage_helper, params, request, msg)
-        return -7
+        return EXIT_CODE_GET_CERTFICATES
 
     # Fingerprint
     try:
@@ -159,7 +166,7 @@ def start_static_analysis(params):
         logging.info(e)
         msg = _('Unable to compute APK fingerprint')
         save_error(storage_helper, params, request, msg)
-        return -8
+        return EXIT_CODE_COMPUTE_APK_FINGERPRINT
 
     # Application details
     try:
@@ -168,7 +175,7 @@ def start_static_analysis(params):
         logging.info(e)
         msg = _('Unable to get application details from Google Play')
         save_error(storage_helper, params, request, msg)
-        return -3
+        return EXIT_CODE_GET_DETAILS_APP
 
     change_description(request, _('Get application details: success'))
 
