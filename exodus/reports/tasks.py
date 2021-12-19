@@ -1,6 +1,7 @@
 import logging
 import os
 import tempfile
+import zipfile
 
 import requests
 from celery import shared_task
@@ -73,4 +74,22 @@ def update_fdroid_data():
             ev.info('Update of F-Droid index complete', initiator=__name__)
         except Exception as e:
             ev.error('Error while downloading Fdroid index', initiator=__name__)
+            ev.error(str(e), initiator=__name__)
+
+    ev.info('Downloading F-Droid localized metadata', initiator=__name__)
+
+    with tempfile.NamedTemporaryFile() as f:
+        try:
+            r = requests.get('{}/index-v1.jar'.format(settings.FDROID_MIRROR))
+            open(f.name, 'wb').write(r.content)
+
+            zip_file = zipfile.ZipFile(f.name)
+            zip_file.extract('index-v1.json', '/tmp')
+
+            storage_helper = RemoteStorageHelper()
+            storage_helper.put_file('/tmp/index-v1.json', 'fdroid_index_v1.json')
+
+            ev.info('Update of F-Droid localized metadata complete', initiator=__name__)
+        except Exception as e:
+            ev.error('Error while downloading Fdroid localized metadata', initiator=__name__)
             ev.error(str(e), initiator=__name__)
