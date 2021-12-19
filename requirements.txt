@@ -35,7 +35,7 @@ jedi==0.15.1
 jellyfish==0.5.6
 kiwisolver==1.1.0
 kombu==4.6.7
-lxml==4.6.3
+lxml==4.6.5
 matplotlib==3.1.2
 minio==5.0.6
 mistune==0.8.1
