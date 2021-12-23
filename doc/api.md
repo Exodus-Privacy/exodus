@@ -58,6 +58,16 @@ The API is served by the URL <https://reports.exodus-privacy.eu.org/>
 }
 ```
 
+#### Get the number of trackers
+
+`GET /api/trackers/count` returns `JSON`
+
+```json
+{
+  "count": 400
+}
+```
+
 ### Applications
 
 #### Get all analyzed applications with full details
@@ -135,6 +145,16 @@ The API is served by the URL <https://reports.exodus-privacy.eu.org/>
 }
 ```
 
+#### Get the number of distinct applications
+
+`GET /api/applications/count` returns `JSON`
+
+```json
+{
+  "count": 115000
+}
+```
+
 ### Reports
 
 #### Get reports of a specific application
@@ -206,4 +226,14 @@ Replace `com.app.handle` with the application handle.
   ]
 },
 ...]
+```
+
+#### Get the number of reports
+
+`GET /api/reports/count` returns `JSON`
+
+```json
+{
+  "count": 225000
+}
 ```
