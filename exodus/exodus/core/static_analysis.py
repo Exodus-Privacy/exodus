@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+import json
 import logging
 import os
 import requests
@@ -126,6 +127,23 @@ def _get_fdroid_app_data(handle):
     return None
 
 
+def _get_fdroid_localized_data(handle):
+    with NamedTemporaryFile() as f:
+        storage_helper = RemoteStorageHelper()
+        try:
+            storage_helper.get_file('fdroid_index_v1.json', f.name)
+            f = open(f.name)
+            fdroid_data = json.load(f)
+        except Exception:
+            raise Exception("Could not get Fdroid index from Minio")
+
+    for app in fdroid_data['apps']:
+        if app['packageName'] == handle:
+            return app['localized']['en-US']
+
+    return None
+
+
 def download_fdroid_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     """
     Download the APK from F-Droid for the given handle.
@@ -245,8 +263,17 @@ def get_icon_from_fdroid(handle, dest):
     if not data:
         raise Exception('Unable to download the icon from fdroid')
 
-    icon = data.find('icon').text
-    icon_url = 'https://f-droid.org/repo/icons-640/{}'.format(icon)
+    try:
+        icon = data.find('icon').text
+        icon_url = 'https://f-droid.org/repo/icons-640/{}'.format(icon)
+    except Exception:
+        # https://gitlab.com/fdroid/fdroiddata/-/issues/2436
+        logging.warning('Trying to find icon in localized metadata')
+        data = _get_fdroid_localized_data(handle)
+        if not data:
+            raise Exception('Unable to download the icon from fdroid')
+
+        icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
 
     f = requests.get(icon_url)
     with open(dest, mode='wb') as fp:
