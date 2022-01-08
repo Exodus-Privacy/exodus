@@ -573,3 +573,137 @@ class RestfulApiReportDetails(APITestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), expected_json)
+
+
+class RestfulApiTrackersCountTests(APITestCase):
+    PATH = '/api/trackers/count'
+
+    def _force_authentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
+    def test_returns_zero_when_no_trackers(self):
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['count'], 0)
+
+    def test_returns_two_when_two_trackers(self):
+        Tracker.objects.create(
+            name='Teemo',
+            description='bad tracker',
+            code_signature='com.teemo',
+            network_signature='teemo.com',
+            website='https://www.teemo.com'
+        )
+
+        Tracker.objects.create(
+            name='Google Ads',
+            description='bad tracker #2',
+            code_signature='com.google.ads',
+            network_signature='google.com',
+            website='https://www.google.com'
+        )
+
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['count'], 2)
+
+
+class RestfulApiReportsCountTests(APITestCase):
+    PATH = '/api/reports/count'
+
+    def _force_authentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
+    def test_returns_zero_when_no_reports(self):
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['count'], 0)
+
+    def test_returns_two_when_two_reports(self):
+        Report.objects.create(id=1234)
+        Report.objects.create(id=1235)
+
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['count'], 2)
+
+
+class RestfulApiApplicationsCountTests(APITestCase):
+    PATH = '/api/applications/count'
+
+    def _force_authentication(self):
+        user = User.objects.create_user('username', 'Pas$w0rd')
+        self.client.force_authenticate(user)
+
+    def test_returns_unauthorized_when_no_auth(self):
+        response = self.client.get(self.PATH)
+        self.assertEqual(response.status_code, 401)
+
+    def test_returns_zero_when_no_applications(self):
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['count'], 0)
+
+    def test_returns_one_when_one_application(self):
+        report = Report.objects.create(id=1234)
+        Application.objects.create(
+            name='app_name',
+            handle='handle',
+            source='google',
+            report=report
+        )
+
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['count'], 1)
+
+    def test_returns_two_when_two_distinct_applications(self):
+        report1 = Report.objects.create(id=1234)
+        Application.objects.create(
+            name='app_name1',
+            handle='handle1',
+            source='google',
+            report=report1
+        )
+        report2 = Report.objects.create(id=1235)
+        Application.objects.create(
+            name='app_name2',
+            handle='handle2',
+            source='google',
+            report=report2
+        )
+        report3 = Report.objects.create(id=1236)
+        Application.objects.create(
+            name='app_name1',
+            handle='handle1',
+            source='google',
+            report=report3
+        )
+
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['count'], 2)

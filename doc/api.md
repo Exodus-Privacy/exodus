@@ -43,18 +43,28 @@ The API is served by the URL <https://reports.exodus-privacy.eu.org/>
 
 ```json
 {
-    "trackers": {
-        "69": {
-            "name": "Facebook Places",
-            "network_signature": "\\.facebook\\.com",
-            "code_signature": "com.facebook.places",
-            "creation_date": "2017-12-05",
-            "website": "https://developers.facebook.com/docs/android",
-            "description": "",
-            "categories": ['Analytics', 'Ads']
-        },
-        [edited]
-    }
+  "trackers": {
+    "69": {
+      "name": "Facebook Places",
+      "network_signature": "\\.facebook\\.com",
+      "code_signature": "com.facebook.places",
+      "creation_date": "2017-12-05",
+      "website": "https://developers.facebook.com/docs/android",
+      "description": "",
+      "categories": ['Analytics', 'Ads']
+    },
+    [edited]
+  }
+}
+```
+
+#### Get the number of trackers
+
+`GET /api/trackers/count` returns `JSON`
+
+```json
+{
+  "count": 400
 }
 ```
 
@@ -135,6 +145,16 @@ The API is served by the URL <https://reports.exodus-privacy.eu.org/>
 }
 ```
 
+#### Get the number of distinct applications
+
+`GET /api/applications/count` returns `JSON`
+
+```json
+{
+  "count": 115000
+}
+```
+
 ### Reports
 
 #### Get reports of a specific application
@@ -144,22 +164,22 @@ Replace `com.app.handle` with the application handle.
 
 ```json
 {
-    "app.greyshirts.firewall": {
-        "name": "NoRoot Firewall",
-        "reports": [
-            {
-                "updated_at": "2017-12-28T01:17:50.638Z",
-                "downloads": "1,000,000+ downloads",
-                "trackers": [27],
-                "creation_date": "2017-12-28T01:17:50.605Z",
-                "version_code": "41",
-                "version": "3.0.1",
-                "source": "google",
-                "id": 57
-            }
-        ],
-        "creator": "Grey Shirts"
-    }
+  "app.greyshirts.firewall": {
+    "name": "NoRoot Firewall",
+    "reports": [
+      {
+        "updated_at": "2017-12-28T01:17:50.638Z",
+        "downloads": "1,000,000+ downloads",
+        "trackers": [27],
+        "creation_date": "2017-12-28T01:17:50.605Z",
+        "version_code": "41",
+        "version": "3.0.1",
+        "source": "google",
+        "id": 57
+      }
+    ],
+    "creator": "Grey Shirts"
+  }
 }
 ```
 
@@ -206,4 +226,14 @@ Replace `com.app.handle` with the application handle.
   ]
 },
 ...]
+```
+
+#### Get the number of reports
+
+`GET /api/reports/count` returns `JSON`
+
+```json
+{
+  "count": 225000
+}
 ```
