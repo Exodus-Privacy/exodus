@@ -287,3 +287,30 @@ def search_strict_handle_details(request, handle):
         except Report.DoesNotExist:
             return JsonResponse({}, safe=True)
         return JsonResponse(details, safe=False)
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
+def get_trackers_count(request):
+    if request.method == 'GET':
+        return JsonResponse({'count': Tracker.objects.count()})
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
+def get_reports_count(request):
+    if request.method == 'GET':
+        return JsonResponse({'count': Report.objects.count()})
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes((TokenAuthentication,))
+@permission_classes((IsAuthenticated,))
+def get_applications_count(request):
+    if request.method == 'GET':
+        return JsonResponse({'count': Application.objects.distinct('handle').count()})
