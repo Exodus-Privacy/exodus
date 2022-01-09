@@ -81,13 +81,17 @@ class Command(BaseCommand):
             if new_tracker:
                 self.stdout.write('* Checked {}'.format(etip_tracker['name']))
                 if apply:
-                    Tracker.objects.create(
+                    created_tracker = Tracker.objects.create(
                         name=etip_tracker['name'],
                         code_signature=etip_tracker['code_signature'],
                         network_signature=etip_tracker['network_signature'],
                         website=etip_tracker['website'],
                         description=etip_tracker['description'],
                     )
+                    etip_categories = [c.get('name') for c in etip_tracker['category']]
+                    categories = [TrackerCategory.objects.get(name=c) for c in etip_categories]
+                    created_tracker.category.set(categories)
+
                     self.stdout.write(self.style.SUCCESS('Tracker created'))
                 else:
                     self.stdout.write(self.style.WARNING('Will create new tracker'))
