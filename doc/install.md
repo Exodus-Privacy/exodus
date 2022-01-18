@@ -64,8 +64,7 @@ The exodus container automatically:
 - Import trackers from the main instance
 - Start the frontend of exodus
 
-Don't forget to rebuild your image and refresh your container container if there is any
-change with `docker-compose up -d --build`.
+Don't forget to rebuild your image and refresh your container if there is any change with `docker-compose up -d --build`.
 
 #### Aliases
 
