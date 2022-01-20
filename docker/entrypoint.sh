@@ -88,7 +88,8 @@ function createUser() {
 
 function startWorker() {
 	export C_FORCE_ROOT=1
-	exec celery worker --beat -A exodus.core -l info -S django
+	#exec celery worker --beat -A exodus.core -l info -S django
+	exec celery -A exodus.core worker --beat -l info -S django
 }
 
 function startFrontend() {
