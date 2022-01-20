@@ -41,7 +41,7 @@ minio==5.0.6
 mistune==0.8.1
 more-itertools==8.0.2
 networkx==2.4
-numpy==1.17.4
+numpy==1.21.0
 parso==0.5.1
 pexpect==4.7.0
 pickleshare==0.7.5
