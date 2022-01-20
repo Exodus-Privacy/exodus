@@ -1,60 +1,84 @@
 version: "3"
 services:
 
-  exodus:
-    build:
-      context: ./
-      dockerfile: ./docker/Dockerfile
-    container_name: exodus
-    image: exodus
-    volumes:
-      - ./exodus:/exodus/exodus:rw,cached
-    depends_on:
-      - minio
-      - db
-      - amqp
-    ports:
-      - "80:8000"
+  amqp:
+    image: rabbitmq:3.7-alpine
     networks:
-      - backend
-
-  minio:
-    container_name: "minio"
-    image: minio/minio:RELEASE.2019-10-12T01-39-57Z
-    volumes:
-      - minio:/data
+      backend:
+        aliases:
+            - amqp
     ports:
-      - "9000:9000"
-    environment:
-      MINIO_ACCESS_KEY: exodusexodus
-      MINIO_SECRET_KEY: exodusexodus
-    networks:
-      - backend
-    command: ["minio", "server", "/data"]
+      - "5672:5672"
 
   db:
-    container_name: "db"
-    image: postgres:11
-    restart: always
-    volumes:
-      - db:/var/lib/postgresql/data/pgdata
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_USER: exodus
       POSTGRES_PASSWORD: exodus
       POSTGRES_DB: exodus
       PGDATA: /var/lib/postgresql/data/pgdata
+    image: postgres:11
+    restart: always
     networks:
-      - backend
-
-  amqp:
-    container_name: "amqp"
-    image: rabbitmq:3.7-alpine
+      backend:
+        aliases:
+            - db
     ports:
-      - "5672:5672"
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data/pgdata
+
+  exodus-front:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    depends_on:
+      - minio
+      - db
+      - amqp
+      - exodus-worker
+    env_file: .env
     networks:
-      - backend
+      backend:
+        aliases:
+            - exodus
+    ports:
+      - "80:8000"
+    user: ${uid?'echo uid=$(id -u) >> .env'}
+    volumes:
+      - ./exodus:/exodus/exodus:rw,cached
+
+  exodus-worker:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    command: [ "start-worker" ]
+    depends_on:
+      - minio
+      - db
+      - amqp
+    env_file: .env
+    networks:
+      backend:
+        aliases:
+            - exodus-worker
+    user: ${uid?'echo uid=$(id -u) >> .env'}
+    volumes:
+      - ./exodus:/exodus/exodus:rw,cached
+
+  minio:
+    command: ["minio", "server", "/data"]
+    environment:
+      MINIO_ACCESS_KEY: exodusexodus
+      MINIO_SECRET_KEY: exodusexodus
+    image: minio/minio:RELEASE.2019-10-12T01-39-57Z
+    networks:
+      backend:
+        aliases:
+            - minio
+    ports:
+      - "9000:9000"
+    volumes:
+      - minio:/data
 
 networks:
   backend:
