@@ -7,9 +7,9 @@ from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-from django.utils.encoding import python_2_unicode_compatible
 from minio import Minio
 from minio.error import (ResponseError, NoSuchBucket)
+from six import python_2_unicode_compatible
 
 from django.utils import translation
 from trackers.models import Tracker
