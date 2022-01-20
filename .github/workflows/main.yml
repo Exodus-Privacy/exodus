@@ -30,6 +30,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     strategy:
+      fail-fast: false
       matrix:
         python-version:
           - 3.7
