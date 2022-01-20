@@ -30,11 +30,10 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     strategy:
-      fail-fast: false
       matrix:
         python-version:
           - 3.7
-          - 3.9.10
+          - 3.9
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
