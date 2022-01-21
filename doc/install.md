@@ -40,22 +40,16 @@ GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
 echo uid=$(id -u) > .env
 docker-compose up -d
 # Once exodus started, you can check its logs
-docker-compose logs -f exodus-worker
+docker-compose logs -f exodus-front
 ```
 
-When everything is up (Docker logs `Exodus DB is ready.`), launch the worker:
-
-```bash
-docker-compose exec exodus-worker /entrypoint.sh start-worker
-```
-
-Then, you may have to force a first download of the F-Droid index:
+When everything is up (Docker logs `Exodus DB is ready.`), you may have to force a first download of the F-Droid index:
 
 ```bash
 docker-compose exec exodus-worker /entrypoint.sh refresh-fdroid-index
 ```
 
-**The worker must be running** (previous command) to do this.
+**The worker must be running** to do this.
 
 The exodus container automatically:
 
