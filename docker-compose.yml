@@ -43,7 +43,7 @@ services:
             - exodus
     ports:
       - "80:8000"
-    user: ${uid?'echo uid=$(id -u) >> .env'}
+    user: ${uid}
     volumes:
       - ./exodus:/exodus/exodus:rw,cached
 
@@ -61,7 +61,7 @@ services:
       backend:
         aliases:
             - exodus-worker
-    user: ${uid?'echo uid=$(id -u) >> .env'}
+    user: ${uid}
     volumes:
       - ./exodus:/exodus/exodus:rw,cached
 
