@@ -9,7 +9,6 @@ from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from minio import Minio
 from minio.error import (ResponseError, NoSuchBucket)
-from six import python_2_unicode_compatible
 
 from django.utils import translation
 from trackers.models import Tracker
@@ -22,7 +21,6 @@ AOSP_PERMISSIONS = {
 }
 
 
-@python_2_unicode_compatible
 class Report(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
