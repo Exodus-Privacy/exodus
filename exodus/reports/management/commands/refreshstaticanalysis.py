@@ -90,7 +90,8 @@ class Command(BaseCommand):
 
                     if options['icons']:
                         icon_name = '{}_{}.png'.format(report.bucket, handle)
-                        icon_phash = static_analysis.get_icon_and_phash(storage_helper, icon_name)
+                        source = report.application.source
+                        icon_phash = static_analysis.get_icon_and_phash(storage_helper, icon_name, source)
                         if icon_phash:
                             report.application.icon_path = icon_name
                             report.application.save()
