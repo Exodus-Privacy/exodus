@@ -1,4 +1,4 @@
-AOSP_PERMISSIONS_EN = {{
+AOSP_PERMISSIONS_FR = {
     "groups": {
         "android.permission-group.ACTIVITY_RECOGNITION": {
             "description": "accéder aux données d'activité physique",
