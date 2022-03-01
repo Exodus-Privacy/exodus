@@ -6,7 +6,7 @@ declare -r custom_docker_settings="/exodus/exodus/exodus/settings/custom_docker.
 
 declare -Ar commandList=(
 	[compile-messages]=compileMessages
-	[create-db]=createDb
+	[create-db]=createDB
 	[create-user]=createUser
 	[import-trackers]=importTrackers
 	[init]=init
