@@ -14,6 +14,7 @@ declare -Ar commandList=(
 	[refresh-fdroid-index]=refreshFdroidIndex
 	[start-frontend]=startFrontEnd
 	[start-worker]=startWorker
+	[test]=test
 )
 
 declare -Ar commandHelpList=(
@@ -26,6 +27,7 @@ declare -Ar commandHelpList=(
 	[refresh-fdroid-index]='fetch F-Droids list of packages'
 	[start-frontend]='lauch the local front end'
 	[start-worker]='start the exodus worker'
+	[test]='run tests'
 )
 
 function main()
@@ -110,6 +112,10 @@ function compileMessages() {
 
 function refreshFdroidIndex() {
 	$pymanage refresh_fdroid_index
+}
+
+function test() {
+	$pymanage test
 }
 
 function init_db() {
