@@ -324,7 +324,7 @@ class RestfulApiTrackersTests(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com'
+            website='https://www.example.com'
         )
 
         expected_json = {
@@ -352,7 +352,7 @@ class RestfulApiTrackersTests(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com'
+            website='https://www.example.com'
         )
         category1 = TrackerCategory.objects.create(name='Analytics')
         category2 = TrackerCategory.objects.create(name='Ads')
@@ -384,8 +384,8 @@ class RestfulApiTrackersTests(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com',
-            documentation='http://link1.fr http://link2.fr/doc'
+            website='https://www.example.com',
+            documentation='http://example.com/docs http://example.com/android'
         )
 
         expected_json = {
@@ -398,7 +398,7 @@ class RestfulApiTrackersTests(APITestCase):
                 'network_signature': tracker.network_signature,
                 'website': tracker.website,
                 'categories': [],
-                'documentation': ['http://link1.fr', 'http://link2.fr/doc']
+                'documentation': ['http://example.com/docs', 'http://example.com/android']
             }
         }
 
@@ -541,8 +541,8 @@ class RestfulApiReportDetails(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com',
-            documentation='http://link1.fr/doc'
+            website='https://www.example.com',
+            documentation='http://example.com/doc'
         )
         tracker.category.set([category])
         report = Report.objects.create(id=1234)
@@ -584,7 +584,7 @@ class RestfulApiReportDetails(APITestCase):
                     'website': tracker.website,
                     'apps_number': 0,
                     'apps_percent': 0,
-                    'documentation': ['http://link1.fr/doc']
+                    'documentation': ['http://example.com/doc']
                 },
             ],
             'application': {
@@ -632,7 +632,7 @@ class RestfulApiTrackersCountTests(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com'
+            website='https://www.example.com'
         )
 
         Tracker.objects.create(
@@ -640,7 +640,7 @@ class RestfulApiTrackersCountTests(APITestCase):
             description='bad tracker #2',
             code_signature='com.google.ads',
             network_signature='google.com',
-            website='https://www.google.com'
+            website='https://www.example.com'
         )
 
         self._force_authentication()
