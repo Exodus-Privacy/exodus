@@ -1,4 +1,4 @@
-FROM python:3.7-slim-buster
+FROM python:3.9-slim-bullseye
 LABEL maintainer="Codimp"
 
 WORKDIR /exodus/exodus
@@ -7,11 +7,11 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ["init"]
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
-  dexdump=8.1.0* \
-  postgresql-client-11=11* \
-  libpq-dev=11.* \
-  gcc=4:8.3.* \
-  musl-dev=1.1.* \
+  dexdump=10.0.0* \
+  postgresql-client-13=13* \
+  libpq-dev=13.* \
+  gcc=4:10.2.* \
+  musl-dev=1.2.* \
   libc6-dev=2.* \
   gettext=0.* \
   && apt-get clean \
