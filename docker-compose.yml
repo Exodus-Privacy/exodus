@@ -68,8 +68,8 @@ services:
   minio:
     command: ["minio", "server", "/data", "--console-address", ":9001"]
     environment:
-      MINIO_ACCESS_KEY: exodusexodus
-      MINIO_SECRET_KEY: exodusexodus
+      MINIO_ROOT_USER: exodusexodus
+      MINIO_ROOT_PASSWORD: exodusexodus
     image: minio/minio:RELEASE.2022-03-14T18-25-24Z
     networks:
       backend:

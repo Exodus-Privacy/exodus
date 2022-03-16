@@ -12,8 +12,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, '..', 'static'), )
 
-MINIO_STORAGE_ACCESS_KEY = os.environ.get('EXODUS_MINIO_ACCESS_KEY', 'exodusexodus')
-MINIO_STORAGE_SECRET_KEY = os.environ.get('EXODUS_MINIO_SECRET_KEY', 'exodusexodus')
+MINIO_STORAGE_ACCESS_KEY = os.environ.get('EXODUS_MINIO_ROOT_USER', 'exodusexodus')
+MINIO_STORAGE_SECRET_KEY = os.environ.get('EXODUS_MINIO_ROOT_PASSWORD', 'exodusexodus')
 
 ALLOW_APK_UPLOAD = True
 
