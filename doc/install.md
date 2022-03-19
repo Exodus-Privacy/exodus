@@ -186,11 +186,11 @@ mkdir -p /tmp/exodus-storage
 #### 8 - Start Minio
 
 ```bash
-$HOME/minio server /tmp/exodus-storage
+$HOME/minio server /tmp/exodus-storage --console-address :9001
 ```
 
-Minio is now listening on `9000` port and the browser interface is available
-at [http://127.0.0.1:9000](http://127.0.0.1:9000). Use `exodusexodus` as both login
+Minio API is now listening on `9000` port and the browser interface is available
+at [http://127.0.0.1:9001](http://127.0.0.1:9001). Use `exodusexodus` as both login
 and password.
 
 #### 9 - Configure your instance
