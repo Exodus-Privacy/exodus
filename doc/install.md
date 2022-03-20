@@ -81,10 +81,12 @@ to make actions, where `<command>` can be:
 
 ### Manual setup
 
+This setup is based on a Debian 11 (Bullseye) configuration.
+
 #### 1 - Install system dependencies
 
 ```bash
-sudo apt install git virtualenv postgresql-9.6 rabbitmq-server tshark aapt build-essential libssl-dev dexdump libffi-dev python3-dev openjdk-8-jre libxml2-dev libxslt1-dev
+sudo apt install git virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev
 ```
 
 #### 2 - Clone the project
@@ -217,7 +219,7 @@ You have to activate the virtual venv and `cd` into the same directory as `manag
 source venv/bin/activate
 cd exodus
 
-export DJANGO_SETTINGS_MODULE=exodus.settings.custom_dev; celery worker --beat -A exodus.core -l debug -S django
+export DJANGO_SETTINGS_MODULE=exodus.settings.custom_dev; celery -A exodus.core worker --beat -l debug -S django
 ```
 
 Now, the εxodus worker and scheduler are waiting for tasks.
