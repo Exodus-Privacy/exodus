@@ -86,7 +86,7 @@ This setup is based on a Debian 11 (Bullseye) configuration.
 #### 1 - Install system dependencies
 
 ```bash
-sudo apt install git virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev
+sudo apt install git virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev libpq-dev
 ```
 
 #### 2 - Clone the project
@@ -119,9 +119,9 @@ pip install -r requirements.txt
 
 ```bash
 # See https://github.com/NoMore201/googleplay-api/pull/145
-cp gpapi/googleplay.py venv/lib/python3/site-packages/gpapi/googleplay.py
+cp gpapi/googleplay.py venv/lib/python3.9/site-packages/gpapi/googleplay.py
 # See https://github.com/NoMore201/googleplay-api/pull/153
-cp gpapi/config.py venv/lib/python3/site-packages/gpapi/config.py
+cp gpapi/config.py venv/lib/python3.9/site-packages/gpapi/config.py
 ```
 
 #### 5 - Create the DB schema
@@ -158,7 +158,7 @@ chmod +x $HOME/minio
 mkdir -p $HOME/.minio
 cat > $HOME/.minio/config.json << EOL
 {
-        "version": "20",
+        "version": "33",
         "credential": {
                 "accessKey": "exodusexodus",
                 "secretKey": "exodusexodus"
