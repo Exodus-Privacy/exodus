@@ -269,11 +269,15 @@ def get_icon_from_fdroid(handle, dest):
     except Exception:
         # https://gitlab.com/fdroid/fdroiddata/-/issues/2436
         logging.warning('Trying to find icon in localized metadata')
-        data = _get_fdroid_localized_data(handle)
-        if not data:
-            raise Exception('Unable to download the icon from fdroid')
+        try:
+            data = _get_fdroid_localized_data(handle)
+            if not data:
+                raise Exception('Unable to download the icon from fdroid')
 
-        icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
+            icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
+        except Exception:
+            logging.warning("Using default icon of f-droid")
+            icon_url = 'https://f-droid.org/assets/ic_repo_app_default_KNN008Z2K7VNPZOFLMTry3JkfFYPxVGDopS1iwWe5wo=.png'
 
     f = requests.get(icon_url)
     with open(dest, mode='wb') as fp:
