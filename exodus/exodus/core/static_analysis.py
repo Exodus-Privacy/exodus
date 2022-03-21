@@ -127,23 +127,6 @@ def _get_fdroid_app_data(handle):
     return None
 
 
-def _get_fdroid_localized_data(handle):
-    with NamedTemporaryFile() as f:
-        storage_helper = RemoteStorageHelper()
-        try:
-            storage_helper.get_file('fdroid_index_v1.json', f.name)
-            f = open(f.name)
-            fdroid_data = json.load(f)
-        except Exception:
-            raise Exception("Could not get Fdroid index from Minio")
-
-    for app in fdroid_data['apps']:
-        if app['packageName'] == handle:
-            return app['localized']['en-US']
-
-    return None
-
-
 def download_fdroid_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     """
     Download the APK from F-Droid for the given handle.
@@ -259,31 +242,21 @@ def get_icon_from_fdroid(handle, dest):
     :param dest: file to be saved
     :raises Exception: if unable to download icon
     """
-    data = _get_fdroid_app_data(handle)
-    if not data:
-        raise Exception('Unable to download the icon from fdroid')
+    address = 'https://f-droid.org/en/packages/%s' % handle
+    page_content = requests.get(address).text
+    soup = BeautifulSoup(page_content, 'html.parser')
+    icon_images = soup.find_all('img', {'class': 'package-icon'})
+    if len(icon_images) > 0:
+        icon_url = '{}'.format(icon_images[0]['src'])
+        if not icon_url.startswith('http'):
+            icon_url = 'https://f-droid.org{}'.format(icon_url)
+        f = requests.get(icon_url)
+        with open(dest, mode='wb') as fp:
+            fp.write(f.content)
+        if os.path.isfile(dest) and os.path.getsize(dest) > 0:
+            return
 
-    try:
-        icon = data.find('icon').text
-        icon_url = 'https://f-droid.org/repo/icons-640/{}'.format(icon)
-    except Exception:
-        # https://gitlab.com/fdroid/fdroiddata/-/issues/2436
-        logging.warning('Trying to find icon in localized metadata')
-        try:
-            data = _get_fdroid_localized_data(handle)
-            if not data:
-                raise Exception('Unable to download the icon from fdroid')
-
-            icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
-        except Exception:
-            logging.warning("Using default icon of f-droid")
-            icon_url = 'https://f-droid.org/assets/ic_repo_app_default_KNN008Z2K7VNPZOFLMTry3JkfFYPxVGDopS1iwWe5wo=.png'
-
-    f = requests.get(icon_url)
-    with open(dest, mode='wb') as fp:
-        fp.write(f.content)
-    if not os.path.isfile(dest) or os.path.getsize(dest) == 0:
-        raise Exception('Unable to download the icon from fdroid')
+    raise Exception('Unable to download the icon from fdroid')
 
 
 def get_icon_from_gplay(handle, dest):
