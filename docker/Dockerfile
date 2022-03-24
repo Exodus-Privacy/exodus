@@ -14,16 +14,22 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   musl-dev=1.2.* \
   libc6-dev=2.* \
   gettext=0.* \
+  pipenv=11.* \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 # See https://github.com/NoMore201/googleplay-api/pull/145
-COPY gpapi/googleplay.py /usr/local/lib/python3.7/site-packages/gpapi/googleplay.py
+COPY gpapi/googleplay.py /usr/local/lib/python3.9/site-packages/gpapi/googleplay.py
 # See https://github.com/NoMore201/googleplay-api/pull/153
-COPY gpapi/config.py /usr/local/lib/python3.7/site-packages/gpapi/config.py
+COPY gpapi/config.py /usr/local/lib/python3.9/site-packages/gpapi/config.py
 
-COPY ./requirements.txt /opt/requirements.txt
-RUN pip3 install --no-cache-dir -r /opt/requirements.txt
+WORKDIR /opt
+
+COPY ./Pipfile* /opt/
+RUN pipenv install --ignore-pipfile --system
+# RUN pip3 install --no-cache-dir -r /opt/requirements.txt
+
+WORKDIR /exodus/exodus
 
 COPY ./docker/entrypoint.sh /entrypoint.sh
 COPY ./ /exodus
