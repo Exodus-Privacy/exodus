@@ -56,6 +56,7 @@ jobs:
       - name: Check vulnerabilites in dependencies
         run: |
           pipenv check
+        continue-on-error: true
       - uses: hadolint/hadolint-action@v1.5.0
         with:
           dockerfile: docker/Dockerfile
