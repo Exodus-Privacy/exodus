@@ -259,27 +259,37 @@ def get_icon_from_fdroid(handle, dest):
     :param dest: file to be saved
     :raises Exception: if unable to download icon
     """
-    data = _get_fdroid_app_data(handle)
-    if not data:
-        raise Exception('Unable to download the icon from fdroid')
-
-    try:
-        icon = data.find('icon').text
-        icon_url = 'https://f-droid.org/repo/icons-640/{}'.format(icon)
-    except Exception:
-        # https://gitlab.com/fdroid/fdroiddata/-/issues/2436
-        logging.warning('Trying to find icon in localized metadata')
-        data = _get_fdroid_localized_data(handle)
-        if not data:
-            raise Exception('Unable to download the icon from fdroid')
-
-        icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
-
+    icon_url = get_icon_url_fdroid(handle)
     f = requests.get(icon_url)
     with open(dest, mode='wb') as fp:
         fp.write(f.content)
     if not os.path.isfile(dest) or os.path.getsize(dest) == 0:
         raise Exception('Unable to download the icon from fdroid')
+
+
+def get_icon_url_fdroid(handle):
+    try:
+        data = _get_fdroid_app_data(handle)
+        icon = data.find('icon').text
+        icon_url = 'https://f-droid.org/repo/icons-640/{}'.format(icon)
+    except Exception:
+        # https://gitlab.com/fdroid/fdroiddata/-/issues/2436
+        logging.warning('Trying to find icon in localized metadata')
+        try:
+            data = _get_fdroid_localized_data(handle)
+            icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
+        except Exception:
+            logging.warning('Trying to find icon from f-droid website')
+            address = 'https://f-droid.org/en/packages/%s' % handle
+            page_content = requests.get(address).text
+            soup = BeautifulSoup(page_content, 'html.parser')
+            icon_images = soup.find_all('img', {'class': 'package-icon'})
+            if len(icon_images) == 0:
+                raise Exception('Unable to get icon url from fdroid')
+            icon_url = '{}'.format(icon_images[0]['src'])
+            if not icon_url.startswith('http'):
+                icon_url = 'https://f-droid.org{}'.format(icon_url)
+    return icon_url
 
 
 def get_icon_from_gplay(handle, dest):
