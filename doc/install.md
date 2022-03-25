@@ -86,7 +86,7 @@ This setup is based on a Debian 11 (Bullseye) configuration.
 #### 1 - Install system dependencies
 
 ```bash
-sudo apt install git virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev libpq-dev
+sudo apt install git virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev libpq-dev pipenv
 ```
 
 #### 2 - Clone the project
@@ -110,9 +110,7 @@ CREATE EXTENSION pg_trgm;
 
 ```bash
 cd exodus
-virtualenv ./venv -p python3
-source venv/bin/activate
-pip install -r requirements.txt
+pipenv install --dev
 ```
 
 #### 4b - Patch gpapi
@@ -124,26 +122,41 @@ cp gpapi/googleplay.py venv/lib/python3.9/site-packages/gpapi/googleplay.py
 cp gpapi/config.py venv/lib/python3.9/site-packages/gpapi/config.py
 ```
 
-#### 5 - Create the DB schema
+#### 5 - Configure your instance
+
+You can tweak your instance by changing [some settings](#configuring-your-local-instance).
+
+Create the file  `exodus/exodus/settings/custom_dev.py` with the following content:
 
 ```bash
-cd exodus
-python manage.py migrate --fake-initial --settings=exodus.settings.dev
-python manage.py makemigrations --settings=exodus.settings.dev
-python manage.py migrate --settings=exodus.settings.dev
+from .dev import *
+
+GOOGLE_ACCOUNT_USERNAME = "<a valid google account>"
+GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
+
+# Overwrite any other settings you wish to
 ```
 
-#### 6 - Create admin user
-
-You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
+#### 6 - Create the DB schema
 
 ```bash
-source venv/bin/activate
+echo "DJANGO_SETTINGS_MODULE=exodus.settings.custom_dev" > .env
+# enter into python environment
+pipenv shell
+
 cd exodus
-python manage.py createsuperuser --settings=exodus.settings.dev
+python manage.py migrate --fake-initial
+python manage.py makemigrations
+python manage.py migrate
 ```
 
-#### 7 - Install Minio server
+#### 7 - Create admin user
+
+```bash
+python manage.py createsuperuser
+```
+
+#### 8 - Install Minio server
 
 Minio is in charge to store files like APK, icons, flow and pcap files.
 
@@ -185,7 +198,7 @@ EOL
 mkdir -p /tmp/exodus-storage
 ```
 
-#### 8 - Start Minio
+#### 9 - Start Minio
 
 ```bash
 $HOME/minio server /tmp/exodus-storage --console-address :9001
@@ -195,31 +208,16 @@ Minio API is now listening on `9000` port and the browser interface is available
 at [http://127.0.0.1:9001](http://127.0.0.1:9001). Use `exodusexodus` as both login
 and password.
 
-#### 9 - Configure your instance
-
-You can tweak your instance by changing [some settings](#configuring-your-local-instance).
-
-Create the file  `exodus/exodus/settings/custom_dev.py` with the following content:
-
-```bash
-from .dev import *
-
-GOOGLE_ACCOUNT_USERNAME = "<a valid google account>"
-GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
-
-# Overwrite any other settings you wish to
-```
-
 #### 10 - Start the εxodus worker and scheduler
 
 The εxodus handle asynchronous tasks submitted by the front-end.
 You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 
 ```bash
-source venv/bin/activate
+pipenv shell
 cd exodus
 
-export DJANGO_SETTINGS_MODULE=exodus.settings.custom_dev; celery -A exodus.core worker --beat -l debug -S django
+celery -A exodus.core worker --beat -l debug -S django
 ```
 
 Now, the εxodus worker and scheduler are waiting for tasks.
@@ -229,9 +227,10 @@ Now, the εxodus worker and scheduler are waiting for tasks.
 You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 
 ```bash
-source venv/bin/activate
+pipenv shell
 cd exodus
-python manage.py runserver --settings=exodus.settings.custom_dev
+
+python manage.py runserver
 ```
 
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
@@ -241,8 +240,8 @@ Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
 Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following commands:
 
 ```bash
-python manage.py import_categories --settings=exodus.settings.custom_dev
-python manage.py importtrackers --settings=exodus.settings.custom_dev
+python manage.py import_categories
+python manage.py importtrackers
 ```
 
 Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
@@ -252,7 +251,7 @@ Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
 An initial F-droid index manual download may be required:
 
 ```bash
-python manage.py refresh_fdroid_index --settings=exodus.settings.custom_dev
+python manage.py refresh_fdroid_index
 ```
 
 ## Configuring your local instance
