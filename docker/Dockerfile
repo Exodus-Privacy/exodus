@@ -1,11 +1,6 @@
 FROM python:3.9-slim-bullseye
 LABEL maintainer="Codimp"
 
-WORKDIR /exodus/exodus
-
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["init"]
-
 RUN apt-get update && apt-get install --no-install-recommends -y \
   dexdump=10.0.0* \
   postgresql-client-13=13* \
@@ -27,9 +22,11 @@ WORKDIR /opt
 
 COPY ./Pipfile* /opt/
 RUN pipenv install --ignore-pipfile --system
-# RUN pip3 install --no-cache-dir -r /opt/requirements.txt
 
 WORKDIR /exodus/exodus
 
 COPY ./docker/entrypoint.sh /entrypoint.sh
 COPY ./ /exodus
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["init"]
