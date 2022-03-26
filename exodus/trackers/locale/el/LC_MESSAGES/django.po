@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-08 11:47+0000\n"
+"POT-Creation-Date: 2022-03-26 13:23+0000\n"
 "PO-Revision-Date: 2020-05-04 16:38\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Greek\n"
@@ -14,6 +14,11 @@ msgstr ""
 "X-Crowdin-Project: exodus-privacy\n"
 "X-Crowdin-Language: el\n"
 "X-Crowdin-File: trackers.po\n"
+
+#: trackers/templates/new_api_key.html:43
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr "Πρέπει να έχετε εγγραφεί"
 
 #: trackers/templates/stats_details.html:9
 #: trackers/templates/trackers_list.html:13
@@ -56,13 +61,13 @@ msgstr "Κανόνας ανίχνευσης κώδικα:"
 msgid "Network detection rule:"
 msgstr "Κανόνας ανίχνευσης δικτύου:"
 
-#: trackers/templates/tracker_details.html:53
+#: trackers/templates/tracker_details.html:54
+msgid "Documentation"
+msgstr "Τεκμηρίωση"
+
+#: trackers/templates/tracker_details.html:66
 msgid "Latest reports with this tracker"
 msgstr "Τελευταίες αναφορές με αυτό το tracker"
-
-#: trackers/templates/trackers_admin_list.html:24
-msgid "You need to be registered"
-msgstr "Πρέπει να έχετε εγγραφεί"
 
 #: trackers/templates/trackers_list.html:8
 msgid "Trackers"
@@ -94,7 +99,7 @@ msgstr "Αναζήτηση ανά όνομα"
 msgid "No trackers are available"
 msgstr "Δεν υπάρχουν διαθέσιμα trackers"
 
-#: trackers/views.py:22 trackers/views.py:33 trackers/views.py:49
-#: trackers/views.py:71
+#: trackers/views.py:26 trackers/views.py:37 trackers/views.py:53
+#: trackers/views.py:75
 msgid "Tracker does not exist"
 msgstr "Το tracker δεν υπάρχει"
