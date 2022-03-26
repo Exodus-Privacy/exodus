@@ -6,7 +6,7 @@ declare -r custom_docker_settings="/exodus/exodus/exodus/settings/custom_docker.
 
 declare -Ar commandList=(
 	[compile-messages]=compileMessages
-	[create-db]=createDb
+	[create-db]=createDB
 	[create-user]=createUser
 	[import-trackers]=importTrackers
 	[init]=init
@@ -14,6 +14,7 @@ declare -Ar commandList=(
 	[refresh-fdroid-index]=refreshFdroidIndex
 	[start-frontend]=startFrontEnd
 	[start-worker]=startWorker
+	[test]=test
 )
 
 declare -Ar commandHelpList=(
@@ -26,6 +27,7 @@ declare -Ar commandHelpList=(
 	[refresh-fdroid-index]='fetch F-Droids list of packages'
 	[start-frontend]='lauch the local front end'
 	[start-worker]='start the exodus worker'
+	[test]='run tests'
 )
 
 function main()
@@ -110,6 +112,10 @@ function compileMessages() {
 
 function refreshFdroidIndex() {
 	$pymanage refresh_fdroid_index
+}
+
+function test() {
+	$pymanage test
 }
 
 function init_db() {

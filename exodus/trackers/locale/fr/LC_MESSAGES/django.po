@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-08 11:47+0000\n"
+"POT-Creation-Date: 2022-03-26 13:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: trackers/templates/new_api_key.html:43
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr "Vous devez être connecté.e"
 
 #: trackers/templates/stats_details.html:9
 #: trackers/templates/trackers_list.html:13
@@ -58,13 +63,13 @@ msgstr "Règle de détection (code) :"
 msgid "Network detection rule:"
 msgstr "Règle de détection (réseau) :"
 
-#: trackers/templates/tracker_details.html:53
+#: trackers/templates/tracker_details.html:54
+msgid "Documentation"
+msgstr "Documentation"
+
+#: trackers/templates/tracker_details.html:66
 msgid "Latest reports with this tracker"
 msgstr "Derniers rapports avec ce pisteur"
-
-#: trackers/templates/trackers_admin_list.html:24
-msgid "You need to be registered"
-msgstr "Vous devez être connecté.e"
 
 #: trackers/templates/trackers_list.html:8
 msgid "Trackers"
@@ -96,7 +101,7 @@ msgstr "Rechercher par nom"
 msgid "No trackers are available"
 msgstr "Aucun pisteur disponible"
 
-#: trackers/views.py:22 trackers/views.py:33 trackers/views.py:49
-#: trackers/views.py:71
+#: trackers/views.py:26 trackers/views.py:37 trackers/views.py:53
+#: trackers/views.py:75
 msgid "Tracker does not exist"
 msgstr "Aucun pisteur trouvé"

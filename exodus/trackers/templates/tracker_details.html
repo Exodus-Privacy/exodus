@@ -48,6 +48,19 @@
   </div>
 </div>
 
+{% if tracker.documentation %}
+<div class="row justify-content-sm-center">
+  <div class="col-md-8 col-12 mb-5">
+    <h2>{% trans "Documentation" %}</h2>
+    <ul>
+      {% for link in tracker.documentation_list %}
+      <li><a href="{{ link }}">{{ link }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}
+
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 mb-2">
     <h2>{% trans "Latest reports with this tracker" %}</h2>

@@ -113,7 +113,8 @@ def _get_tracker_list():
             'code_signature': t.code_signature,
             'network_signature': t.network_signature,
             'website': t.website,
-            'categories': [c.name for c in t.category.all()]
+            'categories': [c.name for c in t.category.all()],
+            'documentation': [link for link in t.documentation_list()]
         }
         trackers[t.id] = tracker
     return trackers
