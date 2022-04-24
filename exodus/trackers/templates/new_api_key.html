@@ -35,9 +35,6 @@
       </div>
       <button type="submit" class="btn btn-primary mt-2">Create new API key</button>
     </form>
-    <div class="mt-4">
-      <a target="_blank" href="{% url 'admin:authtoken_token_changelist' %}">See existing API keys</a>
-    </div>
     {% else %}
     <div class="alert alert-danger small">
       <strong>{% trans "You need to be registered" %}.</strong>
