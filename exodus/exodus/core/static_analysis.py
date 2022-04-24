@@ -199,15 +199,15 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     """
     DEVICE_CODE_NAMES = [
         'walleye',  # Google Pixel 2 (2017)
-        't00q',  # Asus Zenfone 4 (2017)
-        'bullhead',  # Nexus 5X (2015)
-        'bacon',  # OnePlus One (2014)
-        'manta',  # Nexus 10 (2012)
-        'cloudbook',  # Acer Aspire One Cloudbook (2015)
-        'hero2lte',  # Samsung Galaxy S7 Edge (2016)
-        'gtp7510',  # Samsung Galaxy Tab 10.1 (2011)
-        'sloane',  # Amazon Fire TV 2 (2018?)
-        'BRAVIA_ATV2'  # Sony Bravia 4K GB (2016)
+        # 't00q',  # Asus Zenfone 4 (2017)
+        # 'bullhead',  # Nexus 5X (2015)
+        # 'bacon',  # OnePlus One (2014)
+        # 'manta',  # Nexus 10 (2012)
+        # 'cloudbook',  # Acer Aspire One Cloudbook (2015)
+        # 'hero2lte',  # Samsung Galaxy S7 Edge (2016)
+        # 'gtp7510',  # Samsung Galaxy Tab 10.1 (2011)
+        # 'sloane',  # Amazon Fire TV 2 (2018?)
+        # 'BRAVIA_ATV2'  # Sony Bravia 4K GB (2016)
     ]
 
     for device in DEVICE_CODE_NAMES:
