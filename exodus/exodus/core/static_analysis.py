@@ -302,7 +302,7 @@ def get_icon_from_gplay(handle, dest):
     address = 'https://play.google.com/store/apps/details?id=%s' % handle
     gplay_page_content = requests.get(address).text
     soup = BeautifulSoup(gplay_page_content, 'html.parser')
-    icon_images = soup.find_all('img', {'alt': 'Cover art'})
+    icon_images = soup.find_all('img', {'alt': 'Icon image'})
     if len(icon_images) > 0:
         icon_url = '{}'.format(icon_images[0]['src'])
         if not icon_url.startswith('http'):
