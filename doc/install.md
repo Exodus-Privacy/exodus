@@ -113,15 +113,6 @@ cd exodus
 pipenv install --dev
 ```
 
-#### 4b - Patch gpapi
-
-```bash
-# See https://github.com/NoMore201/googleplay-api/pull/145
-cp gpapi/googleplay.py venv/lib/python3.9/site-packages/gpapi/googleplay.py
-# See https://github.com/NoMore201/googleplay-api/pull/153
-cp gpapi/config.py venv/lib/python3.9/site-packages/gpapi/config.py
-```
-
 #### 5 - Configure your instance
 
 You can tweak your instance by changing [some settings](#configuring-your-local-instance).

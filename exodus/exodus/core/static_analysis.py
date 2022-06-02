@@ -14,7 +14,6 @@ from tempfile import NamedTemporaryFile
 
 from django.conf import settings
 from google_play_scraper import app as google_app
-from gpapi.googleplay import GooglePlayAPI, RequestError
 from minio.error import (ResponseError)
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA

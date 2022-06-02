@@ -303,14 +303,6 @@
             "index": "pypi",
             "version": "==1.0.5"
         },
-        "gpapi": {
-            "hashes": [
-                "sha256:1c0d3a89edb99f2ec05c8ec0bd981ecefa307d9dc4c5a958f070e493b6deb72a",
-                "sha256:7ef4921fdf01f74b97e2719feba304afa55897c41cf3cd429fa329b637d99c7d"
-            ],
-            "index": "pypi",
-            "version": "==0.4.4"
-        },
         "gunicorn": {
             "hashes": [
                 "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e",
