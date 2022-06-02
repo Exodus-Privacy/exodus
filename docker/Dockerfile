@@ -2,7 +2,7 @@ FROM alpine:3.15 AS dl
 
 ENV APKEEP_VERSION=0.13.0
 
-RUN wget https://github.com/EFForg/apkeep/releases/download/${APKEEP_VERSION}/apkeep-x86_64-unknown-linux-gnu -O /tmp/apkeep \
+RUN wget https://github.com/EFForg/apkeep/releases/download/${APKEEP_VERSION}/apkeep-x86_64-unknown-linux-gnu -q -O /tmp/apkeep \
   && chmod +x /tmp/apkeep
 
 FROM python:3.9-slim-bullseye
