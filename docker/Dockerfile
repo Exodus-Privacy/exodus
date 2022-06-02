@@ -1,4 +1,4 @@
-FROM alpine:3.15 AS dl
+FROM alpine:3.15 AS apkeep-download
 
 ENV APKEEP_VERSION=0.13.0
 
@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-COPY --from=dl /tmp/apkeep /usr/local/bin/apkeep
+COPY --from=apkeep-download /tmp/apkeep /usr/local/bin/apkeep
 
 WORKDIR /opt
 
