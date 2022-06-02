@@ -4,6 +4,7 @@ from __future__ import absolute_import, unicode_literals
 import json
 import logging
 import os
+import subprocess
 import requests
 import shutil
 import xml.etree.ElementTree as ET
@@ -13,7 +14,6 @@ from tempfile import NamedTemporaryFile
 
 from django.conf import settings
 from google_play_scraper import app as google_app
-from gpapi.googleplay import GooglePlayAPI, RequestError
 from minio.error import (ResponseError)
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
@@ -197,50 +197,37 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
     """
-    DEVICE_CODE_NAMES = [
-        'walleye',  # Google Pixel 2 (2017)
-        # 't00q',  # Asus Zenfone 4 (2017)
-        # 'bullhead',  # Nexus 5X (2015)
-        # 'bacon',  # OnePlus One (2014)
-        # 'manta',  # Nexus 10 (2012)
-        # 'cloudbook',  # Acer Aspire One Cloudbook (2015)
-        # 'hero2lte',  # Samsung Galaxy S7 Edge (2016)
-        # 'gtp7510',  # Samsung Galaxy Tab 10.1 (2011)
-        # 'sloane',  # Amazon Fire TV 2 (2018?)
-        # 'BRAVIA_ATV2'  # Sony Bravia 4K GB (2016)
-    ]
+    try:
+        if not os.path.exists(tmp_dir):
+            os.mkdir(tmp_dir)
 
-    for device in DEVICE_CODE_NAMES:
-        logging.info("Download with device {}".format(device))
+        subprocess.run([
+            "apkeep",
+            "-d",
+            "google-play",
+            "-a",
+            handle,
+            "-u",
+            settings.GOOGLE_ACCOUNT_USERNAME,
+            "-p",
+            settings.GOOGLE_ACCOUNT_PASSWORD,
+            "-o",
+            "device=walleye",
+            tmp_dir
+        ])
+
+    except Exception as e:
+        logging.error(e)
+        return False
+
+    apk = Path(apk_tmp)
+    if apk.is_file():
         try:
-            api = GooglePlayAPI(device_codename=device)
-            api.login(
-                email=settings.GOOGLE_ACCOUNT_USERNAME,
-                password=settings.GOOGLE_ACCOUNT_PASSWORD
-            )
-
-            if not os.path.exists(tmp_dir):
-                os.mkdir(tmp_dir)
-            download = api.download(handle)
-
-            with open(apk_tmp, 'wb') as first:
-                for chunk in download.get('file').get('data'):
-                    first.write(chunk)
-        except RequestError as e:
-            logging.warning(e)
-            continue
-        except Exception as e:
-            logging.error(e)
-            break
-
-        apk = Path(apk_tmp)
-        if apk.is_file():
-            try:
-                storage.put_file(apk_tmp, apk_name)
-                return True
-            except ResponseError as err:
-                logging.error(err)
-                return False
+            storage.put_file(apk_tmp, apk_name)
+            return True
+        except ResponseError as err:
+            logging.error(err)
+            return False
 
     return False
 
