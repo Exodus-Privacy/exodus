@@ -1,3 +1,10 @@
+FROM alpine:3.15 AS dl
+
+ENV APKEEP_VERSION=0.13.0
+
+RUN wget https://github.com/EFForg/apkeep/releases/download/${APKEEP_VERSION}/apkeep-x86_64-unknown-linux-gnu -O /tmp/apkeep \
+  && chmod +x /tmp/apkeep
+
 FROM python:3.9-slim-bullseye
 LABEL maintainer="Codimp"
 
@@ -12,6 +19,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   pipenv=11.* \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
+
+COPY --from=dl /tmp/apkeep /usr/local/bin/apkeep
 
 # See https://github.com/NoMore201/googleplay-api/pull/145
 COPY gpapi/googleplay.py /usr/local/lib/python3.9/site-packages/gpapi/googleplay.py
