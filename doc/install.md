@@ -83,11 +83,15 @@ to make actions, where `<command>` can be:
 
 This setup is based on a Debian 11 (Bullseye) configuration.
 
-#### 1 - Install system dependencies
+#### 1 - Install dependencies
+
+- Install system dependencies
 
 ```bash
 sudo apt install git virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev libpq-dev pipenv
 ```
+
+- Install [apkeep](https://github.com/EFForg/apkeep), the tool used to download applications from the Google Play Store.
 
 #### 2 - Clone the project
 
