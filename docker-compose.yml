@@ -2,7 +2,7 @@ version: "3"
 services:
 
   amqp:
-    image: rabbitmq:3.7-alpine
+    image: rabbitmq:3.8.9-alpine
     networks:
       backend:
         aliases:
@@ -66,17 +66,18 @@ services:
       - ./exodus:/exodus/exodus:rw,cached
 
   minio:
-    command: ["minio", "server", "/data"]
+    command: ["minio", "server", "/data", "--console-address", ":9001"]
     environment:
-      MINIO_ACCESS_KEY: exodusexodus
-      MINIO_SECRET_KEY: exodusexodus
-    image: minio/minio:RELEASE.2019-10-12T01-39-57Z
+      MINIO_ROOT_USER: exodusexodus
+      MINIO_ROOT_PASSWORD: exodusexodus
+    image: minio/minio:RELEASE.2022-03-14T18-25-24Z
     networks:
       backend:
         aliases:
             - minio
     ports:
       - "9000:9000"
+      - "9001:9001"
     volumes:
       - minio:/data
 

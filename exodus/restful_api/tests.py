@@ -324,7 +324,7 @@ class RestfulApiTrackersTests(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com'
+            website='https://www.example.com'
         )
 
         expected_json = {
@@ -336,7 +336,8 @@ class RestfulApiTrackersTests(APITestCase):
                 'code_signature': tracker.code_signature,
                 'network_signature': tracker.network_signature,
                 'website': tracker.website,
-                'categories': []
+                'categories': [],
+                'documentation': []
             }
         }
 
@@ -351,7 +352,7 @@ class RestfulApiTrackersTests(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com'
+            website='https://www.example.com'
         )
         category1 = TrackerCategory.objects.create(name='Analytics')
         category2 = TrackerCategory.objects.create(name='Ads')
@@ -367,7 +368,37 @@ class RestfulApiTrackersTests(APITestCase):
                 'code_signature': tracker.code_signature,
                 'network_signature': tracker.network_signature,
                 'website': tracker.website,
-                'categories': ['Analytics', 'Ads']
+                'categories': ['Analytics', 'Ads'],
+                'documentation': []
+            }
+        }
+
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['trackers'], expected_json)
+
+    def test_returns_one_tracker_with_documentation(self):
+        tracker = Tracker.objects.create(
+            name='Teemo',
+            description='bad tracker',
+            code_signature='com.teemo',
+            network_signature='teemo.com',
+            website='https://www.example.com',
+            documentation='http://example.com/docs http://example.com/android'
+        )
+
+        expected_json = {
+            str(tracker.id): {
+                'id': tracker.id,
+                'name': tracker.name,
+                'description': tracker.description,
+                'creation_date': tracker.creation_date.strftime("%Y-%m-%d"),
+                'code_signature': tracker.code_signature,
+                'network_signature': tracker.network_signature,
+                'website': tracker.website,
+                'categories': [],
+                'documentation': ['http://example.com/docs', 'http://example.com/android']
             }
         }
 
@@ -510,7 +541,8 @@ class RestfulApiReportDetails(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com'
+            website='https://www.example.com',
+            documentation='http://example.com/doc'
         )
         tracker.category.set([category])
         report = Report.objects.create(id=1234)
@@ -551,7 +583,8 @@ class RestfulApiReportDetails(APITestCase):
                     'category': [{'name': category.name}],
                     'website': tracker.website,
                     'apps_number': 0,
-                    'apps_percent': 0
+                    'apps_percent': 0,
+                    'documentation': ['http://example.com/doc']
                 },
             ],
             'application': {
@@ -599,7 +632,7 @@ class RestfulApiTrackersCountTests(APITestCase):
             description='bad tracker',
             code_signature='com.teemo',
             network_signature='teemo.com',
-            website='https://www.teemo.com'
+            website='https://www.example.com'
         )
 
         Tracker.objects.create(
@@ -607,7 +640,7 @@ class RestfulApiTrackersCountTests(APITestCase):
             description='bad tracker #2',
             code_signature='com.google.ads',
             network_signature='google.com',
-            website='https://www.google.com'
+            website='https://www.example.com'
         )
 
         self._force_authentication()

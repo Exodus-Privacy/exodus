@@ -271,6 +271,7 @@ class ImportFromEtipCommandTest(TestCase):
         'network_signature': 'network_1',
         'website': 'https://website1',
         'category': [],
+        'documentation': '',
         'is_in_exodus': False
     }
     TRACKER_1 = {
@@ -280,6 +281,7 @@ class ImportFromEtipCommandTest(TestCase):
         'network_signature': 'network_1',
         'website': 'https://website1',
         'category': [],
+        'documentation': '',
         'is_in_exodus': True
     }
     TRACKER_1_CHANGED = {
@@ -289,6 +291,7 @@ class ImportFromEtipCommandTest(TestCase):
         'network_signature': 'network_1',
         'website': 'https://website1',
         'category': [],
+        'documentation': '',
         'is_in_exodus': True
     }
     TRACKER_2 = {
@@ -298,6 +301,7 @@ class ImportFromEtipCommandTest(TestCase):
         'network_signature': 'network_2',
         'website': 'https://website2',
         'category': [],
+        'documentation': '',
         'is_in_exodus': True
     }
 

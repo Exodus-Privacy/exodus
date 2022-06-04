@@ -21,6 +21,7 @@ class Tracker(models.Model):
     category = models.ManyToManyField(TrackerCategory, blank=True)
     apps_number = models.IntegerField(default=0)
     apps_percent = models.IntegerField(default=0)
+    documentation = models.CharField(max_length=1000, default='', blank=True)
 
     def __str__(self):
         return self.name
@@ -35,6 +36,13 @@ class Tracker(models.Model):
         else:
             tracker_class = "info"
         return tracker_class
+
+    def documentation_list(self):
+        if self.documentation:
+            documentation_list = self.documentation.split(' ')
+        else:
+            documentation_list = []
+        return documentation_list
 
 
 class DetectionRule(models.Model):
