@@ -28,6 +28,7 @@ class TrackerCategorySerializer(serializers.ModelSerializer):
 
 class TrackerSerializerWithCategories(serializers.ModelSerializer):
     category = TrackerCategorySerializer(many=True, read_only=True)
+    documentation = serializers.ListField(source='documentation_list')
 
     class Meta:
         model = Tracker

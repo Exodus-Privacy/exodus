@@ -51,7 +51,8 @@ The API is served by the URL <https://reports.exodus-privacy.eu.org/>
       "creation_date": "2017-12-05",
       "website": "https://developers.facebook.com/docs/android",
       "description": "",
-      "categories": ['Analytics', 'Ads']
+      "categories": ["Analytics", "Ads"],
+      "documentation": ["https://developers.facebook.com/docs/graph-api/reference/page/locations/"]
     },
     [edited]
   }

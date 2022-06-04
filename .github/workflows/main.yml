@@ -32,8 +32,8 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - 3.7
-          - 3.9
+          - "3.9"
+          - "3.10"
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -45,11 +45,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y dexdump
           python -m pip install --upgrade pip
-          pip install flake8
-          pip install -r requirements.txt
+          pip install pipenv
+          pipenv sync --dev --system
       - name: Lint with flake8
         run: |
           flake8 exodus/
+      - name: Check if lock is uptodate
+        run: |
+          pipenv install --deploy
+      - name: Check vulnerabilites in dependencies
+        run: |
+          pipenv check
+        continue-on-error: true
       - uses: hadolint/hadolint-action@v1.5.0
         with:
           dockerfile: docker/Dockerfile

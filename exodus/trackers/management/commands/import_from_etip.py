@@ -87,6 +87,7 @@ class Command(BaseCommand):
                         network_signature=etip_tracker['network_signature'],
                         website=etip_tracker['website'],
                         description=etip_tracker['description'],
+                        documentation=' '.join(etip_tracker['documentation'])
                     )
                     etip_categories = [c.get('name') for c in etip_tracker['category']]
                     categories = [TrackerCategory.objects.get(name=c) for c in etip_categories]
@@ -117,6 +118,11 @@ class Command(BaseCommand):
                     else:
                         logs.append("Updating description from '{}' to '{}'".format(existing_tracker.description, etip_tracker['description']))
                     existing_tracker.description = etip_tracker['description']
+                    changes = True
+
+                if existing_tracker.documentation != ' '.join(etip_tracker['documentation']):
+                    logs.append("Updating documentation from '{}' to '{}'".format(existing_tracker.documentation, ' '.join(etip_tracker['documentation'])))
+                    existing_tracker.documentation = ' '.join(etip_tracker['documentation'])
                     changes = True
 
                 existing_categories = [c.name for c in existing_tracker.category.order_by('name')]

@@ -16,7 +16,7 @@
     <p class="text-center mb-5">
       <img src="{% static 'img/analysis_new.png' %}" width="120">
     </p>
-    {% if submissions_disabled %}
+    {% if submissions_disabled and not request.user.is_superuser %}
     <div class="text-center alert alert-danger">
       <b>{% trans "It is currently impossible to submit new analysis. Sorry for the inconvenience!" %}</b>
     </div>

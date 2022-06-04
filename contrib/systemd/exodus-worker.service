@@ -1,0 +1,16 @@
+[Unit]
+Description=Exodus worker
+After=network.target
+
+[Service]
+User=exodus
+Group=exodus
+Environment=DJANGO_SETTINGS_MODULE=exodus.settings.production
+WorkingDirectory=/home/exodus/exodus/exodus/
+ExecStart=/home/exodus/exodus/venv/bin/celery -A exodus.core worker -l info
+StandardOutput=journal
+StandardError=inherit
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

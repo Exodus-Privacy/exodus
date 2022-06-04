@@ -4,6 +4,7 @@ from __future__ import absolute_import, unicode_literals
 import json
 import logging
 import os
+import subprocess
 import requests
 import shutil
 import xml.etree.ElementTree as ET
@@ -13,7 +14,6 @@ from tempfile import NamedTemporaryFile
 
 from django.conf import settings
 from google_play_scraper import app as google_app
-from gpapi.googleplay import GooglePlayAPI, RequestError
 from minio.error import (ResponseError)
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
@@ -197,50 +197,37 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
     :param apk_tmp: apk temporary name
     :return: True if succeed, False otherwise
     """
-    DEVICE_CODE_NAMES = [
-        'walleye',  # Google Pixel 2 (2017)
-        't00q',  # Asus Zenfone 4 (2017)
-        'bullhead',  # Nexus 5X (2015)
-        'bacon',  # OnePlus One (2014)
-        'manta',  # Nexus 10 (2012)
-        'cloudbook',  # Acer Aspire One Cloudbook (2015)
-        'hero2lte',  # Samsung Galaxy S7 Edge (2016)
-        'gtp7510',  # Samsung Galaxy Tab 10.1 (2011)
-        'sloane',  # Amazon Fire TV 2 (2018?)
-        'BRAVIA_ATV2'  # Sony Bravia 4K GB (2016)
-    ]
+    try:
+        if not os.path.exists(tmp_dir):
+            os.mkdir(tmp_dir)
 
-    for device in DEVICE_CODE_NAMES:
-        logging.info("Download with device {}".format(device))
+        subprocess.run([
+            "apkeep",
+            "-d",
+            "google-play",
+            "-a",
+            handle,
+            "-u",
+            settings.GOOGLE_ACCOUNT_USERNAME,
+            "-p",
+            settings.GOOGLE_ACCOUNT_PASSWORD,
+            "-o",
+            "device=walleye",
+            tmp_dir
+        ])
+
+    except Exception as e:
+        logging.error(e)
+        return False
+
+    apk = Path(apk_tmp)
+    if apk.is_file():
         try:
-            api = GooglePlayAPI(device_codename=device)
-            api.login(
-                email=settings.GOOGLE_ACCOUNT_USERNAME,
-                password=settings.GOOGLE_ACCOUNT_PASSWORD
-            )
-
-            if not os.path.exists(tmp_dir):
-                os.mkdir(tmp_dir)
-            download = api.download(handle)
-
-            with open(apk_tmp, 'wb') as first:
-                for chunk in download.get('file').get('data'):
-                    first.write(chunk)
-        except RequestError as e:
-            logging.warning(e)
-            continue
-        except Exception as e:
-            logging.error(e)
-            break
-
-        apk = Path(apk_tmp)
-        if apk.is_file():
-            try:
-                storage.put_file(apk_tmp, apk_name)
-                return True
-            except ResponseError as err:
-                logging.error(err)
-                return False
+            storage.put_file(apk_tmp, apk_name)
+            return True
+        except ResponseError as err:
+            logging.error(err)
+            return False
 
     return False
 
@@ -259,27 +246,37 @@ def get_icon_from_fdroid(handle, dest):
     :param dest: file to be saved
     :raises Exception: if unable to download icon
     """
-    data = _get_fdroid_app_data(handle)
-    if not data:
-        raise Exception('Unable to download the icon from fdroid')
-
-    try:
-        icon = data.find('icon').text
-        icon_url = 'https://f-droid.org/repo/icons-640/{}'.format(icon)
-    except Exception:
-        # https://gitlab.com/fdroid/fdroiddata/-/issues/2436
-        logging.warning('Trying to find icon in localized metadata')
-        data = _get_fdroid_localized_data(handle)
-        if not data:
-            raise Exception('Unable to download the icon from fdroid')
-
-        icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
-
+    icon_url = get_icon_url_fdroid(handle)
     f = requests.get(icon_url)
     with open(dest, mode='wb') as fp:
         fp.write(f.content)
     if not os.path.isfile(dest) or os.path.getsize(dest) == 0:
         raise Exception('Unable to download the icon from fdroid')
+
+
+def get_icon_url_fdroid(handle):
+    try:
+        data = _get_fdroid_app_data(handle)
+        icon = data.find('icon').text
+        icon_url = 'https://f-droid.org/repo/icons-640/{}'.format(icon)
+    except Exception:
+        # https://gitlab.com/fdroid/fdroiddata/-/issues/2436
+        logging.warning('Trying to find icon in localized metadata')
+        try:
+            data = _get_fdroid_localized_data(handle)
+            icon_url = 'https://f-droid.org/repo/{}/en-US/{}'.format(handle, data['icon'])
+        except Exception:
+            logging.warning('Trying to find icon from f-droid website')
+            address = 'https://f-droid.org/en/packages/%s' % handle
+            page_content = requests.get(address).text
+            soup = BeautifulSoup(page_content, 'html.parser')
+            icon_images = soup.find_all('img', {'class': 'package-icon'})
+            if len(icon_images) == 0:
+                raise Exception('Unable to get icon url from fdroid')
+            icon_url = '{}'.format(icon_images[0]['src'])
+            if not icon_url.startswith('http'):
+                icon_url = 'https://f-droid.org{}'.format(icon_url)
+    return icon_url
 
 
 def get_icon_from_gplay(handle, dest):
@@ -292,7 +289,7 @@ def get_icon_from_gplay(handle, dest):
     address = 'https://play.google.com/store/apps/details?id=%s' % handle
     gplay_page_content = requests.get(address).text
     soup = BeautifulSoup(gplay_page_content, 'html.parser')
-    icon_images = soup.find_all('img', {'alt': 'Cover art'})
+    icon_images = soup.find_all('img', {'alt': 'Icon image'})
     if len(icon_images) > 0:
         icon_url = '{}'.format(icon_images[0]['src'])
         if not icon_url.startswith('http'):
