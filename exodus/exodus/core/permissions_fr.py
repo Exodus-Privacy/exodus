@@ -4184,7 +4184,7 @@ AOSP_PERMISSIONS_FR = {
             "label": "Lire les événements d'agenda et les détails associés",
             "label_ptr": "permlab_readCalendar",
             "name": "android.permission.READ_CALENDAR",
-            "permission_group": "android.permission-group.UNDEFINED",
+            "permission_group": "android.permission-group.CALENDAR",
             "protection_level": "dangerous"
         },
         "android.permission.READ_CALL_LOG": {
