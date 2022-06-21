@@ -1,0 +1,18 @@
+---
+name: release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    name: Create Github release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create release
+        run: gh release create ${GITHUB_REF_NAME} --title ${GITHUB_REF_NAME} --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

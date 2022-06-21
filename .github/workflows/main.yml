@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - v1
-    tags:
-      - v*
   pull_request:
     branches:
       - v1
@@ -84,18 +82,3 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: false
-
-  release:
-    needs:
-      - build
-      - hadolint
-      - docker_build
-    name: Create Github release
-    if: github.event_name == 'push' && github.ref_type == 'tag'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Create release
-        run: gh release create ${GITHUB_REF_NAME} --title ${GITHUB_REF_NAME} --generate-notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
