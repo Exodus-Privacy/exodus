@@ -57,15 +57,25 @@ jobs:
         run: |
           pipenv check
         continue-on-error: true
-      - uses: hadolint/hadolint-action@v2.1.0
-        with:
-          dockerfile: docker/Dockerfile
       - name: Run tests
         run: |
           cd exodus
           python manage.py test
         env:
           DJANGO_SETTINGS_MODULE: exodus.settings.dev
+
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hadolint/hadolint-action@v2.1.0
+        with:
+          dockerfile: docker/Dockerfile
+
+  docker_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build
@@ -74,9 +84,12 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: false
-          
+
   release:
-    needs: build
+    needs:
+      - build
+      - hadolint
+      - docker_build
     name: Create Github release
     if: github.event_name == 'push' && github.ref_type == 'tag'
     runs-on: ubuntu-latest
