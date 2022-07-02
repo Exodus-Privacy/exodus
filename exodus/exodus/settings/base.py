@@ -146,6 +146,9 @@ MINIO_STORAGE_USE_HTTPS = False
 MINIO_STORAGE_MEDIA_BUCKET_NAME = 'exodus'
 MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
 
+# See https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Analysis configuration
 ALLOW_APK_UPLOAD = False
 DISABLE_SUBMISSIONS = False

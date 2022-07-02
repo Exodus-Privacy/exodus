@@ -398,7 +398,7 @@ class ImportFromEtipCommandTest(TestCase):
         self.assertNotIn("Saved changes", out.getvalue())
 
         tracker = Tracker.objects.get(name=self.TRACKER_1['name'])
-        self.assertEquals(tracker.code_signature, self.TRACKER_1['code_signature'])
+        self.assertEqual(tracker.code_signature, self.TRACKER_1['code_signature'])
 
     def test_compares_1_tracker_with_changes_and_applies(self):
         self._create_tracker(self.TRACKER_1)
@@ -412,7 +412,7 @@ class ImportFromEtipCommandTest(TestCase):
         self.assertIn("Saved changes", out.getvalue())
 
         tracker = Tracker.objects.get(name=self.TRACKER_1['name'])
-        self.assertEquals(tracker.code_signature, self.TRACKER_1_CHANGED['code_signature'])
+        self.assertEqual(tracker.code_signature, self.TRACKER_1_CHANGED['code_signature'])
 
     def test_compares_with_1_new_tracker(self):
         self._create_tracker(self.TRACKER_1)
@@ -444,8 +444,8 @@ class ImportFromEtipCommandTest(TestCase):
         self.assertIn("Tracker created", out.getvalue())
 
         new_tracker = Tracker.objects.get(name=self.TRACKER_2['name'])
-        self.assertEquals(new_tracker.name, self.TRACKER_2['name'])
-        self.assertEquals(new_tracker.code_signature, self.TRACKER_2['code_signature'])
-        self.assertEquals(new_tracker.description, self.TRACKER_2['description'])
-        self.assertEquals(new_tracker.network_signature, self.TRACKER_2['network_signature'])
-        self.assertEquals(new_tracker.website, self.TRACKER_2['website'])
+        self.assertEqual(new_tracker.name, self.TRACKER_2['name'])
+        self.assertEqual(new_tracker.code_signature, self.TRACKER_2['code_signature'])
+        self.assertEqual(new_tracker.description, self.TRACKER_2['description'])
+        self.assertEqual(new_tracker.network_signature, self.TRACKER_2['network_signature'])
+        self.assertEqual(new_tracker.website, self.TRACKER_2['website'])
