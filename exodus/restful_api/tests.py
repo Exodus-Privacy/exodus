@@ -279,6 +279,72 @@ class RestfulApiSearchHandleTests(APITestCase):
         self.assertEqual(response.json(), expected_json)
 
 
+class RestfulApiSearchTests(APITestCase):
+    PATH = '/api/search'
+
+    # TODO: This endpoint cannot be tested because of the similarity search extension not available on test database
+    # def test_returns_empty_json_when_no_app(self):
+    #     response = self.client.post(self.PATH, {'limit': 20, 'query': DUMMY_HANDLE, 'type': 'application'}, 'json')
+
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertEqual(response.json(), {})
+
+    def test_returns_latest_app_when_exact_handle_match(self):
+        tracker = Tracker.objects.create(name='Teemo')
+        report_first_app = Report.objects.create()
+        report_first_app.found_trackers.set([tracker.id])
+        first_app = Application.objects.create(
+            name='app_name',
+            handle=DUMMY_HANDLE,
+            report=report_first_app,
+            version="0.1",
+            version_code="01234",
+            source="google"
+        )
+        Apk.objects.create(
+            application=first_app,
+            name="app_name",
+            sum="app_checksum"
+        )
+        Permission.objects.create(
+            application=first_app,
+            name="ALLYOURBASE"
+        )
+        Permission.objects.create(
+            application=first_app,
+            name="AREBELONGTOUS"
+        )
+        report_second_app = Report.objects.create()
+        report_second_app.found_trackers.set([tracker.id])
+        app_with_same_handle = Application.objects.create(
+            name='new_app_name',
+            handle=DUMMY_HANDLE,
+            report=report_second_app,
+            version="0.2",
+            version_code="01235",
+            source="google"
+        )
+        Apk.objects.create(
+            application=app_with_same_handle,
+            name="new_app_name",
+            sum="app_checksum"
+        )
+        Permission.objects.create(
+            application=app_with_same_handle,
+            name="ALLYOURBASE"
+        )
+        Permission.objects.create(
+            application=app_with_same_handle,
+            name="AREBELONGTOUS"
+        )
+
+        response = self.client.post(self.PATH, {'limit': 20, 'query': DUMMY_HANDLE, 'type': 'application'}, 'json')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.json()['results']), 1)
+        self.assertEqual(response.json()['results'][0]['handle'], DUMMY_HANDLE)
+        self.assertEqual(response.json()['results'][0]['name'], 'new_app_name')
+
+
 class RestfulApiSearchLatestReportTests(APITestCase):
     PATH = '/api/search/{}/latest'.format(DUMMY_HANDLE)
 
