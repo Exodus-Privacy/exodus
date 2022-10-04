@@ -127,8 +127,8 @@ class Certificate(models.Model):
     apk = models.ForeignKey(Apk, on_delete=models.CASCADE)
     has_expired = models.BooleanField(default=False)
     serial_number = models.CharField(max_length=128, default='')
-    issuer = models.CharField(max_length=256, default='')
-    subject = models.CharField(max_length=256, default='')
+    issuer = models.CharField(max_length=500, default='')
+    subject = models.CharField(max_length=500, default='')
     fingerprint = models.CharField(max_length=256, default='')
 
     def __str__(self):
