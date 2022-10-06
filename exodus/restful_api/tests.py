@@ -278,6 +278,91 @@ class RestfulApiSearchHandleTests(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), expected_json)
 
+    def test_returns_detailed_json_when_two_apps(self):
+        tracker = Tracker.objects.create(name='Teemo')
+        first_report = Report.objects.create()
+        first_report.found_trackers.set([tracker.id])
+        first_app = Application.objects.create(
+            name='app_name',
+            handle=DUMMY_HANDLE,
+            report=first_report,
+            version="0.1",
+            version_code="01234",
+            source="google"
+        )
+        Apk.objects.create(
+            application=first_app,
+            name="app_name",
+            sum="app_checksum"
+        )
+        Permission.objects.create(
+            application=first_app,
+            name="AREBELONGTOUS"
+        )
+        Permission.objects.create(
+            application=first_app,
+            name="ALLYOURBASE"
+        )
+        new_report = Report.objects.create()
+        new_report.found_trackers.set([tracker.id])
+        new_app = Application.objects.create(
+            name='new_app_name',
+            handle=DUMMY_HANDLE,
+            report=new_report,
+            version="0.2",
+            version_code="01234",
+            source="google"
+        )
+        Apk.objects.create(
+            application=new_app,
+            name="new_app_name",
+            sum="app_checksum"
+        )
+        Permission.objects.create(
+            application=new_app,
+            name="AREBELONGTOUS"
+        )
+        Permission.objects.create(
+            application=new_app,
+            name="ALLYOURBASE"
+        )
+
+        self.maxDiff = None
+        expected_json = {
+            str(new_app.handle): {
+                'name': new_app.name,
+                'creator': "",
+                'reports': [
+                    {
+                        "id": new_report.id,
+                        "updated_at": _get_custom_date_format(new_report.updated_at),
+                        "creation_date": _get_custom_date_format(new_report.creation_date),
+                        "version": new_app.version,
+                        "version_code": new_app.version_code,
+                        "source": new_app.source,
+                        "downloads": "",
+                        "trackers": [tracker.id],
+                    },
+                    {
+                        "id": first_report.id,
+                        "updated_at": _get_custom_date_format(first_report.updated_at),
+                        "creation_date": _get_custom_date_format(first_report.creation_date),
+                        "version": first_app.version,
+                        "version_code": first_app.version_code,
+                        "source": first_app.source,
+                        "downloads": "",
+                        "trackers": [tracker.id],
+                    }
+                ]
+            }
+        }
+
+        self._force_authentication()
+        response = self.client.get(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
 
 class RestfulApiSearchTests(APITestCase):
     PATH = '/api/search'
