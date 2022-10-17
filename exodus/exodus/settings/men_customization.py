@@ -5,7 +5,7 @@ import os
 
 SECRET_KEY = '9b80473f1b0c7d9f1859cfa754e40e26'
 
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true' 
 ALLOWED_HOSTS = [u'localhost', u'127.0.0.1']
 
 DATABASES = {
