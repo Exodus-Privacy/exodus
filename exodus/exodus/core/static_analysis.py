@@ -214,7 +214,7 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
             "-o",
             "device=walleye",
             tmp_dir
-        ])
+        ], env=os.environ.copy())
 
     except Exception as e:
         logging.error(e)
