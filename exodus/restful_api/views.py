@@ -84,8 +84,10 @@ def _get_reports_list(report_list):
         if report.application.handle not in reports:
             reports[report.application.handle] = {}
         app = reports[report.application.handle]
-        app['name'] = report.application.name
-        app['creator'] = report.application.creator
+        if not app.get('name'):
+            app['name'] = report.application.name
+        if not app.get('creator'):
+            app['creator'] = report.application.creator
         if 'reports' not in app:
             app['reports'] = []
 
@@ -212,9 +214,9 @@ def get_report_details(request, r_id):
 
 
 def _get_applications(input, limit):
-    exact_handle_matches = Application.objects.filter(Q(handle=input)).order_by('name', 'handle', '-report__creation_date').distinct('name', 'handle')[:limit]
-    if exact_handle_matches.count() > 0:
-        return exact_handle_matches
+    exact_handle_match = Application.objects.filter(handle=input).order_by('-report__creation_date')
+    if exact_handle_match.count() > 0:
+        return exact_handle_match[:1]
 
     applications = Application.objects.annotate(
         similarity=TrigramSimilarity('name', input),

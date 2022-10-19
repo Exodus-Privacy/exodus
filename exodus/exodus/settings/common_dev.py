@@ -5,7 +5,7 @@ from .base import *
 default_secret_key = '9b80473f1b0c7d9f1859cfa754e40e26'
 SECRET_KEY = os.environ.get('EXODUS_SECRET_KEY', default_secret_key)
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 
 STATIC_URL = '/static/'
