@@ -84,8 +84,10 @@ def _get_reports_list(report_list):
         if report.application.handle not in reports:
             reports[report.application.handle] = {}
         app = reports[report.application.handle]
-        app['name'] = report.application.name
-        app['creator'] = report.application.creator
+        if not app.get('name'):
+            app['name'] = report.application.name
+        if not app.get('creator'):
+            app['creator'] = report.application.creator
         if 'reports' not in app:
             app['reports'] = []
 
