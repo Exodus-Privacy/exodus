@@ -17,3 +17,4 @@ scheduler.sh
 exodus/exodus/settings/custom_dev.py
 exodus/exodus/settings/custom_docker.py
 exodus/exodus/settings/production.py
+staticfiles

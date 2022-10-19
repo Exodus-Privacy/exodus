@@ -93,6 +93,10 @@ function startWorker() {
 	exec celery -A exodus.core worker --beat -l info -S django
 }
 
+function collectStatic() {
+	$pymanage collectstatic --noinput
+}
+
 function startFrontend() {
 	exec $pymanage runserver 0.0.0.0:8000
 }
@@ -130,6 +134,7 @@ function init_db() {
 
 function init() {
     init_db
+	collectStatic
     startFrontend
 }
 

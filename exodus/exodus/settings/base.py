@@ -1,8 +1,18 @@
 # coding=utf-8
+from email.policy import default
+from pathlib import Path
 import os
+import environ
+
+env = environ.Env()
+
+ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
+APPS_DIR = ROOT_DIR / ""
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
+
+DEBUG = env.bool('DEBUG', default=True)
 
 INSTALLED_APPS = [
     'web',
@@ -43,6 +53,7 @@ FILE_UPLOAD_HANDLERS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
+
+if env.bool('USE_WHITENOISE', default=False):
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CSRF_COOKIE_SECURE = True
 
