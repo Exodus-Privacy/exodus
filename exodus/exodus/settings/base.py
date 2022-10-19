@@ -1,8 +1,7 @@
 # coding=utf-8
-from email.policy import default
-from pathlib import Path
-import os
 import environ
+import os
+from pathlib import Path
 
 env = environ.Env()
 
