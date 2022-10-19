@@ -7,6 +7,8 @@ services:
       backend:
         aliases:
             - amqp
+    ports:
+      - "5672:5672"
 
   db:
     environment:
@@ -20,6 +22,8 @@ services:
       backend:
         aliases:
             - db
+    ports:
+      - "5432:5432"
     volumes:
       - db:/var/lib/postgresql/data/pgdata
 
@@ -33,15 +37,12 @@ services:
       - amqp
       - exodus-worker
     env_file: .env
-    environment:
-      DEBUG: 'False'
-      USE_WHITENOISE: 'True'
     networks:
       backend:
         aliases:
             - exodus
     ports:
-      - "8088:8000"
+      - "80:8000"
     user: ${uid}
     volumes:
       - ./exodus:/exodus/exodus:rw,cached
@@ -56,9 +57,6 @@ services:
       - db
       - amqp
     env_file: .env
-    environment:
-      DEBUG: 'False'
-      USE_WHITENOISE: 'True'
     networks:
       backend:
         aliases:
@@ -77,6 +75,9 @@ services:
       backend:
         aliases:
             - minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
     volumes:
       - minio:/data
 
