@@ -212,9 +212,9 @@ def get_report_details(request, r_id):
 
 
 def _get_applications(input, limit):
-    exact_handle_matches = Application.objects.filter(Q(handle=input)).order_by('name', 'handle', '-report__creation_date').distinct('name', 'handle')[:limit]
-    if exact_handle_matches.count() > 0:
-        return exact_handle_matches
+    exact_handle_match = Application.objects.filter(handle=input).order_by('-report__creation_date')
+    if exact_handle_match.count() > 0:
+        return exact_handle_match[:1]
 
     applications = Application.objects.annotate(
         similarity=TrigramSimilarity('name', input),
