@@ -9,7 +9,7 @@ ALLOWED_HOSTS = ['*']
 
 STATIC_URL = '/static/'
 STATIC_ROOT = f'{BASE_DIR}/static/'
-STATICFILES_DIRS = [str(APPS_DIR / "static")]
+STATICFILES_DIRS = [f'{APPS_DIR}/static']
 
 MINIO_STORAGE_ACCESS_KEY = env('EXODUS_MINIO_ROOT_USER', default='exodusexodus')
 MINIO_STORAGE_SECRET_KEY = env('EXODUS_MINIO_ROOT_PASSWORD', default='exodusexodus')
@@ -22,10 +22,4 @@ customization = env('EXODUS_CUSTOMIZATION', default='')
 if customization:
     INSTALLED_APPS = [customization] + INSTALLED_APPS
 
-google_username = env('EXODUS_GOOGLE_USERNAME', default='')
-google_password = env('EXODUS_GOOGLE_PASSWORD', default='')
-if google_username and google_password:
-    GOOGLE_ACCOUNT_USERNAME = google_username
-    GOOGLE_ACCOUNT_PASSWORD = google_password
-
-CSRF_COOKIE_SECURE = env.bool('EXODUS_CSRF_COOKIE_SECURE', default=False)
+CSRF_COOKIE_SECURE = env.bool('EXODUS_CSRF_COOKIE_SECURE', default=True)

@@ -52,7 +52,6 @@ FILE_UPLOAD_HANDLERS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,6 +61,7 @@ MIDDLEWARE = [
 ]
 
 if env.bool('USE_WHITENOISE', default=False):
+    MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware'] + MIDDLEWARE
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CSRF_COOKIE_SECURE = True
@@ -166,5 +166,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 ALLOW_APK_UPLOAD = False
 DISABLE_SUBMISSIONS = False
 
-GOOGLE_ACCOUNT_USERNAME = "CHANGE-ME"
-GOOGLE_ACCOUNT_PASSWORD = "CHANGE-ME"
+GOOGLE_ACCOUNT_USERNAME = env('EXODUS_GOOGLE_USERNAME', default='')
+GOOGLE_ACCOUNT_PASSWORD = env('EXODUS_GOOGLE_PASSWORD', default='')
