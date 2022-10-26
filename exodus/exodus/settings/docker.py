@@ -13,6 +13,7 @@ DATABASES = {
     }
 }
 
+STATIC_ROOT = f'{BASE_DIR}/staticfiles/'
 CELERY_BROKER_URL = 'amqp://guest@amqp//'
 BROKER_URL = CELERY_BROKER_URL
 MINIO_STORAGE_ENDPOINT = 'minio:9000'

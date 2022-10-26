@@ -1,8 +1,17 @@
 # coding=utf-8
+import environ
 import os
+from pathlib import Path
+
+env = environ.Env()
+
+ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
+APPS_DIR = ROOT_DIR / ""
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(DIR)
+
+DEBUG = env.bool('DEBUG', default=True)
 
 INSTALLED_APPS = [
     'web',
@@ -50,6 +59,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
+
+if env.bool('USE_WHITENOISE', default=False):
+    MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware'] + MIDDLEWARE
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CSRF_COOKIE_SECURE = True
 
@@ -153,5 +166,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 ALLOW_APK_UPLOAD = False
 DISABLE_SUBMISSIONS = False
 
-GOOGLE_ACCOUNT_USERNAME = "CHANGE-ME"
-GOOGLE_ACCOUNT_PASSWORD = "CHANGE-ME"
+GOOGLE_ACCOUNT_USERNAME = env('EXODUS_GOOGLE_USERNAME', default='')
+GOOGLE_ACCOUNT_PASSWORD = env('EXODUS_GOOGLE_PASSWORD', default='')

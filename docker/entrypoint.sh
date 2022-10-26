@@ -61,10 +61,10 @@ function usage()
 }
 
 function getSettings() {
-    if [ -f "$custom_docker_settings" ]; then
-        export DJANGO_SETTINGS_MODULE=exodus.settings.custom_docker
-    else
-        export DJANGO_SETTINGS_MODULE=exodus.settings.docker
+	if [ -f "$custom_docker_settings" ]; then
+		export DJANGO_SETTINGS_MODULE=exodus.settings.custom_docker
+	else
+		export DJANGO_SETTINGS_MODULE=exodus.settings.docker
 		cat <<- EOS
 		File ${custom_docker_settings} doesn't exist, you might want to create it:
 
@@ -75,7 +75,7 @@ function getSettings() {
 			GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
 			SECRET_KEY = "<a unique secret for Django>"
 		EOS
-    fi
+	fi
 }
 
 function createDB() {
@@ -91,6 +91,10 @@ function createUser() {
 function startWorker() {
 	export C_FORCE_ROOT=1
 	exec celery -A exodus.core worker --beat -l info -S django
+}
+
+function collectStatic() {
+	$pymanage collectstatic --noinput
 }
 
 function startFrontend() {
@@ -129,8 +133,9 @@ function init_db() {
 }
 
 function init() {
-    init_db
-    startFrontend
+	init_db
+	collectStatic
+	startFrontend
 }
 
 main "$@"

@@ -5,7 +5,6 @@ import os
 
 SECRET_KEY = '9b80473f1b0c7d9f1859cfa754e40e26'
 
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = [u'localhost', u'127.0.0.1']
 
 DATABASES = {
@@ -20,7 +19,7 @@ DATABASES = {
 }
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = f'{BASE_DIR}/../staticfiles/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, '..', 'static'), )
 
 CELERY_BROKER_URL = 'amqp://guest@localhost//'
