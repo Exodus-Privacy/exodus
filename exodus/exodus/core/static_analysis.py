@@ -286,14 +286,15 @@ def get_icon_from_gplay(handle, dest):
     :param dest: file to be saved
     :raises Exception: if unable to download icon
     """
-    address = 'https://play.google.com/store/apps/details?id=%s' % handle
-    gplay_page_content = requests.get(address).text
-    soup = BeautifulSoup(gplay_page_content, 'html.parser')
-    icon_images = soup.find_all('img', {'alt': 'Icon image'})
-    if len(icon_images) > 0:
-        icon_url = '{}'.format(icon_images[0]['src'])
-        if not icon_url.startswith('http'):
-            icon_url = 'https:{}'.format(icon_url)
+
+    # TODO: refactor with function is_paid_app to make the call only once
+    google_play_data = google_app(
+        handle,
+        lang='en',  # defaults to 'en'
+        country='us'  # defaults to 'us'
+    )
+
+    if icon_url := google_play_data.get('icon'):
         f = requests.get(icon_url)
         with open(dest, mode='wb') as fp:
             fp.write(f.content)
