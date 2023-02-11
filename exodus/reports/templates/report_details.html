@@ -56,6 +56,8 @@
           Google Play
         {% elif report.application.source == 'fdroid' %}
           F-Droid
+        {% elif report.application.source == 'apkpure' %}
+          APKPure
         {% else %}
           {{ report.application.source }}
         {% endif %}

@@ -77,7 +77,7 @@ def start_static_analysis(params):
                 return EXIT_CODE_PAID_APP_ERROR
 
         # Download APK and put it on Minio storage
-        dl_r = download_apk(storage_helper, request.handle, params.tmp_dir, params.apk_name, params.apk_tmp, params.source)
+        dl_r = download_apk(storage_helper, request.handle, params)
         if not dl_r:
             logging.error("Could not download '{}'".format(request.handle))
             msg = _('Unable to download the APK')

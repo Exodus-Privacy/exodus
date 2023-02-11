@@ -8,6 +8,7 @@ import subprocess
 import requests
 import shutil
 import xml.etree.ElementTree as ET
+import zipfile
 from bs4 import BeautifulSoup
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -97,15 +98,21 @@ def is_paid_app(handle):
         return False
 
 
-def download_apk(storage, handle, tmp_dir, apk_name, apk_tmp, source="google"):
+def download_apk(storage, handle, params):
     ret = False
     logging.info("Will download {}".format(handle))
-    if source == "google":
-        logging.info("Download from gplay")
-        ret = download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp)
-    elif source == "fdroid":
+    if params.source == "google":
+        logging.info("Download from Google Play store")
+        ret = download_google_apk(storage, handle, params.tmp_dir, params.apk_name, params.apk_tmp, params.source)
+
+        if not ret:
+            params.source = "apkpure"
+            logging.info("Download from APKPure")
+            ret = download_google_apk(storage, handle, params.tmp_dir, params.apk_name, params.apk_tmp, params.source)
+
+    elif params.source == "fdroid":
         logging.info("Download from F-Droid")
-        ret = download_fdroid_apk(storage, handle, tmp_dir, apk_name, apk_tmp)
+        ret = download_fdroid_apk(storage, handle, params.tmp_dir, params.apk_name, params.apk_tmp)
     return ret
 
 
@@ -187,7 +194,17 @@ def download_fdroid_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         return False
 
 
-def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
+def extract_apk_from_xapk(apk_tmp, tmp_dir):
+    xapk_file_path = apk_tmp.replace(".apk", ".xapk")
+    xapk_file = Path(xapk_file_path)
+
+    if xapk_file.is_file():
+        logging.info("Extraction apk from xapk")
+        with zipfile.ZipFile(xapk_file_path, 'r') as zip_ref:
+            zip_ref.extractall(tmp_dir)
+
+
+def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp, source):
     """
     Download the APK from Google Play for the given handle.
     :param storage: minio storage helper
@@ -201,6 +218,33 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         if not os.path.exists(tmp_dir):
             os.mkdir(tmp_dir)
 
+        download_with_apkeep(source, handle, tmp_dir)
+
+    except Exception as e:
+        logging.error(e)
+        return False
+
+    apk = Path(apk_tmp)
+    if source == "apkpure":
+        try:
+            extract_apk_from_xapk(apk_tmp, tmp_dir)
+        except Exception as e:
+            logging.error(e)
+            return False
+
+    if apk.is_file():
+        try:
+            storage.put_file(apk_tmp, apk_name)
+            return True
+        except ResponseError as err:
+            logging.error(err)
+            return False
+
+    return False
+
+
+def download_with_apkeep(source, handle, tmp_dir):
+    if source == "google":
         subprocess.run([
             "apkeep",
             "-d",
@@ -216,20 +260,17 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
             tmp_dir
         ], env=os.environ.copy())
 
-    except Exception as e:
-        logging.error(e)
-        return False
-
-    apk = Path(apk_tmp)
-    if apk.is_file():
-        try:
-            storage.put_file(apk_tmp, apk_name)
-            return True
-        except ResponseError as err:
-            logging.error(err)
-            return False
-
-    return False
+    elif source == "apkpure":
+        subprocess.run([
+            "apkeep",
+            "-d",
+            "apk-pure",
+            "-a",
+            handle,
+            "-o",
+            "device=walleye",
+            tmp_dir
+        ])
 
 
 def get_icon_from_store(handle, source, dest):
