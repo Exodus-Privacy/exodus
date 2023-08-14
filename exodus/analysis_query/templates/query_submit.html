@@ -146,7 +146,13 @@
     }
   }
 
+  var search_timer = 0
+
   jQuery("#handle").on("input", function () {
+    if (search_timer) {
+      clearTimeout(search_timer)
+    }
+
     // Extract handle from Google Play or F-Droid url
     const gplay_regex = /id=((?:\w+\.)+\w+)/gmi;
     const fdroid_regex = /packages\/((?:\w+\.)+\w+)/gmi;
@@ -173,7 +179,7 @@
         return
       }
     } else {
-      check_existing_report(handle)
+      search_timer = setTimeout(function () { check_existing_report(handle); }, 200);
     }
   });
 
