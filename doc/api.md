@@ -146,6 +146,24 @@ The API is served by the URL <https://reports.exodus-privacy.eu.org/>
 }
 ```
 
+#### Get all analyzed applications with a specific tracker found
+
+`GET /api/applications?tracker=<tracker_id>` returns `JSON`
+
+```json
+{
+  "applications": [
+    {
+      "id": 1,
+      "handle": "com.johnson.nett",
+      "app_uid": "C585E0D6274EDA2FA159542E305D2C61963BA8CC",
+      "source": "google"
+    },
+    [edited]
+  ]
+}
+```
+
 #### Get the number of distinct applications
 
 `GET /api/applications/count` returns `JSON`

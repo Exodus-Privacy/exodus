@@ -137,6 +137,58 @@ class RestfulApiApplicationTests(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), expected_json)
 
+    def test_returns_applications_with_specific_tracker_using_option_tracker_and_short(self):
+        self._force_authentication()
+        report_with_tracker_1 = Report.objects.create(id=1234)
+        tracker_1 = Tracker.objects.create(name='Teemo')
+        tracker_2 = Tracker.objects.create(name='Analytics')
+        report_with_tracker_1.found_trackers.set([tracker_1.id])
+        application_with_tracker_1 = Application.objects.create(
+            name='app_name1',
+            handle='handle1',
+            source='google1',
+            report=report_with_tracker_1
+        )
+
+        report_with_no_trackers = Report.objects.create(id=1235)
+        Application.objects.create(
+            name='app_name2',
+            handle='handle2',
+            source='google2',
+            report=report_with_no_trackers
+        )
+
+        report_with_both_trackers = Report.objects.create(id=1236)
+        report_with_both_trackers.found_trackers.set([tracker_1.id, tracker_2.id])
+        application_with_both_trackers = Application.objects.create(
+            name='app_name3',
+            handle='handle3',
+            source='google3',
+            report=report_with_both_trackers
+        )
+
+        expected_json = {
+            'applications': [
+                {
+                    "id": application_with_tracker_1.id,
+                    "handle": application_with_tracker_1.handle,
+                    "app_uid": "",
+                    "source": application_with_tracker_1.source
+                },
+                {
+                    "id": application_with_both_trackers.id,
+                    "handle": application_with_both_trackers.handle,
+                    "app_uid": "",
+                    "source": application_with_both_trackers.source
+                }
+            ]
+        }
+
+        response = self.client.get(self.PATH + f'?option=short&tracker={tracker_1.id}')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_json)
+
 
 class RestfulApiSearchHandleDetailsTests(APITestCase):
     PATH = '/api/search/{}/details'.format(DUMMY_HANDLE)

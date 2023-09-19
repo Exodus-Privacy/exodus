@@ -156,7 +156,11 @@ def get_all_trackers(request):
 def get_all_applications(request):
     if request.method == 'GET':
         try:
-            applications = Application.objects.order_by('handle', '-source').distinct('handle', 'source')
+            if request.GET.get('tracker'):
+                tracker_id = request.GET.get('tracker')
+                applications = Application.objects.filter(report__found_trackers__id=tracker_id).order_by('handle', '-source').distinct('handle', 'source')
+            else:
+                applications = Application.objects.order_by('handle', '-source').distinct('handle', 'source')
             if request.GET.get('option', 'full') == 'short':
                 serializer = ApplicationShortSerializer(applications, many=True)
             else:
