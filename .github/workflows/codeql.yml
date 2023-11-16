@@ -30,9 +30,7 @@ jobs:
         uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
-          queries: +security-and-quality
-          paths-ignore:
-            - "exodus/static/admin/js/**"
+          config-file: ./.github/codeql/codeql-config.yml
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
