@@ -1,0 +1,3 @@
+queries: +security-and-quality
+paths-ignore:
+  - "exodus/static/admin/js/**"
