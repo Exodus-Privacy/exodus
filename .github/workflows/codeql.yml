@@ -31,6 +31,8 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
+          paths-ignore:
+            - exodus/static/admin/js/**
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
