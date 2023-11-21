@@ -6,7 +6,7 @@ import string
 
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.http.response import Http404
 from django.shortcuts import render
 from django.urls import reverse
@@ -54,6 +54,10 @@ class AnalysisRequestView(FormView):
         return context
 
     def form_valid(self, form):
+        if settings.DISABLE_SUBMISSIONS and not self.request.user.is_superuser:
+            # Returns an empty page with 503 status code
+            return HttpResponse(status=503)
+
         randhex = str(random_word(60))
         req = AnalysisRequest(
             handle=form.cleaned_data['handle'],
