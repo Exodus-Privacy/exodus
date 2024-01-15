@@ -69,14 +69,16 @@
     })
   }
   const get_results = function (query, limit) {
-    jQuery.ajax({
-      type: 'POST',
-      url: "/api/search",
-      data: '{"type": "application", "query":"' + query + '", "limit":' + limit + '}',
-      success: display_results,
-      contentType: "application/json",
-      dataType: 'json'
-    })
+    if (query) {
+      jQuery.ajax({
+        type: 'POST',
+        url: "/api/search",
+        data: '{"type": "application", "query":"' + query + '", "limit":' + limit + '}',
+        success: display_results,
+        contentType: "application/json",
+        dataType: 'json'
+      })
+    }
   }
   jQuery("#go").on("click", function () {
     const query = jQuery.trim(jQuery("#query").val())
