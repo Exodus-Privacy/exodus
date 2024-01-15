@@ -59,7 +59,7 @@
           read our <a target="_blank" rel="noreferrer" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>
         </div>
 
-        <div id="reports" style="display: none" class="alert alert-info">
+        <div id="reports" class="alert alert-info d-none">
         </div>
 
         <div class="row justify-content-center mb-5">
@@ -74,8 +74,8 @@
           </p>
         {% endif %}
 
-        <div id="loading" class="text-center" style="display:none;">
-          <img style="width:200px;" src="/static/img/loading.gif" alt="">
+        <div id="loading" class="text-center d-none">
+          <img class="w-200px" src="/static/img/loading.gif" alt="">
           <div class="alert alert-light" role="alert">
             {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
           </div>
@@ -122,7 +122,7 @@
       jQuery.get("/api/search/" + handle + "/latest", function (rq) {
         if (rq.id) {
           jQuery("#reports").html('')
-          jQuery("#reports").show()
+          jQuery("#reports").removeClass('d-none')
 
           var p = document.createElement('p')
           var name = handle
@@ -157,7 +157,7 @@
     const gplay_regex = /id=((?:\w+\.)+\w+)/gmi;
     const fdroid_regex = /packages\/((?:\w+\.)+\w+)/gmi;
     const handle = jQuery.trim(jQuery(this).val())
-    jQuery("#reports").hide()
+    jQuery("#reports").addClass('d-none')
     if (handle.startsWith("https://play.google.com")) {
       var match = gplay_regex.exec(handle)
       while (match != null) {

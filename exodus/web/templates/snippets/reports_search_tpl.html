@@ -1,6 +1,6 @@
 {% load i18n %}
 {% verbatim %}
-<script id="tpl" style="display:none;" type="text/x-handlebars-template">
+<script id="tpl" class="d-none" type="text/x-handlebars-template">
   <div class="container">
     {{#unless results.length}}
       {% endverbatim %}<h5>{% trans "No results found." %}</h5>{% verbatim %}
@@ -46,14 +46,16 @@
     jQuery("#query").focus();
   });
   const display_results = function (results) {
-    jQuery("#go-div").hide()
-    jQuery("#results").hide()
-    jQuery("#results-title").hide()
+    jQuery("#go-div").addClass("d-none")
+    jQuery("#results").addClass("d-none")
+    jQuery("#results-title").addClass("d-none")
+
     jQuery("#results").html("")
     jQuery("#results").html(tpl(results))
-    jQuery("#results").show()
+
+    jQuery("#results").removeClass("d-none")
     if (results.results.length > 0) {
-      jQuery("#results-title").show()
+      jQuery("#results-title").removeClass("d-none")
     }
   }
   jQuery.fn.enterKey = function (fnc) {
@@ -113,9 +115,9 @@
       search_timer = setTimeout(function () { get_results(query, 20); }, 200);
     }
     if (query == '') {
-      jQuery("#go-div").show()
-      jQuery("#results").hide()
-      jQuery("#results-title").hide()
+      jQuery("#go-div").removeClass("d-none")
+      jQuery("#results").addClass("d-none")
+      jQuery("#results-title").addClass("d-none")
     }
   });
   jQuery("#query").enterKey(function () {
