@@ -2,90 +2,90 @@
 {% load i18n %}
 {% load markdown %}
 {% block content %}
-<style>
-  h2 {
-    margin: 1.5rem 0 1rem 0;
-  }
-</style>
+  <style>
+    h2 {
+      margin: 1.5rem 0 1rem 0;
+    }
+  </style>
 
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 text-center mb-4">
-    <h1 class="main-title">
-      {{ tracker.name }}
-    </h1>
-    {% for c in tracker.category.all %}
-      <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
-    {% endfor %}
-  </div>
-</div>
-
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-4">
-    {% blocktrans trimmed count count=tracker.apps_number %}
-    Present in: <b>{{ count }} application</b>
-    {% plural %}
-    Present in: <b>{{ count }} applications</b>
-    {% endblocktrans %}
-    <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
-  </div>
-  <div class="col-md-8 col-12 mb-4 text-right">
-    <a class="link main-link" target="_blank" rel="noreferrer" href="{{ tracker.website }}">{% trans "Tracker web page" %}</a>
-  </div>
-</div>
-
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-4">
-    {{ tracker.description | markdown | safe }}
-  </div>
-</div>
-
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-5">
-    <h2>{% trans "Detection rules" %}</h2>
-    {% trans "Code detection rule:" %} <code>{{ tracker.code_signature | default:"NC" }}</code>
-    <br>
-    {% trans "Network detection rule:" %} <code>{{ tracker.network_signature | default:"NC" }}</code>
-  </div>
-</div>
-
-{% if tracker.documentation %}
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-5">
-    <h2>{% trans "Documentation" %}</h2>
-    <ul>
-      {% for link in tracker.documentation_list %}
-      <li><a href="{{ link }}">{{ link }}</a></li>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 text-center mb-4">
+      <h1 class="main-title">
+        {{ tracker.name }}
+      </h1>
+      {% for c in tracker.category.all %}
+        <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
       {% endfor %}
-    </ul>
-  </div>
-</div>
-{% endif %}
-
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-2">
-    <h2>{% trans "Latest reports with this tracker" %}</h2>
-  </div>
-</div>
-
-{% for report in reports %}
-{% with report.application as app %}
-<div class="row justify-content-sm-center position-relative mb-2">
-  <div class="col-md-1 col-2 my-auto">
-    <img src="/reports/{{ app.id }}/icon" width="50" height="50" class="rounded" alt="{{ app.handle }}">
-  </div>
-  <div class="col-md-7 col-8 text-truncate position-static">
-    <div>
-      <a href="{% url 'reports:detail' report.id %}" class="stretched-link report-link">
-        {% if app.name.strip %}
-        {{ app.name }}
-        {% else %}
-        {{ app.handle }}
-        {% endif %}
-      </a>
     </div>
-    <div class="small"><b>{{ app.version }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
   </div>
-</div>
-{% endwith %}
-{% endfor %}
+
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 mb-4">
+      {% blocktrans trimmed count count=tracker.apps_number %}
+        Present in: <b>{{ count }} application</b>
+      {% plural %}
+        Present in: <b>{{ count }} applications</b>
+      {% endblocktrans %}
+      <span class="badge badge-pill badge-{{ tracker.get_color_class }}">{{ tracker.apps_percent }} %</span>
+    </div>
+    <div class="col-md-8 col-12 mb-4 text-right">
+      <a class="link main-link" target="_blank" rel="noreferrer" href="{{ tracker.website }}">{% trans "Tracker web page" %}</a>
+    </div>
+  </div>
+
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 mb-4">
+      {{ tracker.description | markdown | safe }}
+    </div>
+  </div>
+
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 mb-5">
+      <h2>{% trans "Detection rules" %}</h2>
+      {% trans "Code detection rule:" %} <code>{{ tracker.code_signature | default:"NC" }}</code>
+      <br>
+      {% trans "Network detection rule:" %} <code>{{ tracker.network_signature | default:"NC" }}</code>
+    </div>
+  </div>
+
+  {% if tracker.documentation %}
+    <div class="row justify-content-sm-center">
+      <div class="col-md-8 col-12 mb-5">
+        <h2>{% trans "Documentation" %}</h2>
+        <ul>
+          {% for link in tracker.documentation_list %}
+            <li><a href="{{ link }}">{{ link }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 mb-2">
+      <h2>{% trans "Latest reports with this tracker" %}</h2>
+    </div>
+  </div>
+
+  {% for report in reports %}
+    {% with report.application as app %}
+      <div class="row justify-content-sm-center position-relative mb-2">
+        <div class="col-md-1 col-2 my-auto">
+          <img src="/reports/{{ app.id }}/icon" width="50" height="50" class="rounded" alt="{{ app.handle }}">
+        </div>
+        <div class="col-md-7 col-8 text-truncate position-static">
+          <div>
+            <a href="{% url 'reports:detail' report.id %}" class="stretched-link report-link">
+              {% if app.name.strip %}
+                {{ app.name }}
+              {% else %}
+                {{ app.handle }}
+              {% endif %}
+            </a>
+          </div>
+          <div class="small"><b>{{ app.version }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
+        </div>
+      </div>
+    {% endwith %}
+  {% endfor %}
 {% endblock %}

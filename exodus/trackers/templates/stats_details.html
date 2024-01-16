@@ -1,43 +1,43 @@
 {% extends "base/base.html" %}
 {% load i18n %}
 {% block content %}
-{% load static %}
-<div class="row justify-content-md-center mb-4">
-  {% if trackers %}
-    <div class="col-lg-8">
-      <div class="text-center">
-        <h1 class="main-title">{% trans "Statistics" %}</h1>
-        <span class="d-none d-md-block">
-          <h4>{% trans "Most frequent trackers" %} - Google Play</h4>
-        </span>
-        <span class="d-md-none">
-          <h4>{% trans "Most frequent trackers" %}</h4>
-          <h5>(Google Play)</h5>
-        </span>
+  {% load static %}
+  <div class="row justify-content-md-center mb-4">
+    {% if trackers %}
+      <div class="col-lg-8">
+        <div class="text-center">
+          <h1 class="main-title">{% trans "Statistics" %}</h1>
+          <span class="d-none d-md-block">
+            <h4>{% trans "Most frequent trackers" %} - Google Play</h4>
+          </span>
+          <span class="d-md-none">
+            <h4>{% trans "Most frequent trackers" %}</h4>
+            <h5>(Google Play)</h5>
+          </span>
+        </div>
+        <hr>
+        <table class="m-auto">
+          {% for t in trackers %}
+            <tr>
+              <td class="text-right">
+                <a href="{% url 'trackers:detail' t.id %}">{{ t.name }} </a>
+              </td>
+              <td class="small text-muted">
+                {% blocktrans trimmed count count=t.apps_number %}
+                  found in {{ count }} application
+                {% plural %}
+                  found in {{ count }} applications
+                {% endblocktrans %}
+              </td>
+              <td class="w-250px">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped bg-{{ t.get_color_class }} w-{{ t.apps_percent }}" role="progressbar" aria-valuenow="{{ t.apps_percent }}" aria-valuemin="0" aria-valuemax="100">{{ t.apps_percent }}%</div>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
       </div>
-      <hr>
-      <table class="m-auto">
-      {% for t in trackers %}
-        <tr>
-          <td class="text-right">
-            <a href="{% url 'trackers:detail' t.id %}">{{ t.name }} </a>
-          </td>
-          <td class="small text-muted">
-            {% blocktrans trimmed count count=t.apps_number %}
-            found in {{ count }} application
-            {% plural %}
-            found in {{ count }} applications
-            {% endblocktrans %}
-          </td>
-          <td class="w-250px">
-            <div class="progress">
-              <div class="progress-bar progress-bar-striped bg-{{ t.get_color_class }} w-{{ t.apps_percent }}" role="progressbar" aria-valuenow="{{ t.apps_percent }}" aria-valuemin="0" aria-valuemax="100">{{ t.apps_percent }}%</div>
-            </div>
-          </td>
-        </tr>
-      {% endfor %}
-      </table>
-    </div>
-  {% endif %}
-</div>
+    {% endif %}
+  </div>
 {% endblock %}

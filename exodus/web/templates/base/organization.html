@@ -2,61 +2,61 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 text-center mb-4">
-    <h1 class="main-title">
-      {% trans "The organization" %}
-    </h1>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 text-center mb-4">
+      <h1 class="main-title">
+        {% trans "The organization" %}
+      </h1>
+    </div>
   </div>
-</div>
 
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-5">
-    <p class="text-center">
-      <img src="{% static 'img/logo_purple_small.svg' %}" width="100">
-    </p>
-    <p>
-      {% trans "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues." %}
-    </p>
-    <p class="text-center mb-4 mt-4">
-      <a href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% endif %}" target="_blank" rel="noreferrer" class="btn btn-primary w-300px">{% trans "Discover Exodus Privacy" %}</a>
-    </p>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 mb-5">
+      <p class="text-center">
+        <img src="{% static 'img/logo_purple_small.svg' %}" width="100">
+      </p>
+      <p>
+        {% trans "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues." %}
+      </p>
+      <p class="text-center mb-4 mt-4">
+        <a href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% endif %}" target="_blank" rel="noreferrer" class="btn btn-primary w-300px">{% trans "Discover Exodus Privacy" %}</a>
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-5 mt-4">
+      <h4>{% trans "Help us!" %}</h4>
+      <p>
+        {% trans "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help." %}
+      </p>
+      <p class="text-center mt-4">
+        <a href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer" class="btn btn-outline-primary w-300px">{% trans "How to contribute?" %}</a>
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mt-4 mb-4">
+      <h4>{% trans "Contact us" %}</h4>
+    </div>
   </div>
-  <div class="col-md-8 col-12 mb-5 mt-4">
-    <h4>{% trans "Help us!" %}</h4>
-    <p>
-      {% trans "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help." %}
-    </p>
-    <p class="text-center mt-4">
-      <a href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer" class="btn btn-outline-primary w-300px">{% trans "How to contribute?" %}</a>
-    </p>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-4 col-12 mb-4 text-center">
+      <p><img src="{% static 'img/contact.svg' %}"></p>
+      <p>contact@exodus-privacy.eu.org</p>
+      <p><a href="mailto:contact@exodus-privacy.eu.org" class="btn btn-outline-primary min-w-150px">{% trans "Contact us!" %}</a></p>
+    </div>
+    <div class="col-md-4 col-12 mb-4 text-center">
+      <p><img src="{% static 'img/mastodon.svg' %}"></p>
+      <p>@exodus</p>
+      <p><a href="https://framapiaf.org/@exodus" target="_blank" rel="noreferrer" class="btn btn-outline-primary min-w-150px">{% trans "Follow us!" %}</a></p>
+    </div>
   </div>
-  <div class="col-md-8 col-12 mt-4 mb-4">
-    <h4>{% trans "Contact us" %}</h4>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-4 col-12 mb-4 text-center">
+      <p><img src="{% static 'img/twitter.svg' %}"></p>
+      <p>@ExodusPrivacy</p>
+      <p><a href="https://twitter.com/ExodusPrivacy" target="_blank" rel="noreferrer" class="btn btn-outline-primary min-w-150px">{% trans "Follow us!" %}</a></p>
+    </div>
+    <div class="col-md-4 col-12 mb-4 text-center">
+      <p><img src="{% static 'img/facebook.svg' %}"></p>
+      <p>exodusprivacy</p>
+      <p><a href="https://facebook.com/exodusprivacy" target="_blank" rel="noreferrer" class="btn btn-outline-primary min-w-150px">{% trans "Follow us!" %}</a></p>
+    </div>
   </div>
-</div>
-<div class="row justify-content-sm-center">
-  <div class="col-md-4 col-12 mb-4 text-center">
-    <p><img src="{% static 'img/contact.svg' %}"></p>
-    <p>contact@exodus-privacy.eu.org</p>
-    <p><a href="mailto:contact@exodus-privacy.eu.org" class="btn btn-outline-primary min-w-150px">{% trans "Contact us!" %}</a></p>
-  </div>
-  <div class="col-md-4 col-12 mb-4 text-center">
-    <p><img src="{% static 'img/mastodon.svg' %}"></p>
-    <p>@exodus</p>
-    <p><a href="https://framapiaf.org/@exodus" target="_blank" rel="noreferrer" class="btn btn-outline-primary min-w-150px">{% trans "Follow us!" %}</a></p>
-  </div>
-</div>
-<div class="row justify-content-sm-center">
-  <div class="col-md-4 col-12 mb-4 text-center">
-    <p><img src="{% static 'img/twitter.svg' %}"></p>
-    <p>@ExodusPrivacy</p>
-    <p><a href="https://twitter.com/ExodusPrivacy" target="_blank" rel="noreferrer" class="btn btn-outline-primary min-w-150px">{% trans "Follow us!" %}</a></p>
-  </div>
-  <div class="col-md-4 col-12 mb-4 text-center">
-    <p><img src="{% static 'img/facebook.svg' %}"></p>
-    <p>exodusprivacy</p>
-    <p><a href="https://facebook.com/exodusprivacy" target="_blank" rel="noreferrer" class="btn btn-outline-primary min-w-150px">{% trans "Follow us!" %}</a></p>
-  </div>
-</div>
 {% endblock %}
