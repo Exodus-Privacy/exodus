@@ -24,4 +24,5 @@ whitenoise = "~=6.2.0"
 
 [dev-packages]
 autopep8 = "~=1.6"
+django-csp = "~=3.7"
 flake8 = "~=4.0"

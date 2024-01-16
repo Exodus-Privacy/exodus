@@ -13,17 +13,17 @@
 
 <div class="row justify-content-sm-center">
   <div class="col-md-8 col-12 col-centered mb-4">
-    <div id="loading" class="text-center" style="">
+    <div id="loading" class="text-center">
       <div id="description" class="alert alert-info" role="alert">
         {% trans analysis.description %}
       </div>
-      <p id="completed" style="display:none" class="text-center mt-5">
+      <p id="completed" class="text-center mt-5 d-none">
         <img src="{% static 'img/analysis_completed.png' %}" width="120">
       </p>
-      <p id="report" style="display:none" class="mt-4">
+      <p id="report" class="mt-4 d-none">
         <a href="#" class="btn btn-primary">{% trans "See the report" %}</a>
       </p>
-      <img id="snake" style="display:none" style="width:200px;" src="/static/img/loading.gif" alt="">
+      <img id="snake" class="d-none w-200px" src="/static/img/loading.gif" alt="">
       <div id="refresh" class="text-muted small">
         {% trans "Will refresh automatically every 10 seconds." %}
       </div>
@@ -47,29 +47,27 @@
 
 {% block scripts %}
 <script>
-  const refresh = function(){
-    console.log("Refresh")
-
-    jQuery.get("/analysis/{{analysis.id}}/json", function(rq){
+  const refresh = function () {
+    jQuery.get("/analysis/{{analysis.id}}/json", function (rq) {
       jQuery("#description").removeClass("alert-danger alert-info")
       jQuery("#description").html(rq.description)
-      if(rq.in_error){
+      if (rq.in_error) {
         jQuery("#description").addClass("alert-danger")
       } else {
         jQuery("#description").addClass("alert-info")
       }
-      if(rq.processed){
-        jQuery("#snake").hide()
-        jQuery("#refresh").hide()
+      if (rq.processed) {
+        jQuery("#snake").addClass('d-none')
+        jQuery("#refresh").addClass('d-none')
         jQuery("#main-title").text("{% trans 'Analysis done!' %}")
-        jQuery("#completed").show()
-        if(!rq.in_error){
-          jQuery("#report").children(":first").attr("href", "/reports/"+rq.report_id+"/")
-          jQuery("#report").show()
+        jQuery("#completed").removeClass('d-none')
+        if (!rq.in_error) {
+          jQuery("#report").children(":first").attr("href", "/reports/" + rq.report_id + "/")
+          jQuery("#report").removeClass('d-none')
         }
       } else {
-        jQuery("#snake").show()
-        jQuery("#report").hide()
+        jQuery("#snake").removeClass('d-none')
+        jQuery("#report").addClass('d-none')
         setTimeout(function () {
           refresh()
         }, 10 * 1000);

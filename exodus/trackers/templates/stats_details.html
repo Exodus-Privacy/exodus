@@ -5,7 +5,7 @@
 <div class="row justify-content-md-center mb-4">
   {% if trackers %}
     <div class="col-lg-8">
-      <div style="text-align:center">
+      <div class="text-center">
         <h1 class="main-title">{% trans "Statistics" %}</h1>
         <span class="d-none d-md-block">
           <h4>{% trans "Most frequent trackers" %} - Google Play</h4>
@@ -16,7 +16,7 @@
         </span>
       </div>
       <hr>
-      <table style="margin: auto">
+      <table class="m-auto">
       {% for t in trackers %}
         <tr>
           <td class="text-right">
@@ -29,9 +29,9 @@
             found in {{ count }} applications
             {% endblocktrans %}
           </td>
-          <td style="width:250px">
+          <td class="w-250px">
             <div class="progress">
-              <div class="progress-bar progress-bar-striped bg-{{ t.get_color_class }}" role="progressbar" style="width: {{ t.apps_percent }}%;" aria-valuenow="{{ t.apps_percent }}" aria-valuemin="0" aria-valuemax="100">{{ t.apps_percent }}%</div>
+              <div class="progress-bar progress-bar-striped bg-{{ t.get_color_class }} w-{{ t.apps_percent }}" role="progressbar" aria-valuenow="{{ t.apps_percent }}" aria-valuemin="0" aria-valuemax="100">{{ t.apps_percent }}%</div>
             </div>
           </td>
         </tr>

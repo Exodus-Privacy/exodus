@@ -25,7 +25,7 @@ COPY --from=apkeep-download /tmp/apkeep /usr/local/bin/apkeep
 WORKDIR /opt
 
 COPY ./Pipfile* /opt/
-RUN pipenv install --ignore-pipfile --system
+RUN pipenv install --ignore-pipfile --system --dev
 
 WORKDIR /exodus/exodus
 

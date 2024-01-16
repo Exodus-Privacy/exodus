@@ -150,14 +150,14 @@
             {% if perm.group_icon %}
               {% autoescape off %}{{ perm.group_icon }}{% endautoescape %}
             {% else %}
-              <span style="padding-left:28px"</span>
+              <span class="p-l-28px" </span>
             {% endif %}
             {% if perm.severity == 'Special' or perm.severity == 'Dangerous' %}
               &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg">&nbsp;
             {% endif %}
             <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name }}</span>
             {% if perm.label %}
-              <small style="display:block; padding-left:28px"><i>{{ perm.label }}</i></small>
+              <small class="d-block p-l-28px"><i>{{ perm.label }}</i></small>
             {% endif %}
           </p>
         {% endfor %}
