@@ -101,7 +101,7 @@
 
 {% block scripts %}
   <script>
-  // Spinner
+    // Spinner
     var show_spinner = function () {
       if ($("#handle").val()) {
         var s = document.getElementById("loading")
@@ -111,7 +111,7 @@
       }
     }
 
-  // dirty hack to get correct report url dynamically
+    // dirty hack to get correct report url dynamically
     var get_report_reverse_url = function (id) {
       return "{% url 'reports:detail' report_id='112233' %}".replace("112233", id)
     }
@@ -153,7 +153,7 @@
         clearTimeout(search_timer)
       }
 
-    // Extract handle from Google Play or F-Droid url
+      // Extract handle from Google Play or F-Droid url
       const gplay_regex = /id=((?:\w+\.)+\w+)/gmi;
       const fdroid_regex = /packages\/((?:\w+\.)+\w+)/gmi;
       const handle = jQuery.trim(jQuery(this).val())
