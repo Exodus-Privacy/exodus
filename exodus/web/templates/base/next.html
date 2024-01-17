@@ -2,117 +2,117 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 text-center mb-4">
-    <h1 class="main-title">
-      {% trans "What's next?" %}
-    </h1>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 text-center mb-4">
+      <h1 class="main-title">
+        {% trans "What's next?" %}
+      </h1>
+    </div>
   </div>
-</div>
 
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-4">
-    <p>
-      {% trans "We know it is not easy to find alternatives in order to escape trackers within our apps. We prepared a list of tools and things you can do to better manage your privacy on your smartphone." %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4 class="mt-2">{% trans "Consider how you use applications" %}</h4>
-    <p>
-      {% trans "When you wish to install an application or when an application asks for personal information, ask yourself the following questions:" %}
-    </p>
-    <ul>
-      <li>{% trans "how many trackers does it contain and what permissions does it ask for?" %}</li>
-      <li>{% trans "do I want or need to install it?" %}</li>
-      <li>{% trans "do I want or need to give it what it asks me?" %}</li>
-    </ul>
-    <p>
-      {% trans "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity." %}
-    </p>
-    <p>
-      {% trans "You could also contact the people who offer you the application if you consider it to be too intrusive and ask them some explanations on the presence of trackers and permission requests." %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4 class="mt-2">{% trans "Favour free software" %}</h4>
-    <p>
-      {% trans "What is called 'free' software is software whose code (i.e. its recipe, or list of instructions) can be changed, copied, verified... and is thus transparent. A free software application might exist to replace an app that you already use but that may not respect your privacy." %}
-    </p>
-    <p class="text-center">
-      <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>
-        <img src="{% static 'img/fdroid_logo.svg' %}" width="120" alt="F-droid logo">
-      </a>
-    </p>
-    <p>
-      {% trans "If you are an Android user, you can install <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free software store that can be used instead or in addition to the Google Play store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be aware, however, that some F-Droid applications are not available in all languages." %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4 class="mt-2">{% trans "Use the mobile website instead of the application" %}</h4>
-    <p>
-      {% trans "On a mobile device you don't necessary have to use applications: you can use mobile websites instead. One advantage in favour of the latter is the possibility to use  web browser add-ons, in the same way you can do it on your computer (e.g. uBlock Origin)." %}
-    </p>
-    <p class="text-center">
-      <a style="text-decoration:none" target='_blank' rel='noreferrer' href='https://play.google.com/store/apps/details?id=org.mozilla.firefox'>
-        <img src="{% static 'img/firefox_logo.png' %}" width="120" alt="Firefox logo">
-      </a>
-      <a target='_blank' rel='noreferrer' href='https://f-droid.org/packages/com.duckduckgo.mobile.android/'>
-        <img src="{% static 'img/duckduckgo_logo.png' %}" width="120" alt="DuckDuckGo logo">
-      </a>
-    </p>
-    <p>
-      {% trans "If you want a browser experience that is more respectful of your privacy, you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo Privacy Browser." %}
-    </p>
-    <p>
-      {% trans "These browsers allow you to add your favorite websites on your home screen easily, just as an app (but lighter)." %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4 class="mt-2">{% trans "Install an ad blocker" %}</h4>
-    <p class="text-center">
-      <a target='_blank' rel='noreferrer' href='https://blokada.org/'>
-        <img src="{% static 'img/blokada_logo.png' %}" width="120" alt="Blokada logo">
-      </a>
-    </p>
-    <p>
-      {% trans "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from their own website." %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4 class="mt-2">{% trans "Discover alternatives" %}</h4>
-    <p>
-      {% trans "For broader recommendations, here are some resources you can dig in:" %}
-      {% blocktrans %}
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 mb-4">
+      <p>
+        {% trans "We know it is not easy to find alternatives in order to escape trackers within our apps. We prepared a list of tools and things you can do to better manage your privacy on your smartphone." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4 class="mt-2">{% trans "Consider how you use applications" %}</h4>
+      <p>
+        {% trans "When you wish to install an application or when an application asks for personal information, ask yourself the following questions:" %}
+      </p>
       <ul>
-        <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>
-        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>
+        <li>{% trans "how many trackers does it contain and what permissions does it ask for?" %}</li>
+        <li>{% trans "do I want or need to install it?" %}</li>
+        <li>{% trans "do I want or need to give it what it asks me?" %}</li>
       </ul>
-      {% endblocktrans %}
-    </p>
+      <p>
+        {% trans "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity." %}
+      </p>
+      <p>
+        {% trans "You could also contact the people who offer you the application if you consider it to be too intrusive and ask them some explanations on the presence of trackers and permission requests." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4 class="mt-2">{% trans "Favour free software" %}</h4>
+      <p>
+        {% trans "What is called 'free' software is software whose code (i.e. its recipe, or list of instructions) can be changed, copied, verified... and is thus transparent. A free software application might exist to replace an app that you already use but that may not respect your privacy." %}
+      </p>
+      <p class="text-center">
+        <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>
+          <img src="{% static 'img/fdroid_logo.svg' %}" width="120" alt="F-droid logo">
+        </a>
+      </p>
+      <p>
+        {% trans "If you are an Android user, you can install <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free software store that can be used instead or in addition to the Google Play store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be aware, however, that some F-Droid applications are not available in all languages." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4 class="mt-2">{% trans "Use the mobile website instead of the application" %}</h4>
+      <p>
+        {% trans "On a mobile device you don't necessary have to use applications: you can use mobile websites instead. One advantage in favour of the latter is the possibility to use  web browser add-ons, in the same way you can do it on your computer (e.g. uBlock Origin)." %}
+      </p>
+      <p class="text-center">
+        <a style="text-decoration:none" target='_blank' rel='noreferrer' href='https://play.google.com/store/apps/details?id=org.mozilla.firefox'>
+          <img src="{% static 'img/firefox_logo.png' %}" width="120" alt="Firefox logo">
+        </a>
+        <a target='_blank' rel='noreferrer' href='https://f-droid.org/packages/com.duckduckgo.mobile.android/'>
+          <img src="{% static 'img/duckduckgo_logo.png' %}" width="120" alt="DuckDuckGo logo">
+        </a>
+      </p>
+      <p>
+        {% trans "If you want a browser experience that is more respectful of your privacy, you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo Privacy Browser." %}
+      </p>
+      <p>
+        {% trans "These browsers allow you to add your favorite websites on your home screen easily, just as an app (but lighter)." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4 class="mt-2">{% trans "Install an ad blocker" %}</h4>
+      <p class="text-center">
+        <a target='_blank' rel='noreferrer' href='https://blokada.org/'>
+          <img src="{% static 'img/blokada_logo.png' %}" width="120" alt="Blokada logo">
+        </a>
+      </p>
+      <p>
+        {% trans "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from their own website." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4 class="mt-2">{% trans "Discover alternatives" %}</h4>
+      <p>
+        {% trans "For broader recommendations, here are some resources you can dig in:" %}
+        {% blocktrans %}
+          <ul>
+            <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>
+            <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>
+          </ul>
+        {% endblocktrans %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4 class="mt-2">{% trans "Remain curious!" %}</h4>
+      <p>
+        {% trans "In this area, what is true today may not necessarily be true tomorrow: tools might come and go, application policies can change, security breaches can be discovered..." %}
+      </p>
+      <p>
+        {% trans "To this effect, you can attend workshops held by associations such as <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> or other organizations like public libraries." %}
+      </p>
+      <p>
+        {% trans "To stay up to date on these topics, you can find useful resources there:" %}
+        {% blocktrans %}
+          <ul>
+            <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>
+            <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>
+          </ul>
+        {% endblocktrans %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4 class="mt-2">{% trans "For advanced users" %}</h4>
+      <p>
+        {% trans "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> is an operating system based on Android; it can be used without Google services. It is possible to install it on your smartphone, provided your device is compatible." %}
+      </p>
+    </div>
   </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4 class="mt-2">{% trans "Remain curious!" %}</h4>
-    <p>
-      {% trans "In this area, what is true today may not necessarily be true tomorrow: tools might come and go, application policies can change, security breaches can be discovered..." %}
-    </p>
-    <p>
-      {% trans "To this effect, you can attend workshops held by associations such as <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> or other organizations like public libraries." %}
-    </p>
-    <p>
-      {% trans "To stay up to date on these topics, you can find useful resources there:" %}
-      {% blocktrans %}
-      <ul>
-        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>
-        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>
-      </ul>
-      {% endblocktrans %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4 class="mt-2">{% trans "For advanced users" %}</h4>
-    <p>
-      {% trans "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> is an operating system based on Android; it can be used without Google services. It is possible to install it on your smartphone, provided your device is compatible." %}
-    </p>
-  </div>
-</div>
 {% endblock %}

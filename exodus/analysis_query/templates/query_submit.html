@@ -3,190 +3,190 @@
 {% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 text-center mb-4">
-    <h1 class="main-title">
-      {% trans "New analysis" %}
-    </h1>
-  </div>
-</div>
-
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12">
-    <p class="text-center mb-5">
-      <img src="{% static 'img/analysis_new.png' %}" width="120">
-    </p>
-    {% if submissions_disabled and not request.user.is_superuser %}
-    <div class="text-center alert alert-danger">
-      <b>{% trans "It is currently impossible to submit new analysis. Sorry for the inconvenience!" %}</b>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 text-center mb-4">
+      <h1 class="main-title">
+        {% trans "New analysis" %}
+      </h1>
     </div>
-    {% else %}
-    <form method="post" enctype="multipart/form-data" action="{% if LANGUAGE_CODE in 'fr,en' %}{% url 'analysis:submit' %}{% else %}/en/analysis/submit/{% endif %}">
-      <div class="form-group">
-        {% csrf_token %}
-        {% if form.errors %}
-          {% for field in form %}
-            {% for error in field.errors %}
-              <div class="alert alert-danger small">
-                <strong>{{ error|escape }}</strong>
-              </div>
-            {% endfor %}
-          {% endfor %}
-        {% endif %}
-        <label for="handle"><b>{% trans "URL of the application" %}</b></label>
-        <div class="input-group input-group-lg mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="handle_help">
-              <small><img src="/static/img/search.svg"></small>
-            </span>
-          </div>
-          <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help" required>
-        </div>
-        <label for="source" class="col-form-label"><b>{% trans "Source:" %}</b> </label>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="source" id="sourceGoogle" value="google" checked>
-          <label class="form-check-label" for="sourceGoogle">Google Play</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="source" id="sourceFdroid" value="fdroid">
-          <label class="form-check-label" for="sourceFdroid">F-Droid</label>
-        </div>
-        <p class="form-text text-muted mb-4">
-          {% trans "Free applications only. Works also with the application handle." %}
-        </p>
-        <div class="alert alert-warning text-center mb-4" role="alert">
-          Applications with geographic restrictions cannot be scanned -
-          read our <a target="_blank" rel="noreferrer" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>
-        </div>
-
-        <div id="reports" class="alert alert-info d-none">
-        </div>
-
-        <div class="row justify-content-center mb-5">
-          <div class="col-8 col-sm-7 col-md-6 col-xl-5">
-            <button type='submit' onclick="show_spinner()" class="btn btn-primary btn-block">{% trans "Perform analysis" %}</button>
-          </div>
-        </div>
-
-        {% if upload_allowed %}
-          <p class="text-right">
-            <a class="link main-link" href="{% url 'analysis:upload' %}">{% trans "I prefer to upload an application" %}</a>
-          </p>
-        {% endif %}
-
-        <div id="loading" class="text-center d-none">
-          <img class="w-200px" src="/static/img/loading.gif" alt="">
-          <div class="alert alert-light" role="alert">
-            {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
-          </div>
-        </div>
-      </div>
-    </form>
-    {% endif %}
   </div>
-</div>
 
-<div class="row justify-content-sm-center mt-5">
-  <div class="col-md-8 col-12 col-centered">
-    <div class="text-center alert alert-light">
-      <p>
-        <a href="{% url 'organization' %}">Exodus Privacy</a>
-        {% trans "is a non-profit organization which provides this service for free." %}
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12">
+      <p class="text-center mb-5">
+        <img src="{% static 'img/analysis_new.png' %}" width="120">
       </p>
-      <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+      {% if submissions_disabled and not request.user.is_superuser %}
+        <div class="text-center alert alert-danger">
+          <b>{% trans "It is currently impossible to submit new analysis. Sorry for the inconvenience!" %}</b>
+        </div>
+      {% else %}
+        <form method="post" enctype="multipart/form-data" action="{% if LANGUAGE_CODE in 'fr,en' %}{% url 'analysis:submit' %}{% else %}/en/analysis/submit/{% endif %}">
+          <div class="form-group">
+            {% csrf_token %}
+            {% if form.errors %}
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <div class="alert alert-danger small">
+                    <strong>{{ error|escape }}</strong>
+                  </div>
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
+            <label for="handle"><b>{% trans "URL of the application" %}</b></label>
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="handle_help">
+                  <small><img src="/static/img/search.svg"></small>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help" required>
+            </div>
+            <label for="source" class="col-form-label"><b>{% trans "Source:" %}</b> </label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="source" id="sourceGoogle" value="google" checked>
+              <label class="form-check-label" for="sourceGoogle">Google Play</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="source" id="sourceFdroid" value="fdroid">
+              <label class="form-check-label" for="sourceFdroid">F-Droid</label>
+            </div>
+            <p class="form-text text-muted mb-4">
+              {% trans "Free applications only. Works also with the application handle." %}
+            </p>
+            <div class="alert alert-warning text-center mb-4" role="alert">
+              Applications with geographic restrictions cannot be scanned -
+              read our <a target="_blank" rel="noreferrer" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>
+            </div>
+
+            <div id="reports" class="alert alert-info d-none">
+            </div>
+
+            <div class="row justify-content-center mb-5">
+              <div class="col-8 col-sm-7 col-md-6 col-xl-5">
+                <button type='submit' onclick="show_spinner()" class="btn btn-primary btn-block">{% trans "Perform analysis" %}</button>
+              </div>
+            </div>
+
+            {% if upload_allowed %}
+              <p class="text-right">
+                <a class="link main-link" href="{% url 'analysis:upload' %}">{% trans "I prefer to upload an application" %}</a>
+              </p>
+            {% endif %}
+
+            <div id="loading" class="text-center d-none">
+              <img class="w-200px" src="/static/img/loading.gif" alt="">
+              <div class="alert alert-light" role="alert">
+                {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
+              </div>
+            </div>
+          </div>
+        </form>
+      {% endif %}
     </div>
   </div>
-</div>
+
+  <div class="row justify-content-sm-center mt-5">
+    <div class="col-md-8 col-12 col-centered">
+      <div class="text-center alert alert-light">
+        <p>
+          <a href="{% url 'organization' %}">Exodus Privacy</a>
+          {% trans "is a non-profit organization which provides this service for free." %}
+        </p>
+        <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block scripts %}
-<script>
-  // Spinner
-  var show_spinner = function () {
-    if ($("#handle").val()) {
-      var s = document.getElementById("loading")
-      if (s != undefined) {
-        s.style.display = "block"
+  <script>
+    // Spinner
+    var show_spinner = function () {
+      if ($("#handle").val()) {
+        var s = document.getElementById("loading")
+        if (s != undefined) {
+          s.style.display = "block"
+        }
       }
     }
-  }
 
-  // dirty hack to get correct report url dynamically
-  var get_report_reverse_url = function (id) {
-    return "{% url 'reports:detail' report_id='112233' %}".replace("112233", id)
-  }
+    // dirty hack to get correct report url dynamically
+    var get_report_reverse_url = function (id) {
+      return "{% url 'reports:detail' report_id='112233' %}".replace("112233", id)
+    }
 
-  var check_existing_report = function (handle) {
-    const regex_pk = /^((?:\w+\.)+\w+)$/gmi;
-    if (regex_pk.test(handle)) {
-      jQuery.get("/api/search/" + handle + "/latest", function (rq) {
-        if (rq.id) {
-          jQuery("#reports").html('')
-          jQuery("#reports").removeClass('d-none')
+    var check_existing_report = function (handle) {
+      const regex_pk = /^((?:\w+\.)+\w+)$/gmi;
+      if (regex_pk.test(handle)) {
+        jQuery.get("/api/search/" + handle + "/latest", function (rq) {
+          if (rq.id) {
+            jQuery("#reports").html('')
+            jQuery("#reports").removeClass('d-none')
 
-          var p = document.createElement('p')
-          var name = handle
-          if (rq.name != '') {
-            name = rq.name
+            var p = document.createElement('p')
+            var name = handle
+            if (rq.name != '') {
+              name = rq.name
+            }
+            p.innerHTML = "<b>{% trans  'This application has already been analyzed!' %}</b>"
+            jQuery("#reports").append(p)
+
+            var report_date = rq.creation_date.substring(0, 10)
+            var p2 = document.createElement('p')
+            var report_url = get_report_reverse_url(rq.id)
+            p2.innerHTML = name + " - {% trans 'analyzed on' %} " + report_date + " - <a href='" + report_url + "'>{% trans 'Go to the latest report' %}</a>"
+            jQuery("#reports").append(p2)
+
+            var p3 = document.createElement('p')
+            p3.innerHTML = "{% trans 'If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis.' %}"
+            jQuery("#reports").append(p3)
           }
-          p.innerHTML = "<b>{% trans  'This application has already been analyzed!' %}</b>"
-          jQuery("#reports").append(p)
-
-          var report_date = rq.creation_date.substring(0, 10)
-          var p2 = document.createElement('p')
-          var report_url = get_report_reverse_url(rq.id)
-          p2.innerHTML = name + " - {% trans 'analyzed on' %} " + report_date + " - <a href='" + report_url + "'>{% trans 'Go to the latest report' %}</a>"
-          jQuery("#reports").append(p2)
-
-          var p3 = document.createElement('p')
-          p3.innerHTML = "{% trans 'If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis.' %}"
-          jQuery("#reports").append(p3)
-        }
-      })
-    }
-  }
-
-  var search_timer = 0
-
-  jQuery("#handle").on("input", function () {
-    if (search_timer) {
-      clearTimeout(search_timer)
-    }
-
-    // Extract handle from Google Play or F-Droid url
-    const gplay_regex = /id=((?:\w+\.)+\w+)/gmi;
-    const fdroid_regex = /packages\/((?:\w+\.)+\w+)/gmi;
-    const handle = jQuery.trim(jQuery(this).val())
-    jQuery("#reports").addClass('d-none')
-    if (handle.startsWith("https://play.google.com")) {
-      var match = gplay_regex.exec(handle)
-      while (match != null) {
-        if (match[1]) {
-          $(this).val(match[1])
-          $('#sourceGoogle')[0].checked = true;
-          check_existing_report(match[1])
-        }
-        return
+        })
       }
-    } else if (handle.startsWith("https://f-droid.org/")) {
-      var match = fdroid_regex.exec(handle)
-      while (match != null) {
-        if (match[1]) {
-          $(this).val(match[1])
-          $('#sourceFdroid')[0].checked = true;
-          check_existing_report(match[1])
-        }
-        return
-      }
-    } else {
-      search_timer = setTimeout(function () { check_existing_report(handle); }, 200);
     }
-  });
 
-  var given_handle = window.location.hash.substr(1); // substr(1) removes the #
-  if (given_handle) {
-    jQuery("#handle").val(given_handle)
-    check_existing_report(given_handle)
-  }
-</script>
+    var search_timer = 0
+
+    jQuery("#handle").on("input", function () {
+      if (search_timer) {
+        clearTimeout(search_timer)
+      }
+
+      // Extract handle from Google Play or F-Droid url
+      const gplay_regex = /id=((?:\w+\.)+\w+)/gmi;
+      const fdroid_regex = /packages\/((?:\w+\.)+\w+)/gmi;
+      const handle = jQuery.trim(jQuery(this).val())
+      jQuery("#reports").addClass('d-none')
+      if (handle.startsWith("https://play.google.com")) {
+        var match = gplay_regex.exec(handle)
+        while (match != null) {
+          if (match[1]) {
+            $(this).val(match[1])
+            $('#sourceGoogle')[0].checked = true;
+            check_existing_report(match[1])
+          }
+          return
+        }
+      } else if (handle.startsWith("https://f-droid.org/")) {
+        var match = fdroid_regex.exec(handle)
+        while (match != null) {
+          if (match[1]) {
+            $(this).val(match[1])
+            $('#sourceFdroid')[0].checked = true;
+            check_existing_report(match[1])
+          }
+          return
+        }
+      } else {
+        search_timer = setTimeout(function () { check_existing_report(handle); }, 200);
+      }
+    });
+
+    var given_handle = window.location.hash.substr(1); // substr(1) removes the #
+    if (given_handle) {
+      jQuery("#handle").val(given_handle)
+      check_existing_report(given_handle)
+    }
+  </script>
 {% endblock %}
