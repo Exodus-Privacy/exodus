@@ -81,18 +81,15 @@ def new_api_key(request):
     if request.method == 'POST':
         try:
             password = ''.join(random.choice(string.ascii_lowercase) for i in range(24))
+            third_parties_group = Group.objects.get(name='third-parties')
 
             new_user = User.objects.create_user(
                 username=request.POST.get('username'),
                 password=password,
                 email=request.POST.get('email'),
-                first_name=request.POST.get('first-name'),
-                last_name=request.POST.get('last-name')
             )
 
-            third_parties_group = Group.objects.get(name='third-parties')
             third_parties_group.user_set.add(new_user)
-
             api_key = Token.objects.get(user=new_user)
 
             data['api_key'] = api_key
