@@ -6,6 +6,6 @@ labels: ["question"]
 assignees: ""
 ---
 
-Please, feel free to ask your question here (you can also ask your question on [our IRC channel](https://web.libera.chat/?nick=webguest?#exodus-privacy)).
+Please, feel free to ask your question here (you can also ask your question [via email or IRC](https://exodus-privacy.eu.org/en/page/who/#contact)).
 
 Please note that we're all volunteers and may take time to respond.
