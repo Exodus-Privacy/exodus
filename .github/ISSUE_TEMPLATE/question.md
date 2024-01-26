@@ -2,7 +2,7 @@
 name: Question
 about: Ask a question about using the software
 title: "[Question] "
-labels: ["question", "to confirm"]
+labels: ["question"]
 assignees: ""
 ---
 
