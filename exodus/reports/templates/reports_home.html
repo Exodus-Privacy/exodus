@@ -2,20 +2,20 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
-{% load static %}
-<div class="row justify-content-md-center">
-  <div class="col-lg-8 col-centered">
-    <div style="text-align:center">
-      <h1 class="main-title">
-        {% trans "Reports" %}
-      </h1>
+  {% load static %}
+  <div class="row justify-content-md-center">
+    <div class="col-lg-8 col-centered">
+      <div class="text-center">
+        <h1 class="main-title">
+          {% trans "Reports" %}
+        </h1>
+      </div>
     </div>
   </div>
-</div>
 
-{% include "snippets/reports_search.html" %}
+  {% include "snippets/reports_search.html" %}
 
-{% include "snippets/reports_links.html" %}
+  {% include "snippets/reports_links.html" %}
 
-{% include "snippets/reports_search_tpl.html" %}
+  {% include "snippets/reports_search_tpl.html" %}
 {% endblock %}

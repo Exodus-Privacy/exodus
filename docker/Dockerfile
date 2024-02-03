@@ -57,7 +57,7 @@ RUN ln -s /usr/lib/ssl/certs /opt/openssl/certs
 WORKDIR /opt
 
 COPY ./Pipfile* /opt/
-RUN pipenv install --ignore-pipfile --system
+RUN pipenv install --ignore-pipfile --system --dev
 
 WORKDIR /exodus/exodus
 

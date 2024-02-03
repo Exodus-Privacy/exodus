@@ -19,7 +19,7 @@
           <b>https://play.google.com/store/apps/details?id=fr.meteo</b></i>
         <br>
         {% blocktrans trimmed with url='<a target="_blank" rel="noreferrer" href="https://play.google.com/store/apps">Google Play</a>' %}
-        Cannot find the application? Search it in {{ url }}.
+          Cannot find the application? Search it in {{ url }}.
         {% endblocktrans %}
       </small>
       <div id="go-div" class="row justify-content-center">
@@ -27,8 +27,8 @@
           <button id="go" class="btn btn-primary btn-block">{% trans "Let's go!" %}</button>
         </div>
       </div>
-      <h4 style="display: none" id="results-title">{% trans "Results" %}</h4>
-      <div id="results" style="display: none">
+      <h4 id="results-title" class="d-none">{% trans "Results" %}</h4>
+      <div id="results" class="d-none">
       </div>
     </div>
   </div>

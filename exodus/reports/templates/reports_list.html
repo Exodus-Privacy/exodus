@@ -2,79 +2,79 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
-{% load static %}
-<div class="row justify-content-md-center">
-  <div class="col-lg-8 col-centered">
-    {% if reports %}
-    <div style="text-align:center">
-      <h1 class="main-title">
-        {% trans "Reports" %}
-      </h1>
-      <h4>
-        {% if handle %}
-        {{ handle }}
-        {% else %}
-        {% blocktrans %}{{ reports_total_count }} reports for {{ apps_total_count }} applications{% endblocktrans %}
+  {% load static %}
+  <div class="row justify-content-md-center">
+    <div class="col-lg-8 col-centered">
+      {% if reports %}
+        <div class="text-center">
+          <h1 class="main-title">
+            {% trans "Reports" %}
+          </h1>
+          <h4>
+            {% if handle %}
+              {{ handle }}
+            {% else %}
+              {% blocktrans %}{{ reports_total_count }} reports for {{ apps_total_count }} applications{% endblocktrans %}
+            {% endif %}
+          </h4>
+        </div>
+        <hr>
+        {% if not handle %}
+          <select class="custom-select"
+                  onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/reports/list' + this.options[this.selectedIndex].value);">
+            <option value=" ">{% trans "Latest reports" %}</option>
+            <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>
+              {% trans "Sorted by number of trackers" %}</option>
+            <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
+              {% trans "No known trackers" %}
+              {% if filter == 'no_trackers' %} ({{ reports_count }}){% endif %}
+            </option>
+          </select>
         {% endif %}
-      </h4>
-    </div>
-    <hr>
-    {% if not handle %}
-    <select class="custom-select"
-      onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/reports/list' + this.options[this.selectedIndex].value);">
-      <option value=" ">{% trans "Latest reports" %}</option>
-      <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>
-        {% trans "Sorted by number of trackers" %}</option>
-      <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
-        {% trans "No known trackers" %}
-        {% if filter == 'no_trackers' %} ({{ reports_count }}){% endif %}
-      </option>
-    </select>
-    {% endif %}
 
-    <div class="container mb-4">
-      {% for report in reports %}
-      {% with report.application as app %}
-      <br>
-      <div class="row position-relative">
-        <div class="col-3 col-sm-2 col-md-2 my-auto">
-          <img src="/reports/{{ app.id }}/icon" width="50" height="50" class="rounded" alt="{{ app.handle }}">
-        </div>
-        <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">
-          <div>
-            <a href="{% url 'reports:detail' report.id %}" class="stretched-link report-link">
-              {% if app.name.strip %}
-              {{ app.name }}
-              {% else %}
-              {{ app.handle }}
-              {% endif %}
-            </a>
-          </div>
-          <div class="small"><b>{{ app.version|truncatechars_html:20 }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
-          <div>
-            {% with nb_trackers=report.found_trackers.count %}
-            <span class="mr-lg-4 mr-2">
-              <span class="badge badge-pill badge-{{ app.trackers_class }} reports">{{ nb_trackers }}</span>
-              {% blocktrans count count=nb_trackers %}tracker{% plural %}trackers{% endblocktrans %}
-            </span>
+        <div class="container mb-4">
+          {% for report in reports %}
+            {% with report.application as app %}
+              <br>
+              <div class="row position-relative">
+                <div class="col-3 col-sm-2 col-md-2 my-auto">
+                  <img src="/reports/{{ app.id }}/icon" width="50" height="50" class="rounded" alt="{{ app.handle }}">
+                </div>
+                <div class="col-9 col-sm-10 col-md-10 text-truncate position-static">
+                  <div>
+                    <a href="{% url 'reports:detail' report.id %}" class="stretched-link report-link">
+                      {% if app.name.strip %}
+                        {{ app.name }}
+                      {% else %}
+                        {{ app.handle }}
+                      {% endif %}
+                    </a>
+                  </div>
+                  <div class="small"><b>{{ app.version|truncatechars_html:20 }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
+                  <div>
+                    {% with nb_trackers=report.found_trackers.count %}
+                      <span class="mr-lg-4 mr-2">
+                        <span class="badge badge-pill badge-{{ app.trackers_class }} reports">{{ nb_trackers }}</span>
+                        {% blocktrans count count=nb_trackers %}tracker{% plural %}trackers{% endblocktrans %}
+                      </span>
+                    {% endwith %}
+                    {% with nb_perm=app.permissions|length %}
+                      <span>
+                        <span class="badge badge-pill badge-{{ app.permissions_class }} reports">{{ nb_perm }}</span>
+                        {% blocktrans count count=nb_perm %}permission{% plural %}permissions{% endblocktrans %}
+                      </span>
+                    {% endwith %}
+                  </div>
+                </div>
+              </div>
             {% endwith %}
-            {% with nb_perm=app.permissions|length %}
-            <span>
-              <span class="badge badge-pill badge-{{ app.permissions_class }} reports">{{ nb_perm }}</span>
-              {% blocktrans count count=nb_perm %}permission{% plural %}permissions{% endblocktrans %}
-            </span>
-            {% endwith %}
-          </div>
+          {% endfor %}
         </div>
-      </div>
-      {% endwith %}
-      {% endfor %}
-    </div>
 
-    <div>
-      {% include "snippets/paginator.html" %}
+        <div>
+          {% include "snippets/paginator.html" %}
+        </div>
+      {% endif %}
     </div>
-    {% endif %}
   </div>
-</div>
 {% endblock %}

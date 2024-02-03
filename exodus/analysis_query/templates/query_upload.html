@@ -3,103 +3,102 @@
 {% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 text-center mb-4">
-    <h1 class="main-title">
-      {% trans "New analysis" %}
-    </h1>
-  </div>
-</div>
-
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12">
-    <p class="text-center mb-5">
-      <img src="{% static 'img/analysis_new.png' %}" width=120px>
-    </p>
-    <form method="post" enctype="multipart/form-data" action="{% url 'analysis:upload' %}">
-      <div class="form-group">
-        {% csrf_token %}
-        {% if form.errors %}
-          {% for field in form %}
-            {% for error in field.errors %}
-              <div class="alert alert-danger small">
-                <strong>{{ error|escape }}</strong>
-              </div>
-            {% endfor %}
-          {% endfor %}
-        {% endif %}
-
-        <label for="apk_file_name"><b>{% trans "Upload an application" %}</b></label>
-        <div class="input-group">
-          <label class="input-group-btn">
-              <span class="btn btn-primary">
-                  {% trans "Browse file" %}<input type="file" required name="apk" id="id_apk" style="display: none;">
-              </span>
-          </label>
-          <input id="apk_file_name" type="text" class="form-control" readonly>
-        </div>
-        <p class="form-text text-muted mb-4">
-          {% trans "Only works with APK files." %}
-        </p>
-
-        <div id="reports" style="display: none" class="alert alert-info">
-        </div>
-
-        <div class="row justify-content-center mb-5">
-          <div class="col-8 col-sm-7 col-md-6 col-xl-5">
-            <button type='submit' onclick="show_spinner()" class="btn btn-primary btn-block">{% trans "Perform analysis" %}</button>
-          </div>
-        </div>
-
-        <div id="loading" class="text-center" style="display:none;">
-          <img style="width:200px;" src="/static/img/loading.gif" alt="">
-          <div class="alert alert-light" role="alert">
-            {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="row justify-content-sm-center mt-5">
-  <div class="col-md-8 col-12 col-centered">
-    <div class="text-center alert alert-light">
-      <p>
-        <a href="{% url 'organization' %}">Exodus Privacy</a>
-        {% trans "is a non-profit organization which provides this service for free." %}
-      </p>
-      <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 text-center mb-4">
+      <h1 class="main-title">
+        {% trans "New analysis" %}
+      </h1>
     </div>
   </div>
-</div>
+
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12">
+      <p class="text-center mb-5">
+        <img src="{% static 'img/analysis_new.png' %}" width=120px>
+      </p>
+      <form method="post" enctype="multipart/form-data" action="{% url 'analysis:upload' %}">
+        <div class="form-group">
+          {% csrf_token %}
+          {% if form.errors %}
+            {% for field in form %}
+              {% for error in field.errors %}
+                <div class="alert alert-danger small">
+                  <strong>{{ error|escape }}</strong>
+                </div>
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
+
+          <label for="apk_file_name"><b>{% trans "Upload an application" %}</b></label>
+          <div class="input-group">
+            <label class="input-group-btn">
+              <span class="btn btn-primary">
+                {% trans "Browse file" %}<input type="file" required name="apk" id="id_apk" class="d-none">
+              </span>
+            </label>
+            <input id="apk_file_name" type="text" class="form-control" readonly>
+          </div>
+          <p class="form-text text-muted mb-4">
+            {% trans "Only works with APK files." %}
+          </p>
+
+          <div id="reports" class="alert alert-info d-none">
+          </div>
+
+          <div class="row justify-content-center mb-5">
+            <div class="col-8 col-sm-7 col-md-6 col-xl-5">
+              <button type='submit' onclick="show_spinner()" class="btn btn-primary btn-block">{% trans "Perform analysis" %}</button>
+            </div>
+          </div>
+
+          <div id="loading" class="text-center d-none">
+            <img class="w-200px" src="/static/img/loading.gif" alt="">
+            <div class="alert alert-light" role="alert">
+              {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row justify-content-sm-center mt-5">
+    <div class="col-md-8 col-12 col-centered">
+      <div class="text-center alert alert-light">
+        <p>
+          <a href="{% url 'organization' %}">Exodus Privacy</a>
+          {% trans "is a non-profit organization which provides this service for free." %}
+        </p>
+        <a class="btn btn-outline-primary" href="https://exodus-privacy.eu.org/{% if LANGUAGE_CODE == 'fr' %}fr{% else %}en{% endif %}/page/contribute/" target="_blank" rel="noreferrer">{% trans "Help us!" %}</a>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block scripts %}
-<script>
-// Spinner
-var show_spinner=function(){
-  if( $("#apk_file_name").val() ) {
-    var s = document.getElementById("loading")
-    if(s != undefined){
-      s.style.display = "block"
+  <script>
+    // Spinner
+    var show_spinner = function () {
+      if ($("#apk_file_name").val()) {
+        var s = document.getElementById("loading")
+        if (s != undefined) {
+          s.style.display = "block"
+        }
+      }
     }
-  }
-}
-$(function() {
-  $(document).on('change', ':file', function() {
-    var input = $(this),
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', label);
-    $("#handle")[0].value = ""
-  });
+    $(function () {
+      $(document).on('change', ':file', function () {
+        var input = $(this),
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', label);
+      });
 
-  $(document).ready( function() {
-      $(':file').on('fileselect', function(event, label) {
+      $(document).ready(function () {
+        $(':file').on('fileselect', function (event, label) {
           var input = $(this).parents('.input-group').find(':text')
           input.val(label)
+        });
       });
-  });
-});
-</script>
+    });
+  </script>
 {% endblock %}

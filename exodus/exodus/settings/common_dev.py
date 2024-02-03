@@ -23,3 +23,17 @@ if customization:
     INSTALLED_APPS = [customization] + INSTALLED_APPS
 
 CSRF_COOKIE_SECURE = env.bool('EXODUS_CSRF_COOKIE_SECURE', default=True)
+
+MIDDLEWARE += ['csp.middleware.CSPMiddleware']
+
+CSP_DEFAULT_SRC = ("'none'")
+CSP_BASE_URI = ("'self'")
+CSP_CONNECT_SRC = ("'self'")
+CSP_FORM_ACTION = ("'self'")
+CSP_FRAME_ANCESTORS = ("'self'")
+CSP_FRAME_SRC = ("'none'")
+CSP_IMG_SRC = ("'self'", "data:")
+CSP_MEDIA_SRC = ("'self'")
+CSP_OBJECT_SRC = ("'self'")
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "'unsafe-eval'")
+CSP_STYLE_SRC = ("'self'")

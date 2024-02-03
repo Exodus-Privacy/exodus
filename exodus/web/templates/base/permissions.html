@@ -2,37 +2,37 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 text-center mb-4">
-    <h1 class="main-title">
-      {% trans "Permissions" %}
-    </h1>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 text-center mb-4">
+      <h1 class="main-title">
+        {% trans "Permissions" %}
+      </h1>
+    </div>
   </div>
-</div>
 
-<div class="row justify-content-sm-center">
-  <div class="col-md-8 col-12 mb-4">
-    <p>
-      {% trans "Permissions are access rights an app asks to access on your phone." %}
-    </p>
+  <div class="row justify-content-sm-center">
+    <div class="col-md-8 col-12 mb-4">
+      <p>
+        {% trans "Permissions are access rights an app asks to access on your phone." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4>{% trans "What type of permissions?" %}</h4>
+      <p>
+        {% trans "They can concern various features or pieces of information, such as access to your geolocation, your contacts, your files, your microphone, vibrate function, camera and so on. Exodus Privacy analyses allow you to know, on a  per app basis, which permissions are asked." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4>{% trans "Why are some permissions indicated as dangerous?" %}</h4>
+      <p>
+        {% trans "Google defines <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>danger levels for permissions</a>, which we report in our analyses." %}
+      </p>
+    </div>
+    <div class="col-md-8 col-12 mb-4">
+      <h4>{% trans "Do I have control over these permissions?" %}</h4>
+      <p>
+        {% trans "Depending on your smartphone and operating system, it is possible to restrain some of these permissions by going into your phone's settings." %}
+      </p>
+    </div>
   </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4>{% trans "What type of permissions?" %}</h4>
-    <p>
-      {% trans "They can concern various features or pieces of information, such as access to your geolocation, your contacts, your files, your microphone, vibrate function, camera and so on. Exodus Privacy analyses allow you to know, on a  per app basis, which permissions are asked." %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4>{% trans "Why are some permissions indicated as dangerous?" %}</h4>
-    <p>
-      {% trans "Google defines <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>danger levels for permissions</a>, which we report in our analyses." %}
-    </p>
-  </div>
-  <div class="col-md-8 col-12 mb-4">
-    <h4>{% trans "Do I have control over these permissions?" %}</h4>
-    <p>
-      {% trans "Depending on your smartphone and operating system, it is possible to restrain some of these permissions by going into your phone's settings." %}
-    </p>
-  </div>
-</div>
 {% endblock %}

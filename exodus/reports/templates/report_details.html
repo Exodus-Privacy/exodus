@@ -2,271 +2,271 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% block content %}
-{% load static %}
-{% if report %}
-  {% if request.user.is_superuser %}
-    <p class="small alert alert-warning">
-      <samp>/api/report/{{ report.id }}/</samp>
-      <br>
-      {% trans "Prefix in storage:" %}
-      <samp>{{ report.bucket }}</samp>
-    </p>
-  {% endif %}
+  {% load static %}
+  {% if report %}
+    {% if request.user.is_superuser %}
+      <p class="small alert alert-warning">
+        <samp>/api/report/{{ report.id }}/</samp>
+        <br>
+        {% trans "Prefix in storage:" %}
+        <samp>{{ report.bucket }}</samp>
+      </p>
+    {% endif %}
 
-  <div class="row justify-content-sm-center">
-    <div class="col-xl-2 col-lg-2 col-md-8 col-12 text-lg-left text-center mb-4">
-      <img src="/{{ LANGUAGE_CODE }}/reports/{{ report.application.id }}/icon/" class="rounded" width="115" height="115" alt="{{ report.application.handle }} logo">
+    <div class="row justify-content-sm-center">
+      <div class="col-xl-2 col-lg-2 col-md-8 col-12 text-lg-left text-center mb-4">
+        <img src="/{{ LANGUAGE_CODE }}/reports/{{ report.application.id }}/icon/" class="rounded" width="115" height="115" alt="{{ report.application.handle }} logo">
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-8 col-12 text-center text-lg-left my-auto mb-4">
+        <h1 class="main-title">
+          {% if report.application.name.strip %}{{ report.application.name }}{% else %}{{ report.application.handle }}{% endif %}
+        </h1>
+      </div>
     </div>
-    <div class="col-xl-6 col-lg-6 col-md-8 col-12 text-center text-lg-left my-auto mb-4">
-      <h1 class="main-title">
-        {% if report.application.name.strip %}{{ report.application.name }}{% else %}{{ report.application.handle }}{% endif %}
-      </h1>
-    </div>
-  </div>
 
-  <div class="row justify-content-sm-center">
-    <div class="col-md-8 col-lg-4 col-12 mb-4">
-      <h3>
-        <a href="#trackers" class="section-link">
+    <div class="row justify-content-sm-center">
+      <div class="col-md-8 col-lg-4 col-12 mb-4">
+        <h3>
+          <a href="#trackers" class="section-link">
+            <span class="badge badge-pill badge-{{ report.application.trackers_class }} reports">{{ report.found_trackers.count }}</span>
+            <b>{% blocktrans count count=report.found_trackers.count %}tracker{% plural %}trackers{% endblocktrans %}</b>
+          </a>
+        </h3>
+      </div>
+      <div class="col-md-8 col-lg-4 col-12 mb-4">
+        <h3>
+          <a href="#permissions" class="section-link">
+            <span class="badge badge-pill badge-{{ report.application.permissions_class }} reports">{{ report.application.permission_set.count }}</span>
+            <b>{% blocktrans count count=report.application.permission_set.count %}permission{% plural %}permissions{% endblocktrans %}</b>
+          </a>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-sm-center mb-5">
+      <div class="col-md-8 col-12">
+        {% if report.application.version.strip %}
+          {% trans "Version" %} {{ report.application.version }} -
+          <a href="/reports/search/{{ report.application.handle }}">{% trans "see other versions" %}</a>
+          <br>
+        {% endif %}
+        {% if report.application.source %}
+          {% trans "Source:" %}
+          {% if report.application.source == 'google' %}
+            Google Play
+          {% elif report.application.source == 'fdroid' %}
+            F-Droid
+          {% else %}
+            {{ report.application.source }}
+          {% endif %}
+          <br>
+        {% endif %}
+        {% if report.application.creator.strip %}
+          {% trans "Created by" %} {{ report.application.creator }}
+          <br>
+        {% endif %}
+        {% if report.application.downloads.strip %}
+          {% trans "Downloads:" %} {{ report.application.downloads | cut:' downloads' }}
+          <br>
+        {% endif %}
+        <span class="text-muted">
+          {% trans "Report created on" %} {{ report.creation_date }}
+          {% if report.creation_date.date != report.updated_at.date %}
+            {% trans "and updated on" %} {{ report.updated_at }}
+          {% endif %}
+        </span>
+      </div>
+      {% if request.user.is_superuser %}
+        <div class="col-md-8 col-12 mt-2">
+          <a type="button" class="btn btn-secondary" href="{% url 'analysis:submit' %}#{{ report.application.handle }}">{% trans "New analysis" %}</a>
+          <a type="button" class="btn btn-danger" href="{% url 'admin:reports_report_delete' report.id %}">{% trans "Delete this report" %}</a>
+        </div>
+      {% endif %}
+      <div class="col-md-8 col-12 text-right mt-2">
+        {% if report.application.source and report.application.source == 'fdroid' %}
+          <a class="link main-link" target="_blank" rel="noreferrer" href="https://f-droid.org/packages/{{ report.application.handle }}">{% trans "See on F-Droid" %}</a>
+        {% else %}
+          <a class="link main-link" target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">{% trans "See on Google Play" %}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="row justify-content-sm-center mb-5">
+      <div class="col-md-8 col-12">
+        <a class="anchor" id="trackers"></a>
+        <h3>
           <span class="badge badge-pill badge-{{ report.application.trackers_class }} reports">{{ report.found_trackers.count }}</span>
           <b>{% blocktrans count count=report.found_trackers.count %}tracker{% plural %}trackers{% endblocktrans %}</b>
-        </a>
-      </h3>
+        </h3>
+      </div>
+      <div class="col-md-8 col-12">
+        {% if report.found_trackers.all %}
+          <p>
+            {% blocktrans trimmed count counter=report.found_trackers.count %}
+              We have found <b>code signature</b> of the following tracker in the application:
+            {% plural %}
+              We have found <b>code signature</b> of the following trackers in the application:
+            {% endblocktrans %}
+          </p>
+          {% for t in report.trackers %}
+            <p class="mb-0"><a class="link black" href="{% url 'trackers:detail' t.id %}">{{ t.name }}</a></p>
+            <p>
+              {% for c in t.category.all %}
+                <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
+              {% endfor %}
+            </p>
+          {% endfor %}
+        {% else %}
+          <p>
+            {% trans "We have not found <b>code signature</b> of any tracker we know in the application." %}
+            <br>
+            {% trans "The application could contain tracker(s) we do not know yet." %}
+          </p>
+        {% endif %}
+        {% trans "A tracker is a piece of software meant to collect data about you or your usages." %}
+        <a href="{% url 'trackers' %}">{% trans "Learn more" %}...</a>
+      </div>
     </div>
-    <div class="col-md-8 col-lg-4 col-12 mb-4">
-      <h3>
-        <a href="#permissions" class="section-link">
+
+    <div class="row justify-content-sm-center mb-5">
+      <div class="col-md-8 col-12">
+        <a class="anchor" id="permissions"></a>
+        <h3>
           <span class="badge badge-pill badge-{{ report.application.permissions_class }} reports">{{ report.application.permission_set.count }}</span>
           <b>{% blocktrans count count=report.application.permission_set.count %}permission{% plural %}permissions{% endblocktrans %}</b>
-        </a>
-      </h3>
-    </div>
-  </div>
-
-  <div class="row justify-content-sm-center mb-5">
-    <div class="col-md-8 col-12">
-      {% if report.application.version.strip %}
-        {% trans "Version" %} {{ report.application.version }} -
-        <a href="/reports/search/{{ report.application.handle }}">{% trans "see other versions" %}</a>
-        <br>
-      {% endif %}
-      {% if report.application.source %}
-        {% trans "Source:" %}
-        {% if report.application.source == 'google' %}
-          Google Play
-        {% elif report.application.source == 'fdroid' %}
-          F-Droid
-        {% else %}
-          {{ report.application.source }}
-        {% endif %}
-        <br>
-      {% endif %}
-      {% if report.application.creator.strip %}
-        {% trans "Created by" %} {{ report.application.creator }}
-        <br>
-      {% endif %}
-      {% if report.application.downloads.strip %}
-        {% trans "Downloads:" %} {{ report.application.downloads | cut:' downloads' }}
-        <br>
-      {% endif %}
-      <span class="text-muted">
-        {% trans "Report created on" %} {{ report.creation_date }}
-        {% if report.creation_date.date != report.updated_at.date %}
-          {% trans "and updated on" %} {{ report.updated_at }}
-        {% endif %}
-      </span>
-    </div>
-    {% if request.user.is_superuser %}
-      <div class="col-md-8 col-12 mt-2">
-        <a type="button" class="btn btn-secondary" href="{% url 'analysis:submit' %}#{{ report.application.handle }}">{% trans "New analysis" %}</a>
-        <a type="button" class="btn btn-danger" href="{% url 'admin:reports_report_delete' report.id %}">{% trans "Delete this report" %}</a>
+        </h3>
       </div>
-    {% endif %}
-    <div class="col-md-8 col-12 text-right mt-2">
-      {% if report.application.source and report.application.source == 'fdroid' %}
-        <a class="link main-link" target="_blank" rel="noreferrer" href="https://f-droid.org/packages/{{ report.application.handle }}">{% trans "See on F-Droid" %}</a>
-      {% else %}
-        <a class="link main-link" target="_blank" rel="noreferrer" href="https://play.google.com/store/apps/details?id={{ report.application.handle }}">{% trans "See on Google Play" %}</a>
-      {% endif %}
-    </div>
-  </div>
-
-  <div class="row justify-content-sm-center mb-5">
-    <div class="col-md-8 col-12">
-      <a class="anchor" id="trackers"></a>
-      <h3>
-        <span class="badge badge-pill badge-{{ report.application.trackers_class }} reports">{{ report.found_trackers.count }}</span>
-        <b>{% blocktrans count count=report.found_trackers.count %}tracker{% plural %}trackers{% endblocktrans %}</b>
-      </h3>
-    </div>
-    <div class="col-md-8 col-12">
-      {% if report.found_trackers.all %}
-        <p>
-          {% blocktrans trimmed count counter=report.found_trackers.count %}
-          We have found <b>code signature</b> of the following tracker in the application:
-          {% plural %}
-          We have found <b>code signature</b> of the following trackers in the application:
-          {% endblocktrans %}
-        </p>
-        {% for t in report.trackers %}
-          <p class="mb-0"><a class="link black" href="{% url 'trackers:detail' t.id %}">{{ t.name }}</a></p>
+      <div class="col-md-8 col-12">
+        {% if report.application.permission_set.all %}
           <p>
-            {% for c in t.category.all %}
-              <span class="badge badge-pill badge-outline-primary">{{ c | lower }}</span>
-            {% endfor %}
-          </p>
-        {% endfor %}
-      {% else %}
-        <p>
-          {% trans "We have not found <b>code signature</b> of any tracker we know in the application." %}
-          <br>
-          {% trans "The application could contain tracker(s) we do not know yet." %}
-        </p>
-      {% endif %}
-      {% trans "A tracker is a piece of software meant to collect data about you or your usages." %}
-      <a href="{% url 'trackers' %}">{% trans "Learn more" %}...</a>
-    </div>
-  </div>
-
-  <div class="row justify-content-sm-center mb-5">
-    <div class="col-md-8 col-12">
-      <a class="anchor" id="permissions"></a>
-      <h3>
-        <span class="badge badge-pill badge-{{ report.application.permissions_class }} reports">{{ report.application.permission_set.count }}</span>
-        <b>{% blocktrans count count=report.application.permission_set.count %}permission{% plural %}permissions{% endblocktrans %}</b>
-      </h3>
-    </div>
-    <div class="col-md-8 col-12">
-      {% if report.application.permission_set.all %}
-        <p>
-          {% blocktrans trimmed count counter=report.application.permission_set.count %}
-          We have found the following permission in the application:
-          {% plural %}
-          We have found the following permissions in the application:
-          {% endblocktrans %}
-        </p>
-        {% for perm in report.application.permissions %}
-          <p class="text-truncate">
-            {% if perm.group_icon %}
-              {% autoescape off %}{{ perm.group_icon }}{% endautoescape %}
-            {% else %}
-              <span style="padding-left:28px"</span>
-            {% endif %}
-            {% if perm.severity == 'Special' or perm.severity == 'Dangerous' %}
-              &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg">&nbsp;
-            {% endif %}
-            <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name }}</span>
-            {% if perm.label %}
-              <small style="display:block; padding-left:28px"><i>{{ perm.label }}</i></small>
-            {% endif %}
-          </p>
-        {% endfor %}
-        <p>
-          <small class="text-muted font-italic">
-            {% blocktrans trimmed %}
-            The icon &nbsp;<img src="/static/img/danger.svg">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">Google's protection levels</a>.
+            {% blocktrans trimmed count counter=report.application.permission_set.count %}
+              We have found the following permission in the application:
+            {% plural %}
+              We have found the following permissions in the application:
             {% endblocktrans %}
-          </small>
-        </p>
-      {% else %}
-        <p>{% trans "This application doesn't require any permissions." %}</p>
-      {% endif %}
-      {% trans "Permissions are actions the application can do on your phone." %}
-      <a href="{% url 'permissions' %}">{% trans "Learn more" %}...</a>
-    </div>
-  </div>
-
-  <div class="row justify-content-sm-center mb-4">
-    <div class="col-md-8 col-12">
-      <h4>{% trans "What's next?" %}</h4>
-      {% trans "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!" %}
-    </div>
-  </div>
-
-  <div class="row justify-content-center mb-5">
-    <div class="col-md-3 col-6 text-center">
-      <a href="{% url 'next' %}" class="btn btn-primary btn-block">{% trans "Read the article" %}</a>
-    </div>
-  </div>
-
-  <div class="row justify-content-sm-center mb-5">
-    <div class="col-md-8 col-12">
-      {% trans "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers." %}
-      <br>
-      <br>
-      {% trans "The application could contain tracker(s) we do not know yet." %}
-      <br>
-      {% trans "If you have doubts about this report" %}, <a href="{% url 'organization' %}">{% trans "contact us" %}</a>.
-    </div>
-  </div>
-
-  <div class="row justify-content-sm-center mb-4">
-    <div class="col-md-8 col-12">
-      <h4>{% trans "Signed by" %}</h4>
-      {% if report.application.apk.certificate_set.all %}
-        <small>
-          {% for c in report.application.apk.certificate_set.all %}
-            <p><b>{% trans "Fingerprint:" %}</b> <samp>{{ c.fingerprint }}</samp></p>
-            <p><b>{% trans "Issuer:" %}</b> <samp>{{ c.issuer }}</samp></p>
-            <p><b>{% trans "Subject:" %}</b> <samp>{{ c.subject }}</samp></p>
-            <p><b>{% trans "Serial:" %}</b> <samp>{{ c.serial_number }}</samp></p>
+          </p>
+          {% for perm in report.application.permissions %}
+            <p class="text-truncate">
+              {% if perm.group_icon %}
+                {% autoescape off %}{{ perm.group_icon }}{% endautoescape %}
+              {% else %}
+                <span class="p-l-28px" </span>
+              {% endif %}
+              {% if perm.severity == 'Special' or perm.severity == 'Dangerous' %}
+                &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg">&nbsp;
+              {% endif %}
+              <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name }}</span>
+              {% if perm.label %}
+                <small class="d-block p-l-28px"><i>{{ perm.label }}</i></small>
+              {% endif %}
+            </p>
           {% endfor %}
-        </small>
-      {% else %}
-        {% trans "No signatures found <b>OR</b> x509 certificate does not comply the RFC." %}
-      {% endif %}
+          <p>
+            <small class="text-muted font-italic">
+              {% blocktrans trimmed %}
+                The icon &nbsp;<img src="/static/img/danger.svg">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">Google's protection levels</a>.
+              {% endblocktrans %}
+            </small>
+          </p>
+        {% else %}
+          <p>{% trans "This application doesn't require any permissions." %}</p>
+        {% endif %}
+        {% trans "Permissions are actions the application can do on your phone." %}
+        <a href="{% url 'permissions' %}">{% trans "Learn more" %}...</a>
+      </div>
     </div>
-    <div class="col-md-8 col-12">
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownApkFingerprint" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {% trans "See APK fingerprint" %}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownApkFingerprint">
-          <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">{% trans "Text" %}</a>
-          <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetailsJSON" aria-expanded="false" aria-controls="collapseAPKDetailsJSON">JSON</a>
+
+    <div class="row justify-content-sm-center mb-4">
+      <div class="col-md-8 col-12">
+        <h4>{% trans "What's next?" %}</h4>
+        {% trans "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!" %}
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-3 col-6 text-center">
+        <a href="{% url 'next' %}" class="btn btn-primary btn-block">{% trans "Read the article" %}</a>
+      </div>
+    </div>
+
+    <div class="row justify-content-sm-center mb-5">
+      <div class="col-md-8 col-12">
+        {% trans "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers." %}
+        <br>
+        <br>
+        {% trans "The application could contain tracker(s) we do not know yet." %}
+        <br>
+        {% trans "If you have doubts about this report" %}, <a href="{% url 'organization' %}">{% trans "contact us" %}</a>.
+      </div>
+    </div>
+
+    <div class="row justify-content-sm-center mb-4">
+      <div class="col-md-8 col-12">
+        <h4>{% trans "Signed by" %}</h4>
+        {% if report.application.apk.certificate_set.all %}
+          <small>
+            {% for c in report.application.apk.certificate_set.all %}
+              <p><b>{% trans "Fingerprint:" %}</b> <samp>{{ c.fingerprint }}</samp></p>
+              <p><b>{% trans "Issuer:" %}</b> <samp>{{ c.issuer }}</samp></p>
+              <p><b>{% trans "Subject:" %}</b> <samp>{{ c.subject }}</samp></p>
+              <p><b>{% trans "Serial:" %}</b> <samp>{{ c.serial_number }}</samp></p>
+            {% endfor %}
+          </small>
+        {% else %}
+          {% trans "No signatures found <b>OR</b> x509 certificate does not comply the RFC." %}
+        {% endif %}
+      </div>
+      <div class="col-md-8 col-12">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" id="dropdownApkFingerprint" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% trans "See APK fingerprint" %}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownApkFingerprint">
+            <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetails" aria-expanded="false" aria-controls="collapseAPKDetails">{% trans "Text" %}</a>
+            <a class="dropdown-item" data-toggle="modal" href="#collapseAPKDetailsJSON" aria-expanded="false" aria-controls="collapseAPKDetailsJSON">JSON</a>
+          </div>
+        </div>
+        <div class="modal fade" id="collapseAPKDetails" tabindex="-1" role="dialog" aria-labelledby="collapseAPKDetails" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">{% trans "APK fingerprint" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <ul class="list-unstyled">
+                  <li><b>{% trans "APK checksum:" %}</b> <samp>{{ report.application.apk.sum }}</samp></li>
+                  <li><b>{% trans "Handle:" %}</b> <samp>{{ report.application.handle }}</samp></li>
+                  <li><b>{% trans "Name:" %}</b> <samp>{{ report.application.name }}</samp></li>
+                  <li><b>{% trans "UAID:" %}</b> <samp>{{ report.application.app_uid }}</samp></li>
+                  <li><b>{% trans "Version:" %}</b> <samp>{{ report.application.version }}</samp></li>
+                  <li><b>{% trans "Version code:" %}</b> <samp>{{ report.application.version_code }}</samp></li>
+                  <li><b>{% trans "Icon hash:" %}</b> <samp>{{ report.application.icon_phash }}</samp></li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="collapseAPKDetailsJSON" tabindex="-1" role="dialog" aria-labelledby="collapseAPKDetailsJSON" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">{% trans "APK fingerprint" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                      <pre><code>{{ report.application.json_signature }}</code></pre>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="modal fade" id="collapseAPKDetails" tabindex="-1" role="dialog" aria-labelledby="collapseAPKDetails" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title">{% trans "APK fingerprint" %}</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  </div>
-                  <div class="modal-body">
-                      <ul class="list-unstyled">
-                          <li><b>{% trans "APK checksum:" %}</b> <samp>{{ report.application.apk.sum }}</samp></li>
-                          <li><b>{% trans "Handle:" %}</b> <samp>{{ report.application.handle }}</samp></li>
-                          <li><b>{% trans "Name:" %}</b> <samp>{{ report.application.name }}</samp></li>
-                          <li><b>{% trans "UAID:" %}</b> <samp>{{ report.application.app_uid }}</samp></li>
-                          <li><b>{% trans "Version:" %}</b> <samp>{{ report.application.version }}</samp></li>
-                          <li><b>{% trans "Version code:" %}</b> <samp>{{ report.application.version_code }}</samp></li>
-                          <li><b>{% trans "Icon hash:" %}</b> <samp>{{ report.application.icon_phash }}</samp></li>
-                      </ul>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="modal fade" id="collapseAPKDetailsJSON" tabindex="-1" role="dialog" aria-labelledby="collapseAPKDetailsJSON" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title">{% trans "APK fingerprint" %}</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  </div>
-                  <div class="modal-body">
-                      <pre><code>{{ report.application.json_signature }}</code></pre>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
-                  </div>
-              </div>
-          </div>
-      </div>
     </div>
-  </div>
-{% endif %}
+  {% endif %}
 {% endblock %}
