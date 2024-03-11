@@ -111,14 +111,20 @@ def start_static_analysis(params):
 
     change_description(request, _('List embedded classes: success'))
 
-    # APK
-    shasum = static_analysis.get_sha256()
+    try:
+        # APK
+        shasum = static_analysis.get_sha256()
 
-    # Application
-    handle = static_analysis.get_package()
-    version = static_analysis.get_version()
-    version_code = static_analysis.get_version_code()
-    app_name = static_analysis.get_app_name()
+        # Application
+        handle = static_analysis.get_package()
+        version = static_analysis.get_version()
+        version_code = static_analysis.get_version_code()
+        app_name = static_analysis.get_app_name()
+    except Exception as e:
+        logging.info(e)
+        msg = _('Unable to create the analysis report')
+        save_error(storage_helper, params, request, msg)
+        return EXIT_CODE_CREATE_REPORT_ERROR
 
     if not version or not version_code or not app_name or \
             len(version) > 50 or len(version_code) > 100 or len(app_name) > 200:
