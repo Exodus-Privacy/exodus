@@ -23,13 +23,15 @@ You have different ways of setting up your development environment:
 
 You can tweak your instance by changing [some settings](#configuring-your-local-instance).
 
+Follow instructions to get AAS token [here](https://github.com/EFForg/apkeep/blob/master/USAGE-google-play.md).
+
 Create the file  `exodus/exodus/settings/custom_docker.py` with the following content:
 
 ```bash
 from .docker import *
 
-GOOGLE_ACCOUNT_USERNAME = "<a valid google account>"
-GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
+GOOGLE_ACCOUNT_EMAIL = "<a valid google account>"
+GOOGLE_ACCOUNT_AAS_TOKEN = "<a valid aas token>"
 
 # Overwrite any other settings you wish to
 ```
@@ -121,13 +123,15 @@ pipenv install --dev
 
 You can tweak your instance by changing [some settings](#configuring-your-local-instance).
 
+Follow instructions to get AAS token [here](https://github.com/EFForg/apkeep/blob/master/USAGE-google-play.md).
+
 Create the file  `exodus/exodus/settings/custom_dev.py` with the following content:
 
 ```bash
 from .dev import *
 
-GOOGLE_ACCOUNT_USERNAME = "<a valid google account>"
-GOOGLE_ACCOUNT_PASSWORD = "<a valid google password>"
+GOOGLE_ACCOUNT_EMAIL = "<a valid google account>"
+GOOGLE_ACCOUNT_AAS_TOKEN = "<a valid google aas token>"
 
 # Overwrite any other settings you wish to
 ```
