@@ -1,6 +1,6 @@
 FROM alpine:3.18 AS apkeep-download
 
-ENV APKEEP_VERSION=0.15.0
+ENV APKEEP_VERSION=0.16.0
 
 RUN wget https://github.com/EFForg/apkeep/releases/download/${APKEEP_VERSION}/apkeep-x86_64-unknown-linux-gnu -q -O /tmp/apkeep \
   && chmod +x /tmp/apkeep
