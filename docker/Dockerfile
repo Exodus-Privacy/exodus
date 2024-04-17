@@ -5,7 +5,7 @@ ENV APKEEP_VERSION=0.16.0
 RUN wget https://github.com/EFForg/apkeep/releases/download/${APKEEP_VERSION}/apkeep-x86_64-unknown-linux-gnu -q -O /tmp/apkeep \
   && chmod +x /tmp/apkeep
 
-FROM python:3.10-slim-bookworm
+FROM python:3.11-slim-bookworm
 LABEL maintainer="Codimp"
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
