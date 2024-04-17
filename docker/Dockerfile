@@ -5,18 +5,18 @@ ENV APKEEP_VERSION=0.16.0
 RUN wget https://github.com/EFForg/apkeep/releases/download/${APKEEP_VERSION}/apkeep-x86_64-unknown-linux-gnu -q -O /tmp/apkeep \
   && chmod +x /tmp/apkeep
 
-FROM python:3.9-slim-bullseye
+FROM python:3.10-slim-bookworm
 LABEL maintainer="Codimp"
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
-  dexdump=10.0.0* \
-  postgresql-client-13=13* \
-  libpq-dev=13.* \
-  gcc=4:10.2.* \
+  dexdump=11.0.0* \
+  postgresql-client-15=15* \
+  libpq-dev=15.* \
+  gcc=4:12.2.* \
   musl-dev=1.2.* \
   libc6-dev=2.* \
   gettext=0.* \
-  pipenv=11.* \
+  pipenv=2022.12.* \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
