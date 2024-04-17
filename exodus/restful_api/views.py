@@ -289,7 +289,7 @@ def search_strict_handle_details(request, handle):
                     'creator': app.creator,
                     'downloads': app.downloads,
                     'trackers': [t.id for t in report.found_trackers.all()],
-                    'permissions': [p.name for p in app.permission_set.all()]
+                    'permissions': sorted([p.name for p in app.permission_set.all()])
                 })
         except Report.DoesNotExist:
             return JsonResponse({}, safe=True)
