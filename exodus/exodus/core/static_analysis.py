@@ -211,10 +211,6 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
             settings.GOOGLE_ACCOUNT_EMAIL,
             "-t",
             settings.GOOGLE_ACCOUNT_AAS_TOKEN,
-            "--accept-tos",
-            "--oauth-token",
-            "-o",
-            "device=lynx",
             tmp_dir
         ], env=os.environ.copy())
 
