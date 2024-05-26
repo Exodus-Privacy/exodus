@@ -14,7 +14,11 @@
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/handlebars.min.js" %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="εxodus">
+    <meta  property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static "img/logo_purple_without_text.png" %}">
     {% block head %}
+      <meta  property="og:title" content="εxodus">
       <title>εxodus</title>
     {% endblock %}
   </head>

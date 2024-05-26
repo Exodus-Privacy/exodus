@@ -3,8 +3,10 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block head %}
   {% if handle %}
+    <meta  property="og:title" content="{% trans "Reports list for" %} {{ handle }}">
     <title>{% trans "Reports list for" %} {{ handle }} - εxodus</title>
   {% else %}
+    <meta  property="og:title" content="{% trans "Reports list" %}">
     <title>{% trans "Reports list" %} - εxodus</title>
   {% endif %}
 {% endblock %}

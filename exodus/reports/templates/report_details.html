@@ -3,6 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block head %}
   {% if report %}
+    <meta  property="og:title" content="{% trans "Report for" %} {{ report.application.handle }} {{ report.application.version }}">
     <title>{% trans "Report for" %} {{ report.application.handle }} {{ report.application.version }} - εxodus</title>
   {% endif %}
 {% endblock %}

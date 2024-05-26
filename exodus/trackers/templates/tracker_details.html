@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load markdown %}
 {% block head %}
+  <meta  property="og:title" content="{% trans "Tracker profile for" %} {{ tracker.name }}">
   <title>{% trans "Tracker profile for" %} {{ tracker.name }} - εxodus</title>
 {% endblock %}
 {% block content %}
