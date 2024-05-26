@@ -1,6 +1,11 @@
 {% extends "base/base.html"%}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
+{% block head %}
+  {% if report %}
+    <title>{% trans "Report for" %} {{ report.application.handle }} {{ report.application.version }} - εxodus</title>
+  {% endif %}
+{% endblock %}
 {% block content %}
   {% load static %}
   {% if report %}

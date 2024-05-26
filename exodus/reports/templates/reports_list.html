@@ -1,6 +1,13 @@
 {% extends "base/base.html" %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
+{% block head %}
+  {% if handle %}
+    <title>{% trans "Reports list for" %} {{ handle }} - εxodus</title>
+  {% else %}
+    <title>{% trans "Reports list" %} - εxodus</title>
+  {% endif %}
+{% endblock %}
 {% block content %}
   {% load static %}
   <div class="row justify-content-md-center">

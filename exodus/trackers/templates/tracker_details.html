@@ -1,6 +1,9 @@
 {% extends "base/base.html" %}
 {% load i18n %}
 {% load markdown %}
+{% block head %}
+  <title>{% trans "Tracker profile for" %} {{ tracker.name }} - εxodus</title>
+{% endblock %}
 {% block content %}
   <style>
     h2 {
