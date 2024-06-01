@@ -3,9 +3,13 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block head %}
   {% if handle %}
+    <meta property="og:description" content="{% trans "Reports of all analyzed versions of this application" %}">
+    <meta name="description" content="{% trans "Reports of all analyzed versions of this application" %}">
     <meta  property="og:title" content="{% trans "Reports list for" %} {{ handle }}">
     <title>{% trans "Reports list for" %} {{ handle }} - εxodus</title>
   {% else %}
+    <meta property="og:description" content="{% trans "All applications reports sorted by latest reports, number of trackers or no known trackers" %}">
+    <meta name="description" content="{% trans "All applications reports sorted by latest reports, number of trackers or no known trackers" %}">
     <meta  property="og:title" content="{% trans "Reports list" %}">
     <title>{% trans "Reports list" %} - εxodus</title>
   {% endif %}
