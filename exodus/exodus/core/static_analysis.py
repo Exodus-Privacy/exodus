@@ -171,7 +171,8 @@ def download_fdroid_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
 
     try:
         r = requests.get(url)
-        open(apk_tmp, 'wb').write(r.content)
+        with open(apk_tmp, 'wb') as f:
+            f.write(r.content)
     except Exception:
         return False
 

@@ -66,7 +66,7 @@ def update_fdroid_data():
     with tempfile.NamedTemporaryFile() as f:
         try:
             r = requests.get('{}/index.xml'.format(settings.FDROID_MIRROR))
-            open(f.name, 'wb').write(r.content)
+            f.write(r.content)
 
             storage_helper = RemoteStorageHelper()
             storage_helper.put_file(f.name, 'fdroid_index.xml')
@@ -81,7 +81,7 @@ def update_fdroid_data():
     with tempfile.NamedTemporaryFile() as f:
         try:
             r = requests.get('{}/index-v1.jar'.format(settings.FDROID_MIRROR))
-            open(f.name, 'wb').write(r.content)
+            f.write(r.content)
 
             zip_file = zipfile.ZipFile(f.name)
             zip_file.extract('index-v1.json', '/tmp')

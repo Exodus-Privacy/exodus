@@ -25,29 +25,28 @@ from restful_api.serializers import ApplicationSerializer, TrackerSerializer,\
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_report_infos(request, r_id):
-    if request.method == 'GET':
-        try:
-            report = Report.objects.get(pk=r_id)
-        except Report.DoesNotExist:
-            raise Http404('No report found')
+    try:
+        report = Report.objects.get(pk=r_id)
+    except Report.DoesNotExist:
+        raise Http404('No report found')
 
-        certificate = None
-        if hasattr(report.application, 'apk'):
-            certificates = Certificate.objects.filter(apk=report.application.apk)
-            certificate = certificates.first()
+    certificate = None
+    if hasattr(report.application, 'apk'):
+        certificates = Certificate.objects.filter(apk=report.application.apk)
+        certificate = certificates.first()
 
-        obj = {
-            'creation_date': report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
-            'report_id': report.id,
-            'handle': report.application.handle,
-            'certificate': certificate,
-            'apk_dl_link': '',
-        }
-        if request.user.is_staff:
-            obj['apk_dl_link'] = '/api/apk/{}/'.format(report.id)
+    obj = {
+        'creation_date': report.creation_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+        'report_id': report.id,
+        'handle': report.application.handle,
+        'certificate': certificate,
+        'apk_dl_link': '',
+    }
+    if request.user.is_staff:
+        obj['apk_dl_link'] = '/api/apk/{}/'.format(report.id)
 
-        serializer = ReportInfosSerializer(obj, many=False)
-        return JsonResponse(serializer.data, safe=True)
+    serializer = ReportInfosSerializer(obj, many=False)
+    return JsonResponse(serializer.data, safe=True)
 
 
 @csrf_exempt
@@ -55,27 +54,26 @@ def get_report_infos(request, r_id):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated, IsAdminUser))
 def get_apk(request, r_id):
-    if request.method == 'GET':
-        try:
-            report = Report.objects.get(pk=r_id)
-        except Report.DoesNotExist:
-            raise Http404('No report found')
+    try:
+        report = Report.objects.get(pk=r_id)
+    except Report.DoesNotExist:
+        raise Http404('No report found')
 
-        apk_path = report.apk_file
+    apk_path = report.apk_file
 
-        minioClient = Minio(
-            settings.MINIO_STORAGE_ENDPOINT,
-            access_key=settings.MINIO_STORAGE_ACCESS_KEY,
-            secret_key=settings.MINIO_STORAGE_SECRET_KEY,
-            secure=settings.MINIO_STORAGE_USE_HTTPS
-        )
-        try:
-            data = minioClient.get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, apk_path)
-            return HttpResponse(
-                data.data, content_type=data.getheader('Content-Type'))
-        except Exception as err:
-            print(err)
-            return HttpResponse(status=500)
+    minioClient = Minio(
+        settings.MINIO_STORAGE_ENDPOINT,
+        access_key=settings.MINIO_STORAGE_ACCESS_KEY,
+        secret_key=settings.MINIO_STORAGE_SECRET_KEY,
+        secure=settings.MINIO_STORAGE_USE_HTTPS
+    )
+    try:
+        data = minioClient.get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, apk_path)
+        return HttpResponse(
+            data.data, content_type=data.getheader('Content-Type'))
+    except Exception as err:
+        print(err)
+        return HttpResponse(status=500)
 
 
 def _get_reports_list(report_list):
@@ -127,16 +125,15 @@ def _get_tracker_list():
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_all_reports(request):
-    if request.method == 'GET':
-        report_list = Report.objects.order_by('-creation_date')[:500]
-        applications = _get_reports_list(report_list)
-        trackers = _get_tracker_list()
-        return JsonResponse(
-            {
-                'applications': applications,
-                'trackers': trackers
-            }
-        )
+    report_list = Report.objects.order_by('-creation_date')[:500]
+    applications = _get_reports_list(report_list)
+    trackers = _get_tracker_list()
+    return JsonResponse(
+        {
+            'applications': applications,
+            'trackers': trackers
+        }
+    )
 
 
 @csrf_exempt
@@ -144,9 +141,8 @@ def get_all_reports(request):
 @authentication_classes(())
 @permission_classes(())
 def get_all_trackers(request):
-    if request.method == 'GET':
-        trackers = _get_tracker_list()
-        return JsonResponse({'trackers': trackers})
+    trackers = _get_tracker_list()
+    return JsonResponse({'trackers': trackers})
 
 
 @csrf_exempt
@@ -154,20 +150,19 @@ def get_all_trackers(request):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_all_applications(request):
-    if request.method == 'GET':
-        try:
-            if request.GET.get('tracker'):
-                tracker_id = request.GET.get('tracker')
-                applications = Application.objects.filter(report__found_trackers__id=tracker_id).order_by('handle', '-source').distinct('handle', 'source')
-            else:
-                applications = Application.objects.order_by('handle', '-source').distinct('handle', 'source')
-            if request.GET.get('option', 'full') == 'short':
-                serializer = ApplicationShortSerializer(applications, many=True)
-            else:
-                serializer = ApplicationSerializer(applications, many=True)
-            return JsonResponse({'applications': serializer.data}, safe=False)
-        except Application.DoesNotExist:
-            return JsonResponse({}, safe=True)
+    try:
+        if request.GET.get('tracker'):
+            tracker_id = request.GET.get('tracker')
+            applications = Application.objects.filter(report__found_trackers__id=tracker_id).order_by('handle', '-source').distinct('handle', 'source')
+        else:
+            applications = Application.objects.order_by('handle', '-source').distinct('handle', 'source')
+        if request.GET.get('option', 'full') == 'short':
+            serializer = ApplicationShortSerializer(applications, many=True)
+        else:
+            serializer = ApplicationSerializer(applications, many=True)
+        return JsonResponse({'applications': serializer.data}, safe=False)
+    except Application.DoesNotExist:
+        return JsonResponse({}, safe=True)
 
 
 @csrf_exempt
@@ -175,12 +170,11 @@ def get_all_applications(request):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def search_strict_handle(request, handle):
-    if request.method == 'GET':
-        try:
-            reports = Report.objects.filter(application__handle=handle).order_by('-creation_date')
-        except Report.DoesNotExist:
-            return JsonResponse({}, safe=True)
-        return JsonResponse(_get_reports_list(reports))
+    try:
+        reports = Report.objects.filter(application__handle=handle).order_by('-creation_date')
+    except Report.DoesNotExist:
+        return JsonResponse({}, safe=True)
+    return JsonResponse(_get_reports_list(reports))
 
 
 @csrf_exempt
@@ -188,19 +182,18 @@ def search_strict_handle(request, handle):
 @authentication_classes(())
 @permission_classes(())
 def search_latest_report(request, handle):
-    if request.method == 'GET':
-        try:
-            report = Report.objects.filter(application__handle=handle).order_by('-creation_date').first()
-            if not report:
-                raise Report.DoesNotExist
-        except Report.DoesNotExist:
-            return JsonResponse({}, safe=True)
-        obj = {
-            'id': report.id,
-            'name': report.application.name,
-            'creation_date': report.creation_date
-        }
-        return JsonResponse(obj)
+    try:
+        report = Report.objects.filter(application__handle=handle).order_by('-creation_date').first()
+        if not report:
+            raise Report.DoesNotExist
+    except Report.DoesNotExist:
+        return JsonResponse({}, safe=True)
+    obj = {
+        'id': report.id,
+        'name': report.application.name,
+        'creation_date': report.creation_date
+    }
+    return JsonResponse(obj)
 
 
 @csrf_exempt
@@ -208,13 +201,12 @@ def search_latest_report(request, handle):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_report_details(request, r_id):
-    if request.method == 'GET':
-        try:
-            report = Report.objects.get(pk=r_id)
-        except Report.DoesNotExist:
-            raise Http404('No reports found')
-        serializer = ReportSerializer(report, many=False)
-        return JsonResponse(serializer.data, safe=True)
+    try:
+        report = Report.objects.get(pk=r_id)
+    except Report.DoesNotExist:
+        raise Http404('No reports found')
+    serializer = ReportSerializer(report, many=False)
+    return JsonResponse(serializer.data, safe=True)
 
 
 def _get_applications(input, limit):
@@ -268,32 +260,31 @@ def search(request):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def search_strict_handle_details(request, handle):
-    if request.method == 'GET':
-        try:
-            reports = Report.objects.filter(application__handle=handle)
-            details = []
-            for report in reports:
-                app = report.application
-                details.append({
-                    'handle': app.handle,
-                    'app_name': app.name,
-                    'uaid': app.app_uid,
-                    'version_name': app.version,
-                    'version_code': app.version_code,
-                    'source': app.source,
-                    'icon_hash': app.icon_phash,
-                    'apk_hash': app.apk.sum,
-                    'created': report.creation_date,
-                    'updated': report.updated_at,
-                    'report': report.id,
-                    'creator': app.creator,
-                    'downloads': app.downloads,
-                    'trackers': [t.id for t in report.found_trackers.all()],
-                    'permissions': sorted([p.name for p in app.permission_set.all()])
-                })
-        except Report.DoesNotExist:
-            return JsonResponse({}, safe=True)
-        return JsonResponse(details, safe=False)
+    try:
+        reports = Report.objects.filter(application__handle=handle)
+        details = []
+        for report in reports:
+            app = report.application
+            details.append({
+                'handle': app.handle,
+                'app_name': app.name,
+                'uaid': app.app_uid,
+                'version_name': app.version,
+                'version_code': app.version_code,
+                'source': app.source,
+                'icon_hash': app.icon_phash,
+                'apk_hash': app.apk.sum,
+                'created': report.creation_date,
+                'updated': report.updated_at,
+                'report': report.id,
+                'creator': app.creator,
+                'downloads': app.downloads,
+                'trackers': [t.id for t in report.found_trackers.all()],
+                'permissions': sorted([p.name for p in app.permission_set.all()])
+            })
+    except Report.DoesNotExist:
+        return JsonResponse({}, safe=True)
+    return JsonResponse(details, safe=False)
 
 
 @csrf_exempt
@@ -301,8 +292,7 @@ def search_strict_handle_details(request, handle):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_trackers_count(request):
-    if request.method == 'GET':
-        return JsonResponse({'count': Tracker.objects.count()})
+    return JsonResponse({'count': Tracker.objects.count()})
 
 
 @csrf_exempt
@@ -310,8 +300,7 @@ def get_trackers_count(request):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_reports_count(request):
-    if request.method == 'GET':
-        return JsonResponse({'count': Report.objects.count()})
+    return JsonResponse({'count': Report.objects.count()})
 
 
 @csrf_exempt
@@ -319,5 +308,4 @@ def get_reports_count(request):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((IsAuthenticated,))
 def get_applications_count(request):
-    if request.method == 'GET':
-        return JsonResponse({'count': Application.objects.distinct('handle').count()})
+    return JsonResponse({'count': Application.objects.distinct('handle').count()})
