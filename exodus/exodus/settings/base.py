@@ -42,6 +42,7 @@ LANGUAGES = [
     ('es', 'Español'),
     ('et', 'Estonian'),
     ('fr', 'Français'),
+    ('id', 'Indonesian'),
     ('it', 'Italiano'),
     ('nl', 'Dutch'),
 ]
