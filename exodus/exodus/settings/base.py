@@ -46,6 +46,7 @@ LANGUAGES = [
     ('it', 'Italiano'),
     ('ja', 'Japanese'),
     ('nl', 'Dutch'),
+    ('no', 'Norwegian'),
 ]
 
 DEFAULT_LANGUAGE = 1

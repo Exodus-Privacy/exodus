@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
+"PO-Revision-Date: 2025-07-20 20:12\n"
+"Last-Translator: \n"
+"Language-Team: Norwegian\n"
+"Language: no_NO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: no\n"
+"X-Crowdin-File: reports.po\n"
+"X-Crowdin-File-ID: 51\n"
+
+#: reports/templates/report_details.html:10
+msgid "Prefix in storage:"
+msgstr "Prefiks i lagring:"
+
+#: reports/templates/report_details.html:31
+#: reports/templates/report_details.html:98
+#: reports/templates/reports_list.html:58
+msgid "tracker"
+msgid_plural "trackers"
+msgstr[0] "sporer"
+msgstr[1] "sporere"
+
+#: reports/templates/report_details.html:39
+#: reports/templates/report_details.html:135
+#: reports/templates/reports_list.html:64
+msgid "permission"
+msgid_plural "permissions"
+msgstr[0] "tillatelse"
+msgstr[1] "tillatelser"
+
+#: reports/templates/report_details.html:48
+msgid "Version"
+msgstr "Versjon"
+
+#: reports/templates/report_details.html:49
+msgid "see other versions"
+msgstr "se andre versjoner"
+
+#: reports/templates/report_details.html:53
+msgid "Source:"
+msgstr "Kilde:"
+
+#: reports/templates/report_details.html:64
+msgid "Created by"
+msgstr "Opprettet av"
+
+#: reports/templates/report_details.html:68
+msgid "Downloads:"
+msgstr "Nedlastinger:"
+
+#: reports/templates/report_details.html:72
+msgid "Report created on"
+msgstr "Rapport opprettet den"
+
+#: reports/templates/report_details.html:74
+msgid "and updated on"
+msgstr "og oppdatert den"
+
+#: reports/templates/report_details.html:80
+msgid "New analysis"
+msgstr "Ny analyse"
+
+#: reports/templates/report_details.html:81
+msgid "Delete this report"
+msgstr "Slett denne rapporten"
+
+#: reports/templates/report_details.html:86
+msgid "See on F-Droid"
+msgstr "Se på F-Droid"
+
+#: reports/templates/report_details.html:88
+msgid "See on Google Play"
+msgstr "Se på Google Play"
+
+#: reports/templates/report_details.html:104
+msgid "We have found <b>code signature</b> of the following tracker in the application:"
+msgid_plural "We have found <b>code signature</b> of the following trackers in the application:"
+msgstr[0] "Vi har funnet <b>kodesignatur</b> til følgende sporer i applikasjonen:"
+msgstr[1] "Vi har funnet <b>kodesignatur</b> til følgende sporere i applikasjonen:"
+
+#: reports/templates/report_details.html:120
+msgid "We have not found <b>code signature</b> of any tracker we know in the application."
+msgstr "Vi har ikke funnet <b>kodesignatur</b> til noen kjente sporere i applikasjonen."
+
+#: reports/templates/report_details.html:122
+#: reports/templates/report_details.html:196
+msgid "The application could contain tracker(s) we do not know yet."
+msgstr "Applikasjonen kan inneholde sporer(e) vi ikke kjenner til enda."
+
+#: reports/templates/report_details.html:125
+msgid "A tracker is a piece of software meant to collect data about you or your usages."
+msgstr "En sporer er programvare ment til samle inn data om deg og ditt bruksmønster."
+
+#: reports/templates/report_details.html:126
+#: reports/templates/report_details.html:174
+msgid "Learn more"
+msgstr "Finn ut mer"
+
+#: reports/templates/report_details.html:141
+msgid "We have found the following permission in the application:"
+msgid_plural "We have found the following permissions in the application:"
+msgstr[0] "Vi har funnet følgende tillatelse i applikasjonen:"
+msgstr[1] "Vi har funnet de følgende tillatelsene i applikasjonen:"
+
+#: reports/templates/report_details.html:165
+msgid "The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google's protection levels</a>."
+msgstr "Ikonet &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; angir et 'Farlig' eller 'Spesielt' nivå i følge <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Googles beskyttelsesnivåer</a>."
+
+#: reports/templates/report_details.html:171
+msgid "This application doesn't require any permissions."
+msgstr "Denne applikasjonen krever ingen tillatelser."
+
+#: reports/templates/report_details.html:173
+msgid "Permissions are actions the application can do on your phone."
+msgstr "Tillatelser er handlinger applikasjonen kan gjøre på din telefon."
+
+#: reports/templates/report_details.html:180
+msgid "What's next?"
+msgstr "Hva blir det neste?"
+
+#: reports/templates/report_details.html:181
+msgid "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!"
+msgstr "Hvis denne applikasjonen, etter din oppfatning, ikke respekterer ditt personvern godt nok, finnes det alternativer!"
+
+#: reports/templates/report_details.html:187
+msgid "Read the article"
+msgstr "Les artikkelen"
+
+#: reports/templates/report_details.html:193
+msgid "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers."
+msgstr "Denne rapporten lister sporersignaturer funnet ved statisk analyse av APK-en. Dette er ikke bevis for aktivitet hos denne sporeren."
+
+#: reports/templates/report_details.html:198
+msgid "If you have doubts about this report"
+msgstr "Hvis du har tvil om denne rapporten"
+
+#: reports/templates/report_details.html:198
+msgid "contact us"
+msgstr "kontakt oss"
+
+#: reports/templates/report_details.html:204
+msgid "Signed by"
+msgstr "Signert av"
+
+#: reports/templates/report_details.html:208
+msgid "Fingerprint:"
+msgstr "Fingeravtrykk:"
+
+#: reports/templates/report_details.html:209
+msgid "Issuer:"
+msgstr "Utsteder:"
+
+#: reports/templates/report_details.html:210
+msgid "Subject:"
+msgstr "Emne:"
+
+#: reports/templates/report_details.html:211
+msgid "Serial:"
+msgstr "Serienummer:"
+
+#: reports/templates/report_details.html:215
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr "Ingen signaturer funnet <b>ELLER</b> x509 sertifikatet er ikke i samsvar med RFC-en."
+
+#: reports/templates/report_details.html:221
+msgid "See APK fingerprint"
+msgstr "Se APK fingeravtrykk"
+
+#: reports/templates/report_details.html:224
+msgid "Text"
+msgstr "Tekst"
+
+#: reports/templates/report_details.html:232
+#: reports/templates/report_details.html:256
+msgid "APK fingerprint"
+msgstr "APK fingeravtrykk"
+
+#: reports/templates/report_details.html:237
+msgid "APK checksum:"
+msgstr "APK sjekksum:"
+
+#: reports/templates/report_details.html:238
+msgid "Handle:"
+msgstr "Identifikator:"
+
+#: reports/templates/report_details.html:239
+msgid "Name:"
+msgstr "Navn:"
+
+#: reports/templates/report_details.html:240
+msgid "UAID:"
+msgstr "UAID:"
+
+#: reports/templates/report_details.html:241
+msgid "Version:"
+msgstr "Versjon:"
+
+#: reports/templates/report_details.html:242
+msgid "Version code:"
+msgstr "Versjonskode:"
+
+#: reports/templates/report_details.html:243
+msgid "Icon hash:"
+msgstr "Ikonets avtrykk:"
+
+#: reports/templates/report_details.html:247
+#: reports/templates/report_details.html:263
+msgid "Close"
+msgstr "Lukk"
+
+#: reports/templates/reports_home.html:10
+#: reports/templates/reports_list.html:11
+msgid "Reports"
+msgstr "Rapporter"
+
+#: reports/templates/reports_list.html:17
+#, python-format
+msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
+msgstr "%(reports_total_count)s rapporter for %(apps_total_count)s applikasjoner"
+
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr "Nyeste rapporter"
+
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr "Sortert etter antall sporere"
+
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr "Ingen kjente sporere"
+
+#: reports/views.py:34 reports/views.py:64
+msgid "Report does not exist"
+msgstr "Rapporten finnes ikke"
+
+#: reports/views.py:79
+msgid "App does not exist"
+msgstr "Appen finnes ikke"
+
