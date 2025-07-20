@@ -1,0 +1,111 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-26 13:23+0000\n"
+"PO-Revision-Date: 2025-07-20 20:55\n"
+"Last-Translator: \n"
+"Language-Team: Romanian\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: trackers.po\n"
+"X-Crowdin-File-ID: 53\n"
+
+#: trackers/templates/new_api_key.html:43
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr "Trebuie să fii înregistrat"
+
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr "Statistici"
+
+#: trackers/templates/stats_details.html:11
+#: trackers/templates/stats_details.html:14
+msgid "Most frequent trackers"
+msgstr "Cele mai frecvente trackere"
+
+#: trackers/templates/stats_details.html:26
+#: trackers/templates/trackers_list.html:46
+#, python-format
+msgid "found in %(count)s application"
+msgid_plural "found in %(count)s applications"
+msgstr[0] "găsite în aplicația %(count)s"
+msgstr[1] "găsite în aplicațiile %(count)s"
+msgstr[2] "găsite în aplicațiile %(count)s"
+
+#: trackers/templates/tracker_details.html:24
+#, python-format
+msgid "Present in: <b>%(count)s application</b>"
+msgid_plural "Present in: <b>%(count)s applications</b>"
+msgstr[0] "Prezent în: <b>%(count)s aplicațiile </b>"
+msgstr[1] "Prezent în: <b>%(count)s aplicație</b>"
+msgstr[2] "Prezent în: <b>%(count)s aplicații</b>"
+
+#: trackers/templates/tracker_details.html:32
+msgid "Tracker web page"
+msgstr "Pagina web a trackerului"
+
+#: trackers/templates/tracker_details.html:44
+msgid "Detection rules"
+msgstr "Reguli de detectare"
+
+#: trackers/templates/tracker_details.html:45
+msgid "Code detection rule:"
+msgstr "Regula de detectare a codului sursa:"
+
+#: trackers/templates/tracker_details.html:47
+msgid "Network detection rule:"
+msgstr "Regula de detectare a rețelei:"
+
+#: trackers/templates/tracker_details.html:54
+msgid "Documentation"
+msgstr "Documentație"
+
+#: trackers/templates/tracker_details.html:66
+msgid "Latest reports with this tracker"
+msgstr "Ultimele rapoarte cu acest tracker"
+
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr "Trackers"
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
+msgstr[0] "tracker cunoscut"
+msgstr[1] "trackere cunoscute"
+msgstr[2] "trackere cunoscute"
+
+#: trackers/templates/trackers_list.html:19
+msgid "Sorted by"
+msgstr "Sortare după"
+
+#: trackers/templates/trackers_list.html:23
+msgid "Alphabetical order"
+msgstr "Ordine alfabetică"
+
+#: trackers/templates/trackers_list.html:26
+msgid "Number of applications"
+msgstr "Numărul de aplicații"
+
+#: trackers/templates/trackers_list.html:32
+msgid "Search by name"
+msgstr "Caută după nume"
+
+#: trackers/templates/trackers_list.html:84
+msgid "No trackers are available"
+msgstr "Nu este disponibil niciun tracker"
+
+#: trackers/views.py:26 trackers/views.py:37 trackers/views.py:53
+#: trackers/views.py:75
+msgid "Tracker does not exist"
+msgstr "Trackerul nu există"
+

@@ -48,6 +48,7 @@ LANGUAGES = [
     ('nl', 'Dutch'),
     ('no', 'Norwegian'),
     ('pl', 'Polish'),
+    ('ro', 'Romanian'),
 ]
 
 DEFAULT_LANGUAGE = 1
