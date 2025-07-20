@@ -40,6 +40,7 @@ LANGUAGES = [
     ('el', 'Greek'),
     ('en', 'English'),
     ('es', 'Español'),
+    ('et', 'Estonian'),
     ('fr', 'Français'),
     ('it', 'Italiano'),
 ]
