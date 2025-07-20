@@ -50,6 +50,7 @@ LANGUAGES = [
     ('pl', 'Polish'),
     ('ro', 'Romanian'),
     ('ru', 'Russian'),
+    ('tr', 'Turkish'),
 ]
 
 DEFAULT_LANGUAGE = 1

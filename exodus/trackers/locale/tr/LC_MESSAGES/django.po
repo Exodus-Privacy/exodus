@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-26 13:23+0000\n"
+"PO-Revision-Date: 2025-07-20 21:00\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: trackers.po\n"
+"X-Crowdin-File-ID: 53\n"
+
+#: trackers/templates/new_api_key.html:43
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr "Kayıt olmanız gerekiyor"
+
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr "İstatistikler"
+
+#: trackers/templates/stats_details.html:11
+#: trackers/templates/stats_details.html:14
+msgid "Most frequent trackers"
+msgstr "En sık görülen izleyiciler"
+
+#: trackers/templates/stats_details.html:26
+#: trackers/templates/trackers_list.html:46
+#, python-format
+msgid "found in %(count)s application"
+msgid_plural "found in %(count)s applications"
+msgstr[0] "%(count)s uygulamada bulundu"
+msgstr[1] "%(count)s uygulamada bulundu"
+
+#: trackers/templates/tracker_details.html:24
+#, python-format
+msgid "Present in: <b>%(count)s application</b>"
+msgid_plural "Present in: <b>%(count)s applications</b>"
+msgstr[0] "<b>%(count)s uygulamada</b> bulunuyor"
+msgstr[1] "<b>%(count)s uygulamada</b> bulunuyor"
+
+#: trackers/templates/tracker_details.html:32
+msgid "Tracker web page"
+msgstr "İzleyicinin sitesi"
+
+#: trackers/templates/tracker_details.html:44
+msgid "Detection rules"
+msgstr "Tespit kuralları"
+
+#: trackers/templates/tracker_details.html:45
+msgid "Code detection rule:"
+msgstr "Kod tespit kuralı:"
+
+#: trackers/templates/tracker_details.html:47
+msgid "Network detection rule:"
+msgstr "Ağ tespit kuralı:"
+
+#: trackers/templates/tracker_details.html:54
+msgid "Documentation"
+msgstr "Dökümantasyon"
+
+#: trackers/templates/tracker_details.html:66
+msgid "Latest reports with this tracker"
+msgstr "Bu izleyicinin son raporları"
+
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr "İzleyiciler"
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
+msgstr[0] "bilinen izleyici"
+msgstr[1] "bilinen izleyiciler"
+
+#: trackers/templates/trackers_list.html:19
+msgid "Sorted by"
+msgstr "Şuna göre sırala"
+
+#: trackers/templates/trackers_list.html:23
+msgid "Alphabetical order"
+msgstr "Alfabetik sıra"
+
+#: trackers/templates/trackers_list.html:26
+msgid "Number of applications"
+msgstr "Uygulama sayısı"
+
+#: trackers/templates/trackers_list.html:32
+msgid "Search by name"
+msgstr "İsme göre ara"
+
+#: trackers/templates/trackers_list.html:84
+msgid "No trackers are available"
+msgstr "Herhangi bir izleyici mevcut değil"
+
+#: trackers/views.py:26 trackers/views.py:37 trackers/views.py:53
+#: trackers/views.py:75
+msgid "Tracker does not exist"
+msgstr "İzleyici mevcut değil"
+
