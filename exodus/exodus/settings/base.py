@@ -44,6 +44,7 @@ LANGUAGES = [
     ('fr', 'Français'),
     ('id', 'Indonesian'),
     ('it', 'Italiano'),
+    ('ja', 'Japanese'),
     ('nl', 'Dutch'),
 ]
 
