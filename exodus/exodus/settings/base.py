@@ -50,6 +50,7 @@ LANGUAGES = [
     ('pl', 'Polish'),
     ('ro', 'Romanian'),
     ('ru', 'Russian'),
+    ('sv', 'Swedish'),
     ('tr', 'Turkish'),
     ('uk', 'Ukrainian'),
 ]
