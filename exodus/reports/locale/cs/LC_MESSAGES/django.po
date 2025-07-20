@@ -1,0 +1,257 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
+"PO-Revision-Date: 2025-07-20 13:56\n"
+"Last-Translator: \n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: cs\n"
+"X-Crowdin-File: reports.po\n"
+"X-Crowdin-File-ID: 51\n"
+
+#: reports/templates/report_details.html:10
+msgid "Prefix in storage:"
+msgstr "Předpona v úložišti:"
+
+#: reports/templates/report_details.html:31
+#: reports/templates/report_details.html:98
+#: reports/templates/reports_list.html:58
+msgid "tracker"
+msgid_plural "trackers"
+msgstr[0] "slídič"
+msgstr[1] "slídiče"
+msgstr[2] "slídičů"
+msgstr[3] "slídičů"
+
+#: reports/templates/report_details.html:39
+#: reports/templates/report_details.html:135
+#: reports/templates/reports_list.html:64
+msgid "permission"
+msgid_plural "permissions"
+msgstr[0] "oprávnění"
+msgstr[1] "oprávnění"
+msgstr[2] "oprávnění"
+msgstr[3] "oprávnění"
+
+#: reports/templates/report_details.html:48
+msgid "Version"
+msgstr "Verze"
+
+#: reports/templates/report_details.html:49
+msgid "see other versions"
+msgstr "zobrazit další verze"
+
+#: reports/templates/report_details.html:53
+msgid "Source:"
+msgstr "Zdroj:"
+
+#: reports/templates/report_details.html:64
+msgid "Created by"
+msgstr "Autor"
+
+#: reports/templates/report_details.html:68
+msgid "Downloads:"
+msgstr "Stahování:"
+
+#: reports/templates/report_details.html:72
+msgid "Report created on"
+msgstr "Hlášení vytvořeno"
+
+#: reports/templates/report_details.html:74
+msgid "and updated on"
+msgstr "a naposledy aktualizováno"
+
+#: reports/templates/report_details.html:80
+msgid "New analysis"
+msgstr "Nová analýza"
+
+#: reports/templates/report_details.html:81
+msgid "Delete this report"
+msgstr "Smazat toto hlášení"
+
+#: reports/templates/report_details.html:86
+msgid "See on F-Droid"
+msgstr "Zobrazit na F-Droid"
+
+#: reports/templates/report_details.html:88
+msgid "See on Google Play"
+msgstr "Zobrazit na Google Play"
+
+#: reports/templates/report_details.html:104
+msgid "We have found <b>code signature</b> of the following tracker in the application:"
+msgid_plural "We have found <b>code signature</b> of the following trackers in the application:"
+msgstr[0] "V aplikaci jsme nalezli <b>podpis kódu</b> následujících slídičů:"
+msgstr[1] "V aplikaci jsme nalezli <b>podpis kódu</b> následujících slídičů:"
+msgstr[2] "V aplikaci jsme nalezli <b>podpis kódu</b> následujících slídičů:"
+msgstr[3] "V aplikaci jsme nalezli <b>podpis kódu</b> následujících slídičů:"
+
+#: reports/templates/report_details.html:120
+msgid "We have not found <b>code signature</b> of any tracker we know in the application."
+msgstr "V aplikaci jsme nenalezli žádný <b>podpis kódu</b> slídičů, který v aplikaci známe."
+
+#: reports/templates/report_details.html:122
+#: reports/templates/report_details.html:196
+msgid "The application could contain tracker(s) we do not know yet."
+msgstr "Aplikace může obsahovat slídiče, o kterých ještě nevíme."
+
+#: reports/templates/report_details.html:125
+msgid "A tracker is a piece of software meant to collect data about you or your usages."
+msgstr "Slídič je část softwaru, který má shromažďovat data o vás nebo o vašem používání."
+
+#: reports/templates/report_details.html:126
+#: reports/templates/report_details.html:174
+msgid "Learn more"
+msgstr "Další informace"
+
+#: reports/templates/report_details.html:141
+msgid "We have found the following permission in the application:"
+msgid_plural "We have found the following permissions in the application:"
+msgstr[0] "V aplikaci jsme nalezli následující oprávnění:"
+msgstr[1] "V aplikaci jsme nalezli následující oprávnění:"
+msgstr[2] "V aplikaci jsme nalezli následující oprávnění:"
+msgstr[3] "V aplikaci jsme nalezli následující oprávnění:"
+
+#: reports/templates/report_details.html:165
+msgid "The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google's protection levels</a>."
+msgstr "Ikona &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; označuje 'Nebezpečnou' nebo 'Speciální' úroveň podle <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">stupňů ochrany Google</a>."
+
+#: reports/templates/report_details.html:171
+msgid "This application doesn't require any permissions."
+msgstr "Tato aplikace nevyžaduje žádná oprávnění."
+
+#: reports/templates/report_details.html:173
+msgid "Permissions are actions the application can do on your phone."
+msgstr "Oprávnění jsou akce, které může aplikace v telefonu provádět."
+
+#: reports/templates/report_details.html:180
+msgid "What's next?"
+msgstr "Co dál?"
+
+#: reports/templates/report_details.html:181
+msgid "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!"
+msgstr "Pokud tato aplikace podle vašeho názoru dostatečně nerespektuje vaše soukromí, existují alternativy!"
+
+#: reports/templates/report_details.html:187
+msgid "Read the article"
+msgstr "Přečíst článek"
+
+#: reports/templates/report_details.html:193
+msgid "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers."
+msgstr "Tato zpráva obsahuje seznam podpisů slídičů nalezených statickou analýzou v tomto souboru APK. Nejedná se o důkaz aktivity těchto slídičů."
+
+#: reports/templates/report_details.html:198
+msgid "If you have doubts about this report"
+msgstr "Pokud máte pochybnosti o této zprávě"
+
+#: reports/templates/report_details.html:198
+msgid "contact us"
+msgstr "kontaktujte nás"
+
+#: reports/templates/report_details.html:204
+msgid "Signed by"
+msgstr "Podepsáno"
+
+#: reports/templates/report_details.html:208
+msgid "Fingerprint:"
+msgstr "Digitální otisk:"
+
+#: reports/templates/report_details.html:209
+msgid "Issuer:"
+msgstr "Vydavatel:"
+
+#: reports/templates/report_details.html:210
+msgid "Subject:"
+msgstr "Předmět:"
+
+#: reports/templates/report_details.html:211
+msgid "Serial:"
+msgstr "Sériové číslo:"
+
+#: reports/templates/report_details.html:215
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr "Nebyly nalezeny žádné podpisy <b>NEBO</b> certifikát x509 není v souladu s RFC."
+
+#: reports/templates/report_details.html:221
+msgid "See APK fingerprint"
+msgstr "Zobrazit digitální otisk APK"
+
+#: reports/templates/report_details.html:224
+msgid "Text"
+msgstr "Text"
+
+#: reports/templates/report_details.html:232
+#: reports/templates/report_details.html:256
+msgid "APK fingerprint"
+msgstr "Digitální otisk APK"
+
+#: reports/templates/report_details.html:237
+msgid "APK checksum:"
+msgstr "Kontrolní součet APK:"
+
+#: reports/templates/report_details.html:238
+msgid "Handle:"
+msgstr "Identifikátor:"
+
+#: reports/templates/report_details.html:239
+msgid "Name:"
+msgstr "Název:"
+
+#: reports/templates/report_details.html:240
+msgid "UAID:"
+msgstr "UAID:"
+
+#: reports/templates/report_details.html:241
+msgid "Version:"
+msgstr "Verze:"
+
+#: reports/templates/report_details.html:242
+msgid "Version code:"
+msgstr "Kód verze:"
+
+#: reports/templates/report_details.html:243
+msgid "Icon hash:"
+msgstr "Hash ikony:"
+
+#: reports/templates/report_details.html:247
+#: reports/templates/report_details.html:263
+msgid "Close"
+msgstr "Zavřít"
+
+#: reports/templates/reports_home.html:10
+#: reports/templates/reports_list.html:11
+msgid "Reports"
+msgstr "Hlášení"
+
+#: reports/templates/reports_list.html:17
+#, python-format
+msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
+msgstr "%(reports_total_count)s hlášení pro %(apps_total_count)s aplikací"
+
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr "Poslední hlášení"
+
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr "Seřadit podle počtu slídičů"
+
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr "Žádné známé slídiče"
+
+#: reports/views.py:34 reports/views.py:64
+msgid "Report does not exist"
+msgstr "Hlášení neexistuje"
+
+#: reports/views.py:79
+msgid "App does not exist"
+msgstr "Aplikace neexistuje"
+

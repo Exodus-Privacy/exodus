@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-01 10:56+0000\n"
+"PO-Revision-Date: 2025-07-20 13:56\n"
+"Last-Translator: \n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: cs\n"
+"X-Crowdin-File: analysis_query.po\n"
+"X-Crowdin-File-ID: 49\n"
+
+#: analysis_query/models.py:39
+#, python-format
+msgid "%s is not a valid application handle"
+msgstr "%s není platné ID aplikace"
+
+#: analysis_query/models.py:47
+msgid "The application '{}' cannot be found"
+msgstr "Aplikaci '{}' nelze nalézt"
+
+#: analysis_query/models.py:54
+msgid "This application is being analyzed."
+msgstr "Tato aplikace je analyzována."
+
+#: analysis_query/models.py:59
+msgid "Too much pending requests, please retry later"
+msgstr "Příliš mnoho nevyřízených požadavků, zkuste to prosím později"
+
+#: analysis_query/models.py:67
+msgid "Unsupported file extension"
+msgstr "Nepodporovaná přípona souboru"
+
+#: analysis_query/templates/queries_list.html:42
+msgid "You need to be registered"
+msgstr "Musíte být zaregistrováni"
+
+#: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_upload.html:9
+msgid "New analysis"
+msgstr "Nová analýza"
+
+#: analysis_query/templates/query_submit.html:21
+msgid "It is currently impossible to submit new analysis. Sorry for the inconvenience!"
+msgstr "V současné době není možné předkládat nové analýzy. Omlouváme se za nepříjemnosti!"
+
+#: analysis_query/templates/query_submit.html:36
+msgid "URL of the application"
+msgstr "URL aplikace"
+
+#: analysis_query/templates/query_submit.html:45
+msgid "Source:"
+msgstr "Zdroj:"
+
+#: analysis_query/templates/query_submit.html:55
+msgid "Free applications only. Works also with the application handle."
+msgstr "Pouze bezplatné aplikace. Funguje také s ID aplikace."
+
+#: analysis_query/templates/query_submit.html:67
+#: analysis_query/templates/query_upload.html:50
+msgid "Perform analysis"
+msgstr "Provést analýzu"
+
+#: analysis_query/templates/query_submit.html:73
+msgid "I prefer to upload an application"
+msgstr "Upřednostňuji nahrání aplikace"
+
+#: analysis_query/templates/query_submit.html:80
+#: analysis_query/templates/query_upload.html:57
+msgid "The analysis could take a long time, you will be automatically redirected to the report."
+msgstr "Analýza může trvat dlouho, budete automaticky přesměrováni na zprávu o aplikaci."
+
+#: analysis_query/templates/query_submit.html:94
+#: analysis_query/templates/query_upload.html:70
+#: analysis_query/templates/query_wait.html:39
+msgid "is a non-profit organization which provides this service for free."
+msgstr "je nezisková organizace, která tuto službu poskytuje zdarma."
+
+#: analysis_query/templates/query_submit.html:96
+#: analysis_query/templates/query_upload.html:72
+#: analysis_query/templates/query_wait.html:41
+msgid "Help us!"
+msgstr "Pomozte nám!"
+
+#: analysis_query/templates/query_submit.html:132
+msgid "This application has already been analyzed!"
+msgstr "Tato aplikace již byla analyzována!"
+
+#: analysis_query/templates/query_submit.html:138
+msgid "analyzed on"
+msgstr "analyzováno"
+
+#: analysis_query/templates/query_submit.html:138
+msgid "Go to the latest report"
+msgstr "Přejít na nejnovější zprávu o aplikaci"
+
+#: analysis_query/templates/query_submit.html:142
+msgid "If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis."
+msgstr "Pokud si myslíte, že εxodus dosud neprovedl analýzu nejnovější verze této aplikace, neváhejte a analýzu odešlete."
+
+#: analysis_query/templates/query_upload.html:32
+msgid "Upload an application"
+msgstr "Nahrát aplikaci"
+
+#: analysis_query/templates/query_upload.html:36
+msgid "Browse file"
+msgstr "Procházet soubory"
+
+#: analysis_query/templates/query_upload.html:42
+msgid "Only works with APK files."
+msgstr "Funguje pouze se soubory APK."
+
+#: analysis_query/templates/query_wait.html:9
+msgid "Analysis in progress..."
+msgstr "Probíhá analýza..."
+
+#: analysis_query/templates/query_wait.html:24
+msgid "See the report"
+msgstr "Zobrazit zprávu"
+
+#: analysis_query/templates/query_wait.html:28
+msgid "Will refresh automatically every 10 seconds."
+msgstr "Obnovuje se automaticky každých 10 sekund."
+
+#: analysis_query/templates/query_wait.html:64
+msgid "Analysis done!"
+msgstr "Analýza dokončena!"
+
+#: analysis_query/views.py:34 analysis_query/views.py:62
+msgid "Your request will be handled soon"
+msgstr "Vaše žádost bude brzy vyřízena"
+
+#: analysis_query/views.py:76 analysis_query/views.py:84
+msgid "AnalysisRequest does not exist"
+msgstr "AnalysisRequest neexistuje"
+
