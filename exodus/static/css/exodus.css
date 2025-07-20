@@ -579,3 +579,17 @@ ul.navbar-nav {
 .btn-outline-primary:hover > .svg-icon {
 	filter: brightness(0) saturate(100%) invert(99%) sepia(4%) saturate(315%) hue-rotate(23deg) brightness(122%) contrast(100%);
 }
+
+/* Accessiblity */
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
