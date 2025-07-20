@@ -43,6 +43,7 @@ LANGUAGES = [
     ('et', 'Estonian'),
     ('fr', 'Français'),
     ('it', 'Italiano'),
+    ('nl', 'Dutch'),
 ]
 
 DEFAULT_LANGUAGE = 1
