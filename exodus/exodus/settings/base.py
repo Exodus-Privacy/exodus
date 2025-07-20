@@ -47,6 +47,7 @@ LANGUAGES = [
     ('ja', 'Japanese'),
     ('nl', 'Dutch'),
     ('no', 'Norwegian'),
+    ('pl', 'Polish'),
 ]
 
 DEFAULT_LANGUAGE = 1
