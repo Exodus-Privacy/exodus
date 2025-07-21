@@ -49,6 +49,7 @@ LANGUAGES = [
     ('no', 'Norwegian'),
     ('pl', 'Polish'),
     ('pt', 'Portuguese'),
+    ('pt-br', 'Brazilian Portuguese'),
     ('ro', 'Romanian'),
     ('ru', 'Russian'),
     ('sv', 'Swedish'),
