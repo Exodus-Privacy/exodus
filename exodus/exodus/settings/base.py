@@ -35,12 +35,27 @@ INSTALLED_APPS = [
 ]
 
 LANGUAGES = [
+    ('cs', 'Czech'),
     ('de', 'Deutsch'),
     ('el', 'Greek'),
     ('en', 'English'),
     ('es', 'Español'),
+    ('et', 'Estonian'),
     ('fr', 'Français'),
+    ('id', 'Indonesian'),
     ('it', 'Italiano'),
+    ('ja', 'Japanese'),
+    ('nl', 'Dutch'),
+    ('no', 'Norwegian'),
+    ('pl', 'Polish'),
+    ('pt', 'Portuguese'),
+    ('pt-br', 'Brazilian Portuguese'),
+    ('ro', 'Romanian'),
+    ('ru', 'Russian'),
+    ('sv', 'Swedish'),
+    ('tr', 'Turkish'),
+    ('uk', 'Ukrainian'),
+    ('zh-hans', 'Simplified Chinese'),
 ]
 
 DEFAULT_LANGUAGE = 1

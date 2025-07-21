@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-26 13:23+0000\n"
+"PO-Revision-Date: 2025-07-20 14:50\n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: nl\n"
+"X-Crowdin-File: trackers.po\n"
+"X-Crowdin-File-ID: 53\n"
+
+#: trackers/templates/new_api_key.html:43
+#: trackers/templates/trackers_admin_list.html:24
+msgid "You need to be registered"
+msgstr "U moet geregistreerd zijn"
+
+#: trackers/templates/stats_details.html:9
+#: trackers/templates/trackers_list.html:13
+msgid "Statistics"
+msgstr "Statistieken"
+
+#: trackers/templates/stats_details.html:11
+#: trackers/templates/stats_details.html:14
+msgid "Most frequent trackers"
+msgstr "Meest voorkomende trackers"
+
+#: trackers/templates/stats_details.html:26
+#: trackers/templates/trackers_list.html:46
+#, python-format
+msgid "found in %(count)s application"
+msgid_plural "found in %(count)s applications"
+msgstr[0] "gevonden in %(count)s toepassing"
+msgstr[1] "gevonden in %(count)s toepassing"
+
+#: trackers/templates/tracker_details.html:24
+#, python-format
+msgid "Present in: <b>%(count)s application</b>"
+msgid_plural "Present in: <b>%(count)s applications</b>"
+msgstr[0] "Aanwezig in: <b>%(count)s toepassing</b>"
+msgstr[1] "Aanwezig in: <b>%(count)s toepassing</b>"
+
+#: trackers/templates/tracker_details.html:32
+msgid "Tracker web page"
+msgstr "Tracker webpagina"
+
+#: trackers/templates/tracker_details.html:44
+msgid "Detection rules"
+msgstr "Detectieregels"
+
+#: trackers/templates/tracker_details.html:45
+msgid "Code detection rule:"
+msgstr "Programmacode detectieregel:"
+
+#: trackers/templates/tracker_details.html:47
+msgid "Network detection rule:"
+msgstr "Netwerk detectieregelregel:"
+
+#: trackers/templates/tracker_details.html:54
+msgid "Documentation"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:66
+msgid "Latest reports with this tracker"
+msgstr "Laatste rapporten met deze tracker"
+
+#: trackers/templates/trackers_list.html:8
+msgid "Trackers"
+msgstr "Trackers"
+
+#: trackers/templates/trackers_list.html:12
+msgid "known tracker"
+msgid_plural "known trackers"
+msgstr[0] "bekende tracker"
+msgstr[1] "bekende tracker"
+
+#: trackers/templates/trackers_list.html:19
+msgid "Sorted by"
+msgstr "Gesorteerd op"
+
+#: trackers/templates/trackers_list.html:23
+msgid "Alphabetical order"
+msgstr "Alfabetische volgorde"
+
+#: trackers/templates/trackers_list.html:26
+msgid "Number of applications"
+msgstr "Aantal toepassingen"
+
+#: trackers/templates/trackers_list.html:32
+msgid "Search by name"
+msgstr "Zoek op naam"
+
+#: trackers/templates/trackers_list.html:84
+msgid "No trackers are available"
+msgstr "Er zijn geen trackers beschikbaar"
+
+#: trackers/views.py:26 trackers/views.py:37 trackers/views.py:53
+#: trackers/views.py:75
+msgid "Tracker does not exist"
+msgstr "Tracker bestaat niet"
+

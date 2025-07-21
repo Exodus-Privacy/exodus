@@ -1,0 +1,257 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
+"PO-Revision-Date: 2025-07-20 21:03\n"
+"Last-Translator: \n"
+"Language-Team: Ukrainian\n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: uk\n"
+"X-Crowdin-File: reports.po\n"
+"X-Crowdin-File-ID: 51\n"
+
+#: reports/templates/report_details.html:10
+msgid "Prefix in storage:"
+msgstr "Префікс у сховищі:"
+
+#: reports/templates/report_details.html:31
+#: reports/templates/report_details.html:98
+#: reports/templates/reports_list.html:58
+msgid "tracker"
+msgid_plural "trackers"
+msgstr[0] "відстежувач"
+msgstr[1] "відстежувачі"
+msgstr[2] "відстежувачів"
+msgstr[3] "відстежувачів"
+
+#: reports/templates/report_details.html:39
+#: reports/templates/report_details.html:135
+#: reports/templates/reports_list.html:64
+msgid "permission"
+msgid_plural "permissions"
+msgstr[0] "дозвіл"
+msgstr[1] "дозволи"
+msgstr[2] "дозволів"
+msgstr[3] "дозволів"
+
+#: reports/templates/report_details.html:48
+msgid "Version"
+msgstr "Версія"
+
+#: reports/templates/report_details.html:49
+msgid "see other versions"
+msgstr "дивитися інші версії"
+
+#: reports/templates/report_details.html:53
+msgid "Source:"
+msgstr "Джерело:"
+
+#: reports/templates/report_details.html:64
+msgid "Created by"
+msgstr "Створено"
+
+#: reports/templates/report_details.html:68
+msgid "Downloads:"
+msgstr "Завантаження:"
+
+#: reports/templates/report_details.html:72
+msgid "Report created on"
+msgstr "Звіт створено"
+
+#: reports/templates/report_details.html:74
+msgid "and updated on"
+msgstr "і оновлено"
+
+#: reports/templates/report_details.html:80
+msgid "New analysis"
+msgstr "Нові аналізи"
+
+#: reports/templates/report_details.html:81
+msgid "Delete this report"
+msgstr "Видалити цей звіт"
+
+#: reports/templates/report_details.html:86
+msgid "See on F-Droid"
+msgstr "Переглянути на F-Droid"
+
+#: reports/templates/report_details.html:88
+msgid "See on Google Play"
+msgstr "Дивитися на Google Play"
+
+#: reports/templates/report_details.html:104
+msgid "We have found <b>code signature</b> of the following tracker in the application:"
+msgid_plural "We have found <b>code signature</b> of the following trackers in the application:"
+msgstr[0] "Ми знайшли <b>підпис коду</b> наступного трекера в програмі:"
+msgstr[1] "Ми знайшли <b>підпис коду</b> наступного трекера в програмі:"
+msgstr[2] "Ми знайшли <b>підпис коду</b> наступного трекера в програмі:"
+msgstr[3] "Ми не знайшли в додатку <b>кодового підпису</b> жодного відомого нам трекера:"
+
+#: reports/templates/report_details.html:120
+msgid "We have not found <b>code signature</b> of any tracker we know in the application."
+msgstr "Ми не знайшли в додатку <b>кодового підпису</b> жодного відомого нам трекера."
+
+#: reports/templates/report_details.html:122
+#: reports/templates/report_details.html:196
+msgid "The application could contain tracker(s) we do not know yet."
+msgstr "Додаток може містити трекер(и), про які ми ще не знаємо."
+
+#: reports/templates/report_details.html:125
+msgid "A tracker is a piece of software meant to collect data about you or your usages."
+msgstr "Трекер - це частина додатку, призначена для збору інформації про вас та ваші дії."
+
+#: reports/templates/report_details.html:126
+#: reports/templates/report_details.html:174
+msgid "Learn more"
+msgstr "Дізнатися більше"
+
+#: reports/templates/report_details.html:141
+msgid "We have found the following permission in the application:"
+msgid_plural "We have found the following permissions in the application:"
+msgstr[0] "Ми знайшли наступні дозволи в цьому застосунку:"
+msgstr[1] "Ми знайшли наступні дозволи в цьому застосунку:"
+msgstr[2] "Ми знайшли наступні дозволи в цьому застосунку:"
+msgstr[3] "Ми знайшли наступні дозволи в цьому застосунку:"
+
+#: reports/templates/report_details.html:165
+msgid "The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google's protection levels</a>."
+msgstr "Іконка &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; вказує на рівень 'Небезпечно' або 'спеціальний' відповідно до рівня захисту <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google</a>."
+
+#: reports/templates/report_details.html:171
+msgid "This application doesn't require any permissions."
+msgstr "Цей застосунок не вимагає дозволів."
+
+#: reports/templates/report_details.html:173
+msgid "Permissions are actions the application can do on your phone."
+msgstr "Доступи - це дозволені дії, які додаток може здійснювати на вашому пристрої."
+
+#: reports/templates/report_details.html:180
+msgid "What's next?"
+msgstr "Що далі?"
+
+#: reports/templates/report_details.html:181
+msgid "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!"
+msgstr "Якщо ця програма, на Вашу думку, недостатньо поважає Вашу конфіденційність, існують альтернативи!"
+
+#: reports/templates/report_details.html:187
+msgid "Read the article"
+msgstr "Читати статтю"
+
+#: reports/templates/report_details.html:193
+msgid "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers."
+msgstr "У цьому звіті містяться підписи трекерів виявлено статичним аналізом цього APK. Це не доказ активності цих трекерів."
+
+#: reports/templates/report_details.html:198
+msgid "If you have doubts about this report"
+msgstr "Якщо у вас є сумніви щодо цього звіту"
+
+#: reports/templates/report_details.html:198
+msgid "contact us"
+msgstr "звʼяжіться з нами"
+
+#: reports/templates/report_details.html:204
+msgid "Signed by"
+msgstr "Підписано"
+
+#: reports/templates/report_details.html:208
+msgid "Fingerprint:"
+msgstr "Відбиток:"
+
+#: reports/templates/report_details.html:209
+msgid "Issuer:"
+msgstr "Видавець:"
+
+#: reports/templates/report_details.html:210
+msgid "Subject:"
+msgstr "Тема:"
+
+#: reports/templates/report_details.html:211
+msgid "Serial:"
+msgstr "Серійний номер:"
+
+#: reports/templates/report_details.html:215
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr "Підписи не знайдено <b>АБО</b> x509 сертифікат не відповідає RFC."
+
+#: reports/templates/report_details.html:221
+msgid "See APK fingerprint"
+msgstr "Переглянути відбиток APK"
+
+#: reports/templates/report_details.html:224
+msgid "Text"
+msgstr "Текст"
+
+#: reports/templates/report_details.html:232
+#: reports/templates/report_details.html:256
+msgid "APK fingerprint"
+msgstr "Відбиток APK"
+
+#: reports/templates/report_details.html:237
+msgid "APK checksum:"
+msgstr "Контрольна сума APK:"
+
+#: reports/templates/report_details.html:238
+msgid "Handle:"
+msgstr "Дескриптор:"
+
+#: reports/templates/report_details.html:239
+msgid "Name:"
+msgstr "Назва:"
+
+#: reports/templates/report_details.html:240
+msgid "UAID:"
+msgstr "UAID:"
+
+#: reports/templates/report_details.html:241
+msgid "Version:"
+msgstr "Версія:"
+
+#: reports/templates/report_details.html:242
+msgid "Version code:"
+msgstr "Код версії:"
+
+#: reports/templates/report_details.html:243
+msgid "Icon hash:"
+msgstr "Геш значка:"
+
+#: reports/templates/report_details.html:247
+#: reports/templates/report_details.html:263
+msgid "Close"
+msgstr "Закрити"
+
+#: reports/templates/reports_home.html:10
+#: reports/templates/reports_list.html:11
+msgid "Reports"
+msgstr "Звіти"
+
+#: reports/templates/reports_list.html:17
+#, python-format
+msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
+msgstr "%(reports_total_count)s звітів для %(apps_total_count)s застосунків"
+
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr "Останні звіти"
+
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr "Сортувати за кількістю відстежувачів"
+
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr "Нема відомих відстежувачів"
+
+#: reports/views.py:34 reports/views.py:64
+msgid "Report does not exist"
+msgstr "Звіт не існує"
+
+#: reports/views.py:79
+msgid "App does not exist"
+msgstr "Застосунок не існує"
+

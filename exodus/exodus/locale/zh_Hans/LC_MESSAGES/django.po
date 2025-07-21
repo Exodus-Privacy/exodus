@@ -1,0 +1,528 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 09:11+0000\n"
+"PO-Revision-Date: 2025-07-21 16:19\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: exodus.po\n"
+"X-Crowdin-File-ID: 47\n"
+
+#: exodus/core/apk.py:52
+msgid "Your request is running"
+msgstr "正在处理你的请求"
+
+#: exodus/core/apk.py:67
+msgid "εxodus cannot scan paid applications"
+msgstr "εxodus 无法扫描付费应用"
+
+#: exodus/core/apk.py:75
+msgid "Unable to download the APK"
+msgstr "无法下载 APK"
+
+#: exodus/core/apk.py:79
+msgid "Download APK: success"
+msgstr "下载 APK：成功"
+
+#: exodus/core/apk.py:87
+msgid "Unable to decode the APK"
+msgstr "无法解码 APK"
+
+#: exodus/core/apk.py:91
+msgid "Decode APK: success"
+msgstr "解码 APK：成功"
+
+#: exodus/core/apk.py:100
+msgid "Unable to compute the class list"
+msgstr "无法计算类列表"
+
+#: exodus/core/apk.py:104
+msgid "List embedded classes: success"
+msgstr "内嵌类列表：成功"
+
+#: exodus/core/apk.py:117
+msgid "Unable to create the analysis report"
+msgstr "无法创建分析报告"
+
+#: exodus/core/apk.py:131
+msgid "A report already exists for this application version"
+msgstr "此应用程序版本已存在报告"
+
+#: exodus/core/apk.py:142
+msgid "Unable to get certificates"
+msgstr "无法获取证书"
+
+#: exodus/core/apk.py:159
+msgid "Unable to compute APK fingerprint"
+msgstr "无法计算 APK 指纹"
+
+#: exodus/core/apk.py:168
+msgid "Unable to get application details from Google Play"
+msgstr "无法从 Google Play 获取应用程序详细信息"
+
+#: exodus/core/apk.py:172
+msgid "Get application details: success"
+msgstr "获取应用程序详细信息：成功"
+
+#: exodus/core/apk.py:177
+msgid "Tracker analysis: success"
+msgstr "跟踪分析：成功"
+
+#: exodus/core/apk.py:230
+msgid "Static analysis complete"
+msgstr "静态分析完成"
+
+#: men_customization/templates/base/base.html:38
+#: web/templates/base/base.html:40
+msgid "Home"
+msgstr "首页"
+
+#: men_customization/templates/base/base.html:41
+#: web/templates/base/base.html:43
+msgid "Reports"
+msgstr "报告"
+
+#: men_customization/templates/base/base.html:44
+#: web/templates/base/base.html:46 web/templates/base/base.html:63
+msgid "Trackers"
+msgstr "追踪器"
+
+#: men_customization/templates/base/base.html:47
+#: men_customization/templates/base/home.html:29
+#: web/templates/base/base.html:49 web/templates/base/home.html:28
+#: web/templates/base/understand.html:8
+msgid "Better understand"
+msgstr "更好地了解"
+
+#: men_customization/templates/base/base.html:52
+#: web/templates/base/base.html:58
+msgid "Admin"
+msgstr "管理员"
+
+#: men_customization/templates/base/base.html:55
+#: web/templates/base/base.html:61
+msgid "Index"
+msgstr "索引"
+
+#: men_customization/templates/base/base.html:56
+#: web/templates/base/base.html:62
+msgid "Analyzes"
+msgstr "分析"
+
+#: men_customization/templates/base/base.html:57
+#: web/templates/base/base.html:64
+msgid "Log out"
+msgstr "注销"
+
+#: men_customization/templates/base/home.html:19
+#: web/templates/base/home.html:18
+msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
+msgstr "εxodus 分析安卓应用程序，以便 <b>列出嵌入的跟踪器</b>"
+
+#: men_customization/templates/base/home.html:21
+#: web/templates/base/home.html:20
+msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr "Tracker 是一种软件 <b>用于收集有关你或你使用情况的数据。</b> 因此，εxodus 报告告诉你包含了什么。"
+
+#: men_customization/templates/base/home.html:23
+#: web/templates/base/home.html:22
+msgid "εxodus does not decompile applications, its analysis method is legal."
+msgstr "εxodus 不会反编译应用程序，其分析方法是合法的。"
+
+#: men_customization/templates/base/home.html:30
+#: web/templates/base/home.html:29
+msgid "What is a tracker? And a permission? Are there any alternatives to protect yourself?"
+msgstr "什么是跟踪器？还有权限？是否有其他办法来保护自己？"
+
+#: men_customization/templates/base/home.html:38
+#: web/templates/base/home.html:37
+#: web/templates/snippets/reports_search.html:27
+msgid "Let's go!"
+msgstr "让我们开始吧！"
+
+#: web/templates/base/base.html:52 web/templates/base/organization.html:8
+msgid "The organization"
+msgstr "组织名称"
+
+#: web/templates/base/home.html:10
+msgid "The privacy audit platform for Android applications"
+msgstr "Android 应用程序的隐私审计平台"
+
+#: web/templates/base/next.html:8 web/templates/base/understand.html:53
+msgid "What's next?"
+msgstr "接下来...?"
+
+#: web/templates/base/next.html:16
+msgid "We know it is not easy to find alternatives in order to escape trackers within our apps. We prepared a list of tools and things you can do to better manage your privacy on your smartphone."
+msgstr "我们知道很难找到替代应用来摆脱我们当前应用中的跟踪器. 我们准备了一个关于工具和您可采取行动的列表来更好的在您智能手机上管理您的隐私."
+
+#: web/templates/base/next.html:20
+msgid "Consider how you use applications"
+msgstr "考虑到您如何使用应用"
+
+#: web/templates/base/next.html:22
+msgid "When you wish to install an application or when an application asks for personal information, ask yourself the following questions:"
+msgstr "当您想要安装某个应用或某个应用请求个人信息的时候, 询问自己以下几个问题:"
+
+#: web/templates/base/next.html:25
+msgid "how many trackers does it contain and what permissions does it ask for?"
+msgstr "它含有多少跟踪器以及它请求什么权限？"
+
+#: web/templates/base/next.html:26
+msgid "do I want or need to install it?"
+msgstr "我想要或需要安装它吗?"
+
+#: web/templates/base/next.html:27
+msgid "do I want or need to give it what it asks me?"
+msgstr "它所请求的我想要或需要给它吗?"
+
+#: web/templates/base/next.html:30
+msgid "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity."
+msgstr "这取决于您的选择但是着重考虑您日常的使用, 您可以拥有您数字身份更好的控制权."
+
+#: web/templates/base/next.html:33
+msgid "You could also contact the people who offer you the application if you consider it to be too intrusive and ask them some explanations on the presence of trackers and permission requests."
+msgstr "如果您认为应用过于侵扰,您可以联系应用提供者并请求他们对跟踪器的存在和权限的申请作出解释."
+
+#: web/templates/base/next.html:37
+msgid "Favour free software"
+msgstr "倾向自由软件"
+
+#: web/templates/base/next.html:39
+msgid "What is called 'free' software is software whose code (i.e. its recipe, or list of instructions) can be changed, copied, verified... and is thus transparent. A free software application might exist to replace an app that you already use but that may not respect your privacy."
+msgstr "所谓的“自由”软件是指其代码(即配方或指令列表)可以被修改、复制、验证……因此是透明的。一个免费的软件应用程序可能会取代你已经使用的应用程序，但可能不尊重你的隐私。"
+
+#: web/templates/base/next.html:47
+msgid "If you are an Android user, you can install <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free software store that can be used instead or in addition to the Google Play store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be aware, however, that some F-Droid applications are not available in all languages."
+msgstr "如果你是 Android 用户，你可以安装 <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>.这是一个免费的软件商店，可以替代谷歌 Play 商店，也可以和它一道使用。如有需要，请毫不犹豫地查阅 <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid 文档</a>。但是，请注意，一些 F-Droid 应用程序并非在所有语言中都可用。"
+
+#: web/templates/base/next.html:51
+msgid "Use the mobile website instead of the application"
+msgstr "使用手机网站而不是应用程序"
+
+#: web/templates/base/next.html:53
+msgid "On a mobile device you don't necessary have to use applications: you can use mobile websites instead. One advantage in favour of the latter is the possibility to use  web browser add-ons, in the same way you can do it on your computer (e.g. uBlock Origin)."
+msgstr "在移动设备上，你不需要使用应用程序:你可以使用移动网站。后者的一个优势是可以使用浏览器插附加组件，就像你可以在你的电脑上做的一样 (例如 uBlock Origin)。"
+
+#: web/templates/base/next.html:64
+msgid "If you want a browser experience that is more respectful of your privacy, you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo Privacy Browser."
+msgstr "如果你想要一个更尊重你隐私的浏览器体验，你可以使用其他浏览器，如 Mozilla Firefox 或 DuckDuckGo 隐私浏览器。"
+
+#: web/templates/base/next.html:67
+msgid "These browsers allow you to add your favorite websites on your home screen easily, just as an app (but lighter)."
+msgstr "这些浏览器允许你在主屏幕上轻松添加你喜欢的网站，就像一个应用程序一样(但更轻巧)。"
+
+#: web/templates/base/next.html:71
+msgid "Install an ad blocker"
+msgstr "安装广告拦截器"
+
+#: web/templates/base/next.html:78
+msgid "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or from their own website."
+msgstr "在任何情况下，安卓智能手机都允许你安装广告拦截应用程序，比如 <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>。你可以从F-Droid (参考上面) 或它们自己的网站上安装它。"
+
+#: web/templates/base/next.html:82
+msgid "Discover alternatives"
+msgstr "发现替代品"
+
+#: web/templates/base/next.html:84
+msgid "For broader recommendations, here are some resources you can dig in:"
+msgstr "对于更广泛的建议，这写是你可以深入了解的一些资源："
+
+#: web/templates/base/next.html:85
+msgid "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>EFF 提供的监视自我防护</a></li>\n"
+"      </ul>\n"
+"      "
+
+#: web/templates/base/next.html:95
+msgid "Remain curious!"
+msgstr "保持好奇！"
+
+#: web/templates/base/next.html:97
+msgid "In this area, what is true today may not necessarily be true tomorrow: tools might come and go, application policies can change, security breaches can be discovered..."
+msgstr "在这个领域，今天是正确的，明天不一定是正确的：工具来了又走，应用程序策略会改变，安全事故会被发现……"
+
+#: web/templates/base/next.html:100
+msgid "To this effect, you can attend workshops held by associations such as <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> or other organizations like public libraries."
+msgstr "因此，你可以参加研讨会，这些会议的主办者包括<a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a>或类似公共图书馆的其他组织。"
+
+#: web/templates/base/next.html:103
+msgid "To stay up to date on these topics, you can find useful resources there:"
+msgstr "为了及时了解这些主题的最新情况，你可以在这些地方找到有用的资源："
+
+#: web/templates/base/next.html:104
+msgid "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF 博客</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>'Boing Boing' 博客</a></li>\n"
+"      </ul>\n"
+"      "
+
+#: web/templates/base/next.html:113
+msgid "For advanced users"
+msgstr "面向高级用户"
+
+#: web/templates/base/next.html:115
+msgid "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> is an operating system based on Android; it can be used without Google services. It is possible to install it on your smartphone, provided your device is compatible."
+msgstr "如果你喜欢调整设置，<a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a>是一款基于 Android 的操作系统，它可以在没有谷歌服务的情况下使用。如果你的设备兼容该系统，你就可以在你的智能手机上安装它。"
+
+#: web/templates/base/organization.html:19
+msgid "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues."
+msgstr "Exodus Privacy 是一个由黑客活动分子领导的非盈利组织。其目的是帮助人们更好地了解 Android 应用程序跟踪问题。"
+
+#: web/templates/base/organization.html:22
+msgid "Discover Exodus Privacy"
+msgstr "发现 Exodus Privacy"
+
+#: web/templates/base/organization.html:26
+msgid "Help us!"
+msgstr "帮助我们！"
+
+#: web/templates/base/organization.html:28
+msgid "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help."
+msgstr "Exodus Privacy 是一个由志愿者管理的组织。无论您想绘制、翻译、编码或创建任何类型的内容，请随意: 我们欢迎任何帮助。"
+
+#: web/templates/base/organization.html:31
+msgid "How to contribute?"
+msgstr "如何作出贡献？"
+
+#: web/templates/base/organization.html:35
+msgid "Contact us"
+msgstr "联系我们"
+
+#: web/templates/base/organization.html:42
+msgid "Contact us!"
+msgstr "联系我们!"
+
+#: web/templates/base/organization.html:47
+#: web/templates/base/organization.html:54
+#: web/templates/base/organization.html:59
+msgid "Follow us!"
+msgstr "关注我们!"
+
+#: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
+msgid "Permissions"
+msgstr "权限"
+
+#: web/templates/base/permissions.html:16
+msgid "Permissions are access rights an app asks to access on your phone."
+msgstr "权限是应用程序要求在你手机上访问的权限权。"
+
+#: web/templates/base/permissions.html:20
+msgid "What type of permissions?"
+msgstr "什么样的权限?"
+
+#: web/templates/base/permissions.html:22
+msgid "They can concern various features or pieces of information, such as access to your geolocation, your contacts, your files, your microphone, vibrate function, camera and so on. Exodus Privacy analyses allow you to know, on a  per app basis, which permissions are asked."
+msgstr "它们可以涉及各种功能或信息，如访问你的地理位置、联系人、文件、麦克风、振动功能、摄像头等。Exodus Privacy的分析可以让你知道每个应用都要求访问哪些权限。"
+
+#: web/templates/base/permissions.html:26
+msgid "Why are some permissions indicated as dangerous?"
+msgstr "为什么有些权限被显示为危险？"
+
+#: web/templates/base/permissions.html:28
+msgid "Google defines <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>danger levels for permissions</a>, which we report in our analyses."
+msgstr "谷歌定义了 <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>权限的危险等级</a>，我们会在分析中报告。"
+
+#: web/templates/base/permissions.html:32
+msgid "Do I have control over these permissions?"
+msgstr "我是否可以控制这些权限？"
+
+#: web/templates/base/permissions.html:34
+msgid "Depending on your smartphone and operating system, it is possible to restrain some of these permissions by going into your phone's settings."
+msgstr "根据你的智能手机和操作系统，你可以通过进入你手机的设置来限制一些权限。"
+
+#: web/templates/base/trackers.html:8 web/templates/base/understand.html:19
+msgid "Trackers "
+msgstr "跟踪器 "
+
+#: web/templates/base/trackers.html:16
+msgid "This page is mostly a rework of <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, published under CC-BY-NC license."
+msgstr "此页面基本上是<a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>这篇文章</a>的改写，在 CC-BY-NC 许可证下发布。"
+
+#: web/templates/base/trackers.html:20
+msgid "What is a tracker?"
+msgstr "什么是跟踪器?"
+
+#: web/templates/base/trackers.html:22 web/templates/base/trackers.html:31
+#: web/templates/base/trackers.html:60
+msgid "See the video"
+msgstr "查看视频"
+
+#: web/templates/base/trackers.html:25
+msgid "A tracker is a piece of software whose task is to gather information on the person using the application, on how they use it, or on the smartphone being used. A tracker is usually distributed by companies as a SDK (Software Development Kit), a sort of ready-made toolkit, aiming to make it easier for application developers. To be noted : 'open source' trackers exist, their code is available and open to everyone."
+msgstr "跟踪器是一种软件，其任务是收集有关使用该应用程序的人、他们如何使用该应用程序或正在使用的智能手机的信息。跟踪器通常以SDK(软件开发工具包) 的形式由公司分发，这是一种现成的工具包，旨在让应用程序开发人员更容易使用它。需要注意的是:“开源”追踪器是存在的，它们的代码是向所有人开放的。"
+
+#: web/templates/base/trackers.html:29
+msgid "Are all trackers created equal?"
+msgstr "所有的追踪器都是一样的吗？"
+
+#: web/templates/base/trackers.html:34
+msgid "No, all trackers do not have the same function and they can present different levels of (privacy) intrusion."
+msgstr "不是的，所有的追踪器都有不同的功能，它们可以呈现不同程度的(隐私) 入侵。"
+
+#: web/templates/base/trackers.html:38
+msgid "<b>Crash reporters:</b> these trackers specialize in reporting application crashes. In other terms, their goal is to notify application developers that an app encountered a problem. As such, information collected at the time the application crashed will allow the developer to correct the bug."
+msgstr "<b>崩溃报告器：</b>这些跟踪器专门用于报告应用程序崩溃。换句话说，他们的目标是通知应用程序开发人员应用程序遇到了问题。因此，在应用程序崩溃时收集的信息将允许开发者修正错误。"
+
+#: web/templates/base/trackers.html:41
+msgid "<b>Analytics:</b> these trackers are meant to collect data usage and allow the developer to have better knowledge of their audience (for instance, to know what page you visited, or how long you remained on a given area of the page)."
+msgstr "<b>分析器：</b>这些跟踪器旨在收集数据使用情况，并让开发人员更好地了解他们的用户(例如，知道你访问了哪个页面，或者你在页面的给定区域停留了多长时间)。"
+
+#: web/templates/base/trackers.html:44
+msgid "<b>Profiling:</b> these trackers' goal is to gather as much information as possible on the application user in order to build a virtual profile. To this effect, the tracker will for instance focus on the browsing history, or on the list of installed applications, and so on."
+msgstr "<b>用户画像：</b>这些追踪器的目标是收集尽可能多的应用程序用户信息，以便建立一个虚拟档案。为了达到这个效果，例如，跟踪器将关注浏览历史记录，或安装的应用程序列表等"
+
+#: web/templates/base/trackers.html:47
+msgid "<b>Identification:</b> these trackers are responsible for determining your digital identity. This identity may refer to an official identity or to abstract identifiers (pseudonym, etc.). The goal will be, for example, to be able to correlate an individual's online and offline activities."
+msgstr "<b>身份识别：</b>这些追踪器负责确定您的数字身份。这个身份可以指一个官方身份或抽象标识符(假名等)。例如，目标将是能够将个人的线上和线下活动联系起来。"
+
+#: web/templates/base/trackers.html:50
+msgid "<b>Ads:</b> these trackers aim to identify the application user in order to serve them targeted ads. This is only possible and relevant if the user already already has a digital profile established. The goal of the creator of such a tracker is to monetize their application, i.e. to make money by means of advertisement."
+msgstr "<b>广告：</b>这些追踪器的目的是识别应用程序用户，为他们提供定向广告。只有当用户已经建立了数字档案时，这才有可能和相关。这种追踪器的创造者的目标是变现，如通过广告来赚钱。"
+
+#: web/templates/base/trackers.html:53
+msgid "<b>Location:</b> these trackers are designed to determine the geographical location of the mobile device. In order to do so, this type of tracker takes advantage of several sensors: GPS chips, surrounding cellular antennae, wi-fi networks present in the area, nearby Bluetooth beacons, or even specific sounds transmitted by loudspeakers."
+msgstr "<b>位置：</b>这些追踪器被设计用来确定移动设备的地理位置。为了做到这一点，这类追踪器利用了几个传感器: GPS芯片、周围的蜂窝天线、该地区存在的wi-fi网络、附近的蓝牙信标，甚至是通过扬声器传输的特定声音。"
+
+#: web/templates/base/trackers.html:58
+msgid "Who puts these trackers in?"
+msgstr "谁把这些跟踪者器放进去的？"
+
+#: web/templates/base/trackers.html:63
+msgid "To answer these questions we must first understand how applications are made; there are 2 possible scenarios:"
+msgstr "要回答这些问题，我们必须首先了解应用程序是如何创建的; 有两种可能的情况:"
+
+#: web/templates/base/trackers.html:66
+msgid "In the first case the organization that owns the product subcontracts the application development to a third party company. The contract specifies what the application needs to perform and what technologies are employed to do so. Sometimes the subcontractor already has an application template that they re-use for each new application. In such a case all applications that are developed will include these trackers whether or not they are specified in the programming contract."
+msgstr "在第一种情况下，拥有产品的组织将应用程序开发分包给第三方公司。合同规定了应用程序需要执行什么，以及要使用什么技术来执行。有时候，分包商已经有了一个应用程序模板，他们可以在每个新的应用程序中重用这个模板。在这种情况下，所有开发的应用程序都将包括这些跟踪器，无论它们是否在编程契约中指定。"
+
+#: web/templates/base/trackers.html:69
+msgid "In the second case the organization that owns the product develops the application in-house. In that case, their own employees are in charge of deciding whether or not they want to include certain types of trackers."
+msgstr "在第二种情况下，拥有产品的组织在内部开发应用程序。在这种情况下，他们自己的员工负责决定是否要包含某些类型的跟踪器。"
+
+#: web/templates/base/understand.html:21
+msgid "Know more about trackers and their impact on privacy"
+msgstr "了解更多关于追踪器及其对隐私的影响"
+
+#: web/templates/base/understand.html:25 web/templates/base/understand.html:39
+#: web/templates/base/understand.html:59
+msgid "Read the article"
+msgstr "阅读文章"
+
+#: web/templates/base/understand.html:35
+msgid "What is permission and what are the privacy issues?"
+msgstr "什么是权限，什么是隐私问题?"
+
+#: web/templates/base/understand.html:55
+msgid "A list of tools and things you can do to better manage your privacy on your smartphone"
+msgstr "为了更好地管理智能手机上的隐私，你可以做的事情和工具的清单"
+
+#: web/templates/snippets/paginator.html:6
+#: web/templates/snippets/paginator.html:13
+msgid "First"
+msgstr "首先"
+
+#: web/templates/snippets/paginator.html:9
+#: web/templates/snippets/paginator.html:16
+msgid "Previous"
+msgstr "上一步"
+
+#: web/templates/snippets/paginator.html:34
+#: web/templates/snippets/paginator.html:41
+msgid "Next"
+msgstr "下一个"
+
+#: web/templates/snippets/paginator.html:37
+#: web/templates/snippets/paginator.html:44
+msgid "Last"
+msgstr "最后一项"
+
+#: web/templates/snippets/reports_links.html:4
+msgid "Need an overview?"
+msgstr "需要概览？"
+
+#: web/templates/snippets/reports_links.html:10
+msgid "Latest reports"
+msgstr "最新报告"
+
+#: web/templates/snippets/reports_links.html:16
+msgid "No known trackers"
+msgstr "没有已知跟踪器"
+
+#: web/templates/snippets/reports_links.html:23
+msgid "Sorted by number of trackers"
+msgstr "按跟踪器的数量排序"
+
+#: web/templates/snippets/reports_search.html:5
+msgid "Search a report"
+msgstr "搜索报告"
+
+#: web/templates/snippets/reports_search.html:6
+msgid "Application name"
+msgstr "应用名:"
+
+#: web/templates/snippets/reports_search.html:16
+msgid "You can search for an application using its name, handle or Google Play URL"
+msgstr "你可以使用应用名字、句柄或谷歌 Play URL来搜索一款应用"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "ex:"
+msgstr "ex:"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "or"
+msgstr "或"
+
+#: web/templates/snippets/reports_search.html:21
+#, python-format
+msgid "Cannot find the application? Search it in %(url)s."
+msgstr "找不到应用程序？在 %(url)s 中搜索它。"
+
+#: web/templates/snippets/reports_search.html:30
+msgid "Results"
+msgstr "结果"
+
+#: web/templates/snippets/reports_search.html:39
+msgid "Looking for an application we don't know yet?"
+msgstr "正在寻找我们还不知道的应用程序吗？"
+
+#: web/templates/snippets/reports_search.html:47
+msgid "Perform a new analysis"
+msgstr "执行新的分析"
+
+#: web/templates/snippets/reports_search_tpl.html:6
+msgid "No results found."
+msgstr "无搜索结果。"
+
+#: web/templates/snippets/reports_search_tpl.html:28
+msgid "tracker(s)"
+msgstr "追踪器"
+
+#: web/templates/snippets/reports_search_tpl.html:32
+msgid "permission(s)"
+msgstr "权限"
+
