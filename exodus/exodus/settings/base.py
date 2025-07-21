@@ -55,6 +55,7 @@ LANGUAGES = [
     ('sv', 'Swedish'),
     ('tr', 'Turkish'),
     ('uk', 'Ukrainian'),
+    ('zh-hans', 'Simplified Chinese'),
 ]
 
 DEFAULT_LANGUAGE = 1
