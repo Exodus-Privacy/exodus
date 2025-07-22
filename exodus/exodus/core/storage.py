@@ -15,10 +15,8 @@ class RemoteStorageHelper():
         # Create Minio storage if needed
         try:
             self.minio_client.make_bucket(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, location="")
-        except BucketAlreadyOwnedByYou:
-            pass
-        except BucketAlreadyExists:
-            pass
+        except MinioException:
+            logging.error(f"An error occured while creating new bucket '{settings.MINIO_STORAGE_MEDIA_BUCKET_NAME}'")
 
     def get_prefix(self):
         return self.prefix
