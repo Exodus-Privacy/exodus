@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from trackers.models import Tracker
+from trackers.models import Tracker, TrackerCategory
 import json
 
 
@@ -30,8 +30,10 @@ class Command(BaseCommand):
                 network_signature=tracker['network_signature'],
                 website=tracker['website'],
             )
+            tracker_categories = [TrackerCategory.objects.get(name=c) for c in tracker['categories']]
 
             model.save()
+            model.category.set(tracker_categories)
 
             print('%s saved' % model.name)
 
