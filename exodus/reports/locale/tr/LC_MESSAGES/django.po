@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-06 09:57+0000\n"
+"PO-Revision-Date: 2025-07-20 21:00\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: reports.po\n"
+"X-Crowdin-File-ID: 51\n"
+
+#: reports/templates/report_details.html:10
+msgid "Prefix in storage:"
+msgstr "Depodaki ön ek:"
+
+#: reports/templates/report_details.html:31
+#: reports/templates/report_details.html:98
+#: reports/templates/reports_list.html:58
+msgid "tracker"
+msgid_plural "trackers"
+msgstr[0] "izleyici"
+msgstr[1] "izleyici"
+
+#: reports/templates/report_details.html:39
+#: reports/templates/report_details.html:135
+#: reports/templates/reports_list.html:64
+msgid "permission"
+msgid_plural "permissions"
+msgstr[0] "izin"
+msgstr[1] "izin"
+
+#: reports/templates/report_details.html:48
+msgid "Version"
+msgstr "Sürüm"
+
+#: reports/templates/report_details.html:49
+msgid "see other versions"
+msgstr "diğer sürümlere bak"
+
+#: reports/templates/report_details.html:53
+msgid "Source:"
+msgstr "Kaynak:"
+
+#: reports/templates/report_details.html:64
+msgid "Created by"
+msgstr "tarafından oluşturuldu"
+
+#: reports/templates/report_details.html:68
+msgid "Downloads:"
+msgstr "İndirmeler:"
+
+#: reports/templates/report_details.html:72
+msgid "Report created on"
+msgstr "Rapor şu tarihte oluşturuldu"
+
+#: reports/templates/report_details.html:74
+msgid "and updated on"
+msgstr "ve bu tarihte güncellendi"
+
+#: reports/templates/report_details.html:80
+msgid "New analysis"
+msgstr "Yeni analiz"
+
+#: reports/templates/report_details.html:81
+msgid "Delete this report"
+msgstr "Bu raporu sil"
+
+#: reports/templates/report_details.html:86
+msgid "See on F-Droid"
+msgstr "F-Droid'te görüntüle"
+
+#: reports/templates/report_details.html:88
+msgid "See on Google Play"
+msgstr "Google Play'de görüntüle"
+
+#: reports/templates/report_details.html:104
+msgid "We have found <b>code signature</b> of the following tracker in the application:"
+msgid_plural "We have found <b>code signature</b> of the following trackers in the application:"
+msgstr[0] "Uygulamada aşağıdaki izleyicinin <b>kod imzası</b>nı bulduk:"
+msgstr[1] "Uygulamada aşağıdaki izleyicilerin <b>kod imzaları</b>nı bulduk:"
+
+#: reports/templates/report_details.html:120
+msgid "We have not found <b>code signature</b> of any tracker we know in the application."
+msgstr "Uygulamada herhangi bir izleyicinin <b>kod imzası</b>nı bulamadık."
+
+#: reports/templates/report_details.html:122
+#: reports/templates/report_details.html:196
+msgid "The application could contain tracker(s) we do not know yet."
+msgstr "Uygulama henüz bilmediğimiz izleyici(leri) içerebilir."
+
+#: reports/templates/report_details.html:125
+msgid "A tracker is a piece of software meant to collect data about you or your usages."
+msgstr "İzleyici, sizin veya kullanımlarınız hakkında veri toplayan uygulama parçasıdır."
+
+#: reports/templates/report_details.html:126
+#: reports/templates/report_details.html:174
+msgid "Learn more"
+msgstr "Daha fazla bilgi"
+
+#: reports/templates/report_details.html:141
+msgid "We have found the following permission in the application:"
+msgid_plural "We have found the following permissions in the application:"
+msgstr[0] "Uygulamada aşağıdaki izni bulduk:"
+msgstr[1] "Uygulamada aşağıdaki izinleri bulduk:"
+
+#: reports/templates/report_details.html:165
+msgid "The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google's protection levels</a>."
+msgstr "<img src=\"/static/img/danger.svg\">&nbsp; ikonu <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google'un koruma seviyeleri</a>ne göre 'Tehlikeli' veya 'Özel' izinleri belirtir."
+
+#: reports/templates/report_details.html:171
+msgid "This application doesn't require any permissions."
+msgstr "Uygulama herhangi bir izin gerektirmiyor."
+
+#: reports/templates/report_details.html:173
+msgid "Permissions are actions the application can do on your phone."
+msgstr "İzinler, uygulamaların telefonunuzda yapabileceği eylemlerdir."
+
+#: reports/templates/report_details.html:180
+msgid "What's next?"
+msgstr "Sırada ne var?"
+
+#: reports/templates/report_details.html:181
+msgid "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!"
+msgstr "Bu uygulama size göre gizliliğinize yeterince saygı göstermiyorsa, bazı alternatifler var!"
+
+#: reports/templates/report_details.html:187
+msgid "Read the article"
+msgstr "Makaleyi oku"
+
+#: reports/templates/report_details.html:193
+msgid "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers."
+msgstr "Bu rapor, bu APK'da statik analiz tarafından bulunan izleyici imzalarını listeler. Bu, bu izleyicilerin etkinliğinin bir kanıtı değildir."
+
+#: reports/templates/report_details.html:198
+msgid "If you have doubts about this report"
+msgstr "Eğer bu rapor hakkında şüpheleriniz varsa"
+
+#: reports/templates/report_details.html:198
+msgid "contact us"
+msgstr "bizimle iletişime geçin"
+
+#: reports/templates/report_details.html:204
+msgid "Signed by"
+msgstr "İmzalayan:"
+
+#: reports/templates/report_details.html:208
+msgid "Fingerprint:"
+msgstr "Parmak izi:"
+
+#: reports/templates/report_details.html:209
+msgid "Issuer:"
+msgstr "Sağlayan:"
+
+#: reports/templates/report_details.html:210
+msgid "Subject:"
+msgstr "Konu:"
+
+#: reports/templates/report_details.html:211
+msgid "Serial:"
+msgstr "Seri No:"
+
+#: reports/templates/report_details.html:215
+msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
+msgstr "İmza bulunamadı <b>VEYA</b> x509 sertifikası RFC ile uyumlu değil."
+
+#: reports/templates/report_details.html:221
+msgid "See APK fingerprint"
+msgstr "APK parmak izini görüntüle"
+
+#: reports/templates/report_details.html:224
+msgid "Text"
+msgstr "Metin"
+
+#: reports/templates/report_details.html:232
+#: reports/templates/report_details.html:256
+msgid "APK fingerprint"
+msgstr "APK parmak izi"
+
+#: reports/templates/report_details.html:237
+msgid "APK checksum:"
+msgstr "APK sağlaması:"
+
+#: reports/templates/report_details.html:238
+msgid "Handle:"
+msgstr "Paket Adı:"
+
+#: reports/templates/report_details.html:239
+msgid "Name:"
+msgstr "İsim:"
+
+#: reports/templates/report_details.html:240
+msgid "UAID:"
+msgstr "UAID:"
+
+#: reports/templates/report_details.html:241
+msgid "Version:"
+msgstr "Sürüm:"
+
+#: reports/templates/report_details.html:242
+msgid "Version code:"
+msgstr "Sürüm kodu:"
+
+#: reports/templates/report_details.html:243
+msgid "Icon hash:"
+msgstr "İkon hash:"
+
+#: reports/templates/report_details.html:247
+#: reports/templates/report_details.html:263
+msgid "Close"
+msgstr "Kapat"
+
+#: reports/templates/reports_home.html:10
+#: reports/templates/reports_list.html:11
+msgid "Reports"
+msgstr "Raporlar"
+
+#: reports/templates/reports_list.html:17
+#, python-format
+msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
+msgstr "%(apps_total_count)s uygulama için %(reports_total_count)s rapor"
+
+#: reports/templates/reports_list.html:25
+msgid "Latest reports"
+msgstr "Son raporlar"
+
+#: reports/templates/reports_list.html:27
+msgid "Sorted by number of trackers"
+msgstr "İzleyici sayısına göre sıralandı"
+
+#: reports/templates/reports_list.html:29
+msgid "No known trackers"
+msgstr "Bilinen izleyici yok"
+
+#: reports/views.py:34 reports/views.py:64
+msgid "Report does not exist"
+msgstr "Rapor mevcut değil"
+
+#: reports/views.py:79
+msgid "App does not exist"
+msgstr "Uygulama mevcut değil"
+

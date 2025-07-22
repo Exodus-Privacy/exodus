@@ -44,7 +44,7 @@ Do you want to help to translate the plateform? Contribute here:
 
 https://crowdin.com/project/exodus-privacy
 
-- εxodus is fully translated into 6 languages and 33 languages can be translated in Crowdin.
+- εxodus is fully translated into 21 languages and more than 40 languages can be translated in Crowdin.
 
 ### Contribute to the identification of trackers
 

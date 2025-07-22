@@ -1,0 +1,523 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 09:11+0000\n"
+"PO-Revision-Date: 2025-07-20 21:08\n"
+"Last-Translator: \n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: sv-SE\n"
+"X-Crowdin-File: exodus.po\n"
+"X-Crowdin-File-ID: 47\n"
+
+#: exodus/core/apk.py:52
+msgid "Your request is running"
+msgstr "Din begäran körs"
+
+#: exodus/core/apk.py:67
+msgid "εxodus cannot scan paid applications"
+msgstr "εxodus kan inte skanna betalda appar"
+
+#: exodus/core/apk.py:75
+msgid "Unable to download the APK"
+msgstr "Det gick inte att ladda ner APK"
+
+#: exodus/core/apk.py:79
+msgid "Download APK: success"
+msgstr "Ladda ner APK: framgång"
+
+#: exodus/core/apk.py:87
+msgid "Unable to decode the APK"
+msgstr "Det går inte att avkoda APK"
+
+#: exodus/core/apk.py:91
+msgid "Decode APK: success"
+msgstr "Avkoda APK: framgång"
+
+#: exodus/core/apk.py:100
+msgid "Unable to compute the class list"
+msgstr "Det går inte att beräkna klasslistan"
+
+#: exodus/core/apk.py:104
+msgid "List embedded classes: success"
+msgstr "Lista inbäddade klasser: framgång"
+
+#: exodus/core/apk.py:117
+msgid "Unable to create the analysis report"
+msgstr "Det går inte att skapa analysrapporten"
+
+#: exodus/core/apk.py:131
+msgid "A report already exists for this application version"
+msgstr "En rapport finns redan för denna applikationsversion"
+
+#: exodus/core/apk.py:142
+msgid "Unable to get certificates"
+msgstr "Det går inte att hämta certifikat"
+
+#: exodus/core/apk.py:159
+msgid "Unable to compute APK fingerprint"
+msgstr "Det går inte att beräkna APK-fingeravtryck"
+
+#: exodus/core/apk.py:168
+msgid "Unable to get application details from Google Play"
+msgstr "Det gick inte att hämta programinformation från Google Play"
+
+#: exodus/core/apk.py:172
+msgid "Get application details: success"
+msgstr "Få applikationsdetaljer: framgång"
+
+#: exodus/core/apk.py:177
+msgid "Tracker analysis: success"
+msgstr "Tracker analys: framgång"
+
+#: exodus/core/apk.py:230
+msgid "Static analysis complete"
+msgstr "Statisk analys komplett"
+
+#: men_customization/templates/base/base.html:38
+#: web/templates/base/base.html:40
+msgid "Home"
+msgstr "Hem"
+
+#: men_customization/templates/base/base.html:41
+#: web/templates/base/base.html:43
+msgid "Reports"
+msgstr "Rapporter"
+
+#: men_customization/templates/base/base.html:44
+#: web/templates/base/base.html:46 web/templates/base/base.html:63
+msgid "Trackers"
+msgstr "Spårare"
+
+#: men_customization/templates/base/base.html:47
+#: men_customization/templates/base/home.html:29
+#: web/templates/base/base.html:49 web/templates/base/home.html:28
+#: web/templates/base/understand.html:8
+msgid "Better understand"
+msgstr "Bättre förståelse"
+
+#: men_customization/templates/base/base.html:52
+#: web/templates/base/base.html:58
+msgid "Admin"
+msgstr "Administratör"
+
+#: men_customization/templates/base/base.html:55
+#: web/templates/base/base.html:61
+msgid "Index"
+msgstr "Index"
+
+#: men_customization/templates/base/base.html:56
+#: web/templates/base/base.html:62
+msgid "Analyzes"
+msgstr "Analyser"
+
+#: men_customization/templates/base/base.html:57
+#: web/templates/base/base.html:64
+msgid "Log out"
+msgstr "Logga ut"
+
+#: men_customization/templates/base/home.html:19
+#: web/templates/base/home.html:18
+msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
+msgstr "εxodus analyserar Android-program för att <b>lista inbäddade trackers.</b>"
+
+#: men_customization/templates/base/home.html:21
+#: web/templates/base/home.html:20
+msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr "En tracker är en programvara <b>avsedd att samla in data om dig eller din användning.</b> Så, εxodus rapporter berätta vad som är ingredienserna i kakan."
+
+#: men_customization/templates/base/home.html:23
+#: web/templates/base/home.html:22
+msgid "εxodus does not decompile applications, its analysis method is legal."
+msgstr "εxodus dekompilerar inte applikationer, dess analysmetod är laglig."
+
+#: men_customization/templates/base/home.html:30
+#: web/templates/base/home.html:29
+msgid "What is a tracker? And a permission? Are there any alternatives to protect yourself?"
+msgstr "Vad är en tracker? Och en tillstånd? Finns det några alternativ för att skydda dig själv?"
+
+#: men_customization/templates/base/home.html:38
+#: web/templates/base/home.html:37
+#: web/templates/snippets/reports_search.html:27
+msgid "Let's go!"
+msgstr "Nu kör vi!"
+
+#: web/templates/base/base.html:52 web/templates/base/organization.html:8
+msgid "The organization"
+msgstr "Organisationen"
+
+#: web/templates/base/home.html:10
+msgid "The privacy audit platform for Android applications"
+msgstr "Sekretess granskningsplattform för Android-applikationer"
+
+#: web/templates/base/next.html:8 web/templates/base/understand.html:53
+msgid "What's next?"
+msgstr "Vad kommer härnäst?"
+
+#: web/templates/base/next.html:16
+msgid "We know it is not easy to find alternatives in order to escape trackers within our apps. We prepared a list of tools and things you can do to better manage your privacy on your smartphone."
+msgstr "Vi vet att det inte är lätt att hitta alternativ för att undkomma trackers i våra appar. Vi har förberett en lista över verktyg och saker du kan göra för att bättre hantera din integritet på din smartphone."
+
+#: web/templates/base/next.html:20
+msgid "Consider how you use applications"
+msgstr "Överväg hur du använder applikationer"
+
+#: web/templates/base/next.html:22
+msgid "When you wish to install an application or when an application asks for personal information, ask yourself the following questions:"
+msgstr "När du vill installera en applikation eller när en applikation ber om personlig information, ställ följande frågor:"
+
+#: web/templates/base/next.html:25
+msgid "how many trackers does it contain and what permissions does it ask for?"
+msgstr "hur många trackers innehåller den och vilka behörigheter begär den?"
+
+#: web/templates/base/next.html:26
+msgid "do I want or need to install it?"
+msgstr "vill jag eller behöver jag installera det?"
+
+#: web/templates/base/next.html:27
+msgid "do I want or need to give it what it asks me?"
+msgstr "vill jag eller behöver ge det vad det frågar mig?"
+
+#: web/templates/base/next.html:30
+msgid "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity."
+msgstr "Det är upp till dig att bestämma men genom att ta hänsyn till din dagliga användning kan du ha en bättre kontroll över din digitala identitet."
+
+#: web/templates/base/next.html:33
+msgid "You could also contact the people who offer you the application if you consider it to be too intrusive and ask them some explanations on the presence of trackers and permission requests."
+msgstr "Du kan också kontakta de personer som erbjuder dig ansökan om du anser att det är alltför påträngande och fråga dem några förklaringar om förekomsten av trackers och förfrågningar om tillstånd."
+
+#: web/templates/base/next.html:37
+msgid "Favour free software"
+msgstr "Gynna fri programvara"
+
+#: web/templates/base/next.html:39
+msgid "What is called 'free' software is software whose code (i.e. its recipe, or list of instructions) can be changed, copied, verified... and is thus transparent. A free software application might exist to replace an app that you already use but that may not respect your privacy."
+msgstr "Vad som kallas \"fri\" programvara är programvara vars kod (dvs dess recept, eller lista över instruktioner) kan ändras, kopieras, verifieras... En fri programvara kan finnas för att ersätta en app som du redan använder, men som kanske inte respekterar din integritet."
+
+#: web/templates/base/next.html:47
+msgid "If you are an Android user, you can install <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free software store that can be used instead or in addition to the Google Play store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be aware, however, that some F-Droid applications are not available in all languages."
+msgstr "Om du är en Android-användare kan du installera <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. Det är en fri programvara butik som kan användas istället eller i tillägg till Google Play butik. Tveka inte att hänvisa till <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid dokumentation</a> om det behövs. Var medveten om att vissa F-Droid-program inte är tillgängliga på alla språk."
+
+#: web/templates/base/next.html:51
+msgid "Use the mobile website instead of the application"
+msgstr "Använd den mobila webbplatsen istället för applikationen"
+
+#: web/templates/base/next.html:53
+msgid "On a mobile device you don't necessary have to use applications: you can use mobile websites instead. One advantage in favour of the latter is the possibility to use  web browser add-ons, in the same way you can do it on your computer (e.g. uBlock Origin)."
+msgstr "På en mobil enhet behöver du inte använda applikationer: du kan använda mobila webbplatser istället. En fördel för det senare är möjligheten att använda webbläsartillägg, på samma sätt som du kan göra det på din dator (e. uBlock ursprung)."
+
+#: web/templates/base/next.html:64
+msgid "If you want a browser experience that is more respectful of your privacy, you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo Privacy Browser."
+msgstr "Om du vill ha en webbläsarupplevelse som är mer respektfull av din integritet, du kan använda alternativa webbläsare som Mozilla Firefox eller DuckDuckGo Privacy Browser."
+
+#: web/templates/base/next.html:67
+msgid "These browsers allow you to add your favorite websites on your home screen easily, just as an app (but lighter)."
+msgstr "Dessa webbläsare kan du lägga till dina favorit webbplatser på hemskärmen lätt, precis som en app (men lättare)."
+
+#: web/templates/base/next.html:71
+msgid "Install an ad blocker"
+msgstr "Installera en annonsblockerare"
+
+#: web/templates/base/next.html:78
+msgid "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or from their own website."
+msgstr "I alla fall, Android-smartphones kan du installera ad-blockering program som <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. Du kan installera den från F-Droid (jfr ovan) eller från deras egen hemsida."
+
+#: web/templates/base/next.html:82
+msgid "Discover alternatives"
+msgstr "Upptäck alternativ"
+
+#: web/templates/base/next.html:84
+msgid "For broader recommendations, here are some resources you can dig in:"
+msgstr "För bredare rekommendationer, här är några resurser du kan gräva i:"
+
+#: web/templates/base/next.html:85
+msgid "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr ""
+
+#: web/templates/base/next.html:95
+msgid "Remain curious!"
+msgstr "Förbli nyfiken!"
+
+#: web/templates/base/next.html:97
+msgid "In this area, what is true today may not necessarily be true tomorrow: tools might come and go, application policies can change, security breaches can be discovered..."
+msgstr "På detta område är det som är sant i dag kanske inte nödvändigtvis är sant i morgon: verktyg kan komma och gå, applikationspolicyer kan ändras, säkerhetsöverträdelser kan upptäckas..."
+
+#: web/templates/base/next.html:100
+msgid "To this effect, you can attend workshops held by associations such as <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> or other organizations like public libraries."
+msgstr "För detta ändamål kan du delta i workshops som hålls av föreningar som <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>kryptofester</a> eller andra organisationer som offentliga bibliotek."
+
+#: web/templates/base/next.html:103
+msgid "To stay up to date on these topics, you can find useful resources there:"
+msgstr "För att hålla dig uppdaterad om dessa ämnen, kan du hitta användbara resurser där:"
+
+#: web/templates/base/next.html:104
+msgid "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blogg</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>'Boing Boing' blogg</a></li>\n"
+"      </ul>\n"
+"      "
+
+#: web/templates/base/next.html:113
+msgid "For advanced users"
+msgstr "För avancerade användare"
+
+#: web/templates/base/next.html:115
+msgid "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> is an operating system based on Android; it can be used without Google services. It is possible to install it on your smartphone, provided your device is compatible."
+msgstr "Om du är i tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> är ett operativsystem baserat på Android; det kan användas utan Googles tjänster. Det är möjligt att installera den på din smartphone, förutsatt att din enhet är kompatibel."
+
+#: web/templates/base/organization.html:19
+msgid "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues."
+msgstr "Exodus Sekretess är en ideell organisation som leds av hacktivister. Dess syfte är att hjälpa människor att få en bättre förståelse för Android-program spårningsfrågor."
+
+#: web/templates/base/organization.html:22
+msgid "Discover Exodus Privacy"
+msgstr "Upptäck Exodus Sekretess"
+
+#: web/templates/base/organization.html:26
+msgid "Help us!"
+msgstr "Hjälp oss!"
+
+#: web/templates/base/organization.html:28
+msgid "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help."
+msgstr "Exodus Sekretess är en organisation som förvaltas av volontärer. Oavsett om du vill rita, översätta, koda eller skapa något slags innehåll, känn dig fri: vi välkomnar all hjälp."
+
+#: web/templates/base/organization.html:31
+msgid "How to contribute?"
+msgstr "Hur bidra?"
+
+#: web/templates/base/organization.html:35
+msgid "Contact us"
+msgstr "Kontakta oss"
+
+#: web/templates/base/organization.html:42
+msgid "Contact us!"
+msgstr "Kontakta oss!"
+
+#: web/templates/base/organization.html:47
+#: web/templates/base/organization.html:54
+#: web/templates/base/organization.html:59
+msgid "Follow us!"
+msgstr "Följ oss!"
+
+#: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
+msgid "Permissions"
+msgstr "Behörigheter"
+
+#: web/templates/base/permissions.html:16
+msgid "Permissions are access rights an app asks to access on your phone."
+msgstr "Behörigheter är åtkomsträttigheter som en app begär att få åtkomst till på din telefon."
+
+#: web/templates/base/permissions.html:20
+msgid "What type of permissions?"
+msgstr "Vilken typ av behörigheter?"
+
+#: web/templates/base/permissions.html:22
+msgid "They can concern various features or pieces of information, such as access to your geolocation, your contacts, your files, your microphone, vibrate function, camera and so on. Exodus Privacy analyses allow you to know, on a  per app basis, which permissions are asked."
+msgstr "De kan gälla olika funktioner eller delar av information, såsom tillgång till din geolocation, dina kontakter, dina filer, din mikrofon, vibrationsfunktion, kamera och så vidare. Exodus Sekretessanalyser gör att du kan veta, på en per app basis, vilka behörigheter som efterfrågas."
+
+#: web/templates/base/permissions.html:26
+msgid "Why are some permissions indicated as dangerous?"
+msgstr "Varför anges vissa behörigheter som farliga?"
+
+#: web/templates/base/permissions.html:28
+msgid "Google defines <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>danger levels for permissions</a>, which we report in our analyses."
+msgstr "Google definierar <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>risknivåer för behörigheter</a>, som vi rapporterar i våra analyser."
+
+#: web/templates/base/permissions.html:32
+msgid "Do I have control over these permissions?"
+msgstr "Har jag kontroll över dessa tillstånd?"
+
+#: web/templates/base/permissions.html:34
+msgid "Depending on your smartphone and operating system, it is possible to restrain some of these permissions by going into your phone's settings."
+msgstr "Beroende på din smartphone och operativsystem är det möjligt att begränsa vissa av dessa behörigheter genom att gå in i telefonens inställningar."
+
+#: web/templates/base/trackers.html:8 web/templates/base/understand.html:19
+msgid "Trackers "
+msgstr "Spårare "
+
+#: web/templates/base/trackers.html:16
+msgid "This page is mostly a rework of <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, published under CC-BY-NC license."
+msgstr "Denna sida är mestadels en omarbetning av <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>denna artikel</a>, publicerad under CC-BY-NC licens."
+
+#: web/templates/base/trackers.html:20
+msgid "What is a tracker?"
+msgstr "Vad är en tracker?"
+
+#: web/templates/base/trackers.html:22 web/templates/base/trackers.html:31
+#: web/templates/base/trackers.html:60
+msgid "See the video"
+msgstr "Se videon"
+
+#: web/templates/base/trackers.html:25
+msgid "A tracker is a piece of software whose task is to gather information on the person using the application, on how they use it, or on the smartphone being used. A tracker is usually distributed by companies as a SDK (Software Development Kit), a sort of ready-made toolkit, aiming to make it easier for application developers. To be noted : 'open source' trackers exist, their code is available and open to everyone."
+msgstr "En tracker är en programvara vars uppgift är att samla in information om personen som använder ansökan, hur de använder den, eller på smartphone som används. En spårare distribueras vanligtvis av företag som en SDK (Software Development Kit), ett slags färdigt verktygslåda, som syftar till att göra det lättare för programutvecklare. Observera: \"open source\" trackers existerar, deras kod är tillgänglig och öppen för alla."
+
+#: web/templates/base/trackers.html:29
+msgid "Are all trackers created equal?"
+msgstr "Är alla trackers skapade lika?"
+
+#: web/templates/base/trackers.html:34
+msgid "No, all trackers do not have the same function and they can present different levels of (privacy) intrusion."
+msgstr "Nej, alla trackers har inte samma funktion och de kan presentera olika nivåer av (integritet) intrång."
+
+#: web/templates/base/trackers.html:38
+msgid "<b>Crash reporters:</b> these trackers specialize in reporting application crashes. In other terms, their goal is to notify application developers that an app encountered a problem. As such, information collected at the time the application crashed will allow the developer to correct the bug."
+msgstr "<b>Krascha reportrar:</b> dessa trackers är specialiserade på att rapportera programkrascher. I andra termer, deras mål är att meddela applikationsutvecklare att en app stött på ett problem. Som sådan, information som samlas in vid den tidpunkt programmet kraschade kommer att tillåta utvecklaren att korrigera felet."
+
+#: web/templates/base/trackers.html:41
+msgid "<b>Analytics:</b> these trackers are meant to collect data usage and allow the developer to have better knowledge of their audience (for instance, to know what page you visited, or how long you remained on a given area of the page)."
+msgstr "<b>Analytiker:</b> dessa spårare är avsedda att samla in dataanvändning och tillåter utvecklaren att få bättre kunskap om sin publik (till exempel för att veta vilken sida du besökte, eller hur länge du stannade på en viss del av sidan)."
+
+#: web/templates/base/trackers.html:44
+msgid "<b>Profiling:</b> these trackers' goal is to gather as much information as possible on the application user in order to build a virtual profile. To this effect, the tracker will for instance focus on the browsing history, or on the list of installed applications, and so on."
+msgstr "<b>Profilering:</b> dessa trackers mål är att samla in så mycket information som möjligt om applikationsanvändaren för att bygga en virtuell profil. För att denna effekt, trackern kommer till exempel fokusera på webbhistorik, eller på listan över installerade program, och så vidare."
+
+#: web/templates/base/trackers.html:47
+msgid "<b>Identification:</b> these trackers are responsible for determining your digital identity. This identity may refer to an official identity or to abstract identifiers (pseudonym, etc.). The goal will be, for example, to be able to correlate an individual's online and offline activities."
+msgstr "<b>Identifiering:</b> dessa spårare är ansvariga för att bestämma din digitala identitet. Denna identitet kan hänvisa till en officiell identitet eller till abstrakta identifierare (pseudonym, etc.). Målet är till exempel att kunna korrelera en persons online- och offline-aktiviteter."
+
+#: web/templates/base/trackers.html:50
+msgid "<b>Ads:</b> these trackers aim to identify the application user in order to serve them targeted ads. This is only possible and relevant if the user already already has a digital profile established. The goal of the creator of such a tracker is to monetize their application, i.e. to make money by means of advertisement."
+msgstr "<b>Annonser:</b> dessa trackers syftar till att identifiera applikationsanvändaren för att tjäna dem riktade annonser. Detta är endast möjligt och relevant om användaren redan har en digital profil etablerad. Målet för skaparen av en sådan tracker är att tjäna pengar på deras tillämpning, dvs. att tjäna pengar med hjälp av reklam."
+
+#: web/templates/base/trackers.html:53
+msgid "<b>Location:</b> these trackers are designed to determine the geographical location of the mobile device. In order to do so, this type of tracker takes advantage of several sensors: GPS chips, surrounding cellular antennae, wi-fi networks present in the area, nearby Bluetooth beacons, or even specific sounds transmitted by loudspeakers."
+msgstr "<b>Plats:</b> dessa spårare är utformade för att bestämma den geografiska platsen för den mobila enheten. För att göra det, utnyttjar denna typ av tracker flera sensorer: GPS-chips, omgivande cellantenner, wi-fi-nätverk finns i området, närliggande Bluetooth-fyrar, eller ens specifika ljud som överförs av högtalare."
+
+#: web/templates/base/trackers.html:58
+msgid "Who puts these trackers in?"
+msgstr "Vem sätter dessa trackers i?"
+
+#: web/templates/base/trackers.html:63
+msgid "To answer these questions we must first understand how applications are made; there are 2 possible scenarios:"
+msgstr "För att besvara dessa frågor måste vi först förstå hur ansökningar görs; det finns 2 möjliga scenarier:"
+
+#: web/templates/base/trackers.html:66
+msgid "In the first case the organization that owns the product subcontracts the application development to a third party company. The contract specifies what the application needs to perform and what technologies are employed to do so. Sometimes the subcontractor already has an application template that they re-use for each new application. In such a case all applications that are developed will include these trackers whether or not they are specified in the programming contract."
+msgstr "I det första fallet den organisation som äger produkten underentreprenader applikationsutvecklingen till ett tredjepartsföretag. Kontraktet anger vad ansökan behöver för att utföra och vilka teknologier som används för att göra det. Ibland har underleverantören redan en applikationsmall som de återanvänder för varje ny applikation. I ett sådant fall kommer alla applikationer som utvecklas att inkludera dessa trackers oavsett om de anges i programmeringskontraktet."
+
+#: web/templates/base/trackers.html:69
+msgid "In the second case the organization that owns the product develops the application in-house. In that case, their own employees are in charge of deciding whether or not they want to include certain types of trackers."
+msgstr "I det andra fallet den organisation som äger produkten utvecklar applikationen internt. I så fall har deras egna anställda ansvaret för att avgöra om de vill inkludera vissa typer av spårare eller inte."
+
+#: web/templates/base/understand.html:21
+msgid "Know more about trackers and their impact on privacy"
+msgstr "Lär känna mer om trackers och deras inverkan på sekretess"
+
+#: web/templates/base/understand.html:25 web/templates/base/understand.html:39
+#: web/templates/base/understand.html:59
+msgid "Read the article"
+msgstr "Läs artikeln"
+
+#: web/templates/base/understand.html:35
+msgid "What is permission and what are the privacy issues?"
+msgstr "Vad är tillåtelse och vad är integritetsfrågor?"
+
+#: web/templates/base/understand.html:55
+msgid "A list of tools and things you can do to better manage your privacy on your smartphone"
+msgstr "En lista över verktyg och saker du kan göra för att bättre hantera din integritet på din smartphone"
+
+#: web/templates/snippets/paginator.html:6
+#: web/templates/snippets/paginator.html:13
+msgid "First"
+msgstr "Första"
+
+#: web/templates/snippets/paginator.html:9
+#: web/templates/snippets/paginator.html:16
+msgid "Previous"
+msgstr "Föregående"
+
+#: web/templates/snippets/paginator.html:34
+#: web/templates/snippets/paginator.html:41
+msgid "Next"
+msgstr "Nästa"
+
+#: web/templates/snippets/paginator.html:37
+#: web/templates/snippets/paginator.html:44
+msgid "Last"
+msgstr "Sista"
+
+#: web/templates/snippets/reports_links.html:4
+msgid "Need an overview?"
+msgstr "Behöver du en översikt?"
+
+#: web/templates/snippets/reports_links.html:10
+msgid "Latest reports"
+msgstr "Senaste rapporter"
+
+#: web/templates/snippets/reports_links.html:16
+msgid "No known trackers"
+msgstr "Inga kända trackers"
+
+#: web/templates/snippets/reports_links.html:23
+msgid "Sorted by number of trackers"
+msgstr "Sorterat efter antal trackers"
+
+#: web/templates/snippets/reports_search.html:5
+msgid "Search a report"
+msgstr "Sök i en rapport"
+
+#: web/templates/snippets/reports_search.html:6
+msgid "Application name"
+msgstr "Programmets namn"
+
+#: web/templates/snippets/reports_search.html:16
+msgid "You can search for an application using its name, handle or Google Play URL"
+msgstr "Du kan söka efter en app med hjälp av dess namn, handtag eller Google Play-URL"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "ex:"
+msgstr "ex:"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "or"
+msgstr "eller"
+
+#: web/templates/snippets/reports_search.html:21
+#, python-format
+msgid "Cannot find the application? Search it in %(url)s."
+msgstr "Kan du inte hitta appen? Sök i %(url)s."
+
+#: web/templates/snippets/reports_search.html:30
+msgid "Results"
+msgstr "Resultat"
+
+#: web/templates/snippets/reports_search.html:39
+msgid "Looking for an application we don't know yet?"
+msgstr "Letar du efter en applikation som vi inte känner till?"
+
+#: web/templates/snippets/reports_search.html:47
+msgid "Perform a new analysis"
+msgstr "Utför en ny analys"
+
+#: web/templates/snippets/reports_search_tpl.html:6
+msgid "No results found."
+msgstr "Inga resultat hittades."
+
+#: web/templates/snippets/reports_search_tpl.html:28
+msgid "tracker(s)"
+msgstr "tracker(er)"
+
+#: web/templates/snippets/reports_search_tpl.html:32
+msgid "permission(s)"
+msgstr "behörighet(er)"
+

@@ -76,7 +76,13 @@
           <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
             <img class="mr-3 mr-lg-2 mr-xl-3" alt="language selector" src="{% static 'img/langue.svg' %}">
             {% csrf_token %}
-            <input name="next" type="hidden" value="{{ request.get_full_path | slice:'3:' }}">
+            {% if LANGUAGE_CODE|length == 2 %}
+              <input name="next" type="hidden" value="{{ request.get_full_path | slice:'3:' }}">
+            {% elif LANGUAGE_CODE|length == 5 %}
+              <input name="next" type="hidden" value="{{ request.get_full_path | slice:'6:' }}">
+            {% elif LANGUAGE_CODE|length == 7 %}
+              <input name="next" type="hidden" value="{{ request.get_full_path | slice:'8:' }}">
+            {% endif %}
             <select class="custom-select custom-select-sm" name="language"
                     onchange='if(this.value !=  "{{ LANGUAGE_CODE }}") { this.form.submit(); }'>
               {% get_current_language as LANGUAGE_CODE %}
@@ -84,7 +90,7 @@
               {% get_language_info_list for LANGUAGES as languages %}
               {% for language in languages %}
                 <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
-                  {{ language.code }}
+                  {{ language.name_local }}
                 </option>
               {% endfor %}
             </select>

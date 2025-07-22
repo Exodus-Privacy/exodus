@@ -1,0 +1,523 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: exodus-privacy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 09:11+0000\n"
+"PO-Revision-Date: 2025-07-20 20:49\n"
+"Last-Translator: \n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
+"X-Crowdin-Language: pl\n"
+"X-Crowdin-File: exodus.po\n"
+"X-Crowdin-File-ID: 47\n"
+
+#: exodus/core/apk.py:52
+msgid "Your request is running"
+msgstr "Twoje żądanie jest przetwarzane"
+
+#: exodus/core/apk.py:67
+msgid "εxodus cannot scan paid applications"
+msgstr "εxodus nie może skanować płatnych aplikacji"
+
+#: exodus/core/apk.py:75
+msgid "Unable to download the APK"
+msgstr "Błąd pobierania pliku APK"
+
+#: exodus/core/apk.py:79
+msgid "Download APK: success"
+msgstr "Pobieranie pliku APK: ukończono"
+
+#: exodus/core/apk.py:87
+msgid "Unable to decode the APK"
+msgstr "Błąd dekodowania pliku APK"
+
+#: exodus/core/apk.py:91
+msgid "Decode APK: success"
+msgstr "Dekodowanie pliku APK: ukończono"
+
+#: exodus/core/apk.py:100
+msgid "Unable to compute the class list"
+msgstr "Błąd przetwarzania listy klas"
+
+#: exodus/core/apk.py:104
+msgid "List embedded classes: success"
+msgstr "Wykrycie wbudowanych klas: ukończono"
+
+#: exodus/core/apk.py:117
+msgid "Unable to create the analysis report"
+msgstr "Błąd tworzenia raportu analizy"
+
+#: exodus/core/apk.py:131
+msgid "A report already exists for this application version"
+msgstr "Dla tej wersji aplikacji istnieje już raport"
+
+#: exodus/core/apk.py:142
+msgid "Unable to get certificates"
+msgstr "Błąd wczytywania certyfikatów"
+
+#: exodus/core/apk.py:159
+msgid "Unable to compute APK fingerprint"
+msgstr "Błąd przetwarzania identyfikatora pliku APK"
+
+#: exodus/core/apk.py:168
+msgid "Unable to get application details from Google Play"
+msgstr "Błąd wczytywania szczegółów aplikacji ze Sklepu Play"
+
+#: exodus/core/apk.py:172
+msgid "Get application details: success"
+msgstr "Wczytywanie szczegółów aplikacji: ukończono"
+
+#: exodus/core/apk.py:177
+msgid "Tracker analysis: success"
+msgstr "Analiza skryptów śledzących: ukończono"
+
+#: exodus/core/apk.py:230
+msgid "Static analysis complete"
+msgstr "Analiza statyczna zakończona"
+
+#: men_customization/templates/base/base.html:38
+#: web/templates/base/base.html:40
+msgid "Home"
+msgstr "Strona główna"
+
+#: men_customization/templates/base/base.html:41
+#: web/templates/base/base.html:43
+msgid "Reports"
+msgstr "Raporty"
+
+#: men_customization/templates/base/base.html:44
+#: web/templates/base/base.html:46 web/templates/base/base.html:63
+msgid "Trackers"
+msgstr "Skrypty śledzące"
+
+#: men_customization/templates/base/base.html:47
+#: men_customization/templates/base/home.html:29
+#: web/templates/base/base.html:49 web/templates/base/home.html:28
+#: web/templates/base/understand.html:8
+msgid "Better understand"
+msgstr "Baza wiedzy"
+
+#: men_customization/templates/base/base.html:52
+#: web/templates/base/base.html:58
+msgid "Admin"
+msgstr "Administrator"
+
+#: men_customization/templates/base/base.html:55
+#: web/templates/base/base.html:61
+msgid "Index"
+msgstr "Index"
+
+#: men_customization/templates/base/base.html:56
+#: web/templates/base/base.html:62
+msgid "Analyzes"
+msgstr "Analizy"
+
+#: men_customization/templates/base/base.html:57
+#: web/templates/base/base.html:64
+msgid "Log out"
+msgstr "Wyloguj się"
+
+#: men_customization/templates/base/home.html:19
+#: web/templates/base/home.html:18
+msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
+msgstr "εxodus analizuje aplikacje Androida w celu <b>wykrycia osadzonych skryptów śledzących.</b>"
+
+#: men_customization/templates/base/home.html:21
+#: web/templates/base/home.html:20
+msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
+msgstr "Element śledzący to kawałek oprogramowania <b>przeznaczony do zbierania danych o Tobie lub o twoim użyciu.</b> Raporty εxodus mówią, jakie są składniki ciasta."
+
+#: men_customization/templates/base/home.html:23
+#: web/templates/base/home.html:22
+msgid "εxodus does not decompile applications, its analysis method is legal."
+msgstr "εxodus nie dekompiluje aplikacji, jego metoda analizy jest zgodna z prawem."
+
+#: men_customization/templates/base/home.html:30
+#: web/templates/base/home.html:29
+msgid "What is a tracker? And a permission? Are there any alternatives to protect yourself?"
+msgstr "Czym jest tracker? A pozwolenie? Czy są jakieś alternatywy do ochrony?"
+
+#: men_customization/templates/base/home.html:38
+#: web/templates/base/home.html:37
+#: web/templates/snippets/reports_search.html:27
+msgid "Let's go!"
+msgstr "Ruszajmy!"
+
+#: web/templates/base/base.html:52 web/templates/base/organization.html:8
+msgid "The organization"
+msgstr "Organizacja"
+
+#: web/templates/base/home.html:10
+msgid "The privacy audit platform for Android applications"
+msgstr "Platforma audytu prywatności dla aplikacji Android"
+
+#: web/templates/base/next.html:8 web/templates/base/understand.html:53
+msgid "What's next?"
+msgstr "Co dalej?"
+
+#: web/templates/base/next.html:16
+msgid "We know it is not easy to find alternatives in order to escape trackers within our apps. We prepared a list of tools and things you can do to better manage your privacy on your smartphone."
+msgstr "Wiemy, że nie jest łatwo znaleźć alternatywy, aby uniknąć trackerów w naszych aplikacjach. Przygotowaliśmy listę narzędzi i rzeczy, które możesz zrobić, aby lepiej zarządzać swoją prywatnością na smartfonie."
+
+#: web/templates/base/next.html:20
+msgid "Consider how you use applications"
+msgstr "Rozważ jak używasz aplikacji"
+
+#: web/templates/base/next.html:22
+msgid "When you wish to install an application or when an application asks for personal information, ask yourself the following questions:"
+msgstr "Kiedy chcesz zainstalować aplikację lub gdy aplikacja prosi Cię o informacje osobiste, zadaj sobie następujące pytania:"
+
+#: web/templates/base/next.html:25
+msgid "how many trackers does it contain and what permissions does it ask for?"
+msgstr "ile tropicieli to zawiera i o jakie uprawnienia pyta?"
+
+#: web/templates/base/next.html:26
+msgid "do I want or need to install it?"
+msgstr "Chcę lub muszę to zainstalować?"
+
+#: web/templates/base/next.html:27
+msgid "do I want or need to give it what it asks me?"
+msgstr "czy chcę lub muszę dać mu to, o co mnie prosi?"
+
+#: web/templates/base/next.html:30
+msgid "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity."
+msgstr "To do Ciebie należy decyzja, ale biorąc pod uwagę swoje codzienne wykorzystanie, możesz mieć lepszą kontrolę nad swoją tożsamością cyfrową."
+
+#: web/templates/base/next.html:33
+msgid "You could also contact the people who offer you the application if you consider it to be too intrusive and ask them some explanations on the presence of trackers and permission requests."
+msgstr "Możesz również skontaktować się z osobami, które oferują Ci aplikację, jeśli uważasz, że jest ona zbyt inwazyjna i poprosić ich o wyjaśnienia dotyczące obecności trackerów i uprawnień."
+
+#: web/templates/base/next.html:37
+msgid "Favour free software"
+msgstr "Ulubione wolne oprogramowanie"
+
+#: web/templates/base/next.html:39
+msgid "What is called 'free' software is software whose code (i.e. its recipe, or list of instructions) can be changed, copied, verified... and is thus transparent. A free software application might exist to replace an app that you already use but that may not respect your privacy."
+msgstr "To, co nazywa się \"wolnym\" oprogramowaniem, to oprogramowanie, którego kod (tj. jego przepis lub lista instrukcji) może zostać zmieniony, skopiowany, zweryfikowany... a zatem jest przezroczysty. Może istnieć wolna aplikacja zastępująca aplikację, której już używasz, ale która może nie szanować Twojej prywatności."
+
+#: web/templates/base/next.html:47
+msgid "If you are an Android user, you can install <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free software store that can be used instead or in addition to the Google Play store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be aware, however, that some F-Droid applications are not available in all languages."
+msgstr "Jeśli jesteś użytkownikiem Androida, możesz zainstalować <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. Jest to bezpłatny sklep oprogramowania, który może być używany zamiast lub jako dodatek do sklepu Google Play. Nie wahaj się odwołać do <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>dokumentacji F-Droid</a> w razie potrzeby. Należy jednak pamiętać, że niektóre aplikacje F-Droid nie są dostępne we wszystkich językach."
+
+#: web/templates/base/next.html:51
+msgid "Use the mobile website instead of the application"
+msgstr "Użyj mobilnej strony internetowej zamiast aplikacji"
+
+#: web/templates/base/next.html:53
+msgid "On a mobile device you don't necessary have to use applications: you can use mobile websites instead. One advantage in favour of the latter is the possibility to use  web browser add-ons, in the same way you can do it on your computer (e.g. uBlock Origin)."
+msgstr "Na urządzeniu mobilnym nie musisz używać aplikacji: zamiast tego możesz używać stron mobilnych. Korzyścią na korzyść tych ostatnich jest możliwość korzystania z dodatków do przeglądarki internetowej, w ten sam sposób możesz to zrobić na swoim komputerze (np uBlock Origin)."
+
+#: web/templates/base/next.html:64
+msgid "If you want a browser experience that is more respectful of your privacy, you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo Privacy Browser."
+msgstr "Jeśli chcesz korzystać z przeglądarki, która jest bardziej szanowana dla Twojej prywatności, możesz używać alternatywnych przeglądarek, takich jak Mozilla Firefox lub DuckDuckGo Privacy Browser."
+
+#: web/templates/base/next.html:67
+msgid "These browsers allow you to add your favorite websites on your home screen easily, just as an app (but lighter)."
+msgstr "Te przeglądarki umożliwiają łatwe dodawanie ulubionych stron na ekranie głównym, tak jak aplikacja (ale lżejszych)."
+
+#: web/templates/base/next.html:71
+msgid "Install an ad blocker"
+msgstr "Zainstaluj bloker reklam"
+
+#: web/templates/base/next.html:78
+msgid "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or from their own website."
+msgstr "We wszystkich przypadkach smartfony z Androidem pozwalają na instalację aplikacji blokujących reklamy, takich jak <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. Możesz go zainstalować z F-Droid (por. powyżej) lub z własnej strony internetowej."
+
+#: web/templates/base/next.html:82
+msgid "Discover alternatives"
+msgstr "Odkryj alternatywy"
+
+#: web/templates/base/next.html:84
+msgid "For broader recommendations, here are some resources you can dig in:"
+msgstr "Aby uzyskać szersze rekomendacje, oto kilka zasobów, które możesz sprawdzić:"
+
+#: web/templates/base/next.html:85
+msgid "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr ""
+
+#: web/templates/base/next.html:95
+msgid "Remain curious!"
+msgstr "Pozostań ciekawy!"
+
+#: web/templates/base/next.html:97
+msgid "In this area, what is true today may not necessarily be true tomorrow: tools might come and go, application policies can change, security breaches can be discovered..."
+msgstr "W tej dziedzinie to, co jest dzisiaj prawdą, może niekoniecznie być prawdą jutro: narzędzia mogą się pojawić, polityki aplikacji mogą się zmienić, mogą zostać, mogą zostać wykryte naruszenia bezpieczeństwa..."
+
+#: web/templates/base/next.html:100
+msgid "To this effect, you can attend workshops held by associations such as <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> or other organizations like public libraries."
+msgstr "W tym celu możesz uczestniczyć w warsztatach organizowanych przez stowarzyszenia takie jak <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> lub inne organizacje, takie jak biblioteki publiczne."
+
+#: web/templates/base/next.html:103
+msgid "To stay up to date on these topics, you can find useful resources there:"
+msgstr "Aby być na bieżąco w tych tematach, możesz sprawdzić przydatne zasoby:"
+
+#: web/templates/base/next.html:104
+msgid "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>\n"
+"      </ul>\n"
+"      "
+msgstr "\n"
+"      <ul>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>Blog EFF</a></li>\n"
+"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>Blog 'Boing Boing'</a></li>\n"
+"      </ul>\n"
+"      "
+
+#: web/templates/base/next.html:113
+msgid "For advanced users"
+msgstr "Dla zaawansowanych użytkowników"
+
+#: web/templates/base/next.html:115
+msgid "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> is an operating system based on Android; it can be used without Google services. It is possible to install it on your smartphone, provided your device is compatible."
+msgstr "Jeśli jesteś w trakcie modyfikacji, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> jest systemem operacyjnym opartym na Androidzie; może być używany bez usług Google. Instalacja na smartfonie jest możliwa, pod warunkiem że urządzenie jest kompatybilne."
+
+#: web/templates/base/organization.html:19
+msgid "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues."
+msgstr "Exodus Privacy to organizacja non-profit kierowana przez hacktiwistów. Jego celem jest pomoc ludziom w lepszym zrozumieniu problemów z śledzeniem aplikacji Android."
+
+#: web/templates/base/organization.html:22
+msgid "Discover Exodus Privacy"
+msgstr "Odkryj Exodus Privacy"
+
+#: web/templates/base/organization.html:26
+msgid "Help us!"
+msgstr "Pomóż nam!"
+
+#: web/templates/base/organization.html:28
+msgid "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help."
+msgstr "Exodus Privacy jest organizacją zarządzaną przez wolontariuszy. Chcesz rysować, tłumaczyć, kodować lub tworzyć dowolne treści, czuj się wolny: witamy każdą pomoc."
+
+#: web/templates/base/organization.html:31
+msgid "How to contribute?"
+msgstr "Jak pomóc?"
+
+#: web/templates/base/organization.html:35
+msgid "Contact us"
+msgstr "Skontaktuj się z nami"
+
+#: web/templates/base/organization.html:42
+msgid "Contact us!"
+msgstr "Skontaktuj się z nami!"
+
+#: web/templates/base/organization.html:47
+#: web/templates/base/organization.html:54
+#: web/templates/base/organization.html:59
+msgid "Follow us!"
+msgstr "Obserwuj nas!"
+
+#: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
+msgid "Permissions"
+msgstr "Uprawnienia"
+
+#: web/templates/base/permissions.html:16
+msgid "Permissions are access rights an app asks to access on your phone."
+msgstr "Uprawnienia są prawami dostępu, do których aplikacja prosi o dostęp na Twoim telefonie."
+
+#: web/templates/base/permissions.html:20
+msgid "What type of permissions?"
+msgstr "Jakie rodzaje uprawnień?"
+
+#: web/templates/base/permissions.html:22
+msgid "They can concern various features or pieces of information, such as access to your geolocation, your contacts, your files, your microphone, vibrate function, camera and so on. Exodus Privacy analyses allow you to know, on a  per app basis, which permissions are asked."
+msgstr "Mogą one dotyczyć różnych funkcji lub elementów informacji, takich jak dostęp do Twojej lokalizacji, twoich kontaktów, plików, mikrofonu, funkcji wibracji, kamery itd. Analizy prywatności Exodus pozwalają na poznanie na podstawie poszczególnych aplikacji, które uprawnienia są proszone."
+
+#: web/templates/base/permissions.html:26
+msgid "Why are some permissions indicated as dangerous?"
+msgstr "Dlaczego niektóre uprawnienia są oznaczone jako niebezpieczne?"
+
+#: web/templates/base/permissions.html:28
+msgid "Google defines <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>danger levels for permissions</a>, which we report in our analyses."
+msgstr "Google definiuje <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>poziomy zagrożenia dla uprawnień</a>, które zgłaszamy w naszych analizach."
+
+#: web/templates/base/permissions.html:32
+msgid "Do I have control over these permissions?"
+msgstr "Czy mam kontrolę nad tymi uprawnieniami?"
+
+#: web/templates/base/permissions.html:34
+msgid "Depending on your smartphone and operating system, it is possible to restrain some of these permissions by going into your phone's settings."
+msgstr "W zależności od twojego smartfonu i systemu operacyjnego można ograniczyć niektóre z tych uprawnień, przechodząc do ustawień telefonu."
+
+#: web/templates/base/trackers.html:8 web/templates/base/understand.html:19
+msgid "Trackers "
+msgstr "Skrypty śledzące "
+
+#: web/templates/base/trackers.html:16
+msgid "This page is mostly a rework of <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, published under CC-BY-NC license."
+msgstr "Ta strona jest w większości rekonstrukcją <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>tego artykułu</a>, opublikowaną na licencji CC-BY-NC."
+
+#: web/templates/base/trackers.html:20
+msgid "What is a tracker?"
+msgstr "Czym jest tracker?"
+
+#: web/templates/base/trackers.html:22 web/templates/base/trackers.html:31
+#: web/templates/base/trackers.html:60
+msgid "See the video"
+msgstr "Zobacz film"
+
+#: web/templates/base/trackers.html:25
+msgid "A tracker is a piece of software whose task is to gather information on the person using the application, on how they use it, or on the smartphone being used. A tracker is usually distributed by companies as a SDK (Software Development Kit), a sort of ready-made toolkit, aiming to make it easier for application developers. To be noted : 'open source' trackers exist, their code is available and open to everyone."
+msgstr "Traker to część oprogramowania, którego zadaniem jest gromadzenie informacji o osobie korzystającej z aplikacji, w jaki sposób korzystają z niej lub jak smartfon jets używany. Traker jest zazwyczaj dystrybuowany przez firmy jako SDK (Software Development Kit), zestaw gotowych narzędzi, mający na celu ułatwienie programistom aplikacji. Do zanotowania: istniej trackery 'otwarto źródłowe', ich kod jest dostępny i otwarty dla wszystkich."
+
+#: web/templates/base/trackers.html:29
+msgid "Are all trackers created equal?"
+msgstr "Czy wszystkie trackery są stworzone jednakowo?"
+
+#: web/templates/base/trackers.html:34
+msgid "No, all trackers do not have the same function and they can present different levels of (privacy) intrusion."
+msgstr "Nie, wszystkie trackery nie mają tej samej funkcji i mogą wykazywać różne poziomy ingerencji (prywatności)."
+
+#: web/templates/base/trackers.html:38
+msgid "<b>Crash reporters:</b> these trackers specialize in reporting application crashes. In other terms, their goal is to notify application developers that an app encountered a problem. As such, information collected at the time the application crashed will allow the developer to correct the bug."
+msgstr "<b>Zgłaszacze awarii:</b> te trackery specjalizują się w zgłaszaniu awarii aplikacji. Innymi słowy, ich celem jest powiadomienie twórców aplikacji, że aplikacja napotkała problem. Informacje zgromadzone w momencie awarii aplikacji pozwolą deweloperowi naprawić błąd."
+
+#: web/templates/base/trackers.html:41
+msgid "<b>Analytics:</b> these trackers are meant to collect data usage and allow the developer to have better knowledge of their audience (for instance, to know what page you visited, or how long you remained on a given area of the page)."
+msgstr "<b>Analityka:</b> te trackery mają na celu zbieranie danych i umożliwienie deweloperowi posiadania lepszej wiedzy na temat ich odbiorców (na przykład aby wiedzieć, jaką stronę odwiedziłeś lub jak długo pozostałeś na danym obszarze strony)."
+
+#: web/templates/base/trackers.html:44
+msgid "<b>Profiling:</b> these trackers' goal is to gather as much information as possible on the application user in order to build a virtual profile. To this effect, the tracker will for instance focus on the browsing history, or on the list of installed applications, and so on."
+msgstr "<b>Profilowanie:</b> celem tych trackerów jest zebranie jak największej ilości informacji na temat użytkownika aplikacji w celu zbudowania wirtualnego profilu. W tym celu tracker skupi się na historii przeglądania lub na liście zainstalowanych aplikacji i tak dalej."
+
+#: web/templates/base/trackers.html:47
+msgid "<b>Identification:</b> these trackers are responsible for determining your digital identity. This identity may refer to an official identity or to abstract identifiers (pseudonym, etc.). The goal will be, for example, to be able to correlate an individual's online and offline activities."
+msgstr "<b>Identyfikacja:</b> te trackery są odpowiedzialne za określenie Twojej tożsamości cyfrowej. Tożsamość ta może odnosić się do tożsamości urzędowej lub do identyfikatorów abstrakcyjnych (pseudonimy itp.). Celem będzie na przykład korelacja działań osób fizycznych w internecie i poza internetem."
+
+#: web/templates/base/trackers.html:50
+msgid "<b>Ads:</b> these trackers aim to identify the application user in order to serve them targeted ads. This is only possible and relevant if the user already already has a digital profile established. The goal of the creator of such a tracker is to monetize their application, i.e. to make money by means of advertisement."
+msgstr "<b>Reklamy:</b> te trackery mają na celu zidentyfikowanie użytkownika aplikacji, aby dostarczać im ukierunkowane reklamy. Jest to możliwe i istotne tylko wtedy, gdy użytkownik ma już ustalony profil cyfrowy. Celem twórcy takich trackerów jest monetyzacja ich aplikacji, tj. zarabianie za pomocą reklamy."
+
+#: web/templates/base/trackers.html:53
+msgid "<b>Location:</b> these trackers are designed to determine the geographical location of the mobile device. In order to do so, this type of tracker takes advantage of several sensors: GPS chips, surrounding cellular antennae, wi-fi networks present in the area, nearby Bluetooth beacons, or even specific sounds transmitted by loudspeakers."
+msgstr "<b>Lokalizacja:</b> te trackery są zaprojektowane do określenia położenia geograficznego urządzenia mobilnego. Aby to zrobić, ten typ trackera korzysta z kilku czujników: chipów GPS, otaczające anteny komórkowe, sieci wi-fi obecne w obszarze, pobliskich nadajników Bluetooth lub nawet konkretne dźwięki emitowane przez głośniki."
+
+#: web/templates/base/trackers.html:58
+msgid "Who puts these trackers in?"
+msgstr "Kto umieszcza te trackery?"
+
+#: web/templates/base/trackers.html:63
+msgid "To answer these questions we must first understand how applications are made; there are 2 possible scenarios:"
+msgstr "Aby odpowiedzieć na te pytania, musimy najpierw zrozumieć, w jaki sposób tworzone są aplikacje; istnieją dwa możliwe scenariusze:"
+
+#: web/templates/base/trackers.html:66
+msgid "In the first case the organization that owns the product subcontracts the application development to a third party company. The contract specifies what the application needs to perform and what technologies are employed to do so. Sometimes the subcontractor already has an application template that they re-use for each new application. In such a case all applications that are developed will include these trackers whether or not they are specified in the programming contract."
+msgstr "W pierwszym przypadku organizacja będąca właścicielem produktu zleca zaprojektowanie aplikacji przedsiębiorstwu będącemu osobą trzecią. Umowa określa, co musi osiągnąć aplikacja i jakie technologie są do niej stosowane. Czasami podwykonawca posiada już szablon aplikacji, który ponownie wykorzystuje do każdej nowej aplikacji. W takim przypadku wszystkie opracowane aplikacje będą obejmować te trackery, niezależnie od tego, czy są one określone w umowie programowej."
+
+#: web/templates/base/trackers.html:69
+msgid "In the second case the organization that owns the product develops the application in-house. In that case, their own employees are in charge of deciding whether or not they want to include certain types of trackers."
+msgstr "W drugim przypadku organizacja będąca właścicielem produktu rozwija aplikację we własnym zakresie. W takim przypadku ich pracownicy są odpowiedzialni za podjęcie decyzji, czy chcą uwzględnić niektóre rodzaje trackerów."
+
+#: web/templates/base/understand.html:21
+msgid "Know more about trackers and their impact on privacy"
+msgstr "Dowiedz się więcej o trackerach i ich wpływie na prywatność"
+
+#: web/templates/base/understand.html:25 web/templates/base/understand.html:39
+#: web/templates/base/understand.html:59
+msgid "Read the article"
+msgstr "Przeczytaj artykuł"
+
+#: web/templates/base/understand.html:35
+msgid "What is permission and what are the privacy issues?"
+msgstr "Czym jest zezwolenie i jakie są kwestie dotyczące prywatności?"
+
+#: web/templates/base/understand.html:55
+msgid "A list of tools and things you can do to better manage your privacy on your smartphone"
+msgstr "Lista narzędzi i rzeczy, które możesz wykorzystać, aby lepiej zarządzać swoją prywatnością na smartfonie"
+
+#: web/templates/snippets/paginator.html:6
+#: web/templates/snippets/paginator.html:13
+msgid "First"
+msgstr "Pierwszy"
+
+#: web/templates/snippets/paginator.html:9
+#: web/templates/snippets/paginator.html:16
+msgid "Previous"
+msgstr "Poprzedni"
+
+#: web/templates/snippets/paginator.html:34
+#: web/templates/snippets/paginator.html:41
+msgid "Next"
+msgstr "Następny"
+
+#: web/templates/snippets/paginator.html:37
+#: web/templates/snippets/paginator.html:44
+msgid "Last"
+msgstr "Ostatni"
+
+#: web/templates/snippets/reports_links.html:4
+msgid "Need an overview?"
+msgstr "Potrzebujesz przeglądu?"
+
+#: web/templates/snippets/reports_links.html:10
+msgid "Latest reports"
+msgstr "Najnowsze raporty"
+
+#: web/templates/snippets/reports_links.html:16
+msgid "No known trackers"
+msgstr "Brak znanych skryptów śledzących"
+
+#: web/templates/snippets/reports_links.html:23
+msgid "Sorted by number of trackers"
+msgstr "Sortowane według liczby skryptów śledzących"
+
+#: web/templates/snippets/reports_search.html:5
+msgid "Search a report"
+msgstr "Szukaj raportu"
+
+#: web/templates/snippets/reports_search.html:6
+msgid "Application name"
+msgstr "Nazwa aplikacji"
+
+#: web/templates/snippets/reports_search.html:16
+msgid "You can search for an application using its name, handle or Google Play URL"
+msgstr "Możesz wyszukać aplikację używając jej nazwy lub adresu URL Google Play"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "ex:"
+msgstr "eks:"
+
+#: web/templates/snippets/reports_search.html:18
+msgid "or"
+msgstr "lub"
+
+#: web/templates/snippets/reports_search.html:21
+#, python-format
+msgid "Cannot find the application? Search it in %(url)s."
+msgstr "Nie można znaleźć aplikacji? Szukaj w %(url)s."
+
+#: web/templates/snippets/reports_search.html:30
+msgid "Results"
+msgstr "Wyniki"
+
+#: web/templates/snippets/reports_search.html:39
+msgid "Looking for an application we don't know yet?"
+msgstr "Szukasz aplikacji, której jeszcze nie znamy?"
+
+#: web/templates/snippets/reports_search.html:47
+msgid "Perform a new analysis"
+msgstr "Wykonaj nową analizę"
+
+#: web/templates/snippets/reports_search_tpl.html:6
+msgid "No results found."
+msgstr "Brak wyników."
+
+#: web/templates/snippets/reports_search_tpl.html:28
+msgid "tracker(s)"
+msgstr "tracker(y)"
+
+#: web/templates/snippets/reports_search_tpl.html:32
+msgid "permission(s)"
+msgstr "uprawnienia"
+
