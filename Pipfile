@@ -18,7 +18,7 @@ google-play-scraper = "~=1.2.2"
 gunicorn = "~=23.0"
 mistune = "~=0.8"
 psycopg2 = "~=2.9.9"
-requests = "~=2.27"
+requests = "~=2.32"
 protobuf = "~=3.20.1"
 whitenoise = "~=6.2.0"
 
