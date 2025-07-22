@@ -161,7 +161,7 @@
                 <span class="p-l-28px" </span>
               {% endif %}
               {% if perm.severity == 'Special' or perm.severity == 'Dangerous' %}
-                &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg">&nbsp;
+                &nbsp;<img  data-toggle="tooltip" data-placement="top" title="Protection level: {{ perm.protection_level }}" src="/static/img/danger.svg" alt="{% trans "Red exclamation mark" %}">&nbsp;
               {% endif %}
               <span data-toggle="tooltip" data-placement="top" title="{{ perm.prefix }}.{{ perm.short_name }}">{{ perm.short_name }}</span>
               {% if perm.label %}
@@ -172,7 +172,7 @@
           <p>
             <small class="text-muted font-italic">
               {% blocktrans trimmed %}
-                The icon &nbsp;<img src="/static/img/danger.svg">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">Google's protection levels</a>.
+                The icon &nbsp;<img src="/static/img/danger.svg" alt="Red exclamation mark">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target="_blank" rel="noreferrer" href="https://developer.android.com/guide/topics/permissions/overview">Google's protection levels</a>.
               {% endblocktrans %}
             </small>
           </p>
