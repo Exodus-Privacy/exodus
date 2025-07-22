@@ -14,7 +14,8 @@ from tempfile import NamedTemporaryFile
 
 from django.conf import settings
 from google_play_scraper import app as google_app
-from minio.error import (ResponseError)
+#from minio.error import (ResponseError)
+from minio.error import MinioException
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
 from exodus.core.storage import RemoteStorageHelper
@@ -53,8 +54,8 @@ class StaticAnalysis(CoreSA):
 
             try:
                 storage.put_file(f.name, icon_name)
-            except ResponseError as err:
-                logging.info(err)
+            except MinioException:
+                logging.exception(f"An error occured while putting the file '{f.name}' in storage")
                 return None
 
             icon_phash = self.get_phash(f.name)

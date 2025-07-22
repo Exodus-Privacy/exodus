@@ -1,7 +1,7 @@
 from IPython.core.magics import logging
 from django.conf import settings
 from minio import Minio
-from minio.error import (ResponseError, BucketAlreadyOwnedByYou, BucketAlreadyExists)
+from minio.error import MinioException
 
 
 class RemoteStorageHelper():
@@ -38,8 +38,8 @@ class RemoteStorageHelper():
             )
             for obj in objects:
                 self.minio_client.remove_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, obj.object_name)
-        except ResponseError as err:
-            logging.info(err)
+        except MinioException:
+            logging.exception(f"An error occured with MinIO while clearing prefix '{ prefix }'")
 
     def put_file(self, local_path, remote_name):
         """
@@ -76,8 +76,8 @@ class RemoteStorageHelper():
                 fp.write(f.read())
                 try:
                     self.minio_client.fput_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, remote_name, fp.name)
-                except ResponseError as err:
-                    logging.info(err)
+                except MinioException:
+                    logging.exception(f"An error occured while storing {fp.name} to {remote_name}")
                     return ''
                 return remote_name
         except Exception as e:
