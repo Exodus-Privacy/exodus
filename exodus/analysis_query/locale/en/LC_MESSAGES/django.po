@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-22 21:51+0000\n"
+"POT-Creation-Date: 2025-07-23 16:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,11 +64,6 @@ msgstr ""
 msgid "Submit an application handle or URL to run a new analysis"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:23
-#: analysis_query/templates/query_upload.html:23
-msgid "Magic wand above a test tube"
-msgstr ""
-
 #: analysis_query/templates/query_submit.html:27
 msgid ""
 "It is currently impossible to submit new analysis. Sorry for the "
@@ -80,7 +75,7 @@ msgid "URL of the application"
 msgstr ""
 
 #: analysis_query/templates/query_submit.html:46
-msgid "Magnifying glass"
+msgid "Search"
 msgstr ""
 
 #: analysis_query/templates/query_submit.html:51
@@ -177,10 +172,6 @@ msgstr ""
 
 #: analysis_query/templates/query_wait.html:15
 msgid "Analysis in progress..."
-msgstr ""
-
-#: analysis_query/templates/query_wait.html:27
-msgid "Sparkles above a test tube"
 msgstr ""
 
 #: analysis_query/templates/query_wait.html:30

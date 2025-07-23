@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-22 21:51+0000\n"
+"POT-Creation-Date: 2025-07-23 16:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -237,10 +237,6 @@ msgid ""
 "you already use but that may not respect your privacy."
 msgstr ""
 
-#: web/templates/base/next.html:49
-msgid "F-droid logo: green and blue cubic robot with a reverse C on it"
-msgstr ""
-
 #: web/templates/base/next.html:53
 msgid ""
 "If you are an Android user, you can install <a target='_blank' "
@@ -264,14 +260,6 @@ msgid ""
 "your computer (e.g. uBlock Origin)."
 msgstr ""
 
-#: web/templates/base/next.html:63
-msgid "Firefox logo: orange to yellow fox wrapped around a blue sphere"
-msgstr ""
-
-#: web/templates/base/next.html:66
-msgid "DuckDuckGo logo: white duck with a green bow tie on an orange circle"
-msgstr ""
-
 #: web/templates/base/next.html:70
 msgid ""
 "If you want a browser experience that is more respectful of your privacy, "
@@ -287,10 +275,6 @@ msgstr ""
 
 #: web/templates/base/next.html:77
 msgid "Install an ad blocker"
-msgstr ""
-
-#: web/templates/base/next.html:80
-msgid "Blokada logo: orange striated shield"
 msgstr ""
 
 #: web/templates/base/next.html:84
@@ -597,10 +581,6 @@ msgstr ""
 msgid "Better understand what are trackers, permissions and what to do next"
 msgstr ""
 
-#: web/templates/base/understand.html:21
-msgid "Eye on a phone"
-msgstr ""
-
 #: web/templates/base/understand.html:27
 msgid "Know more about trackers and their impact on privacy"
 msgstr ""
@@ -612,14 +592,6 @@ msgstr ""
 
 #: web/templates/base/understand.html:41
 msgid "What is permission and what are the privacy issues?"
-msgstr ""
-
-#: web/templates/base/understand.html:49
-msgid "Location point on a phone"
-msgstr ""
-
-#: web/templates/base/understand.html:55
-msgid "Tree hearts on a phone"
 msgstr ""
 
 #: web/templates/base/understand.html:61
@@ -673,7 +645,7 @@ msgid "Application name"
 msgstr ""
 
 #: web/templates/snippets/reports_search.html:10
-msgid "Magnifying glass"
+msgid "Search"
 msgstr ""
 
 #: web/templates/snippets/reports_search.html:16
