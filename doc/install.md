@@ -90,7 +90,7 @@ This setup is based on a Debian 11 (Bullseye) configuration.
 - Install system dependencies
 
 ```bash
-sudo apt install git virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev libpq-dev pipenv
+sudo apt install git gettext virtualenv postgresql-13 rabbitmq-server build-essential libssl-dev dexdump libffi-dev python3-dev libxml2-dev libxslt1-dev libpq-dev pipenv
 ```
 
 - Install [apkeep](https://github.com/EFForg/apkeep), the tool used to download applications from the Google Play Store.
@@ -149,13 +149,19 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-#### 7 - Create admin user
+#### 7 - Compile translations
+
+```bash
+python manage.py compilemessages
+```
+
+#### 8 - Create admin user
 
 ```bash
 python manage.py createsuperuser
 ```
 
-#### 8 - Install Minio server
+#### 9 - Install Minio server
 
 Minio is in charge to store files like APK, icons, flow and pcap files.
 
@@ -197,7 +203,7 @@ EOL
 mkdir -p /tmp/exodus-storage
 ```
 
-#### 9 - Start Minio
+#### 10 - Start Minio
 
 ```bash
 $HOME/minio server /tmp/exodus-storage --console-address :9001
@@ -207,7 +213,7 @@ Minio API is now listening on `9000` port and the browser interface is available
 at [http://127.0.0.1:9001](http://127.0.0.1:9001). Use `exodusexodus` as both login
 and password.
 
-#### 10 - Start the εxodus worker and scheduler
+#### 11 - Start the εxodus worker and scheduler
 
 The εxodus handle asynchronous tasks submitted by the front-end.
 You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
@@ -221,7 +227,7 @@ celery -A exodus.core worker --beat -l debug -S django
 
 Now, the εxodus worker and scheduler are waiting for tasks.
 
-#### 11 - Start the εxodus front-end
+#### 12 - Start the εxodus front-end
 
 You have to activate the virtual venv and `cd` into the same directory as `manage.py` file.
 
@@ -234,7 +240,7 @@ python manage.py runserver
 
 Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-#### 12 - Import the trackers definitions
+#### 13 - Import the trackers definitions
 
 Activate the εxodus virtual venv, `cd` into the same directory as `manage.py` file and execute the following commands:
 
@@ -245,7 +251,7 @@ python manage.py importtrackers
 
 Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
 
-#### 13 - Get the F-droid index data
+#### 14 - Get the F-droid index data
 
 An initial F-droid index manual download may be required:
 
