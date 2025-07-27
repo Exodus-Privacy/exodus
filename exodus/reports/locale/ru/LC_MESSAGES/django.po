@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 09:57+0000\n"
-"PO-Revision-Date: 2025-07-20 20:58\n"
+"POT-Creation-Date: 2025-07-22 21:51+0000\n"
+"PO-Revision-Date: 2025-07-27 13:01\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -17,13 +17,23 @@ msgstr ""
 "X-Crowdin-File: reports.po\n"
 "X-Crowdin-File-ID: 51\n"
 
-#: reports/templates/report_details.html:10
+#: reports/templates/report_details.html:6
+#: reports/templates/report_details.html:7
+msgid "Known trackers, permissions and informations about this specific version of this application"
+msgstr "Известные трекеры, разрешения и информация об этой конкретной версии данного приложения"
+
+#: reports/templates/report_details.html:8
+#: reports/templates/report_details.html:9
+msgid "Report for"
+msgstr "Отчёт для"
+
+#: reports/templates/report_details.html:19
 msgid "Prefix in storage:"
 msgstr "Префикс в хранилище:"
 
-#: reports/templates/report_details.html:31
-#: reports/templates/report_details.html:98
-#: reports/templates/reports_list.html:58
+#: reports/templates/report_details.html:40
+#: reports/templates/report_details.html:107
+#: reports/templates/reports_list.html:71
 msgid "tracker"
 msgid_plural "trackers"
 msgstr[0] "трекер"
@@ -31,9 +41,9 @@ msgstr[1] "трекеры"
 msgstr[2] "трекеры"
 msgstr[3] "трекеров"
 
-#: reports/templates/report_details.html:39
-#: reports/templates/report_details.html:135
-#: reports/templates/reports_list.html:64
+#: reports/templates/report_details.html:48
+#: reports/templates/report_details.html:144
+#: reports/templates/reports_list.html:77
 msgid "permission"
 msgid_plural "permissions"
 msgstr[0] "разрешение"
@@ -41,51 +51,51 @@ msgstr[1] "разрешения"
 msgstr[2] "pending requests"
 msgstr[3] "разрешений"
 
-#: reports/templates/report_details.html:48
+#: reports/templates/report_details.html:57
 msgid "Version"
 msgstr "Версия"
 
-#: reports/templates/report_details.html:49
+#: reports/templates/report_details.html:58
 msgid "see other versions"
 msgstr "посмотреть другие версии"
 
-#: reports/templates/report_details.html:53
+#: reports/templates/report_details.html:62
 msgid "Source:"
 msgstr "Источник:"
 
-#: reports/templates/report_details.html:64
+#: reports/templates/report_details.html:73
 msgid "Created by"
 msgstr "Создано"
 
-#: reports/templates/report_details.html:68
+#: reports/templates/report_details.html:77
 msgid "Downloads:"
 msgstr "Загрузки:"
 
-#: reports/templates/report_details.html:72
+#: reports/templates/report_details.html:81
 msgid "Report created on"
 msgstr "Отчёт создан"
 
-#: reports/templates/report_details.html:74
+#: reports/templates/report_details.html:83
 msgid "and updated on"
 msgstr "и обновлено"
 
-#: reports/templates/report_details.html:80
+#: reports/templates/report_details.html:89
 msgid "New analysis"
 msgstr "Новый анализ"
 
-#: reports/templates/report_details.html:81
+#: reports/templates/report_details.html:90
 msgid "Delete this report"
 msgstr "Удалить этот отчёт"
 
-#: reports/templates/report_details.html:86
+#: reports/templates/report_details.html:95
 msgid "See on F-Droid"
 msgstr "Смотреть на F-Droid"
 
-#: reports/templates/report_details.html:88
+#: reports/templates/report_details.html:97
 msgid "See on Google Play"
 msgstr "Смотреть в Google Play"
 
-#: reports/templates/report_details.html:104
+#: reports/templates/report_details.html:113
 msgid "We have found <b>code signature</b> of the following tracker in the application:"
 msgid_plural "We have found <b>code signature</b> of the following trackers in the application:"
 msgstr[0] "Мы нашли <b>сигнатуру кода</b> следующего трекера в приложении:"
@@ -93,25 +103,25 @@ msgstr[1] "Мы нашли <b>сигнатуру кода</b> следующих
 msgstr[2] "Мы нашли <b>сигнатуру кода</b> следующих трекеров в приложении:"
 msgstr[3] "Мы нашли <b>сигнатуру кода</b> следующих трекеров в приложении:"
 
-#: reports/templates/report_details.html:120
+#: reports/templates/report_details.html:129
 msgid "We have not found <b>code signature</b> of any tracker we know in the application."
 msgstr "Мы не обнаружили <b>сигнатуру кода</b> ни одного трекера о котором мы знаем в приложении."
 
-#: reports/templates/report_details.html:122
-#: reports/templates/report_details.html:196
+#: reports/templates/report_details.html:131
+#: reports/templates/report_details.html:205
 msgid "The application could contain tracker(s) we do not know yet."
 msgstr "Приложение может содержать трекер(ы), которые мы ещё не знаем."
 
-#: reports/templates/report_details.html:125
+#: reports/templates/report_details.html:134
 msgid "A tracker is a piece of software meant to collect data about you or your usages."
 msgstr "Трекер это часть программного обеспечения, предназначенная для сбора данных о вас или ваших использованиях."
 
-#: reports/templates/report_details.html:126
-#: reports/templates/report_details.html:174
+#: reports/templates/report_details.html:135
+#: reports/templates/report_details.html:183
 msgid "Learn more"
 msgstr "Узнать больше"
 
-#: reports/templates/report_details.html:141
+#: reports/templates/report_details.html:150
 msgid "We have found the following permission in the application:"
 msgid_plural "We have found the following permissions in the application:"
 msgstr[0] "Мы нашли следующее разрешение в приложении:"
@@ -119,131 +129,158 @@ msgstr[1] "Мы нашли следующие разрешения в прило
 msgstr[2] "Мы нашли следующие разрешения в приложении:"
 msgstr[3] "Мы нашли следующие разрешения в приложении:"
 
-#: reports/templates/report_details.html:165
-msgid "The icon &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google's protection levels</a>."
-msgstr "Значок &nbsp;<img src=\"/static/img/danger.svg\">&nbsp; означает 'Опасный' или 'Специальный' уровень в соответствии с <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">уровнями безопасности Google</a>."
+#: reports/templates/report_details.html:164
+msgid "Red exclamation mark"
+msgstr "Красный восклицательный знак"
 
-#: reports/templates/report_details.html:171
+#: reports/templates/report_details.html:174
+msgid "The icon &nbsp;<img src=\"/static/img/danger.svg\" alt=\"Red exclamation mark\">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google's protection levels</a>."
+msgstr "Значок &nbsp;<img src=\"/static/img/danger.svg\" alt=\"Красный восклицательный знак\">&nbsp; обозначает уровень угрозы «Опасность» или «Особый» в соответствии с <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">уровнем защиты Google</a>."
+
+#: reports/templates/report_details.html:180
 msgid "This application doesn't require any permissions."
 msgstr "Это приложение не требует никаких разрешений."
 
-#: reports/templates/report_details.html:173
+#: reports/templates/report_details.html:182
 msgid "Permissions are actions the application can do on your phone."
 msgstr "Разрешения - это действия, которые может сделать приложение на вашем телефоне."
 
-#: reports/templates/report_details.html:180
+#: reports/templates/report_details.html:189
 msgid "What's next?"
 msgstr "Что дальше?"
 
-#: reports/templates/report_details.html:181
+#: reports/templates/report_details.html:190
 msgid "If this application does not sufficiently respect your privacy in your opinion, some alternatives exist!"
 msgstr "Если это приложение не в достаточной степени уважает вашу конфиденциальность на ваш взгляд, некоторые альтернативы существуют!"
 
-#: reports/templates/report_details.html:187
+#: reports/templates/report_details.html:196
 msgid "Read the article"
 msgstr "Читать статью"
 
-#: reports/templates/report_details.html:193
+#: reports/templates/report_details.html:202
 msgid "This report lists trackers signatures found by static analysis in this APK. This is not a proof of activity of these trackers."
 msgstr "В этом отчёте перечислены сигнатуры трекеров, найденные статическим анализом в APK. Это не является доказательством активности этих трекеров."
 
-#: reports/templates/report_details.html:198
+#: reports/templates/report_details.html:207
 msgid "If you have doubts about this report"
 msgstr "Если у вас есть сомнения по поводу этого отчёта"
 
-#: reports/templates/report_details.html:198
+#: reports/templates/report_details.html:207
 msgid "contact us"
 msgstr "свяжитесь с нами"
 
-#: reports/templates/report_details.html:204
+#: reports/templates/report_details.html:213
 msgid "Signed by"
 msgstr "Подписано"
 
-#: reports/templates/report_details.html:208
+#: reports/templates/report_details.html:217
 msgid "Fingerprint:"
 msgstr "Отпечаток:"
 
-#: reports/templates/report_details.html:209
+#: reports/templates/report_details.html:218
 msgid "Issuer:"
 msgstr "Издатель:"
 
-#: reports/templates/report_details.html:210
+#: reports/templates/report_details.html:219
 msgid "Subject:"
 msgstr "Тема:"
 
-#: reports/templates/report_details.html:211
+#: reports/templates/report_details.html:220
 msgid "Serial:"
 msgstr "Серийный номер:"
 
-#: reports/templates/report_details.html:215
+#: reports/templates/report_details.html:224
 msgid "No signatures found <b>OR</b> x509 certificate does not comply the RFC."
 msgstr "Сигнатур не обнаружено <b>ИЛИ</b> сертификат x509 не соответствует RFC."
 
-#: reports/templates/report_details.html:221
+#: reports/templates/report_details.html:230
 msgid "See APK fingerprint"
 msgstr "Смотреть отпечаток APK"
 
-#: reports/templates/report_details.html:224
+#: reports/templates/report_details.html:233
 msgid "Text"
 msgstr "Текст"
 
-#: reports/templates/report_details.html:232
-#: reports/templates/report_details.html:256
+#: reports/templates/report_details.html:241
+#: reports/templates/report_details.html:265
 msgid "APK fingerprint"
 msgstr "Отпечаток APK"
 
-#: reports/templates/report_details.html:237
+#: reports/templates/report_details.html:246
 msgid "APK checksum:"
 msgstr "Контрольная сумма APK:"
 
-#: reports/templates/report_details.html:238
+#: reports/templates/report_details.html:247
 msgid "Handle:"
 msgstr "Идентификатор:"
 
-#: reports/templates/report_details.html:239
+#: reports/templates/report_details.html:248
 msgid "Name:"
 msgstr "Имя:"
 
-#: reports/templates/report_details.html:240
+#: reports/templates/report_details.html:249
 msgid "UAID:"
 msgstr "UAID:"
 
-#: reports/templates/report_details.html:241
+#: reports/templates/report_details.html:250
 msgid "Version:"
 msgstr "Версия:"
 
-#: reports/templates/report_details.html:242
+#: reports/templates/report_details.html:251
 msgid "Version code:"
 msgstr "Код версии:"
 
-#: reports/templates/report_details.html:243
+#: reports/templates/report_details.html:252
 msgid "Icon hash:"
 msgstr "Хэш иконки:"
 
-#: reports/templates/report_details.html:247
-#: reports/templates/report_details.html:263
+#: reports/templates/report_details.html:256
+#: reports/templates/report_details.html:272
 msgid "Close"
 msgstr "Закрыть"
 
-#: reports/templates/reports_home.html:10
-#: reports/templates/reports_list.html:11
+#: reports/templates/reports_home.html:5 reports/templates/reports_home.html:6
+msgid "Search reports by application name, handle or URL"
+msgstr "Поиск отчётов по имени приложения, идентификатору или URL"
+
+#: reports/templates/reports_home.html:7 reports/templates/reports_home.html:8
+#: reports/templates/reports_home.html:16
+#: reports/templates/reports_list.html:24
 msgid "Reports"
 msgstr "Отчёты"
 
-#: reports/templates/reports_list.html:17
+#: reports/templates/reports_list.html:6 reports/templates/reports_list.html:7
+msgid "Reports of all analyzed versions of this application"
+msgstr "Отчёты по всем проанализированным версиям этого приложения"
+
+#: reports/templates/reports_list.html:8 reports/templates/reports_list.html:9
+msgid "Reports list for"
+msgstr "Список отчётов для"
+
+#: reports/templates/reports_list.html:11
+#: reports/templates/reports_list.html:12
+msgid "All applications reports sorted by latest reports, number of trackers or no known trackers"
+msgstr "Отчёты о приложениях отсортированы по датам отчётов, количеству трекеров или отсутствию известных трекеров"
+
+#: reports/templates/reports_list.html:13
+#: reports/templates/reports_list.html:14
+msgid "Reports list"
+msgstr "Список отчётов"
+
+#: reports/templates/reports_list.html:30
 #, python-format
 msgid "%(reports_total_count)s reports for %(apps_total_count)s applications"
 msgstr "%(reports_total_count)s отчётов для %(apps_total_count)s приложений"
 
-#: reports/templates/reports_list.html:25
+#: reports/templates/reports_list.html:38
 msgid "Latest reports"
 msgstr "Последние отчёты"
 
-#: reports/templates/reports_list.html:27
+#: reports/templates/reports_list.html:40
 msgid "Sorted by number of trackers"
 msgstr "Сортировка по количеству трекеров"
 
-#: reports/templates/reports_list.html:29
+#: reports/templates/reports_list.html:42
 msgid "No known trackers"
 msgstr "Нет известных трекеров"
 
