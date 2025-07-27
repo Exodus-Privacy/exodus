@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 10:56+0000\n"
-"PO-Revision-Date: 2025-07-20 14:31\n"
+"POT-Creation-Date: 2025-07-23 16:39+0000\n"
+"PO-Revision-Date: 2025-07-27 13:00\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et_EE\n"
@@ -42,102 +42,150 @@ msgstr "Mittetoetatud faililaiend"
 msgid "You need to be registered"
 msgstr "Sa pead olema registreerunud"
 
+#: analysis_query/templates/query_error.html:3
+#: analysis_query/templates/query_error.html:4
+msgid "Error during an analysis"
+msgstr "Viga analüüsimisel"
+
+#: analysis_query/templates/query_error.html:5
+#: analysis_query/templates/query_error.html:6
+#: analysis_query/templates/query_submit.html:8
 #: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_submit.html:15
+#: analysis_query/templates/query_upload.html:8
 #: analysis_query/templates/query_upload.html:9
+#: analysis_query/templates/query_upload.html:15
+#: analysis_query/templates/query_wait.html:8
+#: analysis_query/templates/query_wait.html:9
 msgid "New analysis"
 msgstr "Uus analüüs"
 
-#: analysis_query/templates/query_submit.html:21
+#: analysis_query/templates/query_submit.html:6
+#: analysis_query/templates/query_submit.html:7
+msgid "Submit an application handle or URL to run a new analysis"
+msgstr "Uue analüüsi käivitamiseks sisesta rakenduse tunnus või võrguaadress"
+
+#: analysis_query/templates/query_submit.html:27
 msgid "It is currently impossible to submit new analysis. Sorry for the inconvenience!"
 msgstr "Hetkel pole võimalik uusi aruandeid koostada. Vabandame ebamugavuste pärast!"
 
-#: analysis_query/templates/query_submit.html:36
+#: analysis_query/templates/query_submit.html:42
 msgid "URL of the application"
 msgstr "Rakenduse aadress ehk url"
 
-#: analysis_query/templates/query_submit.html:45
+#: analysis_query/templates/query_submit.html:46
+msgid "Search"
+msgstr "Otsi"
+
+#: analysis_query/templates/query_submit.html:51
 msgid "Source:"
 msgstr "Allikas:"
 
-#: analysis_query/templates/query_submit.html:55
+#: analysis_query/templates/query_submit.html:61
 msgid "Free applications only. Works also with the application handle."
 msgstr "Toimib vaid tasuta rakenduste puhul. Võid kasutada ka rakenduse tunnust."
 
-#: analysis_query/templates/query_submit.html:67
-#: analysis_query/templates/query_upload.html:50
+#: analysis_query/templates/query_submit.html:64
+msgid "\n"
+"                Applications with geographic restrictions cannot be scanned -\n"
+"                read our <a target=\"_blank\" rel=\"noreferrer\" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>\n"
+"              "
+msgstr "\n"
+"                Geograafiliste piirangutega rakendusi ei saa analüüsida -\n"
+"                lisateavet leiad <a target=\"_blank\" rel=\"noreferrer\" href='https://exodus-privacy.eu.org/en/post/covid/'>meie ajaveebi postitusest</a>\n"
+"              "
+
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:56
 msgid "Perform analysis"
 msgstr "Käivita analüüs"
 
-#: analysis_query/templates/query_submit.html:73
+#: analysis_query/templates/query_submit.html:81
 msgid "I prefer to upload an application"
 msgstr "Ma eelistan rakendust üles laadida"
 
-#: analysis_query/templates/query_submit.html:80
-#: analysis_query/templates/query_upload.html:57
+#: analysis_query/templates/query_submit.html:86
+#: analysis_query/templates/query_upload.html:61
+#: analysis_query/templates/query_wait.html:32
+msgid "Animated line of marbles going up and down in waves"
+msgstr "Animeeritud marmorkuulide rivi, mis võngub üles-alla"
+
+#: analysis_query/templates/query_submit.html:88
+#: analysis_query/templates/query_upload.html:63
 msgid "The analysis could take a long time, you will be automatically redirected to the report."
 msgstr "Analüüsiks võib kuluda üsna palju aega. Kui ta saab valmis, siis suuname sind automaatselt aruande lehele."
 
-#: analysis_query/templates/query_submit.html:94
-#: analysis_query/templates/query_upload.html:70
-#: analysis_query/templates/query_wait.html:39
+#: analysis_query/templates/query_submit.html:102
+#: analysis_query/templates/query_upload.html:76
+#: analysis_query/templates/query_wait.html:45
 msgid "is a non-profit organization which provides this service for free."
 msgstr "on mittetulundusühing, mis pakub seda teenust tasuta."
 
-#: analysis_query/templates/query_submit.html:96
-#: analysis_query/templates/query_upload.html:72
-#: analysis_query/templates/query_wait.html:41
+#: analysis_query/templates/query_submit.html:104
+#: analysis_query/templates/query_upload.html:78
+#: analysis_query/templates/query_wait.html:47
 msgid "Help us!"
 msgstr "Aita meid!"
 
-#: analysis_query/templates/query_submit.html:132
+#: analysis_query/templates/query_submit.html:140
 msgid "This application has already been analyzed!"
 msgstr "See rakendus on juba analüüsitud!"
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "analyzed on"
 msgstr "analüüsitud"
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "Go to the latest report"
 msgstr "Ava viimane aruanne"
 
-#: analysis_query/templates/query_submit.html:142
+#: analysis_query/templates/query_submit.html:150
 msgid "If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis."
 msgstr "Kui sa arvad, et εxodus pole veel selle rakenduse viimast versiooni uurinud, siis palun ole nii kena ja tee uus analüüsipäring."
 
-#: analysis_query/templates/query_upload.html:32
+#: analysis_query/templates/query_upload.html:6
+#: analysis_query/templates/query_upload.html:7
+msgid "Upload an APK file to run a new analysis"
+msgstr "Laadi analüüsimiseks üles uus APK-fail"
+
+#: analysis_query/templates/query_upload.html:38
 msgid "Upload an application"
 msgstr "Laadi rakendus üles"
 
-#: analysis_query/templates/query_upload.html:36
+#: analysis_query/templates/query_upload.html:42
 msgid "Browse file"
 msgstr "Sirvi faile"
 
-#: analysis_query/templates/query_upload.html:42
+#: analysis_query/templates/query_upload.html:48
 msgid "Only works with APK files."
 msgstr "Seda saab teha vaid APK-failidega."
 
-#: analysis_query/templates/query_wait.html:9
+#: analysis_query/templates/query_wait.html:6
+#: analysis_query/templates/query_wait.html:7
+msgid "In progress or completed analysis"
+msgstr "Analüüs on töös või valmis"
+
+#: analysis_query/templates/query_wait.html:15
 msgid "Analysis in progress..."
 msgstr "Analüüsimine on töös..."
 
-#: analysis_query/templates/query_wait.html:24
+#: analysis_query/templates/query_wait.html:30
 msgid "See the report"
 msgstr "Vaata aruannet"
 
-#: analysis_query/templates/query_wait.html:28
+#: analysis_query/templates/query_wait.html:34
 msgid "Will refresh automatically every 10 seconds."
 msgstr "Lehte uuendatakse automaatselt iga 10 sekundi järel."
 
-#: analysis_query/templates/query_wait.html:64
+#: analysis_query/templates/query_wait.html:68
 msgid "Analysis done!"
 msgstr "Analüüs sai valmis!"
 
-#: analysis_query/views.py:34 analysis_query/views.py:62
+#: analysis_query/views.py:34 analysis_query/views.py:66
 msgid "Your request will be handled soon"
 msgstr "Üsna varsti tegeleme sinu päringuga"
 
-#: analysis_query/views.py:76 analysis_query/views.py:84
+#: analysis_query/views.py:80 analysis_query/views.py:88
 msgid "AnalysisRequest does not exist"
 msgstr "Sellist analüüsipäringut ei leidu"
 

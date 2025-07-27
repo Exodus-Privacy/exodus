@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 09:11+0000\n"
-"PO-Revision-Date: 2025-07-20 14:31\n"
+"POT-Creation-Date: 2025-07-23 16:39+0000\n"
+"PO-Revision-Date: 2025-07-27 13:00\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et_EE\n"
@@ -17,422 +17,471 @@ msgstr ""
 "X-Crowdin-File: exodus.po\n"
 "X-Crowdin-File-ID: 47\n"
 
-#: exodus/core/apk.py:52
+#: exodus/core/apk.py:59
 msgid "Your request is running"
 msgstr "Sinu päring on hetkel töös"
 
-#: exodus/core/apk.py:67
+#: exodus/core/apk.py:75
 msgid "εxodus cannot scan paid applications"
 msgstr "εxodus ei saa kontrollida tasulisi rakendusi"
 
-#: exodus/core/apk.py:75
+#: exodus/core/apk.py:83
 msgid "Unable to download the APK"
 msgstr "APK-faili allalaadimine ei õnnestu"
 
-#: exodus/core/apk.py:79
+#: exodus/core/apk.py:87
 msgid "Download APK: success"
 msgstr "APK-faili allalaadimine õnnestus"
 
-#: exodus/core/apk.py:87
+#: exodus/core/apk.py:95
 msgid "Unable to decode the APK"
 msgstr "APK-faili dekodeerimine ei õnnestu"
 
-#: exodus/core/apk.py:91
+#: exodus/core/apk.py:99
 msgid "Decode APK: success"
 msgstr "APK-faili dekodeerimine õnnestus"
 
-#: exodus/core/apk.py:100
+#: exodus/core/apk.py:108
 msgid "Unable to compute the class list"
 msgstr "Klasside loendi tuvastamine ei õnnestu"
 
-#: exodus/core/apk.py:104
+#: exodus/core/apk.py:112
 msgid "List embedded classes: success"
 msgstr "Klasside loendi tuvastamine õnnestus"
 
-#: exodus/core/apk.py:117
+#: exodus/core/apk.py:125 exodus/core/apk.py:131
 msgid "Unable to create the analysis report"
 msgstr "Analüüsi aruannet ei õnnestu koostada"
 
-#: exodus/core/apk.py:131
+#: exodus/core/apk.py:145
 msgid "A report already exists for this application version"
 msgstr "Rakenduse selle versiooni kohta juba on aruanne olemas"
 
-#: exodus/core/apk.py:142
+#: exodus/core/apk.py:156
 msgid "Unable to get certificates"
 msgstr "Sertifikaatide tuvastamine ei õnnestu"
 
-#: exodus/core/apk.py:159
+#: exodus/core/apk.py:173
 msgid "Unable to compute APK fingerprint"
 msgstr "APK-faili sõrmejälje arvutamine ei õnnestu"
 
-#: exodus/core/apk.py:168
+#: exodus/core/apk.py:182
 msgid "Unable to get application details from Google Play"
 msgstr "Rakenduse teavet ei õnnestu Google Play teenusest laadida"
 
-#: exodus/core/apk.py:172
+#: exodus/core/apk.py:186
 msgid "Get application details: success"
 msgstr "Rakenduse andmete laadimine õnnestus"
 
-#: exodus/core/apk.py:177
+#: exodus/core/apk.py:191
 msgid "Tracker analysis: success"
 msgstr "Jälitajate analüüs õnnestus"
 
-#: exodus/core/apk.py:230
+#: exodus/core/apk.py:244
 msgid "Static analysis complete"
 msgstr "Staatiline analüüs on valmis"
 
 #: men_customization/templates/base/base.html:38
-#: web/templates/base/base.html:40
+#: web/templates/base/base.html:46 web/templates/base/home.html:6
+#: web/templates/base/home.html:7
 msgid "Home"
 msgstr "Avaleht"
 
 #: men_customization/templates/base/base.html:41
-#: web/templates/base/base.html:43
+#: web/templates/base/base.html:49
 msgid "Reports"
 msgstr "Aruanded"
 
 #: men_customization/templates/base/base.html:44
-#: web/templates/base/base.html:46 web/templates/base/base.html:63
+#: web/templates/base/base.html:52 web/templates/base/base.html:69
+#: web/templates/base/trackers.html:7 web/templates/base/trackers.html:8
 msgid "Trackers"
 msgstr "Jälitajad"
 
 #: men_customization/templates/base/base.html:47
 #: men_customization/templates/base/home.html:29
-#: web/templates/base/base.html:49 web/templates/base/home.html:28
-#: web/templates/base/understand.html:8
+#: web/templates/base/base.html:55 web/templates/base/home.html:34
+#: web/templates/base/understand.html:7 web/templates/base/understand.html:8
+#: web/templates/base/understand.html:14
 msgid "Better understand"
 msgstr "Parem ülevaade"
 
 #: men_customization/templates/base/base.html:52
-#: web/templates/base/base.html:58
+#: web/templates/base/base.html:64
 msgid "Admin"
 msgstr "Halda"
 
 #: men_customization/templates/base/base.html:55
-#: web/templates/base/base.html:61
+#: web/templates/base/base.html:67
 msgid "Index"
 msgstr "Indeks"
 
 #: men_customization/templates/base/base.html:56
-#: web/templates/base/base.html:62
+#: web/templates/base/base.html:68
 msgid "Analyzes"
 msgstr "Analüüsid"
 
 #: men_customization/templates/base/base.html:57
-#: web/templates/base/base.html:64
+#: web/templates/base/base.html:71
 msgid "Log out"
 msgstr "Logi välja"
 
 #: men_customization/templates/base/home.html:19
-#: web/templates/base/home.html:18
+#: web/templates/base/home.html:24
 msgid "εxodus analyzes Android applications in order to <b>list the embedded trackers.</b>"
 msgstr "εxodus analüüsib Androidi rakenduse ja tuvastab <b>sinna lõimitud jälitajad.</b>"
 
 #: men_customization/templates/base/home.html:21
-#: web/templates/base/home.html:20
+#: web/templates/base/home.html:26
 msgid "A tracker is a piece of software <b>meant to collect data about you or your usages.</b> So, εxodus reports tell you what are the ingredients of the cake."
 msgstr "Jälitaja on tarkvarakomponent, <b>mille eesmärgiks on koguda teavet sinu ja sinu nutiseadme kasutuse kohta</b>. Seega εxodus aitab sul mõista, mis koogi pealispinna maasikate ja vahukoore all tegelikult peidus on."
 
 #: men_customization/templates/base/home.html:23
-#: web/templates/base/home.html:22
+#: web/templates/base/home.html:28
 msgid "εxodus does not decompile applications, its analysis method is legal."
 msgstr "εxodus ei pöördkompileeri rakendusi, meie analüüsimeetod on seaduskuulekas."
 
 #: men_customization/templates/base/home.html:30
-#: web/templates/base/home.html:29
+#: web/templates/base/home.html:35
 msgid "What is a tracker? And a permission? Are there any alternatives to protect yourself?"
 msgstr "Mis on jälitaja? Aga mis on rakenduse õigused? Kas mul on valikuid enda privaatsuse kaitsmiseks?"
 
 #: men_customization/templates/base/home.html:38
-#: web/templates/base/home.html:37
+#: web/templates/base/home.html:43
 #: web/templates/snippets/reports_search.html:27
 msgid "Let's go!"
 msgstr "Vaata nüüd!"
 
-#: web/templates/base/base.html:52 web/templates/base/organization.html:8
+#: web/templates/base/base.html:31 web/templates/base/home.html:12
+#: web/templates/base/organization.html:22
+msgid "Exodus logo: white epsilon in a purple circle"
+msgstr "Exoduse logo: valge epsilon purpurpunases ringis"
+
+#: web/templates/base/base.html:58 web/templates/base/organization.html:7
+#: web/templates/base/organization.html:8
+#: web/templates/base/organization.html:14
 msgid "The organization"
 msgstr "Meie organisatsioon"
 
-#: web/templates/base/home.html:10
+#: web/templates/base/base.html:77
+msgid "Select language"
+msgstr "Vali keel"
+
+#: web/templates/base/home.html:4 web/templates/base/home.html:5
+#: web/templates/base/home.html:16
 msgid "The privacy audit platform for Android applications"
 msgstr "Privaatusaudit Androidi rakenduste jaoks"
 
-#: web/templates/base/next.html:8 web/templates/base/understand.html:53
-msgid "What's next?"
-msgstr "Mida saad sa järgmisena teha?"
-
-#: web/templates/base/next.html:16
+#: web/templates/base/next.html:5 web/templates/base/next.html:6
+#: web/templates/base/next.html:22
 msgid "We know it is not easy to find alternatives in order to escape trackers within our apps. We prepared a list of tools and things you can do to better manage your privacy on your smartphone."
 msgstr "Me teame, et sinu kasutatavates rakendustes leiduvate jälitajate eest pagemiseks pole alternatiivide leidmine lihtne. Me oleme koostanud loendi tarvikutest ja tegevustest, mis aitavad sul paremini hallata oma privaatsust oma nutiseadmes."
 
-#: web/templates/base/next.html:20
+#: web/templates/base/next.html:7 web/templates/base/next.html:8
+#: web/templates/base/next.html:14 web/templates/base/understand.html:59
+msgid "What's next?"
+msgstr "Mida saad sa järgmisena teha?"
+
+#: web/templates/base/next.html:26
 msgid "Consider how you use applications"
 msgstr "Hinda seda, kuidas sa kasutad rakendusi"
 
-#: web/templates/base/next.html:22
+#: web/templates/base/next.html:28
 msgid "When you wish to install an application or when an application asks for personal information, ask yourself the following questions:"
 msgstr "Kui sa soovid rakendust nutiseadmesse paigaldada või kui rakendus küsib sinult isikuandmeid, siis küsi endalt selliseid küsimusi:"
 
-#: web/templates/base/next.html:25
+#: web/templates/base/next.html:31
 msgid "how many trackers does it contain and what permissions does it ask for?"
 msgstr "kui palju seal leidub jälitajaid ja mis õigusi ta endale soovib?"
 
-#: web/templates/base/next.html:26
+#: web/templates/base/next.html:32
 msgid "do I want or need to install it?"
 msgstr "kas ma ikka vajan seda rakendust ja pean tema paigaldama?"
 
-#: web/templates/base/next.html:27
+#: web/templates/base/next.html:33
 msgid "do I want or need to give it what it asks me?"
 msgstr "kas ma ikka kindlasti soovin temaga jagada neid andmeid, mida ta minult küsib?"
 
-#: web/templates/base/next.html:30
+#: web/templates/base/next.html:36
 msgid "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity."
 msgstr "Otsus on sinu teha ning arvestades sinu igapäevast nutiseadme kasutust on sul lõpuks parem kontroll oma digitaalse identiteedi üle."
 
-#: web/templates/base/next.html:33
+#: web/templates/base/next.html:39
 msgid "You could also contact the people who offer you the application if you consider it to be too intrusive and ask them some explanations on the presence of trackers and permission requests."
 msgstr "Kui sulle tundub, et sinu kasutatav rakendus on liiga privaatsusinvasiivne, siis võtta ühendust rakenduse omanike ja/või arendajatega ning küsida neilt selgitusi kasutatavate jälitajate ning rakenduse poolt nõutud õiguste kohta."
 
-#: web/templates/base/next.html:37
+#: web/templates/base/next.html:43
 msgid "Favour free software"
 msgstr "Eelista avatud lähtekoodiga tarkvara"
 
-#: web/templates/base/next.html:39
+#: web/templates/base/next.html:45
 msgid "What is called 'free' software is software whose code (i.e. its recipe, or list of instructions) can be changed, copied, verified... and is thus transparent. A free software application might exist to replace an app that you already use but that may not respect your privacy."
 msgstr "Avatud lähtekoodiga (ehk kõik see, millest äpp lõpuks luuakse) tarkvara puhul saavad kõik huvilised seda muuta, kopeerida ja kontrollida ning seega on lõpptulemus kõikide osapoolte jaoks läbipaistev. Sageli on sinu tavapärase ja privaatsust mitteaustava rakenduse jaoks olemas alternatiiv vaba ja avatud lähtekoodiga tarkvara näol."
 
-#: web/templates/base/next.html:47
+#: web/templates/base/next.html:53
 msgid "If you are an Android user, you can install <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droid</a>. It is a free software store that can be used instead or in addition to the Google Play store. Do not hesitate to refer to the <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droid documentation</a> if needed. Be aware, however, that some F-Droid applications are not available in all languages."
 msgstr "Kui sa oled Androidi kasutaja, siis sa võid paigaldada <a target='_blank' rel='noreferrer' href='https://f-droid.org/'>F-Droidi rakendustehoidla</a>. Tegemist on vabal ja avatud tarkvaral põhineva alterantiiviga, mille võid paigaldada Google Play rakendustepoele lisaks või tema asemele. Huvi korral vaata lisateavet <a target='_blank' rel='noreferrer' href='https://f-droid.org/docs/'>F-Droidi juhenditest</a>. Palun arvesta, et mõned F-Droidist leitavad rakendused pole saadaval kõikides keeltes."
 
-#: web/templates/base/next.html:51
+#: web/templates/base/next.html:57
 msgid "Use the mobile website instead of the application"
 msgstr "Kasuta rakenduse asemel nutiseadme jaoks mõeldud veebisaiti"
 
-#: web/templates/base/next.html:53
+#: web/templates/base/next.html:59
 msgid "On a mobile device you don't necessary have to use applications: you can use mobile websites instead. One advantage in favour of the latter is the possibility to use  web browser add-ons, in the same way you can do it on your computer (e.g. uBlock Origin)."
 msgstr "Kui tegemist on rakendusega, mis lihtsalt kopeerib mõne veebisaidi tööd, siis pigem kasuta brauserist nutiseadmele mõeldud veebisaidi versiooni. Selle võimaluse üks eeliseid on see, et saad kasutada privaatsust parandavaid brauserilisasid samamoodi, nagu teed seda oma tavaarvutis (näiteks uBlock Origin reklaamide ja muu mittesoovitud sisu blokeerimiseks)."
 
-#: web/templates/base/next.html:64
+#: web/templates/base/next.html:70
 msgid "If you want a browser experience that is more respectful of your privacy, you can use alternative browsers such as Mozilla Firefox or the DuckDuckGo Privacy Browser."
 msgstr "Kui soovid, et ka brauser oleks tavapärasest rohkem sinu privaatsust austav, siis kasuta selliseid alternatiive nagu Mozilla Firefox või DuckDuckGo Privacy Browser."
 
-#: web/templates/base/next.html:67
+#: web/templates/base/next.html:73
 msgid "These browsers allow you to add your favorite websites on your home screen easily, just as an app (but lighter)."
 msgstr "Muu hulgas saad nende brauserite abil sättida oma lemmikud oma nutiseadme avalehele nii, nagu oleks tegemist rakendusega (aga see kõik on vähem ressursinõudlik)."
 
-#: web/templates/base/next.html:71
+#: web/templates/base/next.html:77
 msgid "Install an ad blocker"
 msgstr "Paigalda reklaamiblokeerija"
 
-#: web/templates/base/next.html:78
-msgid "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from F-Droid (cf. above) or from their own website."
+#: web/templates/base/next.html:84
+msgid "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from their own website."
 msgstr "Kõikidel juhtudel on sul võimalik Androidipõhistesse nutiseadmetesse paigaldada reklaamiblokeerijaid nagu näiteks <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. Selle rakenduse leiad nende omast veebisaidist."
 
-#: web/templates/base/next.html:82
+#: web/templates/base/next.html:88
 msgid "Discover alternatives"
 msgstr "Tutvu muude võimalustega"
 
-#: web/templates/base/next.html:84
+#: web/templates/base/next.html:90
 msgid "For broader recommendations, here are some resources you can dig in:"
 msgstr "Suuremas valikus soovitusi leiad mitmetest privaatsusele orienteeritud veebisaitidest, näiteks siit:"
 
-#: web/templates/base/next.html:85
+#: web/templates/base/next.html:91
 msgid "\n"
-"      <ul>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>\n"
-"      </ul>\n"
-"      "
-msgstr ""
+"          <ul>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>\n"
+"          </ul>\n"
+"        "
+msgstr "\n"
+"          <ul>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>EFF-i koostatud Enesekaitse jäitamise vastu (Surveillance Self-Defense)</a></li>\n"
+"          </ul>\n"
+"        "
 
-#: web/templates/base/next.html:95
+#: web/templates/base/next.html:100
 msgid "Remain curious!"
 msgstr "Ära kaota huvi!"
 
-#: web/templates/base/next.html:97
+#: web/templates/base/next.html:102
 msgid "In this area, what is true today may not necessarily be true tomorrow: tools might come and go, application policies can change, security breaches can be discovered..."
 msgstr "Privaatsusega seotud valdkond on pidevas liikumises. Mis kehtib täna, ei pruugi homme enam üldse tõele vastata: rakendused tulevad ja lähevad, rakenduste kasutustingimused muutuvad ning ühtevalu tuvastatakse uusi turva- ja privaatsusprobleeme..."
 
-#: web/templates/base/next.html:100
+#: web/templates/base/next.html:105
 msgid "To this effect, you can attend workshops held by associations such as <a target='_blank' rel='noreferrer' href='https://en.wikipedia.org/wiki/CryptoParty'>cryptoparties</a> or other organizations like public libraries."
 msgstr "Sel eesmärgil võid osaleda töötubades või kohtumistel, mida korraldavad erinevad privaatsusteemast huvituvad MTÜd või kogukonnad, nagu näiteks <a target='_blank' rel='noreferrer' href='https://et.wikipedia.org/wiki/Kr%C3%BCptopidu'>krüptopeod</a> või ka muud organisatsioonid, nagu avalikud raamatukogud."
 
-#: web/templates/base/next.html:103
+#: web/templates/base/next.html:108
 msgid "To stay up to date on these topics, you can find useful resources there:"
 msgstr "Et nende teemadega kursis olla, leiad näiteks siit kasulikku teavet:"
 
-#: web/templates/base/next.html:104
+#: web/templates/base/next.html:109
 msgid "\n"
-"      <ul>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>\n"
-"      </ul>\n"
-"      "
+"          <ul>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>\n"
+"          </ul>\n"
+"        "
 msgstr "\n"
-"      <ul>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFFi ajaveeb</a></li>\n"
-"        <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>Ajaveeb „Boing Boing“</a></li>\n"
-"      </ul>\n"
-"      "
+"          <ul>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF-i ajaveeb</a></li>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>„Boing Boing“ ajaveeb</a></li>\n"
+"          </ul>\n"
+"        "
 
-#: web/templates/base/next.html:113
+#: web/templates/base/next.html:118
 msgid "For advanced users"
 msgstr "Kui oled kogenud arvutikasutaja"
 
-#: web/templates/base/next.html:115
+#: web/templates/base/next.html:120
 msgid "If you are into tweaking, <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> is an operating system based on Android; it can be used without Google services. It is possible to install it on your smartphone, provided your device is compatible."
 msgstr "Kui arvutis ja nutiseadmes katsetamine on sulle tuttav, siis <a target='_blank' rel='noreferrer' href='https://lineageos.org/'>Lineage OS</a> on Androidil põhinev operatsioonisüsteem, mida saad kasutada ilma Google'i teenusteta. Kui sinu nutiseadme versioon ühildub, siis võid Lineage OS'i sinna paigaldada."
 
-#: web/templates/base/organization.html:19
+#: web/templates/base/organization.html:5
+#: web/templates/base/organization.html:6
+#: web/templates/base/organization.html:25
 msgid "Exodus Privacy is a non-profit organization led by hacktivists. Its purpose is to help people get a better understanding of the Android applications tracking issues."
 msgstr "Exodus Privacy on privaatsusteadlike arvutihuviliste juhitud mittetulundusühing, mille eesmärgiks on aidata nutiseadmete kasutajatel paremini mõista Androidi rakendustes leiduvate jälitajate levikut ning aitada leida alternatiive."
 
-#: web/templates/base/organization.html:22
+#: web/templates/base/organization.html:28
 msgid "Discover Exodus Privacy"
 msgstr "Loe Exodus Privacy kohta"
 
-#: web/templates/base/organization.html:26
+#: web/templates/base/organization.html:32
 msgid "Help us!"
 msgstr "Aita meid!"
 
-#: web/templates/base/organization.html:28
+#: web/templates/base/organization.html:34
 msgid "Exodus Privacy is an organization managed by volunteers. Whether you would like to draw, translate, code or create any kind of content, feel free: we welcome any help."
 msgstr "Organisatsiooni Exodus Privacy haldavad vabatahtlikud. Kui soovid joonistada, tõlkida, koodi kirjutada või mõnda muud sorti sisu luua, siis löö kampa. Meile kulub igasugune abi ära."
 
-#: web/templates/base/organization.html:31
+#: web/templates/base/organization.html:37
 msgid "How to contribute?"
 msgstr "Kuidas saad osaleda?"
 
-#: web/templates/base/organization.html:35
+#: web/templates/base/organization.html:41
 msgid "Contact us"
 msgstr "Võta meiega ühendust"
 
-#: web/templates/base/organization.html:42
+#: web/templates/base/organization.html:46
+msgid "An envelope"
+msgstr "Ümbrik"
+
+#: web/templates/base/organization.html:48
 msgid "Contact us!"
 msgstr "Võta meiega ühendust!"
 
-#: web/templates/base/organization.html:47
-#: web/templates/base/organization.html:54
-#: web/templates/base/organization.html:59
+#: web/templates/base/organization.html:51
+msgid "Mastodon logo: a stylized mammoth with an 'm' in it"
+msgstr "Mastodoni logo: stiliseeritud mammut, kelle peale on joonistatud „m“ täht"
+
+#: web/templates/base/organization.html:53
+#: web/templates/base/organization.html:60
+#: web/templates/base/organization.html:65
 msgid "Follow us!"
 msgstr "Jälgi meid!"
 
-#: web/templates/base/permissions.html:8 web/templates/base/understand.html:33
+#: web/templates/base/organization.html:63
+msgid "Facebook logo: an 'f' in a square"
+msgstr "Facebooki logo: „f“ täht ruudu sees"
+
+#: web/templates/base/permissions.html:5 web/templates/base/permissions.html:6
+msgid "What type of permissions? Why are some permissions indicated as dangerous? Do I have control over these permissions?"
+msgstr "Mis tüüpi õigused? Kas mõned õigused on ohtlikud? Kas mul on võimalik neid õigusi kontrollida?"
+
+#: web/templates/base/permissions.html:7 web/templates/base/permissions.html:8
+#: web/templates/base/permissions.html:14 web/templates/base/understand.html:39
 msgid "Permissions"
 msgstr "Õigused"
 
-#: web/templates/base/permissions.html:16
+#: web/templates/base/permissions.html:22
 msgid "Permissions are access rights an app asks to access on your phone."
 msgstr "Õigused on lubade kogum, mida rakendus soovid sinu nutiseadmed kasutada."
 
-#: web/templates/base/permissions.html:20
+#: web/templates/base/permissions.html:26
 msgid "What type of permissions?"
 msgstr "Mis tüüpi õigused?"
 
-#: web/templates/base/permissions.html:22
+#: web/templates/base/permissions.html:28
 msgid "They can concern various features or pieces of information, such as access to your geolocation, your contacts, your files, your microphone, vibrate function, camera and so on. Exodus Privacy analyses allow you to know, on a  per app basis, which permissions are asked."
 msgstr "Need võivad käsitleda väga erinevaid valdkondi, nagu näiteks ligipääs sinu asukohale, sinu aadressiraamatule, sinu failidele, sinu mikrofonile, värinaalarmile, kaamerale, jne. Exodus Privacy tehtud analüüs võimaldab sul iga rakenduse kohta täpselt teada seda, mida ta üritab sinu nutiseadmes kasutada."
 
-#: web/templates/base/permissions.html:26
+#: web/templates/base/permissions.html:32
 msgid "Why are some permissions indicated as dangerous?"
 msgstr "Miks on mõned õigused märgitud ohtlikeks?"
 
-#: web/templates/base/permissions.html:28
+#: web/templates/base/permissions.html:34
 msgid "Google defines <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>danger levels for permissions</a>, which we report in our analyses."
 msgstr "Google on määratlenud <a target='_blank' rel='noreferrer' href='https://developer.android.com/guide/topics/permissions/overview'>õiguste ohutasemed</a> ja neid me oma aruannetes kasutame."
 
-#: web/templates/base/permissions.html:32
+#: web/templates/base/permissions.html:38
 msgid "Do I have control over these permissions?"
 msgstr "Kas mul on mingisugunegi kontroll nende õiguste üle?"
 
-#: web/templates/base/permissions.html:34
+#: web/templates/base/permissions.html:40
 msgid "Depending on your smartphone and operating system, it is possible to restrain some of these permissions by going into your phone's settings."
 msgstr "Sõltuvalt sinu nutiseadme ja tema kasutatava operatsioonisüsteemi versioonist on sul süsteemi seadistustest osasid õigusi piirata."
 
-#: web/templates/base/trackers.html:8 web/templates/base/understand.html:19
+#: web/templates/base/trackers.html:5 web/templates/base/trackers.html:6
+msgid "What is a tracker? Are all trackers created equal? Who puts these trackers in?"
+msgstr "Mis on jälitaja? Kas kõik jälitajad on olemuselt võrdsed ja sarnased? Kes lisab jäitajaid rakendustesse?"
+
+#: web/templates/base/trackers.html:14 web/templates/base/understand.html:25
 msgid "Trackers "
 msgstr "Jälitajad "
 
-#: web/templates/base/trackers.html:16
+#: web/templates/base/trackers.html:22
 msgid "This page is mostly a rework of <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>this article</a>, published under CC-BY-NC license."
 msgstr "See leht on enamuses <a target='_blank' rel='noreferrer' href='https://esther.codes/exodus-et-les-pisteurs'>selle artikli</a> edasiarendus ning on avaldatud CC-BY-NC litsentsi alusel."
 
-#: web/templates/base/trackers.html:20
+#: web/templates/base/trackers.html:26
 msgid "What is a tracker?"
 msgstr "Mis on jälitaja?"
 
-#: web/templates/base/trackers.html:22 web/templates/base/trackers.html:31
-#: web/templates/base/trackers.html:60
-msgid "See the video"
-msgstr "Vaata videot"
+#: web/templates/base/trackers.html:31 web/templates/base/trackers.html:43
+#: web/templates/base/trackers.html:75
+msgid "See the video on Youtube"
+msgstr "Vaata videot Youtube'is"
 
-#: web/templates/base/trackers.html:25
+#: web/templates/base/trackers.html:34
 msgid "A tracker is a piece of software whose task is to gather information on the person using the application, on how they use it, or on the smartphone being used. A tracker is usually distributed by companies as a SDK (Software Development Kit), a sort of ready-made toolkit, aiming to make it easier for application developers. To be noted : 'open source' trackers exist, their code is available and open to everyone."
 msgstr "Jälitaja on tarkvarakomponent, mille ülesanne on koguda teavet rakenduse kasutaja isiku kohta, sealhulgas tema kasutusviiside ja nutiseadme kohta. Tavaliselt on jälitaja osa kasutatavast SDKst (tarkvaraarenduskomplektist), mis olemuselt on tööriistakast arendaja töö lihtsustamiseks. Palun arvesta, et olemas on ka „avatud lähtekoodil“ jälitajad ning nende lähtekood ja tööpõhimõtted on saadaval kõikide huviliste jaoks."
 
-#: web/templates/base/trackers.html:29
+#: web/templates/base/trackers.html:38
 msgid "Are all trackers created equal?"
 msgstr "Kas kõik jälitajad on loodud võrdsetena?"
 
-#: web/templates/base/trackers.html:34
+#: web/templates/base/trackers.html:46
 msgid "No, all trackers do not have the same function and they can present different levels of (privacy) intrusion."
 msgstr "Ei, kõikide jälitajate funktsionaalsus pole sama ning erinevate jälitajate (privaatsus)riive võib olla väga erinev."
 
-#: web/templates/base/trackers.html:38
+#: web/templates/base/trackers.html:50
 msgid "<b>Crash reporters:</b> these trackers specialize in reporting application crashes. In other terms, their goal is to notify application developers that an app encountered a problem. As such, information collected at the time the application crashed will allow the developer to correct the bug."
 msgstr "<b>Krahhiteavitajad:</b> need jälitajad on spetsialiseerunud teavitamaks juhtumitest, kus rakendus lõpetab oomatatult töö. Teisisõnu on nende eesmärk teavitada arendajaid olukordadest, mis takistavad rakenduste kasutamist. Kogutud info alusel arendajad tavaliselt teevad vigu korda ja parandavad rakenduste stabiilsust."
 
-#: web/templates/base/trackers.html:41
+#: web/templates/base/trackers.html:53
 msgid "<b>Analytics:</b> these trackers are meant to collect data usage and allow the developer to have better knowledge of their audience (for instance, to know what page you visited, or how long you remained on a given area of the page)."
 msgstr "<b>Analüütika:</b> need lisamoodulid on mõeldud üldiseks andmekogumiseks ja aitavad arendajatel paremini mõista oma rakenduse kasutajaskonda (näiteks mida sa nutiseadmes vaatad ja kui kaua sa seda teed)."
 
-#: web/templates/base/trackers.html:44
+#: web/templates/base/trackers.html:56
 msgid "<b>Profiling:</b> these trackers' goal is to gather as much information as possible on the application user in order to build a virtual profile. To this effect, the tracker will for instance focus on the browsing history, or on the list of installed applications, and so on."
 msgstr "<b>Profileerijad:</b> nende jälitajate eesmärgiks on koguda võimalikult palju teavet rakenduse kasutaja kohta ning luua selle alusel temast virtuaalne profiil. Sel eesmärgil võidatakse vaadata sinu nutiseadme kasutuse ajalugu, paigaldatud rakendusi ja muud sarnast."
 
-#: web/templates/base/trackers.html:47
+#: web/templates/base/trackers.html:59
 msgid "<b>Identification:</b> these trackers are responsible for determining your digital identity. This identity may refer to an official identity or to abstract identifiers (pseudonym, etc.). The goal will be, for example, to be able to correlate an individual's online and offline activities."
 msgstr "<b>Identifitseerimine:</b> need jälitajad üritavad tuvastada sinu digitaalset identiteeti. See võib käia sinu ametliku identiteedi, kui abstraktse identiteedi (näiteks aliased ja pseudonüümid) ja nende seoste kohta. Näiteks võib üheks eesmärgiks olla sinu võrgutegevuste ja võrguväliste tegevuste omavahel sidumine."
 
-#: web/templates/base/trackers.html:50
+#: web/templates/base/trackers.html:62
 msgid "<b>Ads:</b> these trackers aim to identify the application user in order to serve them targeted ads. This is only possible and relevant if the user already already has a digital profile established. The goal of the creator of such a tracker is to monetize their application, i.e. to make money by means of advertisement."
 msgstr "<b>Reklaam:</b> need jälitajad üritavad sinu huvisid, harjumisi ja soove võimalikult täpselt tuvastada ning selle alusel juhtida sulle reklaamide näitamist. Sellel on mõte, kui sinust juba on digitaalne profiil loodud. Rakenduse arendajate jaoks on antud juhul põhieesmärgiks tulundamine ehk rakenduse abil raha tegemine läbi reklaamimüügi."
 
-#: web/templates/base/trackers.html:53
+#: web/templates/base/trackers.html:65
 msgid "<b>Location:</b> these trackers are designed to determine the geographical location of the mobile device. In order to do so, this type of tracker takes advantage of several sensors: GPS chips, surrounding cellular antennae, wi-fi networks present in the area, nearby Bluetooth beacons, or even specific sounds transmitted by loudspeakers."
 msgstr "<b>Asukohatuvastus:</b> nende jälitajate eesmärgiks on tuvastada sinu nutiseadme ja seega sinu asukoht võimalikult täpselt. Sel eesmärgil kasutatakse kõiki nutiseadmes leiduvaid sensoreid ja tarkvaralahendusi määramaks: GPSi-põhist asukohta, läheduses asuvaid mobiilvõrgu tugijaamu, WiFi-ruutereid, Bluetooth-seadmeid ning isegi ümbruskonnas kõlavaid helisid."
 
-#: web/templates/base/trackers.html:58
+#: web/templates/base/trackers.html:70
 msgid "Who puts these trackers in?"
 msgstr "Kes on need jälitajad lisanud?"
 
-#: web/templates/base/trackers.html:63
+#: web/templates/base/trackers.html:78
 msgid "To answer these questions we must first understand how applications are made; there are 2 possible scenarios:"
 msgstr "Nendele küsimustele vastamiseks me esmalt peame mõistma, kuidas rakendusi arendatakse. Selles osas on kaks levinud võimalust:"
 
-#: web/templates/base/trackers.html:66
+#: web/templates/base/trackers.html:81
 msgid "In the first case the organization that owns the product subcontracts the application development to a third party company. The contract specifies what the application needs to perform and what technologies are employed to do so. Sometimes the subcontractor already has an application template that they re-use for each new application. In such a case all applications that are developed will include these trackers whether or not they are specified in the programming contract."
 msgstr "Esimesel juhul rakenduse omanik tellib kolmandalt osapoolelt ehk allhankijat vajalikud arendustööd. Tavaliselt lepingus kirjeldatakse mida see rakendus peab tegema ning mis tehnoloogiad selleks kasutatakse. Tihtipeale allhankijal juba on kasutusel varasemate rakenduste alusel loodud mallid koos jälitajatega ning neid kasutatakse ka uute tööde jaoks. Sellisel juhul on tavaline, et jälitajad satuvad rakendusse ka siis, kui seda lepingus otseselt kirjas pole."
 
-#: web/templates/base/trackers.html:69
+#: web/templates/base/trackers.html:84
 msgid "In the second case the organization that owns the product develops the application in-house. In that case, their own employees are in charge of deciding whether or not they want to include certain types of trackers."
 msgstr "Teisel juhul rakenduse omanik arendab äppi kasutades oma organisatsiooni töötajaid. Sellisel juhul sageli otsustavad ka need samad töötajad mis jälitajad rakendusse lisatakse või mitte."
 
-#: web/templates/base/understand.html:21
+#: web/templates/base/understand.html:5 web/templates/base/understand.html:6
+msgid "Better understand what are trackers, permissions and what to do next"
+msgstr "Saad parema ülevaate jälitajatest, õigustest ja mida saad järgmiseks teha"
+
+#: web/templates/base/understand.html:27
 msgid "Know more about trackers and their impact on privacy"
 msgstr "Lisateave jälitajate kohta ning mõju osas sinu privaatsusele"
 
-#: web/templates/base/understand.html:25 web/templates/base/understand.html:39
-#: web/templates/base/understand.html:59
+#: web/templates/base/understand.html:31 web/templates/base/understand.html:45
+#: web/templates/base/understand.html:65
 msgid "Read the article"
 msgstr "Loe artiklit"
 
-#: web/templates/base/understand.html:35
+#: web/templates/base/understand.html:41
 msgid "What is permission and what are the privacy issues?"
 msgstr "Mis on õigused ja nendega seonduvad privaatsusprobleemid?"
 
-#: web/templates/base/understand.html:55
+#: web/templates/base/understand.html:61
 msgid "A list of tools and things you can do to better manage your privacy on your smartphone"
 msgstr "Tarvikute ja tegevuste loend, mis võimaldavad sul paremini hallata oma privaatsust oma nutiseadmes"
 
@@ -479,6 +528,10 @@ msgstr "Otsi aruannet"
 #: web/templates/snippets/reports_search.html:6
 msgid "Application name"
 msgstr "Rakenduse nimi"
+
+#: web/templates/snippets/reports_search.html:10
+msgid "Search"
+msgstr "Otsi"
 
 #: web/templates/snippets/reports_search.html:16
 msgid "You can search for an application using its name, handle or Google Play URL"
