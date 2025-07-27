@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 10:56+0000\n"
+"POT-Creation-Date: 2025-07-23 16:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,107 +41,155 @@ msgstr ""
 msgid "You need to be registered"
 msgstr ""
 
+#: analysis_query/templates/query_error.html:3
+#: analysis_query/templates/query_error.html:4
+msgid "Error during an analysis"
+msgstr ""
+
+#: analysis_query/templates/query_error.html:5
+#: analysis_query/templates/query_error.html:6
+#: analysis_query/templates/query_submit.html:8
 #: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_submit.html:15
+#: analysis_query/templates/query_upload.html:8
 #: analysis_query/templates/query_upload.html:9
+#: analysis_query/templates/query_upload.html:15
+#: analysis_query/templates/query_wait.html:8
+#: analysis_query/templates/query_wait.html:9
 msgid "New analysis"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:21
+#: analysis_query/templates/query_submit.html:6
+#: analysis_query/templates/query_submit.html:7
+msgid "Submit an application handle or URL to run a new analysis"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:27
 msgid ""
 "It is currently impossible to submit new analysis. Sorry for the "
 "inconvenience!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:36
+#: analysis_query/templates/query_submit.html:42
 msgid "URL of the application"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:45
+#: analysis_query/templates/query_submit.html:46
+msgid "Search"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:51
 msgid "Source:"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:55
+#: analysis_query/templates/query_submit.html:61
 msgid "Free applications only. Works also with the application handle."
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:67
-#: analysis_query/templates/query_upload.html:50
+#: analysis_query/templates/query_submit.html:64
+msgid ""
+"\n"
+"                Applications with geographic restrictions cannot be scanned "
+"-\n"
+"                read our <a target=\"_blank\" rel=\"noreferrer\" "
+"href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>\n"
+"              "
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:56
 msgid "Perform analysis"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:73
+#: analysis_query/templates/query_submit.html:81
 msgid "I prefer to upload an application"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:80
-#: analysis_query/templates/query_upload.html:57
+#: analysis_query/templates/query_submit.html:86
+#: analysis_query/templates/query_upload.html:61
+#: analysis_query/templates/query_wait.html:32
+msgid "Animated line of marbles going up and down in waves"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:88
+#: analysis_query/templates/query_upload.html:63
 msgid ""
 "The analysis could take a long time, you will be automatically redirected to "
 "the report."
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:94
-#: analysis_query/templates/query_upload.html:70
-#: analysis_query/templates/query_wait.html:39
+#: analysis_query/templates/query_submit.html:102
+#: analysis_query/templates/query_upload.html:76
+#: analysis_query/templates/query_wait.html:45
 msgid "is a non-profit organization which provides this service for free."
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:96
-#: analysis_query/templates/query_upload.html:72
-#: analysis_query/templates/query_wait.html:41
+#: analysis_query/templates/query_submit.html:104
+#: analysis_query/templates/query_upload.html:78
+#: analysis_query/templates/query_wait.html:47
 msgid "Help us!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:132
+#: analysis_query/templates/query_submit.html:140
 msgid "This application has already been analyzed!"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "analyzed on"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "Go to the latest report"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:142
+#: analysis_query/templates/query_submit.html:150
 msgid ""
 "If you think εxodus has not yet analyzed the latest version of this "
 "application, feel free to submit the analysis."
 msgstr ""
 
-#: analysis_query/templates/query_upload.html:32
+#: analysis_query/templates/query_upload.html:6
+#: analysis_query/templates/query_upload.html:7
+msgid "Upload an APK file to run a new analysis"
+msgstr ""
+
+#: analysis_query/templates/query_upload.html:38
 msgid "Upload an application"
 msgstr ""
 
-#: analysis_query/templates/query_upload.html:36
+#: analysis_query/templates/query_upload.html:42
 msgid "Browse file"
 msgstr ""
 
-#: analysis_query/templates/query_upload.html:42
+#: analysis_query/templates/query_upload.html:48
 msgid "Only works with APK files."
 msgstr ""
 
-#: analysis_query/templates/query_wait.html:9
+#: analysis_query/templates/query_wait.html:6
+#: analysis_query/templates/query_wait.html:7
+msgid "In progress or completed analysis"
+msgstr ""
+
+#: analysis_query/templates/query_wait.html:15
 msgid "Analysis in progress..."
 msgstr ""
 
-#: analysis_query/templates/query_wait.html:24
+#: analysis_query/templates/query_wait.html:30
 msgid "See the report"
 msgstr ""
 
-#: analysis_query/templates/query_wait.html:28
+#: analysis_query/templates/query_wait.html:34
 msgid "Will refresh automatically every 10 seconds."
 msgstr ""
 
-#: analysis_query/templates/query_wait.html:64
+#: analysis_query/templates/query_wait.html:68
 msgid "Analysis done!"
 msgstr ""
 
-#: analysis_query/views.py:34 analysis_query/views.py:62
+#: analysis_query/views.py:34 analysis_query/views.py:66
 msgid "Your request will be handled soon"
 msgstr ""
 
-#: analysis_query/views.py:76 analysis_query/views.py:84
+#: analysis_query/views.py:80 analysis_query/views.py:88
 msgid "AnalysisRequest does not exist"
 msgstr ""

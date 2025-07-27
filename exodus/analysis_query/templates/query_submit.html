@@ -20,7 +20,7 @@
   <div class="row justify-content-sm-center">
     <div class="col-md-8 col-12">
       <p class="text-center mb-5">
-        <img src="{% static 'img/analysis_new.png' %}" width="120">
+        <img src="{% static 'img/analysis_new.png' %}" width="120" alt="">
       </p>
       {% if submissions_disabled and not request.user.is_superuser %}
         <div class="text-center alert alert-danger">
@@ -43,7 +43,7 @@
             <div class="input-group input-group-lg mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="handle_help">
-                  <small><img src="/static/img/search.svg"></small>
+                  <small><img src="/static/img/search.svg" alt="{% trans "Search" %}"></small>
                 </span>
               </div>
               <input type="text" class="form-control" id="handle" name="handle" aria-describedby="handle_help" required>
@@ -61,8 +61,10 @@
               {% trans "Free applications only. Works also with the application handle." %}
             </p>
             <div class="alert alert-warning text-center mb-4" role="alert">
-              Applications with geographic restrictions cannot be scanned -
-              read our <a target="_blank" rel="noreferrer" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>
+              {% blocktrans %}
+                Applications with geographic restrictions cannot be scanned -
+                read our <a target="_blank" rel="noreferrer" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>
+              {% endblocktrans %}
             </div>
 
             <div id="reports" class="alert alert-info d-none">
@@ -81,7 +83,7 @@
             {% endif %}
 
             <div id="loading" class="text-center d-none">
-              <img class="w-200px" src="/static/img/loading.gif" alt="">
+              <img class="w-200px" src="/static/img/loading.gif" alt="{% trans "Animated line of marbles going up and down in waves" %}">
               <div class="alert alert-light" role="alert">
                 {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
               </div>

@@ -20,7 +20,7 @@
   <div class="row justify-content-sm-center">
     <div class="col-md-8 col-12">
       <p class="text-center mb-5">
-        <img src="{% static 'img/analysis_new.png' %}" width=120px>
+        <img src="{% static 'img/analysis_new.png' %}" width=120px alt="">
       </p>
       <form method="post" enctype="multipart/form-data" action="{% url 'analysis:upload' %}">
         <div class="form-group">
@@ -58,7 +58,7 @@
           </div>
 
           <div id="loading" class="text-center d-none">
-            <img class="w-200px" src="/static/img/loading.gif" alt="">
+            <img class="w-200px" src="/static/img/loading.gif" alt="{% trans "Animated line of marbles going up and down in waves" %}">
             <div class="alert alert-light" role="alert">
               {% trans "The analysis could take a long time, you will be automatically redirected to the report." %}
             </div>

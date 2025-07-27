@@ -28,7 +28,7 @@
       <div class="container">
         <a class="navbar-brand" data-toggle="tooltip" title="εxodus v1.30" href="{% url 'home' %}">
           <img src="/static/img/logo_purple_small.png" width="40" height="40" class="d-inline-block align-top"
-               alt="exodus logo">
+               alt="{% trans "Exodus logo: white epsilon in a purple circle" %}">
           <span class="h2">εxodus</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -74,7 +74,7 @@
             {% endif %}
           </ul>
           <form class="form-inline my-2 my-lg-0" action="{% url 'set_language' %}" method="post">
-            <img class="mr-3 mr-lg-2 mr-xl-3" alt="language selector" src="{% static 'img/langue.svg' %}">
+            <img class="mr-3 mr-lg-2 mr-xl-3" alt="language selector" src="{% static 'img/langue.svg' %}" alt="{% trans "Select language" %}">
             {% csrf_token %}
             {% if LANGUAGE_CODE|length == 2 %}
               <input name="next" type="hidden" value="{{ request.get_full_path | slice:'3:' }}">
