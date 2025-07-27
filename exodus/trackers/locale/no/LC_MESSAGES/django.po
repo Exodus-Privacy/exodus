@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-26 13:23+0000\n"
-"PO-Revision-Date: 2025-07-20 20:12\n"
+"POT-Creation-Date: 2025-07-22 21:51+0000\n"
+"PO-Revision-Date: 2025-07-27 13:01\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
@@ -17,87 +17,109 @@ msgstr ""
 "X-Crowdin-File: trackers.po\n"
 "X-Crowdin-File-ID: 53\n"
 
-#: trackers/templates/new_api_key.html:43
+#: trackers/templates/new_api_key.html:35
 #: trackers/templates/trackers_admin_list.html:24
 msgid "You need to be registered"
 msgstr "Du må være registrert"
 
-#: trackers/templates/stats_details.html:9
-#: trackers/templates/trackers_list.html:13
-msgid "Statistics"
-msgstr "Statistikk"
-
-#: trackers/templates/stats_details.html:11
-#: trackers/templates/stats_details.html:14
+#: trackers/templates/stats_details.html:4
+#: trackers/templates/stats_details.html:5
+#: trackers/templates/stats_details.html:17
+#: trackers/templates/stats_details.html:20
 msgid "Most frequent trackers"
 msgstr "Mest hyppige sporere"
 
-#: trackers/templates/stats_details.html:26
-#: trackers/templates/trackers_list.html:46
+#: trackers/templates/stats_details.html:6
+#: trackers/templates/stats_details.html:7
+#: trackers/templates/stats_details.html:15
+#: trackers/templates/trackers_list.html:19
+msgid "Statistics"
+msgstr "Statistikk"
+
+#: trackers/templates/stats_details.html:32
+#: trackers/templates/trackers_list.html:53
 #, python-format
 msgid "found in %(count)s application"
 msgid_plural "found in %(count)s applications"
 msgstr[0] "funnet i %(count)s applikasjon"
 msgstr[1] "funnet i %(count)s applikasjoner"
 
-#: trackers/templates/tracker_details.html:24
+#: trackers/templates/tracker_details.html:5
+#: trackers/templates/tracker_details.html:6
+msgid "Informations about this tracker"
+msgstr "Informasjon om denne sporeren"
+
+#: trackers/templates/tracker_details.html:7
+#: trackers/templates/tracker_details.html:8
+msgid "Tracker profile for"
+msgstr "Sporingsprofil for"
+
+#: trackers/templates/tracker_details.html:30
 #, python-format
 msgid "Present in: <b>%(count)s application</b>"
 msgid_plural "Present in: <b>%(count)s applications</b>"
-msgstr[0] "Til stede i: <b>%(count)s applikasjoner</b>"
+msgstr[0] "Til stede i: <b>%(count)s applikasjon</b>"
 msgstr[1] "Til stede i: <b>%(count)s applikasjoner</b>"
 
-#: trackers/templates/tracker_details.html:32
+#: trackers/templates/tracker_details.html:38
 msgid "Tracker web page"
-msgstr "Sporer nettside"
+msgstr "Sporerens nettside"
 
-#: trackers/templates/tracker_details.html:44
+#: trackers/templates/tracker_details.html:50
 msgid "Detection rules"
 msgstr "Deteksjonsregler"
 
-#: trackers/templates/tracker_details.html:45
+#: trackers/templates/tracker_details.html:51
 msgid "Code detection rule:"
 msgstr "Kodedeteksjonsregler:"
 
-#: trackers/templates/tracker_details.html:47
+#: trackers/templates/tracker_details.html:53
 msgid "Network detection rule:"
 msgstr "Nettverksdeteksjonsregler:"
 
-#: trackers/templates/tracker_details.html:54
+#: trackers/templates/tracker_details.html:60
 msgid "Documentation"
 msgstr "Dokumentasjon"
 
-#: trackers/templates/tracker_details.html:66
+#: trackers/templates/tracker_details.html:72
 msgid "Latest reports with this tracker"
-msgstr "Nyeste rapporter med denne sporeren"
+msgstr "Seneste rapporter med denne sporeren"
 
-#: trackers/templates/trackers_list.html:8
+#: trackers/templates/trackers_list.html:4
+#: trackers/templates/trackers_list.html:5
+msgid "List of known trackers"
+msgstr "Liste over kjente sporere"
+
+#: trackers/templates/trackers_list.html:6
+#: trackers/templates/trackers_list.html:7
+#: trackers/templates/trackers_list.html:14
 msgid "Trackers"
 msgstr "Sporere"
 
-#: trackers/templates/trackers_list.html:12
+#: trackers/templates/trackers_list.html:18
 msgid "known tracker"
 msgid_plural "known trackers"
 msgstr[0] "kjent sporer"
 msgstr[1] "kjente sporere"
 
-#: trackers/templates/trackers_list.html:19
+#: trackers/templates/trackers_list.html:25
 msgid "Sorted by"
 msgstr "Sortert etter"
 
-#: trackers/templates/trackers_list.html:23
+#: trackers/templates/trackers_list.html:29
 msgid "Alphabetical order"
 msgstr "Alfabetisk rekkefølge"
 
-#: trackers/templates/trackers_list.html:26
+#: trackers/templates/trackers_list.html:32
 msgid "Number of applications"
 msgstr "Antall applikasjoner"
 
-#: trackers/templates/trackers_list.html:32
+#: trackers/templates/trackers_list.html:38
+#: trackers/templates/trackers_list.html:39
 msgid "Search by name"
 msgstr "Søk på navn"
 
-#: trackers/templates/trackers_list.html:84
+#: trackers/templates/trackers_list.html:91
 msgid "No trackers are available"
 msgstr "Ingen sporere er tilgjengelige"
 
