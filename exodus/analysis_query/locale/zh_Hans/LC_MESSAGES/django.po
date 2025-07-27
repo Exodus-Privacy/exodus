@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 10:56+0000\n"
-"PO-Revision-Date: 2025-07-21 16:19\n"
+"POT-Creation-Date: 2025-07-23 16:39+0000\n"
+"PO-Revision-Date: 2025-07-27 13:00\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -42,102 +42,150 @@ msgstr "不支持的文件扩展名"
 msgid "You need to be registered"
 msgstr "请先注册"
 
+#: analysis_query/templates/query_error.html:3
+#: analysis_query/templates/query_error.html:4
+msgid "Error during an analysis"
+msgstr "分析期间发生错误"
+
+#: analysis_query/templates/query_error.html:5
+#: analysis_query/templates/query_error.html:6
+#: analysis_query/templates/query_submit.html:8
 #: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_submit.html:15
+#: analysis_query/templates/query_upload.html:8
 #: analysis_query/templates/query_upload.html:9
+#: analysis_query/templates/query_upload.html:15
+#: analysis_query/templates/query_wait.html:8
+#: analysis_query/templates/query_wait.html:9
 msgid "New analysis"
 msgstr "新的分析"
 
-#: analysis_query/templates/query_submit.html:21
+#: analysis_query/templates/query_submit.html:6
+#: analysis_query/templates/query_submit.html:7
+msgid "Submit an application handle or URL to run a new analysis"
+msgstr "提交应用句柄或 URL 来运行新分析"
+
+#: analysis_query/templates/query_submit.html:27
 msgid "It is currently impossible to submit new analysis. Sorry for the inconvenience!"
 msgstr "目前无法提交新的分析。很抱歉给您带来不便！"
 
-#: analysis_query/templates/query_submit.html:36
+#: analysis_query/templates/query_submit.html:42
 msgid "URL of the application"
 msgstr "此应用的链接"
 
-#: analysis_query/templates/query_submit.html:45
+#: analysis_query/templates/query_submit.html:46
+msgid "Search"
+msgstr "搜索"
+
+#: analysis_query/templates/query_submit.html:51
 msgid "Source:"
 msgstr "来源:"
 
-#: analysis_query/templates/query_submit.html:55
+#: analysis_query/templates/query_submit.html:61
 msgid "Free applications only. Works also with the application handle."
 msgstr "仅免费应用程序。也适用应用程序句柄。"
 
-#: analysis_query/templates/query_submit.html:67
-#: analysis_query/templates/query_upload.html:50
+#: analysis_query/templates/query_submit.html:64
+msgid "\n"
+"                Applications with geographic restrictions cannot be scanned -\n"
+"                read our <a target=\"_blank\" rel=\"noreferrer\" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>\n"
+"              "
+msgstr "\n"
+"                 无法扫描有地理限制的应用—\n"
+"                阅读我们的<a target=\"_blank\" rel=\"noreferrer\" href='https://exodus-privacy.eu.org/en/post/covid/'>博客文章</a>\n"
+"              "
+
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:56
 msgid "Perform analysis"
 msgstr "执行分析"
 
-#: analysis_query/templates/query_submit.html:73
+#: analysis_query/templates/query_submit.html:81
 msgid "I prefer to upload an application"
 msgstr "我倾向于上传一个应用"
 
-#: analysis_query/templates/query_submit.html:80
-#: analysis_query/templates/query_upload.html:57
+#: analysis_query/templates/query_submit.html:86
+#: analysis_query/templates/query_upload.html:61
+#: analysis_query/templates/query_wait.html:32
+msgid "Animated line of marbles going up and down in waves"
+msgstr "上上下下弹珠的波浪形动画线段"
+
+#: analysis_query/templates/query_submit.html:88
+#: analysis_query/templates/query_upload.html:63
 msgid "The analysis could take a long time, you will be automatically redirected to the report."
 msgstr "分析可能需要很长时间, 您将自动被重定至报告."
 
-#: analysis_query/templates/query_submit.html:94
-#: analysis_query/templates/query_upload.html:70
-#: analysis_query/templates/query_wait.html:39
+#: analysis_query/templates/query_submit.html:102
+#: analysis_query/templates/query_upload.html:76
+#: analysis_query/templates/query_wait.html:45
 msgid "is a non-profit organization which provides this service for free."
 msgstr "是一个免费提供此服务的非盈利组织."
 
-#: analysis_query/templates/query_submit.html:96
-#: analysis_query/templates/query_upload.html:72
-#: analysis_query/templates/query_wait.html:41
+#: analysis_query/templates/query_submit.html:104
+#: analysis_query/templates/query_upload.html:78
+#: analysis_query/templates/query_wait.html:47
 msgid "Help us!"
 msgstr "帮助我们!"
 
-#: analysis_query/templates/query_submit.html:132
+#: analysis_query/templates/query_submit.html:140
 msgid "This application has already been analyzed!"
 msgstr "此应用已被分析!"
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "analyzed on"
 msgstr "分析于"
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "Go to the latest report"
 msgstr "查看最新报告."
 
-#: analysis_query/templates/query_submit.html:142
+#: analysis_query/templates/query_submit.html:150
 msgid "If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis."
 msgstr "如果您认为εxodus尚未分析此应用的最新版本, 欢迎随时提交分析."
 
-#: analysis_query/templates/query_upload.html:32
+#: analysis_query/templates/query_upload.html:6
+#: analysis_query/templates/query_upload.html:7
+msgid "Upload an APK file to run a new analysis"
+msgstr "上传 APK 文件运行新分析"
+
+#: analysis_query/templates/query_upload.html:38
 msgid "Upload an application"
 msgstr "上传应用"
 
-#: analysis_query/templates/query_upload.html:36
+#: analysis_query/templates/query_upload.html:42
 msgid "Browse file"
 msgstr "浏览文件"
 
-#: analysis_query/templates/query_upload.html:42
+#: analysis_query/templates/query_upload.html:48
 msgid "Only works with APK files."
 msgstr "仅适用于APK文件."
 
-#: analysis_query/templates/query_wait.html:9
+#: analysis_query/templates/query_wait.html:6
+#: analysis_query/templates/query_wait.html:7
+msgid "In progress or completed analysis"
+msgstr "进行中或已完成的分析"
+
+#: analysis_query/templates/query_wait.html:15
 msgid "Analysis in progress..."
 msgstr "分析中..."
 
-#: analysis_query/templates/query_wait.html:24
+#: analysis_query/templates/query_wait.html:30
 msgid "See the report"
 msgstr "查看报告"
 
-#: analysis_query/templates/query_wait.html:28
+#: analysis_query/templates/query_wait.html:34
 msgid "Will refresh automatically every 10 seconds."
 msgstr "每10秒自动刷新一次."
 
-#: analysis_query/templates/query_wait.html:64
+#: analysis_query/templates/query_wait.html:68
 msgid "Analysis done!"
 msgstr "分析完成!"
 
-#: analysis_query/views.py:34 analysis_query/views.py:62
+#: analysis_query/views.py:34 analysis_query/views.py:66
 msgid "Your request will be handled soon"
 msgstr "您的请求将很快被处理"
 
-#: analysis_query/views.py:76 analysis_query/views.py:84
+#: analysis_query/views.py:80 analysis_query/views.py:88
 msgid "AnalysisRequest does not exist"
 msgstr "分析请求不存在"
 
