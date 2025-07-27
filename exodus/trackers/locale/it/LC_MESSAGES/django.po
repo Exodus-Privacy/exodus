@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-26 13:23+0000\n"
-"PO-Revision-Date: 2020-03-29 08:26\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2025-07-22 21:51+0000\n"
+"PO-Revision-Date: 2025-07-27 13:01\n"
+"Last-Translator: \n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -12,90 +12,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: exodus-privacy\n"
+"X-Crowdin-Project-ID: 384695\n"
 "X-Crowdin-Language: it\n"
 "X-Crowdin-File: trackers.po\n"
+"X-Crowdin-File-ID: 53\n"
 
-#: trackers/templates/new_api_key.html:43
+#: trackers/templates/new_api_key.html:35
 #: trackers/templates/trackers_admin_list.html:24
 msgid "You need to be registered"
 msgstr "È necessario essere registrati"
 
-#: trackers/templates/stats_details.html:9
-#: trackers/templates/trackers_list.html:13
-msgid "Statistics"
-msgstr "Statistiche"
-
-#: trackers/templates/stats_details.html:11
-#: trackers/templates/stats_details.html:14
+#: trackers/templates/stats_details.html:4
+#: trackers/templates/stats_details.html:5
+#: trackers/templates/stats_details.html:17
+#: trackers/templates/stats_details.html:20
 msgid "Most frequent trackers"
 msgstr "I tracker più comuni"
 
-#: trackers/templates/stats_details.html:26
-#: trackers/templates/trackers_list.html:46
+#: trackers/templates/stats_details.html:6
+#: trackers/templates/stats_details.html:7
+#: trackers/templates/stats_details.html:15
+#: trackers/templates/trackers_list.html:19
+msgid "Statistics"
+msgstr "Statistiche"
+
+#: trackers/templates/stats_details.html:32
+#: trackers/templates/trackers_list.html:53
 #, python-format
 msgid "found in %(count)s application"
 msgid_plural "found in %(count)s applications"
 msgstr[0] "trovato in %(count)s applicazione"
 msgstr[1] "trovato in %(count)s applicazioni"
 
-#: trackers/templates/tracker_details.html:24
+#: trackers/templates/tracker_details.html:5
+#: trackers/templates/tracker_details.html:6
+msgid "Informations about this tracker"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:7
+#: trackers/templates/tracker_details.html:8
+msgid "Tracker profile for"
+msgstr ""
+
+#: trackers/templates/tracker_details.html:30
 #, python-format
 msgid "Present in: <b>%(count)s application</b>"
 msgid_plural "Present in: <b>%(count)s applications</b>"
 msgstr[0] "Presente in: <b>%(count)s applicazione</b>"
 msgstr[1] "Presente in: <b>%(count)s applicazioni</b>"
 
-#: trackers/templates/tracker_details.html:32
+#: trackers/templates/tracker_details.html:38
 msgid "Tracker web page"
 msgstr "Pagina web del tracker"
 
-#: trackers/templates/tracker_details.html:44
+#: trackers/templates/tracker_details.html:50
 msgid "Detection rules"
 msgstr "Regole di rilevamento"
 
-#: trackers/templates/tracker_details.html:45
+#: trackers/templates/tracker_details.html:51
 msgid "Code detection rule:"
 msgstr "Regola di rilevamento (codice):"
 
-#: trackers/templates/tracker_details.html:47
+#: trackers/templates/tracker_details.html:53
 msgid "Network detection rule:"
 msgstr "Regola di rilevamento (rete):"
 
-#: trackers/templates/tracker_details.html:54
+#: trackers/templates/tracker_details.html:60
 msgid "Documentation"
 msgstr "Documentazione"
 
-#: trackers/templates/tracker_details.html:66
+#: trackers/templates/tracker_details.html:72
 msgid "Latest reports with this tracker"
 msgstr "Ultimi report con questo tracker"
 
-#: trackers/templates/trackers_list.html:8
+#: trackers/templates/trackers_list.html:4
+#: trackers/templates/trackers_list.html:5
+msgid "List of known trackers"
+msgstr ""
+
+#: trackers/templates/trackers_list.html:6
+#: trackers/templates/trackers_list.html:7
+#: trackers/templates/trackers_list.html:14
 msgid "Trackers"
 msgstr "Tracker"
 
-#: trackers/templates/trackers_list.html:12
+#: trackers/templates/trackers_list.html:18
 msgid "known tracker"
 msgid_plural "known trackers"
 msgstr[0] "tracker noto"
 msgstr[1] "tracker noti"
 
-#: trackers/templates/trackers_list.html:19
+#: trackers/templates/trackers_list.html:25
 msgid "Sorted by"
 msgstr "Ordinati per"
 
-#: trackers/templates/trackers_list.html:23
+#: trackers/templates/trackers_list.html:29
 msgid "Alphabetical order"
 msgstr "Ordine alfabetico"
 
-#: trackers/templates/trackers_list.html:26
+#: trackers/templates/trackers_list.html:32
 msgid "Number of applications"
 msgstr "Numero di applicazioni"
 
-#: trackers/templates/trackers_list.html:32
+#: trackers/templates/trackers_list.html:38
+#: trackers/templates/trackers_list.html:39
 msgid "Search by name"
 msgstr "Cerca per nome"
 
-#: trackers/templates/trackers_list.html:84
+#: trackers/templates/trackers_list.html:91
 msgid "No trackers are available"
 msgstr "Nessun tracker disponibile"
 
@@ -103,3 +127,4 @@ msgstr "Nessun tracker disponibile"
 #: trackers/views.py:75
 msgid "Tracker does not exist"
 msgstr "Il tracker non esiste"
+
