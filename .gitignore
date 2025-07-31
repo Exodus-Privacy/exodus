@@ -1,6 +1,5 @@
-/.vagrant
 *.pyc
-/storage/
+storage/
 venv/
 data/
 .idea
@@ -10,11 +9,12 @@ data/
 exodus/django
 exodus/celerybeat-schedule
 celerybeat.pid
-scheduler.sh
 
 # Settings files
 .env
 exodus/exodus/settings/custom_dev.py
 exodus/exodus/settings/custom_docker.py
 exodus/exodus/settings/production.py
-staticfiles
+
+# Static files
+exodus/staticfiles
