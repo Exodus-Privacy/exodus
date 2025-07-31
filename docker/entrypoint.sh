@@ -134,7 +134,6 @@ function init_db() {
 
 function init() {
 	init_db
-	collectStatic
 	compileMessages
 	startFrontend
 }
