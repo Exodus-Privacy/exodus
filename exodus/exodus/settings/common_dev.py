@@ -8,7 +8,7 @@ SECRET_KEY = env('EXODUS_SECRET_KEY', default=default_secret_key)
 ALLOWED_HOSTS = ['*']
 
 STATIC_URL = '/static/'
-STATIC_ROOT = f'{BASE_DIR}/static/'
+STATIC_ROOT = f'{ROOT_DIR}/staticfiles/'
 STATICFILES_DIRS = [f'{APPS_DIR}/static']
 
 MINIO_STORAGE_ACCESS_KEY = env('EXODUS_MINIO_ROOT_USER', default='exodusexodus')
