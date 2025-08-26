@@ -10,7 +10,6 @@ You have different ways of setting up your development environment:
 
 - [Docker](#docker-setup)
 - [Manual](#manual-setup)
-- ~~Vagrant (Deprecated)~~
 
 ### Docker setup
 
@@ -72,6 +71,7 @@ docker-compose exec exodus-worker /entrypoint.sh "<command>"
 
 to make actions, where `<command>` can be:
 
+- `collect-static`: Collect all static files
 - `compile-messages`: Compile the translation messages
 - `create-db`: Create the database and apply migrations
 - `create-user`: Create a Django user

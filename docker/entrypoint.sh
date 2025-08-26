@@ -5,6 +5,7 @@ declare -r pymanage="$pyexe manage.py"
 declare -r custom_docker_settings="/exodus/exodus/exodus/settings/custom_docker.py"
 
 declare -Ar commandList=(
+	[collect-static]=collectStatic
 	[compile-messages]=compileMessages
 	[create-db]=createDB
 	[create-user]=createUser
@@ -18,6 +19,7 @@ declare -Ar commandList=(
 )
 
 declare -Ar commandHelpList=(
+	[collect-static]='collect all static files'
 	[compile-messages]='compile translation messages'
 	[create-db]='create database if required and attend to migrations'
 	[create-user]='actually create a super user if not created yet'
@@ -134,7 +136,6 @@ function init_db() {
 
 function init() {
 	init_db
-	collectStatic
 	compileMessages
 	startFrontend
 }
