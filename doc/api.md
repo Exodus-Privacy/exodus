@@ -8,6 +8,8 @@ This API is globally limited to 30 requests/second (with a 50 requests burst). S
 
 :warning: If the previous limit is exceeded too many times, we will ban the originating IP address for a specific period of time.
 
+The εxodus API results are made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/.
+
 ## Authorization
 
 **In order to use this REST API, you have to request an API key**.
