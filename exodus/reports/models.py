@@ -8,7 +8,7 @@ from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from minio import Minio
-from minio.error import (ResponseError, NoSuchBucket)
+from minio.error import MinioException
 
 from django.utils import translation
 from trackers.models import Tracker
@@ -229,7 +229,5 @@ def remove_report_files(sender, instance, using, **kwargs):
                                             recursive=True)
         for obj in objects:
             minio_client.remove_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, obj.object_name)
-    except ResponseError as err:
-        print(err)
-    except NoSuchBucket as err:
-        print(err)
+    except MinioException:
+        logging.exception("An error occured while removing report files")
