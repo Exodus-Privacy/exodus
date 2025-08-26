@@ -1,4 +1,4 @@
-from IPython.core.magics import logging
+import logging
 from django.conf import settings
 from minio import Minio
 from minio.error import MinioException

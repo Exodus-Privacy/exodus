@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import json
+import logging
 
 from django.conf import settings
 from django.db import models
