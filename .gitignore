@@ -17,7 +17,7 @@ exodus/exodus/settings/custom_docker.py
 exodus/exodus/settings/production.py
 
 # Static files
-exodus/staticfiles
+exodus/exodus/staticfiles
 
 # Translations
 *.mo
