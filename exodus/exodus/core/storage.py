@@ -38,7 +38,7 @@ class RemoteStorageHelper():
             for obj in objects:
                 self.minio_client.remove_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, obj.object_name)
         except MinioException:
-            logging.exception(f"An error occured with MinIO while clearing prefix '{ prefix }'")
+            logging.exception(f"An error occured with MinIO while clearing prefix '{prefix}'")
 
     def put_file(self, local_path, remote_name):
         """
