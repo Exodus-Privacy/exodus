@@ -1,6 +1,7 @@
 # coding=utf-8
 from __future__ import absolute_import
 from .base import *
+from csp.constants import NONE, SELF
 
 default_secret_key = '9b80473f1b0c7d9f1859cfa754e40e26'
 SECRET_KEY = env('EXODUS_SECRET_KEY', default=default_secret_key)
@@ -26,14 +27,18 @@ CSRF_COOKIE_SECURE = env.bool('EXODUS_CSRF_COOKIE_SECURE', default=True)
 
 MIDDLEWARE += ['csp.middleware.CSPMiddleware']
 
-CSP_DEFAULT_SRC = ("'none'")
-CSP_BASE_URI = ("'self'")
-CSP_CONNECT_SRC = ("'self'")
-CSP_FORM_ACTION = ("'self'")
-CSP_FRAME_ANCESTORS = ("'self'")
-CSP_FRAME_SRC = ("'none'")
-CSP_IMG_SRC = ("'self'", "data:", "https://static.exodus-privacy.eu.org")
-CSP_MEDIA_SRC = ("'self'", "https://static.exodus-privacy.eu.org")
-CSP_OBJECT_SRC = ("'self'")
-CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "'unsafe-eval'")
-CSP_STYLE_SRC = ("'self'")
+CONTENT_SECURITY_POLICY = {
+    "DIRECTIVES": {
+        "default-src": [NONE],
+        "base-uri": [SELF],
+        "connect-src": [SELF],
+        "form-action": [SELF],
+        "frame-ancestor": [SELF],
+        "frame-src": [SELF],
+        "img-src": [SELF, "data:", "https://static.exodus-privacy.eu.org"],
+        "media-src": [SELF, "https://static.exodus-privacy.eu.org"],
+        "object-src": [SELF],
+        "script-src": [SELF, "'unsafe-inline'", "'unsafe-eval'"],
+        "style-src": [SELF],
+    }
+}
