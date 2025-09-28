@@ -14,7 +14,7 @@ from tempfile import NamedTemporaryFile
 
 from django.conf import settings
 from google_play_scraper import app as google_app
-from minio.error import (ResponseError)
+from minio.error import MinioException
 
 from exodus_core.analysis.static_analysis import StaticAnalysis as CoreSA
 from exodus.core.storage import RemoteStorageHelper
@@ -53,8 +53,8 @@ class StaticAnalysis(CoreSA):
 
             try:
                 storage.put_file(f.name, icon_name)
-            except ResponseError as err:
-                logging.info(err)
+            except MinioException:
+                logging.exception(f"An error occured while putting the file '{f.name}' in storage")
                 return None
 
             icon_phash = self.get_phash(f.name)
@@ -181,8 +181,8 @@ def download_fdroid_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         try:
             storage.put_file(apk_tmp, apk_name)
             return True
-        except ResponseError as err:
-            logging.error(err)
+        except MinioException:
+            logging.exception(f"An error occured while storing new apk '{apk_name}'")
             return False
     else:
         return False
@@ -224,8 +224,8 @@ def download_google_apk(storage, handle, tmp_dir, apk_name, apk_tmp):
         try:
             storage.put_file(apk_tmp, apk_name)
             return True
-        except ResponseError as err:
-            logging.error(err)
+        except MinioException:
+            logging.error(f"An error occured while storing new apk '{apk_name}'")
             return False
 
     return False
