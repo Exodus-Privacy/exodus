@@ -22,6 +22,6 @@ requests = "~=2.32"
 whitenoise = "~=6.2.0"
 
 [dev-packages]
-autopep8 = "~=1.6"
-django-csp = "~=3.7"
-flake8 = "~=4.0"
+autopep8 = "~=2.3"
+django-csp = "~=4.0"
+flake8 = "~=7.0"
