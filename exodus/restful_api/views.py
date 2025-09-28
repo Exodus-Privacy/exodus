@@ -15,8 +15,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from reports.models import Application, Report, Certificate
 from trackers.models import Tracker
-from restful_api.serializers import ApplicationSerializer, TrackerSerializer,\
-    ReportInfosSerializer, ReportSerializer, SearchQuerySerializer,\
+from restful_api.serializers import ApplicationSerializer, TrackerSerializer, \
+    ReportInfosSerializer, ReportSerializer, SearchQuerySerializer, \
     SearchApplicationSerializer, ApplicationShortSerializer
 
 
