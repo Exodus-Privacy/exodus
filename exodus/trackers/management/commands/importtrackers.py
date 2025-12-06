@@ -42,9 +42,10 @@ class Command(BaseCommand):
             import urllib.request
 
             file = urllib.request.urlopen(filename)
+            file_content = file.read()
         else:
             file = open(filename, 'r')
+            file_content = file.read()
+            file.close()
 
-        file_content = file.read()
-        file.close()
         return file_content
