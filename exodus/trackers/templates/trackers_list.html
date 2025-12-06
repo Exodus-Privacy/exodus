@@ -24,8 +24,8 @@
       <div class="col-xl-4 col-lg-5 col-md-8 col-12 mb-2">
         {% trans "Sorted by" %}&nbsp;
         <select class="custom-select"
-                onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/trackers/' + this.options[this.selectedIndex].value);">
-          <option value=" ">
+                onchange="const new_value = this.options[this.selectedIndex].value; if (new_value == '?filter=apps') {window.location = '?filter=apps';} else {window.location = '?';}">
+          <option value="?">
             {% trans "Alphabetical order" %}
           </option>
           <option value="?filter=apps" {% if filter == 'apps' %}selected{% endif %}>

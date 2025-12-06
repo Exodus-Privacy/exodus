@@ -34,8 +34,8 @@
         <hr>
         {% if not handle %}
           <select class="custom-select"
-                  onchange="this.options[this.selectedIndex].value && (window.location = '/{{ LANGUAGE_CODE }}/reports/list' + this.options[this.selectedIndex].value);">
-            <option value=" ">{% trans "Latest reports" %}</option>
+                  onchange="const new_value = this.options[this.selectedIndex].value; if (new_value == '?filter=most_trackers') {window.location = '?filter=most_trackers';} else if (new_value == '?filter=no_trackers') {window.location = '?filter=no_trackers';} else {window.location = '?';}">
+            <option value="?">{% trans "Latest reports" %}</option>
             <option value="?filter=most_trackers" {% if filter == 'most_trackers' %}selected{% endif %}>
               {% trans "Sorted by number of trackers" %}</option>
             <option value="?filter=no_trackers" {% if filter == 'no_trackers' %}selected{% endif %}>
