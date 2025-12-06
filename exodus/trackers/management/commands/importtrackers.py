@@ -45,4 +45,6 @@ class Command(BaseCommand):
         else:
             file = open(filename, 'r')
 
-        return file.read()
+        file_content = file.read()
+        file.close()
+        return file_content
