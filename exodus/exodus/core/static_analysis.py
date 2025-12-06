@@ -134,6 +134,7 @@ def _get_fdroid_localized_data(handle):
             storage_helper.get_file('fdroid_index_v1.json', f.name)
             f = open(f.name)
             fdroid_data = json.load(f)
+            f.close()
         except Exception:
             raise Exception("Could not get Fdroid index from Minio")
 
