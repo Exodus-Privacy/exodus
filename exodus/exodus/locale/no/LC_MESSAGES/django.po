@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-23 16:39+0000\n"
-"PO-Revision-Date: 2025-07-27 13:01\n"
+"PO-Revision-Date: 2026-02-04 20:11\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
@@ -155,7 +155,7 @@ msgstr "La oss sette i gang!"
 #: web/templates/base/base.html:31 web/templates/base/home.html:12
 #: web/templates/base/organization.html:22
 msgid "Exodus logo: white epsilon in a purple circle"
-msgstr ""
+msgstr "Exodus logo: En hvit epsilon inne i en lilla sirkel"
 
 #: web/templates/base/base.html:58 web/templates/base/organization.html:7
 #: web/templates/base/organization.html:8
@@ -165,7 +165,7 @@ msgstr "Organisasjonen"
 
 #: web/templates/base/base.html:77
 msgid "Select language"
-msgstr ""
+msgstr "Velg språk"
 
 #: web/templates/base/home.html:4 web/templates/base/home.html:5
 #: web/templates/base/home.html:16
@@ -192,15 +192,15 @@ msgstr "Når du ønsker å installere en applikasjon eller når en applikasjon s
 
 #: web/templates/base/next.html:31
 msgid "how many trackers does it contain and what permissions does it ask for?"
-msgstr "hvor mange sporere inneholder den og hvilke tillatelser spør den om?"
+msgstr "hvor mange sporere inneholder den og hvilke tillatelser ber den om?"
 
 #: web/templates/base/next.html:32
 msgid "do I want or need to install it?"
-msgstr "vill jeg eller trenger jeg å installere den?"
+msgstr "vil jeg eller trenger jeg å installere den?"
 
 #: web/templates/base/next.html:33
 msgid "do I want or need to give it what it asks me?"
-msgstr "vill jeg eller trenger jeg å gi den hva den spør om?"
+msgstr "vil jeg eller trenger jeg å gi den hva den spør om?"
 
 #: web/templates/base/next.html:36
 msgid "It is up to you to decide but by taking into consideration your daily use, you can have a better control over your digital identity."
@@ -244,7 +244,7 @@ msgstr "Installer en annonseblokkerer"
 
 #: web/templates/base/next.html:84
 msgid "In all cases, Android smartphones allow you to install ad-blocking applications such as <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. You can install it from their own website."
-msgstr ""
+msgstr "I alle tilfeller lar Android-smarttelefoner deg installere reklameblokkeringsapplikasjoner som <a target='_blank' rel='noreferrer' href='https://blokada.org/'>Blokada</a>. Du kan installere den fra deres eget nettsted."
 
 #: web/templates/base/next.html:88
 msgid "Discover alternatives"
@@ -261,7 +261,12 @@ msgid "\n"
 "            <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Surveillance Self-Defense by EFF</a></li>\n"
 "          </ul>\n"
 "        "
-msgstr ""
+msgstr "\n"
+"          <ul>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://prism-break.org/en/categories/android/'>Prism Break</a></li>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://ssd.eff.org/'>Overvåkingsselvforsvar av EFF</a></li>\n"
+"          </ul>\n"
+"        "
 
 #: web/templates/base/next.html:100
 msgid "Remain curious!"
@@ -286,7 +291,12 @@ msgid "\n"
 "            <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>The 'Boing Boing' blog</a></li>\n"
 "          </ul>\n"
 "        "
-msgstr ""
+msgstr "\n"
+"          <ul>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://www.eff.org/deeplinks'>EFF blog</a></li>\n"
+"            <li><a target='_blank' rel='noreferrer' href='https://boingboing.net/'>'Boing Boing' bloggen</a></li>\n"
+"          </ul>\n"
+"        "
 
 #: web/templates/base/next.html:118
 msgid "For advanced users"
@@ -324,7 +334,7 @@ msgstr "Kontakt oss"
 
 #: web/templates/base/organization.html:46
 msgid "An envelope"
-msgstr ""
+msgstr "En konvolutt"
 
 #: web/templates/base/organization.html:48
 msgid "Contact us!"
@@ -332,7 +342,7 @@ msgstr "Kontakt oss!"
 
 #: web/templates/base/organization.html:51
 msgid "Mastodon logo: a stylized mammoth with an 'm' in it"
-msgstr ""
+msgstr "Mastodon logo: en stilisert mammut med en 'm' i"
 
 #: web/templates/base/organization.html:53
 #: web/templates/base/organization.html:60
@@ -342,11 +352,11 @@ msgstr "Følg oss!"
 
 #: web/templates/base/organization.html:63
 msgid "Facebook logo: an 'f' in a square"
-msgstr ""
+msgstr "Facebook logo: en 'f' inne i en firkant"
 
 #: web/templates/base/permissions.html:5 web/templates/base/permissions.html:6
 msgid "What type of permissions? Why are some permissions indicated as dangerous? Do I have control over these permissions?"
-msgstr ""
+msgstr "Hvilken type tillatelser? Hvorfor er noen tillatelser merket som farlige? Har jeg kontroll over disse tillatelsene?"
 
 #: web/templates/base/permissions.html:7 web/templates/base/permissions.html:8
 #: web/templates/base/permissions.html:14 web/templates/base/understand.html:39
@@ -383,7 +393,7 @@ msgstr "Avhengig av din smarttelefon og operativsystemet, er det mulig å begren
 
 #: web/templates/base/trackers.html:5 web/templates/base/trackers.html:6
 msgid "What is a tracker? Are all trackers created equal? Who puts these trackers in?"
-msgstr ""
+msgstr "Hva er en sporer? Er alle sporere like? Hvem legger inn disse sporerene?"
 
 #: web/templates/base/trackers.html:14 web/templates/base/understand.html:25
 msgid "Trackers "
@@ -400,7 +410,7 @@ msgstr "Hva er en sporer?"
 #: web/templates/base/trackers.html:31 web/templates/base/trackers.html:43
 #: web/templates/base/trackers.html:75
 msgid "See the video on Youtube"
-msgstr ""
+msgstr "Se videoen på YouTube"
 
 #: web/templates/base/trackers.html:34
 msgid "A tracker is a piece of software whose task is to gather information on the person using the application, on how they use it, or on the smartphone being used. A tracker is usually distributed by companies as a SDK (Software Development Kit), a sort of ready-made toolkit, aiming to make it easier for application developers. To be noted : 'open source' trackers exist, their code is available and open to everyone."
@@ -456,7 +466,7 @@ msgstr "I det andre tilfellet utvikler organisasjonen som eier produktet applika
 
 #: web/templates/base/understand.html:5 web/templates/base/understand.html:6
 msgid "Better understand what are trackers, permissions and what to do next"
-msgstr ""
+msgstr "Forstå bedre: hva er sporere, hva menes med tillatelser er, og hva du kan gjøre videre"
 
 #: web/templates/base/understand.html:27
 msgid "Know more about trackers and their impact on privacy"
@@ -521,7 +531,7 @@ msgstr "Applikasjonens navn"
 
 #: web/templates/snippets/reports_search.html:10
 msgid "Search"
-msgstr ""
+msgstr "Søk"
 
 #: web/templates/snippets/reports_search.html:16
 msgid "You can search for an application using its name, handle or Google Play URL"

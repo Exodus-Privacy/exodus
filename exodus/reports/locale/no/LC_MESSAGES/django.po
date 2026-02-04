@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-22 21:51+0000\n"
-"PO-Revision-Date: 2025-07-27 13:01\n"
+"PO-Revision-Date: 2026-02-04 20:11\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: reports/templates/report_details.html:6
 #: reports/templates/report_details.html:7
 msgid "Known trackers, permissions and informations about this specific version of this application"
-msgstr ""
+msgstr "Kjente sporere, tillatelser og informasjon om denne versjonen av aplikasjonen"
 
 #: reports/templates/report_details.html:8
 #: reports/templates/report_details.html:9
 msgid "Report for"
-msgstr ""
+msgstr "Rapport for"
 
 #: reports/templates/report_details.html:19
 msgid "Prefix in storage:"
@@ -108,7 +108,7 @@ msgstr "Applikasjonen kan inneholde sporer(e) vi ikke kjenner til enda."
 
 #: reports/templates/report_details.html:134
 msgid "A tracker is a piece of software meant to collect data about you or your usages."
-msgstr "En sporer er programvare ment til samle inn data om deg og ditt bruksmønster."
+msgstr "En sporer er programvare ment til å samle inn data om deg og ditt bruksmønster."
 
 #: reports/templates/report_details.html:135
 #: reports/templates/report_details.html:183
@@ -123,11 +123,11 @@ msgstr[1] "Vi har funnet de følgende tillatelsene i applikasjonen:"
 
 #: reports/templates/report_details.html:164
 msgid "Red exclamation mark"
-msgstr ""
+msgstr "Rødt utropstegn"
 
 #: reports/templates/report_details.html:174
 msgid "The icon &nbsp;<img src=\"/static/img/danger.svg\" alt=\"Red exclamation mark\">&nbsp; indicates a 'Dangerous' or 'Special' level according to <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Google's protection levels</a>."
-msgstr ""
+msgstr "Ikonet &nbsp;<img src=\"/static/img/danger.svg\" alt=\"Red exclamation mark\">&nbsp; indikerer et 'Farlig' eller 'Spesiellt' nivå ifølge <a target=\"_blank\" rel=\"noreferrer\" href=\"https://developer.android.com/guide/topics/permissions/overview\">Googles beskyttelsesnivåer</a>."
 
 #: reports/templates/report_details.html:180
 msgid "This application doesn't require any permissions."
@@ -135,7 +135,7 @@ msgstr "Denne applikasjonen krever ingen tillatelser."
 
 #: reports/templates/report_details.html:182
 msgid "Permissions are actions the application can do on your phone."
-msgstr "Tillatelser er handlinger applikasjonen kan gjøre på din telefon."
+msgstr "Tillatelser er handlinger som applikasjonen kan utføre på din telefon."
 
 #: reports/templates/report_details.html:189
 msgid "What's next?"
@@ -196,7 +196,7 @@ msgstr "Tekst"
 #: reports/templates/report_details.html:241
 #: reports/templates/report_details.html:265
 msgid "APK fingerprint"
-msgstr "APK fingeravtrykk"
+msgstr "APK-fingeravtrykk"
 
 #: reports/templates/report_details.html:246
 msgid "APK checksum:"
@@ -233,7 +233,7 @@ msgstr "Lukk"
 
 #: reports/templates/reports_home.html:5 reports/templates/reports_home.html:6
 msgid "Search reports by application name, handle or URL"
-msgstr ""
+msgstr "Søk i rapporter etter applikasjonsnavn, appID eller URL\""
 
 #: reports/templates/reports_home.html:7 reports/templates/reports_home.html:8
 #: reports/templates/reports_home.html:16
@@ -243,21 +243,21 @@ msgstr "Rapporter"
 
 #: reports/templates/reports_list.html:6 reports/templates/reports_list.html:7
 msgid "Reports of all analyzed versions of this application"
-msgstr ""
+msgstr "Rapporter for alle analyserte versjoner av denne applikasjonen"
 
 #: reports/templates/reports_list.html:8 reports/templates/reports_list.html:9
 msgid "Reports list for"
-msgstr ""
+msgstr "Rapporteringsliste for"
 
 #: reports/templates/reports_list.html:11
 #: reports/templates/reports_list.html:12
 msgid "All applications reports sorted by latest reports, number of trackers or no known trackers"
-msgstr ""
+msgstr "Alle applikasjonsrapporter sortert etter 'nyeste rapporter', 'antall sporere' eller 'ingen kjente sporere'"
 
 #: reports/templates/reports_list.html:13
 #: reports/templates/reports_list.html:14
 msgid "Reports list"
-msgstr ""
+msgstr "Oversiktsliste over rapporter"
 
 #: reports/templates/reports_list.html:30
 #, python-format
