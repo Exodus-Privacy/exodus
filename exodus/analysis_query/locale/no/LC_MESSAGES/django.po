@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-23 16:39+0000\n"
-"PO-Revision-Date: 2025-07-27 13:01\n"
+"PO-Revision-Date: 2026-02-04 20:11\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "Language: no_NO\n"
@@ -63,7 +63,7 @@ msgstr "Ny analyse"
 #: analysis_query/templates/query_submit.html:6
 #: analysis_query/templates/query_submit.html:7
 msgid "Submit an application handle or URL to run a new analysis"
-msgstr "Send inn et applikasjons-pakkenavn eller en aplikasjons-URL for å kjøre en ny analyse"
+msgstr "Legg inn app-ID eller en aplikasjons-URL for å kjøre en ny analyse"
 
 #: analysis_query/templates/query_submit.html:27
 msgid "It is currently impossible to submit new analysis. Sorry for the inconvenience!"
@@ -90,7 +90,10 @@ msgid "\n"
 "                Applications with geographic restrictions cannot be scanned -\n"
 "                read our <a target=\"_blank\" rel=\"noreferrer\" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>\n"
 "              "
-msgstr ""
+msgstr "\n"
+"Applikasjoner med geografiske restriksjoner kan ikke sjekkes -\n"
+"                les våres bloggpost om emnet<a target=\"_blank\" rel=\"noreferrer\" href='https://exodus-privacy.eu.org/en/post/covid/'>blogg-post</a>\n"
+"              "
 
 #: analysis_query/templates/query_submit.html:75
 #: analysis_query/templates/query_upload.html:56
@@ -134,7 +137,7 @@ msgstr "analysert på"
 
 #: analysis_query/templates/query_submit.html:146
 msgid "Go to the latest report"
-msgstr "Gå til den siste rapporten"
+msgstr "Gå til siste rapport"
 
 #: analysis_query/templates/query_submit.html:150
 msgid "If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis."
@@ -160,7 +163,7 @@ msgstr "Virker bare med APK-filer."
 #: analysis_query/templates/query_wait.html:6
 #: analysis_query/templates/query_wait.html:7
 msgid "In progress or completed analysis"
-msgstr ""
+msgstr "I gang eller fullført analyse"
 
 #: analysis_query/templates/query_wait.html:15
 msgid "Analysis in progress..."
@@ -180,9 +183,9 @@ msgstr "Analyse fullført!"
 
 #: analysis_query/views.py:34 analysis_query/views.py:66
 msgid "Your request will be handled soon"
-msgstr "Din forespørsel vil bli behandlet snart"
+msgstr "Din forespørsel vil snart bli behandlet"
 
 #: analysis_query/views.py:80 analysis_query/views.py:88
 msgid "AnalysisRequest does not exist"
-msgstr "AnalysisRequest finnes ikke"
+msgstr "AnalyseForespørselen finnes ikke"
 

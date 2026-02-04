@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-22 21:51+0000\n"
-"PO-Revision-Date: 2025-07-27 13:00\n"
+"PO-Revision-Date: 2026-02-04 20:10\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et_EE\n"
@@ -163,7 +163,7 @@ msgstr "võta meiega ühendust"
 
 #: reports/templates/report_details.html:213
 msgid "Signed by"
-msgstr "Allkirjastas"
+msgstr "Allkirjastaja"
 
 #: reports/templates/report_details.html:217
 msgid "Fingerprint:"

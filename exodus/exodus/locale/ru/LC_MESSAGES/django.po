@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-23 16:39+0000\n"
-"PO-Revision-Date: 2025-07-27 13:01\n"
+"PO-Revision-Date: 2026-02-04 20:11\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -334,7 +334,7 @@ msgstr "Свяжитесь с нами"
 
 #: web/templates/base/organization.html:46
 msgid "An envelope"
-msgstr ""
+msgstr "Конверт"
 
 #: web/templates/base/organization.html:48
 msgid "Contact us!"
