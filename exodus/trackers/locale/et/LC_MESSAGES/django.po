@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-22 21:51+0000\n"
-"PO-Revision-Date: 2025-07-27 13:00\n"
+"PO-Revision-Date: 2026-02-04 20:10\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et_EE\n"
@@ -41,7 +41,7 @@ msgstr "Statistika"
 #, python-format
 msgid "found in %(count)s application"
 msgid_plural "found in %(count)s applications"
-msgstr[0] "lõimitud rakenduste arv: %(count)s"
+msgstr[0] "liidestust kasutavate rakenduste arv: %(count)s"
 msgstr[1] "lõimitud rakenduste arv: %(count)s"
 
 #: trackers/templates/tracker_details.html:5

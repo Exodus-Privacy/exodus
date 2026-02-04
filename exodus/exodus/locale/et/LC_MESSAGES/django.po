@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-23 16:39+0000\n"
-"PO-Revision-Date: 2025-07-27 13:00\n"
+"PO-Revision-Date: 2026-02-04 20:10\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et_EE\n"
@@ -104,7 +104,7 @@ msgstr "Jälitajad"
 #: web/templates/base/understand.html:7 web/templates/base/understand.html:8
 #: web/templates/base/understand.html:14
 msgid "Better understand"
-msgstr "Parem ülevaade"
+msgstr "Selge ülevaade"
 
 #: men_customization/templates/base/base.html:52
 #: web/templates/base/base.html:64
@@ -470,7 +470,7 @@ msgstr "Saad parema ülevaate jälitajatest, õigustest ja mida saad järgmiseks
 
 #: web/templates/base/understand.html:27
 msgid "Know more about trackers and their impact on privacy"
-msgstr "Lisateave jälitajate kohta ning mõju osas sinu privaatsusele"
+msgstr "Lisateave jälitajate kohta ning nende mõju osas sinu privaatsusele"
 
 #: web/templates/base/understand.html:31 web/templates/base/understand.html:45
 #: web/templates/base/understand.html:65
