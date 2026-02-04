@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+
+## [1.32.3] - 2026-02-04
+
 - Add a changelog
 - dependencies: upgrade apkeep from 0.17.0 to 0.18.0
 - dependencies: upgrade django to 5.2.11
