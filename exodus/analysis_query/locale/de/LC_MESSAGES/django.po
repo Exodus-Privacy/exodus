@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-01 10:56+0000\n"
-"PO-Revision-Date: 2021-03-06 09:27\n"
+"POT-Creation-Date: 2025-07-23 16:39+0000\n"
+"PO-Revision-Date: 2026-02-04 20:11\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -42,112 +42,147 @@ msgstr "Nicht unterstützte Dateierweiterung"
 msgid "You need to be registered"
 msgstr "Sie müssen registriert sein"
 
+#: analysis_query/templates/query_error.html:3
+#: analysis_query/templates/query_error.html:4
+msgid "Error during an analysis"
+msgstr ""
+
+#: analysis_query/templates/query_error.html:5
+#: analysis_query/templates/query_error.html:6
+#: analysis_query/templates/query_submit.html:8
 #: analysis_query/templates/query_submit.html:9
+#: analysis_query/templates/query_submit.html:15
+#: analysis_query/templates/query_upload.html:8
 #: analysis_query/templates/query_upload.html:9
+#: analysis_query/templates/query_upload.html:15
+#: analysis_query/templates/query_wait.html:8
+#: analysis_query/templates/query_wait.html:9
 msgid "New analysis"
 msgstr "Neue Analyse"
 
-#: analysis_query/templates/query_submit.html:21
-msgid ""
-"It is currently impossible to submit new analysis. Sorry for the "
-"inconvenience!"
+#: analysis_query/templates/query_submit.html:6
+#: analysis_query/templates/query_submit.html:7
+msgid "Submit an application handle or URL to run a new analysis"
 msgstr ""
 
-#: analysis_query/templates/query_submit.html:36
+#: analysis_query/templates/query_submit.html:27
+msgid "It is currently impossible to submit new analysis. Sorry for the inconvenience!"
+msgstr "Es ist derzeit nicht möglich, neue Analysen anzufragen. Wir entschuldigen uns für die Unannehmlichkeiten!"
+
+#: analysis_query/templates/query_submit.html:42
 msgid "URL of the application"
 msgstr "URL der Anwendung"
 
-#: analysis_query/templates/query_submit.html:45
+#: analysis_query/templates/query_submit.html:46
+msgid "Search"
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:51
 msgid "Source:"
 msgstr "Quelle:"
 
-#: analysis_query/templates/query_submit.html:55
+#: analysis_query/templates/query_submit.html:61
 msgid "Free applications only. Works also with the application handle."
 msgstr "Nur kostenlose Anwendungen. Funktioniert auch mit der App-ID."
 
-#: analysis_query/templates/query_submit.html:67
-#: analysis_query/templates/query_upload.html:50
+#: analysis_query/templates/query_submit.html:64
+msgid "\n"
+"                Applications with geographic restrictions cannot be scanned -\n"
+"                read our <a target=\"_blank\" rel=\"noreferrer\" href='https://exodus-privacy.eu.org/en/post/covid/'>blog post</a>\n"
+"              "
+msgstr ""
+
+#: analysis_query/templates/query_submit.html:75
+#: analysis_query/templates/query_upload.html:56
 msgid "Perform analysis"
 msgstr "Analyse durchführen"
 
-#: analysis_query/templates/query_submit.html:73
+#: analysis_query/templates/query_submit.html:81
 msgid "I prefer to upload an application"
 msgstr "I möchte eine App hochladen"
 
-#: analysis_query/templates/query_submit.html:80
-#: analysis_query/templates/query_upload.html:57
-msgid ""
-"The analysis could take a long time, you will be automatically redirected to "
-"the report."
+#: analysis_query/templates/query_submit.html:86
+#: analysis_query/templates/query_upload.html:61
+#: analysis_query/templates/query_wait.html:32
+msgid "Animated line of marbles going up and down in waves"
 msgstr ""
-"Die Analyse kann lange dauern, Sie werden automatisch auf den Bericht "
-"umgeleitet."
 
-#: analysis_query/templates/query_submit.html:94
-#: analysis_query/templates/query_upload.html:70
-#: analysis_query/templates/query_wait.html:39
+#: analysis_query/templates/query_submit.html:88
+#: analysis_query/templates/query_upload.html:63
+msgid "The analysis could take a long time, you will be automatically redirected to the report."
+msgstr "Die Analyse kann lange dauern, Sie werden automatisch auf den Bericht umgeleitet."
+
+#: analysis_query/templates/query_submit.html:102
+#: analysis_query/templates/query_upload.html:76
+#: analysis_query/templates/query_wait.html:45
 msgid "is a non-profit organization which provides this service for free."
-msgstr ""
-"ist eine gemeinnützige Organisation, die diesen Service kostenlos anbietet."
+msgstr "ist eine gemeinnützige Organisation, die diesen Service kostenlos anbietet."
 
-#: analysis_query/templates/query_submit.html:96
-#: analysis_query/templates/query_upload.html:72
-#: analysis_query/templates/query_wait.html:41
+#: analysis_query/templates/query_submit.html:104
+#: analysis_query/templates/query_upload.html:78
+#: analysis_query/templates/query_wait.html:47
 msgid "Help us!"
 msgstr "Hilf uns!"
 
-#: analysis_query/templates/query_submit.html:132
+#: analysis_query/templates/query_submit.html:140
 msgid "This application has already been analyzed!"
 msgstr "Diese Anwendung wurde bereits analysiert!"
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "analyzed on"
 msgstr "analysiert am"
 
-#: analysis_query/templates/query_submit.html:138
+#: analysis_query/templates/query_submit.html:146
 msgid "Go to the latest report"
 msgstr "Zum letzten Bericht gehen"
 
-#: analysis_query/templates/query_submit.html:142
-msgid ""
-"If you think εxodus has not yet analyzed the latest version of this "
-"application, feel free to submit the analysis."
-msgstr ""
-"Wenn Sie glauben, dass εxodus die neueste Version dieser Anwendung noch "
-"nicht analysiert hat, können Sie die Analyse gerne einreichen."
+#: analysis_query/templates/query_submit.html:150
+msgid "If you think εxodus has not yet analyzed the latest version of this application, feel free to submit the analysis."
+msgstr "Wenn Sie glauben, dass εxodus die neueste Version dieser Anwendung noch nicht analysiert hat, können Sie die Analyse gerne einreichen."
 
-#: analysis_query/templates/query_upload.html:32
+#: analysis_query/templates/query_upload.html:6
+#: analysis_query/templates/query_upload.html:7
+msgid "Upload an APK file to run a new analysis"
+msgstr ""
+
+#: analysis_query/templates/query_upload.html:38
 msgid "Upload an application"
 msgstr "Eine Anwendung hochladen"
 
-#: analysis_query/templates/query_upload.html:36
+#: analysis_query/templates/query_upload.html:42
 msgid "Browse file"
 msgstr "Dateien durchsuchen"
 
-#: analysis_query/templates/query_upload.html:42
+#: analysis_query/templates/query_upload.html:48
 msgid "Only works with APK files."
 msgstr "Funktioniert nur mit APK-Dateien."
 
-#: analysis_query/templates/query_wait.html:9
+#: analysis_query/templates/query_wait.html:6
+#: analysis_query/templates/query_wait.html:7
+msgid "In progress or completed analysis"
+msgstr ""
+
+#: analysis_query/templates/query_wait.html:15
 msgid "Analysis in progress..."
 msgstr "Analyse in Arbeit..."
 
-#: analysis_query/templates/query_wait.html:24
+#: analysis_query/templates/query_wait.html:30
 msgid "See the report"
 msgstr "Den Bericht ansehen"
 
-#: analysis_query/templates/query_wait.html:28
+#: analysis_query/templates/query_wait.html:34
 msgid "Will refresh automatically every 10 seconds."
 msgstr "Aktualisiert automatisch alle 10 Sekunden."
 
-#: analysis_query/templates/query_wait.html:64
+#: analysis_query/templates/query_wait.html:68
 msgid "Analysis done!"
 msgstr "Analyse abgeschlossen!"
 
-#: analysis_query/views.py:34 analysis_query/views.py:62
+#: analysis_query/views.py:34 analysis_query/views.py:66
 msgid "Your request will be handled soon"
 msgstr "Ihre Anfrage wird bald bearbeitet"
 
-#: analysis_query/views.py:76 analysis_query/views.py:84
+#: analysis_query/views.py:80 analysis_query/views.py:88
 msgid "AnalysisRequest does not exist"
 msgstr "AnalysisRequest existiert nicht"
+
