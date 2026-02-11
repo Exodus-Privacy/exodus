@@ -32,7 +32,7 @@ Please follow [Exodus Privacy's code of conduct](https://exodus-privacy.eu.org/e
 
 If you want to help us improve this project, you can:
 
-- [Translate the plateform](https://github.com/Exodus-Privacy/exodus#translation)
+- [Translate the platform](https://github.com/Exodus-Privacy/exodus#translation)
 - Use [issues](https://github.com/Exodus-Privacy/exodus/issues) to report bugs and propose ideas or feature requests
 - Join us on our [IRC channel #exodus-privacy on Libera.chat](https://web.libera.chat/?nick=webguest?#exodus-privacy)
 - Refer to [this documentation](CONTRIBUTING.md) to improve the code.
@@ -40,7 +40,7 @@ If you want to help us improve this project, you can:
 
 ### Translation
 
-Do you want to help to translate the plateform? Contribute here:
+Do you want to help to translate the platform? Contribute here:
 
 https://crowdin.com/project/exodus-privacy
 
