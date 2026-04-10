@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exodus-privacy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-26 13:23+0000\n"
-"PO-Revision-Date: 2025-07-20 14:50\n"
+"POT-Creation-Date: 2025-07-22 21:51+0000\n"
+"PO-Revision-Date: 2026-04-10 21:15\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -17,87 +17,109 @@ msgstr ""
 "X-Crowdin-File: trackers.po\n"
 "X-Crowdin-File-ID: 53\n"
 
-#: trackers/templates/new_api_key.html:43
+#: trackers/templates/new_api_key.html:35
 #: trackers/templates/trackers_admin_list.html:24
 msgid "You need to be registered"
 msgstr "U moet geregistreerd zijn"
 
-#: trackers/templates/stats_details.html:9
-#: trackers/templates/trackers_list.html:13
-msgid "Statistics"
-msgstr "Statistieken"
-
-#: trackers/templates/stats_details.html:11
-#: trackers/templates/stats_details.html:14
+#: trackers/templates/stats_details.html:4
+#: trackers/templates/stats_details.html:5
+#: trackers/templates/stats_details.html:17
+#: trackers/templates/stats_details.html:20
 msgid "Most frequent trackers"
 msgstr "Meest voorkomende trackers"
 
-#: trackers/templates/stats_details.html:26
-#: trackers/templates/trackers_list.html:46
+#: trackers/templates/stats_details.html:6
+#: trackers/templates/stats_details.html:7
+#: trackers/templates/stats_details.html:15
+#: trackers/templates/trackers_list.html:19
+msgid "Statistics"
+msgstr "Statistieken"
+
+#: trackers/templates/stats_details.html:32
+#: trackers/templates/trackers_list.html:53
 #, python-format
 msgid "found in %(count)s application"
 msgid_plural "found in %(count)s applications"
 msgstr[0] "gevonden in %(count)s toepassing"
 msgstr[1] "gevonden in %(count)s toepassing"
 
-#: trackers/templates/tracker_details.html:24
+#: trackers/templates/tracker_details.html:5
+#: trackers/templates/tracker_details.html:6
+msgid "Informations about this tracker"
+msgstr "Informatie over deze tracker"
+
+#: trackers/templates/tracker_details.html:7
+#: trackers/templates/tracker_details.html:8
+msgid "Tracker profile for"
+msgstr "Trackerprofiel voor"
+
+#: trackers/templates/tracker_details.html:30
 #, python-format
 msgid "Present in: <b>%(count)s application</b>"
 msgid_plural "Present in: <b>%(count)s applications</b>"
 msgstr[0] "Aanwezig in: <b>%(count)s toepassing</b>"
 msgstr[1] "Aanwezig in: <b>%(count)s toepassing</b>"
 
-#: trackers/templates/tracker_details.html:32
+#: trackers/templates/tracker_details.html:38
 msgid "Tracker web page"
 msgstr "Tracker webpagina"
 
-#: trackers/templates/tracker_details.html:44
+#: trackers/templates/tracker_details.html:50
 msgid "Detection rules"
 msgstr "Detectieregels"
 
-#: trackers/templates/tracker_details.html:45
+#: trackers/templates/tracker_details.html:51
 msgid "Code detection rule:"
 msgstr "Programmacode detectieregel:"
 
-#: trackers/templates/tracker_details.html:47
+#: trackers/templates/tracker_details.html:53
 msgid "Network detection rule:"
 msgstr "Netwerk detectieregelregel:"
 
-#: trackers/templates/tracker_details.html:54
+#: trackers/templates/tracker_details.html:60
 msgid "Documentation"
-msgstr ""
+msgstr "Documentatie"
 
-#: trackers/templates/tracker_details.html:66
+#: trackers/templates/tracker_details.html:72
 msgid "Latest reports with this tracker"
 msgstr "Laatste rapporten met deze tracker"
 
-#: trackers/templates/trackers_list.html:8
+#: trackers/templates/trackers_list.html:4
+#: trackers/templates/trackers_list.html:5
+msgid "List of known trackers"
+msgstr "Lijst met bekende trackers"
+
+#: trackers/templates/trackers_list.html:6
+#: trackers/templates/trackers_list.html:7
+#: trackers/templates/trackers_list.html:14
 msgid "Trackers"
 msgstr "Trackers"
 
-#: trackers/templates/trackers_list.html:12
+#: trackers/templates/trackers_list.html:18
 msgid "known tracker"
 msgid_plural "known trackers"
 msgstr[0] "bekende tracker"
 msgstr[1] "bekende tracker"
 
-#: trackers/templates/trackers_list.html:19
+#: trackers/templates/trackers_list.html:25
 msgid "Sorted by"
 msgstr "Gesorteerd op"
 
-#: trackers/templates/trackers_list.html:23
+#: trackers/templates/trackers_list.html:29
 msgid "Alphabetical order"
 msgstr "Alfabetische volgorde"
 
-#: trackers/templates/trackers_list.html:26
+#: trackers/templates/trackers_list.html:32
 msgid "Number of applications"
 msgstr "Aantal toepassingen"
 
-#: trackers/templates/trackers_list.html:32
+#: trackers/templates/trackers_list.html:38
+#: trackers/templates/trackers_list.html:39
 msgid "Search by name"
 msgstr "Zoek op naam"
 
-#: trackers/templates/trackers_list.html:84
+#: trackers/templates/trackers_list.html:91
 msgid "No trackers are available"
 msgstr "Er zijn geen trackers beschikbaar"
 
