@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 
+## [1.32.4] - 2026-04-10
+
+- [Typo] 'plateform' to 'platform' in README by @EliasConTildePY in #690
+- [Documentation] fix instance port by @codeurimpulsif
+- [Storage] create s3 bucket only if it don't already exists by @codeurimpulsif in #692
+- [Dependencies] Upgrade multiple dependencies by @codeurimpulsif in #693
+- [Languages] Update Dutch and Spanish by @codeurimpulsif in #694
+
 ## [1.32.3] - 2026-02-04
 
 - Add a changelog
