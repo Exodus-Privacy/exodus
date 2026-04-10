@@ -13,11 +13,11 @@ class RemoteStorageHelper():
                                   secret_key=settings.MINIO_STORAGE_SECRET_KEY,
                                   secure=settings.MINIO_STORAGE_USE_HTTPS)
         # Create Minio storage if needed
-        try:
-            self.minio_client.make_bucket(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, location="")
-        except MinioException:
-            logging.error(f"An error occured while creating new bucket '{settings.MINIO_STORAGE_MEDIA_BUCKET_NAME}'")
-            pass
+        if not self.minio_client.bucket_exists(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME):
+            try:
+                self.minio_client.make_bucket(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, location="")
+            except MinioException:
+                logging.error(f"An error occured while creating new bucket '{settings.MINIO_STORAGE_MEDIA_BUCKET_NAME}'")
 
     def get_prefix(self):
         return self.prefix
