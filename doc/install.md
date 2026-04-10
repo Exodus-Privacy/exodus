@@ -238,7 +238,7 @@ cd exodus
 python manage.py runserver
 ```
 
-Now browse [http://127.0.0.1:8000](http://127.0.0.1:8000)
+Now browse [http://127.0.0.1](http://127.0.0.1)
 
 #### 13 - Import the trackers definitions
 
@@ -249,7 +249,7 @@ python manage.py import_categories
 python manage.py importtrackers
 ```
 
-Now, browse [your tracker list](http://127.0.0.1:8000/trackers/)
+Now, browse [your tracker list](http://127.0.0.1/trackers/)
 
 #### 14 - Get the F-droid index data
 
@@ -278,5 +278,5 @@ The following options can be configured in `exodus/exodus/settings/`:
 
 ## Analyzing an application
 
-Browse to [the analysis submission page](http://127.0.0.1:8000/analysis/submit/) and start a new analysis (ex: `fr.meteo`).
+Browse to [the analysis submission page](http://127.0.0.1/analysis/submit/) and start a new analysis (ex: `fr.meteo`).
 When the analysis is finished, compare the results with the same report from [the official instance](https://reports.exodus-privacy.eu.org).
