@@ -17,12 +17,15 @@ You have different ways of setting up your development environment:
 
 - docker
 - docker-compose
+    - note: docker-compose (v.1) is considered [outdated](https://github.com/docker/compose/tree/v1) since 2023. If you already got docker compose v.2 instead, add alias to let original commands (provided in this guide below) work with it: <br> `alias docker-compose='docker compose'`
 
 #### Prepare your settings
 
 You can tweak your instance by changing [some settings](#configuring-your-local-instance).
 
-Follow instructions to get AAS token [here](https://github.com/EFForg/apkeep/blob/master/USAGE-google-play.md).
+Follow instructions to get AAS token using _apkeep_ tool [here](https://github.com/EFForg/apkeep/blob/master/USAGE-google-play.md).<br>
+\* note 1: as of Spring 2026 _apkeep_ tool fails to get AAS due to an update in Google Play. [Issue #231](https://github.com/EFForg/apkeep/issues/231). If you don't want to wait till that gets fixed, you may try on your own risk the workaround an independent developers suggested in that same bug ticket #231, his tool gplay-dl. That did the trick for some.<br>
+\* note 2: if you followed this guide, apparently you have _apkeep_ tool installed only inside docker. To use that one you may skip current step for now (getting AAS token), and launch docker (see step [Run](#Run)). Then you can enter the command line of the _exodus-worker_ (where _apkeep_ tool is): `docker-compose exec -it exodus-worker /bin/bash`. Once in there you can just return to current step and proceed starting with obtaining the AAS token.
 
 Create the file  `exodus/exodus/settings/custom_docker.py` with the following content:
 
