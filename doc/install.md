@@ -15,8 +15,7 @@ You have different ways of setting up your development environment:
 
 #### Requirements
 
-- docker
-- docker-compose
+- [Docker](https://www.docker.com)
 
 #### Prepare your settings
 
@@ -39,15 +38,15 @@ GOOGLE_ACCOUNT_AAS_TOKEN = "<a valid aas token>"
 
 ```bash
 echo uid=$(id -u) > .env
-docker-compose up -d
+docker compose up -d
 # Once exodus started, you can check its logs
-docker-compose logs -f exodus-front
+docker compose logs -f exodus-front
 ```
 
 When everything is up (Docker logs `Exodus DB is ready.`), you may have to force a first download of the F-Droid index:
 
 ```bash
-docker-compose exec exodus-worker /entrypoint.sh refresh-fdroid-index
+docker compose exec exodus-worker /entrypoint.sh refresh-fdroid-index
 ```
 
 **The worker must be running** to do this.
@@ -59,14 +58,14 @@ The exodus container automatically:
 - Import trackers from the main instance
 - Start the frontend of exodus
 
-Don't forget to rebuild your image and refresh your container if there is any change with `docker-compose up -d --build`.
+Don't forget to rebuild your image and refresh your container if there is any change with `docker compose up -d --build`.
 
 #### Aliases
 
 You can use the command
 
 ```bash
-docker-compose exec exodus-worker /entrypoint.sh "<command>"
+docker compose exec exodus-worker /entrypoint.sh "<command>"
 ```
 
 to make actions, where `<command>` can be:
@@ -263,18 +262,22 @@ python manage.py refresh_fdroid_index
 
 The following options can be configured in `exodus/exodus/settings/`:
 
-| Setting                             | Description                                  | Default         |
-|-------------------------------------|----------------------------------------------|-----------------|
-| EX_PAGINATOR_COUNT                  | Number of elements per page                  | 25              |
-| TRACKERS_AUTO_UPDATE                | Whether to update automatically trackers     | False           |
-| TRACKERS_AUTO_UPDATE_TIME           | Trackers update frequency (in seconds)       | 345600          |
-| TRACKERS_AUTO_UPDATE_FROM           | Exodus instance to update trackers from      | <live instance> |
-| ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME | Requests cleanup frequency (in seconds)      | 86400           |
-| ANALYSIS_REQUESTS_KEEP_DURATION     | Requests keep duration (in days)             | 4               |
-| ALLOW_APK_UPLOAD                    | Whether to allow APK file upload             | False           |
-| DISABLE_SUBMISSIONS                 | Whether to disable app submissions           | False           |
-| GOOGLE_ACCOUNT_EMAIL                | Email of Google account to download apps     | /               |
-| GOOGLE_ACCOUNT_AAS_TOKEN            | AAS token of Google account to download apps | /               |
+| Setting                              | Description                                           | Default value (from `base.py`)                       |
+|--------------------------------------|-------------------------------------------------------|------------------------------------------------------|
+| ALLOW_APK_UPLOAD                     | Whether to allow APK file upload                      | False                                                |
+| ANALYSIS_REQUESTS_AUTO_CLEANUP_TIME  | Requests cleanup frequency (in seconds)               | 86400                                                |
+| ANALYSIS_REQUESTS_KEEP_DURATION      | Requests keep duration (in days)                      | 4                                                    |
+| DISABLE_SUBMISSIONS                  | Whether to disable app submissions                    | False                                                |
+| ETIP_HOSTNAME                        | [ETIP](https://github.com/Exodus-Privacy/etip) URL    | `https://etip.exodus-privacy.eu.org`                 |
+| EX_PAGINATOR_COUNT                   | Number of elements per page                           | 25                                                   |
+| FDROID_INDEX_UPDATE_TIME             | FDroid index file update frequency (in seconds)       | 86400                                                |
+| FDROID_MIRROR                        | FDroid repository to download apps                    | `https://f-droid.org/repo`                           |
+| GOOGLE_ACCOUNT_AAS_TOKEN             | AAS token of Google account to download apps          | /                                                    |
+| GOOGLE_ACCOUNT_EMAIL                 | Email of Google account to download apps              | /                                                    |
+| TRACKERS_AUTO_UPDATE                 | Whether to update automatically trackers              | False                                                |
+| TRACKERS_AUTO_UPDATE_FROM            | API URL of an Exodus instance to update trackers from | `https://reports.exodus-privacy.eu.org/api/trackers` |
+| TRACKERS_AUTO_UPDATE_TIME            | Trackers update frequency (in seconds)                | 345600                                               |
+| TRACKERS_STATISTICS_AUTO_UPDATE_TIME | Trackers statistics update frequency (in seconds)     | 259200                                               |
 
 ## Analyzing an application
 
