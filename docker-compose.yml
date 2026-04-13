@@ -29,7 +29,7 @@ services:
   exodus-front:
     build:
       context: ./
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/exodus/Dockerfile
     depends_on:
       - minio
       - db
@@ -49,7 +49,7 @@ services:
   exodus-worker:
     build:
       context: ./
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/exodus/Dockerfile
     command: [ "start-worker" ]
     depends_on:
       - minio

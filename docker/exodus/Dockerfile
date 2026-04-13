@@ -29,7 +29,7 @@ RUN pipenv install --ignore-pipfile --system --dev
 
 WORKDIR /exodus/exodus
 
-COPY ./docker/entrypoint.sh /entrypoint.sh
+COPY ./docker/exodus/entrypoint.sh /entrypoint.sh
 COPY ./ /exodus
 
 ENTRYPOINT ["/entrypoint.sh"]
