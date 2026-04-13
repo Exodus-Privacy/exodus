@@ -10,6 +10,8 @@ This API is globally limited to 30 requests/second (with a 50 requests burst). S
 
 The εxodus API results are made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/. Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/.
 
+We don't provide API keys to companies or for end users products production usage (android apps, etc). For this kind of usage we encourage you to deploy your own Exodus instance.
+
 ## Authorization
 
 **In order to use this REST API, you have to request an API key**.
