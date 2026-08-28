@@ -51,6 +51,16 @@ class ReportsIconTests(TestCase):
         self.assertTrue(get_object.called)
         self.assertEqual(response.content, b'icon contents')
 
+    @patch('reports.views.Minio.get_object', autospec=True, return_value=Mock(data='icon contents'))
+    def test_icon_served_without_language_redirect(self, get_object):
+        r = Report.objects.create()
+        app = Application.objects.create(report=r, handle='com.example.app', version='1')
+
+        response = self.client.get('/reports/{}/icon/'.format(app.pk), follow=False)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(get_object.called)
+
 
 class ReportsViewTests(TestCase):
     REPORTS_PATH = '/en/reports/list/'

@@ -4,6 +4,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 
+from reports.views import get_app_icon
+
 from . import views
 
 urlpatterns = [
@@ -11,6 +13,8 @@ urlpatterns = [
     path('api/', include('restful_api.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('reports/<int:app_id>/icon/', get_app_icon, name='app_icon'),
+    path('reports/<handle>/latest/icon/', get_app_icon, name='app_icon_by_handle'),
 ]
 
 urlpatterns += i18n_patterns(
