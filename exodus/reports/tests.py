@@ -103,3 +103,16 @@ class ReportsViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['reports_total_count'], 2)
+
+    def test_report_details_page_explains_tracker_presence_is_not_proof_of_activity(self):
+        report = Report.objects.create()
+        Application.objects.create(name="App1", report=report, handle="com.test.track")
+
+        response = self.client.get('/en/reports/{}/'.format(report.id))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            'exodus-privacy.eu.org/en/page/faq/#negatives'
+        )
+        self.assertContains(response, 'info.svg')
