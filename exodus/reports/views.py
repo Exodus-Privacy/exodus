@@ -14,8 +14,6 @@ from minio import Minio
 
 from reports.models import Report, Application
 
-ICON_CACHE_MAX_AGE = 60 * 60 * 24 * 7  # 1 week
-
 _minio_client = None
 
 
@@ -97,7 +95,7 @@ def get_app_icon(request, app_id=None, handle=None):
     try:
         data = _get_minio_client().get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, app.icon_path)
         response = HttpResponse(data.data, content_type='image/png')
-        response['Cache-Control'] = 'public, max-age={}, immutable'.format(ICON_CACHE_MAX_AGE)
+        response['Cache-Control'] = 'public, max-age={}, immutable'.format(settings.ICON_CACHE_MAX_AGE)
         return response
     except Exception as err:
         print(err)
