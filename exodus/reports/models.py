@@ -33,6 +33,11 @@ class Report(models.Model):
     flow_file = models.CharField(max_length=200, default='')
     class_list_file = models.CharField(max_length=200, default='')
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['-creation_date'], name='report_creation_date_idx'),
+        ]
+
     def __str__(self):
         try:
             handle = self.application.handle
@@ -66,6 +71,11 @@ class Application(models.Model):
     app_uid = models.CharField(max_length=128, default='')
     icon_phash = models.CharField(max_length=128, default='')
     source = models.CharField(max_length=50, default='')
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['handle', 'source', 'version', 'version_code'], name='app_handle_dedup_idx'),
+        ]
 
     def __str__(self):
         return self.handle
