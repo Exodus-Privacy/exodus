@@ -5,6 +5,7 @@ import json
 import logging
 
 from django.conf import settings
+from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
@@ -75,6 +76,7 @@ class Application(models.Model):
     class Meta:
         indexes = [
             models.Index(fields=['handle', 'source', 'version', 'version_code'], name='app_handle_dedup_idx'),
+            GinIndex(fields=['name'], name='app_name_trgm_idx', opclasses=['gin_trgm_ops']),
         ]
 
     def __str__(self):
