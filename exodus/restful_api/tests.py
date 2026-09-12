@@ -27,6 +27,11 @@ class RestfulApiApplicationTests(APITestCase):
         response = self.client.get(self.PATH)
         self.assertEqual(response.status_code, 401)
 
+    def test_options_preflight_does_not_require_auth(self):
+        response = self.client.options(self.PATH)
+
+        self.assertEqual(response.status_code, 200)
+
     def test_returns_empty_json_when_no_applications(self):
         self._force_authentication()
         response = self.client.get(self.PATH)
