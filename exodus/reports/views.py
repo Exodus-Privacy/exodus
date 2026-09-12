@@ -35,13 +35,14 @@ def index(request):
 
 def get_reports(request, handle=None):
     filter = request.GET.get('filter', None)
+    base = Report.objects.select_related('application').prefetch_related('found_trackers', 'application__permission_set')
     try:
         if filter == 'no_trackers':
-            reports = Report.objects.filter(found_trackers=None).order_by('-creation_date')
+            reports = base.filter(found_trackers=None).order_by('-creation_date')
         elif filter == 'most_trackers':
-            reports = Report.objects.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
+            reports = base.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
         else:
-            reports = Report.objects.order_by('-creation_date')
+            reports = base.order_by('-creation_date')
             if handle:
                 reports = reports.filter(application__handle=handle)
     except Report.DoesNotExist:
