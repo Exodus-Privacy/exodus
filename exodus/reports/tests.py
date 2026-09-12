@@ -103,3 +103,20 @@ class ReportsViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['reports_total_count'], 2)
+
+
+class ApplicationModelTests(TestCase):
+
+    def test_version_longer_than_50_chars_is_supported(self):
+        long_version = 'flavorpreviewRelease-10.0.0.191210.1822.126-RELEASE'
+        report = Report.objects.create()
+        application = Application.objects.create(
+            report=report,
+            handle='ch.sbb.mobile.android.preview',
+            version=long_version,
+        )
+
+        self.assertEqual(
+            Application.objects.get(pk=application.pk).version,
+            long_version,
+        )

@@ -60,7 +60,7 @@ class Application(models.Model):
     name = models.CharField(max_length=200, default='')
     creator = models.CharField(max_length=200, default='')
     downloads = models.CharField(max_length=200, default='')
-    version = models.CharField(max_length=50)
+    version = models.CharField(max_length=100)
     version_code = models.CharField(max_length=100, default='')
     icon_path = models.CharField(max_length=500, default='')
     app_uid = models.CharField(max_length=128, default='')
