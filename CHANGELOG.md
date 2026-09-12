@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 - [Documentation] Deprecate docker-compose and update documentation
+- [Requirements] Upgrade everything we can
 
 ## [1.32.4] - 2026-04-10
 
