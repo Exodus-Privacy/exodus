@@ -51,6 +51,27 @@ class ReportsIconTests(TestCase):
         self.assertTrue(get_object.called)
         self.assertEqual(response.content, b'icon contents')
 
+    @patch('reports.views.Minio.get_object', autospec=True, return_value=Mock(data='icon contents'))
+    def test_icon_is_cached(self, get_object):
+        r = Report.objects.create()
+        Application.objects.create(report=r, handle='com.example.app', version='1')
+
+        response = self.client.get('/reports/{}/icon'.format(r.pk), follow=True)
+
+        self.assertIn('max-age', response['Cache-Control'])
+        self.assertIn('immutable', response['Cache-Control'])
+
+    @patch('reports.views.Minio.get_object', autospec=True, side_effect=Exception('minio unavailable'))
+    def test_falls_back_to_default_icon_without_cache_when_minio_fails(self, get_object):
+        r = Report.objects.create()
+        Application.objects.create(report=r, handle='com.example.app', version='1')
+
+        response = self.client.get('/reports/{}/icon'.format(r.pk), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'image/jpeg')
+        self.assertFalse(response.has_header('Cache-Control'))
+
 
 class ReportsViewTests(TestCase):
     REPORTS_PATH = '/en/reports/list/'
