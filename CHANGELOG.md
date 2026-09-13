@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - [Performance] Improve reports page performance by @pnu-s in #709
 - [Local] Use new minio image for local docker setup by @pnu-s in #710
 - [Docker] Upgrade apkeep to version 1.0.0 @codeurimpulsif in #711
+- [CI] Add python 3.14 workflow @codeurimpulsif in #712
 
 ## [1.32.4] - 2026-04-10
 
