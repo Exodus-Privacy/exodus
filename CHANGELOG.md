@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+
+## [1.33.0] - 2026-09-13
+
 - [Documentation] Deprecate docker-compose and update documentation by @codeurimpulsif in #697
 - [Requirements] Upgrade everything we can by @codeurimpulsif in #707
 - [Cache] Add cache for application icons by @pnu-s in #706
