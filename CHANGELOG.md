@@ -6,8 +6,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-- [Documentation] Deprecate docker-compose and update documentation
-- [Requirements] Upgrade everything we can
+- [Documentation] Deprecate docker-compose and update documentation by @codeurimpulsif in #697
+- [Requirements] Upgrade everything we can by @codeurimpulsif in #707
+- [Cache] Add cache for application icons by @pnu-s in #706
+- [Database] Add missing postgresql indexes by @pnu-s in #708
+- [Performance] Improve reports page performance by @pnu-s in #709
+- [Local] Use new minio image for local docker setup by @pnu-s in #710
 
 ## [1.32.4] - 2026-04-10
 
