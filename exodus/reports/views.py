@@ -14,6 +14,20 @@ from minio import Minio
 
 from reports.models import Report, Application
 
+_minio_client = None
+
+
+def _get_minio_client():
+    global _minio_client
+    if _minio_client is None:
+        _minio_client = Minio(
+            settings.MINIO_STORAGE_ENDPOINT,
+            access_key=settings.MINIO_STORAGE_ACCESS_KEY,
+            secret_key=settings.MINIO_STORAGE_SECRET_KEY,
+            secure=settings.MINIO_STORAGE_USE_HTTPS
+        )
+    return _minio_client
+
 
 def index(request):
     return render(request, 'reports_home.html')
@@ -21,13 +35,14 @@ def index(request):
 
 def get_reports(request, handle=None):
     filter = request.GET.get('filter', None)
+    base = Report.objects.select_related('application').prefetch_related('found_trackers', 'application__permission_set')
     try:
         if filter == 'no_trackers':
-            reports = Report.objects.filter(found_trackers=None).order_by('-creation_date')
+            reports = base.filter(found_trackers=None).order_by('-creation_date')
         elif filter == 'most_trackers':
-            reports = Report.objects.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
+            reports = base.exclude(found_trackers=None).annotate(nb_trackers=Count('found_trackers')).order_by('-nb_trackers')
         else:
-            reports = Report.objects.order_by('-creation_date')
+            reports = base.order_by('-creation_date')
             if handle:
                 reports = reports.filter(application__handle=handle)
     except Report.DoesNotExist:
@@ -78,16 +93,11 @@ def get_app_icon(request, app_id=None, handle=None):
     except Application.DoesNotExist:
         raise Http404(_('App does not exist'))
 
-    minioClient = Minio(
-        settings.MINIO_STORAGE_ENDPOINT,
-        access_key=settings.MINIO_STORAGE_ACCESS_KEY,
-        secret_key=settings.MINIO_STORAGE_SECRET_KEY,
-        secure=settings.MINIO_STORAGE_USE_HTTPS
-    )
-
     try:
-        data = minioClient.get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, app.icon_path)
-        return HttpResponse(data.data, content_type='image/png')
+        data = _get_minio_client().get_object(settings.MINIO_STORAGE_MEDIA_BUCKET_NAME, app.icon_path)
+        response = HttpResponse(data.data, content_type='image/png')
+        response['Cache-Control'] = 'public, max-age={}, immutable'.format(settings.ICON_CACHE_MAX_AGE)
+        return response
     except Exception as err:
         print(err)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'android.jpeg'), 'rb') as f:

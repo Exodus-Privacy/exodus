@@ -419,12 +419,22 @@ class RestfulApiSearchHandleTests(APITestCase):
 class RestfulApiSearchTests(APITestCase):
     PATH = '/api/search'
 
-    # TODO: This endpoint cannot be tested because of the similarity search extension not available on test database
-    # def test_returns_empty_json_when_no_app(self):
-    #     response = self.client.post(self.PATH, {'limit': 20, 'query': DUMMY_HANDLE, 'type': 'application'}, 'json')
+    def test_returns_app_when_fuzzy_name_match(self):
+        report = Report.objects.create()
+        Application.objects.create(
+            name='Signal',
+            handle='org.thoughtcrime.securesms',
+            report=report,
+            version="0.1",
+            version_code="01234",
+            source="google"
+        )
 
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(response.json(), {})
+        response = self.client.post(self.PATH, {'limit': 20, 'query': 'signl', 'type': 'application'}, 'json')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.json()['results']), 1)
+        self.assertEqual(response.json()['results'][0]['name'], 'Signal')
 
     def test_returns_latest_app_when_exact_handle_match(self):
         tracker = Tracker.objects.create(name='Teemo')

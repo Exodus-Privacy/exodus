@@ -5,6 +5,7 @@ import json
 import logging
 
 from django.conf import settings
+from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
@@ -32,6 +33,11 @@ class Report(models.Model):
     pcap_file = models.CharField(max_length=200, default='')
     flow_file = models.CharField(max_length=200, default='')
     class_list_file = models.CharField(max_length=200, default='')
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['-creation_date'], name='report_creation_date_idx'),
+        ]
 
     def __str__(self):
         try:
@@ -66,6 +72,12 @@ class Application(models.Model):
     app_uid = models.CharField(max_length=128, default='')
     icon_phash = models.CharField(max_length=128, default='')
     source = models.CharField(max_length=50, default='')
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['handle', 'source', 'version', 'version_code'], name='app_handle_dedup_idx'),
+            GinIndex(fields=['name'], name='app_name_trgm_idx', opclasses=['gin_trgm_ops']),
+        ]
 
     def __str__(self):
         return self.handle

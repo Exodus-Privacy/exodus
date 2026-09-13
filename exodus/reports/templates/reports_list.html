@@ -65,13 +65,13 @@
                   </div>
                   <div class="small"><b>{% trans "Version" %} {{ app.version|truncatechars_html:20 }}{% if app.source %} - {{ app.source }}{% endif %}</b></div>
                   <div>
-                    {% with nb_trackers=report.found_trackers.count %}
+                    {% with nb_trackers=report.found_trackers.all|length %}
                       <span class="mr-lg-4 mr-2">
                         <span class="badge badge-pill badge-{{ app.trackers_class }} reports">{{ nb_trackers }}</span>
                         {% blocktrans count count=nb_trackers %}tracker{% plural %}trackers{% endblocktrans %}
                       </span>
                     {% endwith %}
-                    {% with nb_perm=app.permissions|length %}
+                    {% with nb_perm=app.permission_set.all|length %}
                       <span>
                         <span class="badge badge-pill badge-{{ app.permissions_class }} reports">{{ nb_perm }}</span>
                         {% blocktrans count count=nb_perm %}permission{% plural %}permissions{% endblocktrans %}
