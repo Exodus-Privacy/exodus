@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
+from django.db import connection
 from django.test import TestCase
+from django.test.utils import CaptureQueriesContext
 from unittest.mock import patch, Mock, ANY
 
-from reports.models import Application, Report
+from reports.models import Application, Permission, Report
+from trackers.models import Tracker
 
 
 class ReportsIconTests(TestCase):
@@ -124,3 +128,53 @@ class ReportsViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['reports_total_count'], 2)
+
+    def test_should_render_tracker_and_permission_count_badges(self):
+        report = Report.objects.create()
+        trackers = [Tracker.objects.create(name='Tracker{}'.format(i)) for i in range(6)]
+        report.found_trackers.set([t.id for t in trackers])
+        app = Application.objects.create(report=report, handle='com.test.app', version='1')
+        Permission.objects.create(application=app, name='android.permission.CAMERA')
+
+        response = self.client.get(self.REPORTS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'badge-danger reports">6<')
+        self.assertContains(response, 'badge-warning reports">1<')
+
+    def test_should_render_report_without_application(self):
+        Report.objects.create()
+
+        response = self.client.get(self.REPORTS_PATH)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_should_paginate_reports(self):
+        for _ in range(settings.EX_PAGINATOR_COUNT + 1):
+            Report.objects.create()
+
+        response = self.client.get(self.REPORTS_PATH + '?page=2')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['reports'].paginator.num_pages, 2)
+        self.assertEqual(len(response.context['reports']), 1)
+
+    def _create_full_report(self, handle):
+        report = Report.objects.create()
+        report.found_trackers.set([Tracker.objects.create(name='T-' + handle).id])
+        app = Application.objects.create(report=report, handle=handle, version='1')
+        Permission.objects.create(application=app, name='android.permission.CAMERA')
+
+    def _count_list_view_queries(self):
+        with CaptureQueriesContext(connection) as ctx:
+            self.client.get(self.REPORTS_PATH)
+        return len(ctx.captured_queries)
+
+    def test_list_view_has_no_n_plus_1(self):
+        self._create_full_report('com.test.one')
+        baseline = self._count_list_view_queries()
+
+        for i in range(5):
+            self._create_full_report('com.test.{}'.format(i))
+
+        self.assertEqual(self._count_list_view_queries(), baseline)
