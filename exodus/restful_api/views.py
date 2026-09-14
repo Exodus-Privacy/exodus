@@ -11,10 +11,11 @@ from minio import Minio
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.parsers import JSONParser
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAdminUser
 
 from reports.models import Application, Report, Certificate
 from trackers.models import Tracker
+from restful_api.permissions import IsAuthenticatedOrOptions
 from restful_api.serializers import ApplicationSerializer, TrackerSerializer, \
     ReportInfosSerializer, ReportSerializer, SearchQuerySerializer, \
     SearchApplicationSerializer, ApplicationShortSerializer
@@ -23,7 +24,7 @@ from restful_api.serializers import ApplicationSerializer, TrackerSerializer, \
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def get_report_infos(request, r_id):
     try:
         report = Report.objects.get(pk=r_id)
@@ -52,7 +53,7 @@ def get_report_infos(request, r_id):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated, IsAdminUser))
+@permission_classes((IsAuthenticatedOrOptions, IsAdminUser))
 def get_apk(request, r_id):
     try:
         report = Report.objects.get(pk=r_id)
@@ -123,7 +124,7 @@ def _get_tracker_list():
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def get_all_reports(request):
     report_list = Report.objects.order_by('-creation_date')[:500]
     applications = _get_reports_list(report_list)
@@ -148,7 +149,7 @@ def get_all_trackers(request):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def get_all_applications(request):
     try:
         if request.GET.get('tracker'):
@@ -168,7 +169,7 @@ def get_all_applications(request):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def search_strict_handle(request, handle):
     try:
         reports = Report.objects.filter(application__handle=handle).order_by('-creation_date')
@@ -199,7 +200,7 @@ def search_latest_report(request, handle):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def get_report_details(request, r_id):
     try:
         report = Report.objects.get(pk=r_id)
@@ -258,7 +259,7 @@ def search(request):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def search_strict_handle_details(request, handle):
     try:
         reports = Report.objects.filter(application__handle=handle)
@@ -290,7 +291,7 @@ def search_strict_handle_details(request, handle):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def get_trackers_count(request):
     return JsonResponse({'count': Tracker.objects.count()})
 
@@ -298,7 +299,7 @@ def get_trackers_count(request):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def get_reports_count(request):
     return JsonResponse({'count': Report.objects.count()})
 
@@ -306,6 +307,6 @@ def get_reports_count(request):
 @csrf_exempt
 @api_view(['GET'])
 @authentication_classes((TokenAuthentication,))
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticatedOrOptions,))
 def get_applications_count(request):
     return JsonResponse({'count': Application.objects.distinct('handle').count()})
